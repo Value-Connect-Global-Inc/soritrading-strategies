@@ -11,8 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3379](strategies/3379/) | ADA Donchian 55/30 Breakout 1D | +623.18% | +634.17% | +39.86% | 12 | 2026-10-10 |
 | ★ | [3380](strategies/3380/) | ADA Donchian 55/10 NoFilter Baseline 1D | +63.74% | +33.45% | +58.68% | 20 | 2026-10-10 |
+|  | [3379](strategies/3379/) | ADA Donchian 55/30 Breakout 1D | +623.18% | +634.17% | +39.86% | 12 | 2026-10-10 |
 |  | [3378](strategies/3378/) | BTC 200-Day Trend Filter 1D | +6.59% | +195.86% | +33.16% | 29 | 2026-10-10 |
 |  | [3377](strategies/3377/) | SOL Volume-Confirmed Breakout 1D | +10.51% | +158.12% | +39.34% | 20 | 2026-10-10 |
 | — | [3376](strategies/3376/) | AI 전략 | -2.57% | — | +6.80% | 3 | 2026-10-10 |
