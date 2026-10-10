@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3377](strategies/3377/) | SOL Volume-Confirmed Breakout 1D | +3.22% | +80.18% | +34.79% | 3 | 2026-10-10 |
+|  | [3377](strategies/3377/) | SOL Volume-Confirmed Breakout 1D | +115.05% | +157.01% | +34.32% | 12 | 2026-10-10 |
 | — | [3376](strategies/3376/) | AI 전략 | -2.57% | — | +6.80% | 3 | 2026-10-10 |
 | — | [3375](strategies/3375/) | AI 전략 | -0.26% | — | +0.69% | 3 | 2026-10-10 |
 | — | [3372](strategies/3372/) | Multi-Asset RSI2 Panic Basket 1D | +20.94% | — | +14.00% | 74 | 2026-10-10 |
