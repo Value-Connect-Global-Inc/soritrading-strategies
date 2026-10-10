@@ -11,12 +11,12 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3363](strategies/3363/) | BTC Fear Greed Capitulation 1D | -17.68% | +568.67% | +21.84% | 6 | 2026-10-10 |
 |  | [3368](strategies/3368/) | ETH RSI2 Panic Dip Capitulation 1D | +65.97% | +366.46% | +41.50% | 55 | 2026-10-10 |
 |  | [3367](strategies/3367/) | BTC RSI2 Panic Dip RisingTrend 1D | +111.39% | +568.67% | +3.50% | 47 | 2026-10-10 |
 | ★ | [3366](strategies/3366/) | BTC RSI2 Panic Dip Capitulation 1D | -4.51% | -22.98% | +12.77% | 20 | 2026-10-10 |
 |  | [3365](strategies/3365/) | SOL Fear Greed Capitulation 1D | +1.30% | +16.33% | +13.46% | 2 | 2026-10-10 |
 |  | [3364](strategies/3364/) | BTC Fear Greed Capitulation v2 1D | -26.17% | -22.98% | +30.64% | 4 | 2026-10-10 |
-|  | [3363](strategies/3363/) | BTC Fear Greed Capitulation 1D | -17.68% | +568.67% | +21.84% | 6 | 2026-10-10 |
 | ★ | [3362](strategies/3362/) | BTC SMA200 Regime Trend 1D | +2.52% | -45.40% | +40.98% | 9 | 2026-10-10 |
 |  | [3361](strategies/3361/) | BTC Dual-Momentum Trend 1D | +42.81% | +346.71% | +40.12% | 23 | 2026-10-10 |
 |  | [3360](strategies/3360/) | SOL Dual-Momentum Trend 1D | +203.32% | +301.73% | +53.43% | 16 | 2026-10-10 |
