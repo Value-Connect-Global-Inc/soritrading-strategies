@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [3382](strategies/3382/) | ADA Donchian 55/10 UpperHalf Regime 1D | +1520.70% | +636.03% | +40.12% | 31 | 2026-10-10 |
+| ★ | [3382](strategies/3382/) | ADA Donchian 55/10 UpperHalf Regime 1D | -23.19% | -53.70% | +69.76% | 22 | 2026-10-10 |
 |  | [3381](strategies/3381/) | BTC MACD Momentum Trend 1D | -46.99% | +98.01% | +56.28% | 176 | 2026-10-10 |
 | ★ | [3380](strategies/3380/) | ADA Donchian 55/10 NoFilter Baseline 1D | +63.74% | +33.45% | +58.68% | 20 | 2026-10-10 |
 |  | [3379](strategies/3379/) | ADA Donchian 55/30 Breakout 1D | +623.18% | +634.17% | +39.86% | 12 | 2026-10-10 |
