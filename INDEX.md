@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 426 of 1657 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 249 of them right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 426 of 1658 right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 250 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [3373](strategies/3373/) | Multi-Asset RSI2 Panic Basket 1D | +20.94% | — | +14.00% | 74 | 2026-10-10 |
 | — | [3372](strategies/3372/) | Multi-Asset RSI2 Panic Basket 1D | +20.94% | — | +14.00% | 74 | 2026-10-10 |
 | — | [3371](strategies/3371/) | Multi-Asset RSI2 Panic Basket 1D | +47.21% | — | +16.28% | 196 | 2026-10-10 |
 |  | [3370](strategies/3370/) | BTC RSI2 Panic Dip HashrateFilter 1D | -11.29% | +80.18% | +13.04% | 2 | 2026-10-10 |
