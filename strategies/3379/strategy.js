@@ -1,23 +1,23 @@
 /*
  * @coinsori-strategy v1
- * name: ADA Donchian 55/10 Breakout 1D
+ * name: ADA Donchian 55/10 Trend-Filtered 1D
  * ex: binance
  * syms: ADAUSDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: The ledger's only promising breakout config was ADA Donchian 55/30
- * with a hard ATR stop (entry 1881). A 55-day breakout is slow enough to avoid most bull
- * traps. The exit was the problem: the 30-day channel exit let drawdowns build to 74% on
- * the holdout, and the ATR stop never fired (identical numbers with 1.5x vs 2.5x stop).
- * Speeding the exit to a 10-day channel cuts losers sooner while the 55-day entry still
- * filters out most traps. ADA is not in the user's 5-asset basket, so this adds a
- * genuinely different symbol and family (trend breakout vs defensive MR basket).
- * When it buys and sells: Buys when a closed bar closes above the highest 55 bars. Sells
- * when a closed bar closes below the lowest 10 bars, or price falls 2x ATR below entry.
- * When it does NOT work: In a long range where every 55-day breakout is a bull trap it
- * gets stopped out repeatedly. It never shorts, so a multi-year bear is just flat. A
- * violent crash gaps through the ATR stop.
+ * Why this strategy: ADA's 55-day breakout with a 10-day channel exit beat buy-and-hold
+ * on all three disjoint windows, but the holdout MDD was 70% — the strategy bought
+ * breakouts that turned out to be bear-market rallies. The fix has a reason that holds
+ * before any results: a breakout below the 200-day EMA is usually a bull trap, so only
+ * trade breakouts when the long-term trend is already up (the ledger's promising BTC
+ * Donchian uses the same 200d EMA filter).
+ * When it buys and sells: Buys when a closed bar closes above the highest 55 bars AND
+ * above the 200d EMA. Sells when a closed bar closes below the lowest 10 bars, or price
+ * falls 2x ATR below entry.
+ * When it does NOT work: In a long range above the 200d EMA where every 55d breakout is a
+ * trap it still gets chopped. It never shorts, so a multi-year bear is just flat. A violent
+ * crash gaps through the ATR stop.
  */
 
 function onUpdate(ctx) {
@@ -26,7 +26,7 @@ function onUpdate(ctx) {
 
   const closes = ctx.closes;
   const n = closes.length;
-  if (n < 60) return null;
+  if (n < 210) return null;
 
   const prevClose = closes.at(-2);
   if (prevClose == null) return null;
@@ -38,8 +38,8 @@ function onUpdate(ctx) {
 
   if (pos > 0) {
     const entry = ctx.entryPx || price;
-    // 2x ATR hard stop: the 10-bar channel exit is faster now, but a floor stop still
-    // caps the worst case if price gaps through the channel low on a crash bar.
+    // 2x ATR hard stop: a floor stop still caps the worst case if price gaps through the
+    // channel low on a crash bar.
     const stop = entry - 2 * atr;
     // 10-bar channel exit (closed bars): cuts losers much sooner than the old 30-bar exit.
     const channelLow = Math.min(...closes.slice(-12, -2));
@@ -51,6 +51,11 @@ function onUpdate(ctx) {
     }
     return null;
   }
+
+  // 200d EMA trend filter: only 55d breakouts above the long-term trend. A breakout below
+  // it is usually a bear-market rally — this is the bull-trap filter, the whole point.
+  const ema200 = ctx.ema(200, 1);
+  if (ema200 == null || prevClose <= ema200) return null;
 
   // 55-bar breakout: EXCLUDE the current closed bar (slice end -2) so prevClose can exceed it.
   const channelHigh = Math.max(...closes.slice(-57, -2));
