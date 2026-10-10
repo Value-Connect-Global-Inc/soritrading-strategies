@@ -1,0 +1,32 @@
+{
+  "id": 3380,
+  "name": "ADA Donchian 55/10 NoFilter Baseline 1D",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 16745,
+    "return": 24.51,
+    "mdd": 25.86,
+    "trades": 12,
+    "vsBuyHold": "win",
+    "benchRet": -86.46,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1523923200,
+    "tTo": 1577750400,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[유동성/미체결] 시장가 주문 9건이 그 봉의 호가 두께를 넘어 일부만 체결됐습니다(전체 요청 금액의 47% 미체결, 남은 물량은 다음 봉으로). 진입·청산이 전략이 의도한 시점보다 늦습니다. ★ 원인은 둘 중 하나이고 이 수만으로는 못 가릅니다 — 종목이 얇거나, 주문이 한 봉이 소화할 수 있는 것보다 크거나. 주문 크기를 줄여 같은 구간을 다시 돌리면…",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 624봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "ADA",
+      "interval": "1d",
+      "bars": 730,
+      "end": 1577836800
+    }
+  },
+  "config": null,
+  "updatedAt": "2026-10-10T23:15:07.695Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
