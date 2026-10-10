@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3360](strategies/3360/) | SOL Dual-Momentum Trend 1D | +359.31% | +1371.65% | +53.85% | 33 | 2026-10-10 |
+|  | [3360](strategies/3360/) | SOL Dual-Momentum Trend 1D | +203.32% | +301.73% | +53.43% | 16 | 2026-10-10 |
 | — | [3359](strategies/3359/) | Crypto Momentum Rotation 1D | -60.12% | — | +76.99% | 425 | 2026-10-10 |
 |  | [3356](strategies/3356/) | SOL Volatility Squeeze Breakout 1D | +15.64% | +301.73% | +18.03% | 2 | 2026-10-10 |
 |  | [3358](strategies/3358/) | BTC On-Chain Dip 1D | -27.37% | +366.17% | +44.39% | 83 | 2026-10-10 |
