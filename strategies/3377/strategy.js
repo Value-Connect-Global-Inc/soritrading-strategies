@@ -12,7 +12,7 @@
  * so its confirmed breakouts tend to run furthest. This is the opposite family to the RSI2
  * panic basket: that one buys crashes, this one buys strength.
  * When it buys and sells: It buys when the previous closed bar makes a new 30-day high on
- * volume at least 1.5x its 30-day average, while price is still above its 100-day trend.
+ * volume at least 1.2x its 30-day average, while price is still above its 100-day trend.
  * It rides the trend with a 3x-ATR trailing stop below the highest close since entry, and
  * also sells if the 100-day trend breaks. A 25% disaster stop caps the worst case.
  * When it does NOT work: In a long chop where every high-volume push is a bull trap it gets
@@ -63,9 +63,10 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // ENTRY: new 30-day high on the closed bar + volume 1.5x average + above 100d trend.
-  // Volume threshold 1.5x: a 50% volume surge is meaningful but not so rare it never fires.
-  const breakout = prevClose > rangeHigh && prevVol > 1.5 * avgVol;
+  // ENTRY: new 30-day high on the closed bar + volume 1.2x average + above 100d trend.
+  // Volume threshold 1.2x: a 20% surge is enough to confirm — grind-up bulls break out on
+  // modestly elevated volume, not just panic surges (1.5x missed those).
+  const breakout = prevClose > rangeHigh && prevVol > 1.2 * avgVol;
   const trendUp = prevClose > ema100;
   if (breakout && trendUp && ctx.i >= (s.coolUntil || 0)) {
     s.high = prevClose;
