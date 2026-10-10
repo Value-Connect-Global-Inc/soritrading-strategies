@@ -1,0 +1,31 @@
+{
+  "id": 3366,
+  "name": "BTC RSI2 Panic Dip Capitulation 1D",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 16679,
+    "return": -4.51,
+    "mdd": 12.77,
+    "trades": 20,
+    "vsBuyHold": "win",
+    "benchRet": -22.98,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1618790400,
+    "tTo": 1705104000,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 1000,
+      "end": 1705190400
+    }
+  },
+  "config": null,
+  "updatedAt": "2026-10-10T20:53:28.591Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
