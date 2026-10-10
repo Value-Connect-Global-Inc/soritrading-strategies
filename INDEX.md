@@ -11,9 +11,9 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3356](strategies/3356/) | SOL Volatility Squeeze Breakout 1D | +15.64% | +301.73% | +18.03% | 2 | 2026-10-10 |
 |  | [3358](strategies/3358/) | BTC On-Chain Dip 1D | -27.37% | +366.17% | +44.39% | 83 | 2026-10-10 |
 | ★ | [3357](strategies/3357/) | SOL Trend-Pullback MR 1D | -8.55% | -57.27% | +14.63% | 4 | 2026-10-10 |
-|  | [3356](strategies/3356/) | SOL Volatility Squeeze Breakout 1D | +15.64% | +301.73% | +18.03% | 2 | 2026-10-10 |
 | ★ | [3355](strategies/3355/) | AI 전략 | +5.03% | -45.40% | +38.01% | 7 | 2026-10-10 |
 |  | [3354](strategies/3354/) | SOL Regime-Switch Trend v2 1D | +168.53% | +1371.65% | +69.48% | 35 | 2026-10-10 |
 | ★ | [3353](strategies/3353/) | SOL Liqs API Probe 1D | +17.00% | -45.40% | +30.95% | 5 | 2026-10-10 |
