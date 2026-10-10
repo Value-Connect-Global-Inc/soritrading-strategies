@@ -3,16 +3,16 @@
   "name": "SOL Volume-Confirmed Breakout 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 16724,
-    "return": 115.05,
-    "mdd": 34.32,
-    "trades": 12,
+    "backtestId": 16726,
+    "return": 10.51,
+    "mdd": 39.34,
+    "trades": 20,
     "vsBuyHold": "lose",
-    "benchRet": 157.01,
+    "benchRet": 158.12,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1506470400,
-    "tTo": 1601424000,
+    "tFrom": 1601510400,
+    "tTo": 1696464000,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1100봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
@@ -22,7 +22,7 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1100,
-      "end": 1601510400
+      "end": 1696550400
     }
   },
   "config": null,
