@@ -1,18 +1,22 @@
 /*
  * @coinsori-strategy v1
- * name: ADA Donchian 55/10 NoFilter Baseline 1D
+ * name: ADA Donchian 55/10 Chandelier 1D
  * ex: binance
  * syms: ADAUSDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Baseline copy of the pre-filter ADA Donchian 55/10 breakout (cycle 7's
- * adopted strategy 3379) kept as a separate strategy so the trend-filtered version can be
- * compared on IDENTICAL windows. No 200d EMA filter.
+ * Why this strategy: The 200d EMA trend filter was tested and REJECTED — it cut returns on
+ * both dev windows (bear +20 vs +24, bull +623 vs +927) without reducing MDD. The real
+ * weakness is the exit: the 10-bar channel low is slow, so on the holdout a crash let MDD
+ * run to 70%. A chandelier trail from the highest close since entry with 3x ATR locks in
+ * gains tighter in a crash while still letting winners run.
  * When it buys and sells: Buys when a closed bar closes above the highest 55 bars. Sells
- * when a closed bar closes below the lowest 10 bars, or price falls 2x ATR below entry.
- * When it does NOT work: In a long range where every 55-day breakout is a bull trap it gets
- * stopped out repeatedly. It never shorts, so a multi-year bear is just flat.
+ * when a closed bar closes below the chandelier stop (highest close since entry minus 3x
+ * ATR), or 2x ATR below entry as a floor stop.
+ * When it does NOT work: In a long range where every 55d breakout is a trap it still gets
+ * chopped. It never shorts, so a multi-year bear is just flat. A violent gap through the
+ * floor stop still hurts.
  */
 
 function onUpdate(ctx) {
@@ -33,10 +37,15 @@ function onUpdate(ctx) {
 
   if (pos > 0) {
     const entry = ctx.entryPx || price;
-    const stop = entry - 2 * atr;
-    const channelLow = Math.min(...closes.slice(-12, -2));
-    const exited = prevClose < channelLow || price < stop;
-    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '2 ATR stop' }]);
+    // track the highest close since entry for the chandelier trail
+    const hi = Math.max(ctx.state.hiSinceEntry || entry, prevClose, price);
+    ctx.state.hiSinceEntry = hi;
+    // chandelier exit: 3x ATR below the highest close since entry. Trails tighter than the
+    // 10-bar channel low so a crash is cut sooner (the holdout MDD problem).
+    const floor = entry - 2 * atr; // unchanged 2x ATR floor stop
+    const exited = prevClose < hi - 3 * atr || price < floor;
+    ctx.watch([{ side: 'sell', price: hi - 3 * atr, trigger: 'below', note: 'chandelier' },
+               { side: 'sell', price: floor, trigger: 'below', note: '2 ATR floor' }]);
     if (exited) {
       ctx.state.coolUntil = ctx.i + 3;
       return { side: 'sell', qty: pos };
@@ -44,10 +53,12 @@ function onUpdate(ctx) {
     return null;
   }
 
+  // 55-bar breakout, EXCLUDE the current closed bar so prevClose can exceed it.
   const channelHigh = Math.max(...closes.slice(-57, -2));
   const breakout = prevClose > channelHigh;
   if (breakout && ctx.i >= (ctx.state.coolUntil || 0)) {
-    ctx.watch([{ side: 'sell', price: price - 2 * atr, trigger: 'below', note: '2 ATR stop' }]);
+    ctx.state.hiSinceEntry = prevClose;
+    ctx.watch([{ side: 'sell', price: price - 3 * atr, trigger: 'below', note: 'chandelier' }]);
     return { side: 'buy', qty: (ctx.cash / price) * 0.99 };
   }
   return null;
