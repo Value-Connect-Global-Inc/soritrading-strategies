@@ -11,9 +11,9 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [3373](strategies/3373/) | Multi-Asset RSI2 Panic Basket 1D | +20.94% | — | +14.00% | 74 | 2026-10-10 |
 | — | [3372](strategies/3372/) | Multi-Asset RSI2 Panic Basket 1D | +20.94% | — | +14.00% | 74 | 2026-10-10 |
 | — | [3371](strategies/3371/) | Multi-Asset RSI2 Panic Basket 1D | +47.21% | — | +16.28% | 196 | 2026-10-10 |
+| — | [3373](strategies/3373/) | Multi-Asset RSI2 Panic Basket 1D | +20.94% | — | +14.00% | 74 | 2026-10-10 |
 |  | [3370](strategies/3370/) | BTC RSI2 Panic Dip HashrateFilter 1D | -11.29% | +80.18% | +13.04% | 2 | 2026-10-10 |
 |  | [3369](strategies/3369/) | BTC On-Chain Adoption Trend 1D | +405.08% | +1210.36% | +73.11% | 384 | 2026-10-10 |
 |  | [3363](strategies/3363/) | BTC Fear Greed Capitulation 1D | -17.68% | +568.67% | +21.84% | 6 | 2026-10-10 |
