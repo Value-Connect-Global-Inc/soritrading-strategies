@@ -4,14 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 427 of 1663 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 426 of 1663 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 252 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [3379](strategies/3379/) | ADA Donchian 55/30 Breakout 1D | +3.19% | -8.13% | +69.89% | 26 | 2026-10-10 |
+|  | [3379](strategies/3379/) | ADA Donchian 55/30 Breakout 1D | +623.18% | +634.17% | +39.86% | 12 | 2026-10-10 |
 |  | [3378](strategies/3378/) | BTC 200-Day Trend Filter 1D | +6.59% | +195.86% | +33.16% | 29 | 2026-10-10 |
 |  | [3377](strategies/3377/) | SOL Volume-Confirmed Breakout 1D | +10.51% | +158.12% | +39.34% | 20 | 2026-10-10 |
 | — | [3376](strategies/3376/) | AI 전략 | -2.57% | — | +6.80% | 3 | 2026-10-10 |
