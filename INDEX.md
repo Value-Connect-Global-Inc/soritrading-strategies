@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 473 of 1838 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 473 of 1839 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 264 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3583](strategies/3583/) | AI 전략 | -19.11% | +457.74% | +20.10% | 102 | 2026-10-11 |
 |  | [3582](strategies/3582/) | BTC 4H Pullback-in-Uptrend | -10.53% | +196.85% | +15.18% | 170 | 2026-10-11 |
 |  | [3028](strategies/3028/) | DOGE 1D Defensive MR Single-Leg Test | +4.60% | +5.78% | +3.17% | 42 | 2026-10-11 |
 |  | [3029](strategies/3029/) | AVAX 1D Defensive MR Single-Leg Test | +16.05% | +37.27% | +3.17% | 74 | 2026-10-11 |
