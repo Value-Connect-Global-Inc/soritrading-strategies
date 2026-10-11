@@ -3,7 +3,7 @@
   "name": "On-Chain Network Growth BTC 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 15669,
+    "backtestId": 17258,
     "return": 20.49,
     "mdd": 58.89,
     "trades": 128,
@@ -29,6 +29,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-08T16:40:45.868Z",
+  "updatedAt": "2026-10-11T10:40:35.502Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

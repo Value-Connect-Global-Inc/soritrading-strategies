@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3218](strategies/3218/) | On-Chain Network Growth BTC 1D | +20.49% | +72.66% | +58.89% | 128 | 2026-10-11 |
 |  | [3448](strategies/3448/) | Fed Regime Gated Trend BTC 1D | -78.11% | +116.17% | +81.33% | 275 | 2026-10-11 |
 | ★ | [3462](strategies/3462/) | BTC Daily Multi Momentum Trend | -31.47% | -55.10% | +42.26% | 20 | 2026-10-11 |
 | ★ | [3460](strategies/3460/) | BBDynamicSqueezeMeanReversion1h | -14.54% | -34.05% | +19.60% | 220 | 2026-10-11 |
@@ -208,7 +209,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | — | [3227](strategies/3227/) | Momentum Rotation 4H | -99.99% | — | +99.99% | 2856 | 2026-10-08 |
 |  | [3224](strategies/3224/) | Uptrend Pullback Reversion (BTC 1D) | +30.88% | +320.57% | +22.00% | 36 | 2026-10-08 |
 |  | [3220](strategies/3220/) | AI 전략 | -43.19% | +174.32% | +56.53% | 14 | 2026-10-08 |
-|  | [3218](strategies/3218/) | On-Chain Network Growth BTC 1D | +20.49% | +72.66% | +58.89% | 128 | 2026-10-08 |
 |  | [3213](strategies/3213/) | Donchian Breakout BNB 1D | -90.51% | +50.08% | +91.66% | 90 | 2026-10-08 |
 | — | [3212](strategies/3212/) | AI 전략 | +11.50% | — | +13.48% | 15 | 2026-10-08 |
 | — | [3211](strategies/3211/) | 1D Multi-Asset Momentum Defensive Sizing | +171.82% | — | +35.70% | 18 | 2026-10-08 |
