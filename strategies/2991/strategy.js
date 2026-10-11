@@ -20,6 +20,8 @@
  * When it does NOT work: Vol-targeting caps upside in strong low-volatility bull
  * runs (smaller size than the champion would use). The rising-trend gate keeps us
  * flat in bears (capital-safe but little upside), and squeeze-downs are missed.
+ * 
+ * 2025-01-01: watch 선언만 추가 — 표시만 바뀜, 매매 판단은 그대로.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -39,6 +41,10 @@ function onUpdate(ctx) {
 
   if (pos > 0) {
     // Exit below the 20-day EMA or when the long-term trend turns down (validated, untouched).
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'below', note: 'EMA20 exit', conds: [{ label: 'SMA200 uptrend', ok: sma200 >= sma200prev, closed: true }] },
+      { side: 'sell', price: sma200prev, trigger: 'below', note: 'SMA200 downtrend', conds: [{ label: 'Price vs EMA20', now: price, op: '>', ref: ema20, closed: true }] }
+    ]);
     if (price < ema20 || sma200 < sma200prev) {
       return { side: 'sell', qty: pos };
     }
@@ -46,7 +52,10 @@ function onUpdate(ctx) {
   }
 
   // Only trade inside a rising long-term trend (the shared defensive gate).
-  if (sma200 <= sma200prev) return null;
+  if (sma200 <= sma200prev) {
+    ctx.watch([]);
+    return null;
+  }
 
   // Mean-reversion pullback entry: price under the ATR-adaptive lower Keltner band + weak RSI.
   const lowerBand = ema20 - 2.5 * atr;
@@ -74,6 +83,32 @@ function onUpdate(ctx) {
   const avgVol = ctx.avgVol(20);
   const volOk = avgVol != null && avgVol > 0 && ctx.vol > 1.2 * avgVol;
   const squeezeBreakout = squeezed && volOk;
+
+  // Declare what we're waiting for (display only)
+  const waitConds = [];
+  if (mrEntry) {
+    waitConds.push({ side: 'buy', price: lowerBand, trigger: 'below', note: 'MR pullback', conds: [
+      { label: 'RSI(14)', now: rsi, op: '<', ref: 40, closed: true },
+      { label: 'SMA200 uptrend', ok: sma200 > sma200prev, closed: true }
+    ]});
+  } else {
+    waitConds.push({ side: 'buy', price: lowerBand, trigger: 'below', note: 'MR pullback', conds: [
+      { label: 'RSI(14)', now: rsi, op: '<', ref: 40, closed: true },
+      { label: 'SMA200 uptrend', ok: sma200 > sma200prev, closed: true }
+    ]});
+  }
+  if (squeezeBreakout) {
+    waitConds.push({ side: 'buy', price: high20, trigger: 'above', note: 'Squeeze breakout', conds: [
+      { label: 'BB width pctile', now: pctile, op: '<=', ref: 0.2, closed: true },
+      { label: 'Volume > 1.2x avg', ok: volOk, closed: true }
+    ]});
+  } else {
+    waitConds.push({ side: 'buy', price: high20, trigger: 'above', note: 'Squeeze breakout', conds: [
+      { label: 'BB width pctile', now: pctile, op: '<=', ref: 0.2, closed: true },
+      { label: 'Volume > 1.2x avg', ok: volOk, closed: true }
+    ]});
+  }
+  ctx.watch(waitConds);
 
   if (mrEntry || squeezeBreakout) {
     const equity = ctx.cash + ctx.uPnl;

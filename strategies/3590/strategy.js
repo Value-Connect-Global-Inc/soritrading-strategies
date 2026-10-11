@@ -8,12 +8,13 @@
  *
  * Why this strategy: The Fear & Greed index is a crowd sentiment barometer.
  *   Crypto crowds panic at bottoms and turn euphoric at tops; buying when the
- *   crowd is in extreme fear and selling when it is in extreme greed is a
+ *   crowd is in extreme fear and selling when it has recovered into greed is a
  *   mean-reversion bet on that cycle — the opposite family from the
  *   trend-following turtle already in the portfolio.
  * When it buys and sells: buys BTC when the Fear & Greed index is at or below
- *   25 (extreme fear). Sells when it reaches 75+ (extreme greed), or on a 30%
- *   crash stop, or after holding 150 days without either trigger.
+ *   25 (extreme fear). Sells when it reaches 60+ (the official "greed" zone
+ *   starts at 55; 60 = the round trip has completed), or on a 30% crash stop,
+ *   or after holding 150 days without either trigger.
  * When it does NOT work: in a prolonged bear market fear stays extreme for
  *   months, so it buys early and either bleeds through the time stop or is
  *   stopped out repeatedly; in a slow grind higher with no panic it never
@@ -28,12 +29,12 @@ function onUpdate(ctx) {
     const entryBar = ctx.state.entryBar != null ? ctx.state.entryBar : ctx.i;
     const held = ctx.i - entryBar;
     const stopPx = ctx.entryPx * 0.70;  // 30% crash stop — wide on purpose, catastrophic-risk only
-    if (fg >= 75 || price <= stopPx || held >= 150) {
+    if (fg >= 60 || price <= stopPx || held >= 150) {
       return { side: 'sell', qty: ctx.position };
     }
     ctx.watch([
       { side: 'sell', price: stopPx, trigger: 'below', note: '30% crash stop' },
-      { side: 'sell', note: 'greed exit', conds: [{ label: 'Fear&Greed', now: fg, op: '>=', ref: 75 }] }
+      { side: 'sell', note: 'greed exit', conds: [{ label: 'Fear&Greed', now: fg, op: '>=', ref: 60 }] }
     ]);
     return null;
   }

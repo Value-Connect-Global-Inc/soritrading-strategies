@@ -3,10 +3,10 @@
   "name": "BTC Fear&Greed Contrarian 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 17982,
-    "return": 0.29,
-    "mdd": 9.19,
-    "trades": 8,
+    "backtestId": 17986,
+    "return": 0.01,
+    "mdd": 8.55,
+    "trades": 12,
     "vsBuyHold": "lose",
     "benchRet": 95.22,
     "benchBasis": "price",
@@ -27,6 +27,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-11T22:19:50.464Z",
+  "updatedAt": "2026-10-11T22:21:20.737Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
