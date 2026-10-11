@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [3127](strategies/3127/) | 5-Asset 4H Trend-Gated Keltner MR Basket | +11.58% | — | +8.17% | 156 | 2026-10-11 |
 |  | [3542](strategies/3542/) | AI 전략 | +10.30% | +22.55% | +9.46% | 75 | 2026-10-11 |
 | — | [3129](strategies/3129/) | 5-Asset 4H Trend-Gated Keltner MR Basket | +11.58% | — | +8.17% | 156 | 2026-10-11 |
 |  | [3131](strategies/3131/) | BTC 4H Trend-Gated Keltner MR | +101.19% | +409.78% | +16.51% | 40 | 2026-10-11 |
@@ -343,7 +344,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3132](strategies/3132/) | BTC 4H Trend-Gated Keltner MR SMA100 | +24.49% | +409.78% | +16.51% | 12 | 2026-10-04 |
 | — | [3130](strategies/3130/) | 5-Asset 4H Momentum-Pullback Basket | -75.66% | — | +75.67% | 2785 | 2026-10-04 |
 | — | [3128](strategies/3128/) | AI 전략 | +117.43% | — | +4.52% | 197 | 2026-10-04 |
-| — | [3127](strategies/3127/) | 5-Asset 4H Trend-Gated Keltner MR Basket | +11.58% | — | +8.17% | 156 | 2026-10-04 |
 |  | [3126](strategies/3126/) | BTC 4H US-Session Keltner MR | +101.19% | +420.44% | +16.51% | 40 | 2026-10-03 |
 |  | [3123](strategies/3123/) | ADA Keltner MR 4H Trend-Gated HalfTP | +277.43% | +1834.47% | +14.05% | 68 | 2026-10-03 |
 |  | [3122](strategies/3122/) | ADA Keltner MR 4H Trend-Gated VolFilter | +5.41% | +1834.47% | +1.55% | 2 | 2026-10-03 |
