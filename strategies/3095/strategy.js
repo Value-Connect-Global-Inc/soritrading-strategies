@@ -15,6 +15,7 @@
  * When it does NOT work: in a straight-line melt-up it stays mostly in cash and lags
  * buy-and-hold; it needs occasional deep dips to buy, so a relentless rally gives
  * few entries.
+ * 2026-04-27 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -31,12 +32,30 @@ function onUpdate(ctx) {
   const pos = ctx.position;
 
   if (pos > 0) {
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'above', note: 'exit above EMA20' },
+      { side: 'sell', price: sma200, trigger: 'below', note: 'exit below SMA200' }
+    ]);
+
     // Exit: recovered above the 20-day average, or the long-term trend rolled over.
     if (price > ema20 || price < sma200) {
       return { side: 'sell', qty: pos };
     }
     return null;
   }
+
+  ctx.watch([
+    {
+      side: 'buy',
+      price: bb.lower,
+      trigger: 'below',
+      note: 'deep oversold buy zone',
+      conds: [
+        { label: 'SMA200 rising', ok: sma200 > sma200prev },
+        { label: 'RSI(14) < 30', now: rsi, op: '<', ref: 30, closed: true }
+      ]
+    }
+  ]);
 
   // Buy only a deep oversold flush inside a rising long-term trend.
   if (sma200 > sma200prev && rsi < 30 && price < bb.lower) {

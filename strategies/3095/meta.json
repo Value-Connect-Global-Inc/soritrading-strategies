@@ -3,7 +3,7 @@
   "name": "SOL Defensive Mean Reversion 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 14819,
+    "backtestId": 17767,
     "return": 106.27,
     "mdd": 19.36,
     "trades": 49,
@@ -27,6 +27,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-02T04:31:15.390Z",
+  "updatedAt": "2026-10-11T17:32:14.194Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
