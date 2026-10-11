@@ -3,7 +3,7 @@
   "name": "BTC 1D Bollinger Squeeze-Breakout",
   "kind": "custom",
   "verified": {
-    "backtestId": 15018,
+    "backtestId": 17738,
     "return": -7.64,
     "mdd": 13.84,
     "trades": 2,
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-02T07:12:29.107Z",
+  "updatedAt": "2026-10-11T17:00:20.539Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

@@ -17,28 +17,53 @@
  * When it does NOT work: in a straight-line melt-up it exits on every EMA20 snap-back and
  * re-enters, so it lags buy-and-hold badly; in a broad coordinated bear the rising-trend gate
  * keeps it flat (safe but no upside). The EMA20 exit can whipsaw a choppy recovery.
+ * 2026-01-01 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const bb = ctx.bb(20, 2, 1);
   const rsi = ctx.rsi(14, 1);
   const sma200 = ctx.sma(200, 1);
   const sma200prev = ctx.sma(200, 2);
   const ema20 = ctx.ema(20, 1);
-  if (bb == null || rsi == null || sma200 == null || sma200prev == null || ema20 == null) return null;
+  if (bb == null || rsi == null || sma200 == null || sma200prev == null || ema20 == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   const uptrend = sma200 > sma200prev;
   const pos = ctx.position;
 
   if (pos > 0) {
     // Snap-back exit: price recovered above the 20-day EMA, or the long trend broke.
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'above', note: 'EMA20 snap-back' },
+      { side: 'sell', note: '200-day trend break', conds: [{ label: 'SMA200 rising', ok: uptrend }] }
+    ]);
     if (price > ema20 || !uptrend) {
       return { side: 'sell', qty: pos };
     }
     return null;
   }
+
+  // No position: wait for a deep oversold dip inside a rising 200-day trend.
+  ctx.watch([
+    {
+      side: 'buy',
+      price: bb.lower,
+      trigger: 'below',
+      note: 'BB lower dip',
+      conds: [
+        { label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true },
+        { label: 'SMA200 rising', ok: uptrend }
+      ]
+    }
+  ]);
 
   if (!uptrend) return null;
 
