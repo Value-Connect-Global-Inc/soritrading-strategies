@@ -1,25 +1,26 @@
 /*
  * @coinsori-strategy v1
- * name: ADA Donchian 55/10 BearSized Cool10 Vol1.5 1D
+ * name: ADA Donchian 55/10 BearSized Cool10 Vol1.2 1D
  * ex: binance
  * syms: ADAUSDT
  * interval: 1d
  * cash: 10000
  *
  * Why this strategy: The ADA Donchian 55/10 champion loses to whipsaw breakouts in ranges. The
- * ledger notes that any filter using only the breakout bar itself is redundant (a close above the
- * 55-day high is already in the upper range by construction) — a filter must use another data
- * axis. Volume is that axis: a genuine breakout is driven by expanding participation, while a
- * fake breakout often happens on thin volume. This version requires the breakout bar's volume to
- * be at least 1.5x its 20-day average before buying. A-priori reason: volume confirms intent; a
- * channel break without volume is more likely a low-conviction poke than a real trend start.
- * When it buys and sells: Buys when a closed bar closes above the highest 55 bars on at least 1.5x
+ * ledger notes that any filter using only the breakout bar itself is redundant — a filter must use
+ * another data axis. Volume is that axis: a genuine breakout is driven by expanding participation,
+ * a fake one often happens on thin volume. 1.5x volume confirmation hurt the 2018-21 bull (+814 vs
+ * +1148) by skipping too many real breakouts, so this version relaxes the threshold to 1.2x: still
+ * filters the thinnest low-conviction pokes, but lets most genuine breakouts through. A-priori
+ * reason: volume confirms intent, but the bar must be judged against a threshold that does not
+ * exclude normal trend starts.
+ * When it buys and sells: Buys when a closed bar closes above the highest 55 bars on at least 1.2x
  * average volume, unless within 10 bars of a stop-out. Sells when a closed bar closes below the
  * lowest 10 bars. Position is half size below the 200-day average, quarter size when more than 20%
  * below it.
- * When it does NOT work: A genuine trend that starts quietly (organic, low-volume accumulation)
- * is skipped because its first breakout bar is not yet high-volume. A long range still loses, just
- * less. A violent crash gaps through any stop.
+ * When it does NOT work: A genuine trend that starts quietly is skipped until a high-volume bar
+ * appears, entering later at a higher price. A long range still loses, just less. A violent crash
+ * gaps through any stop.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -59,10 +60,10 @@ function onUpdate(ctx) {
 
   const channelHigh = Math.max(...closes.slice(-57, -2));
   const breakout = prevClose > channelHigh;
-  // Volume confirmation: the breakout bar must trade at least 1.5x its 20-day average volume.
-  // A channel break on thin volume is a low-conviction poke, not a real trend start.
+  // Volume confirmation: the breakout bar must trade at least 1.2x its 20-day average volume.
+  // 1.5x skipped too many real bull breakouts (W1 +814 vs +1148); 1.2x only filters the thinnest pokes.
   const avgVol = ctx.avgVol(20);
-  const volOk = avgVol != null && avgVol > 0 && ctx.volPrev > avgVol * 1.5;
+  const volOk = avgVol != null && avgVol > 0 && ctx.volPrev > avgVol * 1.2;
   if (breakout && volOk && ctx.i >= (ctx.state.coolUntil || 0)) {
     ctx.watch([{ side: 'sell', price: price - 2 * atr, trigger: 'below', note: '2 ATR stop' }]);
     return { side: 'buy', qty: ((ctx.cash / price) * 0.99 * sizeMult) };

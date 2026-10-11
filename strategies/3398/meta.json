@@ -3,9 +3,9 @@
   "name": "OLD Champion ADA Donchian 55/10",
   "kind": "custom",
   "verified": {
-    "backtestId": 16836,
-    "return": 814.6,
-    "mdd": 34.37,
+    "backtestId": 16838,
+    "return": 927.81,
+    "mdd": 34.4,
     "trades": 19,
     "vsBuyHold": "win",
     "benchRet": 591.46,
@@ -28,6 +28,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-11T02:02:17.602Z",
+  "updatedAt": "2026-10-11T02:03:21.717Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
