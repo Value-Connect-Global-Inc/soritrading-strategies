@@ -11,10 +11,10 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [3397](strategies/3397/) | AI 전략 | +6.69% | -52.77% | +61.47% | 16 | 2026-10-11 |
 | ★ | [3395](strategies/3395/) | AI 전략 | +1147.91% | +591.46% | +34.46% | 23 | 2026-10-11 |
 | ★ | [3396](strategies/3396/) | AI 전략 | +1175.38% | +591.46% | +40.04% | 23 | 2026-10-11 |
 | ★ | [3393](strategies/3393/) | AI 전략 | +1175.38% | +591.46% | +40.04% | 23 | 2026-10-11 |
-| ★ | [3397](strategies/3397/) | AI 전략 | +6.69% | -52.77% | +61.47% | 16 | 2026-10-11 |
 | ★ | [3392](strategies/3392/) | BNB Donchian 55/10 BearSized 1D | +72.63% | -58.55% | +37.78% | 16 | 2026-10-11 |
 |  | [3391](strategies/3391/) | SOL Squeeze Breakout 1D | -2.90% | +16.67% | +14.35% | 4 | 2026-10-11 |
 |  | [3390](strategies/3390/) | ETH Mean Reversion RSI TrendFilter 4H | -27.04% | -26.00% | +35.23% | 71 | 2026-10-11 |
