@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [3143](strategies/3143/) | ADA 1D Donchian Breakout Trend | +63.63% | -60.05% | +53.00% | 18 | 2026-10-11 |
 |  | [3541](strategies/3541/) | Volatility Breakout BTC 1H | +10.32% | +35.80% | +9.46% | 72 | 2026-10-11 |
 | ★ | [3144](strategies/3144/) | ADA 1D Defensive Donchian | +95.53% | -24.20% | +30.06% | 8 | 2026-10-11 |
 |  | [3145](strategies/3145/) | AI 전략 | -8.54% | +40.81% | +46.59% | 11 | 2026-10-11 |
@@ -331,7 +332,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3156](strategies/3156/) | BTC FearGreed Contrarian 1D | -13.08% | -2.80% | +53.82% | 18 | 2026-10-07 |
 |  | [3155](strategies/3155/) | BTC Onchain Network Growth Trend 1D | -22.19% | +190.54% | +59.85% | 120 | 2026-10-07 |
 |  | [3146](strategies/3146/) | AI 전략 | +151.83% | +221.34% | +13.29% | 16 | 2026-10-05 |
-| ★ | [3143](strategies/3143/) | ADA 1D Donchian Breakout Trend | +50.20% | -60.05% | +45.78% | 13 | 2026-10-05 |
 | ★ | [3142](strategies/3142/) | ETH 4H Bollinger-Stoch Mean Reversion | +26.34% | -52.02% | +40.27% | 73 | 2026-10-05 |
 |  | [3141](strategies/3141/) | BTC 4H Trend-Gated Keltner Mean-Reversion | +18.46% | +38.04% | +9.05% | 46 | 2026-10-05 |
 |  | [3140](strategies/3140/) | BTC 4H Keltner MR with Hard Stop | -18.05% | +38.04% | +18.73% | 32 | 2026-10-05 |

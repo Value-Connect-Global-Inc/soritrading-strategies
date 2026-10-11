@@ -1,4 +1,5 @@
 /*
+ * 2026-04-26 표시만 바뀜, 매매 판단은 그대로
  * @coinsori-strategy v1
  * name: ADA 1D Donchian Breakout Trend
  * ex: binance
@@ -29,12 +30,11 @@ function onUpdate(ctx) {
   const lo30 = ctx.low(30, 1);  // lowest low of the last 30 closed bars
   if (hi55 == null || lo30 == null) return null;
 
-  ctx.watch([
-    { side: 'buy', price: hi55, note: '55d high breakout' },
-    { side: 'sell', price: lo30, note: '30d low exit' }
-  ]);
-
   const pos = ctx.position;
+  ctx.watch(pos > 0
+    ? [{ side: 'sell', price: lo30, trigger: 'below', note: '30d low exit' }]
+    : [{ side: 'buy', price: hi55, trigger: 'above', note: '55d high breakout' }]);
+
   if (pos > 0) {
     if (price < lo30) {
       return { side: 'sell', qty: pos };
