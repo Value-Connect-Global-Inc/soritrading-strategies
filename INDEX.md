@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3544](strategies/3544/) | FearGreed Contrarian BTC 1D | -5.47% | +315.94% | +48.76% | 4 | 2026-10-11 |
+|  | [3544](strategies/3544/) | FearGreed Contrarian BTC 1D | -5.47% | +95.22% | +48.76% | 4 | 2026-10-11 |
 |  | [3543](strategies/3543/) | OnChain Adoption Trend BTC 1D | -41.49% | +47.08% | +53.81% | 345 | 2026-10-11 |
 | — | [3128](strategies/3128/) | AI 전략 | +117.43% | — | +4.52% | 197 | 2026-10-11 |
 | — | [3127](strategies/3127/) | 5-Asset 4H Trend-Gated Keltner MR Basket | +11.58% | — | +8.17% | 156 | 2026-10-11 |
