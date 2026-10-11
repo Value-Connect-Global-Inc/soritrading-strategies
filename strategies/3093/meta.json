@@ -3,7 +3,7 @@
   "name": "SOL Trend-Ride Momentum 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 14808,
+    "backtestId": 17778,
     "return": -13.9,
     "mdd": 46.7,
     "trades": 15,
@@ -27,6 +27,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-02T04:25:30.576Z",
+  "updatedAt": "2026-10-11T17:41:15.201Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
