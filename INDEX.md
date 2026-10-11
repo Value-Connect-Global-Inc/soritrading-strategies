@@ -4,13 +4,16 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 466 of 1789 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 467 of 1792 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3531](strategies/3531/) | BTC Daily Donchian ATR Trend | +0.00% | +95.22% | +13.95% | 18 | 2026-10-11 |
+| ★ | [3530](strategies/3530/) | BTC Trend Volume Confirmation 1h | -19.62% | -34.89% | +28.05% | 87 | 2026-10-11 |
+|  | [3529](strategies/3529/) | BTC Breakout Volume Momentum 1h | -51.75% | +11.59% | +51.81% | 338 | 2026-10-11 |
 |  | [3528](strategies/3528/) | SOL MACD Volume Trend Momentum 1h | -71.63% | -29.29% | +73.15% | 198 | 2026-10-11 |
 |  | [3527](strategies/3527/) | ETH Mean Reversion RSI BB 1h | -20.06% | +6.21% | +22.67% | 206 | 2026-10-11 |
 |  | [3526](strategies/3526/) | BTC Trend MA Crossover ATR Risk Managed 1h | -37.36% | +8.29% | +37.36% | 124 | 2026-10-11 |

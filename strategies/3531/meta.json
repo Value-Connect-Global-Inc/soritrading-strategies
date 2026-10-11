@@ -1,0 +1,31 @@
+{
+  "id": 3531,
+  "name": "BTC Daily Donchian ATR Trend",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 17584,
+    "return": 0,
+    "mdd": 13.95,
+    "trades": 18,
+    "vsBuyHold": "lose",
+    "benchRet": 95.22,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1705276800,
+    "tTo": 1791590400,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 1000,
+      "end": 1791676800
+    }
+  },
+  "config": null,
+  "updatedAt": "2026-10-11T12:44:44.133Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
