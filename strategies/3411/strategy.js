@@ -1,24 +1,22 @@
 /*
  * @coinsori-strategy v1
- * name: Multi-Asset Donchian Basket 6-Leg 1D
+ * name: Multi-Asset Donchian Basket 5-Leg 1D
  * ex: binance
- * syms: BTCUSDT, ETHUSDT, SOLUSDT, ADAUSDT, XRPUSDT, DOGEUSDT
+ * syms: BTCUSDT, ETHUSDT, SOLUSDT, ADAUSDT, XRPUSDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: The 4-leg basket (BTC/ETH/SOL/ADA) already cut drawdown to
- * roughly half of any single coin. Extending the same proven donchian recipe to
- * six coins (adding XRP, DOGE) diversifies the trend edge further: more coins,
- * more chances that at least one is trending while others sit flat. Same recipe,
- * no parameters tuned.
+ * Why this strategy: The 4-leg basket cut drawdown to roughly half of any single
+ * coin. Adding a fifth leg (XRP) extends the diversification thesis with a coin
+ * that has longer history than DOGE, testing whether more legs genuinely smooth
+ * the equity curve without adding fee drag.
  * When it buys and sells: on each coin, buy when a closed bar closes above its
  * 55-day high (half size below the 200-day average). Sells when a closed bar
  * closes below the 10-day low or price falls 2.5 ATR below entry. After a
  * stop-out the coin pauses 10 bars.
- * When it does NOT work: In a broad coordinated crypto bear all six trend gates
+ * When it does NOT work: In a broad coordinated crypto bear all five trend gates
  * stay flat (capital safe, little upside). In a crash that hits all coins at
- * once the basket drawdown is close to a single coin's. Coins that trend weakly
- * add little and cost fees.
+ * once the basket drawdown is close to a single coin's.
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
@@ -34,8 +32,8 @@ function onUpdate(ctx) {
   if (atr == null || atr <= 0) return null;
 
   const sma200 = ctx.sma(200, 1);
-  let sizeMult = 0.16;                 // per-leg share of equity (6 coins)
-  if (sma200 != null && prevClose < sma200) sizeMult = 0.08;   // bear: half the leg share
+  let sizeMult = 0.2;                  // per-leg share of equity (5 coins)
+  if (sma200 != null && prevClose < sma200) sizeMult = 0.1;   // bear: half the leg share
 
   if (!ctx.state.cool || typeof ctx.state.cool !== 'object') ctx.state.cool = {};   // per-symbol cooldown
 
