@@ -16,6 +16,8 @@
  * When it does NOT work: in a Fed-easing regime that is still a crypto bear (late
  * 2018) the filter cannot help, and it can lag a raging bull by waiting for the
  * 200-day break. Single-symbol means no diversification across coins.
+ *
+ * 2026-04-26 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const sma200 = ctx.sma(200, 1);
@@ -34,6 +36,25 @@ function onUpdate(ctx) {
   const hiking = (fedNow != null && fedLag != null) ? (fedNow > fedLag) : false;
 
   const pos = ctx.position;
+
+  // --- display only: what this symbol is waiting for ---
+  if (pos > 0) {
+    ctx.watch([
+      { side: 'sell', price: sma200, trigger: 'below', note: '200 SMA break', conds: [
+        { label: 'ROC90(1)', now: roc90, op: '<', ref: 5, closed: true }
+      ]},
+      { side: 'sell', price: base * 1.05, trigger: 'below', note: 'momentum <5%', conds: [
+        { label: 'close < SMA200', ok: prevClose < sma200 }
+      ]}
+    ]);
+  } else {
+    ctx.watch([
+      { side: 'buy', price: Math.max(sma200, base * 1.20), trigger: 'above', note: 'entry zone', conds: [
+        { label: 'ROC90(1)', now: roc90, op: '>', ref: 20, closed: true },
+        { label: 'Fed not hiking', ok: !hiking }
+      ]}
+    ]);
+  }
 
   if (pos > 0 && (roc90 < 5 || prevClose < sma200)) {
     return { side: 'sell', qty: pos };

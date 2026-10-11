@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3222](strategies/3222/) | AI 전략 | +165.83% | +174.31% | +30.70% | 15 | 2026-10-11 |
 |  | [3226](strategies/3226/) | RSI Mean Reversion Bounce 4H | -9.13% | +32.42% | +17.42% | 60 | 2026-10-11 |
 |  | [3228](strategies/3228/) | XRP 4H Squeeze Breakout | -22.01% | +260.54% | +53.25% | 166 | 2026-10-11 |
 | — | [3133](strategies/3133/) | Multi-Asset Defensive MR Basket 5-Asset | +124.35% | — | +17.71% | 271 | 2026-10-11 |
@@ -180,7 +181,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3229](strategies/3229/) | XRP 1D Dip-Buy RSI2 | -86.21% | +73.96% | +90.12% | 76 | 2026-10-08 |
 | — | [3227](strategies/3227/) | Momentum Rotation 4H | -99.99% | — | +99.99% | 2856 | 2026-10-08 |
 |  | [3224](strategies/3224/) | Uptrend Pullback Reversion (BTC 1D) | +30.88% | +320.57% | +22.00% | 36 | 2026-10-08 |
-|  | [3222](strategies/3222/) | AI 전략 | +165.83% | +174.31% | +30.70% | 15 | 2026-10-08 |
 |  | [3220](strategies/3220/) | AI 전략 | -43.19% | +174.32% | +56.53% | 14 | 2026-10-08 |
 |  | [3219](strategies/3219/) | AI 전략 | -43.89% | +72.66% | +79.49% | 100 | 2026-10-08 |
 |  | [3218](strategies/3218/) | On-Chain Network Growth BTC 1D | +20.49% | +72.66% | +58.89% | 128 | 2026-10-08 |

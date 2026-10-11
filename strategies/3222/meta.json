@@ -3,7 +3,7 @@
   "name": "AI 전략",
   "kind": "custom",
   "verified": {
-    "backtestId": 15684,
+    "backtestId": 17162,
     "return": 165.83,
     "mdd": 30.7,
     "trades": 15,
@@ -28,6 +28,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-08T17:02:04.662Z",
+  "updatedAt": "2026-10-11T09:35:36.294Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
