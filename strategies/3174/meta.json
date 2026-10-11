@@ -3,7 +3,7 @@
   "name": "ETH Trend Ride ATR Trailing 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 15430,
+    "backtestId": 17622,
     "return": -95.18,
     "mdd": 95.6,
     "trades": 354,
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-07T16:20:29.482Z",
+  "updatedAt": "2026-10-11T13:49:00.458Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

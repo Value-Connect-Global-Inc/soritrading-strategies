@@ -14,6 +14,7 @@
  * Sells when price drops more than 3x ATR(14) below the highest close since entry.
  * When it does NOT work: In a choppy sideways range the trailing stop gets hit
  * repeatedly and it bleeds small losses. Sharp V-reversals gap through the stop.
+ * 2026-04-26: 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -35,13 +36,21 @@ function onUpdate(ctx) {
     let hi = st.hi || price;
     if (price > hi) { hi = price; st.hi = hi; }
     const stop = hi - atr * 3;
-    ctx.watch([{ side: 'sell', price: stop, note: 'ATR trailing stop' }]);
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'ATR trailing stop' }]);
     if (price < stop) {
       st.hi = 0;
       return { side: 'sell', qty: pos };
     }
     return null;
   }
+
+  ctx.watch([{
+    side: 'buy',
+    price: ema,
+    trigger: 'above',
+    note: '50 EMA reclaim',
+    conds: [{ label: 'EMA50 rising', now: ema, op: '>', ref: emaPrev, closed: true }]
+  }]);
 
   if (emaRising && price > ema) {
     st.hi = price;
