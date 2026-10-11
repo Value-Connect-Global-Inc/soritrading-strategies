@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [3062](strategies/3062/) | Multi-Asset Defensive MR Basket 5-Asset 4H Profit-Target (ba | +10.79% | — | +1.00% | 246 | 2026-10-11 |
 |  | [3567](strategies/3567/) | BTC Pullback-in-Uptrend RSI 4H | +33.30% | +46.70% | +5.00% | 210 | 2026-10-11 |
 |  | [3566](strategies/3566/) | BNB Pullback-in-Uptrend RSI 4H | +22.23% | +2460.26% | +8.60% | 258 | 2026-10-11 |
 |  | [3565](strategies/3565/) | ETH Fear-Greed Regime Trend 4H | -0.84% | +15.70% | +6.14% | 108 | 2026-10-11 |
@@ -418,7 +419,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | — | [3065](strategies/3065/) | Multi-Asset MR Basket 5-Asset 4H Tiered-Profit Exit | +30.26% | — | +1.15% | 104 | 2026-09-30 |
 |  | [3064](strategies/3064/) | BTC 1D Regime-Switch MR Core + Melt-Up Leg | -31.24% | +1246.40% | +65.23% | 113 | 2026-09-30 |
 |  | [3063](strategies/3063/) | Multi-Asset Defensive MR Basket 5-Asset 4H EMA30-Stop | +4.42% | +44.75% | +1.97% | 48 | 2026-09-30 |
-| — | [3062](strategies/3062/) | Multi-Asset Defensive MR Basket 5-Asset 4H Profit-Target (ba | +10.79% | — | +1.00% | 246 | 2026-09-30 |
 | — | [3061](strategies/3061/) | Multi-Asset Defensive MR Basket 5-Asset 4H Profit-Target | +10.96% | — | +1.00% | 252 | 2026-09-30 |
 | — | [3060](strategies/3060/) | AI 전략 | +27.61% | — | +8.84% | 202 | 2026-09-30 |
 | — | [3059](strategies/3059/) | AI 전략 | +62.36% | — | +10.08% | 262 | 2026-09-30 |
