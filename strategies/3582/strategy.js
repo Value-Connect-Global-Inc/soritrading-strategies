@@ -1,55 +1,62 @@
 /*
  * @coinsori-strategy v1
- * name: BTC 4H Pullback-in-Uptrend
+ * name: BTC DXY Macro Regime 1D
  * ex: binance
  * syms: BTC/USDT
- * interval: 4h
+ * interval: 1d
  * cash: 10000
  *
- * Why this strategy: In a confirmed macro uptrend, deep pullbacks (price below
- *   the 50-EMA with RSI reset) are re-entry points with good risk/reward — the
- *   trend resumes more often than it reverses. We buy the deep dip and ride the
- *   resumption.
- * When it buys and sells: buy when the 50-EMA is above the 200-EMA (uptrend) AND
- *   price closed below the 50-EMA AND RSI(14) is below 30 (deep dip); sell when
- *   price closes above the 20-EMA (resumed) or on a 2x ATR stop. We do NOT exit
- *   on EMA50 breaks — mid-pullback dips below it are normal and exiting there
- *   caused churn.
- * When it does NOT work: in a topping market the "dip" is the start of a
- *   reversal and the stop takes repeated losses. In a choppy range the 50/200
- *   cross whipsaws and it buys fake dips.
+ * Why this strategy: Bitcoin behaves like an anti-dollar asset. When the
+ *   Dollar Index (DXY) is below its 200-day average, the dollar is weak and
+ *   risk assets including BTC tend to trend up; when DXY is above its long
+ *   average, the dollar is strong and BTC usually stalls or falls. We hold
+ *   BTC only while the dollar is structurally weak AND BTC is trending up.
+ * When it buys and sells: buy when DXY is below its 200-day average AND price
+ *   is above its 50-day average; sell when price closes below its 50-day EMA,
+ *   when DXY rises back above its 200-day average, or on a 3x ATR stop from
+ *   entry. Position is near-full when the regime is on.
+ * When it does NOT work: when BTC and the dollar decouple (BTC rallies while
+ *   DXY stays high, e.g. 2023-24), the gate keeps it out of part of the bull
+ *   run and it lags buy-and-hold. In choppy dollar ranges the 200-day average
+ *   whipsaws. It is a defensive regime strategy, not a bull maximizer.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
-  const ema20 = ctx.ema(20, 1);
+  // Build our own DXY history from the daily feed (ctx.data returns the value
+  // for the current bar; we accumulate it in ctx.state to compute a 200-day average).
+  const dxy = ctx.data('dxy');
+  if (dxy == null) return null;
+  if (!ctx.state.dxyHist) ctx.state.dxyHist = [];
+  ctx.state.dxyHist.push(dxy);
+  if (ctx.state.dxyHist.length > 260) ctx.state.dxyHist.shift();
+  const hist = ctx.state.dxyHist;
+  if (hist.length < 200) return null; // need 200 days of DXY before judging the dollar
+
+  const dxySma = hist.reduce((a, b) => a + b, 0) / hist.length;
+  const dollarWeak = dxy < dxySma;
+
   const ema50 = ctx.ema(50, 1);
-  const ema200 = ctx.ema(200, 1);
-  const rsi = ctx.rsi(14, 1);
+  const sma50 = ctx.sma(50, 1);
   const atr = ctx.atr(14, 1);
-  if (ema20 == null || ema50 == null || ema200 == null || rsi == null || atr == null) return null;
+  if (ema50 == null || sma50 == null || atr == null) return null;
 
   const pos = ctx.position;
   if (pos > 0) {
-    const stopPx = ctx.entryPx - 2 * atr;
-    if (price <= stopPx) return { side: 'sell', qty: pos };   // dip became reversal
-    if (price > ema20) return { side: 'sell', qty: pos };     // resumed — take profit
-    ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'stop' },
-               { side: 'sell', price: ema20, trigger: 'above', note: 'resumed' }]);
+    const stopPx = ctx.entryPx - 3 * atr;
+    if (price <= stopPx) return { side: 'sell', qty: pos };   // hard stop
+    if (price < ema50) return { side: 'sell', qty: pos };     // trend broken
+    if (!dollarWeak) return { side: 'sell', qty: pos };       // dollar strengthening
+    ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'hard stop' },
+               { side: 'sell', price: ema50, trigger: 'below', note: 'trend exit' }]);
     return null;
   }
 
-  // deep-pullback entry: macro uptrend + price under 50-EMA + RSI reset
-  if (ema50 <= ema200) return null;      // no uptrend
-  if (price >= ema50) return null;       // not below the 50-EMA — no dip
-  if (rsi >= 30) return null;            // not deeply oversold — dip not done
+  if (!dollarWeak) return null;   // dollar strong = no longs
+  if (price <= sma50) return null; // still falling — don't catch the knife
 
-  const riskCash = ctx.cash * 0.01;      // 1% equity risked per trade
-  const stopDist = 2 * atr;
-  let qty = stopDist > 0 ? riskCash / stopDist : 0;
-  const maxQty = (ctx.cash * 0.30) / price; // cap position at 30% of cash
-  if (qty > maxQty) qty = maxQty;
+  const qty = (ctx.cash / price) * 0.95;  // near-full position when regime is on
   if (qty <= 0) return null;
   return { side: 'buy', qty };
 }
