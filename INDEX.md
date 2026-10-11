@@ -4,13 +4,17 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 459 of 1747 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 459 of 1750 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3485](strategies/3485/) | VolumeSpikeMomentumStrategy | -56.92% | -34.89% | +57.17% | 194 | 2026-10-11 |
+|  | [3484](strategies/3484/) | AtrVolatilityBreakout | -51.68% | -34.89% | +53.89% | 143 | 2026-10-11 |
+|  | [3483](strategies/3483/) | MultiSymbolMomentumRotation | -60.15% | +63.55% | +66.63% | 172 | 2026-10-11 |
+|  | [3194](strategies/3194/) | BTC 1D Fear-Greed Contrarian | -1.12% | +94.76% | +20.71% | 6 | 2026-10-11 |
 |  | [3482](strategies/3482/) | MtfEmaPullbackAtr | -92.25% | +59.85% | +92.25% | 1060 | 2026-10-11 |
 |  | [3481](strategies/3481/) | Fear Greed Contrarian Reversion | -24.45% | -19.64% | +32.10% | 62 | 2026-10-11 |
 | ★ | [3480](strategies/3480/) | Bollinger RSI Mean Reversion 1h | -27.22% | -34.89% | +38.71% | 190 | 2026-10-11 |
@@ -245,7 +249,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3197](strategies/3197/) | BTC 1D Momentum Hysteresis + Trailing Stop | +30.60% | +174.32% | +70.57% | 568 | 2026-10-08 |
 |  | [3196](strategies/3196/) | ETH 1D Long-Horizon Momentum Hysteresis | +49.84% | +94.76% | +16.44% | 5 | 2026-10-08 |
 |  | [3195](strategies/3195/) | BTC 1D RSI2 Extreme-Oversold Bounce | -5.12% | +729.43% | +48.56% | 254 | 2026-10-08 |
-|  | [3194](strategies/3194/) | BTC 1D Fear-Greed Contrarian | -1.12% | +94.76% | +20.71% | 6 | 2026-10-08 |
 | ★ | [3193](strategies/3193/) | BTC 1D Capitulation-Buy Vol-Confirmed MR | +36.32% | +26.25% | +24.03% | 10 | 2026-10-08 |
 |  | [3192](strategies/3192/) | BTC 1D Long-Horizon Momentum Hysteresis | +49.84% | +94.76% | +16.44% | 5 | 2026-10-08 |
 |  | [3191](strategies/3191/) | BTC 4H Pure EMA50 Trend baseline | +49.39% | +469.54% | +66.95% | 333 | 2026-10-08 |
