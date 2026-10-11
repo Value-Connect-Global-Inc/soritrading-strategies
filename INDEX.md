@@ -11,6 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [2982](strategies/2982/) | AI 전략 | +140.08% | — | +13.53% | 80 | 2026-10-11 |
+|  | [2983](strategies/2983/) | BTC 1D ATR Chandelier Trend Rider | -38.86% | +43.77% | +59.49% | 47 | 2026-10-11 |
 |  | [3594](strategies/3594/) | AI 전략 | +48.68% | +580.47% | +14.90% | 7 | 2026-10-11 |
 |  | [2986](strategies/2986/) | BTC 1D Hybrid MR + Squeeze (BASELINE control) | -2.36% | +66.16% | +31.57% | 82 | 2026-10-11 |
 |  | [3592](strategies/3592/) | AI 전략 | +61.55% | +580.47% | +13.92% | 7 | 2026-10-11 |
@@ -510,8 +512,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2987](strategies/2987/) | BTC 1D Hybrid MR+Squeeze (ATR trail) | -25.86% | +881.10% | +52.35% | 25 | 2026-09-29 |
 |  | [2985](strategies/2985/) | BTC 1D Hybrid MR + Squeeze Breakout | +166.97% | +240.17% | +25.17% | 110 | 2026-09-29 |
 |  | [2984](strategies/2984/) | BTC 1D Volatility Squeeze Breakout | +37.95% | +1205.77% | +33.08% | 14 | 2026-09-29 |
-|  | [2983](strategies/2983/) | BTC 1D ATR Chandelier Trend Rider | -38.86% | +43.77% | +59.49% | 47 | 2026-09-29 |
-| — | [2982](strategies/2982/) | AI 전략 | +140.08% | — | +13.53% | 80 | 2026-09-29 |
 | — | [2980](strategies/2980/) | Multi-Asset Defensive Keltner MR Basket | +140.08% | — | +13.53% | 80 | 2026-09-29 |
 |  | [2978](strategies/2978/) | AI 전략 | +27.99% | +43.77% | +1.62% | 22 | 2026-09-29 |
 |  | [2977](strategies/2977/) | BTC 1D Fear-Greed Contrarian v3 | -39.46% | +43.77% | +50.04% | 55 | 2026-09-29 |

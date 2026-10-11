@@ -17,37 +17,56 @@
  * buys false breakouts and the trailing stop gives back the small gains — trend following
  * bleeds in chop. It also gives up the top of a parabolic blow-off because the trailing stop
  * lags the peak.
+ * Display-only change: added ctx.watch declarations, trading logic unchanged.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const atr = ctx.atr(14, 1);
   const sma200 = ctx.sma(200, 1);
-  const high20 = ctx.high(20, 1); // highest high over the last 20 bars (closed)
-  if (atr == null || sma200 == null || high20 == null || atr <= 0) return null;
+  const high20 = ctx.high(20, 1);
+  if (atr == null || sma200 == null || high20 == null || atr <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const pos = ctx.position;
 
   if (pos > 0) {
-    // Wide chandelier exit: sell if price closes below (highest high since entry - 4 ATR).
-    // 4 ATR is deliberately wide so the trend is not shaken out by normal pullbacks.
     const hi = ctx.state.highestHigh || price;
     const stopPx = hi - 4.0 * atr;
+    ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'Chandelier stop' }]);
     if (price < stopPx) {
+      ctx.watch([]);
       return { side: 'sell', qty: pos };
     }
     if (price > hi) ctx.state.highestHigh = price;
     return null;
   }
 
-  // Long-only trend regime: breakout above the 20-day high while above the 200-day average.
   const uptrend = price > sma200 && price > high20;
   if (uptrend) {
-    ctx.state.highestHigh = price; // start the chandelier from the entry bar
+    ctx.watch([]);
+    ctx.state.highestHigh = price;
     const equity = ctx.cash + ctx.uPnl;
     const qty = (Number.isFinite(equity) && equity > 0 ? equity : ctx.cash) / price;
     return { side: 'buy', qty: qty * 0.98 };
   }
+
+  const entryLevel = Math.max(sma200, high20);
+  ctx.watch([{
+    side: 'buy',
+    price: entryLevel,
+    trigger: 'above',
+    note: '20d high + 200d avg',
+    conds: [
+      { label: 'close > SMA200', now: price, op: '>', ref: sma200 },
+      { label: 'close > 20d high', now: price, op: '>', ref: high20 },
+    ],
+  }]);
   return null;
 }

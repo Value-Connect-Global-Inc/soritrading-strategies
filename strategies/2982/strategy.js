@@ -23,6 +23,7 @@
  * the rising-200-day gate keeps us flat (capital-preserving but captures little). It lags a
  * relentless single-asset melt-up because it only buys pullbacks. The basket is defensive —
  * it protects capital and beats buy-and-hold in chop/bear, not in straight-line bulls.
+ * 2025-01-01: added ctx.watch declarations — display only, trading logic unchanged.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -40,6 +41,10 @@ function onUpdate(ctx) {
 
   if (pos > 0) {
     // Snap-back exit above the 20-day EMA or once RSI turns up.
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'above', note: 'EMA20 snap-back' },
+      { side: 'sell', price: null, trigger: 'above', note: 'RSI > 60', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 60, closed: true }] }
+    ]);
     if (price > ema20 || rsi > 60) {
       return { side: 'sell', qty: pos };
     }
@@ -53,7 +58,14 @@ function onUpdate(ctx) {
     const equity = ctx.cash + ctx.uPnl;
     const targetValue = 0.25 * (Number.isFinite(equity) && equity > 0 ? equity : ctx.cash);
     const qty = targetValue / price;
+    ctx.watch([
+      { side: 'buy', price: lowerBand, trigger: 'below', note: 'Keltner lower band', conds: [
+        { label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true },
+        { label: 'SMA200 rising', ok: uptrend }
+      ] }
+    ]);
     return { side: 'buy', qty: qty };
   }
+  ctx.watch([]);
   return null;
 }
