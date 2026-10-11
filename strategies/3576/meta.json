@@ -3,10 +3,10 @@
   "name": "FearGreed Contrarian BTC 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 17875,
-    "return": -30.36,
-    "mdd": 30.36,
-    "trades": 166,
+    "backtestId": 17877,
+    "return": 0.22,
+    "mdd": 2.26,
+    "trades": 2,
     "vsBuyHold": "lose",
     "benchRet": 35.8,
     "benchBasis": "price",
@@ -27,6 +27,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-11T20:48:55.497Z",
+  "updatedAt": "2026-10-11T20:50:34.371Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
