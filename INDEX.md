@@ -11,12 +11,12 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [3399](strategies/3399/) | BTC Macro-Regime Trend DXY 1D | +1006.36% | +580.47% | +44.45% | 48 | 2026-10-11 |
 |  | [3407](strategies/3407/) | BTC SMA50 Trend BearSized 1D | -33.66% | -26.04% | +65.23% | 445 | 2026-10-11 |
 | — | [3406](strategies/3406/) | BTC Funding Trend-Confirmation 1D | +69.29% | — | +62.88% | 33 | 2026-10-11 |
 |  | [3405](strategies/3405/) | BTC Trend-Gated Vol-Target CrashStop 1D | -38.98% | +591.46% | +96.24% | 1352 | 2026-10-11 |
 | — | [3401](strategies/3401/) | BTC Funding Contrarian 1D | -40.59% | — | +42.18% | 9 | 2026-10-11 |
 |  | [3404](strategies/3404/) | BTC Squeeze-Breakout Trend 1D | -5.11% | +95.22% | +23.67% | 12 | 2026-10-11 |
-| ★ | [3399](strategies/3399/) | BTC Macro-Regime Trend DXY 1D | +1006.36% | +580.47% | +44.45% | 48 | 2026-10-11 |
 | ★ | [3398](strategies/3398/) | OLD Champion ADA Donchian 55/10 | +1115.40% | +591.46% | +34.45% | 27 | 2026-10-11 |
 | ★ | [3397](strategies/3397/) | AI 전략 | -4.21% | -52.77% | +67.75% | 15 | 2026-10-11 |
 | ★ | [3395](strategies/3395/) | AI 전략 | +1147.91% | +591.46% | +34.46% | 23 | 2026-10-11 |
