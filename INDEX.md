@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 476 of 1851 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 477 of 1852 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 268 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [3597](strategies/3597/) | ETH Trend-Follow EMA50/200 4H | +54.46% | -26.02% | +29.68% | 54 | 2026-10-11 |
 | ★ | [3596](strategies/3596/) | state persistence test | -1.01% | -44.06% | +1.01% | 2 | 2026-10-11 |
 |  | [2975](strategies/2975/) | BTC 1D On-Chain Network-Health Trend | -79.39% | +240.17% | +85.94% | 902 | 2026-10-11 |
 |  | [2976](strategies/2976/) | BTC 1D Bollinger-RSI Defensive MR | +17.90% | +288.09% | +1.62% | 14 | 2026-10-11 |
