@@ -11,10 +11,10 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [3570](strategies/3570/) | 3-Asset Pullback Basket 4H | +40.07% | — | +7.77% | 556 | 2026-10-11 |
 | — | [3055](strategies/3055/) | Multi-Asset MR Basket Cross-Sectional Confirmation | +17.34% | — | +15.49% | 108 | 2026-10-11 |
 | — | [3056](strategies/3056/) | AI 전략 | +64.26% | — | +10.08% | 262 | 2026-10-11 |
 | — | [3057](strategies/3057/) | AI 전략 | +63.31% | — | +16.75% | 109 | 2026-10-11 |
-| — | [3570](strategies/3570/) | 3-Asset Pullback Basket 4H | +30.92% | — | +8.26% | 744 | 2026-10-11 |
 |  | [3568](strategies/3568/) | BTC On-Chain Hashrate Trend 4H | -70.48% | +461.93% | +74.09% | 397 | 2026-10-11 |
 |  | [3567](strategies/3567/) | BTC Pullback-in-Uptrend RSI 4H | +9.85% | +46.70% | +2.84% | 84 | 2026-10-11 |
 | — | [3062](strategies/3062/) | Multi-Asset Defensive MR Basket 5-Asset 4H Profit-Target (ba | +10.79% | — | +1.00% | 246 | 2026-10-11 |
