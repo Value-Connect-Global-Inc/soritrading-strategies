@@ -3,9 +3,9 @@
   "name": "BTC 4H Pullback-in-Uptrend",
   "kind": "custom",
   "verified": {
-    "backtestId": 17924,
-    "return": -74.43,
-    "mdd": 81.43,
+    "backtestId": 17927,
+    "return": -10.53,
+    "mdd": 15.18,
     "trades": 170,
     "vsBuyHold": "lose",
     "benchRet": 196.85,
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-11T21:31:31.975Z",
+  "updatedAt": "2026-10-11T21:33:52.461Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

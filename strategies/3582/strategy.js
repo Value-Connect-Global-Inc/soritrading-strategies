@@ -14,11 +14,11 @@
  * When it buys and sells: buy when DXY is below its 200-day average AND price
  *   is above its 50-day average; sell when price closes below its 50-day EMA,
  *   when DXY rises back above its 200-day average, or on a 3x ATR stop from
- *   entry. Position is near-full when the regime is on.
+ *   entry. Sized at 1% equity risk per trade, capped at 30% of cash.
  * When it does NOT work: when BTC and the dollar decouple (BTC rallies while
  *   DXY stays high, e.g. 2023-24), the gate keeps it out of part of the bull
- *   run and it lags buy-and-hold. In choppy dollar ranges the 200-day average
- *   whipsaws. It is a defensive regime strategy, not a bull maximizer.
+ *   run and it lags buy-and-hold. It is a defensive regime strategy, not a
+ *   bull maximizer.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -57,7 +57,11 @@ function onUpdate(ctx) {
   if (!dollarWeak) return null;   // dollar strong = no longs
   if (price <= sma50) return null; // still falling — don't catch the knife
 
-  const qty = (ctx.cash / price) * 0.95;  // near-full position when regime is on
+  const riskCash = ctx.cash * 0.01;       // 1% equity risked per trade
+  const stopDist = 3 * atr;
+  let qty = stopDist > 0 ? riskCash / stopDist : 0;
+  const maxQty = (ctx.cash * 0.30) / price; // cap at 30% of cash
+  if (qty > maxQty) qty = maxQty;
   if (qty <= 0) return null;
   return { side: 'buy', qty };
 }
