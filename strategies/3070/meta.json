@@ -3,7 +3,7 @@
   "name": "BTC 1D Dual-MR Risk-Scaled (upbit)",
   "kind": "custom",
   "verified": {
-    "backtestId": 14709,
+    "backtestId": 17814,
     "return": 11.73,
     "mdd": 17.93,
     "trades": 8,
@@ -25,7 +25,15 @@
       "end": 1790726400
     }
   },
-  "config": null,
-  "updatedAt": "2026-09-30T07:25:27.669Z",
+  "config": {
+    "ex": "upbit",
+    "cash": 10000000,
+    "syms": [
+      "BTC"
+    ],
+    "quote": "KRW",
+    "interval": "1d"
+  },
+  "updatedAt": "2026-10-11T18:36:31.534Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

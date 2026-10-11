@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3070](strategies/3070/) | BTC 1D Dual-MR Risk-Scaled (upbit) | +11.73% | +12.94% | +17.93% | 8 | 2026-10-11 |
 | ★ | [3562](strategies/3562/) | ETH Pullback-in-Uptrend RSI 4H | +13.02% | -26.02% | +9.41% | 258 | 2026-10-11 |
 | ★ | [3564](strategies/3564/) | SOL Pullback-in-Uptrend RSI 4H | +6.39% | -25.34% | +9.55% | 160 | 2026-10-11 |
 | — | [3071](strategies/3071/) | Multi-Asset MR Basket 5-Asset Full-ATR-Risk-Scaled | +26.46% | — | +8.71% | 97 | 2026-10-11 |
@@ -407,7 +408,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3076](strategies/3076/) | Upbit BTC 1D Slow Regime Filter | +11.61% | +99.56% | +8.62% | 3 | 2026-10-01 |
 |  | [3073](strategies/3073/) | Multi-Asset Stochastic-Oversold MR Basket 4H | -1.07% | +41.78% | +3.79% | 34 | 2026-10-01 |
 |  | [2209](strategies/2209/) | SOL Trend-Gated Vol-Target CrashStop 1D | -100.00% | -10.70% | +100.00% | 33388 | 2026-10-01 |
-|  | [3070](strategies/3070/) | BTC 1D Dual-MR Risk-Scaled (upbit) | +11.73% | +12.94% | +17.93% | 8 | 2026-09-30 |
 |  | [3069](strategies/3069/) | Multi-Asset Stop-Protected Bear MR Basket 5-Asset | +9.13% | +69.10% | +19.40% | 14 | 2026-09-30 |
 | — | [3068](strategies/3068/) | Multi-Asset Stop-Protected Bear MR Basket 5-Asset | +56.68% | — | +15.50% | 132 | 2026-09-30 |
 | — | [3067](strategies/3067/) | Multi-Asset MR Basket 5-Asset Level-Gate | -7.74% | — | +8.20% | 6 | 2026-09-30 |
