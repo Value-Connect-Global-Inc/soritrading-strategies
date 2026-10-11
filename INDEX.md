@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [3585](strategies/3585/) | AI 전략 | -84.81% | — | +90.22% | 632 | 2026-10-11 |
+| — | [3585](strategies/3585/) | AI 전략 | -66.62% | — | +76.17% | 349 | 2026-10-11 |
 |  | [3019](strategies/3019/) | BTC On-Chain Accumulation Trend 1D | -98.30% | +43.89% | +98.49% | 1038 | 2026-10-11 |
 |  | [3020](strategies/3020/) | BTC Fear-Greed Contrarian 1D | -88.98% | +43.89% | +89.88% | 786 | 2026-10-11 |
 |  | [3583](strategies/3583/) | AI 전략 | -19.11% | +457.74% | +20.10% | 102 | 2026-10-11 |
