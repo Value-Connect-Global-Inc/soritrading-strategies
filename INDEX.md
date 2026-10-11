@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3386](strategies/3386/) | BTC Network-Growth Trend 1D | -72.41% | +154.38% | +94.48% | 473 | 2026-10-11 |
+|  | [3386](strategies/3386/) | BTC Network-Growth Trend 1D | +147.85% | +164.24% | +66.93% | 13 | 2026-10-11 |
 | ★ | [3385](strategies/3385/) | ADA Donchian 55/10 BearSized 1D | +65.15% | -58.55% | +36.74% | 16 | 2026-10-11 |
 | ★ | [3384](strategies/3384/) | ADA RSI2 Panic Mean-Reversion 1D | +3.15% | -53.70% | +36.32% | 57 | 2026-10-11 |
 |  | [3383](strategies/3383/) | ADA Donchian 55/10 QuietVol Regime 1D | +460.16% | +636.03% | +39.86% | 7 | 2026-10-10 |
