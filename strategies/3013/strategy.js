@@ -20,10 +20,15 @@
  * that resolves down is missed (long-only). A tighter stop can be tripped by a normal
  * volatile shakeout before the trend resumes, costing a loss the slow exit would have
  * ridden through — this is the trade-off being tested.
+ *
+ * 2026-05-07: 표시만 바뀜, 매매 판단은 그대로 (ctx.watch 추가)
  */
 function onUpdate(ctx) {
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const ema20 = ctx.ema(20, 1);
   const ema50 = ctx.ema(50, 1);
@@ -35,7 +40,10 @@ function onUpdate(ctx) {
   const bb = ctx.bb(20, 2, 1);
   if (ema20 == null || ema50 == null || atr == null || rsi == null || sma200 == null ||
       sma200prev == null || high20 == null || bb == null || bb.upper == null ||
-      bb.lower == null || atr <= 0) return null;
+      bb.lower == null || atr <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const pos = ctx.position;
   const entryType = ctx.state.entryType || 0;
@@ -47,6 +55,22 @@ function onUpdate(ctx) {
     const hardStop = entryType === 1 && (entryPx - price) > 2.2 * atr;
     const trendExit = entryType === 1 && (price < ema50 || sma200 < sma200prev);
     const mrExit = entryType === 2 && (price > ema20 || rsi > 55);
+
+    if (entryType === 1) {
+      ctx.watch([
+        { side: 'sell', price: ema50, trigger: 'below', note: 'EMA50 break' },
+        { side: 'sell', price: entryPx - 2.2 * atr, trigger: 'below', note: '2.2*ATR hard stop' },
+        { side: 'sell', note: 'SMA200 turn-down', conds: [{ label: 'SMA200 falling', ok: sma200 < sma200prev }] }
+      ]);
+    } else if (entryType === 2) {
+      ctx.watch([
+        { side: 'sell', price: ema20, trigger: 'above', note: 'EMA20 snap-back' },
+        { side: 'sell', note: 'RSI overbought', conds: [{ label: 'RSI(14)', now: rsi, op: '>', ref: 55, closed: true }] }
+      ]);
+    } else {
+      ctx.watch([]);
+    }
+
     if (hardStop || trendExit || mrExit) {
       ctx.state.entryType = 0;
       return { side: 'sell', qty: pos };
@@ -55,7 +79,10 @@ function onUpdate(ctx) {
   }
 
   const uptrend = sma200 > sma200prev;
-  if (!uptrend) return null;
+  if (!uptrend) {
+    ctx.watch([]);
+    return null;
+  }
 
   const lowerBand = ema20 - 2.5 * atr;
   const mrEntry = price < lowerBand && rsi < 40;
@@ -76,6 +103,30 @@ function onUpdate(ctx) {
     if (total > 0) pctile = countBelow / total;
   }
   const squeezeBreakout = pctile <= 0.2 && price > high20 && width > 0;
+
+  ctx.watch([
+    {
+      side: 'buy',
+      price: high20,
+      trigger: 'above',
+      note: 'Squeeze breakout',
+      conds: [
+        { label: 'BB width pctile', now: pctile, op: '<=', ref: 0.2, closed: true },
+        { label: 'BB width > 0', ok: width > 0 },
+        { label: 'SMA200 rising', ok: uptrend }
+      ]
+    },
+    {
+      side: 'buy',
+      price: lowerBand,
+      trigger: 'below',
+      note: 'MR pullback',
+      conds: [
+        { label: 'RSI(14)', now: rsi, op: '<', ref: 40, closed: true },
+        { label: 'SMA200 rising', ok: uptrend }
+      ]
+    }
+  ]);
 
   if (squeezeBreakout) {
     ctx.state.entryType = 1;
