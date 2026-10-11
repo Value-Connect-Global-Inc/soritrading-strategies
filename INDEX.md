@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3407](strategies/3407/) | BTC SMA50 Trend BearSized 1D | +537.77% | +580.47% | +39.61% | 48 | 2026-10-11 |
+|  | [3407](strategies/3407/) | BTC SMA50 Trend BearSized 1D | -33.66% | -26.04% | +65.23% | 445 | 2026-10-11 |
 | — | [3406](strategies/3406/) | BTC Funding Trend-Confirmation 1D | +69.29% | — | +62.88% | 33 | 2026-10-11 |
 |  | [3405](strategies/3405/) | BTC Trend-Gated Vol-Target CrashStop 1D | -38.98% | +591.46% | +96.24% | 1352 | 2026-10-11 |
 | — | [3401](strategies/3401/) | BTC Funding Contrarian 1D | -40.59% | — | +42.18% | 9 | 2026-10-11 |
