@@ -16,6 +16,8 @@
  * When it does NOT work: In a sustained bear the rising-trend gate keeps us flat. It lags
  * buy-and-hold in a straight-line melt-up. Requiring a volume spike makes entries rarer, so
  * it can miss slow grinding declines that never spike volume.
+ *
+ * 2025-01-01: display only changed — added ctx.watch declarations, trading logic unchanged.
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -37,20 +39,35 @@ function onUpdate(ctx) {
 
   if (pos > 0) {
     // Snap-back exit: above the 20-day EMA or once RSI recovers.
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'above', note: 'EMA20 snap-back' },
+      { side: 'sell', price: 55, trigger: 'above', note: 'RSI recovery', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 55, closed: true }] }
+    ]);
     if (price > ema20 || rsi > 55) {
       return { side: 'sell', qty: pos };
     }
     return null;
   }
 
-  if (!uptrend) return null;
+  if (!uptrend) {
+    ctx.watch([]);
+    return null;
+  }
 
   const volumeSpike = vol >= 1.5 * avgVol;   // panic volume: 1.5x the 20-day average (relaxed from 2x)
   const capitulation = price < lowerBand && rsi < 30 && volumeSpike;
 
   if (capitulation) {
     // Size modestly: half the cash to keep drawdown low on this rarer, higher-conviction entry.
+    ctx.watch([]);
     return { side: 'buy', qty: (ctx.cash / price) * 0.5 };
   }
+  ctx.watch([
+    { side: 'buy', price: lowerBand, trigger: 'below', note: 'BB lower touch', conds: [
+      { label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true },
+      { label: 'Volume spike', ok: volumeSpike },
+      { label: 'SMA200 rising', ok: uptrend }
+    ]}
+  ]);
   return null;
 }

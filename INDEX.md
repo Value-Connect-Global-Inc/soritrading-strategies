@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3035](strategies/3035/) | BTC 1D Volume-Capitulation MR | -2.91% | +828.94% | +6.74% | 4 | 2026-10-11 |
 | ★ | [3577](strategies/3577/) | BTC 4H Momentum Breakout | -3.01% | -26.02% | +14.20% | 126 | 2026-10-11 |
 |  | [3576](strategies/3576/) | FearGreed Contrarian BTC 4H | +3.49% | +457.74% | +1.34% | 2 | 2026-10-11 |
 | — | [3575](strategies/3575/) | BTC Donchian Breakout Trend 4H | -2.51% | — | +4.81% | 22 | 2026-10-11 |
@@ -451,7 +452,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3038](strategies/3038/) | BTC 1D Fast-Momentum Trend Ride | +100.60% | +1255.34% | +64.90% | 159 | 2026-09-30 |
 | ★ | [3037](strategies/3037/) | BTC 1D Dual-MR Hybrid Sizing | +129.73% | +32.09% | +8.41% | 28 | 2026-09-30 |
 |  | [3036](strategies/3036/) | BTC 1D Dual-MR + Squeeze Trend Leg (ATR-sized) | +15.51% | +244.14% | +15.43% | 20 | 2026-09-30 |
-|  | [3035](strategies/3035/) | BTC 1D Volume-Capitulation MR | -2.91% | +828.94% | +6.74% | 4 | 2026-09-30 |
 |  | [3034](strategies/3034/) | BTC 4h Volume-Surge Breakout | +0.20% | +828.94% | +15.43% | 8 | 2026-09-30 |
 |  | [3033](strategies/3033/) | BTC 1D Dual-MR Risk-Scaled (ATR-sized) | +32.57% | +77.87% | +6.50% | 12 | 2026-09-30 |
 |  | [3032](strategies/3032/) | Multi-Asset Squeeze-Breakout Basket 7-Asset | -66.81% | +585.31% | +71.94% | 254 | 2026-09-30 |
