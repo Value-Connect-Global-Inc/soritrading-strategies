@@ -3,16 +3,16 @@
   "name": "BTC DXY Macro Regime 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 18066,
-    "return": 42.79,
-    "mdd": 12.12,
-    "trades": 210,
-    "vsBuyHold": "lose",
-    "benchRet": 55.14,
+    "backtestId": 18068,
+    "return": 7.87,
+    "mdd": 22.27,
+    "trades": 208,
+    "vsBuyHold": "win",
+    "benchRet": -26.02,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1647748800,
-    "tTo": 1719734400,
+    "tFrom": 1719691200,
+    "tTo": 1791676800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
@@ -20,10 +20,10 @@
     ],
     "spec": {
       "ex": "binance",
-      "sym": "SOL",
+      "sym": "ETH",
       "interval": "4h",
       "bars": 5000,
-      "end": 1719748800
+      "end": 1791748800
     }
   },
   "config": null,
