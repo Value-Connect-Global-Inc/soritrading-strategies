@@ -7,7 +7,7 @@
  * cash: 10000
  *
  * Why this strategy: Strong 4h BTC moves usually start with a volatility expansion — ATR and volume push above their averages while price breaks a multi-week high. Entering only on that confirmation avoids the fake breakouts a plain Donchian system pays for.
- * When it buys and sells: Buys when flat AND price is above its 300-bar average AND the last closed bar breaks above the prior 55-bar high AND volume is at/above its 50-bar average. ATR must also be expanding — unless price is more than 10% above the 300-bar average, where the trend itself is the confirmation and only normal ATR is needed. Sells when price falls 2.5 ATR below the highest close since entry, never worse than 2.5 ATR below entry.
+ * When it buys and sells: Buys when flat AND price is above its 300-bar average AND the last closed bar breaks above the prior 55-bar high AND volume is at/above its 50-bar average. ATR must also be expanding — unless price is more than 10% above the 300-bar average, where the trend itself is the confirmation. Takes half off at +4x entry ATR, then sells the rest when price falls 2.5 ATR below the highest close since entry, never worse than 2.5 ATR below entry.
  * When it does NOT work: In a long sideways range the 55-bar breakout fires on small rips and the trailing stop cuts each one for a small loss. It never catches a bottom — it only buys after the trend turns up. In a deep bear market it stays flat (trend filter), so it misses shorting opportunities.
  */
 function onUpdate(ctx) {
@@ -15,13 +15,19 @@ function onUpdate(ctx) {
   if (price == null) return null;
   const atr = ctx.atr(14, 1);
 
-  // ---- exit: volatility-adaptive trailing stop ----
+  // ---- exit: volatility-adaptive trailing stop with partial profit-taking ----
   if (ctx.position > 0) {
     if (atr == null) return null;
     const hi = ctx.state.hi != null ? Math.max(ctx.state.hi, price) : price;
     ctx.state.hi = hi;
     const entryAtr = ctx.state.entryAtr != null ? ctx.state.entryAtr : atr;
     ctx.state.entryAtr = entryAtr;
+    // Partial take-profit: sell half at +4x entry ATR (~8% on BTC 4h). Locks in real
+    // gains while the other half keeps riding the trailing stop for the bigger move.
+    if (ctx.state.tpDone == null && price >= ctx.entryPx + 4 * entryAtr) {
+      ctx.state.tpDone = true;
+      return { side: 'sell', qty: ctx.position * 0.5 };
+    }
     // trailing stop widens with volatility but never below a fixed risk from entry
     const stopPx = Math.max(hi - 2.5 * atr, ctx.entryPx - 2.5 * entryAtr);
     if (price <= stopPx) return { side: 'sell', qty: ctx.position };
@@ -68,5 +74,6 @@ function onUpdate(ctx) {
 
   ctx.state.hi = price;
   ctx.state.entryAtr = atr;
+  ctx.state.tpDone = null;  // reset partial-profit flag for the new trade
   return { side: 'buy', qty: (ctx.cash / ctx.price) * 0.99 };
 }
