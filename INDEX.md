@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [3411](strategies/3411/) | Multi-Asset Donchian Basket 4-Leg 1D | +92.46% | — | +16.12% | 112 | 2026-10-11 |
+| — | [3411](strategies/3411/) | Multi-Asset Donchian Basket 4-Leg 1D | +22.09% | — | +23.43% | 102 | 2026-10-11 |
 |  | [3410](strategies/3410/) | SOL ROC Momentum Trend 1D | +205.64% | +854.10% | +22.23% | 10 | 2026-10-11 |
 |  | [3409](strategies/3409/) | BTC VWAP Mean-Reversion 1H | -29.96% | +120.55% | +31.13% | 204 | 2026-10-11 |
 | ★ | [3408](strategies/3408/) | BTC Ichimoku Cloud Trend 1D | +28.78% | -26.04% | +30.04% | 18 | 2026-10-11 |
