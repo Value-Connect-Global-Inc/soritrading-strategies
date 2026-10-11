@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [3133](strategies/3133/) | Multi-Asset Defensive MR Basket 5-Asset | +124.35% | — | +17.71% | 271 | 2026-10-11 |
 | ★ | [3436](strategies/3436/) | AI 전략 | +238.36% | +154.38% | +39.60% | 38 | 2026-10-11 |
 |  | [3247](strategies/3247/) | AI 전략 | -63.90% | +260.68% | +64.71% | 122 | 2026-10-11 |
 |  | [3249](strategies/3249/) | BTC 1D Fear-Greed Contrarian | -12.01% | +94.76% | +42.59% | 12 | 2026-10-11 |
@@ -140,7 +141,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3277](strategies/3277/) | Vol-Targeted Momentum BTC 1D | -23.17% | +1300.36% | +71.58% | 260 | 2026-10-09 |
 |  | [3276](strategies/3276/) | Macro-Regime Trend BTC 1D | -9.86% | +45.60% | +63.64% | 236 | 2026-10-09 |
 |  | [3275](strategies/3275/) | Dip Mean Reversion | +33.32% | +667.42% | +66.64% | 246 | 2026-10-09 |
-| — | [3133](strategies/3133/) | Multi-Asset Defensive MR Basket 5-Asset | +123.76% | — | +17.71% | 271 | 2026-10-09 |
 |  | [3273](strategies/3273/) | BTC Fear-Greed Contrarian | -64.29% | -23.81% | +65.16% | 294 | 2026-10-09 |
 | — | [3272](strategies/3272/) | BTC Funding Contrarian | +180.35% | — | +25.62% | 10 | 2026-10-09 |
 | ★ | [3271](strategies/3271/) | BTC Mean Reversion RSI-BB | +20.61% | -23.81% | +8.76% | 4 | 2026-10-09 |
