@@ -3,7 +3,7 @@
   "name": "5-Asset 4H Trend-Gated Keltner MR Basket",
   "kind": "custom",
   "verified": {
-    "backtestId": 15145,
+    "backtestId": 17682,
     "return": 11.58,
     "mdd": 8.17,
     "trades": 156,
@@ -25,6 +25,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-04T10:04:09.997Z",
+  "updatedAt": "2026-10-11T15:57:39.305Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
