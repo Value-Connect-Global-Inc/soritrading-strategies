@@ -8,13 +8,14 @@
  *
  * Why this strategy: The ADA Donchian 55/10 baseline beats buy-and-hold on all three 1d windows,
  * but its worst losses come from breakout whipsaws in bear regimes. This variant keeps the exact
- * same entry/exit rules and only changes SIZE: below the 200-day average it trades at a quarter
- * of full size, so a bear-market whipsaw costs a fraction of the baseline while bull markets keep
- * full size and full gains. A risk rule, not an entry filter — it does not skip the big moves, it
- * just bets far less in the regime where breakouts fail most often.
+ * same entry/exit rules and only changes SIZE: below the 200-day average it trades at half size,
+ * and when price is more than 20% below that average (a deep bear) it trades at quarter size, so
+ * a bear-market whipsaw costs a fraction of the baseline while bull markets keep full size and
+ * full gains. A risk rule, not an entry filter — it does not skip the big moves, it just bets
+ * less in the regime where breakouts fail most often, and least of all in the deepest downtrends.
  * When it buys and sells: Buys when a closed bar closes above the highest 55 bars. Sells when a
- * closed bar closes below the lowest 10 bars, or price falls 2x ATR below entry. Position is
- * quarter size while price is below the 200-day average.
+ * closed bar closes below the lowest 10 bars, or price falls 2x ATR below entry. Position is half
+ * size while price is below the 200-day average, quarter size when more than 20% below it.
  * When it does NOT work: In a long range where every breakout is a trap it still loses, just less.
  * A violent crash gaps through the ATR stop regardless of size.
  */
@@ -33,9 +34,12 @@ function onUpdate(ctx) {
   if (atr == null || atr <= 0) return null;
 
   const sma200 = ctx.sma(200, 1);
-  // Bear regime: price below its 200-day average. Bet a quarter there — bear breakouts fail often.
-  const bear = sma200 != null && prevClose < sma200;
-  const sizeMult = bear ? 0.25 : 1.0;
+  // Size tiers by how far below the 200-day trend price is. Deeper = stronger downtrend = bet less.
+  let sizeMult = 1.0;
+  if (sma200 != null) {
+    if (prevClose < sma200) sizeMult = 0.5;             // mild bear: half size
+    if (prevClose < sma200 * 0.8) sizeMult = 0.25;      // deep bear (>20% below trend): quarter size
+  }
 
   const pos = ctx.position;
 
