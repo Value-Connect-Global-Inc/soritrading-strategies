@@ -3,12 +3,12 @@
   "name": "BTC 4H Momentum Breakout",
   "kind": "custom",
   "verified": {
-    "backtestId": 17884,
-    "return": 0.89,
-    "mdd": 10.92,
-    "trades": 116,
-    "vsBuyHold": "lose",
-    "benchRet": 35.8,
+    "backtestId": 17887,
+    "return": -3.01,
+    "mdd": 14.2,
+    "trades": 126,
+    "vsBuyHold": "win",
+    "benchRet": -26.02,
     "benchBasis": "price",
     "gapPct": 0,
     "tFrom": 1719691200,
@@ -20,13 +20,13 @@
     ],
     "spec": {
       "ex": "binance",
-      "sym": "BTC",
+      "sym": "ETH",
       "interval": "4h",
       "bars": 5000,
       "end": 1791748800
     }
   },
   "config": null,
-  "updatedAt": "2026-10-11T20:54:10.691Z",
+  "updatedAt": "2026-10-11T20:55:55.095Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
