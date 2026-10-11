@@ -11,8 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [3388](strategies/3388/) | ADA Donchian 55/10 VolTarget 1D | +974.76% | +591.46% | +30.99% | 31 | 2026-10-11 |
 |  | [3387](strategies/3387/) | BTC Fear&Greed Contrarian 1D | -31.61% | +164.24% | +68.55% | 3 | 2026-10-11 |
+| ★ | [3388](strategies/3388/) | ADA Donchian 55/10 VolTarget 1D | +974.76% | +591.46% | +30.99% | 31 | 2026-10-11 |
 |  | [3386](strategies/3386/) | BTC Network-Growth Trend 1D | +97.04% | +154.38% | +70.25% | 18 | 2026-10-11 |
 | ★ | [3385](strategies/3385/) | ADA Donchian 55/10 BearSized 1D | +65.15% | -58.55% | +36.74% | 16 | 2026-10-11 |
 | ★ | [3384](strategies/3384/) | ADA RSI2 Panic Mean-Reversion 1D | +3.15% | -53.70% | +36.32% | 57 | 2026-10-11 |
