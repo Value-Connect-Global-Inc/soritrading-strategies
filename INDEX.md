@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3582](strategies/3582/) | BTC 4H Pullback-in-Uptrend | +7.81% | +35.80% | +3.85% | 116 | 2026-10-11 |
+|  | [3582](strategies/3582/) | BTC 4H Pullback-in-Uptrend | +14.42% | +16.33% | +28.69% | 138 | 2026-10-11 |
 |  | [3028](strategies/3028/) | DOGE 1D Defensive MR Single-Leg Test | +4.60% | +5.78% | +3.17% | 42 | 2026-10-11 |
 |  | [3029](strategies/3029/) | AVAX 1D Defensive MR Single-Leg Test | +16.05% | +37.27% | +3.17% | 74 | 2026-10-11 |
 |  | [3579](strategies/3579/) | BTC 1D Fed-Easing Regime | -4.93% | +95.22% | +9.84% | 58 | 2026-10-11 |
