@@ -3,7 +3,7 @@
   "name": "XRP 4H Pullback In Uptrend",
   "kind": "custom",
   "verified": {
-    "backtestId": 15660,
+    "backtestId": 17218,
     "return": -37.6,
     "mdd": 39.23,
     "trades": 330,
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-08T15:53:25.849Z",
+  "updatedAt": "2026-10-11T09:57:42.238Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

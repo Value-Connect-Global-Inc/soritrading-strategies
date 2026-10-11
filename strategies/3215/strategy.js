@@ -14,6 +14,8 @@
  * Sell when the target (+2 ATR) or stop (-1.5 ATR) is hit, or when the trend turns down.
  * When it does NOT work: in choppy sideways markets the 20-bar average is crossed constantly
  * and stops get hit repeatedly; in fast crashes price gaps through the stop. Both lose.
+ *
+ * Date: 2025-01-XX — display only changed, trading logic unchanged.
  */
 
 function onUpdate(ctx) {
@@ -31,8 +33,9 @@ function onUpdate(ctx) {
   if (ctx.position > 0) {
     const stop = st.stopPx, tp = st.tpPx;
     ctx.watch([
-      { side: 'sell', price: stop, note: 'stop -1.5 ATR' },
-      { side: 'sell', price: tp, note: 'target +2 ATR' }
+      { side: 'sell', price: stop, trigger: 'below', note: 'stop -1.5 ATR' },
+      { side: 'sell', price: tp, trigger: 'above', note: 'target +2 ATR' },
+      { side: 'sell', price: ema200, trigger: 'below', note: 'trend break', conds: [{ label: 'close < EMA200', now: close, op: '<', ref: ema200, closed: false }] }
     ]);
     // stop, target, or trend break all close the trade
     if (close <= stop || close >= tp || close < ema200) {
@@ -43,7 +46,10 @@ function onUpdate(ctx) {
   }
 
   // ---- entry ----
-  if (st.cooldown != null && ctx.i < st.cooldown) return null;
+  if (st.cooldown != null && ctx.i < st.cooldown) {
+    ctx.watch([{ side: 'buy', at: ctx.candle.start + st.cooldown * ctx.candle.interval, note: 'cooldown ends' }]);
+    return null;
+  }
 
   const uptrend = ema50 > ema200;
   // dipped to the average but not crashed through it
@@ -57,10 +63,23 @@ function onUpdate(ctx) {
     const qty = Math.min((ctx.cash * 0.01) / (1.5 * atr), (ctx.cash / ctx.price) * 0.98);
     ctx.state = { stopPx: stop, tpPx: tp, cooldown: 0 };
     ctx.watch([
-      { side: 'buy', price: close, note: 'pullback to EMA20' },
-      { side: 'sell', price: tp, note: 'target +2 ATR' }
+      { side: 'buy', price: close, trigger: 'below', note: 'pullback to EMA20', conds: [
+        { label: 'uptrend', ok: uptrend },
+        { label: 'pullback', ok: pullback },
+        { label: 'RSI zone', now: rsi, op: '>', ref: 35, closed: true },
+        { label: 'RSI < 60', now: rsi, op: '<', ref: 60, closed: true }
+      ]},
+      { side: 'sell', price: tp, trigger: 'above', note: 'target +2 ATR' },
+      { side: 'sell', price: stop, trigger: 'below', note: 'stop -1.5 ATR' }
     ]);
     return { side: 'buy', qty: qty };
   }
+  ctx.watch([
+    { side: 'buy', price: ema20, trigger: 'below', note: 'pullback to EMA20', conds: [
+      { label: 'uptrend', ok: uptrend },
+      { label: 'RSI > 35', now: rsi, op: '>', ref: 35, closed: true },
+      { label: 'RSI < 60', now: rsi, op: '<', ref: 60, closed: true }
+    ]}
+  ]);
   return null;
 }
