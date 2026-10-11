@@ -4,13 +4,17 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 461 of 1758 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 462 of 1761 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [3496](strategies/3496/) | Squeeze Volume Breakout BTC 4h | -3.05% | -19.64% | +17.02% | 46 | 2026-10-11 |
+|  | [3495](strategies/3495/) | Multi-Timeframe Trend Breakout | -48.54% | +8.29% | +49.70% | 162 | 2026-10-11 |
+|  | [3494](strategies/3494/) | Adaptive Volatility Breakout Channel | -46.47% | +8.29% | +46.73% | 138 | 2026-10-11 |
+| ★ | [3193](strategies/3193/) | BTC 1D Capitulation-Buy Vol-Confirmed MR | +36.32% | +26.25% | +24.03% | 10 | 2026-10-11 |
 |  | [3493](strategies/3493/) | AI 전략 | -61.05% | +11.59% | +61.05% | 382 | 2026-10-11 |
 | ★ | [3492](strategies/3492/) | Bollinger Mean Reversion RSI | -25.05% | -34.89% | +25.05% | 194 | 2026-10-11 |
 |  | [3491](strategies/3491/) | Volatility Squeeze Breakout Strategy | -46.56% | -34.89% | +48.35% | 112 | 2026-10-11 |
@@ -257,7 +261,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3197](strategies/3197/) | BTC 1D Momentum Hysteresis + Trailing Stop | +30.60% | +174.32% | +70.57% | 568 | 2026-10-08 |
 |  | [3196](strategies/3196/) | ETH 1D Long-Horizon Momentum Hysteresis | +49.84% | +94.76% | +16.44% | 5 | 2026-10-08 |
 |  | [3195](strategies/3195/) | BTC 1D RSI2 Extreme-Oversold Bounce | -5.12% | +729.43% | +48.56% | 254 | 2026-10-08 |
-| ★ | [3193](strategies/3193/) | BTC 1D Capitulation-Buy Vol-Confirmed MR | +36.32% | +26.25% | +24.03% | 10 | 2026-10-08 |
 |  | [3192](strategies/3192/) | BTC 1D Long-Horizon Momentum Hysteresis | +49.84% | +94.76% | +16.44% | 5 | 2026-10-08 |
 |  | [3191](strategies/3191/) | BTC 4H Pure EMA50 Trend baseline | +49.39% | +469.54% | +66.95% | 333 | 2026-10-08 |
 |  | [3190](strategies/3190/) | BTC 4H Macro-Gated Trend | +3.06% | +48.89% | +5.15% | 2 | 2026-10-08 |

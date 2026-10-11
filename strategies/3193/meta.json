@@ -3,7 +3,7 @@
   "name": "BTC 1D Capitulation-Buy Vol-Confirmed MR",
   "kind": "custom",
   "verified": {
-    "backtestId": 15570,
+    "backtestId": 17425,
     "return": 36.32,
     "mdd": 24.03,
     "trades": 10,
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-08T11:45:38.744Z",
+  "updatedAt": "2026-10-11T12:31:03.680Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

@@ -12,6 +12,8 @@
  * When it does NOT work: in a sustained bear market the "dip" keeps falling (the
  * EMA50>EMA200 filter reduces but does not eliminate this), and in a low-volatility
  * grind the volume spike never fires so it sits in cash.
+ *
+ * 2025-01-01: 표시만 바뀜, 매매 판단은 그대로
  */
 
 function onUpdate(ctx) {
@@ -28,16 +30,26 @@ function onUpdate(ctx) {
 
   if (ctx.position > 0) {
     const entry = ctx.entryPx;
+    const stopPx = entry - 2 * atr;
     ctx.watch([
-      { side: 'sell', price: bb.mid, note: 'bounce target' },
-      { side: 'sell', price: entry - 2 * atr, note: 'stop' }
+      { side: 'sell', price: bb.mid, trigger: 'above', note: 'bounce target', conds: [
+        { label: 'RSI(14) closed', now: rsi, op: '>', ref: 55, closed: true },
+        { label: 'close > BB mid', ok: prevClose > bb.mid, closed: true }
+      ]},
+      { side: 'sell', price: stopPx, trigger: 'below', note: 'stop 2x ATR' }
     ]);
     if (price <= entry - 2 * atr) return { side: 'sell', qty: ctx.position }; // stop: 2x ATR
     if (rsi > 55 || prevClose > bb.mid) return { side: 'sell', qty: ctx.position };
     return null;
   }
 
-  ctx.watch([{ side: 'buy', price: bb.lower, note: 'capitulation dip' }]);
+  ctx.watch([
+    { side: 'buy', price: bb.lower, trigger: 'below', note: 'capitulation dip', conds: [
+      { label: 'RSI(14) closed', now: rsi, op: '<', ref: 35, closed: true },
+      { label: 'EMA50 > EMA200', ok: ema50 > ema200, closed: true },
+      { label: 'vol spike', now: volPrev, op: '>', ref: 1.5 * avgV, closed: true }
+    ]}
+  ]);
   const upTrend = ema50 > ema200;
   const oversold = rsi < 35;
   const belowBand = prevClose < bb.lower;
