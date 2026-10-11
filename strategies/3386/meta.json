@@ -3,7 +3,7 @@
   "name": "BTC Network-Growth Trend 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 16782,
+    "backtestId": 17001,
     "return": 97.04,
     "mdd": 70.25,
     "trades": 18,
@@ -28,6 +28,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-11T00:46:57.393Z",
+  "updatedAt": "2026-10-11T06:11:34.781Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
