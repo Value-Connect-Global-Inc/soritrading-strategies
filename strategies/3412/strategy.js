@@ -38,7 +38,7 @@ function onUpdate(ctx) {
   if (pos > 0) {
     const entry = ctx.entryPx || price;
     const stop = entry - 3 * atr;
-    ctx.alert && ctx.watch([
+    ctx.watch([
       { side: 'sell', price: sma20, trigger: 'above', note: 'mean target' },
       { side: 'sell', price: stop, trigger: 'below', note: '3 ATR stop' }
     ]);

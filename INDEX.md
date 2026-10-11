@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3412](strategies/3412/) | BTC Panic Mean-Reversion 1D | -49.01% | +95.22% | +54.23% | 487 | 2026-10-11 |
+|  | [3412](strategies/3412/) | BTC Panic Mean-Reversion 1D | -24.57% | +95.22% | +27.39% | 221 | 2026-10-11 |
 | — | [3411](strategies/3411/) | Multi-Asset Donchian Basket 4-Leg 1D | +37.36% | — | +17.90% | 84 | 2026-10-11 |
 |  | [3410](strategies/3410/) | SOL ROC Momentum Trend 1D | +205.64% | +854.10% | +22.23% | 10 | 2026-10-11 |
 |  | [3409](strategies/3409/) | BTC VWAP Mean-Reversion 1H | -29.96% | +120.55% | +31.13% | 204 | 2026-10-11 |

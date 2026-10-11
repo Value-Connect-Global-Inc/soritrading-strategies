@@ -3,10 +3,10 @@
   "name": "BTC Panic Mean-Reversion 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 16933,
-    "return": -49.01,
-    "mdd": 54.23,
-    "trades": 487,
+    "backtestId": 16936,
+    "return": -24.57,
+    "mdd": 27.39,
+    "trades": 221,
     "vsBuyHold": "lose",
     "benchRet": 95.22,
     "benchBasis": "price",
@@ -27,6 +27,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-11T04:46:49.726Z",
+  "updatedAt": "2026-10-11T04:47:40.770Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
