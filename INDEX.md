@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3419](strategies/3419/) | BTC EMA Pullback 1D | +2.07% | +95.22% | +2.32% | 2 | 2026-10-11 |
+|  | [3419](strategies/3419/) | BTC EMA Pullback 1D | +50.51% | +580.47% | +33.81% | 27 | 2026-10-11 |
 |  | [3418](strategies/3418/) | BTC 4H RSI2 Mean Reversion | -92.38% | +312.57% | +92.45% | 1962 | 2026-10-11 |
 | ★ | [3416](strategies/3416/) | BTC Vol Squeeze Breakout 4H | -15.17% | -57.14% | +18.59% | 77 | 2026-10-11 |
 |  | [3412](strategies/3412/) | BTC Panic Mean-Reversion 1D | -24.57% | +95.22% | +27.39% | 221 | 2026-10-11 |
