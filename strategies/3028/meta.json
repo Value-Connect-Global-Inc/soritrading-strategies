@@ -1,0 +1,38 @@
+{
+  "id": 3028,
+  "name": "DOGE 1D Defensive MR Single-Leg Test",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 17911,
+    "return": 4.6,
+    "mdd": 3.17,
+    "trades": 42,
+    "vsBuyHold": "lose",
+    "benchRet": 5.78,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1705276800,
+    "tTo": 1791590400,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "DOGE",
+      "interval": "1d",
+      "bars": 1000
+    }
+  },
+  "config": {
+    "ex": "binance",
+    "cash": 10000,
+    "syms": [
+      "DOGE"
+    ],
+    "quote": "USDT",
+    "interval": "1d"
+  },
+  "updatedAt": "2026-10-11T21:16:36.304Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
