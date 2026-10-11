@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3605](strategies/3605/) | Squeeze Breakout | +58.48% | +457.74% | +30.41% | 73 | 2026-10-11 |
+|  | [3605](strategies/3605/) | Squeeze Breakout | -0.72% | +47.05% | +29.94% | 64 | 2026-10-11 |
 |  | [2960](strategies/2960/) | AI 전략 | +14.96% | +87.94% | +24.82% | 34 | 2026-10-11 |
 |  | [3604](strategies/3604/) | DXY-Filtered Donchian | +112.72% | +457.74% | +16.45% | 77 | 2026-10-11 |
 |  | [3603](strategies/3603/) | Hashrate Trend Rider | -45.43% | +95.22% | +58.79% | 177 | 2026-10-11 |
