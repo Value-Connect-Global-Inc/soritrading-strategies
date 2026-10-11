@@ -4,14 +4,16 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 460 of 1756 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 461 of 1758 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3491](strategies/3491/) | Volatility Squeeze Breakout Strategy | -25.09% | +11.59% | +31.25% | 140 | 2026-10-11 |
+|  | [3493](strategies/3493/) | AI 전략 | -61.05% | +11.59% | +61.05% | 382 | 2026-10-11 |
+| ★ | [3492](strategies/3492/) | Bollinger Mean Reversion RSI | -25.05% | -34.89% | +25.05% | 194 | 2026-10-11 |
+|  | [3491](strategies/3491/) | Volatility Squeeze Breakout Strategy | -46.56% | -34.89% | +48.35% | 112 | 2026-10-11 |
 |  | [3490](strategies/3490/) | AdaptiveEmaRsiStrategy | -43.29% | +8.29% | +45.10% | 279 | 2026-10-11 |
 | ★ | [3472](strategies/3472/) | AI 전략 | +80.37% | +44.30% | +24.15% | 40 | 2026-10-11 |
 |  | [3489](strategies/3489/) | BbVolBreakoutStrategy | -49.30% | +8.29% | +50.16% | 148 | 2026-10-11 |
