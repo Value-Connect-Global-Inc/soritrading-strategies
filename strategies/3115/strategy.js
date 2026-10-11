@@ -5,6 +5,7 @@
  * syms: ADAUSDT
  * interval: 4h
  * cash: 10000
+ * 2025-02-27 표시만 바뀜, 매매 판단은 그대로
  *
  * Why this strategy: The 200-SMA trend-gated Keltner mean-reversion already cut ADA's
  * drawdown in half and beat buy-and-hold on all windows, but the recent 2024-26 window
@@ -20,13 +21,13 @@
  */
 function onUpdate(ctx) {
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) { ctx.watch([]); return null; }
 
   const ema20 = ctx.ema(20, 1);
   const atr = ctx.atr(14, 1);
   const rsi = ctx.rsi(14, 1);
   const sma200 = ctx.sma(200, 1);
-  if (ema20 == null || atr == null || atr <= 0 || rsi == null || sma200 == null) return null;
+  if (ema20 == null || atr == null || atr <= 0 || rsi == null || sma200 == null) { ctx.watch([]); return null; }
 
   const pos = ctx.position;
   const st = ctx.state;
@@ -43,6 +44,10 @@ function onUpdate(ctx) {
       stop = ctx.entryPx - 1.5 * ctx.atr(14, 1);
       st.stop = stop;
     }
+    ctx.watch([
+      { side: 'sell', price: stop, trigger: 'below', note: 'hard stop' },
+      { side: 'sell', price: ema20, trigger: 'above', note: 'mid-band exit', conds: [{ label: 'cooldown', ok: cd === 0 }] }
+    ]);
     if (price <= stop) {
       st.cd = 2;
       st.stop = null;
@@ -59,6 +64,13 @@ function onUpdate(ctx) {
 
   const keltnerLow = ema20 - 2.5 * atr; // 2.5 ATR below EMA20 = volatility-adaptive lower band
   // 200-SMA trend gate: only buy pullbacks in an uptrend, to avoid bear-market knives
+  ctx.watch([
+    { side: 'buy', price: keltnerLow, trigger: 'below', note: 'Keltner buy', conds: [
+      { label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true },
+      { label: 'Close > SMA200', now: price, op: '>', ref: sma200, closed: true },
+      { label: 'cooldown', ok: cd === 0 }
+    ] }
+  ]);
   if (price < keltnerLow && rsi < 40 && price > sma200 && cd === 0) {
     st.cd = 2;
     st.stop = null;

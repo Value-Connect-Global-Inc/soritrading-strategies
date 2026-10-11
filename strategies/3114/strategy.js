@@ -16,6 +16,8 @@
  * When it does NOT work: in a straight-line melt-up it sits in cash and lags buy-and-hold;
  * the 200-SMA gate keeps it out of strong bear rallies entirely, so it can miss the
  * bottom-fishing bounce in a crash. It is a defensive pullback strategy, not a chaser.
+ *
+ * 2025-01-05: display-only watch added, trading logic unchanged.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -36,6 +38,7 @@ function onUpdate(ctx) {
   if (pos > 0) {
     // Exit once price recovers above the 20-EMA (channel mid). No hard stop:
     // the mid-band exit is what makes this recipe work (a hard stop whipsaws on 4h).
+    ctx.watch([{ side: 'sell', price: ema20, trigger: 'above', note: '20-EMA mid exit' }]);
     if (price > ema20 && cd === 0) {
       st.cd = 2;
       return { side: 'sell', qty: pos };
@@ -45,6 +48,16 @@ function onUpdate(ctx) {
 
   const keltnerLow = ema20 - 2.5 * atr; // 2.5 ATR below EMA20 = volatility-adaptive lower band
   // 200-SMA trend gate: only buy pullbacks in an uptrend, to avoid bear-market knives
+  ctx.watch([{
+    side: 'buy',
+    price: keltnerLow,
+    trigger: 'below',
+    note: 'Keltner low',
+    conds: [
+      { label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true },
+      { label: 'Close > SMA200', now: price, op: '>', ref: sma200, closed: true }
+    ]
+  }]);
   if (price < keltnerLow && rsi < 40 && price > sma200 && cd === 0) {
     st.cd = 2;
     return { side: 'buy', qty: (ctx.cash / price) * 0.95 };

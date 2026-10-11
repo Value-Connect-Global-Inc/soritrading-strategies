@@ -3,7 +3,7 @@
   "name": "SOL Keltner MR 4H Trend-Gated",
   "kind": "custom",
   "verified": {
-    "backtestId": 15066,
+    "backtestId": 17717,
     "return": 406.07,
     "mdd": 14.05,
     "trades": 47,
@@ -27,6 +27,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-03T09:18:50.596Z",
+  "updatedAt": "2026-10-11T16:42:43.498Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

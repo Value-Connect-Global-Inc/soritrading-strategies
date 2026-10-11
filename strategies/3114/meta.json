@@ -3,7 +3,7 @@
   "name": "ADA Keltner MR 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 15054,
+    "backtestId": 17715,
     "return": 406.07,
     "mdd": 14.05,
     "trades": 47,
@@ -27,6 +27,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-03T09:08:17.540Z",
+  "updatedAt": "2026-10-11T16:42:13.359Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
