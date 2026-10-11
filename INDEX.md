@@ -4,13 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 467 of 1805 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 467 of 1806 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3543](strategies/3543/) | OnChain Adoption Trend BTC 1D | -41.49% | +47.08% | +53.81% | 345 | 2026-10-11 |
+| — | [3128](strategies/3128/) | AI 전략 | +117.43% | — | +4.52% | 197 | 2026-10-11 |
 | — | [3127](strategies/3127/) | 5-Asset 4H Trend-Gated Keltner MR Basket | +11.58% | — | +8.17% | 156 | 2026-10-11 |
 |  | [3542](strategies/3542/) | AI 전략 | +10.30% | +22.55% | +9.46% | 75 | 2026-10-11 |
 | — | [3129](strategies/3129/) | 5-Asset 4H Trend-Gated Keltner MR Basket | +11.58% | — | +8.17% | 156 | 2026-10-11 |
@@ -343,7 +345,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | ★ | [3142](strategies/3142/) | ETH 4H Bollinger-Stoch Mean Reversion | +26.34% | -52.02% | +40.27% | 73 | 2026-10-05 |
 |  | [3132](strategies/3132/) | BTC 4H Trend-Gated Keltner MR SMA100 | +24.49% | +409.78% | +16.51% | 12 | 2026-10-04 |
 | — | [3130](strategies/3130/) | 5-Asset 4H Momentum-Pullback Basket | -75.66% | — | +75.67% | 2785 | 2026-10-04 |
-| — | [3128](strategies/3128/) | AI 전략 | +117.43% | — | +4.52% | 197 | 2026-10-04 |
 |  | [3126](strategies/3126/) | BTC 4H US-Session Keltner MR | +101.19% | +420.44% | +16.51% | 40 | 2026-10-03 |
 |  | [3123](strategies/3123/) | ADA Keltner MR 4H Trend-Gated HalfTP | +277.43% | +1834.47% | +14.05% | 68 | 2026-10-03 |
 |  | [3122](strategies/3122/) | ADA Keltner MR 4H Trend-Gated VolFilter | +5.41% | +1834.47% | +1.55% | 2 | 2026-10-03 |

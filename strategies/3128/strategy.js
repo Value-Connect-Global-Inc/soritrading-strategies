@@ -18,17 +18,24 @@
  * When it does NOT work: in a broad coordinated crypto bear all trend gates stay flat
  * (capital safe, little upside); a straight-line melt-up of the whole basket still lags
  * buy-and-hold of any single asset. Defensive pullback basket, not a chaser.
+ * 수정일: 2026-04-26 — 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const ema20 = ctx.ema(20, 1);
   const atr = ctx.atr(14, 1);
   const rsi = ctx.rsi(14, 1);
   const sma200 = ctx.sma(200, 1);
-  if (ema20 == null || atr == null || atr <= 0 || rsi == null || sma200 == null) return null;
+  if (ema20 == null || atr == null || atr <= 0 || rsi == null || sma200 == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   const pos = ctx.pos(sym);
   const st = ctx.state;
@@ -37,6 +44,10 @@ function onUpdate(ctx) {
   st.cd = cd;
 
   if (pos > 0) {
+    const exitConds = [];
+    if (cd !== 0) exitConds.push({ label: 'cooldown', ok: cd === 0 });
+    ctx.watch([{ side: 'sell', price: ema20, trigger: 'above', note: 'exit above EMA20', conds: exitConds }]);
+
     if (price > ema20 && cd === 0) {
       st.cd = 2;
       return { side: 'sell', qty: pos };
@@ -45,6 +56,18 @@ function onUpdate(ctx) {
   }
 
   const keltnerLow = ema20 - 2.5 * atr;
+  ctx.watch([{
+    side: 'buy',
+    price: keltnerLow,
+    trigger: 'below',
+    note: 'Keltner low touch',
+    conds: [
+      { label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true },
+      { label: 'price > SMA200', ok: price > sma200 },
+      { label: 'cooldown', ok: cd === 0 }
+    ]
+  }]);
+
   if (price < keltnerLow && rsi < 40 && price > sma200 && cd === 0) {
     st.cd = 2;
     // Mild vol-scaling: 2.5% ATR asset keeps ~20% weight (same as v1); a 5% ATR
