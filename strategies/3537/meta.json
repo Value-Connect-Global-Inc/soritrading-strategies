@@ -3,7 +3,7 @@
   "name": "Volatility Breakout BTC 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 17628,
+    "backtestId": 17631,
     "return": 71.87,
     "mdd": 14.65,
     "trades": 47,
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-11T14:22:14.641Z",
+  "updatedAt": "2026-10-11T14:24:12.308Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
