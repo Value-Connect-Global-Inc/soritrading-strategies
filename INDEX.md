@@ -12,8 +12,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
 |  | [3426](strategies/3426/) | BTC Plain BB MR 1D control | -18.42% | +95.96% | +54.34% | 12 | 2026-10-11 |
-| — | [3375](strategies/3375/) | AI 전략 | -0.26% | — | +0.69% | 3 | 2026-10-11 |
 | ★ | [3425](strategies/3425/) | BTC On-Chain Regime MR 1D | +387.69% | +315.94% | +30.57% | 89 | 2026-10-11 |
+| — | [3375](strategies/3375/) | AI 전략 | -0.26% | — | +0.69% | 3 | 2026-10-11 |
 |  | [3424](strategies/3424/) | LINK Donchian Breakout 4H | -94.69% | +614.69% | +96.79% | 210 | 2026-10-11 |
 |  | [3386](strategies/3386/) | BTC Network-Growth Trend 1D | +97.04% | +154.38% | +70.25% | 18 | 2026-10-11 |
 |  | [3422](strategies/3422/) | BTC Vol Squeeze Breakout 1D | +116.44% | +1198.30% | +36.82% | 16 | 2026-10-11 |
