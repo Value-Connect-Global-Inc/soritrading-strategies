@@ -11,12 +11,13 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3558](strategies/3558/) | BTC Trend-Follow EMA50/200 4H | +217.73% | +461.93% | +25.39% | 44 | 2026-10-11 |
+|  | [3084](strategies/3084/) | BTC 1D Squeeze-Breakout Only (upbit) | -8.00% | +28.88% | +21.12% | 24 | 2026-10-11 |
 |  | [3086](strategies/3086/) | Defensive Mean Reversion BTC | +8.82% | +90.62% | +1.91% | 20 | 2026-10-11 |
 |  | [3087](strategies/3087/) | Data Probe BTC 1D | +107.40% | +240.27% | +19.36% | 50 | 2026-10-11 |
 | ★ | [3088](strategies/3088/) | SOL Defensive MR ATR-Trail 1D | +14.63% | -91.63% | +0.00% | 14 | 2026-10-11 |
 | ★ | [3093](strategies/3093/) | SOL Trend-Ride Momentum 1D | -13.90% | -14.51% | +46.70% | 15 | 2026-10-11 |
 |  | [3094](strategies/3094/) | SOL Hybrid MR + Trend Leg 1D | +42.43% | +404.43% | +64.41% | 80 | 2026-10-11 |
-|  | [3558](strategies/3558/) | BTC Trend-Follow EMA50/200 4H | +40.89% | +46.70% | +22.60% | 36 | 2026-10-11 |
 |  | [3557](strategies/3557/) | BTC Donchian Breakout 4H | -13.34% | +461.93% | +23.20% | 137 | 2026-10-11 |
 |  | [3095](strategies/3095/) | SOL Defensive Mean Reversion 1D | +106.27% | +404.43% | +19.36% | 49 | 2026-10-11 |
 | ★ | [3097](strategies/3097/) | SOL OBV Volume-Flow Trend 1D | -22.90% | -28.90% | +52.84% | 41 | 2026-10-11 |
@@ -390,7 +391,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3080](strategies/3080/) | Claude 실환경 테스트 2026-10-01 (삭제해도 됨) | -11.63% | -11.05% | +36.12% | 1 | 2026-10-02 |
 | — | [3096](strategies/3096/) | SOL Funding-Squeeze Long 1D | -15.05% | — | +15.05% | 8 | 2026-10-02 |
 |  | [3085](strategies/3085/) | BTC 1D Long-Term SMA100 Trend (upbit) | -31.56% | +39.49% | +58.38% | 63 | 2026-10-01 |
-|  | [3084](strategies/3084/) | BTC 1D Squeeze-Breakout Only (upbit) | -8.00% | +39.49% | +21.12% | 24 | 2026-10-01 |
 |  | [3083](strategies/3083/) | BTC 1D Trend-Gated Vol-Target (upbit) | -71.15% | +39.49% | +84.78% | 1063 | 2026-10-01 |
 |  | [3082](strategies/3082/) | BTC 1D EMA Trend-Ride (upbit) | -7.55% | +39.49% | +20.73% | 26 | 2026-10-01 |
 |  | [3081](strategies/3081/) | BTC 1D Hybrid MR + Squeeze-Breakout | -6.50% | +81.42% | +17.26% | 10 | 2026-10-01 |

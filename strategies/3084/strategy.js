@@ -19,29 +19,40 @@
  * choppy range the squeeze fires into reversals. It sits in cash during bears
  * (the rising gate blocks entries), so it lags buy-and-hold in a melt-up that
  * never pauses to compress.
+ * 2026-05-12 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const sma60 = ctx.sma(60, 1);
   const sma60prev = ctx.sma(60, 2);
   const ema20 = ctx.ema(20, 1);
   const bb = ctx.bb(20, 2, 1);
   const high20 = ctx.high(20, 1);
-  if (sma60 == null || sma60prev == null || ema20 == null || bb == null || high20 == null) return null;
+  if (sma60 == null || sma60prev == null || ema20 == null || bb == null || high20 == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   const uptrend = sma60 > sma60prev;
 
   if (pos > 0) {
+    ctx.watch([{ side: 'sell', price: ema20, trigger: 'below', qty: pos, note: 'exit close < EMA20' }]);
     if (price < ema20) {
       return { side: 'sell', qty: pos };
     }
     return null;
   }
 
-  if (!uptrend) return null;
+  if (!uptrend) {
+    ctx.watch([{ side: 'buy', price: high20, trigger: 'above', qty: (ctx.cash / price) * 0.95, note: 'squeeze breakout', conds: [{ label: 'SMA60 rising', now: sma60, op: '>', ref: sma60prev, closed: true }] }]);
+    return null;
+  }
 
   // Squeeze: current Bollinger width in the quietest 20% of the last 40 bars.
   const widthNow = bb.upper - bb.lower;
@@ -51,10 +62,18 @@ function onUpdate(ctx) {
     if (b == null) continue;
     widths.push(b.upper - b.lower);
   }
-  if (widths.length < 30) return null;
+  if (widths.length < 30) {
+    ctx.watch([]);
+    return null;
+  }
   const sorted = widths.slice().sort((a, b) => a - b);
   const quietThresh = sorted[Math.floor(sorted.length * 0.2)];
   const squeezed = widthNow <= quietThresh;
+
+  ctx.watch([{ side: 'buy', price: high20, trigger: 'above', qty: (ctx.cash / price) * 0.95, note: 'squeeze breakout', conds: [
+    { label: 'SMA60 rising', now: sma60, op: '>', ref: sma60prev, closed: true },
+    { label: 'BB width in quietest 20%', now: widthNow, op: '<=', ref: quietThresh, closed: true }
+  ] }]);
 
   if (squeezed && price > high20) {
     return { side: 'buy', qty: (ctx.cash / price) * 0.95 };
