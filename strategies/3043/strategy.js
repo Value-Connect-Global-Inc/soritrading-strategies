@@ -50,14 +50,20 @@ function onUpdate(ctx) {
       ctx.state.cooldown = ctx.i + 20;        // 20-bar cooldown to stop churn
       return { side: 'sell', qty: pos };
     }
+    ctx.watch([{ side: 'sell', price: ema20, trigger: 'below', note: 'momentum break', conds: [{ label: 'addr growth fading', ok: !addrGrowing }] }]);
     return null;
   }
 
-  if (ctx.state.cooldown != null && ctx.i < ctx.state.cooldown) return null;
+  if (ctx.state.cooldown != null && ctx.i < ctx.state.cooldown) {
+    ctx.watch([{ side: 'buy', at: ctx.state.cooldown * 86400000, note: 'cooldown ends' }]);
+    return null;
+  }
 
   if (addrGrowing && uptrend) {
     const qty = (ctx.cash / price) * 0.95;
+    ctx.watch([{ side: 'sell', price: ema20, trigger: 'below', note: 'momentum break', conds: [{ label: 'addr growth fading', ok: !addrGrowing }] }]);
     return { side: 'buy', qty: qty };
   }
+  ctx.watch([{ side: 'buy', price: sma200, trigger: 'above', note: '200d uptrend', conds: [{ label: 'addr growth', now: addrSma, op: '>', ref: ema90, closed: true }] }]);
   return null;
 }
