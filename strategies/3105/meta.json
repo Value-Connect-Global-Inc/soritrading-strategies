@@ -3,7 +3,7 @@
   "name": "Keltner MR Trend-Gated 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 14952,
+    "backtestId": 17745,
     "return": 7.68,
     "mdd": 26.59,
     "trades": 30,
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-02T06:45:09.562Z",
+  "updatedAt": "2026-10-11T17:03:36.052Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
