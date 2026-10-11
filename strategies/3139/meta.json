@@ -3,7 +3,7 @@
   "name": "XRP 4H Trend-Gated Keltner Mean-Reversion",
   "kind": "custom",
   "verified": {
-    "backtestId": 15191,
+    "backtestId": 17671,
     "return": 17.06,
     "mdd": 10.38,
     "trades": 10,
@@ -27,6 +27,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-05T14:26:48.634Z",
+  "updatedAt": "2026-10-11T15:42:58.067Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

@@ -19,6 +19,7 @@
  * stays in cash, so it misses bear-market bounces; and in a slow bleed where
  * price grinds lower without snapping back it holds a losing position until the
  * 200-SMA regime gate turns off.
+ * 2026-04-27 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -45,10 +46,21 @@ function onUpdate(ctx) {
   if (cd > 0) cd--;
   ctx.state.cd = cd;
 
-  ctx.watch([
-    { side: 'buy', price: lower, note: 'Keltner lower band' },
-    { side: 'sell', price: ema20, note: 'snap-back to EMA20' }
-  ]);
+  if (pos > 0) {
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'above', note: 'snap-back to EMA20' },
+      { side: 'sell', price: sma200, trigger: 'below', note: 'regime gate' },
+      { side: 'sell', conds: [{ label: 'RSI(14)', now: rsi, op: '>', ref: 55, closed: true }], note: 'RSI recovery' }
+    ]);
+  } else {
+    ctx.watch([
+      { side: 'buy', price: lower, trigger: 'below', note: 'Keltner lower band', conds: [
+        { label: 'RSI(14)', now: rsi, op: '<', ref: 40, closed: true },
+        { label: 'Prev close > SMA200', ok: prevClose > sma200, closed: true },
+        { label: 'Cooldown', ok: cd }
+      ]}
+    ]);
+  }
 
   if (pos > 0) {
     // Exit: price reclaimed the 20-EMA, or RSI recovered, or regime turned bearish.

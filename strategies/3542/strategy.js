@@ -7,7 +7,7 @@
  * cash: 10000
  *
  * Why this strategy: Strong 4h BTC moves usually start with a volatility expansion — ATR and volume push above their averages while price breaks a multi-week high. Entering only on that confirmation avoids the fake breakouts a plain Donchian system pays for.
- * When it buys and sells: Buys when flat AND price is above its 300-bar average AND the last closed bar breaks above the prior 55-bar high AND volume is at/above its 50-bar average. ATR must also be expanding — unless price is more than 10% above the 300-bar average, where the trend itself is the confirmation. Takes half off at +4x entry ATR, then sells the rest when price falls 2.5 ATR below the highest close since entry, never worse than 2.5 ATR below entry. If after 15 bars (~2.5 days) the breakout has not gained even 1 ATR, it is treated as a failed breakout and the position is closed at ~breakeven instead of waiting for the stop.
+ * When it buys and sells: Buys when flat AND price is above its 300-bar average AND the last closed bar breaks above the prior 55-bar high AND volume is at/above its 50-bar average. ATR must also be expanding — unless price is more than 10% above the 300-bar average, where the trend itself is the confirmation. Takes half off at +4x entry ATR, then sells the rest when price falls 2.5 ATR below the highest close since entry, never worse than 2.5 ATR below entry.
  * When it does NOT work: In a long sideways range the 55-bar breakout fires on small rips and the trailing stop cuts each one for a small loss. It never catches a bottom — it only buys after the trend turns up. In a deep bear market it stays flat (trend filter), so it misses shorting opportunities.
  */
 function onUpdate(ctx) {
@@ -22,13 +22,6 @@ function onUpdate(ctx) {
     ctx.state.hi = hi;
     const entryAtr = ctx.state.entryAtr != null ? ctx.state.entryAtr : atr;
     ctx.state.entryAtr = entryAtr;
-    ctx.state.bars = (ctx.state.bars != null ? ctx.state.bars : 0) + 1;
-    // Stale-breakout exit: a genuine breakout moves within ~2.5 days (15x4h bars).
-    // If price hasn't gained even 1 ATR by then, the breakout failed — exit at
-    // ~breakeven instead of letting the stop take a full 2.5 ATR loss. Cut whipsaw.
-    if (ctx.state.bars >= 15 && price < ctx.entryPx + 1 * entryAtr) {
-      return { side: 'sell', qty: ctx.position };
-    }
     // Partial take-profit: sell half at +4x entry ATR (~8% on BTC 4h). Locks in real
     // gains while the other half keeps riding the trailing stop for the bigger move.
     if (ctx.state.tpDone == null && price >= ctx.entryPx + 4 * entryAtr) {
@@ -82,6 +75,5 @@ function onUpdate(ctx) {
   ctx.state.hi = price;
   ctx.state.entryAtr = atr;
   ctx.state.tpDone = null;  // reset partial-profit flag for the new trade
-  ctx.state.bars = 0;       // reset stale-breakout timer for the new trade
   return { side: 'buy', qty: (ctx.cash / ctx.price) * 0.99 };
 }

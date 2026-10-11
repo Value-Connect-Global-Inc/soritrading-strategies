@@ -11,7 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3542](strategies/3542/) | AI 전략 | +23.78% | +44.30% | +10.09% | 69 | 2026-10-11 |
+|  | [3139](strategies/3139/) | XRP 4H Trend-Gated Keltner Mean-Reversion | +17.06% | +255.56% | +10.38% | 10 | 2026-10-11 |
+|  | [3542](strategies/3542/) | AI 전략 | +10.30% | +35.80% | +9.46% | 75 | 2026-10-11 |
 |  | [3134](strategies/3134/) | AI 전략 | +101.19% | +409.78% | +16.51% | 40 | 2026-10-11 |
 |  | [3141](strategies/3141/) | BTC 4H Trend-Gated Keltner Mean-Reversion | +18.46% | +38.04% | +9.05% | 46 | 2026-10-11 |
 |  | [3140](strategies/3140/) | BTC 4H Keltner MR with Hard Stop | -18.05% | +38.04% | +18.73% | 32 | 2026-10-11 |
@@ -337,7 +338,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3155](strategies/3155/) | BTC Onchain Network Growth Trend 1D | -22.19% | +190.54% | +59.85% | 120 | 2026-10-07 |
 |  | [3146](strategies/3146/) | AI 전략 | +151.83% | +221.34% | +13.29% | 16 | 2026-10-05 |
 | ★ | [3142](strategies/3142/) | ETH 4H Bollinger-Stoch Mean Reversion | +26.34% | -52.02% | +40.27% | 73 | 2026-10-05 |
-|  | [3139](strategies/3139/) | XRP 4H Trend-Gated Keltner Mean-Reversion | +17.06% | +255.56% | +10.38% | 10 | 2026-10-05 |
 |  | [3132](strategies/3132/) | BTC 4H Trend-Gated Keltner MR SMA100 | +24.49% | +409.78% | +16.51% | 12 | 2026-10-04 |
 |  | [3131](strategies/3131/) | BTC 4H Trend-Gated Keltner MR | +101.19% | +409.78% | +16.51% | 40 | 2026-10-04 |
 | — | [3130](strategies/3130/) | 5-Asset 4H Momentum-Pullback Basket | -75.66% | — | +75.67% | 2785 | 2026-10-04 |
