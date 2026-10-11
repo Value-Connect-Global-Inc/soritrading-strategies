@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3537](strategies/3537/) | Volatility Breakout BTC 4H | +50.27% | +458.60% | +17.64% | 72 | 2026-10-11 |
+|  | [3537](strategies/3537/) | Volatility Breakout BTC 4H | +23.78% | +44.30% | +10.09% | 69 | 2026-10-11 |
 |  | [3159](strategies/3159/) | AI 전략 | +50.37% | +753.65% | +77.91% | 71 | 2026-10-11 |
 |  | [3161](strategies/3161/) | AI 전략 | -42.19% | -23.94% | +68.11% | 45 | 2026-10-11 |
 |  | [3160](strategies/3160/) | AI 전략 | -19.84% | +29.70% | +21.69% | 38 | 2026-10-11 |
