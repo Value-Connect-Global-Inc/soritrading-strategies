@@ -3,16 +3,16 @@
   "name": "Volatility Breakout ATR DXY BTC",
   "kind": "custom",
   "verified": {
-    "backtestId": 17191,
-    "return": -36.64,
-    "mdd": 48.48,
-    "trades": 96,
+    "backtestId": 17192,
+    "return": -54.74,
+    "mdd": 60.85,
+    "trades": 98,
     "vsBuyHold": "lose",
-    "benchRet": 152.66,
+    "benchRet": -23.23,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1705305600,
-    "tTo": 1748491200,
+    "tFrom": 1748491200,
+    "tTo": 1791676800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 3000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
@@ -22,7 +22,7 @@
       "sym": "BTC",
       "interval": "4h",
       "bars": 3000,
-      "end": 1748505600
+      "end": 1791705600
     }
   },
   "config": null,

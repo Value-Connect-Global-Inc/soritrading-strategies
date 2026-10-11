@@ -4,14 +4,17 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 446 of 1714 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 447 of 1716 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3447](strategies/3447/) | Volatility Breakout ATR DXY BTC | -36.64% | +152.66% | +48.48% | 96 | 2026-10-11 |
+| ★ | [3450](strategies/3450/) | Fed Policy Trend BTC 4h | +3.74% | -19.64% | +15.10% | 11 | 2026-10-11 |
+|  | [3216](strategies/3216/) | XRP 4H Donchian Breakout | -90.06% | +186.22% | +95.61% | 314 | 2026-10-11 |
+|  | [3449](strategies/3449/) | Fear Greed Mean Reversion BTC | -16.17% | +35.80% | +27.69% | 54 | 2026-10-11 |
+|  | [3447](strategies/3447/) | Volatility Breakout ATR DXY BTC | -54.74% | -23.23% | +60.85% | 98 | 2026-10-11 |
 |  | [3446](strategies/3446/) | Sentiment Gated Trend Following BTC | +34.89% | +45.09% | +28.39% | 118 | 2026-10-11 |
 |  | [3217](strategies/3217/) | BNB Donchian Breakout 4h | -65.09% | +2381.68% | +69.98% | 285 | 2026-10-11 |
 |  | [3445](strategies/3445/) | BTC Bollinger Mean Reversion 1h | -41.97% | -34.05% | +43.84% | 122 | 2026-10-11 |
@@ -193,7 +196,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3224](strategies/3224/) | Uptrend Pullback Reversion (BTC 1D) | +30.88% | +320.57% | +22.00% | 36 | 2026-10-08 |
 |  | [3220](strategies/3220/) | AI 전략 | -43.19% | +174.32% | +56.53% | 14 | 2026-10-08 |
 |  | [3218](strategies/3218/) | On-Chain Network Growth BTC 1D | +20.49% | +72.66% | +58.89% | 128 | 2026-10-08 |
-|  | [3216](strategies/3216/) | XRP 4H Donchian Breakout | -90.24% | +199.21% | +95.61% | 318 | 2026-10-08 |
 | ★ | [3215](strategies/3215/) | XRP 4H Pullback In Uptrend | -37.60% | -40.74% | +39.23% | 330 | 2026-10-08 |
 |  | [3213](strategies/3213/) | Donchian Breakout BNB 1D | -90.51% | +50.08% | +91.66% | 90 | 2026-10-08 |
 | — | [3212](strategies/3212/) | AI 전략 | +11.50% | — | +13.48% | 15 | 2026-10-08 |

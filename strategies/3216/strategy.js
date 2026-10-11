@@ -15,6 +15,8 @@
  * When it does NOT work: in long sideways chop the breakout fails and the stop is hit
  * repeatedly (small losses); this strategy makes its money on the few big trends and
  * loses slowly in ranging markets. It does not protect you in a fast crash beyond the stop.
+ *
+ * (2026-04-09) 표시만 바뀜, 매매 판단은 그대로
  */
 
 function onUpdate(ctx) {
@@ -28,8 +30,8 @@ function onUpdate(ctx) {
   if (ctx.position > 0) {
     const crashStop = st.entryPx != null ? st.entryPx - 3 * (ctx.atr(14, 1) || 0) : -Infinity;
     ctx.watch([
-      { side: 'sell', price: lo10, note: '10-bar low trail' },
-      { side: 'sell', price: crashStop, note: '3 ATR crash stop' }
+      { side: 'sell', price: lo10, trigger: 'below', note: '10-bar low trail' },
+      { side: 'sell', price: crashStop, trigger: 'below', note: '3 ATR crash stop' }
     ]);
     if (ctx.price < lo10 || ctx.price < crashStop) {
       return { side: 'sell', qty: ctx.position };
@@ -37,10 +39,11 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // ---- entry: fresh 20-bar high breakout ----
+  // ---- entry wait: fresh 20-bar high breakout ----
+  ctx.watch([{ side: 'buy', price: hi20, trigger: 'above', note: '20-bar high breakout' }]);
+
   if (ctx.price > hi20) {
     ctx.state = { entryPx: ctx.price };
-    ctx.watch([{ side: 'buy', price: hi20, note: '20-bar high breakout' }]);
     return { side: 'buy', qty: (ctx.cash / ctx.price) * 0.98 };
   }
   return null;
