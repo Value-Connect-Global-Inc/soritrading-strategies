@@ -1,24 +1,24 @@
 /*
  * @coinsori-strategy v1
- * name: BTC SMA50 Trend BearSized 1D
+ * name: BTC SMA50 Trend BearSized Cool 1D
  * ex: binance
  * syms: BTCUSDT
  * interval: 1d
  * cash: 10000
  *
  * Why this strategy: A clean, robust trend strategy on the most liquid crypto,
- * using the bear-sizing principle proven on the ADA champion: ride the 50-day
- * trend at full size when price is above its 200-day average, half size below it.
- * No exotic signals — the edge is that BTC trends are durable and the bear-size
- * rule cuts the worst of the crashes. Different asset and simpler signal than the
- * ADA Donchian champion, so it diversifies the account.
+ * using two mechanisms proven on the ADA champion: bear-sizing (half size below
+ * the 200-day average) and a cool-pause after a stop-out (whipsaw losses come in
+ * clusters, so pausing 10 bars after a loss skips the next failed signal while a
+ * real trend has a durable signal, not an immediate retest). Different asset and
+ * simpler signal than the ADA Donchian champion, so it diversifies the account.
  * When it buys and sells: buys when a closed bar closes above the 50-day average
- * (full size above the 200-day average, half size below it). Sells when a closed
- * bar closes back below the 50-day average, or price falls 2.5 ATR below entry.
+ * (full size above the 200-day average, half below), unless within 10 bars of a
+ * stop-out. Sells when a closed bar closes back below the 50-day average, or
+ * price falls 2.5 ATR below entry.
  * When it does NOT work: In a choppy sideways market the 50-day flips whipsaw.
- * In a violent crash price gaps through any stop. A slow grinding bull with no
- * pullbacks still works, but a V-shaped reversal after a long uptrend sells near
- * the bottom of the first dip.
+ * In a violent crash price gaps through any stop. A strong trend that reverses
+ * then immediately re-breaks out is skipped by the pause.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -33,7 +33,6 @@ function onUpdate(ctx) {
   const atr = ctx.atr(14, 1);
   if (sma50 == null || atr == null || atr <= 0) return null;
 
-  // Bear-sizing (proven on the ADA champion): half size below the 200-day trend.
   let sizeMult = 1.0;
   if (sma200 != null && prevClose < sma200) sizeMult = 0.5;
 
@@ -43,11 +42,14 @@ function onUpdate(ctx) {
     const stop = entry - 2.5 * atr;
     ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '2.5 ATR stop' },
                { side: 'sell', price: sma50, trigger: 'below', note: 'SMA50 trend exit' }]);
-    if (prevClose < sma50 || price < stop) return { side: 'sell', qty: pos };
+    if (prevClose < sma50 || price < stop) {
+      if (price < stop) ctx.state.coolUntil = ctx.i + 10;   // cool-pause after a stop-out
+      return { side: 'sell', qty: pos };
+    }
     return null;
   }
 
-  if (prevClose > sma50) {
+  if (prevClose > sma50 && ctx.i >= (ctx.state.coolUntil || 0)) {
     ctx.watch([{ side: 'sell', price: price - 2.5 * atr, trigger: 'below', note: '2.5 ATR stop' }]);
     return { side: 'buy', qty: ((ctx.cash / price) * 0.99) * sizeMult };
   }
