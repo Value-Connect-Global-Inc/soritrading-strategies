@@ -3,27 +3,28 @@
   "name": "Momentum Filter with ATR",
   "kind": "custom",
   "verified": {
-    "backtestId": 5191,
-    "return": 128.43,
-    "mdd": 77.15,
+    "backtestId": 16976,
+    "return": -52.92,
+    "mdd": 104.74,
     "trades": 1,
     "vsBuyHold": "unmeasured",
-    "gapPct": 0,
-    "tFrom": 1581897600,
+    "gapPct": 0.1,
+    "tFrom": 1581793200,
     "tTo": 1675206000,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "기간 종료 시 미청산 포지션 1종목 — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다"
+      "기간 종료 시 미청산 포지션 1종목 — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 25920봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binanceusdm",
-      "sym": "BTCUSDT",
+      "sym": "BTC",
       "interval": "1h",
       "bars": 25920,
       "end": 1675209600
     }
   },
   "config": null,
-  "updatedAt": "2026-09-16T10:51:40.076Z",
+  "updatedAt": "2026-10-11T05:51:28.985Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

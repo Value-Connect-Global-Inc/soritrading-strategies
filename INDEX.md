@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [972](strategies/972/) | Momentum Filter with ATR | -52.92% | — | +104.74% | 1 | 2026-10-11 |
 | ★ | [371](strategies/371/) | BTC 업비트 돈치안 트렌드 스탑 | -1.72% | -23.27% | +5.46% | 4 | 2026-10-11 |
 | ★ | [1000](strategies/1000/) | MACD RSI Mean Reversion Strategy | -10.92% | -16.12% | +13.58% | 23 | 2026-10-11 |
 |  | [2142](strategies/2142/) | ETH Slow Trend Ride + Volume Filter 4H | +493.35% | +1436.34% | +30.47% | 52 | 2026-10-11 |
@@ -1510,7 +1511,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [1025](strategies/1025/) | FearGreed-Regime Momentum Daily | +6.76% | +10.57% | +7.22% | 4 | 2026-09-17 |
 | — | [1024](strategies/1024/) | FearGreed-Regime Momentum | +26.68% | — | +34.50% | 44 | 2026-09-17 |
 |  | [1022](strategies/1022/) | BTC FearGreed Momentum | -32.68% | -15.70% | +33.25% | 50 | 2026-09-17 |
-| — | [972](strategies/972/) | Momentum Filter with ATR | +128.43% | — | +77.15% | 1 | 2026-09-16 |
 | — | [999](strategies/999/) | MACD + BB Reversal Strategy | +14.35% | — | +15.07% | 206 | 2026-09-16 |
 | ★ | [998](strategies/998/) | BB + RSI Filter Strategy | +5.13% | -15.18% | +25.91% | 49 | 2026-09-16 |
 | — | [997](strategies/997/) | Mean Reversion with Trend Filter Strategy | +43.66% | — | +71.91% | 46 | 2026-09-16 |
