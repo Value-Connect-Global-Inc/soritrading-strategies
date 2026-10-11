@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 467 of 1798 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 467 of 1799 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3537](strategies/3537/) | Volatility Breakout BTC 4H | +13.29% | +35.80% | +26.52% | 60 | 2026-10-11 |
 |  | [3180](strategies/3180/) | BTC Donchian Breakout 4H | +4.93% | +7.79% | +21.09% | 4 | 2026-10-11 |
 |  | [3181](strategies/3181/) | BTC 4H Bollinger Mean Reversion | +142.73% | +486.12% | +68.02% | 2 | 2026-10-11 |
 | ★ | [3182](strategies/3182/) | ETH 4H Donchian Breakout Trend | +16.82% | +9.87% | +28.42% | 4 | 2026-10-11 |
