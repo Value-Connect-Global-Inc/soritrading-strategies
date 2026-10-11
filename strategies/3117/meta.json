@@ -3,7 +3,7 @@
   "name": "ADA Keltner MR 4H Trend-Gated",
   "kind": "custom",
   "verified": {
-    "backtestId": 15084,
+    "backtestId": 17708,
     "return": -9.92,
     "mdd": 20.9,
     "trades": 18,
@@ -27,6 +27,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-03T10:21:13.886Z",
+  "updatedAt": "2026-10-11T16:33:32.631Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
