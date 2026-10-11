@@ -11,9 +11,9 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3541](strategies/3541/) | Volatility Breakout BTC 1H | +10.32% | +35.80% | +9.46% | 72 | 2026-10-11 |
 | ★ | [3144](strategies/3144/) | ADA 1D Defensive Donchian | +95.53% | -24.20% | +30.06% | 8 | 2026-10-11 |
 |  | [3145](strategies/3145/) | AI 전략 | -8.54% | +40.81% | +46.59% | 11 | 2026-10-11 |
-|  | [3541](strategies/3541/) | Volatility Breakout BTC 1H | -12.10% | +8.25% | +12.10% | 75 | 2026-10-11 |
 | ★ | [3148](strategies/3148/) | AI 전략 | +5.91% | -23.70% | +12.70% | 4 | 2026-10-11 |
 |  | [3540](strategies/3540/) | Volatility Breakout ETH 4H | +36.09% | +1894.32% | +37.24% | 92 | 2026-10-11 |
 |  | [3147](strategies/3147/) | AI 전략 | +11.56% | +1055.63% | +12.43% | 6 | 2026-10-11 |
