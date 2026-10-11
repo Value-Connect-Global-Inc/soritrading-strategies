@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3404](strategies/3404/) | BTC Squeeze-Breakout Trend 1D | +115.47% | +580.47% | +28.50% | 18 | 2026-10-11 |
+|  | [3404](strategies/3404/) | BTC Squeeze-Breakout Trend 1D | -5.11% | +95.22% | +23.67% | 12 | 2026-10-11 |
 | — | [3401](strategies/3401/) | BTC Funding Contrarian 1D | -40.59% | — | +42.18% | 9 | 2026-10-11 |
 | ★ | [3399](strategies/3399/) | BTC Macro-Regime Trend DXY 1D | +1006.36% | +580.47% | +44.45% | 48 | 2026-10-11 |
 | ★ | [3398](strategies/3398/) | OLD Champion ADA Donchian 55/10 | +1115.40% | +591.46% | +34.45% | 27 | 2026-10-11 |
