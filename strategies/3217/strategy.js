@@ -5,6 +5,7 @@
  * syms: BNBUSDT
  * interval: 4h
  * cash: 10000
+ * 2026-05-07 표시만 바뀜, 매매 판단은 그대로
  *
  * Why this strategy: In strong trends, price that breaks above the highest high of the
  * last 20 bars tends to keep running (momentum continuation / volatility expansion).
@@ -29,13 +30,20 @@ function onUpdate(ctx) {
   const px = ctx.price;
   if (ch == null || cl == null || sma == null || atr == null || px == null) return null;
 
-  ctx.watch([
-    { side: 'buy', price: ch, note: '20-bar high breakout' },
-    { side: 'sell', price: cl, note: '10-bar low exit' }
-  ]);
-
   if (ctx.position <= 0) {
     // flat: only chase breakouts inside an uptrend to skip bear-market fakes
+    ctx.watch([
+      {
+        side: 'buy',
+        price: ch,
+        trigger: 'above',
+        note: '20-bar high breakout',
+        conds: [
+          { label: 'close > SMA100', now: px, op: '>', ref: sma }
+        ]
+      }
+    ]);
+
     if (px > ch && px > sma) {
       const riskCash = ctx.cash * 0.02;   // risk 2% of equity per trade
       const qty = riskCash / (2 * atr);   // 2xATR adverse move = that 2%
@@ -45,6 +53,10 @@ function onUpdate(ctx) {
   }
 
   // in position: a close below the 10-bar low ends the trend, take the exit
+  ctx.watch([
+    { side: 'sell', price: cl, trigger: 'below', note: '10-bar low exit' }
+  ]);
+
   if (px < cl) {
     return { side: 'sell', qty: ctx.position };
   }

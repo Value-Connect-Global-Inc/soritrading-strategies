@@ -3,7 +3,7 @@
   "name": "BNB Donchian Breakout 4h",
   "kind": "custom",
   "verified": {
-    "backtestId": 15666,
+    "backtestId": 17186,
     "return": -65.09,
     "mdd": 69.98,
     "trades": 285,
@@ -28,6 +28,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-08T16:19:38.530Z",
+  "updatedAt": "2026-10-11T09:53:16.410Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
