@@ -1,0 +1,31 @@
+{
+  "id": 3596,
+  "name": "state persistence test",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 18015,
+    "return": -1.01,
+    "mdd": 1.01,
+    "trades": 2,
+    "vsBuyHold": "win",
+    "benchRet": -44.06,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1514764800,
+    "tTo": 1527724800,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 151봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 151,
+      "end": 1527811200
+    }
+  },
+  "config": null,
+  "updatedAt": "2026-10-11T22:42:18.146Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
