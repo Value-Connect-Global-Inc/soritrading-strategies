@@ -15,13 +15,23 @@
  * When it does NOT work: hashrate is slow — it lags price reversals, so sharp crashes
  * can hit before the signal flips. In liquidity-driven rallies with flat hashrate it
  * sits out the move.
+ *
+ * 2026-05-09: 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const hr = ctx.data('hashrate');
   const hrAvg = ctx.data('hashrate_sma30');
-  if (hr == null || hrAvg == null || hrAvg <= 0) return null;
+  if (hr == null || hrAvg == null || hrAvg <= 0) {
+    // 데이터가 없으면 기다릴 가격/시간 조건도 없다.
+    ctx.watch([]);
+    return null;
+  }
 
   const ratio = hr / hrAvg;
+
+  // 이 전략은 가격/시간이 아니라 해시레이트 비율(데이터)을 기다리므로,
+  // watch 카드에는 가격/시간 대기선을 표시하지 않는다.
+  ctx.watch([]);
 
   // hysteresis: enter only above +2%, exit only below -2%
   if (ctx.position <= 0 && ratio > 1.02) {
