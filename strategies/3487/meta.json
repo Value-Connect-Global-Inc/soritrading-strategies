@@ -3,10 +3,10 @@
   "name": "BbMeanReversionStrategy",
   "kind": "custom",
   "verified": {
-    "backtestId": 17379,
-    "return": 1.01,
-    "mdd": 14.94,
-    "trades": 254,
+    "backtestId": 17382,
+    "return": 7.06,
+    "mdd": 5.22,
+    "trades": 50,
     "vsBuyHold": "lose",
     "benchRet": 8.29,
     "benchBasis": "price",
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-11T12:27:58.625Z",
+  "updatedAt": "2026-10-11T12:28:21.386Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
