@@ -19,6 +19,7 @@
  * flat (capital safe, little upside); a straight-line melt-up of one asset still lags
  * buy-and-hold of that asset. Deep-flush over-concentration can hurt when a flush keeps
  * falling (no recovery).
+ * 2025-01-02: display-only ctx.watch added; trading logic unchanged.
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
@@ -42,6 +43,13 @@ function onUpdate(ctx) {
     const peak = ctx.state.peak != null ? Math.max(ctx.state.peak, price) : price;
     ctx.state.peak = peak;
     const trailStop = peak - 2.5 * atr;
+    ctx.watch([
+      { side: 'sell', price: trailStop, trigger: 'below', note: 'ATR trail stop' },
+      { side: 'sell', price: ema20, trigger: 'above', note: 'EMA20 exit' },
+      { side: 'sell', price: peak, trigger: 'above', note: 'peak (trail ref)' },
+      { side: 'buy', price: lowerBand, trigger: 'below', note: 'BB lower' },
+      { side: 'buy', price: keltnerLow, trigger: 'below', note: 'Keltner low' },
+    ]);
     if (price < trailStop || price > ema20) {
       ctx.state.peak = null;
       return { side: 'sell', qty: pos };
@@ -65,7 +73,29 @@ function onUpdate(ctx) {
     let qty = Math.min(riskBudget / atr, maxQty);
     if (qty <= 0) return null;
     ctx.state.peak = price;
+    ctx.watch([
+      { side: 'buy', price: lowerBand, trigger: 'below', note: 'BB lower', conds: [
+        { label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true },
+        { label: 'SMA200 rising', ok: uptrend },
+      ]},
+      { side: 'buy', price: keltnerLow, trigger: 'below', note: 'Keltner low', conds: [
+        { label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true },
+        { label: 'SMA200 rising', ok: uptrend },
+      ]},
+      { side: 'sell', price: ema20, trigger: 'above', note: 'EMA20 exit' },
+      { side: 'sell', price: price - 2.5 * atr, trigger: 'below', note: 'initial trail' },
+    ]);
     return { side: 'buy', qty: qty };
   }
+  ctx.watch([
+    { side: 'buy', price: lowerBand, trigger: 'below', note: 'BB lower', conds: [
+      { label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true },
+      { label: 'SMA200 rising', ok: uptrend },
+    ]},
+    { side: 'buy', price: keltnerLow, trigger: 'below', note: 'Keltner low', conds: [
+      { label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true },
+      { label: 'SMA200 rising', ok: uptrend },
+    ]},
+  ]);
   return null;
 }
