@@ -11,9 +11,9 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [3553](strategies/3553/) | ETH Trend-Follow EMA50/200 4H | +44.90% | -53.45% | +39.40% | 40 | 2026-10-11 |
 | ★ | [3105](strategies/3105/) | Keltner MR Trend-Gated 4H | +7.68% | -27.55% | +26.59% | 30 | 2026-10-11 |
 | — | [3107](strategies/3107/) | Data Probe SOL 1D MR | +7.22% | — | +33.64% | 118 | 2026-10-11 |
-| ★ | [3553](strategies/3553/) | ETH Trend-Follow EMA50/200 4H | +28.30% | -53.45% | +13.88% | 32 | 2026-10-11 |
 | ★ | [3108](strategies/3108/) | BTC 1D Bollinger Squeeze-Breakout | -7.64% | -40.93% | +13.84% | 2 | 2026-10-11 |
 | — | [3551](strategies/3551/) | BTC ETH Relative-Strength Rotation 4H | -35.36% | — | +52.71% | 430 | 2026-10-11 |
 | — | [3550](strategies/3550/) | Funding Squeeze Long BTC 4H | +82.12% | — | +19.40% | 53 | 2026-10-11 |

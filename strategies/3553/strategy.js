@@ -9,9 +9,10 @@
  * Why this strategy: long crypto trends are the most reliable repeatable behaviour, and ETH
  *   trends on the 4h are strong enough to ride with a crossover signal.
  * When it buys and sells: buys when the fast EMA crosses above the slow EMA while price is
- *   above the long-term SMA200 (uptrend filter). Sells when price drops below the fast EMA.
+ *   above the long-term SMA200 (uptrend filter). Sells when the fast EMA crosses back below
+ *   the slow EMA (trend truly broken) — pullbacks are ridden, not exited.
  * When it does NOT work: in choppy sideways ranges the crossover whipsaws and fees eat the
- *   account. It is long-only, so a sustained bear market produces flat-to-loss results.
+ *   account, and a sustained bear market produces flat-to-loss results (long-only).
  */
 function onUpdate(ctx) {
   // closed-bar values so backtest, live and paper agree
@@ -23,9 +24,9 @@ function onUpdate(ctx) {
   const price = ctx.price;
   const prevClose = ctx.closes.at(-2);
 
-  // exit: trend broken below fast EMA (use closed bar, deterministic)
+  // exit: EMA50 crosses below EMA200 (trend change, not a pullback)
   if (ctx.position > 0) {
-    if (prevClose < f) return { side: 'sell', qty: ctx.position };
+    if (fp > sp && f <= s) return { side: 'sell', qty: ctx.position };
     return null;
   }
 
