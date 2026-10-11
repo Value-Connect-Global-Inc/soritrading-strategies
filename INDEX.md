@@ -4,15 +4,16 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 438 of 1684 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 438 of 1685 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 253 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3404](strategies/3404/) | BTC Squeeze-Breakout Trend 1D | -5.11% | +95.22% | +23.67% | 12 | 2026-10-11 |
+|  | [3405](strategies/3405/) | BTC Trend-Gated Vol-Target CrashStop 1D | -91.50% | -26.04% | +95.11% | 1639 | 2026-10-11 |
 | — | [3401](strategies/3401/) | BTC Funding Contrarian 1D | -40.59% | — | +42.18% | 9 | 2026-10-11 |
+|  | [3404](strategies/3404/) | BTC Squeeze-Breakout Trend 1D | -5.11% | +95.22% | +23.67% | 12 | 2026-10-11 |
 | ★ | [3399](strategies/3399/) | BTC Macro-Regime Trend DXY 1D | +1006.36% | +580.47% | +44.45% | 48 | 2026-10-11 |
 | ★ | [3398](strategies/3398/) | OLD Champion ADA Donchian 55/10 | +1115.40% | +591.46% | +34.45% | 27 | 2026-10-11 |
 | ★ | [3397](strategies/3397/) | AI 전략 | -4.21% | -52.77% | +67.75% | 15 | 2026-10-11 |
