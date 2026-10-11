@@ -1,25 +1,25 @@
 /*
  * @coinsori-strategy v1
- * name: BTC Active-Address Demand Trend 1D
+ * name: BTC Active-Address Capitulation Reversal 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: On-chain active addresses measure real user demand for
- * Bitcoin. When demand accelerates (addresses well above their 30-day average)
- * while the long-term trend is up, price tends to keep rising; when demand
- * clearly cools or the trend breaks, we exit. This is a different data family
- * from price-only pullback strategies — it bets on adoption/usage, not on
- * bounces. A wide hysteresis band turns the noisy daily metric into a slow
- * regime signal so we are not whipsawed by one-day wobbles.
- * When it buys and sells: buy when active addresses are >= 10% above their
- * 30-day average AND price is above the 200-day EMA (and RSI not above 70).
- * Sell when addresses fall to <= 5% BELOW their 30-day average, or price
- * closes below the 200-day EMA, or a 2.5x ATR stop from entry is hit.
- * When it does NOT work: it lags a melt-up (addresses plateau while price
- * runs), and it can whipsaw in a sideways chop where addresses hover around
- * their average. Slow-moving data means few trades — expect long flat periods.
+ * Why this strategy: On-chain active addresses track real user activity.
+ * When they crash to extreme lows relative to their 30-day average, selling
+ * pressure is exhausted — holders have given up — which historically marks a
+ * zone where price stabilises and recovers. We buy that exhaustion and sell
+ * once usage has recovered to its average (the recovery leg), a contrarian
+ * mean-reversion bet on adoption, not on price bounces.
+ * When it buys and sells: buy when active addresses fall to <= 90% of their
+ * 30-day average AND price is above its 50-day EMA (recovering). Sell when
+ * addresses return to their 30-day average, or price closes below the 50-day
+ * EMA, or a 2.5x ATR stop from entry is hit.
+ * When it does NOT work: a genuine structural decline (addresses keep falling
+ * for months) has no bottom to catch — the strategy keeps buying early into a
+ * real bear. It also stays out during long bull runs (addresses never crash),
+ * so it misses melt-ups entirely. Shallow dips do not trigger it.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -27,35 +27,32 @@ function onUpdate(ctx) {
 
   const addr = ctx.data('addr');
   const addrSma = ctx.data('addr_sma30');
-  const ema200 = ctx.ema(200, 1);
+  const ema50 = ctx.ema(50, 1);
   const atr = ctx.atr(14, 1);
-  if (addr == null || addrSma == null || ema200 == null || atr == null) return null;
+  if (addr == null || addrSma == null || ema50 == null || atr == null) return null;
 
   const pos = ctx.position;
   if (pos > 0) {
     const stopPx = ctx.entryPx - 2.5 * atr;
     if (price <= stopPx) return { side: 'sell', qty: pos };
-    // demand must clearly cool (5% below its 30d avg) before we exit
-    if (addr <= addrSma * 0.95) return { side: 'sell', qty: pos };
-    if (price < ema200) return { side: 'sell', qty: pos };
+    // usage recovered to its 30d average → take the recovery profit
+    if (addr >= addrSma) return { side: 'sell', qty: pos };
+    if (price < ema50) return { side: 'sell', qty: pos };
     ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'hard stop' },
-               { side: 'sell', price: ema200, trigger: 'below', note: 'trend break' },
-               { side: 'sell', note: 'addresses cooling', conds: [{ label: 'addr vs sma30', now: addr, op: '<=', ref: addrSma * 0.95, closed: true }] }]);
+               { side: 'sell', price: ema50, trigger: 'below', note: 'recovery failed' },
+               { side: 'sell', note: 'usage back to avg', conds: [{ label: 'addr vs sma30', now: addr, op: '>=', ref: addrSma, closed: true }] }]);
     return null;
   }
 
-  // demand must strongly accelerate: addresses >=10% above their 30d average
-  if (addr < addrSma * 1.10) return null;
-  // long-term uptrend intact — never buy into a broken market
-  if (price <= ema200) return null;
-  // skip euphoric blow-off tops (RSI>70) — chasing has no edge here
-  const rsi = ctx.rsi(14, 1);
-  if (rsi != null && rsi > 70) return null;
+  // exhaustion: addresses at or below 90% of their 30d average
+  if (addr > addrSma * 0.90) return null;
+  // price must be recovering (above 50d EMA), not still collapsing
+  if (price <= ema50) return null;
 
   const riskCash = ctx.cash * 0.01;        // 1% equity risked per trade
   const stopDist = 2.5 * atr;
   let qty = stopDist > 0 ? riskCash / stopDist : 0;
-  const maxQty = (ctx.cash * 0.30) / price; // cap position at 30% of cash
+  const maxQty = (ctx.cash * 0.30) / price; // cap at 30% of cash
   if (qty > maxQty) qty = maxQty;
   if (qty <= 0) return null;
   return { side: 'buy', qty };
