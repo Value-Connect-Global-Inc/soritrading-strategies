@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: ADA Donchian 55/10 BearSized Cool10 Str2 1D
+ * name: ADA Donchian 55/10 BearSized Cool10 Str1 1D
  * ex: binance
  * syms: ADAUSDT
  * interval: 1d
@@ -8,15 +8,16 @@
  *
  * Why this strategy: The ADA Donchian 55/10 champion loses in ranges to whipsaw breakouts — a
  * close that barely pokes above the 55-bar high is usually a fake breakout, not a trend start.
- * This version adds a 2% breakout-strength filter: the close must clear the 55-bar high by a real
- * margin before buying. Real trends clear the channel with momentum; fake ones do not. All other
- * rules (10-bar exit, BearSized position tiers, 10-bar cooldown after a stop-out) are unchanged.
- * When it buys and sells: Buys when a closed bar closes at least 2% above the highest 55 bars,
+ * This version adds a 1% breakout-strength filter: the close must clear the 55-bar high by a real
+ * margin before buying. 1% is gentler than 2% so strong trends that start with a small first push
+ * are not delayed too much. All other rules (10-bar exit, BearSized position tiers, 10-bar
+ * cooldown after a stop-out) are unchanged.
+ * When it buys and sells: Buys when a closed bar closes at least 1% above the highest 55 bars,
  * unless within 10 bars of a stop-out. Sells when a closed bar closes below the lowest 10 bars.
  * Position is half size below the 200-day average, quarter size when more than 20% below it.
- * When it does NOT work: A genuine trend that starts with a small first push above the channel is
- * skipped until it is 2% clear, so it enters later (higher price, less gain). A long range still
- * loses, just less. A violent crash gaps through any stop.
+ * When it does NOT work: A genuine trend that starts with a sub-1% push is skipped until it clears
+ * the channel by 1%, so it enters later (higher price, less gain). A long range still loses, just
+ * less. A violent crash gaps through any stop.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -55,9 +56,9 @@ function onUpdate(ctx) {
   }
 
   const channelHigh = Math.max(...closes.slice(-57, -2));
-  // Breakout strength: close must clear the 55-bar high by 2%, not just poke above it.
-  // Weak breakouts are the whipsaws that lose in ranges; real trends clear with momentum.
-  const breakout = prevClose > channelHigh * 1.02;
+  // Breakout strength: close must clear the 55-bar high by 1%, not just poke above it.
+  // 1% balances filtering weak whipsaws against delaying genuine trend starts.
+  const breakout = prevClose > channelHigh * 1.01;
   if (breakout && ctx.i >= (ctx.state.coolUntil || 0)) {
     ctx.watch([{ side: 'sell', price: price - 2 * atr, trigger: 'below', note: '2 ATR stop' }]);
     return { side: 'buy', qty: ((ctx.cash / price) * 0.99 * sizeMult) };
