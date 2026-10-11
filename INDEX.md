@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 467 of 1804 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 467 of 1805 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3542](strategies/3542/) | AI 전략 | +23.78% | +44.30% | +10.09% | 69 | 2026-10-11 |
 |  | [3134](strategies/3134/) | AI 전략 | +101.19% | +409.78% | +16.51% | 40 | 2026-10-11 |
 |  | [3141](strategies/3141/) | BTC 4H Trend-Gated Keltner Mean-Reversion | +18.46% | +38.04% | +9.05% | 46 | 2026-10-11 |
 |  | [3140](strategies/3140/) | BTC 4H Keltner MR with Hard Stop | -18.05% | +38.04% | +18.73% | 32 | 2026-10-11 |
