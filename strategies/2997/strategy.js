@@ -18,6 +18,8 @@
  * When it does NOT work: In a sustained bear the rising-trend gate keeps us flat
  * (capital-safe but little upside), and it lags buy-and-hold in a relentless melt-up.
  * Low trade count means the edge depends on the few flushes that mark a local bottom.
+ * 
+ * 2026-01-20: Added ctx.watch declarations only — display changes, trading logic unchanged.
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -37,16 +39,30 @@ function onUpdate(ctx) {
   const keltnerLow = ema20 - 2.5 * atr;
 
   if (pos > 0) {
+    // Declare exit levels: sell on snap-back above EMA20 or RSI>55
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'above', note: 'EMA20 snap-back', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 55, closed: true }] },
+      { side: 'sell', price: ema20, trigger: 'above', note: 'EMA20 snap-back', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 55, closed: true }] }
+    ]);
     if (price > ema20 || rsi > 55) {
       return { side: 'sell', qty: pos };
     }
     return null;
   }
 
-  if (!uptrend) return null;
+  if (!uptrend) {
+    ctx.watch([]);
+    return null;
+  }
 
   const bollingerFlush = price < lowerBand && rsi < 30;
   const keltnerPullback = price < keltnerLow && rsi < 40;
+
+  // Declare entry levels: buy when price falls below either band with RSI filter
+  ctx.watch([
+    { side: 'buy', price: lowerBand, trigger: 'below', note: 'BB lower flush', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true }] },
+    { side: 'buy', price: keltnerLow, trigger: 'below', note: 'Keltner pullback', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true }] }
+  ]);
 
   if (bollingerFlush || keltnerPullback) {
     const riskEq = 0.01 * ctx.cash;
