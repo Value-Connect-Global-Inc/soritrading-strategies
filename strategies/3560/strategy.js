@@ -1,18 +1,17 @@
 /*
  * @coinsori-strategy v1
- * name: BNB Trend-Follow EMA50/200 4H re-entry
+ * name: BNB Trend-Follow EMA50/200 4H re-entry trailing
  * ex: binance
  * syms: BNB/USDT
  * interval: 4h
  * cash: 10000
  *
  * Why this strategy: Re-entry while flat when the trend is intact (EMA50>EMA200,
- *   price>SMA400) massively improved the BTC variant of the same core. This
- *   tests whether that improvement generalizes to BNB — the family edge must
- *   not be symbol-specific.
- * When it buys and sells: buys on a bullish EMA50/200 crossover above SMA200,
- *   and re-buys while flat if EMA50>EMA200 and price>SMA400. Sells on death
- *   cross or 2.5x ATR stop.
+ *   price>SMA400) improved the BTC variant. An 8% fixed trailing stop held up on
+ *   the BTC 4h trend family, so this tests it on BNB instead of the fixed ATR stop.
+ * When it buys and sells: buys on a bullish EMA50/200 crossover above SMA200, and
+ *   re-buys while flat if EMA50>EMA200 and price>SMA400. Sells on death cross or
+ *   when price falls 8% below the highest close since entry (trailing stop).
  * When it does NOT work: choppy sideways ranges whipsaw the crossover; long-only
  *   means a sustained bear market is flat-to-loss.
  */
@@ -27,10 +26,14 @@ function onUpdate(ctx) {
   const prevClose = ctx.closes.at(-2);
 
   if (ctx.position > 0) {
-    const stopPx = ctx.entryPx - 2.5 * atr;
+    // ratchet the trailing reference up to the highest close since entry
+    let hi = ctx.state.hiSinceEntry;
+    if (hi == null || prevClose > hi) hi = prevClose;
+    ctx.state.hiSinceEntry = hi;
+    const stopPx = hi * 0.92; // 8% trailing stop from highest close
     if (price <= stopPx) return { side: 'sell', qty: ctx.position };
     if (fp > sp && f <= s) return { side: 'sell', qty: ctx.position };
-    ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'hard stop' }]);
+    ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'trailing stop' }]);
     return null;
   }
 
@@ -45,5 +48,6 @@ function onUpdate(ctx) {
   const maxQty = (ctx.cash * 0.99) / price;
   if (qty > maxQty) qty = maxQty;
   if (qty <= 0) return null;
+  ctx.state.hiSinceEntry = null; // reset on new entry
   return { side: 'buy', qty };
 }
