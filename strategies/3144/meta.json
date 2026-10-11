@@ -3,7 +3,7 @@
   "name": "ADA 1D Defensive Donchian",
   "kind": "custom",
   "verified": {
-    "backtestId": 15238,
+    "backtestId": 17658,
     "return": 95.53,
     "mdd": 30.06,
     "trades": 8,
@@ -28,6 +28,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-05T15:16:01.466Z",
+  "updatedAt": "2026-10-11T15:24:04.146Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
