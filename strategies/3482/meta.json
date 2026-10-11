@@ -1,0 +1,31 @@
+{
+  "id": 3482,
+  "name": "MtfEmaPullbackAtr",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 17363,
+    "return": -92.25,
+    "mdd": 92.25,
+    "trades": 1060,
+    "vsBuyHold": "lose",
+    "benchRet": 59.85,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1782694800,
+    "tTo": 1791691200,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 2500봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "1h",
+      "bars": 2500,
+      "end": 1791720000
+    }
+  },
+  "config": null,
+  "updatedAt": "2026-10-11T12:25:53.216Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

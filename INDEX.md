@@ -4,13 +4,17 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 457 of 1743 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 459 of 1747 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3482](strategies/3482/) | MtfEmaPullbackAtr | -92.25% | +59.85% | +92.25% | 1060 | 2026-10-11 |
+|  | [3481](strategies/3481/) | Fear Greed Contrarian Reversion | -24.45% | -19.64% | +32.10% | 62 | 2026-10-11 |
+| ★ | [3480](strategies/3480/) | Bollinger RSI Mean Reversion 1h | -27.22% | -34.89% | +38.71% | 190 | 2026-10-11 |
+| ★ | [3479](strategies/3479/) | Volatility ATR Trend Breakout | +119.48% | +116.31% | +22.30% | 1 | 2026-10-11 |
 | ★ | [3472](strategies/3472/) | AI 전략 | +80.37% | +44.30% | +24.15% | 40 | 2026-10-11 |
 |  | [3477](strategies/3477/) | MACD Trend Filter 4H | -54.46% | +458.60% | +64.70% | 409 | 2026-10-11 |
 |  | [3476](strategies/3476/) | Adaptive ATR Breakout 4H | -82.79% | +44.30% | +83.71% | 224 | 2026-10-11 |
