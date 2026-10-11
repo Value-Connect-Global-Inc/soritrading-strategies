@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3181](strategies/3181/) | BTC 4H Bollinger Mean Reversion | +142.73% | +486.12% | +68.02% | 2 | 2026-10-11 |
 | ★ | [3182](strategies/3182/) | ETH 4H Donchian Breakout Trend | +16.82% | +9.87% | +28.42% | 4 | 2026-10-11 |
 |  | [3183](strategies/3183/) | BTC 4H Momentum-Confirmed EMA Trend | -51.89% | +435.49% | +56.61% | 78 | 2026-10-11 |
 |  | [3536](strategies/3536/) | ETH 1h Bollinger Band Mean Reversion | -15.83% | +6.21% | +18.34% | 148 | 2026-10-11 |
@@ -302,7 +303,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3191](strategies/3191/) | BTC 4H Pure EMA50 Trend baseline | +49.39% | +469.54% | +66.95% | 333 | 2026-10-08 |
 |  | [3190](strategies/3190/) | BTC 4H Macro-Gated Trend | +3.06% | +48.89% | +5.15% | 2 | 2026-10-08 |
 |  | [3184](strategies/3184/) | BTC 4H Donchian Turtle Trend | +229.05% | +469.54% | +33.42% | 107 | 2026-10-07 |
-|  | [3181](strategies/3181/) | BTC 4H Bollinger Mean Reversion | +142.73% | +486.12% | +68.02% | 2 | 2026-10-07 |
 |  | [3179](strategies/3179/) | BTC Long-Horizon Momentum Hysteresis 1D | +7.04% | +194.38% | +59.44% | 9 | 2026-10-07 |
 |  | [3174](strategies/3174/) | ETH Trend Ride ATR Trailing 4H | -95.18% | -23.98% | +95.60% | 354 | 2026-10-07 |
 |  | [3173](strategies/3173/) | BTC RSI2 Panic Reversion 1D | -7.46% | +446.26% | +64.59% | 138 | 2026-10-07 |

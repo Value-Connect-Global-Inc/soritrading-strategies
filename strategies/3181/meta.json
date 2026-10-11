@@ -3,7 +3,7 @@
   "name": "BTC 4H Bollinger Mean Reversion",
   "kind": "custom",
   "verified": {
-    "backtestId": 15471,
+    "backtestId": 17612,
     "return": 142.73,
     "mdd": 68.02,
     "trades": 2,
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-07T17:42:22.548Z",
+  "updatedAt": "2026-10-11T13:15:37.232Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
