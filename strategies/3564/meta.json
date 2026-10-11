@@ -1,0 +1,31 @@
+{
+  "id": 3564,
+  "name": "SOL Pullback-in-Uptrend RSI 4H",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 17813,
+    "return": 6.39,
+    "mdd": 9.55,
+    "trades": 160,
+    "vsBuyHold": "win",
+    "benchRet": -25.34,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1618934400,
+    "tTo": 1676520000,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 4000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "4h",
+      "bars": 4000,
+      "end": 1676534400
+    }
+  },
+  "config": null,
+  "updatedAt": "2026-10-11T18:32:21.479Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

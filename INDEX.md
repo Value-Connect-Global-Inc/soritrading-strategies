@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 470 of 1821 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 471 of 1822 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 261 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [3564](strategies/3564/) | SOL Pullback-in-Uptrend RSI 4H | +6.39% | -25.34% | +9.55% | 160 | 2026-10-11 |
 | ★ | [3562](strategies/3562/) | ETH Pullback-in-Uptrend RSI 4H | +13.02% | -26.02% | +9.41% | 258 | 2026-10-11 |
 | — | [3071](strategies/3071/) | Multi-Asset MR Basket 5-Asset Full-ATR-Risk-Scaled | +26.46% | — | +8.71% | 97 | 2026-10-11 |
 | — | [3072](strategies/3072/) | Multi-Asset Momentum-Pullback 5-Asset 4H | -14.93% | — | +18.87% | 86 | 2026-10-11 |
