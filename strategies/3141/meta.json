@@ -3,7 +3,7 @@
   "name": "BTC 4H Trend-Gated Keltner Mean-Reversion",
   "kind": "custom",
   "verified": {
-    "backtestId": 15200,
+    "backtestId": 17664,
     "return": 18.46,
     "mdd": 9.05,
     "trades": 46,
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-05T14:39:30.331Z",
+  "updatedAt": "2026-10-11T15:37:07.417Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
