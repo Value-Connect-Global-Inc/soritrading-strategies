@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3464](strategies/3464/) | BTC Trend Rider 1D | +549.21% | +580.47% | +50.37% | 24 | 2026-10-11 |
+|  | [3464](strategies/3464/) | BTC Trend Rider 1D | -11.40% | +95.22% | +34.89% | 17 | 2026-10-11 |
 |  | [3463](strategies/3463/) | Fed Regime BTC 1D | -1.24% | +95.22% | +34.54% | 12 | 2026-10-11 |
 |  | [3213](strategies/3213/) | Donchian Breakout BNB 1D | -90.51% | +50.08% | +91.66% | 90 | 2026-10-11 |
 |  | [3218](strategies/3218/) | On-Chain Network Growth BTC 1D | +20.49% | +72.66% | +58.89% | 128 | 2026-10-11 |
