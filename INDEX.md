@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [3588](strategies/3588/) | Multi-Asset Donchian Turtle Portfolio | +69.51% | — | +7.06% | 340 | 2026-10-11 |
+| — | [3588](strategies/3588/) | Multi-Asset Donchian Turtle Portfolio | +9.02% | — | +9.22% | 384 | 2026-10-11 |
 | ★ | [3002](strategies/3002/) | ETH 1D Dual-MR Defensive (Bollinger+Keltner) | +1.37% | -0.21% | +4.40% | 7 | 2026-10-11 |
 |  | [3003](strategies/3003/) | SOL 1D Dual-MR Defensive (Bollinger+Keltner) | +6.04% | +202.26% | +5.29% | 10 | 2026-10-11 |
 |  | [3004](strategies/3004/) | BNB 1D Dual-MR Defensive (Bollinger+Keltner) | +3.16% | +141.91% | +10.53% | 16 | 2026-10-11 |
