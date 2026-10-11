@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [3067](strategies/3067/) | Multi-Asset MR Basket 5-Asset Level-Gate | -7.74% | — | +8.20% | 6 | 2026-10-11 |
 | ★ | [3565](strategies/3565/) | ETH Fear-Greed Regime Trend 4H | +1.99% | -26.02% | +2.85% | 18 | 2026-10-11 |
 |  | [3070](strategies/3070/) | BTC 1D Dual-MR Risk-Scaled (upbit) | +11.73% | +12.94% | +17.93% | 8 | 2026-10-11 |
 | ★ | [3562](strategies/3562/) | ETH Pullback-in-Uptrend RSI 4H | +13.02% | -26.02% | +9.41% | 258 | 2026-10-11 |
@@ -411,7 +412,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2209](strategies/2209/) | SOL Trend-Gated Vol-Target CrashStop 1D | -100.00% | -10.70% | +100.00% | 33388 | 2026-10-01 |
 |  | [3069](strategies/3069/) | Multi-Asset Stop-Protected Bear MR Basket 5-Asset | +9.13% | +69.10% | +19.40% | 14 | 2026-09-30 |
 | — | [3068](strategies/3068/) | Multi-Asset Stop-Protected Bear MR Basket 5-Asset | +56.68% | — | +15.50% | 132 | 2026-09-30 |
-| — | [3067](strategies/3067/) | Multi-Asset MR Basket 5-Asset Level-Gate | -7.74% | — | +8.20% | 6 | 2026-09-30 |
 | — | [3052](strategies/3052/) | Multi-Asset Defensive MR Basket 5-Asset | +119.65% | — | +6.57% | 126 | 2026-09-30 |
 | — | [3065](strategies/3065/) | Multi-Asset MR Basket 5-Asset 4H Tiered-Profit Exit | +30.26% | — | +1.15% | 104 | 2026-09-30 |
 |  | [3064](strategies/3064/) | BTC 1D Regime-Switch MR Core + Melt-Up Leg | -31.24% | +1246.40% | +65.23% | 113 | 2026-09-30 |

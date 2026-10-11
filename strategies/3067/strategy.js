@@ -21,6 +21,8 @@
  * below it and the gate turns off (safe, but no upside). A single straight-line melt-up of
  * one asset still lags buy-and-hold of that asset. The looser level gate can occasionally
  * buy a flush that keeps sliding in a mild downtrend.
+ *
+ * 2024-01-15: Added ctx.watch declarations — display only; trading logic unchanged.
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
@@ -45,6 +47,13 @@ function onUpdate(ctx) {
     const peak = ctx.state.peak != null ? Math.max(ctx.state.peak, price) : price;
     ctx.state.peak = peak;
     const trailStop = peak - 2.5 * atr; // 2.5 ATR below the peak = let winners run, cut reversals
+
+    // Declare exit waits: trailing stop and EMA20 snap-back
+    ctx.watch([
+      { side: 'sell', price: trailStop, trigger: 'below', note: '2.5 ATR trail stop' },
+      { side: 'sell', price: ema20, trigger: 'above', note: 'EMA20 snap-back' }
+    ]);
+
     if (price < trailStop || price > ema20) {
       ctx.state.peak = null;
       return { side: 'sell', qty: pos };
@@ -52,10 +61,32 @@ function onUpdate(ctx) {
     return null;
   }
 
-  if (!above200) return null;
+  if (!above200) {
+    // Not above 200d — declare we're waiting for price to rise above it
+    ctx.watch([
+      { side: 'buy', price: sma200, trigger: 'above', note: '200d gate' }
+    ]);
+    return null;
+  }
 
   const bollingerFlush = price < lowerBand && rsi < 30;
   const keltnerPullback = price < keltnerLow && rsi < 40;
+
+  // Declare entry waits with the exact values used in the decision
+  ctx.watch([
+    {
+      side: 'buy', price: lowerBand, trigger: 'below', note: 'BB lower + RSI<30',
+      conds: [
+        { label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true }
+      ]
+    },
+    {
+      side: 'buy', price: keltnerLow, trigger: 'below', note: 'Keltner low + RSI<40',
+      conds: [
+        { label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true }
+      ]
+    }
+  ]);
 
   if (bollingerFlush) {
     const qty = (ctx.cash / price) * 0.20;

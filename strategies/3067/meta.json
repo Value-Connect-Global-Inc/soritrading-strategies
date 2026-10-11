@@ -3,7 +3,7 @@
   "name": "Multi-Asset MR Basket 5-Asset Level-Gate",
   "kind": "custom",
   "verified": {
-    "backtestId": 14683,
+    "backtestId": 17819,
     "return": -7.74,
     "mdd": 8.2,
     "trades": 6,
@@ -12,18 +12,31 @@
     "tFrom": 1672531200,
     "tTo": 1703980800,
     "approxNotes": [
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1825봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다",
       "[생존 편향] 이 유니버스는 **지금 거래되는 종목**만입니다. 구간 중(또는 그 전에) 상장폐지된 종목은 **처음부터 들어 있지 않습니다** — 망한 종목이 빠져 있어 수익률이 **실제보다 좋게** 나옵니다. 스캐너·랭킹 전략일수록 그 차이가 큽니다."
     ],
     "spec": {
       "ex": "binance",
-      "sym": "BTCUSDT",
+      "sym": "BTC",
       "interval": "1d",
       "bars": 365,
       "end": 1704067200,
       "syms": 5
     }
   },
-  "config": null,
-  "updatedAt": "2026-09-30T07:13:45.491Z",
+  "config": {
+    "ex": "binance",
+    "cash": 10000,
+    "syms": [
+      "BTC",
+      "ETH",
+      "SOL",
+      "XRP",
+      "BNB"
+    ],
+    "quote": "USDT",
+    "interval": "1d"
+  },
+  "updatedAt": "2026-10-11T19:00:03.985Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
