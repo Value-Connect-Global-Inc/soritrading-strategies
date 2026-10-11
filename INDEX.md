@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3542](strategies/3542/) | AI 전략 | +10.87% | +22.57% | +8.53% | 72 | 2026-10-11 |
+|  | [3542](strategies/3542/) | AI 전략 | +10.87% | +22.55% | +8.53% | 72 | 2026-10-11 |
 |  | [3131](strategies/3131/) | BTC 4H Trend-Gated Keltner MR | +101.19% | +409.78% | +16.51% | 40 | 2026-10-11 |
 |  | [3139](strategies/3139/) | XRP 4H Trend-Gated Keltner Mean-Reversion | +17.06% | +255.56% | +10.38% | 10 | 2026-10-11 |
 |  | [3134](strategies/3134/) | AI 전략 | +101.19% | +409.78% | +16.51% | 40 | 2026-10-11 |
