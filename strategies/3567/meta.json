@@ -3,10 +3,10 @@
   "name": "BTC Pullback-in-Uptrend RSI 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 17828,
-    "return": 33.3,
-    "mdd": 5,
-    "trades": 210,
+    "backtestId": 17831,
+    "return": 9.85,
+    "mdd": 2.84,
+    "trades": 84,
     "vsBuyHold": "lose",
     "benchRet": 46.7,
     "benchBasis": "price",
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-11T19:26:13.288Z",
+  "updatedAt": "2026-10-11T19:37:26.614Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

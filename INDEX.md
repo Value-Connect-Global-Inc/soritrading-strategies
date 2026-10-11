@@ -11,8 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3567](strategies/3567/) | BTC Pullback-in-Uptrend RSI 4H | +9.85% | +46.70% | +2.84% | 84 | 2026-10-11 |
 | — | [3062](strategies/3062/) | Multi-Asset Defensive MR Basket 5-Asset 4H Profit-Target (ba | +10.79% | — | +1.00% | 246 | 2026-10-11 |
-|  | [3567](strategies/3567/) | BTC Pullback-in-Uptrend RSI 4H | +33.30% | +46.70% | +5.00% | 210 | 2026-10-11 |
 |  | [3566](strategies/3566/) | BNB Pullback-in-Uptrend RSI 4H | +22.23% | +2460.26% | +8.60% | 258 | 2026-10-11 |
 |  | [3565](strategies/3565/) | ETH Fear-Greed Regime Trend 4H | -0.84% | +15.70% | +6.14% | 108 | 2026-10-11 |
 | — | [3067](strategies/3067/) | Multi-Asset MR Basket 5-Asset Level-Gate | -7.74% | — | +8.20% | 6 | 2026-10-11 |
