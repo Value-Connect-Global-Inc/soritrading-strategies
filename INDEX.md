@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [3560](strategies/3560/) | AI 전략 | +54.46% | -26.02% | +29.68% | 54 | 2026-10-11 |
+| ★ | [3560](strategies/3560/) | AI 전략 | +56.53% | +30.75% | +29.46% | 67 | 2026-10-11 |
 |  | [3558](strategies/3558/) | BTC Trend-Follow EMA50/200 4H | +217.73% | +461.93% | +25.39% | 44 | 2026-10-11 |
 |  | [3084](strategies/3084/) | BTC 1D Squeeze-Breakout Only (upbit) | -8.00% | +28.88% | +21.12% | 24 | 2026-10-11 |
 |  | [3086](strategies/3086/) | Defensive Mean Reversion BTC | +8.82% | +90.62% | +1.91% | 20 | 2026-10-11 |
