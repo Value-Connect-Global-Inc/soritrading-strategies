@@ -3,16 +3,16 @@
   "name": "ETH Pullback-in-Uptrend RSI 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 17807,
-    "return": -1.97,
-    "mdd": 13.55,
-    "trades": 96,
-    "vsBuyHold": "win",
-    "benchRet": -26.02,
+    "backtestId": 17809,
+    "return": 25.05,
+    "mdd": 4.77,
+    "trades": 270,
+    "vsBuyHold": "lose",
+    "benchRet": 1890.05,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1719691200,
-    "tTo": 1791676800,
+    "tFrom": 1575720000,
+    "tTo": 1647720000,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
@@ -22,10 +22,10 @@
       "sym": "ETH",
       "interval": "4h",
       "bars": 5000,
-      "end": 1791734400
+      "end": 1647734400
     }
   },
   "config": null,
-  "updatedAt": "2026-10-11T18:27:37.661Z",
+  "updatedAt": "2026-10-11T18:28:32.174Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
