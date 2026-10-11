@@ -50,7 +50,7 @@ function onUpdate(ctx) {
   // 104 is roughly the long-term middle of DXY; if the series is unavailable (null) we don't block.
   // Reason: a rising dollar pressures risk assets, so dips in a strong-dollar
   // regime are more likely to be real crashes than pullbacks.
-  const dxy = ctx.macro('dxy');
+  const dxy = ctx.data('dxy');
   if (dxy != null && dxy >= 104) return null;
 
   const riskCash = ctx.cash * 0.01;        // 1% of total equity risked per leg

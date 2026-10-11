@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [3575](strategies/3575/) | BTC Donchian Breakout Trend 4H | +44.32% | — | +7.77% | 588 | 2026-10-11 |
+| — | [3575](strategies/3575/) | BTC Donchian Breakout Trend 4H | -2.51% | — | +4.81% | 22 | 2026-10-11 |
 |  | [3043](strategies/3043/) | BTC 1D On-Chain + Momentum Override | +171.04% | +1255.34% | +66.21% | 19 | 2026-10-11 |
 |  | [3574](strategies/3574/) | BTC Fear-Greed Sentiment Reversal 1D | +0.39% | +164.24% | +0.21% | 8 | 2026-10-11 |
 |  | [3573](strategies/3573/) | BTC Active-Address Demand Trend 1D | -5.67% | +164.24% | +7.30% | 121 | 2026-10-11 |
