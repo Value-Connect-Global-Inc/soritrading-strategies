@@ -24,6 +24,7 @@
  * violent bear it dodges losses by staying in cash but the trend sleeve can
  * take small hits before the 200-day turns down. It still lags buy-and-hold in
  * relentless melt-ups because the sleeve is deliberately small.
+ * 2026-01-20: added ctx.watch declarations only — display only, trading logic unchanged.
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -49,18 +50,35 @@ function onUpdate(ctx) {
   if (pos > 0) {
     const inDefensive = st.mode === 'def';
     if (inDefensive) {
+      const low10 = ctx.low(10, 1);
       if (strongTrend) {
-        const low10 = ctx.low(10, 1);
         if (low10 != null && price < low10) {
+          ctx.watch([
+            { side: 'sell', price: low10, trigger: 'below', qty: pos, note: 'defensive 10d low stop' }
+          ]);
           st.cd = ctx.i + 3;
           return { side: 'sell', qty: pos };
         }
+        ctx.watch([
+          { side: 'sell', price: low10, trigger: 'below', qty: pos, note: 'defensive 10d low stop' },
+          { side: 'sell', price: bb.mid, trigger: 'above', qty: pos, note: 'snap-back exit' },
+          { side: 'sell', price: 60, trigger: 'above', qty: pos, note: 'RSI exit', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 60, closed: true }] }
+        ]);
         return null;
       }
       if (price > bb.mid || rsi > 60) {
+        ctx.watch([
+          { side: 'sell', price: bb.mid, trigger: 'above', qty: pos, note: 'snap-back exit' },
+          { side: 'sell', price: 60, trigger: 'above', qty: pos, note: 'RSI exit', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 60, closed: true }] }
+        ]);
         st.cd = ctx.i + 3;
         return { side: 'sell', qty: pos };
       }
+      ctx.watch([
+        { side: 'sell', price: low10, trigger: 'below', qty: pos, note: 'defensive 10d low stop' },
+        { side: 'sell', price: bb.mid, trigger: 'above', qty: pos, note: 'snap-back exit' },
+        { side: 'sell', price: 60, trigger: 'above', qty: pos, note: 'RSI exit', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 60, closed: true }] }
+      ]);
       return null;
     }
     // ---- Trend sleeve exit: short trend breaks ----
@@ -70,16 +88,31 @@ function onUpdate(ctx) {
     // Exit the sleeve when the 20-day average crosses back below the 50-day:
     // the short uptrend that justified the sleeve is gone.
     if (ema20 < ema50) {
+      ctx.watch([
+        { side: 'sell', price: ema50, trigger: 'below', qty: pos, note: 'sleeve EMA20<EMA50 exit', conds: [{ label: 'EMA20 close', now: ema20, op: '<', ref: ema50, closed: true }] }
+      ]);
       return { side: 'sell', qty: pos };
     }
+    ctx.watch([
+      { side: 'sell', price: ema50, trigger: 'below', qty: pos, note: 'sleeve EMA20<EMA50 exit', conds: [{ label: 'EMA20 close', now: ema20, op: '<', ref: ema50, closed: true }] }
+    ]);
     return null;
   }
 
-  if (st.cd != null && ctx.i < st.cd) return null;
+  if (st.cd != null && ctx.i < st.cd) {
+    ctx.watch([]);
+    return null;
+  }
 
   // ---- Defensive core entry (unchanged): oversold flush in a rising uptrend ----
   const rsiBar = strongTrend ? 40 : 30;
   if (uptrend && price < bb.lower && rsi < rsiBar) {
+    ctx.watch([
+      { side: 'buy', price: bb.lower, trigger: 'below', qty: (ctx.cash / price) * 0.95, note: 'defensive dip buy', conds: [
+        { label: 'SMA200 rising', ok: uptrend },
+        { label: 'RSI(14) close', now: rsi, op: '<', ref: rsiBar, closed: true }
+      ] }
+    ]);
     st.cd = null;
     st.mode = 'def';
     return { side: 'buy', qty: (ctx.cash / price) * 0.95 };
@@ -91,8 +124,37 @@ function onUpdate(ctx) {
   const ema20 = ctx.ema(20, 1);
   const ema50 = ctx.ema(50, 1);
   if (uptrend && strongTrend && ema20 != null && ema50 != null && ema20 > ema50) {
+    ctx.watch([
+      { side: 'buy', price: sma200, trigger: 'above', qty: sleeveQty, note: 'trend sleeve entry', conds: [
+        { label: 'SMA200 rising', ok: uptrend },
+        { label: 'Price > 1.08*SMA200', ok: strongTrend },
+        { label: 'EMA20>EMA50 close', now: ema20, op: '>', ref: ema50, closed: true }
+      ] }
+    ]);
     st.mode = 'sleeve';
     return { side: 'buy', qty: sleeveQty };
   }
+
+  // ---- No entry condition: show what we're waiting for ----
+  const conditions = [];
+  if (!uptrend) {
+    conditions.push({ label: 'SMA200 rising', ok: uptrend });
+  }
+  if (!strongTrend) {
+    conditions.push({ label: 'Price > 1.08*SMA200', ok: strongTrend });
+  }
+  if (price >= bb.lower) {
+    conditions.push({ label: 'Price < BB lower', ok: price < bb.lower });
+  }
+  if (rsi >= rsiBar) {
+    conditions.push({ label: 'RSI(14) < ' + rsiBar, now: rsi, op: '<', ref: rsiBar, closed: true });
+  }
+  if (ema20 != null && ema50 != null && !(ema20 > ema50)) {
+    conditions.push({ label: 'EMA20 > EMA50', now: ema20, op: '>', ref: ema50, closed: true });
+  }
+  ctx.watch([
+    { side: 'buy', price: bb.lower, trigger: 'below', note: 'defensive dip buy', conds: conditions.slice(0, 4) },
+    { side: 'buy', price: sma200, trigger: 'above', note: 'trend sleeve entry', conds: conditions.slice(0, 4) }
+  ]);
   return null;
 }
