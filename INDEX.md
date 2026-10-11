@@ -4,13 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 474 of 1842 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 265 of them right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 475 of 1844 right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 266 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [3588](strategies/3588/) | Multi-Asset Donchian Turtle Portfolio | +69.51% | — | +7.06% | 340 | 2026-10-11 |
+| ★ | [3002](strategies/3002/) | ETH 1D Dual-MR Defensive (Bollinger+Keltner) | +1.37% | -0.21% | +4.40% | 7 | 2026-10-11 |
 |  | [3003](strategies/3003/) | SOL 1D Dual-MR Defensive (Bollinger+Keltner) | +6.04% | +202.26% | +5.29% | 10 | 2026-10-11 |
 |  | [3004](strategies/3004/) | BNB 1D Dual-MR Defensive (Bollinger+Keltner) | +3.16% | +141.91% | +10.53% | 16 | 2026-10-11 |
 | ★ | [3006](strategies/3006/) | BTC 1D Dual-MR Defensive Full-Cash | +16.39% | -52.77% | +2.47% | 10 | 2026-10-11 |
