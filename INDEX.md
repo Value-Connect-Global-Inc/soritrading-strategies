@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [3375](strategies/3375/) | AI 전략 | -0.26% | — | +0.69% | 3 | 2026-10-11 |
 |  | [3424](strategies/3424/) | LINK Donchian Breakout 4H | -94.69% | +614.69% | +96.79% | 210 | 2026-10-11 |
 |  | [3386](strategies/3386/) | BTC Network-Growth Trend 1D | +97.04% | +154.38% | +70.25% | 18 | 2026-10-11 |
 |  | [3422](strategies/3422/) | BTC Vol Squeeze Breakout 1D | +116.44% | +1198.30% | +36.82% | 16 | 2026-10-11 |
@@ -54,7 +55,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3378](strategies/3378/) | BTC 200-Day Trend Filter 1D | +6.59% | +195.86% | +33.16% | 29 | 2026-10-10 |
 |  | [3377](strategies/3377/) | SOL Volume-Confirmed Breakout 1D | +10.51% | +158.12% | +39.34% | 20 | 2026-10-10 |
 | — | [3376](strategies/3376/) | AI 전략 | -2.57% | — | +6.80% | 3 | 2026-10-10 |
-| — | [3375](strategies/3375/) | AI 전략 | -0.26% | — | +0.69% | 3 | 2026-10-10 |
 | — | [3372](strategies/3372/) | Multi-Asset RSI2 Panic Basket 1D | +20.94% | — | +14.00% | 74 | 2026-10-10 |
 | — | [3371](strategies/3371/) | Multi-Asset RSI2 Panic Basket 1D | +47.21% | — | +16.28% | 196 | 2026-10-10 |
 | — | [3373](strategies/3373/) | Multi-Asset RSI2 Panic Basket 1D | +20.94% | — | +14.00% | 74 | 2026-10-10 |
