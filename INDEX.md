@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3048](strategies/3048/) | BTC 1D Squeeze-Breakout Trend-Gated | -35.37% | +244.14% | +42.41% | 22 | 2026-10-11 |
 | ★ | [3051](strategies/3051/) | BTC 1D Long-Short 200-Day Trend | +121.63% | +43.89% | +28.23% | 129 | 2026-10-11 |
 | — | [3572](strategies/3572/) | 3-Asset Pullback Basket w/ Stop Cooldown 4H | +70.51% | — | +12.67% | 762 | 2026-10-11 |
 |  | [3571](strategies/3571/) | DXY Dollar-Weak BTC Regime 4H | +10.49% | +35.80% | +21.72% | 1 | 2026-10-11 |
@@ -433,7 +434,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | — | [3053](strategies/3053/) | Multi-Asset Defensive MR Basket 5-Asset DXY-Gated | +133.29% | — | +6.57% | 132 | 2026-09-30 |
 |  | [3050](strategies/3050/) | BTC 1D Macro-Gated OBV Trend + Keltner MR | -91.59% | +43.89% | +91.85% | 283 | 2026-09-30 |
 | ★ | [3049](strategies/3049/) | BTC 1D Dual-Mode + Melt-Up Pyramiding | -46.86% | -56.05% | +61.77% | 9 | 2026-09-30 |
-|  | [3048](strategies/3048/) | BTC 1D Squeeze-Breakout Trend-Gated | -35.37% | +244.14% | +42.41% | 22 | 2026-09-30 |
 |  | [3047](strategies/3047/) | ETH 1D Dual-Mode OBV Trend + Keltner MR | +57.19% | +64.83% | +37.52% | 49 | 2026-09-30 |
 | ★ | [3046](strategies/3046/) | BTC 1D Dual-Mode MR Risk-Scaled | +678.32% | +244.14% | +51.31% | 44 | 2026-09-30 |
 |  | [3045](strategies/3045/) | BTC 1D Dual-Mode + Melt-Up Fast Leg | -10.03% | +45.03% | +11.86% | 6 | 2026-09-30 |

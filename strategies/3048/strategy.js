@@ -5,6 +5,7 @@
  * syms: BTCUSDT
  * interval: 1d
  * cash: 10000
+ * 2025-04-11 표시만 바뀜, 매매 판단은 그대로
  *
  * Why this strategy: Big BTC moves often start from a quiet squeeze — Bollinger
  * bands compress (low volatility) and then price breaks out of the compression.
@@ -54,11 +55,22 @@ function onUpdate(ctx) {
   const high20 = ctx.high(20, 1);
 
   if (pos > 0) {
+    ctx.watch([{ side: 'sell', price: ema20, trigger: 'below', note: '20d EMA exit' }]);
     // Exit when price closes below the 20-day EMA (trend lost).
     if (price < ema20) {
       return { side: 'sell', qty: pos };
     }
     return null;
+  }
+
+  if (high20 != null) {
+    ctx.watch([{ side: 'buy', price: high20, trigger: 'above', note: '20d high breakout',
+      conds: [
+        { label: '200d avg rising', ok: trendOk },
+        { label: 'squeeze quietest 20%', ok: quietest }
+      ] }]);
+  } else {
+    ctx.watch([]);
   }
 
   // Entry: breakout above 20-day high out of a squeeze, in a rising 200-day trend.
