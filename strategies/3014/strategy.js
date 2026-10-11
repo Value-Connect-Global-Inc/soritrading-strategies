@@ -12,7 +12,7 @@
  * BTC 1D cuts trend winners short and destroys melt-up capture. This version splits the
  * exit by entry type: mean-reversion pullbacks keep the fast snap-back exit (the
  * champion's validated edge), while squeeze-breakout trend entries ride a slower 50-day
- * EMA exit so bull moves run further.
+ * EMA exit so bull runs move further.
  * When it buys and sells: Same two entries inside a rising 200-day trend — a Bollinger
  * squeeze breakout above the 20-day high, and an ATR-Keltner oversold pullback. The
  * exit depends on which entry fired: MR trades exit on the EMA20/RSI55 snap-back, trend
@@ -20,6 +20,9 @@
  * When it does NOT work: In a broad bear the rising-trend gate keeps it flat. A squeeze
  * that resolves down is missed (long-only). The slower trend exit gives back more of a
  * pullback before selling, so it needs a genuine bull to pay off.
+ */
+/*
+ * 2025-04-11 — Display only changed (ctx.watch added), trading logic unchanged.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -50,11 +53,28 @@ function onUpdate(ctx) {
       ctx.state.entryType = 0;
       return { side: 'sell', qty: pos };
     }
+    // Display: what we're waiting for while in position.
+    if (entryType === 1) {
+      ctx.watch([
+        { side: 'sell', price: ema50, trigger: 'below', note: 'Trend exit EMA50 break' },
+        { side: 'sell', price: sma200prev, trigger: 'below', note: 'Trend turn-down exit' }
+      ]);
+    } else if (entryType === 2) {
+      ctx.watch([
+        { side: 'sell', price: ema20, trigger: 'above', note: 'MR snap-back EMA20' },
+        { side: 'sell', price: 55, trigger: 'above', note: 'MR snap-back RSI55', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 55, closed: true }] }
+      ]);
+    } else {
+      ctx.watch([]);
+    }
     return null;
   }
 
   const uptrend = sma200 > sma200prev;
-  if (!uptrend) return null;
+  if (!uptrend) {
+    ctx.watch([]);
+    return null;
+  }
 
   const lowerBand = ema20 - 2.5 * atr;
   const mrEntry = price < lowerBand && rsi < 40;
@@ -76,6 +96,12 @@ function onUpdate(ctx) {
     if (total > 0) pctile = countBelow / total;
   }
   const squeezeBreakout = pctile <= 0.2 && price > high20 && width > 0;
+
+  // Display: what we're waiting for while flat.
+  ctx.watch([
+    { side: 'buy', price: lowerBand, trigger: 'below', note: 'MR entry ATR-Keltner low', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true }] },
+    { side: 'buy', price: high20, trigger: 'above', note: 'Squeeze breakout 20d high', conds: [{ label: 'BB width pctile', now: pctile, op: '<=', ref: 0.2, closed: true }] }
+  ]);
 
   if (squeezeBreakout) {
     ctx.state.entryType = 1;

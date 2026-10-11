@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3014](strategies/3014/) | AI 전략 | +13.02% | +94.89% | +33.02% | 25 | 2026-10-11 |
 | — | [3585](strategies/3585/) | AI 전략 | -66.62% | — | +76.17% | 349 | 2026-10-11 |
 |  | [3019](strategies/3019/) | BTC On-Chain Accumulation Trend 1D | -98.30% | +43.89% | +98.49% | 1038 | 2026-10-11 |
 |  | [3020](strategies/3020/) | BTC Fear-Greed Contrarian 1D | -88.98% | +43.89% | +89.88% | 786 | 2026-10-11 |
@@ -475,7 +476,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3017](strategies/3017/) | Multi-Asset Defensive MR Basket 6-Asset (3% risk) | +4.60% | +532.50% | +2.51% | 2 | 2026-09-29 |
 |  | [3016](strategies/3016/) | Multi-Asset MR Basket Higher-Risk Sizing | +36.50% | +394.35% | +11.28% | 34 | 2026-09-29 |
 |  | [3015](strategies/3015/) | Multi-Asset Defensive MR Basket BTC/ETH/SOL/XRP | +17.42% | +43.77% | +6.34% | 86 | 2026-09-29 |
-|  | [3014](strategies/3014/) | AI 전략 | -6.81% | +94.89% | +38.36% | 57 | 2026-09-29 |
 |  | [3013](strategies/3013/) | BTC 1D Baseline Hybrid (EMA20 exit both) | +13.02% | +94.89% | +33.02% | 25 | 2026-09-29 |
 |  | [3012](strategies/3012/) | BTC 1D Hybrid Dual-Exit (MR snap-back + Trend ride) | +174.53% | +800.36% | +36.15% | 16 | 2026-09-29 |
 |  | [3011](strategies/3011/) | BTC 1D Dual-MR + Dollar Risk-Off Gate | +24.48% | +1205.77% | +18.41% | 10 | 2026-09-29 |
