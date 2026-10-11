@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 467 of 1794 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 466 of 1795 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3535](strategies/3535/) | ETH 4h MTF Trend Continuation | -13.06% | +14.25% | +47.75% | 106 | 2026-10-11 |
 |  | [3534](strategies/3534/) | ETH 4h RSI BB Mean Reversion | +89.13% | +1894.32% | +52.48% | 141 | 2026-10-11 |
 |  | [3533](strategies/3533/) | BTC 1h Donchian Breakout ATR Stop | -36.93% | +11.59% | +38.90% | 139 | 2026-10-11 |
 |  | [3531](strategies/3531/) | BTC Daily Donchian ATR Trend | +0.00% | +95.22% | +13.95% | 18 | 2026-10-11 |
@@ -52,7 +53,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | ★ | [3492](strategies/3492/) | Bollinger Mean Reversion RSI | -25.05% | -34.89% | +25.05% | 194 | 2026-10-11 |
 |  | [3491](strategies/3491/) | Volatility Squeeze Breakout Strategy | -46.56% | -34.89% | +48.35% | 112 | 2026-10-11 |
 |  | [3490](strategies/3490/) | AdaptiveEmaRsiStrategy | -43.29% | +8.29% | +45.10% | 279 | 2026-10-11 |
-| ★ | [3472](strategies/3472/) | AI 전략 | +80.37% | +44.30% | +24.15% | 40 | 2026-10-11 |
+|  | [3472](strategies/3472/) | AI 전략 | +313.76% | +458.60% | +38.58% | 80 | 2026-10-11 |
 |  | [3489](strategies/3489/) | BbVolBreakoutStrategy | -49.30% | +8.29% | +50.16% | 148 | 2026-10-11 |
 | ★ | [3488](strategies/3488/) | EmaPullbackRsiStrategy | +17.72% | +11.59% | +29.16% | 1 | 2026-10-11 |
 |  | [3487](strategies/3487/) | BbMeanReversionStrategy | +7.06% | +8.29% | +5.22% | 50 | 2026-10-11 |
