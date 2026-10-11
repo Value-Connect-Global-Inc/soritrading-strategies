@@ -19,6 +19,9 @@
  * depends on the few flushes that mark a local bottom. BNB has a high-beta history so the strict
  * RSI<30 trigger may fire rarely.
  */
+/*
+ * 2025-01-27: Display-only change — added ctx.watch declarations. Trading logic unchanged.
+ */
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
@@ -41,12 +44,20 @@ function onUpdate(ctx) {
   if (pos > 0) {
     // Take the snap-back profit above the 20-day EMA or once RSI recovers.
     if (price > ema20 || rsi > 55) {
+      ctx.watch([{ side: 'sell', price: ema20, trigger: 'above', qty: pos, note: 'EMA20 snap-back' }]);
       return { side: 'sell', qty: pos };
     }
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'above', qty: pos, note: 'EMA20 snap-back' },
+      { side: 'sell', price: 55, trigger: 'above', qty: pos, note: 'RSI recovery', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 55, closed: true }] }
+    ]);
     return null;
   }
 
-  if (!uptrend) return null;
+  if (!uptrend) {
+    ctx.watch([]);
+    return null;
+  }
 
   // Two independent deep-oversold MR triggers, OR'd together.
   const bollingerFlush = price < lowerBand && rsi < 30;
@@ -57,7 +68,15 @@ function onUpdate(ctx) {
     const riskEq = 0.01 * ctx.cash;
     const qty = riskEq / atr;
     const maxQty = (ctx.cash / price) * 0.9;
+    ctx.watch([]);
     return { side: 'buy', qty: Math.min(qty, maxQty) };
   }
+
+  const bollingerCond = [{ label: 'Price < BB lower', now: price, op: '<', ref: lowerBand, closed: true }, { label: 'RSI(14) < 30', now: rsi, op: '<', ref: 30, closed: true }];
+  const keltnerCond = [{ label: 'Price < Keltner low', now: price, op: '<', ref: keltnerLow, closed: true }, { label: 'RSI(14) < 40', now: rsi, op: '<', ref: 40, closed: true }];
+  ctx.watch([
+    { side: 'buy', price: lowerBand, trigger: 'below', note: 'BB lower flush', conds: bollingerCond },
+    { side: 'buy', price: keltnerLow, trigger: 'below', note: 'Keltner pullback', conds: keltnerCond }
+  ]);
   return null;
 }
