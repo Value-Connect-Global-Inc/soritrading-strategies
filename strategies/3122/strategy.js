@@ -6,6 +6,8 @@
  * interval: 4h
  * cash: 10000
  *
+ * 2026-04-26: ctx.watch 선언만 추가 — 표시만 바뀜, 매매 판단은 그대로.
+ *
  * Why this strategy: The validated ADA Keltner MR trend-gated champion (3117) beats
  * buy-and-hold on all 3 windows but its most recent window (2024-26) still lost -9.9%
  * with MDD 21%. This version adds a volatility-spike filter: it refuses to buy when
@@ -18,13 +20,19 @@
  */
 function onUpdate(ctx) {
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const ema20 = ctx.ema(20, 1);
   const atr = ctx.atr(14, 1);
   const rsi = ctx.rsi(14, 1);
   const sma200 = ctx.sma(200, 1);
-  if (ema20 == null || atr == null || atr <= 0 || rsi == null || sma200 == null) return null;
+  if (ema20 == null || atr == null || atr <= 0 || rsi == null || sma200 == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   const pos = ctx.position;
   const st = ctx.state;
@@ -33,6 +41,12 @@ function onUpdate(ctx) {
   st.cd = cd;
 
   if (pos > 0) {
+    const exitConds = [];
+    if (cd !== 0) exitConds.push({ label: 'Cooldown', ok: cd === 0 });
+    const exitWatch = { side: 'sell', price: ema20, trigger: 'above', note: 'EMA20 exit' };
+    if (exitConds.length > 0) exitWatch.conds = exitConds;
+    ctx.watch([exitWatch]);
+
     if (price > ema20 && cd === 0) {
       st.cd = 2;
       return { side: 'sell', qty: pos };
@@ -48,6 +62,21 @@ function onUpdate(ctx) {
   // implied by trend gate). Skip the ATR-spike filter — it cannot be computed from ctx.atr alone.
   const keltnerLow = ema20 - 2.5 * atr;
   const sma50 = ctx.sma(50, 1);
+
+  const entryConds = [
+    { label: 'RSI(14) < 40', now: rsi, op: '<', ref: 40, closed: true },
+    { label: 'Price > SMA200', now: price, op: '>', ref: sma200 },
+    { label: 'Price >= SMA50', ok: sma50 == null || price >= sma50 },
+    { label: 'Cooldown', ok: cd === 0 }
+  ];
+  ctx.watch([{
+    side: 'buy',
+    price: keltnerLow,
+    trigger: 'below',
+    note: 'Keltner MR entry',
+    conds: entryConds
+  }]);
+
   if (sma50 != null && price < sma50) return null; // price below mid-term trend = weak hands
 
   if (price < keltnerLow && rsi < 40 && price > sma200 && cd === 0) {

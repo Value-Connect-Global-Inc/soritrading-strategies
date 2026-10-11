@@ -11,7 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3545](strategies/3545/) | DXY Macro-Gated BTC Breakout 4H | +1.98% | +56.53% | +3.89% | 6 | 2026-10-11 |
+|  | [3545](strategies/3545/) | DXY Macro-Gated BTC Breakout 4H | +27.20% | +497.37% | +17.24% | 30 | 2026-10-11 |
+|  | [3122](strategies/3122/) | ADA Keltner MR 4H Trend-Gated VolFilter | +5.41% | +1834.47% | +1.55% | 2 | 2026-10-11 |
 |  | [3544](strategies/3544/) | FearGreed Contrarian BTC 1D | -5.47% | +95.22% | +48.76% | 4 | 2026-10-11 |
 |  | [3543](strategies/3543/) | OnChain Adoption Trend BTC 1D | -41.49% | +47.08% | +53.81% | 345 | 2026-10-11 |
 | — | [3128](strategies/3128/) | AI 전략 | +117.43% | — | +4.52% | 197 | 2026-10-11 |
@@ -349,7 +350,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | — | [3130](strategies/3130/) | 5-Asset 4H Momentum-Pullback Basket | -75.66% | — | +75.67% | 2785 | 2026-10-04 |
 |  | [3126](strategies/3126/) | BTC 4H US-Session Keltner MR | +101.19% | +420.44% | +16.51% | 40 | 2026-10-03 |
 |  | [3123](strategies/3123/) | ADA Keltner MR 4H Trend-Gated HalfTP | +277.43% | +1834.47% | +14.05% | 68 | 2026-10-03 |
-|  | [3122](strategies/3122/) | ADA Keltner MR 4H Trend-Gated VolFilter | +5.41% | +1834.47% | +1.55% | 2 | 2026-10-03 |
 |  | [3121](strategies/3121/) | BTC OBV Volume-Flow Trend 1D | +12.26% | +769.38% | +72.20% | 404 | 2026-10-03 |
 |  | [3120](strategies/3120/) | BTC 4H Keltner MR baseline | +148.60% | +420.44% | +28.42% | 90 | 2026-10-03 |
 | ★ | [3119](strategies/3119/) | BTC 4H US-Session Mean Reversion | +10.20% | -21.09% | +25.37% | 52 | 2026-10-03 |

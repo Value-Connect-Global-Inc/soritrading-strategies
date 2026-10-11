@@ -3,7 +3,7 @@
   "name": "ADA Keltner MR 4H Trend-Gated VolFilter",
   "kind": "custom",
   "verified": {
-    "backtestId": 15105,
+    "backtestId": 17703,
     "return": 5.41,
     "mdd": 1.55,
     "trades": 2,
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-03T10:43:39.946Z",
+  "updatedAt": "2026-10-11T16:20:16.332Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
