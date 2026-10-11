@@ -16,11 +16,15 @@
  * When it does NOT work: In a broad coordinated crypto bear all rising-trend gates stay
  * flat (capital safe, little upside); a straight-line melt-up of one asset still lags
  * buy-and-hold of that asset.
+ * 2026-04-26: 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const bb = ctx.bb(20, 2.5, 1);
   const rsi = ctx.rsi(14, 1);
@@ -28,7 +32,10 @@ function onUpdate(ctx) {
   const sma200prev = ctx.sma(200, 2);
   const ema20 = ctx.ema(20, 1);
   const atr = ctx.atr(14, 1);
-  if (bb == null || rsi == null || sma200 == null || sma200prev == null || ema20 == null || atr == null || atr <= 0) return null;
+  if (bb == null || rsi == null || sma200 == null || sma200prev == null || ema20 == null || atr == null || atr <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const uptrend = sma200 > sma200prev;
   const lowerBand = bb.lower;
@@ -39,6 +46,10 @@ function onUpdate(ctx) {
     const peak = ctx.state.peak != null ? Math.max(ctx.state.peak, price) : price;
     ctx.state.peak = peak;
     const trailStop = peak - 2.5 * atr;
+    ctx.watch([
+      { side: 'sell', price: trailStop, trigger: 'below', note: 'ATR trail stop' },
+      { side: 'sell', price: ema20, trigger: 'above', note: 'EMA20 reclaim' }
+    ]);
     if (price < trailStop || price > ema20) {
       ctx.state.peak = null;
       return { side: 'sell', qty: pos };
@@ -46,10 +57,33 @@ function onUpdate(ctx) {
     return null;
   }
 
-  if (!uptrend) return null;
+  if (!uptrend) {
+    ctx.watch([
+      { side: 'buy', price: lowerBand, trigger: 'below', note: 'BB flush', conds: [
+        { label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true },
+        { label: 'SMA200 rising', ok: uptrend }
+      ] },
+      { side: 'buy', price: keltnerLow, trigger: 'below', note: 'Keltner pullback', conds: [
+        { label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true },
+        { label: 'SMA200 rising', ok: uptrend }
+      ] }
+    ]);
+    return null;
+  }
 
   const bollingerFlush = price < lowerBand && rsi < 30;
   const keltnerPullback = price < keltnerLow && rsi < 40;
+
+  ctx.watch([
+    { side: 'buy', price: lowerBand, trigger: 'below', note: 'BB flush', conds: [
+      { label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true },
+      { label: 'SMA200 rising', ok: uptrend }
+    ] },
+    { side: 'buy', price: keltnerLow, trigger: 'below', note: 'Keltner pullback', conds: [
+      { label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true },
+      { label: 'SMA200 rising', ok: uptrend }
+    ] }
+  ]);
 
   if (bollingerFlush) {
     const qty = (ctx.cash / price) * 0.20;
