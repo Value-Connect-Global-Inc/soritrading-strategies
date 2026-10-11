@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 471 of 1827 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 471 of 1828 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 262 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3571](strategies/3571/) | DXY Dollar-Weak BTC Regime 4H | +10.49% | +35.80% | +21.72% | 1 | 2026-10-11 |
 | — | [3570](strategies/3570/) | 3-Asset Pullback Basket 4H | +40.07% | — | +7.77% | 556 | 2026-10-11 |
 | — | [3055](strategies/3055/) | Multi-Asset MR Basket Cross-Sectional Confirmation | +17.34% | — | +15.49% | 108 | 2026-10-11 |
 | — | [3056](strategies/3056/) | AI 전략 | +64.26% | — | +10.08% | 262 | 2026-10-11 |
