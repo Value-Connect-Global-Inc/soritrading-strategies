@@ -17,6 +17,7 @@
  * can persist in a long bear, so buying early costs drawdown. It also gives no signal
  * in the neutral 20-80 range, so it sits in cash for long stretches and misses gradual
  * melt-ups that never reach extreme fear.
+ * 2026-05-14: 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -29,6 +30,11 @@ function onUpdate(ctx) {
   if (pos > 0) {
     // Track hold days via state; exit on extreme greed or after 90 days.
     ctx.state.days = (ctx.state.days || 0) + 1;
+    // Declare what we are waiting for: exit conditions.
+    ctx.watch([
+      { side: 'sell', note: 'extreme greed', conds: [{ label: 'Fear & Greed', now: fg, op: '>', ref: 80 }] },
+      { side: 'sell', note: '90-day timeout', conds: [{ label: 'Hold days', now: ctx.state.days, op: '>=', ref: 90 }] }
+    ]);
     if (fg > 80 || ctx.state.days >= 90) {
       return { side: 'sell', qty: pos };
     }
@@ -36,6 +42,10 @@ function onUpdate(ctx) {
   }
 
   // Extreme fear = panic = contrarian buy zone.
+  // Declare what we are waiting for: entry condition.
+  ctx.watch([
+    { side: 'buy', note: 'extreme fear', conds: [{ label: 'Fear & Greed', now: fg, op: '<', ref: 20 }] }
+  ]);
   if (fg < 20) {
     const qty = (ctx.cash / price) * 0.9;
     return { side: 'buy', qty: qty };

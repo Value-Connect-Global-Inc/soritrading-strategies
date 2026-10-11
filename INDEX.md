@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3020](strategies/3020/) | BTC Fear-Greed Contrarian 1D | -88.98% | +43.89% | +89.88% | 786 | 2026-10-11 |
 |  | [3583](strategies/3583/) | AI 전략 | -19.11% | +457.74% | +20.10% | 102 | 2026-10-11 |
 |  | [3582](strategies/3582/) | BTC 4H Pullback-in-Uptrend | -10.53% | +196.85% | +15.18% | 170 | 2026-10-11 |
 |  | [3028](strategies/3028/) | DOGE 1D Defensive MR Single-Leg Test | +4.60% | +5.78% | +3.17% | 42 | 2026-10-11 |
@@ -468,7 +469,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3024](strategies/3024/) | Multi-Asset Defensive MR Basket 6-Asset + Volume Capitulatio | -20.78% | +29.57% | +22.76% | 24 | 2026-09-30 |
 |  | [3023](strategies/3023/) | Multi-Asset Defensive MR Basket 6-Asset + Exit Cooldown | +24.41% | +29.57% | +8.68% | 22 | 2026-09-30 |
 |  | [3021](strategies/3021/) | BTC Volatility-Targeted Long 1D | +23.08% | +29.57% | +15.56% | 76 | 2026-09-30 |
-|  | [3020](strategies/3020/) | BTC Fear-Greed Contrarian 1D | -88.98% | +43.89% | +89.88% | 786 | 2026-09-30 |
 |  | [3019](strategies/3019/) | BTC On-Chain Accumulation Trend 1D | -98.26% | +43.89% | +98.46% | 1036 | 2026-09-30 |
 |  | [3018](strategies/3018/) | Cross-Asset Momentum Rotation Basket | +4.97% | +1255.34% | +26.63% | 64 | 2026-09-30 |
 |  | [3017](strategies/3017/) | Multi-Asset Defensive MR Basket 6-Asset (3% risk) | +4.60% | +532.50% | +2.51% | 2 | 2026-09-29 |
