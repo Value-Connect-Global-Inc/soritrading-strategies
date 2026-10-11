@@ -4,13 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 471 of 1826 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 261 of them right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 471 of 1827 right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 262 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [3057](strategies/3057/) | AI 전략 | +63.31% | — | +16.75% | 109 | 2026-10-11 |
+| — | [3570](strategies/3570/) | 3-Asset Pullback Basket 4H | +30.92% | — | +8.26% | 744 | 2026-10-11 |
 |  | [3568](strategies/3568/) | BTC On-Chain Hashrate Trend 4H | -70.48% | +461.93% | +74.09% | 397 | 2026-10-11 |
 |  | [3567](strategies/3567/) | BTC Pullback-in-Uptrend RSI 4H | +9.85% | +46.70% | +2.84% | 84 | 2026-10-11 |
 | — | [3062](strategies/3062/) | Multi-Asset Defensive MR Basket 5-Asset 4H Profit-Target (ba | +10.79% | — | +1.00% | 246 | 2026-10-11 |
@@ -423,7 +425,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | — | [3061](strategies/3061/) | Multi-Asset Defensive MR Basket 5-Asset 4H Profit-Target | +10.96% | — | +1.00% | 252 | 2026-09-30 |
 | — | [3060](strategies/3060/) | AI 전략 | +27.61% | — | +8.84% | 202 | 2026-09-30 |
 | — | [3059](strategies/3059/) | AI 전략 | +62.36% | — | +10.08% | 262 | 2026-09-30 |
-| — | [3057](strategies/3057/) | AI 전략 | +63.31% | — | +16.75% | 109 | 2026-09-30 |
 | — | [3056](strategies/3056/) | AI 전략 | +64.26% | — | +10.08% | 262 | 2026-09-30 |
 | — | [3055](strategies/3055/) | Multi-Asset MR Basket Cross-Sectional Confirmation | +17.34% | — | +15.49% | 108 | 2026-09-30 |
 | — | [3053](strategies/3053/) | Multi-Asset Defensive MR Basket 5-Asset DXY-Gated | +133.29% | — | +6.57% | 132 | 2026-09-30 |
