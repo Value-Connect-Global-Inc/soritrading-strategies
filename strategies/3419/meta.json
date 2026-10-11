@@ -3,9 +3,9 @@
   "name": "BTC EMA Pullback 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 16963,
-    "return": 50.51,
-    "mdd": 33.81,
+    "backtestId": 16966,
+    "return": 48.57,
+    "mdd": 22.39,
     "trades": 27,
     "vsBuyHold": "lose",
     "benchRet": 580.47,
@@ -27,6 +27,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-11T05:07:43.147Z",
+  "updatedAt": "2026-10-11T05:09:09.503Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

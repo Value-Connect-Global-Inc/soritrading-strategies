@@ -19,6 +19,7 @@
  * the edge. Long-only.
  */
 function onUpdate(ctx) {
+  const sym = ctx.sym;
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
   const closes = ctx.closes;
