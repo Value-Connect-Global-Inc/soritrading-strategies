@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3228](strategies/3228/) | XRP 4H Squeeze Breakout | -22.01% | +260.54% | +53.25% | 166 | 2026-10-11 |
 | — | [3133](strategies/3133/) | Multi-Asset Defensive MR Basket 5-Asset | +124.35% | — | +17.71% | 271 | 2026-10-11 |
 | ★ | [3436](strategies/3436/) | AI 전략 | +238.36% | +154.38% | +39.60% | 38 | 2026-10-11 |
 |  | [3247](strategies/3247/) | AI 전략 | -63.90% | +260.68% | +64.71% | 122 | 2026-10-11 |
@@ -176,7 +177,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3231](strategies/3231/) | BNB 1D Momentum + Trailing Stop | +4.52% | +489.22% | +51.50% | 158 | 2026-10-08 |
 |  | [3230](strategies/3230/) | SOL 4H Squeeze Breakout | -27.73% | -21.92% | +61.60% | 104 | 2026-10-08 |
 |  | [3229](strategies/3229/) | XRP 1D Dip-Buy RSI2 | -86.21% | +73.96% | +90.12% | 76 | 2026-10-08 |
-|  | [3228](strategies/3228/) | XRP 4H Squeeze Breakout | -22.01% | +260.54% | +53.25% | 166 | 2026-10-08 |
 | — | [3227](strategies/3227/) | Momentum Rotation 4H | -99.99% | — | +99.99% | 2856 | 2026-10-08 |
 |  | [3226](strategies/3226/) | RSI Mean Reversion Bounce 4H | -9.13% | +32.42% | +17.42% | 60 | 2026-10-08 |
 |  | [3224](strategies/3224/) | Uptrend Pullback Reversion (BTC 1D) | +30.88% | +320.57% | +22.00% | 36 | 2026-10-08 |

@@ -3,7 +3,7 @@
   "name": "XRP 4H Squeeze Breakout",
   "kind": "custom",
   "verified": {
-    "backtestId": 15708,
+    "backtestId": 17158,
     "return": -22.01,
     "mdd": 53.25,
     "trades": 166,
@@ -29,6 +29,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-08T18:34:13.060Z",
+  "updatedAt": "2026-10-11T09:11:19.118Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
