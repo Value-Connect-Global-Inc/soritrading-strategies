@@ -9,8 +9,8 @@
  * Why this strategy: volatility compresses into a squeeze before expanding; buying the expansion
  * while the long-term trend is up catches strong moves early.
  * When it buys and sells: buys when price breaks above the 20-day high while the 200-day SMA is
- * rising and Bollinger Band width is in its bottom 30%; sells when price falls back below the 200-day
- * SMA or hits a 2.5xATR stop.
+ * rising and Bollinger Band width is in its bottom 30%; sells when price falls back below the 20-day
+ * low (Donchian exit) or hits a 2xATR stop.
  * When it does NOT work: in choppy sideways markets with no trend and in prolonged bear markets —
  * it stays in cash during downtrends, so it misses the eventual bottom.
  */
@@ -34,15 +34,17 @@ function onUpdate(ctx) {
   const squeeze = narrow / cnt <= 0.3;
 
   const hi = ctx.high(20, 1);
-  if (hi == null) return null;
+  const lo = ctx.low(20, 1);
+  if (hi == null || lo == null) return null;
 
   if (ctx.position > 0) {
-    const stopPx = ctx.entryPx - 2.5 * atr; // hard stop: 2.5xATR below entry limits any single loss
+    const stopPx = ctx.entryPx - 2 * atr; // safety net only; Donchian exit is the main exit
     ctx.watch([
-      { side: 'sell', price: sma200, trigger: 'below', note: 'trend exit' },
+      { side: 'sell', price: lo, trigger: 'below', note: 'Donchian exit' },
       { side: 'sell', price: stopPx, trigger: 'below', note: 'hard stop' }
     ]);
-    if (ctx.price < sma200) return { side: 'sell', qty: ctx.position };
+    // Donchian exit: cut the position as soon as price breaks the 20-day low (fast loss control)
+    if (ctx.price < lo) return { side: 'sell', qty: ctx.position };
     if (ctx.entryPx != null && ctx.price < stopPx) return { side: 'sell', qty: ctx.position };
     return null;
   }

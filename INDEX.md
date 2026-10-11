@@ -11,8 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3405](strategies/3405/) | BTC Trend-Gated Vol-Target CrashStop 1D | -38.98% | +591.46% | +96.24% | 1352 | 2026-10-11 |
 |  | [3422](strategies/3422/) | BTC Vol Squeeze Breakout 1D | +205.53% | +1198.30% | +50.23% | 19 | 2026-10-11 |
+|  | [3405](strategies/3405/) | BTC Trend-Gated Vol-Target CrashStop 1D | -38.98% | +591.46% | +96.24% | 1352 | 2026-10-11 |
 | — | [972](strategies/972/) | Momentum Filter with ATR | -52.92% | — | +104.74% | 1 | 2026-10-11 |
 | ★ | [371](strategies/371/) | BTC 업비트 돈치안 트렌드 스탑 | -1.72% | -23.27% | +5.46% | 4 | 2026-10-11 |
 | ★ | [1000](strategies/1000/) | MACD RSI Mean Reversion Strategy | -10.92% | -16.12% | +13.58% | 23 | 2026-10-11 |
