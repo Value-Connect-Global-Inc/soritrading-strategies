@@ -11,8 +11,9 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [3560](strategies/3560/) | AI 전략 | +56.53% | +30.75% | +29.46% | 67 | 2026-10-11 |
+|  | [3556](strategies/3556/) | BNB Trend-Follow EMA50/200 4H | +557.58% | +2460.26% | +36.31% | 26 | 2026-10-11 |
 |  | [3558](strategies/3558/) | BTC Trend-Follow EMA50/200 4H | +217.73% | +461.93% | +25.39% | 44 | 2026-10-11 |
+| ★ | [3560](strategies/3560/) | AI 전략 | +56.53% | +30.75% | +29.46% | 67 | 2026-10-11 |
 |  | [3084](strategies/3084/) | BTC 1D Squeeze-Breakout Only (upbit) | -8.00% | +28.88% | +21.12% | 24 | 2026-10-11 |
 |  | [3086](strategies/3086/) | Defensive Mean Reversion BTC | +8.82% | +90.62% | +1.91% | 20 | 2026-10-11 |
 |  | [3087](strategies/3087/) | Data Probe BTC 1D | +107.40% | +240.27% | +19.36% | 50 | 2026-10-11 |
@@ -23,7 +24,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3095](strategies/3095/) | SOL Defensive Mean Reversion 1D | +106.27% | +404.43% | +19.36% | 49 | 2026-10-11 |
 | ★ | [3097](strategies/3097/) | SOL OBV Volume-Flow Trend 1D | -22.90% | -28.90% | +52.84% | 41 | 2026-10-11 |
 |  | [3098](strategies/3098/) | ETH VolumeSurge Breakout | +12.08% | +325.14% | +37.53% | 20 | 2026-10-11 |
-|  | [3556](strategies/3556/) | BNB Trend-Follow EMA50/200 4H | +557.58% | +2460.26% | +36.31% | 26 | 2026-10-11 |
 |  | [3555](strategies/3555/) | SOL Mean Reversion Bounce 4H | -2.66% | +854.12% | +10.12% | 32 | 2026-10-11 |
 | — | [3554](strategies/3554/) | Cross-Sectional Momentum 4-Asset 4H | +4.16% | — | +27.35% | 370 | 2026-10-11 |
 | ★ | [3553](strategies/3553/) | ETH Trend-Follow EMA50/200 4H | +36.05% | -53.45% | +33.81% | 38 | 2026-10-11 |
