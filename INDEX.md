@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3098](strategies/3098/) | ETH VolumeSurge Breakout | +12.08% | +325.14% | +37.53% | 20 | 2026-10-11 |
 |  | [3556](strategies/3556/) | BNB Trend-Follow EMA50/200 4H | +557.58% | +2460.26% | +36.31% | 26 | 2026-10-11 |
 |  | [3555](strategies/3555/) | SOL Mean Reversion Bounce 4H | -2.66% | +854.12% | +10.12% | 32 | 2026-10-11 |
 | — | [3554](strategies/3554/) | Cross-Sectional Momentum 4-Asset 4H | +4.16% | — | +27.35% | 370 | 2026-10-11 |
@@ -374,7 +375,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3106](strategies/3106/) | BTC 1D Defensive Mean-Reversion (trend-gated) | +120.09% | +325.14% | +21.24% | 69 | 2026-10-02 |
 |  | [3101](strategies/3101/) | EURUSD 4h 추세·눌림목 v1 (EMA50/200·RSI 되돌림) | +31.73% | +109.48% | +13.48% | 542 | 2026-10-02 |
 | — | [3103](strategies/3103/) | EURUSD 1h 아시아 레인지 → 런던 돌파 v1 | -34.28% | — | +36.20% | 282 | 2026-10-02 |
-|  | [3098](strategies/3098/) | ETH VolumeSurge Breakout | +12.08% | +325.14% | +37.53% | 20 | 2026-10-02 |
 | — | [3102](strategies/3102/) | EURUSD 4h 추세·눌림목 v2 (EMA20 트레일 청산) | -16.50% | — | +24.38% | 214 | 2026-10-02 |
 | — | [3100](strategies/3100/) | EURUSD 1h 평균회귀 v1 (BB·RSI2·추세방향) | -17.61% | — | +19.25% | 132 | 2026-10-02 |
 | — | [3099](strategies/3099/) | EURUSD 1h 돌파추세 v1 (ATR 손절·세션 필터) | -49.44% | — | +51.46% | 240 | 2026-10-02 |

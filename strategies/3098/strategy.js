@@ -1,3 +1,4 @@
+// 2026-04-26 표시만 바뀜, 매매 판단은 그대로
 /*
  * @coinsori-strategy v1
  * name: SOL Defensive Mean Reversion
@@ -23,19 +24,53 @@ function onUpdate(ctx) {
   const r = ctx.rsi(14, 1);
   const ma200 = ctx.sma(200, 1);
   const ema20 = ctx.ema(20, 1);
-  if (bb == null || r == null || ma200 == null || ema20 == null) return null;
+  if (bb == null || r == null || ma200 == null || ema20 == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   const px = ctx.price;
   const prevClose = ctx.closes[ctx.closes.length - 2];
-  if (prevClose == null) return null;
+  if (prevClose == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   if (ctx.position === 0) {
     // oversold at the bottom band, but only while above the long-term trend
+    ctx.watch([{
+      side: 'buy',
+      price: bb.lower,
+      trigger: 'below',
+      note: 'BB lower touch',
+      conds: [
+        { label: 'Close <= BB lower', now: prevClose, op: '<=', ref: bb.lower, closed: true },
+        { label: 'RSI(14) close', now: r, op: '<', ref: 40, closed: true },
+        { label: 'Close > SMA200', ok: prevClose > ma200, closed: true }
+      ]
+    }]);
     if (prevClose > ma200 && prevClose <= bb.lower && r < 40) {
       return { side: 'buy', qty: ctx.cash / px * 0.98 };
     }
     return null;
   }
+
+  ctx.watch([
+    {
+      side: 'sell',
+      price: ma200,
+      trigger: 'below',
+      note: 'hard stop below SMA200',
+      conds: [{ label: 'Close < SMA200', now: prevClose, op: '<', ref: ma200, closed: true }]
+    },
+    {
+      side: 'sell',
+      price: ema20,
+      trigger: 'above',
+      note: 'exit above EMA20',
+      conds: [{ label: 'Close > EMA20', now: prevClose, op: '>', ref: ema20, closed: true }]
+    }
+  ]);
 
   // hard stop: below the 200-day average, get out fast
   if (prevClose < ma200) {

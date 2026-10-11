@@ -3,7 +3,7 @@
   "name": "ETH VolumeSurge Breakout",
   "kind": "custom",
   "verified": {
-    "backtestId": 14911,
+    "backtestId": 17765,
     "return": 12.08,
     "mdd": 37.53,
     "trades": 20,
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-02T06:03:15.734Z",
+  "updatedAt": "2026-10-11T17:27:18.563Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
