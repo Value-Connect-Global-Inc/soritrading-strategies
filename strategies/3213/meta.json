@@ -3,7 +3,7 @@
   "name": "Donchian Breakout BNB 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 15657,
+    "backtestId": 17262,
     "return": -90.51,
     "mdd": 91.66,
     "trades": 90,
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-08T15:22:07.305Z",
+  "updatedAt": "2026-10-11T10:44:20.922Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
