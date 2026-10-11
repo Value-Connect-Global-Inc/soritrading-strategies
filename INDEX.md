@@ -4,14 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 472 of 1835 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 473 of 1835 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 264 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3578](strategies/3578/) | BTC 1D On-Chain Usage Regime | -21.52% | +95.22% | +21.86% | 473 | 2026-10-11 |
+| ★ | [3578](strategies/3578/) | BTC 1D On-Chain Usage Regime | -14.78% | -26.04% | +15.91% | 288 | 2026-10-11 |
 |  | [3035](strategies/3035/) | BTC 1D Volume-Capitulation MR | -2.91% | +828.94% | +6.74% | 4 | 2026-10-11 |
 | ★ | [3577](strategies/3577/) | BTC 4H Momentum Breakout | -3.01% | -26.02% | +14.20% | 126 | 2026-10-11 |
 |  | [3576](strategies/3576/) | FearGreed Contrarian BTC 4H | +3.49% | +457.74% | +1.34% | 2 | 2026-10-11 |
