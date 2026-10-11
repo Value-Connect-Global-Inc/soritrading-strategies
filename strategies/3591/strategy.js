@@ -8,15 +8,13 @@
  *
  * Why this strategy: Hashrate is the mining network's capacity — when it is
  *   growing (more miners adding machines) it signals confidence in future
- *   price; when it is shrinking, miners are capitulating. Combining this
- *   on-chain fundamental with a price uptrend is a different information
- *   source than the price-only turtle already in the portfolio. Hashrate
- *   only confirms entries; price decides exits, so noisy daily hashrate
- *   data cannot churn the position.
- * When it buys and sells: buys BTC when a closed daily bar is above its 200-day
- *   average AND hashrate is above its own 30-day average (recent hashrate
- *   growth). Sells when price closes below the 200-day average or on a 5x ATR
- *   crash stop.
+ *   price; when it is shrinking, miners are capitulating. Adding this
+ *   on-chain fundamental as a confirmation on top of a price breakout entry
+ *   filters out breakouts that happen without network conviction.
+ * When it buys and sells: buys BTC when a closed daily bar breaks above the
+ *   highest high of the prior 20 bars AND hashrate is above its own 30-day
+ *   average AND price is above its 200-day average. Sells when price closes
+ *   below the 200-day average or on a 5x ATR crash stop.
  * When it does NOT work: hashrate is a slow signal, so it reacts late to sharp
  *   price moves; in a bull market where hashrate lags price it may stay out of
  *   the early rally, and in a bear market it only exits after price has
@@ -27,7 +25,8 @@ function onUpdate(ctx) {
   const hrSma = ctx.data('hashrate_sma30');
   const prevClose = ctx.closes.at(-2);
   const sma200 = ctx.sma(200, 1);
-  if (hr == null || hrSma == null || prevClose == null || sma200 == null) return null;
+  const chHigh = ctx.high(20, 2);  // highest high of the 20 bars ending 2 bars ago
+  if (hr == null || hrSma == null || prevClose == null || sma200 == null || chHigh == null) return null;
   const price = ctx.price;
 
   if (ctx.position > 0) {
@@ -43,8 +42,8 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // enter only when both price trend and hashrate trend are up
-  if (prevClose <= sma200 || hr <= hrSma) return null;
+  // enter on a 20-bar breakout, confirmed by hashrate growth and uptrend
+  if (prevClose <= chHigh || prevClose <= sma200 || hr <= hrSma) return null;
 
   // risk 2% of the account with a 5x ATR stop, like the proven turtle
   const atr = ctx.atr(14, 1);
@@ -57,7 +56,7 @@ function onUpdate(ctx) {
   if (qty <= 0) return null;
   const stopPx = price - stopDist;
   ctx.watch([
-    { side: 'buy', price: sma200, trigger: 'above', note: 'SMA200 uptrend' },
+    { side: 'buy', price: chHigh, trigger: 'above', note: '20-bar breakout' },
     { side: 'sell', price: stopPx, trigger: 'below', note: '5x ATR crash stop' }
   ]);
   return { side: 'buy', qty };
