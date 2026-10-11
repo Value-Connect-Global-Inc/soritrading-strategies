@@ -4,13 +4,16 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 465 of 1779 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 465 of 1782 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3521](strategies/3521/) | Multi-Timeframe Trend Confirmation 4h | -22.04% | +35.80% | +45.75% | 138 | 2026-10-11 |
+|  | [3520](strategies/3520/) | Volatility Breakout ATR Volume 1h | -35.90% | +8.29% | +37.44% | 182 | 2026-10-11 |
+|  | [3519](strategies/3519/) | Keltner Channel Mean Reversion 4h | +16.91% | +44.30% | +42.58% | 82 | 2026-10-11 |
 |  | [3518](strategies/3518/) | Volatility Volume Surge Reversion | -12.44% | +11.59% | +16.55% | 110 | 2026-10-11 |
 | ★ | [3515](strategies/3515/) | BB Mean Reversion RSI BTC 1h | -30.63% | -34.89% | +37.99% | 114 | 2026-10-11 |
 |  | [3514](strategies/3514/) | Volume-Weighted MACD Momentum ETH | -23.77% | +6.21% | +32.30% | 132 | 2026-10-11 |
