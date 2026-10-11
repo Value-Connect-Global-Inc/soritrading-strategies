@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [3598](strategies/3598/) | BTC Donchian Breakout 4H | +5.16% | -26.02% | +21.50% | 78 | 2026-10-11 |
+| ★ | [3598](strategies/3598/) | BTC Donchian Breakout 4H | +20.48% | +15.85% | +25.65% | 80 | 2026-10-11 |
 | ★ | [2969](strategies/2969/) | XRP 1D ATR-Adaptive Keltner MR | +178.15% | +1.26% | +35.02% | 12 | 2026-10-11 |
 |  | [3597](strategies/3597/) | ETH Trend-Follow EMA50/200 4H | -57.31% | -26.02% | +58.75% | 262 | 2026-10-11 |
 |  | [2967](strategies/2967/) | DOGE 1D ATR-Adaptive Keltner MR | +54.33% | +2362.68% | +34.84% | 12 | 2026-10-11 |
