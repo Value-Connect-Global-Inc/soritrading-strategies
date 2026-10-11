@@ -17,6 +17,8 @@
  * When it does NOT work: If DXY macro data is unavailable this strategy sits flat. It
  * misses BTC rallies that happen during dollar strength, and the macro gate is laggy
  * (DXY moves slowly), so it may stay out at the start of a rally.
+ *
+ * Display-only change: added ctx.watch declarations (no trading logic changed).
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -41,14 +43,18 @@ function onUpdate(ctx) {
   const pos = ctx.position;
   if (pos > 0) {
     if (price < sma200 || sma200 < sma200prev || !dollarFalling) {
+      ctx.watch([{ side: 'sell', price: sma200, trigger: 'below', qty: pos, note: 'exit: close below SMA200' }]);
       return { side: 'sell', qty: pos };
     }
+    ctx.watch([{ side: 'sell', price: sma200, trigger: 'below', qty: pos, note: 'exit: close below SMA200' }]);
     return null;
   }
 
   if (price > sma200 && sma200 > sma200prev && dollarFalling) {
     const qty = (ctx.cash / price) * 0.98;
+    ctx.watch([{ side: 'buy', price: sma200, trigger: 'above', qty: qty, note: 'entry: uptrend + dollar falling' }]);
     return { side: 'buy', qty: qty };
   }
+  ctx.watch([]);
   return null;
 }
