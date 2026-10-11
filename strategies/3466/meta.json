@@ -3,7 +3,7 @@
   "name": "DXY Gated BTC Trend 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 17293,
+    "backtestId": 17295,
     "return": 80.37,
     "mdd": 24.15,
     "trades": 40,
