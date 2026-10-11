@@ -36,6 +36,15 @@ function onUpdate(ctx) {
 
   if (pos > 0) {
     // Take profit once sentiment turns strongly greedy or the trend breaks.
+    ctx.watch([
+      { side: 'sell', price: sma200, trigger: 'below', note: 'trend break', conds: [
+        { label: 'Fear-Greed', now: fg, op: '>', ref: 68, closed: true },
+        { label: 'trend up', ok: uptrend }
+      ] },
+      { side: 'sell', price: 68, trigger: 'above', note: 'greedy exit', conds: [
+        { label: 'price vs SMA200', now: price, op: '>=', ref: sma200, closed: true }
+      ] }
+    ]);
     if (fg > 68 || price < sma200) {
       ctx.state.lastExit = ctx.i;
       return { side: 'sell', qty: pos };
@@ -45,7 +54,14 @@ function onUpdate(ctx) {
 
   // Contrarian entry: only extreme fear, in an uptrend, and after the cooldown.
   if (uptrend && fg < 12 && sinceExit > 20) {
+    ctx.watch([]);
     return { side: 'buy', qty: (ctx.cash / price) * 0.95 };
   }
+  ctx.watch([
+    { side: 'buy', price: 12, trigger: 'below', note: 'fear entry', conds: [
+      { label: 'SMA200 rising', ok: uptrend },
+      { label: 'cooldown bars', now: sinceExit, op: '>', ref: 20, closed: true }
+    ] }
+  ]);
   return null;
 }

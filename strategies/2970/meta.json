@@ -3,7 +3,7 @@
   "name": "BTC 1D Fear-Greed Sentiment Contrarian",
   "kind": "custom",
   "verified": {
-    "backtestId": 13762,
+    "backtestId": 18030,
     "return": -28.8,
     "mdd": 28.8,
     "trades": 4,
@@ -14,17 +14,27 @@
     "tFrom": 1502928000,
     "tTo": 1617753600,
     "approxNotes": [
-      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준"
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1330봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
-      "sym": "BTCUSDT",
+      "sym": "BTC",
       "interval": "1d",
       "bars": 2000,
       "end": 1617840000
     }
   },
-  "config": null,
-  "updatedAt": "2026-09-29T11:05:28.859Z",
+  "config": {
+    "ex": "binance",
+    "cash": 10000,
+    "syms": [
+      "BTC"
+    ],
+    "quote": "USDT",
+    "interval": "1d"
+  },
+  "updatedAt": "2026-10-11T23:07:10.298Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

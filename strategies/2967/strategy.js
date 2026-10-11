@@ -20,6 +20,8 @@
  * in a relentless meme melt-up because it sits in cash waiting for a pullback. MDD is
  * low (single digits to ~13%) but a meme asset can still gap; this is not a melt-up
  * capture machine.
+ *
+ * 2025-01-16: Added ctx.watch declarations — display only, trading logic unchanged.
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -37,11 +39,27 @@ function onUpdate(ctx) {
   const uptrend = sma200 > sma200prev;
 
   if (pos > 0) {
+    // Display what we're waiting for to exit the position
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'above', note: 'EMA20 mid-band touch', conds: [
+        { label: 'RSI(14) close', now: rsi, op: '>', ref: 60, closed: true }
+      ]},
+      { side: 'sell', price: 60, trigger: 'above', note: 'RSI(14) > 60', conds: [
+        { label: 'Price vs EMA20', now: price, op: '>', ref: ema20, closed: true }
+      ]}
+    ]);
     if (price > ema20 || rsi > 60) {
       return { side: 'sell', qty: pos };
     }
     return null;
   }
+  // Display what we're waiting for to enter
+  ctx.watch([
+    { side: 'buy', price: lowerBand, trigger: 'below', note: 'Lower Keltner touch', conds: [
+      { label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true },
+      { label: 'SMA200 rising', ok: uptrend }
+    ]}
+  ]);
   if (uptrend && price < lowerBand && rsi < 40) {
     // Full-cash sizing: entries are rare (only deep oversold flushes in an uptrend),
     // and the full-cash version already holds MDD to ~13%. A small 0.95 cap leaves
