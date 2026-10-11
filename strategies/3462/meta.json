@@ -1,0 +1,31 @@
+{
+  "id": 3462,
+  "name": "BTC Daily Multi Momentum Trend",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 17254,
+    "return": -31.47,
+    "mdd": 42.26,
+    "trades": 20,
+    "vsBuyHold": "win",
+    "benchRet": -55.1,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1610236800,
+    "tTo": 1670630400,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 700봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 700,
+      "end": 1670716800
+    }
+  },
+  "config": null,
+  "updatedAt": "2026-10-11T10:00:36.006Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
