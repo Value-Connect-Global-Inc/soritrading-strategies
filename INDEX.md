@@ -4,17 +4,19 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 446 of 1710 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 446 of 1712 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3445](strategies/3445/) | BTC Bollinger Mean Reversion 1h | -41.97% | -34.05% | +43.84% | 122 | 2026-10-11 |
+|  | [3444](strategies/3444/) | BTC Volatility Breakout Sentiment Channel | -45.91% | +457.57% | +76.48% | 125 | 2026-10-11 |
 | ★ | [3443](strategies/3443/) | Dual SMA Trend Following BTC 4h | +1.83% | -26.94% | +29.08% | 40 | 2026-10-11 |
-| ★ | [3440](strategies/3440/) | Fear Greed Contrarian BTC 4h | -23.26% | -26.94% | +38.04% | 46 | 2026-10-11 |
-| ★ | [3441](strategies/3441/) | Trend Filtered Fear Greed BTC 4h | +14.51% | -26.94% | +5.46% | 20 | 2026-10-11 |
 |  | [3442](strategies/3442/) | Bollinger Mean Reversion BTC 4h | +13.44% | +120.35% | +11.50% | 54 | 2026-10-11 |
+| ★ | [3441](strategies/3441/) | Trend Filtered Fear Greed BTC 4h | +14.51% | -26.94% | +5.46% | 20 | 2026-10-11 |
+| ★ | [3440](strategies/3440/) | Fear Greed Contrarian BTC 4h | -23.26% | -26.94% | +38.04% | 46 | 2026-10-11 |
 |  | [3219](strategies/3219/) | AI 전략 | -43.89% | +72.66% | +79.49% | 100 | 2026-10-11 |
 |  | [3222](strategies/3222/) | AI 전략 | +165.83% | +174.31% | +30.70% | 15 | 2026-10-11 |
 |  | [3226](strategies/3226/) | RSI Mean Reversion Bounce 4H | -9.13% | +32.42% | +17.42% | 60 | 2026-10-11 |
