@@ -1,14 +1,14 @@
 /*
  * @coinsori-strategy v1
- * name: Volatility Breakout BTC 1H
+ * name: Volatility Breakout BTC 4H
  * ex: binance
  * syms: BTC/USDT
- * interval: 1h
+ * interval: 4h
  * cash: 10000
  *
- * Why this strategy: The volatility-confirmed Donchian breakout is validated on BTC 4h; this checks whether the same edge survives on 1h where breakouts are noisier but far more frequent. Same rules, finer timeframe.
+ * Why this strategy: Strong 4h BTC moves usually start with a volatility expansion — ATR and volume push above their averages while price breaks a multi-week high. Entering only on that confirmation avoids the fake breakouts a plain Donchian system pays for.
  * When it buys and sells: Buys when flat AND price is above its 300-bar average AND the last closed bar breaks above the prior 55-bar high AND volume is at/above its 50-bar average. ATR must also be expanding — unless price is more than 10% above the 300-bar average, where the trend itself is the confirmation. Takes half off at +4x entry ATR, then sells the rest when price falls 2.5 ATR below the highest close since entry, never worse than 2.5 ATR below entry.
- * When it does NOT work: 1h has much more noise than 4h, so fake breakouts fire more often and fees add up faster. In a long sideways range the 55-bar breakout fires on small rips and the trailing stop cuts each one for a small loss. It never catches a bottom.
+ * When it does NOT work: In a long sideways range the 55-bar breakout fires on small rips and the trailing stop cuts each one for a small loss. It never catches a bottom — it only buys after the trend turns up. In a deep bear market it stays flat (trend filter), so it misses shorting opportunities.
  */
 function onUpdate(ctx) {
   const price = ctx.closes.at(-2);
@@ -22,8 +22,8 @@ function onUpdate(ctx) {
     ctx.state.hi = hi;
     const entryAtr = ctx.state.entryAtr != null ? ctx.state.entryAtr : atr;
     ctx.state.entryAtr = entryAtr;
-    // Partial take-profit: sell half at +4x entry ATR. Locks in real gains while the
-    // other half keeps riding the trailing stop for the bigger move.
+    // Partial take-profit: sell half at +4x entry ATR (~8% on BTC 4h). Locks in real
+    // gains while the other half keeps riding the trailing stop for the bigger move.
     if (ctx.state.tpDone == null && price >= ctx.entryPx + 4 * entryAtr) {
       ctx.state.tpDone = true;
       return { side: 'sell', qty: ctx.position * 0.5 };
@@ -36,12 +36,13 @@ function onUpdate(ctx) {
   }
 
   // ---- entry only when flat ----
-  // Trend filter (classic turtle rule): only take longs above the 300-bar average.
+  // Trend filter (classic turtle rule): only take longs above the 300-bar average
+  // (4h x 300 = ~50 days). Breakouts in a downtrend are rebound traps.
   const sma300 = ctx.sma(300, 1);
   if (sma300 == null || price < sma300) return null;
 
-  // Volatility filter: skip entries when ATR is in its top decile — extreme vol is
-  // choppy noise, not a clean breakout (protects the 1h version from whipsaw).
+  // Volatility expansion: current ATR above its own average over the last 40 bars.
+  // Why 1.15x on normal entries: genuine breakouts come on expanding volatility.
   let sum = 0, cnt = 0;
   for (let k = 1; k <= 40; k++) {
     const a = ctx.atr(14, k);
@@ -50,10 +51,10 @@ function onUpdate(ctx) {
   }
   if (cnt < 30) return null;
   const avgAtr = sum / cnt;
-  if (atr != null && atr > 1.6 * avgAtr) return null;
 
-  // Strong-trend relaxation: >10% above the 300-bar average, the trend confirms, so a
-  // breakout only needs normal ATR (>= average) instead of 1.15x expansion.
+  // Strong-trend relaxation: when price is >10% above its 300-bar average the trend
+  // itself is the confirmation, so a breakout only needs normal ATR (>= average).
+  // This is where the old rule missed steady grind-up bulls.
   const strongTrend = price > sma300 * 1.10;
   const atrOk = atr != null && (strongTrend ? atr >= avgAtr : atr >= 1.15 * avgAtr);
   if (!atrOk) return null;

@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
 |  | [3541](strategies/3541/) | Volatility Breakout BTC 1H | -12.10% | +8.25% | +12.10% | 75 | 2026-10-11 |
+| ★ | [3148](strategies/3148/) | AI 전략 | +5.91% | -23.70% | +12.70% | 4 | 2026-10-11 |
 |  | [3540](strategies/3540/) | Volatility Breakout ETH 4H | +36.09% | +1894.32% | +37.24% | 92 | 2026-10-11 |
 |  | [3147](strategies/3147/) | AI 전략 | +11.56% | +1055.63% | +12.43% | 6 | 2026-10-11 |
 |  | [3539](strategies/3539/) | ETH 4H Mean Reversion | -11.80% | +1894.32% | +29.15% | 50 | 2026-10-11 |
@@ -327,7 +328,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3157](strategies/3157/) | BTC FearGreed Contrarian v2 1D | -44.34% | +753.65% | +73.23% | 12 | 2026-10-07 |
 |  | [3156](strategies/3156/) | BTC FearGreed Contrarian 1D | -13.08% | -2.80% | +53.82% | 18 | 2026-10-07 |
 |  | [3155](strategies/3155/) | BTC Onchain Network Growth Trend 1D | -22.19% | +190.54% | +59.85% | 120 | 2026-10-07 |
-| ★ | [3148](strategies/3148/) | AI 전략 | +5.91% | -23.70% | +12.70% | 4 | 2026-10-05 |
 |  | [3146](strategies/3146/) | AI 전략 | +151.83% | +221.34% | +13.29% | 16 | 2026-10-05 |
 |  | [3145](strategies/3145/) | AI 전략 | -7.97% | +41.70% | +46.59% | 11 | 2026-10-05 |
 | ★ | [3144](strategies/3144/) | ADA 1D Defensive Donchian | +95.53% | -24.20% | +30.06% | 8 | 2026-10-05 |

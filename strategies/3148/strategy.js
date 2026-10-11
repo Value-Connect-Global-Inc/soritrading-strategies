@@ -19,29 +19,37 @@
  * When it does NOT work: in a sustained bear market the rising-200d gate keeps
  * it in cash (misses bounces); it underperforms buy-and-hold in melt-up windows
  * because it exits at the 20-day EMA instead of riding the full trend.
+ * 2026-05-09: 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const bb = ctx.bb(20, 2, 1);
   const rsi = ctx.rsi(14, 1);
   const sma200 = ctx.sma(200, 1);
   const sma200_20ago = ctx.sma(200, 21);
   const ema20 = ctx.ema(20, 1);
-  if (bb == null || rsi == null || sma200 == null || sma200_20ago == null || ema20 == null) return null;
+  if (bb == null || rsi == null || sma200 == null || sma200_20ago == null || ema20 == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   const lower = Array.isArray(bb) ? bb[2] : bb.lower;
-  if (!Number.isFinite(lower)) return null;
-
-  ctx.watch([
-    { side: 'buy', price: lower, note: 'BB lower band' },
-    { side: 'sell', price: ema20, note: 'recovery to EMA20' }
-  ]);
+  if (!Number.isFinite(lower)) {
+    ctx.watch([]);
+    return null;
+  }
 
   const pos = ctx.position;
   if (pos > 0) {
-    // Exit on recovery to EMA20, or if the long-term trend broke (price below 200d avg)
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'above', note: 'recovery to EMA20' },
+      { side: 'sell', price: sma200, trigger: 'below', note: 'trend broken' }
+    ]);
     if (price >= ema20 || price < sma200) {
       return { side: 'sell', qty: pos };
     }
@@ -49,7 +57,20 @@ function onUpdate(ctx) {
   }
 
   const trendRising = sma200 >= sma200_20ago;
-  // Champion config: RSI<30 (oversold only), no volume gate, no extension cap — the ledger's validated winner.
+  ctx.watch([
+    {
+      side: 'buy',
+      price: lower,
+      trigger: 'below',
+      note: 'BB lower band',
+      conds: [
+        { label: 'RSI(14)', now: rsi, op: '<', ref: 30, closed: true },
+        { label: 'price > SMA200', now: price, op: '>', ref: sma200 },
+        { label: 'SMA200 rising', ok: trendRising }
+      ]
+    }
+  ]);
+
   if (price <= lower && rsi < 30 && price > sma200 && trendRising) {
     return { side: 'buy', qty: (ctx.cash / price) * 0.95 };
   }
