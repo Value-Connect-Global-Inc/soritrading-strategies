@@ -7,8 +7,8 @@
  * cash: 10000
  *
  * Why this strategy: Strong 4h BTC moves usually start with a volatility expansion — ATR and volume push above their averages while price breaks a multi-week high. Entering only on that confirmation avoids the fake breakouts a plain Donchian system pays for.
- * When it buys and sells: Buys when flat AND the last closed bar breaks above the prior 55-bar high AND the 14-bar ATR is above its own recent average AND volume is at/above its 50-bar average. Sells when price falls 2.5 ATR below the highest close since entry (volatility-adaptive trailing stop), never worse than 2.5 ATR below entry.
- * When it does NOT work: In a long sideways range the 55-bar breakout fires on small rips and the trailing stop cuts each one for a small loss. It also stays flat through slow steady grind-ups with no volatility expansion, missing those moves.
+ * When it buys and sells: Buys when flat AND price is above its 300-bar average AND the last closed bar breaks above the prior 55-bar high AND the 14-bar ATR is above its own recent average AND volume is at/above its 50-bar average. Sells when price falls 2.5 ATR below the highest close since entry, never worse than 2.5 ATR below entry.
+ * When it does NOT work: In a long sideways range the 55-bar breakout fires on small rips and the trailing stop cuts each one for a small loss. It stays flat through slow steady grind-ups with no volatility expansion, and it never catches a bottom — it only buys after the trend turns up.
  */
 function onUpdate(ctx) {
   const price = ctx.closes.at(-2);
@@ -30,6 +30,11 @@ function onUpdate(ctx) {
   }
 
   // ---- entry only when flat ----
+  // Trend filter (classic turtle rule): only take longs above the 300-bar average
+  // (4h x 300 = ~50 days). Breakouts in a downtrend are rebound traps.
+  const sma300 = ctx.sma(300, 1);
+  if (sma300 == null || price < sma300) return null;
+
   // Volatility expansion: current ATR above its own average over the last 40 bars.
   // Why 1.15x: genuine breakouts come on expanding volatility; anything quieter is noise.
   let sum = 0, cnt = 0;
