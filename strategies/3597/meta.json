@@ -3,11 +3,11 @@
   "name": "ETH Trend-Follow EMA50/200 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 18021,
-    "return": 54.46,
-    "mdd": 29.68,
-    "trades": 54,
-    "vsBuyHold": "win",
+    "backtestId": 18025,
+    "return": -57.31,
+    "mdd": 58.75,
+    "trades": 262,
+    "vsBuyHold": "lose",
     "benchRet": -26.02,
     "benchBasis": "price",
     "gapPct": 0,
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-11T23:04:51.623Z",
+  "updatedAt": "2026-10-11T23:06:03.033Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
