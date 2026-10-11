@@ -3,7 +3,7 @@
   "name": "RSI Mean Reversion Bounce 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 15699,
+    "backtestId": 17159,
     "return": -9.13,
     "mdd": 17.42,
     "trades": 60,
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-08T18:11:56.523Z",
+  "updatedAt": "2026-10-11T09:19:04.858Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
