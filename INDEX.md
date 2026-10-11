@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
 |  | [3200](strategies/3200/) | SOL 1D Momentum Hysteresis | +387.37% | +882.87% | +57.45% | 10 | 2026-10-11 |
-| ★ | [3466](strategies/3466/) | DXY Gated BTC Trend 4H | +60.36% | +45.09% | +12.49% | 14 | 2026-10-11 |
+| ★ | [3466](strategies/3466/) | DXY Gated BTC Trend 4H | +80.37% | +45.09% | +24.15% | 40 | 2026-10-11 |
 | ★ | [3465](strategies/3465/) | Miner Commitment Long BTC 1D | -18.00% | -21.40% | +20.28% | 19 | 2026-10-11 |
 |  | [3464](strategies/3464/) | BTC Trend Rider 1D | -11.40% | +95.22% | +34.89% | 17 | 2026-10-11 |
 | — | [3210](strategies/3210/) | Baseline Champion Reference | +242.21% | — | +37.78% | 18 | 2026-10-11 |
