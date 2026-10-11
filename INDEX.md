@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [3385](strategies/3385/) | ADA Donchian 55/10 BearSized 1D | +49.14% | -80.33% | +68.28% | 44 | 2026-10-11 |
+| ★ | [3385](strategies/3385/) | ADA Donchian 55/10 BearSized 1D | +70.26% | -58.55% | +38.64% | 16 | 2026-10-11 |
 | ★ | [3384](strategies/3384/) | ADA RSI2 Panic Mean-Reversion 1D | +3.15% | -53.70% | +36.32% | 57 | 2026-10-11 |
 |  | [3383](strategies/3383/) | ADA Donchian 55/10 QuietVol Regime 1D | +460.16% | +636.03% | +39.86% | 7 | 2026-10-10 |
 | ★ | [3382](strategies/3382/) | ADA Donchian 55/10 UpperHalf Regime 1D | -23.19% | -53.70% | +69.76% | 22 | 2026-10-10 |
