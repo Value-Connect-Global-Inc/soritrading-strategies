@@ -4,14 +4,16 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 463 of 1762 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 462 of 1764 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [3497](strategies/3497/) | EMA Trend Momentum BTC 4h | -17.24% | -19.64% | +33.07% | 58 | 2026-10-11 |
+|  | [3499](strategies/3499/) | CleanEmaTrend4h | -22.19% | +35.80% | +54.67% | 204 | 2026-10-11 |
+|  | [3498](strategies/3498/) | FearAndHashrateMultiFactor4h | -77.02% | +35.80% | +78.25% | 344 | 2026-10-11 |
+|  | [3497](strategies/3497/) | EMA Trend Momentum BTC 4h | -16.48% | +73.48% | +21.83% | 54 | 2026-10-11 |
 | ★ | [3496](strategies/3496/) | Squeeze Volume Breakout BTC 4h | -3.05% | -19.64% | +17.02% | 46 | 2026-10-11 |
 |  | [3495](strategies/3495/) | Multi-Timeframe Trend Breakout | -48.54% | +8.29% | +49.70% | 162 | 2026-10-11 |
 |  | [3494](strategies/3494/) | Adaptive Volatility Breakout Channel | -46.47% | +8.29% | +46.73% | 138 | 2026-10-11 |
