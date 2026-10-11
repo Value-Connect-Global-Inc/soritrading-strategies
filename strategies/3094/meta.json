@@ -3,7 +3,7 @@
   "name": "SOL Hybrid MR + Trend Leg 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 14815,
+    "backtestId": 17777,
     "return": 42.43,
     "mdd": 64.41,
     "trades": 80,
@@ -28,6 +28,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-02T04:29:02.510Z",
+  "updatedAt": "2026-10-11T17:39:59.989Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

@@ -6,6 +6,8 @@
  * interval: 1d
  * cash: 10000
  *
+ * 2025-04-11 표시만 바뀜, 매매 판단은 그대로
+ *
  * Why this strategy: the defensive mean-reversion core protects capital in bears but
  * lags badly in melt-ups (+40% vs +1092% hold). This hybrid keeps that protection and
  * ADDS a trend-following leg that rides strong uptrends, so it can capture the bull
@@ -19,7 +21,10 @@
  */
 function onUpdate(ctx) {
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const bb = ctx.bb(20, 2, 1);
   const rsi = ctx.rsi(14, 1);
@@ -29,7 +34,10 @@ function onUpdate(ctx) {
   const sma20 = ctx.sma(20, 1);
   const sma20prev = ctx.sma(20, 2);
   const atr = ctx.atr(14, 1);
-  if (bb == null || rsi == null || sma200 == null || sma200prev == null || sma50 == null || sma20 == null || sma20prev == null || atr == null || atr <= 0) return null;
+  if (bb == null || rsi == null || sma200 == null || sma200prev == null || sma50 == null || sma20 == null || sma20prev == null || atr == null || atr <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const pos = ctx.position;
   // Confirmed melt-up: 200-day rising, price above the 50-day AND well above 200-day.
@@ -40,6 +48,10 @@ function onUpdate(ctx) {
     ctx.state.peak = peak;
     if (strongBull) {
       // Trend leg exit: 2.5 ATR trail, or trend rolls over.
+      ctx.watch([
+        { side: 'sell', price: peak - 2.5 * atr, trigger: 'below', note: 'ATR trail' },
+        { side: 'sell', price: sma200, trigger: 'below', note: 'trend rollover' }
+      ]);
       if (price < peak - 2.5 * atr || price < sma200) {
         ctx.state.peak = null;
         return { side: 'sell', qty: pos };
@@ -47,6 +59,10 @@ function onUpdate(ctx) {
       return null;
     }
     // Defensive MR exit: snap back to the 20-day average, or trend broke.
+    ctx.watch([
+      { side: 'sell', price: sma20, trigger: 'above', note: 'MR snap-back' },
+      { side: 'sell', price: sma200, trigger: 'below', note: 'trend broke' }
+    ]);
     if (price > sma20 || price < sma200) {
       ctx.state.peak = null;
       return { side: 'sell', qty: pos };
@@ -58,6 +74,15 @@ function onUpdate(ctx) {
     // Trend leg: buy a pullback in an uptrend (price dipped to/near the 20-day avg
     // but the trend is intact).
     const pullback = price <= sma20 * 1.02 && sma20 > sma20prev;
+    ctx.watch([
+      {
+        side: 'buy',
+        price: sma20 * 1.02,
+        trigger: 'below',
+        note: 'trend leg pullback',
+        conds: [{ label: 'SMA20 rising', ok: sma20 > sma20prev }]
+      }
+    ]);
     if (pullback) {
       ctx.state.peak = price;
       return { side: 'buy', qty: (ctx.cash / price) * 0.98 };
@@ -66,6 +91,18 @@ function onUpdate(ctx) {
   }
 
   // Defensive core: deep oversold flush inside a rising long-term trend.
+  ctx.watch([
+    {
+      side: 'buy',
+      price: bb.lower,
+      trigger: 'below',
+      note: 'deep oversold flush',
+      conds: [
+        { label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true },
+        { label: 'SMA200 rising', ok: sma200 > sma200prev }
+      ]
+    }
+  ]);
   if (sma200 > sma200prev && rsi < 30 && price < bb.lower) {
     ctx.state.peak = price;
     return { side: 'buy', qty: (ctx.cash / price) * 0.98 };

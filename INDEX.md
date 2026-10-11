@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3094](strategies/3094/) | SOL Hybrid MR + Trend Leg 1D | +42.43% | +404.43% | +64.41% | 80 | 2026-10-11 |
 |  | [3558](strategies/3558/) | BTC Trend-Follow EMA50/200 4H | +40.89% | +46.70% | +22.60% | 36 | 2026-10-11 |
 |  | [3557](strategies/3557/) | BTC Donchian Breakout 4H | -13.34% | +461.93% | +23.20% | 137 | 2026-10-11 |
 |  | [3095](strategies/3095/) | SOL Defensive Mean Reversion 1D | +106.27% | +404.43% | +19.36% | 49 | 2026-10-11 |
@@ -384,7 +385,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | — | [3099](strategies/3099/) | EURUSD 1h 돌파추세 v1 (ATR 손절·세션 필터) | -49.44% | — | +51.46% | 240 | 2026-10-02 |
 |  | [3080](strategies/3080/) | Claude 실환경 테스트 2026-10-01 (삭제해도 됨) | -11.63% | -11.05% | +36.12% | 1 | 2026-10-02 |
 | — | [3096](strategies/3096/) | SOL Funding-Squeeze Long 1D | -15.05% | — | +15.05% | 8 | 2026-10-02 |
-|  | [3094](strategies/3094/) | SOL Hybrid MR + Trend Leg 1D | +42.43% | +404.43% | +64.41% | 80 | 2026-10-02 |
 | ★ | [3093](strategies/3093/) | SOL Trend-Ride Momentum 1D | -13.90% | -14.51% | +46.70% | 15 | 2026-10-02 |
 | ★ | [3088](strategies/3088/) | SOL Defensive MR ATR-Trail 1D | +14.63% | -91.63% | +0.00% | 14 | 2026-10-01 |
 |  | [3087](strategies/3087/) | Data Probe BTC 1D | +106.27% | +403.20% | +19.36% | 49 | 2026-10-01 |
