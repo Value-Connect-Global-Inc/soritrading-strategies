@@ -3,7 +3,7 @@
   "name": "BTC 4H Momentum-Confirmed EMA Trend",
   "kind": "custom",
   "verified": {
-    "backtestId": 15477,
+    "backtestId": 17610,
     "return": -51.89,
     "mdd": 56.61,
     "trades": 78,
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-07T17:57:26.705Z",
+  "updatedAt": "2026-10-11T12:48:35.151Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

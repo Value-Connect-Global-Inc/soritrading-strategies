@@ -13,6 +13,8 @@
  * Sell when the ATR trailing stop is hit (2.5x ATR below highest price since entry).
  * When it does NOT work: In a long bear market the trend gate keeps us mostly in cash
  * (good), but a sharp V-reversal after a bear trap can trigger a false golden cross.
+ *
+ * 2025-01-15: display-only change — added ctx.watch declarations. Trading logic unchanged.
  */
 function onUpdate(ctx) {
   const f = ctx.ema(20, 1), s = ctx.ema(50, 1);
@@ -26,14 +28,28 @@ function onUpdate(ctx) {
     const hi = ctx.state && ctx.state.hi ? Math.max(ctx.state.hi, ctx.price) : ctx.price;
     ctx.state.hi = hi;
     // 2.5x ATR trail below the peak
-    if (ctx.price < hi - 2.5 * atr) {
+    const stopPx = hi - 2.5 * atr;
+    ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'ATR trail stop' }]);
+    if (ctx.price < stopPx) {
       return { side: 'sell', qty: ctx.position };
     }
     return null;
   }
 
   // entry: golden cross + price above long-term trend
-  if (fp <= sp && f > s && ctx.price > sma200) {
+  const crossUp = fp <= sp && f > s;
+  const trendUp = ctx.price > sma200;
+  ctx.watch([{
+    side: 'buy',
+    price: sma200,
+    trigger: 'above',
+    note: 'SMA200 trend gate',
+    conds: [
+      { label: 'EMA20/50 golden cross', ok: crossUp },
+      { label: 'SMA200', now: sma200, op: '<', ref: ctx.price, closed: true }
+    ]
+  }]);
+  if (crossUp && trendUp) {
     ctx.state.hi = ctx.price;
     return { side: 'buy', qty: ctx.cash / ctx.price * 0.99 };
   }
