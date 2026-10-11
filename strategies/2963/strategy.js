@@ -18,6 +18,8 @@
  * When it does NOT work: In a broad crypto bear the 200-day gate keeps us out of
  * most trades (capital-preserving but misses nothing), and it badly lags buy-and-
  * hold in relentless melt-ups because it sits in cash waiting for a pullback.
+ *
+ * 2025-01-XX: Display-only change — added ctx.watch declarations; trading logic unchanged.
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -35,11 +37,24 @@ function onUpdate(ctx) {
   const uptrend = sma200 > sma200prev;
 
   if (pos > 0) {
+    // Exit conditions
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'above', note: 'EMA20 mid band exit', conds: [{ label: 'RSI(14)', now: rsi, op: '>', ref: 60, closed: true }] },
+      { side: 'sell', price: null, trigger: null, note: 'RSI > 60 exit', conds: [{ label: 'RSI(14)', now: rsi, op: '>', ref: 60, closed: true }] }
+    ]);
     if (price > ema20 || rsi > 60) {
       return { side: 'sell', qty: pos };
     }
     return null;
   }
+
+  // Entry conditions
+  ctx.watch([
+    { side: 'buy', price: lowerBand, trigger: 'below', note: 'ATR-adaptive lower band', conds: [
+      { label: 'RSI(14)', now: rsi, op: '<', ref: 40, closed: true },
+      { label: 'SMA200 rising', ok: uptrend }
+    ]}
+  ]);
 
   if (uptrend && price < lowerBand && rsi < 40) {
     return { side: 'buy', qty: (ctx.cash / price) * 0.95 };
