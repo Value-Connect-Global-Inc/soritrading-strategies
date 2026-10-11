@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 475 of 1848 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 475 of 1849 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 267 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3594](strategies/3594/) | AI 전략 | +48.68% | +580.47% | +14.90% | 7 | 2026-10-11 |
 |  | [2986](strategies/2986/) | BTC 1D Hybrid MR + Squeeze (BASELINE control) | -2.36% | +66.16% | +31.57% | 82 | 2026-10-11 |
 |  | [3592](strategies/3592/) | AI 전략 | +61.55% | +580.47% | +13.92% | 7 | 2026-10-11 |
 |  | [3591](strategies/3591/) | BTC Hashrate Trend 1D | +4.14% | +95.22% | +4.57% | 11 | 2026-10-11 |
