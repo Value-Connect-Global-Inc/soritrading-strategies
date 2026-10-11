@@ -11,7 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [3553](strategies/3553/) | ETH Trend-Follow EMA50/200 4H | +44.90% | -53.45% | +39.40% | 40 | 2026-10-11 |
+| ★ | [3553](strategies/3553/) | ETH Trend-Follow EMA50/200 4H | +36.05% | -53.45% | +33.81% | 38 | 2026-10-11 |
+| ★ | [3104](strategies/3104/) | Keltner MR BTC-SOL 4H | +489.81% | -76.02% | +41.06% | 95 | 2026-10-11 |
 | ★ | [3105](strategies/3105/) | Keltner MR Trend-Gated 4H | +7.68% | -27.55% | +26.59% | 30 | 2026-10-11 |
 | — | [3107](strategies/3107/) | Data Probe SOL 1D MR | +7.22% | — | +33.64% | 118 | 2026-10-11 |
 | ★ | [3108](strategies/3108/) | BTC 1D Bollinger Squeeze-Breakout | -7.64% | -40.93% | +13.84% | 2 | 2026-10-11 |
@@ -368,7 +369,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3111](strategies/3111/) | BTC 1D Defensive Mean Reversion | +3.46% | +18.88% | +1.44% | 6 | 2026-10-02 |
 | ★ | [3109](strategies/3109/) | SOL 1D MR Half-TP + Trend-Ride | -7.64% | -40.93% | +13.84% | 2 | 2026-10-02 |
 |  | [3106](strategies/3106/) | BTC 1D Defensive Mean-Reversion (trend-gated) | +120.09% | +325.14% | +21.24% | 69 | 2026-10-02 |
-| ★ | [3104](strategies/3104/) | Keltner MR BTC-SOL 4H | +489.81% | -76.02% | +41.06% | 95 | 2026-10-02 |
 |  | [3101](strategies/3101/) | EURUSD 4h 추세·눌림목 v1 (EMA50/200·RSI 되돌림) | +31.73% | +109.48% | +13.48% | 542 | 2026-10-02 |
 | — | [3103](strategies/3103/) | EURUSD 1h 아시아 레인지 → 런던 돌파 v1 | -34.28% | — | +36.20% | 282 | 2026-10-02 |
 |  | [3098](strategies/3098/) | ETH VolumeSurge Breakout | +12.08% | +325.14% | +37.53% | 20 | 2026-10-02 |

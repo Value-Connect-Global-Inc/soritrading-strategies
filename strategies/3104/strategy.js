@@ -5,6 +5,7 @@
  * syms: BTCUSDT, SOLUSDT
  * interval: 4h
  * cash: 10000
+ * 2026-04-26: 표시만 바뀜, 매매 판단은 그대로
  *
  * Why this strategy: A genuinely different indicator family from the Bollinger champion —
  * an ATR-adaptive Keltner channel. The lower band is EMA20 minus 2.5x ATR, so it widens
@@ -20,12 +21,18 @@
  */
 function onUpdate(ctx) {
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const ema20 = ctx.ema(20, 1);
   const atr = ctx.atr(14, 1);
   const rsi = ctx.rsi(14, 1);
-  if (ema20 == null || atr == null || atr <= 0 || rsi == null) return null;
+  if (ema20 == null || atr == null || atr <= 0 || rsi == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   const pos = ctx.position;
   const st = ctx.state;
@@ -36,6 +43,13 @@ function onUpdate(ctx) {
   if (pos > 0) {
     // Exit once price recovers back above the 20-EMA (channel mid). No hard stop:
     // the mid-band exit is what makes this recipe work (a hard stop whipsaws on 4h).
+    ctx.watch([{
+      side: 'sell',
+      price: ema20,
+      trigger: 'above',
+      note: 'EMA20 mid exit',
+      conds: [{ label: 'cooldown', ok: cd === 0 }]
+    }]);
     if (price > ema20 && cd === 0) {
       ctx.state.cd = 2;
       return { side: 'sell', qty: pos };
@@ -44,6 +58,16 @@ function onUpdate(ctx) {
   }
 
   const keltnerLow = ema20 - 2.5 * atr; // 2.5 ATR below EMA20 = volatility-adaptive lower band
+  ctx.watch([{
+    side: 'buy',
+    price: keltnerLow,
+    trigger: 'below',
+    note: 'Keltner lower',
+    conds: [
+      { label: 'RSI(14)', now: rsi, op: '<', ref: 40, closed: true },
+      { label: 'cooldown', ok: cd === 0 }
+    ]
+  }]);
   if (price < keltnerLow && rsi < 40 && cd === 0) {
     ctx.state.cd = 2;
     return { side: 'buy', qty: (ctx.cash / price) * 0.95 };

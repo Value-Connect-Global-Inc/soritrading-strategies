@@ -3,7 +3,7 @@
   "name": "Keltner MR BTC-SOL 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 14947,
+    "backtestId": 17750,
     "return": 489.81,
     "mdd": 41.06,
     "trades": 95,
@@ -27,6 +27,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-02T06:38:40.038Z",
+  "updatedAt": "2026-10-11T17:05:26.275Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
