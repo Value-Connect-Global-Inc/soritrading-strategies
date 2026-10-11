@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2142](strategies/2142/) | ETH Slow Trend Ride + Volume Filter 4H | +493.35% | +1436.34% | +30.47% | 52 | 2026-10-11 |
 |  | [3420](strategies/3420/) | Spread Squeeze Imbalance | -3.26% | -1.44% | +3.26% | 26 | 2026-10-11 |
 | ★ | [3416](strategies/3416/) | BTC Vol Squeeze Breakout 4H | -15.17% | -57.14% | +18.59% | 77 | 2026-10-11 |
 |  | [3419](strategies/3419/) | BTC EMA Pullback 1D | +48.57% | +580.47% | +22.39% | 27 | 2026-10-11 |
@@ -1050,7 +1051,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2155](strategies/2155/) | ETH 1H Channel Breakout | -67.69% | -6.12% | +68.55% | 388 | 2026-09-20 |
 |  | [2154](strategies/2154/) | ETH 1H Volatility Breakout | +30.52% | +39.94% | +34.95% | 1 | 2026-09-20 |
 |  | [2153](strategies/2153/) | ETH 1H Mean Reversion Oversold Bounce | -23.29% | -6.12% | +27.73% | 86 | 2026-09-20 |
-|  | [2142](strategies/2142/) | ETH Slow Trend Ride + Volume Filter 4H | +493.35% | +1436.34% | +30.47% | 52 | 2026-09-20 |
 |  | [2150](strategies/2150/) | BTC On-chain Network Growth 1D | -0.36% | +52.01% | +28.96% | 4 | 2026-09-20 |
 | ★ | [2149](strategies/2149/) | BTC Trend Strength-Scaled Size 4H | +45.97% | -41.14% | +59.67% | 128 | 2026-09-20 |
 |  | [2145](strategies/2145/) | ETH Trend Strength-Scaled Size 4H | +789.61% | +1436.34% | +32.71% | 110 | 2026-09-20 |

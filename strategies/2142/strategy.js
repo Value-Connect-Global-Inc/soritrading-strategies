@@ -16,6 +16,8 @@
  * accompanied by above-average volume.
  * When it does NOT work: in a low-volume grind higher the volume filter may
  * keep us out of a real rally; and it still lags exact tops/bottoms.
+ *
+ * 2025-01-01: display-only ctx.watch added, trading logic unchanged.
  */
 function onUpdate(ctx) {
   const sma = ctx.sma(200, 1);
@@ -39,13 +41,27 @@ function onUpdate(ctx) {
       const avg = sum / 50;
       if (avg <= 0) return null;
       if (barVol < avg) return null; // low-volume poke: skip, likely whipsaw
+      ctx.watch([{ side:'buy', price: sma, trigger:'above', note:'SMA200 cross up + vol filter', conds:[
+        { label:'Prev close > SMA200', now: closePrev, op:'>', ref: sma, closed:true },
+        { label:'Bar volume > 50-bar avg', now: barVol, op:'>', ref: avg, closed:true }
+      ]}]);
       return { side: 'buy', qty: (ctx.cash / price) * 0.98 };
     }
+    ctx.watch([{ side:'buy', price: sma, trigger:'above', note:'SMA200 cross up + vol filter', conds:[
+      { label:'Prev close > SMA200', now: closePrev, op:'>', ref: sma, closed:true },
+      { label:'Prev2 close <= SMA200', now: closePrev2, op:'<=', ref: smaP, closed:true }
+    ]}]);
     return null;
   } else {
     if (closePrev < sma) {
+      ctx.watch([{ side:'sell', price: sma, trigger:'below', note:'SMA200 cross down', conds:[
+        { label:'Prev close < SMA200', now: closePrev, op:'<', ref: sma, closed:true }
+      ]}]);
       return { side: 'sell', qty: pos };
     }
+    ctx.watch([{ side:'sell', price: sma, trigger:'below', note:'SMA200 cross down', conds:[
+      { label:'Prev close < SMA200', now: closePrev, op:'<', ref: sma, closed:true }
+    ]}]);
     return null;
   }
 }
