@@ -3,16 +3,16 @@
   "name": "BTC 업비트 돈치안 트렌드 스탑",
   "kind": "custom",
   "verified": {
-    "backtestId": 16058,
+    "backtestId": 16974,
     "return": -1.72,
     "mdd": 5.46,
     "trades": 4,
     "vsBuyHold": "win",
-    "benchRet": -25.75,
+    "benchRet": -23.27,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1748304000,
-    "tTo": 1791417600,
+    "tFrom": 1748476800,
+    "tTo": 1791590400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 500봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
@@ -33,6 +33,6 @@
     "interval": "1d",
     "marketType": "spot"
   },
-  "updatedAt": "2026-09-06T06:54:00.942Z",
+  "updatedAt": "2026-10-11T05:50:48.657Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

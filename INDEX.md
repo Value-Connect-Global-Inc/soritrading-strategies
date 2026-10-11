@@ -11,6 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [371](strategies/371/) | BTC 업비트 돈치안 트렌드 스탑 | -1.72% | -23.27% | +5.46% | 4 | 2026-10-11 |
+| ★ | [1000](strategies/1000/) | MACD RSI Mean Reversion Strategy | -10.92% | -16.12% | +13.58% | 23 | 2026-10-11 |
 |  | [2142](strategies/2142/) | ETH Slow Trend Ride + Volume Filter 4H | +493.35% | +1436.34% | +30.47% | 52 | 2026-10-11 |
 |  | [3420](strategies/3420/) | Spread Squeeze Imbalance | -3.26% | -1.44% | +3.26% | 26 | 2026-10-11 |
 | ★ | [3416](strategies/3416/) | BTC Vol Squeeze Breakout 4H | -15.17% | -57.14% | +18.59% | 77 | 2026-10-11 |
@@ -1508,7 +1510,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [1025](strategies/1025/) | FearGreed-Regime Momentum Daily | +6.76% | +10.57% | +7.22% | 4 | 2026-09-17 |
 | — | [1024](strategies/1024/) | FearGreed-Regime Momentum | +26.68% | — | +34.50% | 44 | 2026-09-17 |
 |  | [1022](strategies/1022/) | BTC FearGreed Momentum | -32.68% | -15.70% | +33.25% | 50 | 2026-09-17 |
-| ★ | [1000](strategies/1000/) | MACD RSI Mean Reversion Strategy | -10.92% | -16.12% | +13.58% | 23 | 2026-09-16 |
 | — | [972](strategies/972/) | Momentum Filter with ATR | +128.43% | — | +77.15% | 1 | 2026-09-16 |
 | — | [999](strategies/999/) | MACD + BB Reversal Strategy | +14.35% | — | +15.07% | 206 | 2026-09-16 |
 | ★ | [998](strategies/998/) | BB + RSI Filter Strategy | +5.13% | -15.18% | +25.91% | 49 | 2026-09-16 |
@@ -1706,4 +1707,3 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | — | [383](strategies/383/) | RSI 기반 매매 전략 | +16.15% | — | +16.71% | 27 | 2026-09-09 |
 | — | [382](strategies/382/) | RSI와 SMA 기반 전략 | -19.02% | — | +23.82% | 4 | 2026-09-09 |
 | — | [381](strategies/381/) | 이동평균교차전략 | -21.82% | — | +36.09% | 70 | 2026-09-08 |
-| ★ | [371](strategies/371/) | BTC 업비트 돈치안 트렌드 스탑 | -1.72% | -25.75% | +5.46% | 4 | 2026-09-06 |

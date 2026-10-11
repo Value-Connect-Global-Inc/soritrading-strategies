@@ -44,6 +44,19 @@ function onUpdate(ctx) {
       s.stopPx = targetStop;
     }
 
+    // 표시만 바뀜, 매매 판단은 그대로
+    ctx.watch([{
+      side: 'sell',
+      price: s.stopPx,
+      trigger: 'below',
+      qty: pos,
+      note: '래칫 스탑',
+      conds: [
+        { label: '20봉 저점', now: channelStop, op: '<=', ref: s.stopPx, closed: true },
+        { label: '최고가-3ATR', now: atrStop, op: '<=', ref: s.stopPx, closed: true }
+      ]
+    }]);
+
     if (ctx.price <= s.stopPx) {
       return [{ cancel: 'all' }, { side: 'sell', qty: pos }];
     }
@@ -74,6 +87,19 @@ function onUpdate(ctx) {
 
   const qty = Math.floor((cash * 0.98 / breakoutPx) * 10000) / 10000;
   if (qty <= 0) return { cancel: 'all' };
+
+  // 표시만 바뀜, 매매 판단은 그대로
+  ctx.watch([{
+    side: 'buy',
+    price: breakoutPx,
+    trigger: 'above',
+    qty,
+    note: '40봉 돌파',
+    conds: [
+      { label: 'EMA200', ok: ctx.price > ema200, closed: true },
+      { label: '현금', now: cash, op: '>=', ref: 50000 }
+    ]
+  }]);
 
   return [
     { cancel: 'all' },
