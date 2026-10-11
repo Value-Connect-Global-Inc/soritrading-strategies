@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 442 of 1704 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 442 of 1705 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3435](strategies/3435/) | AI 전략 | -69.79% | -4.95% | +73.32% | 213 | 2026-10-11 |
 |  | [3434](strategies/3434/) | AI 전략 | +12.20% | +154.38% | +50.74% | 7 | 2026-10-11 |
 |  | [3433](strategies/3433/) | AI 전략 | +54.24% | +154.38% | +53.47% | 9 | 2026-10-11 |
 |  | [3432](strategies/3432/) | AI 전략 | -77.31% | -19.64% | +77.57% | 638 | 2026-10-11 |
