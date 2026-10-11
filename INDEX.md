@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2962](strategies/2962/) | SOL 1D ATR-Adaptive Keltner MR | +123.41% | +1443.13% | +39.12% | 8 | 2026-10-11 |
 | ★ | [3601](strategies/3601/) | BTC DXY Macro Regime 4H | +7.87% | -26.02% | +22.27% | 208 | 2026-10-11 |
 |  | [3600](strategies/3600/) | BTC Fear-Greed Contrarian 4H | +20.54% | +457.74% | +6.55% | 2 | 2026-10-11 |
 |  | [2963](strategies/2963/) | Alt 1D ATR-Adaptive Keltner MR | +36.07% | +830.66% | +39.12% | 6 | 2026-10-11 |
@@ -532,7 +533,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2977](strategies/2977/) | BTC 1D Fear-Greed Contrarian v3 | -39.46% | +43.77% | +50.04% | 55 | 2026-09-29 |
 |  | [2974](strategies/2974/) | BTC 1D Fear-Greed Contrarian v2 | -22.80% | +240.17% | +23.16% | 20 | 2026-09-29 |
 |  | [2965](strategies/2965/) | SOL 1D Dual-Mode Keltner MR + Trend Ride | +79.55% | +659.58% | +23.13% | 5 | 2026-09-28 |
-|  | [2962](strategies/2962/) | SOL 1D ATR-Adaptive Keltner MR | +123.41% | +1443.13% | +39.12% | 8 | 2026-09-28 |
 |  | [2960](strategies/2960/) | AI 전략 | +14.96% | +87.94% | +24.82% | 34 | 2026-09-28 |
 |  | [2959](strategies/2959/) | BTC 1D Defensive Bollinger-RSI + Trend Ride (CHAMPION BASELI | +12.76% | +116.17% | +15.81% | 22 | 2026-09-28 |
 |  | [2958](strategies/2958/) | BTC 1D Defensive Bollinger-RSI + Trend Ride (Vol-Scaled) | +12.77% | +116.17% | +15.18% | 22 | 2026-09-28 |
