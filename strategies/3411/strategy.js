@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: Multi-Asset Donchian Basket Vol-Weighted 1D - Regime Gate + DD Breaker
+ * name: Multi-Asset Donchian Basket Vol-Weighted 1D - Regime Gate + DD Breaker + Trend Exit
  * ex: binance
  * syms: BTCUSDT, ETHUSDT, SOLUSDT, ADAUSDT, XRPUSDT, DOGEUSDT
  * interval: 1d
@@ -9,19 +9,24 @@
  * Why this strategy: Six-coin Donchian 55/10 breakout basket with volatility
  * weighting (each leg sized inversely to its own ATR so dollar risk is equal).
  * A 200-day regime gate blocks counter-trend breakouts below the long-term
- * average. NEW: an equity-curve drawdown circuit breaker halves position size
- * when the basket is in a deep drawdown and blocks new entries when the
- * drawdown is extreme — a hard risk floor so the account cannot be ruined.
- * When it buys and sells: on each coin, buy when a closed bar closes above its
- * 55-day high AND the coin is above its 200-day average. Sell when a closed
- * bar closes below the 10-day low or price falls 2.5 ATR below entry. After a
- * stop-out the coin pauses 10 bars. Risk is halved while the basket is down
- * more than 12% from its peak and new entries stop at 22%.
+ * average, and an equity-curve drawdown circuit breaker halves position size
+ * at 12% and blocks new entries at 22% — a hard risk floor. NEW: a 100-day
+ * trend exit, symmetric with the 200-day entry gate (we only hold coins in a
+ * long-term uptrend; when that uptrend breaks we leave) so slow grind-downs
+ * don't ride all the way down.
+ * When it buys and sells: on each coin, buy when a closed bar closes above
+ * its 55-day high AND the coin is above its 200-day average. Sell when a
+ * closed bar closes below the 10-day low, below its 100-day average, or
+ * price falls 2.5 ATR below entry. After a stop-out the coin pauses 10 bars.
+ * Risk is halved while the basket is down more than 12% from its peak and
+ * new entries stop at 22%.
  * When it does NOT work: in a broad coordinated crypto bear all six trend
  * gates stay flat (capital safe, little upside). In a crash that hits all
  * coins at once the basket drawdown is close to a single coin's. Coins that
- * trend weakly add little and cost fees. The circuit breaker reduces recovery
- * speed after a drawdown (it caps risk, it does not create gains).
+ * trend weakly add little and cost fees. The trend exit can sell during a
+ * sharp V-recovery dip and miss the rebound (it confirms the trend break on
+ * a closed bar, so it is late by design). The circuit breaker reduces
+ * recovery speed after a drawdown (it caps risk, it does not create gains).
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
@@ -69,8 +74,18 @@ function onUpdate(ctx) {
     const entry = ctx.entryPx || price;
     const channelLow = Math.min(...closes.slice(-12, -2));
     const stop = entry - 2.5 * atr;
+    const sma100 = ctx.sma(100, 1);
+    // NEW trend exit: symmetric with the 200-day entry gate. We only hold coins
+    // in a long-term uptrend; when a closed bar closes below the 100-day
+    // average that uptrend is broken and we leave. Catches slow grind-downs
+    // that the fast 10-day low trail whipsaws through.
+    if (sma100 != null && prevClose < sma100) {
+      ctx.state.cool[sym] = ctx.i + 10;
+      return { side: 'sell', qty: pos };
+    }
     ctx.watch([{ side: 'sell', price: channelLow, trigger: 'below', note: '10-day low trail' },
-               { side: 'sell', price: stop, trigger: 'below', note: '2.5 ATR stop' }]);
+               { side: 'sell', price: stop, trigger: 'below', note: '2.5 ATR stop' },
+               { side: 'sell', price: sma100, trigger: 'below', note: '100-day trend exit' }]);
     if (prevClose < channelLow || price < stop) {
       ctx.state.cool[sym] = ctx.i + 10;   // pause this coin after a stop-out
       return { side: 'sell', qty: pos };
