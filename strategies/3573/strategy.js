@@ -9,12 +9,14 @@
  * Why this strategy: On-chain active addresses measure real user demand for
  * Bitcoin. When demand accelerates (addresses well above their 30-day average)
  * while the long-term trend is up, price tends to keep rising; when demand
- * cools or the trend breaks, we exit. This is a different data family from
- * price-only pullback strategies — it bets on adoption/usage, not on bounces.
- * When it buys and sells: buy when active addresses are >= 5% above their
+ * clearly cools or the trend breaks, we exit. This is a different data family
+ * from price-only pullback strategies — it bets on adoption/usage, not on
+ * bounces. A wide hysteresis band turns the noisy daily metric into a slow
+ * regime signal so we are not whipsawed by one-day wobbles.
+ * When it buys and sells: buy when active addresses are >= 10% above their
  * 30-day average AND price is above the 200-day EMA (and RSI not above 70).
- * Sell when addresses fall back below their 30-day average, or price closes
- * below the 200-day EMA, or a 2.5x ATR stop from entry is hit.
+ * Sell when addresses fall to <= 5% BELOW their 30-day average, or price
+ * closes below the 200-day EMA, or a 2.5x ATR stop from entry is hit.
  * When it does NOT work: it lags a melt-up (addresses plateau while price
  * runs), and it can whipsaw in a sideways chop where addresses hover around
  * their average. Slow-moving data means few trades — expect long flat periods.
@@ -33,16 +35,17 @@ function onUpdate(ctx) {
   if (pos > 0) {
     const stopPx = ctx.entryPx - 2.5 * atr;
     if (price <= stopPx) return { side: 'sell', qty: pos };
-    if (addr < addrSma) return { side: 'sell', qty: pos };
+    // demand must clearly cool (5% below its 30d avg) before we exit
+    if (addr <= addrSma * 0.95) return { side: 'sell', qty: pos };
     if (price < ema200) return { side: 'sell', qty: pos };
     ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'hard stop' },
                { side: 'sell', price: ema200, trigger: 'below', note: 'trend break' },
-               { side: 'sell', note: 'addresses cooling', conds: [{ label: 'addr vs sma30', now: addr, op: '<', ref: addrSma, closed: true }] }]);
+               { side: 'sell', note: 'addresses cooling', conds: [{ label: 'addr vs sma30', now: addr, op: '<=', ref: addrSma * 0.95, closed: true }] }]);
     return null;
   }
 
-  // demand must be accelerating: addresses >=5% above their 30d average
-  if (addr < addrSma * 1.05) return null;
+  // demand must strongly accelerate: addresses >=10% above their 30d average
+  if (addr < addrSma * 1.10) return null;
   // long-term uptrend intact — never buy into a broken market
   if (price <= ema200) return null;
   // skip euphoric blow-off tops (RSI>70) — chasing has no edge here

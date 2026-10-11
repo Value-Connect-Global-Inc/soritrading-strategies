@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3573](strategies/3573/) | BTC Active-Address Demand Trend 1D | -9.32% | +154.38% | +11.00% | 119 | 2026-10-11 |
+|  | [3573](strategies/3573/) | BTC Active-Address Demand Trend 1D | -2.92% | +154.38% | +6.92% | 63 | 2026-10-11 |
 |  | [3048](strategies/3048/) | BTC 1D Squeeze-Breakout Trend-Gated | -35.37% | +244.14% | +42.41% | 22 | 2026-10-11 |
 | ★ | [3051](strategies/3051/) | BTC 1D Long-Short 200-Day Trend | +121.63% | +43.89% | +28.23% | 129 | 2026-10-11 |
 | — | [3572](strategies/3572/) | 3-Asset Pullback Basket w/ Stop Cooldown 4H | +70.51% | — | +12.67% | 762 | 2026-10-11 |
