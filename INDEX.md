@@ -4,16 +4,18 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 475 of 1846 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 476 of 1847 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 267 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [3591](strategies/3591/) | BTC Hashrate Trend 1D | -2.62% | -26.04% | +4.77% | 168 | 2026-10-11 |
+|  | [3590](strategies/3590/) | BTC Fear&Greed Contrarian 1D | +0.01% | +95.22% | +8.55% | 12 | 2026-10-11 |
+|  | [2993](strategies/2993/) | BTC 1D Crash-Buy + Trend-Ride Hybrid | -1.98% | +94.89% | +25.86% | 42 | 2026-10-11 |
 | ★ | [2991](strategies/2991/) | BTC 1D OI-Funding Sentiment | +115.35% | +47.08% | +15.57% | 108 | 2026-10-11 |
 |  | [2992](strategies/2992/) | BTC 1D Deep-Crash Capitulation Reversion | -0.68% | +800.36% | +42.12% | 18 | 2026-10-11 |
-|  | [3590](strategies/3590/) | BTC Fear&Greed Contrarian 1D | +0.01% | +95.22% | +8.55% | 12 | 2026-10-11 |
 | — | [3589](strategies/3589/) | Multi-Asset Donchian Turtle Portfolio | +9.02% | — | +9.22% | 384 | 2026-10-11 |
 |  | [2996](strategies/2996/) | XRP 1D Donchian Trend-Follower | -0.31% | +109.22% | +71.98% | 11 | 2026-10-11 |
 |  | [2997](strategies/2997/) | BTC 1D Dual-MR Defensive (copy for early-window validation) | +39.61% | +167.91% | +2.61% | 30 | 2026-10-11 |
@@ -499,7 +501,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | ★ | [3005](strategies/3005/) | ADA 1D Dual-MR Defensive (Bollinger+Keltner) | +3.57% | -79.60% | +3.36% | 8 | 2026-09-29 |
 |  | [2995](strategies/2995/) | Multi-Sym Defensive MR Basket | +6.29% | +111.91% | +6.17% | 20 | 2026-09-29 |
 |  | [2994](strategies/2994/) | BTC 1D Dual-MR Defensive (Bollinger+Keltner) | +6.29% | +111.91% | +6.17% | 20 | 2026-09-29 |
-|  | [2993](strategies/2993/) | BTC 1D Crash-Buy + Trend-Ride Hybrid | -1.98% | +94.89% | +25.86% | 42 | 2026-09-29 |
 |  | [2990](strategies/2990/) | BTC 1D Hybrid MR+Squeeze (ATR Trail Exit) | +105.55% | +1205.77% | +29.46% | 86 | 2026-09-29 |
 |  | [2989](strategies/2989/) | BTC 1D Macro-Regime Dollar Filter | +11.50% | +1205.77% | +65.97% | 57 | 2026-09-29 |
 | — | [2988](strategies/2988/) | BTC Long-Short Trend (both directions) | +377.94% | — | +55.67% | 58 | 2026-09-29 |

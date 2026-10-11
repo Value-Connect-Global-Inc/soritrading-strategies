@@ -20,10 +20,14 @@
  * When it does NOT work: In a broad bear the rising-trend gate keeps us flat (capital-safe
  * but little upside). A squeeze that resolves DOWN is missed (long-only). It can whipsaw in
  * a flat, tight range where the squeeze fires then immediately reverses.
+ * 2026-04-26: 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const ema20 = ctx.ema(20, 1);
   const atr = ctx.atr(14, 1);
@@ -33,11 +37,25 @@ function onUpdate(ctx) {
   const high20 = ctx.high(20, 1);
   const bb = ctx.bb(20, 2, 1);
   if (ema20 == null || atr == null || rsi == null || sma200 == null || sma200prev == null ||
-      high20 == null || bb == null || bb.upper == null || bb.lower == null || atr <= 0) return null;
+      high20 == null || bb == null || bb.upper == null || bb.lower == null || atr <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const pos = ctx.position;
 
   if (pos > 0) {
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'below', qty: pos, note: '20 EMA exit' },
+      {
+        side: 'sell',
+        qty: pos,
+        note: 'SMA200 down exit',
+        conds: [
+          { label: 'SMA200 falling', now: sma200, op: '<', ref: sma200prev, closed: true }
+        ]
+      }
+    ]);
     // Exit below the 20-day EMA or when the long-term trend turns down.
     if (price < ema20 || sma200 < sma200prev) {
       return { side: 'sell', qty: pos };
@@ -47,7 +65,10 @@ function onUpdate(ctx) {
 
   // Only trade inside a rising long-term trend (the shared defensive gate).
   const uptrend = sma200 > sma200prev;
-  if (!uptrend) return null;
+  if (!uptrend) {
+    ctx.watch([]);
+    return null;
+  }
 
   // Mean-reversion pullback entry: price under the ATR-adaptive lower Keltner band + weak RSI.
   const lowerBand = ema20 - 2.5 * atr;
@@ -70,6 +91,30 @@ function onUpdate(ctx) {
     if (total > 0) pctile = countBelow / total;
   }
   const squeezeBreakout = pctile <= 0.2 && price > high20 && width > 0;
+
+  ctx.watch([
+    {
+      side: 'buy',
+      price: lowerBand,
+      trigger: 'below',
+      note: 'MR pullback',
+      conds: [
+        { label: 'RSI(14)', now: rsi, op: '<', ref: 40, closed: true },
+        { label: 'SMA200 rising', now: sma200, op: '>', ref: sma200prev, closed: true }
+      ]
+    },
+    {
+      side: 'buy',
+      price: high20,
+      trigger: 'above',
+      note: 'Squeeze breakout',
+      conds: [
+        { label: 'BB width pctile', now: pctile, op: '<=', ref: 0.2, closed: true },
+        { label: 'BB width > 0', now: width, op: '>', ref: 0, closed: true },
+        { label: 'SMA200 rising', now: sma200, op: '>', ref: sma200prev, closed: true }
+      ]
+    }
+  ]);
 
   if (mrEntry || squeezeBreakout) {
     const equity = ctx.cash + ctx.uPnl;
