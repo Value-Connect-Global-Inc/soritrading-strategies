@@ -3,7 +3,7 @@
   "name": "BTC Daily Defensive Mean Reversion",
   "kind": "custom",
   "verified": {
-    "backtestId": 14752,
+    "backtestId": 17795,
     "return": 32.04,
     "mdd": 5.25,
     "trades": 34,
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-01T11:47:31.920Z",
+  "updatedAt": "2026-10-11T18:11:43.336Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

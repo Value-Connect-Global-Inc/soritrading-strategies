@@ -20,26 +20,52 @@
  * rallies because those never dip into the buy zone, and it underperforms
  * buy-and-hold in those periods. It also sits out long bear markets.
  */
+// 2025-04-08 표시만 바뀜, 매매 판단은 그대로
 function onUpdate(ctx) {
   const price = ctx.price;
-  if (price == null) return null;
+  if (price == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   // Long-term trend gate: only buy while the 200-period average is rising.
   const sma200 = ctx.sma(200, 1);
   const sma200prev = ctx.sma(200, 2);
-  if (sma200 == null || sma200prev == null) return null;
+  if (sma200 == null || sma200prev == null) {
+    ctx.watch([]);
+    return null;
+  }
   const uptrend = sma200 > sma200prev;
 
   // Bollinger band (20, 2) from the previous closed bar.
   const bb = ctx.bb(20, 2, 1);
-  if (bb == null) return null;
+  if (bb == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   const rsi = ctx.rsi(14, 1);
   const sma20 = ctx.sma(20, 1);
-  if (rsi == null || sma20 == null) return null;
+  if (rsi == null || sma20 == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   // If we are not holding, look for a flush-down entry.
   if (ctx.position <= 0) {
+    ctx.watch([
+      {
+        side: 'buy',
+        price: bb.lower,
+        trigger: 'below',
+        note: 'BB lower + RSI oversold',
+        conds: [
+          { label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true },
+          { label: 'SMA200 rising', ok: uptrend }
+        ]
+      }
+    ]);
+
     // Buy only when deeply oversold AND below the lower band AND trend rising.
     const oversold = rsi < 30 && price < bb.lower;
     if (uptrend && oversold) {
@@ -49,6 +75,9 @@ function onUpdate(ctx) {
   }
 
   // Exit: price recovered back above the 20-period average.
+  ctx.watch([
+    { side: 'sell', price: sma20, trigger: 'above', note: 'Exit above SMA20' }
+  ]);
   if (price > sma20) {
     return { side: 'sell', qty: ctx.position };
   }
