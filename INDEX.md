@@ -11,8 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [2971](strategies/2971/) | XRP 1D ATR-Adaptive Keltner MR | +67.31% | +2.87% | +36.60% | 4 | 2026-10-11 |
 | ★ | [3597](strategies/3597/) | ETH Trend-Follow EMA50/200 4H | +54.46% | -26.02% | +29.68% | 54 | 2026-10-11 |
+| ★ | [2971](strategies/2971/) | XRP 1D ATR-Adaptive Keltner MR | +67.31% | +2.87% | +36.60% | 4 | 2026-10-11 |
 | ★ | [3596](strategies/3596/) | state persistence test | -1.01% | -44.06% | +1.01% | 2 | 2026-10-11 |
 |  | [2975](strategies/2975/) | BTC 1D On-Chain Network-Health Trend | -79.39% | +240.17% | +85.94% | 902 | 2026-10-11 |
 |  | [2976](strategies/2976/) | BTC 1D Bollinger-RSI Defensive MR | +17.90% | +288.09% | +1.62% | 14 | 2026-10-11 |
