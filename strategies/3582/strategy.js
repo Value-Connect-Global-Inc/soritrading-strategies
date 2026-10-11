@@ -24,18 +24,18 @@ function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
-  // Build our own DXY history from the daily feed (ctx.data returns the value
-  // for the current bar; we accumulate it in ctx.state to compute a 200-day average).
   const dxy = ctx.data('dxy');
+  if (ctx.i % 50 === 0) ctx.log('i=' + ctx.i + ' price=' + price + ' dxy=' + dxy + ' dxyType=' + typeof dxy);
   if (dxy == null) return null;
   if (!ctx.state.dxyHist) ctx.state.dxyHist = [];
   ctx.state.dxyHist.push(dxy);
   if (ctx.state.dxyHist.length > 260) ctx.state.dxyHist.shift();
   const hist = ctx.state.dxyHist;
-  if (hist.length < 200) return null; // need 200 days of DXY before judging the dollar
+  if (hist.length < 200) return null;
 
   const dxySma = hist.reduce((a, b) => a + b, 0) / hist.length;
   const dollarWeak = dxy < dxySma;
+  if (ctx.i % 50 === 0) ctx.log('len=' + hist.length + ' dxySma=' + dxySma.toFixed(2) + ' weak=' + dollarWeak);
 
   const ema50 = ctx.ema(50, 1);
   const sma50 = ctx.sma(50, 1);
@@ -45,18 +45,18 @@ function onUpdate(ctx) {
   const pos = ctx.position;
   if (pos > 0) {
     const stopPx = ctx.entryPx - 3 * atr;
-    if (price <= stopPx) return { side: 'sell', qty: pos };   // hard stop
-    if (price < ema50) return { side: 'sell', qty: pos };     // trend broken
-    if (!dollarWeak) return { side: 'sell', qty: pos };       // dollar strengthening
+    if (price <= stopPx) return { side: 'sell', qty: pos };
+    if (price < ema50) return { side: 'sell', qty: pos };
+    if (!dollarWeak) return { side: 'sell', qty: pos };
     ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'hard stop' },
                { side: 'sell', price: ema50, trigger: 'below', note: 'trend exit' }]);
     return null;
   }
 
-  if (!dollarWeak) return null;   // dollar strong = no longs
-  if (price <= sma50) return null; // still falling — don't catch the knife
+  if (!dollarWeak) return null;
+  if (price <= sma50) return null;
 
-  const qty = (ctx.cash / price) * 0.95;  // near-full position when regime is on
+  const qty = (ctx.cash / price) * 0.95;
   if (qty <= 0) return null;
   return { side: 'buy', qty };
 }
