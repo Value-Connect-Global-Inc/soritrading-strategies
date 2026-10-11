@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: Multi-Asset Donchian Basket Vol-Weighted 1D
+ * name: Multi-Asset Donchian Basket Vol-Weighted 1D - Regime Gate
  * ex: binance
  * syms: BTCUSDT, ETHUSDT, SOLUSDT, ADAUSDT, XRPUSDT, DOGEUSDT
  * interval: 1d
@@ -9,12 +9,13 @@
  * Why this strategy: The single-asset ADA Donchian 55/10 recipe is the proven
  * edge in this account; running it on six coins with a shared cash pool
  * diversifies the trend bet. This version sizes each leg inversely to its own
- * ATR so every coin carries roughly the same dollar risk — a high-volatility
- * coin like DOGE gets a smaller share and cannot dominate basket drawdown.
+ * ATR so every coin carries roughly the same dollar risk, and BLOCKS entry on
+ * coins trading below their 200-day average — a 55-day breakout below the
+ * long-term average is a counter-trend signal, the weakest breakout type.
  * When it buys and sells: on each coin, buy when a closed bar closes above its
- * 55-day high (with a smaller size when the coin is below its 200-day average).
- * Sells when a closed bar closes below the 10-day low or price falls 2.5 ATR
- * below entry. After a stop-out the coin pauses 10 bars.
+ * 55-day high AND the coin is above its 200-day average. Sells when a closed
+ * bar closes below the 10-day low or price falls 2.5 ATR below entry. After a
+ * stop-out the coin pauses 10 bars.
  * When it does NOT work: In a broad coordinated crypto bear all six trend gates
  * stay flat (capital safe, little upside). In a crash that hits all coins at
  * once the basket drawdown is close to a single coin's. Coins that trend weakly
@@ -27,7 +28,7 @@ function onUpdate(ctx) {
   const closes = ctx.closes;
   const n = closes.length;
   if (n < 60) return null;
-  const prevClose = closes.at(-2);
+  const prevClose = closes[n - 2];
   if (prevClose == null) return null;
 
   const atr = ctx.atr(14, 1);
@@ -41,7 +42,7 @@ function onUpdate(ctx) {
   sizeMult = Math.max(0.08, Math.min(0.32, sizeMult));   // keep every leg in [8%, 32%]
 
   const sma200 = ctx.sma(200, 1);
-  if (sma200 != null && prevClose < sma200) sizeMult *= 0.5;   // bear: half the leg share
+  if (sma200 != null && prevClose < sma200) return null;   // regime gate: no counter-trend breakouts
 
   if (!ctx.state.cool || typeof ctx.state.cool !== 'object') ctx.state.cool = {};   // per-symbol cooldown
 
