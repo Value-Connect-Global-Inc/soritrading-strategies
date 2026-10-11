@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 452 of 1727 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 452 of 1728 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3448](strategies/3448/) | Fed Regime Gated Trend BTC 1D | -78.11% | +116.17% | +81.33% | 275 | 2026-10-11 |
 | ★ | [3462](strategies/3462/) | BTC Daily Multi Momentum Trend | -31.47% | -55.10% | +42.26% | 20 | 2026-10-11 |
 | ★ | [3460](strategies/3460/) | BBDynamicSqueezeMeanReversion1h | -14.54% | -34.05% | +19.60% | 220 | 2026-10-11 |
 | ★ | [3459](strategies/3459/) | BBSqueezeMeanReversion1h | -20.42% | -34.05% | +26.31% | 326 | 2026-10-11 |
