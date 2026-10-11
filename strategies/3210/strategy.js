@@ -11,6 +11,8 @@
  * comparison is apples-to-apples. Original header:
  * Buy when 90d momentum > +20%, price above 200-day, Fed not hiking.
  * Sell when momentum fades below +5% or price breaks the 200-day.
+ *
+ * 2025-01-15: 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const sma200 = ctx.sma(200, 1);
@@ -29,10 +31,25 @@ function onUpdate(ctx) {
   const pos = ctx.pos(ctx.sym);
 
   if (pos > 0 && (roc90 < 5 || prevClose < sma200)) {
+    ctx.watch([
+      { side: 'sell', price: sma200, trigger: 'below', qty: pos, note: 'SMA200 break' },
+      { side: 'sell', price: base * 1.05, trigger: 'below', qty: pos, note: 'Momentum fade' }
+    ]);
     return { side: 'sell', qty: pos };
   }
   if (pos === 0 && roc90 > 20 && prevClose > sma200 && !hiking) {
+    ctx.watch([
+      { side: 'buy', price: sma200, trigger: 'below', qty: ctx.cash / ctx.price * 0.33, note: 'SMA200 pullback', conds: [
+        { label: 'Momentum', now: roc90, op: '>', ref: 20, closed: true },
+        { label: 'Fed hiking', ok: !hiking }
+      ]},
+      { side: 'buy', price: base * 1.20, trigger: 'above', qty: ctx.cash / ctx.price * 0.33, note: 'Momentum entry', conds: [
+        { label: 'Momentum', now: roc90, op: '>', ref: 20, closed: true },
+        { label: 'Fed hiking', ok: !hiking }
+      ]}
+    ]);
     return { side: 'buy', qty: ctx.cash / ctx.price * 0.33 };
   }
+  ctx.watch([]);
   return null;
 }

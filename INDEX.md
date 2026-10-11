@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [3210](strategies/3210/) | Baseline Champion Reference | +242.21% | — | +37.78% | 18 | 2026-10-11 |
 |  | [3464](strategies/3464/) | BTC Trend Rider 1D | -11.40% | +95.22% | +34.89% | 17 | 2026-10-11 |
 |  | [3463](strategies/3463/) | Fed Regime BTC 1D | -1.24% | +95.22% | +34.54% | 12 | 2026-10-11 |
 |  | [3213](strategies/3213/) | Donchian Breakout BNB 1D | -90.51% | +50.08% | +91.66% | 90 | 2026-10-11 |
@@ -214,7 +215,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3220](strategies/3220/) | AI 전략 | -43.19% | +174.32% | +56.53% | 14 | 2026-10-08 |
 | — | [3212](strategies/3212/) | AI 전략 | +11.50% | — | +13.48% | 15 | 2026-10-08 |
 | — | [3211](strategies/3211/) | 1D Multi-Asset Momentum Defensive Sizing | +171.82% | — | +35.70% | 18 | 2026-10-08 |
-| — | [3210](strategies/3210/) | Baseline Champion Reference | +242.21% | — | +37.78% | 18 | 2026-10-08 |
 | — | [3209](strategies/3209/) | 1D Multi-Asset Momentum Strength-Sized | +163.63% | — | +28.35% | 17 | 2026-10-08 |
 | — | [3208](strategies/3208/) | 1D Multi-Asset Momentum Crash-Stop | +4.24% | — | +64.49% | 760 | 2026-10-08 |
 | — | [3207](strategies/3207/) | 1D Multi-Asset Momentum Chandelier Stop | +205.44% | — | +47.80% | 84 | 2026-10-08 |
