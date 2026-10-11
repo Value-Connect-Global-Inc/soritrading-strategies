@@ -3,13 +3,11 @@
   "name": "Squeeze Breakout",
   "kind": "custom",
   "verified": {
-    "backtestId": 18085,
-    "return": -29.16,
-    "mdd": 33.07,
-    "trades": 72,
-    "vsBuyHold": "lose",
-    "benchRet": -26.02,
-    "benchBasis": "price",
+    "backtestId": 18095,
+    "return": -5.41,
+    "mdd": 5.45,
+    "trades": 20,
+    "vsBuyHold": "unmeasured",
     "gapPct": 0,
     "tFrom": 1719691200,
     "tTo": 1791676800,
@@ -26,6 +24,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-11T23:44:25.194Z",
+  "updatedAt": "2026-10-11T23:45:34.361Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

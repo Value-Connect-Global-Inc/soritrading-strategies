@@ -5,13 +5,13 @@ Nothing is filtered out by return — the ones that lost money are part of the r
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
 **★ marks a strategy that out-returned buy & hold over the same window** — 479 of 1860 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 268 of them right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 269 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3605](strategies/3605/) | Squeeze Breakout | -29.16% | -26.02% | +33.07% | 72 | 2026-10-11 |
+| — | [3605](strategies/3605/) | Squeeze Breakout | -5.41% | — | +5.45% | 20 | 2026-10-11 |
 |  | [2955](strategies/2955/) | AI 전략 | -12.84% | +48.84% | +25.32% | 8 | 2026-10-11 |
 |  | [3604](strategies/3604/) | DXY-Filtered Donchian | +112.72% | +457.74% | +16.45% | 77 | 2026-10-11 |
 |  | [2960](strategies/2960/) | AI 전략 | +14.96% | +87.94% | +24.82% | 34 | 2026-10-11 |
