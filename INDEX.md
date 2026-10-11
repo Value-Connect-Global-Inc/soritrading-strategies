@@ -11,9 +11,9 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [3416](strategies/3416/) | BTC Vol Squeeze Breakout 4H | -15.17% | -57.14% | +18.59% | 77 | 2026-10-11 |
 |  | [3419](strategies/3419/) | BTC EMA Pullback 1D | +48.57% | +580.47% | +22.39% | 27 | 2026-10-11 |
 |  | [3418](strategies/3418/) | BTC 4H RSI2 Mean Reversion | -92.38% | +312.57% | +92.45% | 1962 | 2026-10-11 |
-| ★ | [3416](strategies/3416/) | BTC Vol Squeeze Breakout 4H | -15.17% | -57.14% | +18.59% | 77 | 2026-10-11 |
 |  | [3412](strategies/3412/) | BTC Panic Mean-Reversion 1D | -24.57% | +95.22% | +27.39% | 221 | 2026-10-11 |
 | — | [3411](strategies/3411/) | Multi-Asset Donchian Basket 4-Leg 1D | +37.36% | — | +17.90% | 84 | 2026-10-11 |
 |  | [3410](strategies/3410/) | SOL ROC Momentum Trend 1D | +205.64% | +854.10% | +22.23% | 10 | 2026-10-11 |
