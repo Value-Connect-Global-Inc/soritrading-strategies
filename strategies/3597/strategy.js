@@ -1,24 +1,21 @@
 /*
  * @coinsori-strategy v1
- * name: ETH Trend-Follow EMA50/200 4H Chandelier
+ * name: ETH Trend-Follow EMA50/200 4H
  * ex: binance
  * syms: ETH/USDT
  * interval: 4h
  * cash: 10000
  *
- * Why this strategy: The EMA50/200 crossover trend core passed a pure generalization
- *   test on ETH 4h (+223/+35/+55 across three disjoint windows). Its weakness is a
- *   ~30% MDD: waiting for the death cross gives back a lot of trend profit. A first
- *   attempt at a plain chandelier trailing stop failed badly (whipsaw: 270 trades,
- *   all windows negative), so this version only starts trailing once the trade is up
- *   3x ATR — a profit-lock trail that preserves the ride-the-trend character.
+ * Why this strategy: The EMA50/200 crossover trend core with re-entry was validated
+ *   on BTC 4h (+20/+41/+40 across windows, +217% one window). This is a pure
+ *   generalization test: the exact same core, no new parameters, on ETH 4h. If the
+ *   family edge is real it should not depend on the symbol.
  * When it buys and sells: buys on a bullish EMA50/200 crossover above SMA200, and
- *   re-buys while flat if EMA50>EMA200 and price>SMA400 (trend intact). Sells on a
- *   death cross, the hard 2.5x ATR stop, or once in profit, a 3x ATR trailing stop
- *   below the highest high since entry — whichever comes first.
+ *   re-buys while flat if EMA50>EMA200 and price>SMA400 (trend intact). Sells on
+ *   death cross or a hard 2.5x ATR stop.
  * When it does NOT work: in choppy sideways ranges the crossover whipsaws; long-only
- *   means a sustained bear market is flat-to-loss; a trailing stop can exit right
- *   before a resumed trend (exit-side whipsaw).
+ *   means a sustained bear market is flat-to-loss. ETH has historically whipsawed
+ *   trend-followers more than BTC — this test shows whether the core survives it.
  */
 function onUpdate(ctx) {
   const f = ctx.ema(50, 1), s = ctx.ema(200, 1);
@@ -31,25 +28,10 @@ function onUpdate(ctx) {
   const prevClose = ctx.closes.at(-2);
 
   if (ctx.position > 0) {
-    // track the highest high since entry
-    let hh = ctx.state.hhSinceEntry;
-    if (hh == null) hh = ctx.entryPx;
-    const lastHigh = ctx.high(1, 1);
-    if (lastHigh != null) hh = Math.max(hh, lastHigh);
-    hh = Math.max(hh, price);
-    ctx.state.hhSinceEntry = hh;
-
-    const hardStop = ctx.entryPx - 2.5 * atr;
-    let stopPx = hardStop;
-    // only start trailing once the trade is up 3x ATR (profit-lock) — this is what
-    // separates locking in real gains from the whipsaw of trailing from entry.
-    if (hh >= ctx.entryPx + 3.0 * atr) {
-      const chandStop = hh - 3.0 * atr;
-      if (chandStop > stopPx) stopPx = chandStop;
-    }
+    const stopPx = ctx.entryPx - 2.5 * atr;
     if (price <= stopPx) return { side: 'sell', qty: ctx.position };
     if (fp > sp && f <= s) return { side: 'sell', qty: ctx.position };
-    ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'trail/hard stop' }]);
+    ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'hard stop' }]);
     return null;
   }
 
@@ -65,6 +47,5 @@ function onUpdate(ctx) {
   const maxQty = (ctx.cash * 0.99) / price;
   if (qty > maxQty) qty = maxQty;
   if (qty <= 0) return null;
-  ctx.state.hhSinceEntry = price; // start the trailing high at entry
   return { side: 'buy', qty };
 }
