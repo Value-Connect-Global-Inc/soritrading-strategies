@@ -15,15 +15,23 @@
  * When it does NOT work: in a choppy sideways market the trend gate whips it in and
  * out, and in a sharp V-shaped crash it exits late so drawdown is higher than the
  * defensive strategy. It needs a real, volume-backed uptrend to exist.
+ *
+ * 2026-04-27 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const closes = ctx.closes;
   const volumes = ctx.volumes;
   const sma100 = ctx.sma(100, 1);
-  if (sma100 == null || !closes || !volumes || closes.length < 30 || volumes.length < 30) return null;
+  if (sma100 == null || !closes || !volumes || closes.length < 30 || volumes.length < 30) {
+    ctx.watch([]);
+    return null;
+  }
 
   // Build the OBV series from the last ~130 bars (cumulative volume flow).
   const n = Math.min(closes.length, 130);
@@ -37,7 +45,10 @@ function onUpdate(ctx) {
     else if (cNow < cPrev) acc -= v;
     obv.push(acc);
   }
-  if (obv.length < 21) return null;
+  if (obv.length < 21) {
+    ctx.watch([]);
+    return null;
+  }
 
   // OBV vs its own 20-bar average.
   const curOBV = obv[obv.length - 1];
