@@ -3,26 +3,26 @@
   "name": "BTC Donchian Breakout 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 18040,
-    "return": 55.56,
-    "mdd": 17.51,
-    "trades": 74,
+    "backtestId": 18044,
+    "return": 5.16,
+    "mdd": 21.5,
+    "trades": 78,
     "vsBuyHold": "win",
-    "benchRet": 47.05,
+    "benchRet": -26.02,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1647748800,
-    "tTo": 1719734400,
+    "tFrom": 1719691200,
+    "tTo": 1791676800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
-      "sym": "BTC",
+      "sym": "ETH",
       "interval": "4h",
       "bars": 5000,
-      "end": 1719748800
+      "end": 1791748800
     }
   },
   "config": null,
