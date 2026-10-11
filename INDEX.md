@@ -4,13 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 464 of 1772 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 464 of 1774 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3510](strategies/3510/) | 4h Trend Momentum ATR | -34.26% | +116.31% | +37.79% | 176 | 2026-10-11 |
+|  | [3509](strategies/3509/) | MTF Regime Mean Reversion ETH | -23.96% | +6.21% | +25.98% | 98 | 2026-10-11 |
 |  | [3508](strategies/3508/) | Donchian ATR Breakout 4h | -53.97% | +139.98% | +64.68% | 143 | 2026-10-11 |
 |  | [3507](strategies/3507/) | MTF Trend Momentum ATR Stop | -38.51% | +11.59% | +38.51% | 146 | 2026-10-11 |
 |  | [3506](strategies/3506/) | BB Mean Reversion RSI ATR | -23.46% | +8.29% | +27.77% | 178 | 2026-10-11 |
