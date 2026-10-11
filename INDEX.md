@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3008](strategies/3008/) | ETH 1D Dual-MR Defensive Full-Cash | +29.33% | +1205.77% | +18.41% | 12 | 2026-10-11 |
 |  | [3010](strategies/3010/) | BTC 1D Macro Dollar-Regime Trend | -59.47% | +47.08% | +67.50% | 216 | 2026-10-11 |
 |  | [3013](strategies/3013/) | BTC 1D Baseline Hybrid (EMA20 exit both) | +13.02% | +94.89% | +33.02% | 25 | 2026-10-11 |
 |  | [3012](strategies/3012/) | BTC 1D Hybrid Dual-Exit (MR snap-back + Trend ride) | +174.53% | +800.36% | +36.15% | 16 | 2026-10-11 |
@@ -480,7 +481,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3016](strategies/3016/) | Multi-Asset MR Basket Higher-Risk Sizing | +36.50% | +394.35% | +11.28% | 34 | 2026-09-29 |
 |  | [3015](strategies/3015/) | Multi-Asset Defensive MR Basket BTC/ETH/SOL/XRP | +17.42% | +43.77% | +6.34% | 86 | 2026-09-29 |
 |  | [3011](strategies/3011/) | BTC 1D Dual-MR + Dollar Risk-Off Gate | +24.48% | +1205.77% | +18.41% | 10 | 2026-09-29 |
-|  | [3008](strategies/3008/) | ETH 1D Dual-MR Defensive Full-Cash | +29.33% | +1205.77% | +18.41% | 12 | 2026-09-29 |
 |  | [3007](strategies/3007/) | BTC 1D Dual-MR Defensive Full-Cash | +51.49% | +94.89% | +10.83% | 12 | 2026-09-29 |
 | ★ | [3005](strategies/3005/) | ADA 1D Dual-MR Defensive (Bollinger+Keltner) | +3.57% | -79.60% | +3.36% | 8 | 2026-09-29 |
 |  | [3004](strategies/3004/) | BNB 1D Dual-MR Defensive (Bollinger+Keltner) | +3.16% | +141.91% | +10.53% | 16 | 2026-09-29 |
