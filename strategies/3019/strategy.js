@@ -17,6 +17,7 @@
  * When it does NOT work: Hash rate is slow-moving, so this lags sharp price reversals and
  * gives back gains in whipsaws. In a bear where miners capitulate late, the exit can lag
  * the top. It is a trend-riding family and will draw down in choppy ranges.
+ * 2026-01-16: Display-only ctx.watch added — trading logic unchanged.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -39,12 +40,22 @@ function onUpdate(ctx) {
     if (!networkGrowing || price < sma50) {
       return { side: 'sell', qty: pos };
     }
+    // Watch exits: hash rate falling below avg, or price below SMA50.
+    ctx.watch([
+      { side: 'sell', price: hrSma, trigger: 'below', note: 'hashrate < SMA30', conds: [{ label: 'hashrate', now: hr, op: '>', ref: hrSma, closed: true }] },
+      { side: 'sell', price: sma50, trigger: 'below', note: 'price < SMA50', conds: [{ label: 'SMA50', now: sma50, op: '>', ref: price, closed: true }] }
+    ]);
     return null;
   }
 
   if (networkGrowing && uptrend) {
     // Size modestly: this is a slow trend ride, keep risk contained.
     const qty = (ctx.cash / price) * 0.9;
+    // Watch entry: hashrate above SMA30 and price above SMA200.
+    ctx.watch([
+      { side: 'buy', price: hrSma, trigger: 'above', note: 'hashrate > SMA30', conds: [{ label: 'hashrate', now: hr, op: '>', ref: hrSma, closed: true }] },
+      { side: 'buy', price: sma200, trigger: 'above', note: 'price > SMA200', conds: [{ label: 'SMA200', now: sma200, op: '<', ref: price, closed: true }] }
+    ]);
     return { side: 'buy', qty: qty };
   }
   return null;
