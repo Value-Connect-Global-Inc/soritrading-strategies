@@ -17,6 +17,8 @@
  * When it does NOT work:
  * In a weak bounce the trailing stop exits near breakeven; in a melt-up the stop is
  * far below. Choppy markets whipsaw the trailing stop.
+ *
+ * 2026-01-15: watch 선언만 추가됨 (표시만 바뀜, 매매 판단은 그대로)
  */
 function onUpdate(ctx) {
   const ema = ctx.ema(20, 1);
@@ -27,16 +29,14 @@ function onUpdate(ctx) {
 
   const lower = ema - 2.5 * atr; // validated recipe band width
 
-  ctx.watch([
-    { side: 'buy', price: lower, note: 'Keltner lower band' },
-    { side: 'sell', price: null, note: 'trailing 2xATR' }
-  ]);
-
   if (ctx.position > 0) {
     // track highest close since entry
     const hi = ctx.state.hi || price;
     ctx.state.hi = Math.max(hi, price);
     const stop = ctx.state.hi - 2 * atr;
+    ctx.watch([
+      { side: 'sell', price: stop, trigger: 'below', note: 'trailing 2xATR', closed: false }
+    ]);
     if (price <= stop) {
       ctx.state.lastExitBar = ctx.i;
       return { side: 'sell', qty: ctx.position };
@@ -44,12 +44,25 @@ function onUpdate(ctx) {
     return null;
   }
 
-  if (ctx.state.lastExitBar != null && ctx.i - ctx.state.lastExitBar < 2) return null;
+  if (ctx.state.lastExitBar != null && ctx.i - ctx.state.lastExitBar < 2) {
+    ctx.watch([]);
+    return null;
+  }
 
   const rsiPrev = ctx.rsi(14, 2);
-  if (rsiPrev == null) return null;
-  if (rsi < 40 && ctx.closes[ctx.closes.length - 2] <= lower) {
+  if (rsiPrev == null) {
+    ctx.watch([]);
+    return null;
+  }
+  const prevClose = ctx.closes.at(-2);
+  if (rsi < 40 && prevClose <= lower) {
+    ctx.watch([
+      { side: 'buy', price: lower, trigger: 'below', note: 'Keltner lower band', conds: [
+        { label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true }
+      ]}
+    ]);
     return { side: 'buy', qty: ctx.cash / price * 0.95 };
   }
+  ctx.watch([]);
   return null;
 }

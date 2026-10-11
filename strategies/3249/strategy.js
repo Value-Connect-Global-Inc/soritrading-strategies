@@ -1,3 +1,4 @@
+/* 2026-04-26: 표시만 바뀜, 매매 판단은 그대로 */
 /*
  * @coinsori-strategy v1
  * name: BTC 1D Fear-Greed Contrarian v2
@@ -25,12 +26,14 @@ function onUpdate(ctx) {
   if (fg == null || price == null) return null;
 
   if (ctx.position > 0) {
+    ctx.watch([{ side: 'sell', note: 'FG >= 60', conds: [{ label: 'Fear & Greed', now: fg, op: '>=', ref: 60 }] }]);
     if (fg >= 60) {
       return { side: 'sell', qty: ctx.position };
     }
     return null;
   }
 
+  ctx.watch([{ side: 'buy', note: 'FG <= 30', conds: [{ label: 'Fear & Greed', now: fg, op: '<=', ref: 30 }] }]);
   if (fg <= 30) {
     return { side: 'buy', qty: ctx.cash / price * 0.95 };
   }
