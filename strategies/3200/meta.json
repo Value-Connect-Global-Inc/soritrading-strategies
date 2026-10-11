@@ -3,7 +3,7 @@
   "name": "SOL 1D Momentum Hysteresis",
   "kind": "custom",
   "verified": {
-    "backtestId": 15596,
+    "backtestId": 17291,
     "return": 387.37,
     "mdd": 57.45,
     "trades": 10,
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-08T12:22:23.430Z",
+  "updatedAt": "2026-10-11T11:47:46.234Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

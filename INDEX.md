@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3200](strategies/3200/) | SOL 1D Momentum Hysteresis | +387.37% | +882.87% | +57.45% | 10 | 2026-10-11 |
 | ★ | [3466](strategies/3466/) | DXY Gated BTC Trend 4H | +60.36% | +45.09% | +12.49% | 14 | 2026-10-11 |
 | ★ | [3465](strategies/3465/) | Miner Commitment Long BTC 1D | -18.00% | -21.40% | +20.28% | 19 | 2026-10-11 |
 |  | [3464](strategies/3464/) | BTC Trend Rider 1D | -11.40% | +95.22% | +34.89% | 17 | 2026-10-11 |
@@ -224,7 +225,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | — | [3205](strategies/3205/) | API Probe Multi-Sym | +61.20% | — | +28.51% | 35 | 2026-10-08 |
 | ★ | [3202](strategies/3202/) | BASELINE BTC 1D Momentum Hysteresis | +500.07% | +174.32% | +46.01% | 20 | 2026-10-08 |
 |  | [3201](strategies/3201/) | BTC 1D Momentum Hysteresis + On-Chain Regime Gate | +28.46% | +320.57% | +17.32% | 64 | 2026-10-08 |
-|  | [3200](strategies/3200/) | SOL 1D Momentum Hysteresis | +387.37% | +882.87% | +57.45% | 10 | 2026-10-08 |
 | ★ | [3199](strategies/3199/) | BASELINE BTC 1D Momentum Hysteresis | +500.07% | +174.32% | +46.01% | 20 | 2026-10-08 |
 |  | [3198](strategies/3198/) | BTC 1D Momentum Hysteresis + Wide Stop | +131.28% | +320.57% | +23.22% | 41 | 2026-10-08 |
 |  | [3197](strategies/3197/) | BTC 1D Momentum Hysteresis + Trailing Stop | +30.60% | +174.32% | +70.57% | 568 | 2026-10-08 |
