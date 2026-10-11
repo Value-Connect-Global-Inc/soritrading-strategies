@@ -15,7 +15,8 @@
  * When it buys and sells: buys when the 20-day Bollinger width is in the quietest
  * 30% of the last 60 days (squeeze) AND a closed bar closes above the 20-day high
  * AND the 200-day average is rising. Sells when a closed bar closes below the
- * 10-day low, or price falls 2.5 ATR below entry.
+ * 20-day low (patient — lets winners run in a trend), or price falls 2.5 ATR
+ * below entry (hard risk cap).
  * When it does NOT work: In a slow grinding bull with no compression the squeeze
  * never fires and it sits in cash while a plain breakout rides. In a chop that
  * compresses then breaks down, the breakout is a trap. Volatility can stay low
@@ -38,10 +39,10 @@ function onUpdate(ctx) {
   const pos = ctx.position;
   if (pos > 0) {
     const entry = ctx.entryPx || price;
-    const channelLow = Math.min(...closes.slice(-12, -2));
+    const channelLow = Math.min(...closes.slice(-22, -2));   // 20-day low exit
     const stop = entry - 2.5 * atr;
     ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '2.5 ATR stop' },
-               { side: 'sell', price: channelLow, trigger: 'below', note: '10-day low exit' }]);
+               { side: 'sell', price: channelLow, trigger: 'below', note: '20-day low exit' }]);
     if (prevClose < channelLow || price < stop) return { side: 'sell', qty: pos };
     return null;
   }
@@ -49,7 +50,7 @@ function onUpdate(ctx) {
   // Manual rolling 20-bar BB width from closes (robust, no ago-loop).
   const widths = [];
   for (let k = 0; k < 60; k++) {
-    const end = closes.length - 2 - k;      // end index (exclusive) for the closed bar k bars back
+    const end = closes.length - 2 - k;
     const start = end - 20;
     if (start < 0) break;
     const win = closes.slice(start, end);
@@ -61,7 +62,7 @@ function onUpdate(ctx) {
     let sd = 0;
     for (const c of win) sd += (c - mid) * (c - mid);
     sd = Math.sqrt(sd / 20);
-    const w = (2 * sd) / mid;               // 2-sigma band width as fraction of the mean
+    const w = (2 * sd) / mid;
     if (w > 0) widths.push(w);
   }
   if (widths.length < 30) return null;
