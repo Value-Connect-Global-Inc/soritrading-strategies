@@ -12,7 +12,8 @@
  * When it buys and sells: buy when a closed bar's low touched the 20-day EMA
  * (within 0.5 ATR) AND price is above the 200-day average AND RSI(2) < 30.
  * Sell when a closed bar closes above the upper Bollinger band or the hard
- * 2.5-ATR stop is hit.
+ * 2.5-ATR stop is hit. An equity-drawdown circuit breaker halves position
+ * size at 12% drawdown and blocks new entries at 22%.
  * When it does NOT work: in a downtrend the trend gate keeps us out (flat).
  * In a choppy range the EMA touch fires often with small moves and fees eat
  * the edge. Long-only.
@@ -32,7 +33,20 @@ function onUpdate(ctx) {
   const bb = ctx.bb(20, 2, 1);
   if (ema20 == null || sma200 == null || atr == null || atr <= 0 || bb == null) return null;
 
+  // equity drawdown circuit breaker — generic risk floor, same rationale as
+  // the champion: a daily strategy should not draw down >12% in normal ops
+  if (!ctx.state.eq || typeof ctx.state.eq !== 'object') ctx.state.eq = { posVal: {}, peak: 0, dd: 0 };
+  const st = ctx.state.eq;
   const pos = ctx.position;
+  st.posVal[sym] = pos * price;
+  const equity = ctx.cash + Object.values(st.posVal).reduce((a, b) => a + b, 0);
+  if (equity > st.peak) st.peak = equity;
+  st.dd = st.peak > 0 ? (st.peak - equity) / st.peak : 0;
+  let sizeMult = 0.5;
+  if (st.dd > 0.12) sizeMult *= 0.5;
+  if (st.dd > 0.22) sizeMult = 0;
+  // --- end circuit breaker ---
+
   if (pos > 0) {
     const entry = ctx.entryPx || price;
     const stop = entry - 2.5 * atr;
@@ -52,10 +66,10 @@ function onUpdate(ctx) {
   if (prevLow == null) return null;
   const touched = Math.abs(prevLow - ema20) < 0.5 * atr;
   const rsi2 = ctx.rsi(2, 1);
-  if (touched && prevClose > sma200 && rsi2 != null && rsi2 < 30) {
+  if (touched && prevClose > sma200 && rsi2 != null && rsi2 < 30 && sizeMult > 0) {
     ctx.watch([{ side: 'sell', price: bb.upper, trigger: 'above', note: 'upper band target' },
                { side: 'sell', price: price - 2.5 * atr, trigger: 'below', note: '2.5 ATR stop' }]);
-    return { side: 'buy', qty: (ctx.cash / price) * 0.99 * 0.5 };
+    return { side: 'buy', qty: (ctx.cash / price) * 0.99 * sizeMult };
   }
   return null;
 }
