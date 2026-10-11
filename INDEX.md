@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 468 of 1816 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 468 of 1817 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 259 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3558](strategies/3558/) | BTC Trend-Follow EMA50/200 4H | +40.89% | +46.70% | +22.60% | 36 | 2026-10-11 |
 |  | [3557](strategies/3557/) | BTC Donchian Breakout 4H | -13.34% | +461.93% | +23.20% | 137 | 2026-10-11 |
 |  | [3095](strategies/3095/) | SOL Defensive Mean Reversion 1D | +106.27% | +404.43% | +19.36% | 49 | 2026-10-11 |
 | ★ | [3097](strategies/3097/) | SOL OBV Volume-Flow Trend 1D | -22.90% | -28.90% | +52.84% | 41 | 2026-10-11 |
