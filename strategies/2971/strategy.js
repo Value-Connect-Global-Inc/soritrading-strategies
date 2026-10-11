@@ -20,6 +20,8 @@
  * 200-day gate keeps us out of most trades (capital-preserving but captures little).
  * It badly lags buy-and-hold in a relentless melt-up because it sits in cash waiting
  * for a pullback. MDD is low but a gap can still hurt.
+ *
+ * 2025-04-16: Added ctx.watch declarations only — display changes, trading logic unchanged.
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -41,6 +43,16 @@ function onUpdate(ctx) {
 
   if (pos > 0) {
     // Take the snap-back profit above the mid band (EMA20) or once RSI turns up.
+    // Declare exit waits: above EMA20 (mid band) or RSI > 60.
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'above', note: 'mid band exit', conds: [
+        { label: 'RSI(14)', now: rsi, op: '>', ref: 60, closed: true }
+      ]},
+      { side: 'sell', price: null, trigger: 'above', note: 'RSI exit', conds: [
+        { label: 'RSI(14)', now: rsi, op: '>', ref: 60, closed: true },
+        { label: 'Price > EMA20', ok: price > ema20 }
+      ]}
+    ]);
     if (price > ema20 || rsi > 60) {
       return { side: 'sell', qty: pos };
     }
@@ -48,6 +60,13 @@ function onUpdate(ctx) {
   }
 
   // Defensive entry: oversold flush below the ATR-adaptive band in an uptrend.
+  // Declare entry wait: price below lower band AND RSI < 40 AND uptrend.
+  ctx.watch([
+    { side: 'buy', price: lowerBand, trigger: 'below', note: 'lower Keltner band', conds: [
+      { label: 'RSI(14)', now: rsi, op: '<', ref: 40, closed: true },
+      { label: 'SMA200 rising', ok: uptrend }
+    ]}
+  ]);
   if (uptrend && price < lowerBand && rsi < 40) {
     return { side: 'buy', qty: (ctx.cash / price) * 0.95 };
   }
