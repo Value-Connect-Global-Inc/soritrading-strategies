@@ -1,26 +1,22 @@
 /*
  * @coinsori-strategy v1
- * name: ADA Donchian 55/10 BearSized Cool10 Vol1.2 1D
+ * name: ADA Donchian 40/10 BearSized Cool10 1D
  * ex: binance
  * syms: ADAUSDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: The ADA Donchian 55/10 champion loses to whipsaw breakouts in ranges. The
- * ledger notes that any filter using only the breakout bar itself is redundant — a filter must use
- * another data axis. Volume is that axis: a genuine breakout is driven by expanding participation,
- * a fake one often happens on thin volume. 1.5x volume confirmation hurt the 2018-21 bull (+814 vs
- * +1148) by skipping too many real breakouts, so this version relaxes the threshold to 1.2x: still
- * filters the thinnest low-conviction pokes, but lets most genuine breakouts through. A-priori
- * reason: volume confirms intent, but the bar must be judged against a threshold that does not
- * exclude normal trend starts.
- * When it buys and sells: Buys when a closed bar closes above the highest 55 bars on at least 1.2x
- * average volume, unless within 10 bars of a stop-out. Sells when a closed bar closes below the
- * lowest 10 bars. Position is half size below the 200-day average, quarter size when more than 20%
- * below it.
- * When it does NOT work: A genuine trend that starts quietly is skipped until a high-volume bar
- * appears, entering later at a higher price. A long range still loses, just less. A violent crash
- * gaps through any stop.
+ * Why this strategy: The ADA Donchian 55/10 champion's entry channel length (55) has been fixed
+ * since the start. This version tests a shorter 40-bar entry channel. A-priori reason: a 40-bar
+ * channel is broken earlier in a trend, so the strategy enters sooner and catches more of the move,
+ * at the cost of more frequent (and more often false) breakouts in ranges. Expected trade-off:
+ * higher return in strong trends, more whipsaw losses in chops. Exit (10-bar), BearSized position
+ * tiers and 10-bar cooldown unchanged.
+ * When it buys and sells: Buys when a closed bar closes above the highest 40 bars, unless within
+ * 10 bars of a stop-out. Sells when a closed bar closes below the lowest 10 bars. Position is half
+ * size below the 200-day average, quarter size when more than 20% below it.
+ * When it does NOT work: A shorter entry channel misfires more often in a range, so whipsaw losses
+ * can rise. A violent crash gaps through any stop.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -58,13 +54,9 @@ function onUpdate(ctx) {
     return null;
   }
 
-  const channelHigh = Math.max(...closes.slice(-57, -2));
+  const channelHigh = Math.max(...closes.slice(-42, -2));   // 40-bar entry channel
   const breakout = prevClose > channelHigh;
-  // Volume confirmation: the breakout bar must trade at least 1.2x its 20-day average volume.
-  // 1.5x skipped too many real bull breakouts (W1 +814 vs +1148); 1.2x only filters the thinnest pokes.
-  const avgVol = ctx.avgVol(20);
-  const volOk = avgVol != null && avgVol > 0 && ctx.volPrev > avgVol * 1.2;
-  if (breakout && volOk && ctx.i >= (ctx.state.coolUntil || 0)) {
+  if (breakout && ctx.i >= (ctx.state.coolUntil || 0)) {
     ctx.watch([{ side: 'sell', price: price - 2 * atr, trigger: 'below', note: '2 ATR stop' }]);
     return { side: 'buy', qty: ((ctx.cash / price) * 0.99 * sizeMult) };
   }
