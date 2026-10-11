@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 473 of 1836 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 473 of 1837 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 264 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3582](strategies/3582/) | BTC 4H Pullback-in-Uptrend | -79.17% | +457.74% | +79.20% | 2168 | 2026-10-11 |
 |  | [3579](strategies/3579/) | BTC 1D Fed-Easing Regime | -4.93% | +95.22% | +9.84% | 58 | 2026-10-11 |
 | ★ | [3578](strategies/3578/) | BTC 1D On-Chain Usage Regime | -14.78% | -26.04% | +15.91% | 288 | 2026-10-11 |
 |  | [3035](strategies/3035/) | BTC 1D Volume-Capitulation MR | -2.91% | +828.94% | +6.74% | 4 | 2026-10-11 |
