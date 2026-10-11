@@ -17,6 +17,8 @@
  * When it does NOT work: In a sustained bear the rising-trend gate keeps it flat, and it lags
  * buy-and-hold in a relentless melt-up. SOL has a short history and high beta, so the strict
  * RSI<30 trigger may fire rarely.
+ *
+ * 2025-02-15: display-only ctx.watch added — no change to trading logic.
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -36,13 +38,29 @@ function onUpdate(ctx) {
   const keltnerLow = ema20 - 2.5 * atr;
 
   if (pos > 0) {
-    if (price > ema20 || rsi > 55) {
+    const sellSignal = price > ema20 || rsi > 55;
+    if (sellSignal) {
+      ctx.watch([
+        { side: 'sell', price: ema20, trigger: 'above', qty: pos, note: 'EMA20 snap-back', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 55, closed: true }] },
+        { side: 'sell', price: ema20, trigger: 'above', qty: pos, note: 'EMA20 snap-back' },
+        { side: 'sell', price: ema20, trigger: 'above', qty: pos, note: 'EMA20 snap-back' }
+      ]);
       return { side: 'sell', qty: pos };
     }
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'above', qty: pos, note: 'EMA20 snap-back', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 55, closed: true }] },
+      { side: 'sell', price: ema20, trigger: 'above', qty: pos, note: 'EMA20 snap-back' }
+    ]);
     return null;
   }
 
-  if (!uptrend) return null;
+  if (!uptrend) {
+    ctx.watch([
+      { side: 'buy', price: lowerBand, trigger: 'below', note: 'BB lower + RSI<30', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true }, { label: 'SMA200 rising', ok: false }] },
+      { side: 'buy', price: keltnerLow, trigger: 'below', note: 'Keltner low + RSI<40', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true }, { label: 'SMA200 rising', ok: false }] }
+    ]);
+    return null;
+  }
 
   const bollingerFlush = price < lowerBand && rsi < 30;
   const keltnerPullback = price < keltnerLow && rsi < 40;
@@ -51,7 +69,15 @@ function onUpdate(ctx) {
     const riskEq = 0.01 * ctx.cash;
     const qty = riskEq / atr;
     const maxQty = (ctx.cash / price) * 0.9;
+    ctx.watch([
+      { side: 'buy', price: lowerBand, trigger: 'below', note: 'BB lower + RSI<30', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true }, { label: 'SMA200 rising', ok: uptrend }] },
+      { side: 'buy', price: keltnerLow, trigger: 'below', note: 'Keltner low + RSI<40', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true }, { label: 'SMA200 rising', ok: uptrend }] }
+    ]);
     return { side: 'buy', qty: Math.min(qty, maxQty) };
   }
+  ctx.watch([
+    { side: 'buy', price: lowerBand, trigger: 'below', note: 'BB lower + RSI<30', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true }, { label: 'SMA200 rising', ok: uptrend }] },
+    { side: 'buy', price: keltnerLow, trigger: 'below', note: 'Keltner low + RSI<40', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true }, { label: 'SMA200 rising', ok: uptrend }] }
+  ]);
   return null;
 }
