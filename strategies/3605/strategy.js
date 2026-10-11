@@ -1,58 +1,48 @@
 /*
  * @coinsori-strategy v1
- * name: Squeeze Breakout
+ * name: ETH Funding Squeeze Contrarian 4H
  * ex: binance
- * syms: BTC/USDT
+ * syms: ETH/USDT
  * interval: 4h
  * cash: 10000
  *
- * Why this strategy: Big crypto trends often start from a period of quiet,
- * compressed volatility (a "squeeze") followed by a burst. Buying the first
- * breakout out of a tight range skips the failed breakouts that come after big
- * runs. Bet: volatility compression precedes expansion.
- * When it buys and sells: buys when the Bollinger band width is in the bottom
- * 20% of its last 100 bars (volatility squeezed) AND the close breaks above the
- * upper band. Sells on a 20-bar channel low or a 2.5x ATR hard stop.
- * When it does NOT work: in a long quiet range the squeeze can fire and the
- * breakout immediately fails (stop-outs); in a runaway bull with no pullback the
- * bands stay wide so it never enters and misses the move.
+ * Why this strategy: Deeply negative funding means the crowd is short while the
+ *   long-term trend is still up — those shorts become fuel for a squeeze. This is
+ *   real derivatives flow (who is paying whom), not a survey index. Bet: extreme
+ *   short positioning inside an established uptrend reverts upward.
+ * When it buys and sells: buys when funding is very negative (below -0.03%) AND
+ *   price is above the 200 SMA (long-term uptrend intact), with a modest position so
+ *   a failed squeeze cannot hurt much. Sells when funding turns positive again
+ *   (squeeze done), on a 2x ATR hard stop, or if price loses the 200 SMA.
+ * When it does NOT work: in genuine bear markets or long chop below the 200 SMA it
+ *   stays flat (filter), but sideways markets with negative funding can whipsaw
+ *   small entries; a funding signal is a counter-move, not a trend ride.
  */
 function onUpdate(ctx) {
-  const bb = ctx.bb(20, 2, 1);   // Bollinger bands on the last CLOSED bar
+  const funding = ctx.funding;               // current funding rate (fraction, e.g. -0.0003)
+  const sma200 = ctx.sma(200, 1);
   const atr = ctx.atr(14, 1);
-  const ll20 = ctx.low(20, 2);   // lowest low of the 20 bars BEFORE the last close
-  if (bb == null || atr == null || ll20 == null) return null;
-  const prevClose = ctx.closes.at(-2);
-  if (prevClose == null) return null;
-  const bbw = (bb.upper - bb.lower) / bb.mid; // relative band width = volatility
-
-  // rolling 100-bar history of band width, kept in state (ctx has no rolling percentile)
-  const arr = ctx.state.bbwArr || (ctx.state.bbwArr = []);
-  arr.push(bbw);
-  if (arr.length > 100) arr.shift();
-  if (arr.length < 100) return null;
-  const sorted = arr.slice().sort((a, b) => a - b);
-  const p20 = sorted[19]; // 20th percentile of recent volatility
+  if (funding == null || sma200 == null || atr == null) return null;
+  const price = ctx.price;
 
   if (ctx.position > 0) {
-    // hard stop: 2.5x ATR below entry — caps the loss on any single trade
-    const hardStop = ctx.entryPx - 2.5 * atr;
-    if (ctx.price <= hardStop) return { side: 'sell', qty: ctx.position };
-    if (prevClose <= ll20) return { side: 'sell', qty: ctx.position };
-    ctx.watch([{ side: 'sell', price: hardStop, trigger: 'below', note: '2.5x ATR hard stop' },
-               { side: 'sell', price: ll20, trigger: 'below', note: '20-bar channel exit' }]);
+    // exit: squeeze done (funding back to >=0), hard stop, or long-term trend broken
+    if (funding >= 0) return { side: 'sell', qty: ctx.position };
+    const hardStop = ctx.entryPx - 2 * atr;
+    if (price <= hardStop) return { side: 'sell', qty: ctx.position };
+    if (price <= sma200) return { side: 'sell', qty: ctx.position };
+    ctx.watch([{ side: 'sell', price: hardStop, trigger: 'below', note: '2x ATR stop' },
+               { side: 'sell', price: sma200, trigger: 'below', note: '200 SMA trend broken' }]);
     return null;
   }
 
-  // entry: volatility compressed to the bottom 20% AND a close above the upper band (breakout)
-  if (bbw > p20) return null;
-  if (prevClose <= bb.upper) return null;
+  // entry: very negative funding = crowded shorts; only enter when the 200 SMA trend is up
+  if (funding >= -0.0003) return null;   // -0.03% threshold: extreme, not the normal small negative
+  if (price <= sma200) return null;
 
-  const riskCash = ctx.cash * 0.02;
-  const stopDist = 2.5 * atr;
-  let qty = stopDist > 0 ? riskCash / stopDist : 0;
-  const maxQty = (ctx.cash * 0.99) / ctx.price;
-  if (qty > maxQty) qty = maxQty;
+  const qty = (ctx.cash * 0.30) / price;  // modest size: a squeeze is a counter-move, not a trend ride
   if (qty <= 0) return null;
+  ctx.watch([{ side: 'buy', conds: [{ label: 'funding', now: funding, op: '<', ref: -0.0003, closed: true },
+                                    { label: 'price > SMA200', ok: price > sma200 }] }]);
   return { side: 'buy', qty };
 }
