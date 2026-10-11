@@ -11,8 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [3564](strategies/3564/) | SOL Pullback-in-Uptrend RSI 4H | +6.39% | -25.34% | +9.55% | 160 | 2026-10-11 |
 | ★ | [3562](strategies/3562/) | ETH Pullback-in-Uptrend RSI 4H | +13.02% | -26.02% | +9.41% | 258 | 2026-10-11 |
+| ★ | [3564](strategies/3564/) | SOL Pullback-in-Uptrend RSI 4H | +6.39% | -25.34% | +9.55% | 160 | 2026-10-11 |
 | — | [3071](strategies/3071/) | Multi-Asset MR Basket 5-Asset Full-ATR-Risk-Scaled | +26.46% | — | +8.71% | 97 | 2026-10-11 |
 | — | [3072](strategies/3072/) | Multi-Asset Momentum-Pullback 5-Asset 4H | -14.93% | — | +18.87% | 86 | 2026-10-11 |
 |  | [3074](strategies/3074/) | Upbit BTC 1D Defensive Mean-Reversion | -1.43% | +15.93% | +9.69% | 8 | 2026-10-11 |
