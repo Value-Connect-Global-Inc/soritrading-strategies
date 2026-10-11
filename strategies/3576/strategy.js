@@ -8,10 +8,10 @@
  *
  * Why this strategy: The Fear & Greed index is a sentiment mean-reversion
  *   signal — extreme fear marks panic bottoms worth buying, extreme greed
- *   marks tops worth selling. We only take that bet inside an established
- *   uptrend (price above the 66-day SMA) so we buy dips, not falling knives.
+ *   marks tops worth selling. We only take that bet inside a short-term
+ *   uptrend (price above the 33-day SMA) so we buy dips, not falling knives.
  * When it buys and sells: buy when Fear & Greed < 20 (extreme fear) and
- *   price is above its 400-bar SMA; sell when Fear & Greed >= 70 (extreme
+ *   price is above its 200-bar SMA; sell when Fear & Greed >= 70 (extreme
  *   greed) or on a wide 15% hard stop from entry.
  * When it does NOT work: a long bear market keeps price below the SMA so we
  *   stay flat; a panic that never recovers to greed can still hit the stop;
@@ -22,7 +22,7 @@ function onUpdate(ctx) {
   if (!Number.isFinite(price) || price <= 0) return null;
 
   const fg = ctx.data('fear_greed');   // 0-100 sentiment, user's own dataset
-  const s = ctx.sma(400, 1);           // 66-day uptrend filter on 4h bars
+  const s = ctx.sma(200, 1);           // 33-day uptrend filter on 4h bars
   if (fg == null || s == null) return null;
 
   const pos = ctx.position;
