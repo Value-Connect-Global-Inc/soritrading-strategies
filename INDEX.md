@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 456 of 1736 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 456 of 1737 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3471](strategies/3471/) | Multi-Timeframe Trend Volatility Filter BTC 4H | +0.98% | +44.30% | +39.09% | 264 | 2026-10-11 |
 | ★ | [3470](strategies/3470/) | Clean Trend Following BTC 1D | -19.19% | -26.04% | +60.46% | 23 | 2026-10-11 |
 |  | [3469](strategies/3469/) | OnChain & Sentiment Momentum BTC 4h | -97.91% | -55.29% | +98.12% | 891 | 2026-10-11 |
 | ★ | [3468](strategies/3468/) | Funding Rate & Volatility Mean Reversion BTC 4h | +50.24% | -19.64% | +20.51% | 98 | 2026-10-11 |
