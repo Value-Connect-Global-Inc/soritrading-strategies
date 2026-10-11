@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 436 of 1680 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 437 of 1681 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 252 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [3398](strategies/3398/) | OLD Champion ADA Donchian 55/10 | +6.69% | -52.77% | +61.47% | 16 | 2026-10-11 |
 | ★ | [3397](strategies/3397/) | AI 전략 | -4.21% | -52.77% | +67.75% | 15 | 2026-10-11 |
 | ★ | [3395](strategies/3395/) | AI 전략 | +1147.91% | +591.46% | +34.46% | 23 | 2026-10-11 |
 | ★ | [3396](strategies/3396/) | AI 전략 | +1175.38% | +591.46% | +40.04% | 23 | 2026-10-11 |

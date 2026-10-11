@@ -1,0 +1,31 @@
+{
+  "id": 3398,
+  "name": "OLD Champion ADA Donchian 55/10",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 16834,
+    "return": 6.69,
+    "mdd": 61.47,
+    "trades": 16,
+    "vsBuyHold": "win",
+    "benchRet": -52.77,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1705276800,
+    "tTo": 1791590400,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "ADA",
+      "interval": "1d",
+      "bars": 1000,
+      "end": 1791676800
+    }
+  },
+  "config": null,
+  "updatedAt": "2026-10-11T01:57:29.712Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
