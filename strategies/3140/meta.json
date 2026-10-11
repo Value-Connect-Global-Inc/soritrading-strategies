@@ -3,7 +3,7 @@
   "name": "BTC 4H Keltner MR with Hard Stop",
   "kind": "custom",
   "verified": {
-    "backtestId": 15194,
+    "backtestId": 17663,
     "return": -18.05,
     "mdd": 18.73,
     "trades": 32,
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-05T14:28:34.034Z",
+  "updatedAt": "2026-10-11T15:34:32.147Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

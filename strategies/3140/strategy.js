@@ -5,6 +5,7 @@
  * syms: BTCUSDT
  * interval: 4h
  * cash: 10000
+ * 2026-04-26 — 표시만 바뀜, 매매 판단은 그대로
  *
  * Why this strategy: The trend-gated Keltner mean-reversion recipe (20-EMA minus
  * 2.5x ATR, RSI<40 entry, snap-back exit, 200-SMA bull gate) has validated on
@@ -48,8 +49,8 @@ function onUpdate(ctx) {
   if (pos > 0) {
     const stop = st.stop != null ? st.stop : price - 1.5 * atr;
     ctx.watch([
-      { side: 'sell', price: stop, note: 'hard stop' },
-      { side: 'sell', price: ema20, note: 'snap-back to EMA20' }
+      { side: 'sell', price: stop, trigger: 'below', note: 'hard stop' },
+      { side: 'sell', price: ema20, trigger: 'above', note: 'snap-back to EMA20' }
     ]);
     // Exit: hard stop hit, snap-back, RSI recovery, or regime turned bearish.
     if (price <= stop || price >= ema20 || rsi > 55 || price < sma200) {
@@ -60,8 +61,12 @@ function onUpdate(ctx) {
   }
 
   ctx.watch([
-    { side: 'buy', price: lower, note: 'Keltner lower band' },
-    { side: 'sell', price: ema20, note: 'snap-back to EMA20' }
+    { side: 'buy', price: lower, trigger: 'below', note: 'Keltner lower band',
+      conds: [
+        { label: 'RSI(14) closed', now: rsi, op: '<', ref: 40, closed: true },
+        { label: 'close > SMA200', now: prevClose, op: '>', ref: sma200, closed: true },
+        { label: 'cooldown done', ok: cd === 0 }
+      ] }
   ]);
 
   // Entry on a closed bar: touched the lower band while oversold, inside the bull regime.
