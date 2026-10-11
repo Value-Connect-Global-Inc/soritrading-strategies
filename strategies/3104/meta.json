@@ -26,7 +26,16 @@
       "end": 1661313600
     }
   },
-  "config": null,
+  "config": {
+    "ex": "binance",
+    "cash": 10000,
+    "syms": [
+      "BTC",
+      "SOL"
+    ],
+    "quote": "USDT",
+    "interval": "4h"
+  },
   "updatedAt": "2026-10-11T17:05:26.275Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

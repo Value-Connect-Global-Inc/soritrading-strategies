@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3074](strategies/3074/) | Upbit BTC 1D Defensive Mean-Reversion | -1.43% | +15.93% | +9.69% | 8 | 2026-10-11 |
 |  | [3075](strategies/3075/) | Upbit BTC 1D Defensive MR v2 | -12.12% | +15.93% | +17.00% | 20 | 2026-10-11 |
 |  | [3077](strategies/3077/) | ETH 4H Volatility-Scaled Trend Rider | -24.29% | +141.85% | +25.79% | 86 | 2026-10-11 |
 |  | [3079](strategies/3079/) | BTC Daily Defensive Mean Reversion | +32.04% | +91.00% | +5.25% | 34 | 2026-10-11 |
@@ -400,7 +401,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3081](strategies/3081/) | BTC 1D Hybrid MR + Squeeze-Breakout | -6.50% | +81.42% | +17.26% | 10 | 2026-10-01 |
 | ★ | [3078](strategies/3078/) | Upbit BTC 1D Defensive Mean-Reversion | +2.13% | -42.11% | +1.56% | 42 | 2026-10-01 |
 |  | [3076](strategies/3076/) | Upbit BTC 1D Slow Regime Filter | +11.61% | +99.56% | +8.62% | 3 | 2026-10-01 |
-|  | [3074](strategies/3074/) | Upbit BTC 1D Defensive Mean-Reversion | -1.43% | +15.93% | +9.69% | 8 | 2026-10-01 |
 |  | [3073](strategies/3073/) | Multi-Asset Stochastic-Oversold MR Basket 4H | -1.07% | +41.78% | +3.79% | 34 | 2026-10-01 |
 |  | [2209](strategies/2209/) | SOL Trend-Gated Vol-Target CrashStop 1D | -100.00% | -10.70% | +100.00% | 33388 | 2026-10-01 |
 |  | [3070](strategies/3070/) | BTC 1D Dual-MR Risk-Scaled (upbit) | +11.73% | +12.94% | +17.93% | 8 | 2026-09-30 |

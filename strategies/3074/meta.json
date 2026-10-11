@@ -3,7 +3,7 @@
   "name": "Upbit BTC 1D Defensive Mean-Reversion",
   "kind": "custom",
   "verified": {
-    "backtestId": 14723,
+    "backtestId": 17802,
     "return": -1.43,
     "mdd": 9.69,
     "trades": 8,
@@ -25,7 +25,15 @@
       "end": 1790812800
     }
   },
-  "config": null,
-  "updatedAt": "2026-10-01T05:39:40.188Z",
+  "config": {
+    "ex": "upbit",
+    "cash": 10000000,
+    "syms": [
+      "BTC"
+    ],
+    "quote": "KRW",
+    "interval": "1d"
+  },
+  "updatedAt": "2026-10-11T18:25:34.947Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

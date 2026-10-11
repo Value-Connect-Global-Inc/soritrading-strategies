@@ -25,7 +25,15 @@
       "end": 1747641600
     }
   },
-  "config": null,
+  "config": {
+    "ex": "upbit",
+    "cash": 10000000,
+    "syms": [
+      "BTC"
+    ],
+    "quote": "KRW",
+    "interval": "4h"
+  },
   "updatedAt": "2026-10-11T18:11:43.336Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

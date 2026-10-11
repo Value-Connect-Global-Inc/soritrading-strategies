@@ -24,7 +24,15 @@
       "bars": 1000
     }
   },
-  "config": null,
+  "config": {
+    "ex": "binance",
+    "cash": 10000,
+    "syms": [
+      "ETH"
+    ],
+    "quote": "USDT",
+    "interval": "4h"
+  },
   "updatedAt": "2026-10-11T13:07:11.583Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

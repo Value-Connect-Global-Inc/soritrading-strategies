@@ -24,7 +24,16 @@
       "syms": 2
     }
   },
-  "config": null,
+  "config": {
+    "ex": "binance",
+    "cash": 10000,
+    "syms": [
+      "BTC",
+      "ETH"
+    ],
+    "quote": "USDT",
+    "interval": "4h"
+  },
   "updatedAt": "2026-10-11T16:56:07.083Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

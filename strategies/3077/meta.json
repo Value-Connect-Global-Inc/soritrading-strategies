@@ -24,7 +24,15 @@
       "bars": 1000
     }
   },
-  "config": null,
+  "config": {
+    "ex": "upbit",
+    "cash": 10000000,
+    "syms": [
+      "BTC"
+    ],
+    "quote": "KRW",
+    "interval": "1d"
+  },
   "updatedAt": "2026-10-11T18:18:59.183Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

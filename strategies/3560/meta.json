@@ -25,7 +25,15 @@
       "end": 1719734400
     }
   },
-  "config": null,
+  "config": {
+    "ex": "binance",
+    "cash": 10000,
+    "syms": [
+      "BNB"
+    ],
+    "quote": "USDT",
+    "interval": "4h"
+  },
   "updatedAt": "2026-10-11T18:11:28.188Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
