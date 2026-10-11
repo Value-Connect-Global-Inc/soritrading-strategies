@@ -4,13 +4,16 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 448 of 1722 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 450 of 1725 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [3459](strategies/3459/) | BBSqueezeMeanReversion1h | -20.42% | -34.05% | +26.31% | 326 | 2026-10-11 |
+| ★ | [3458](strategies/3458/) | MultiTF BB Breakout with DXY Macro | +17.85% | +11.59% | +29.21% | 1 | 2026-10-11 |
+|  | [3457](strategies/3457/) | BB RSI Mean Reversion II | -20.39% | +3.75% | +20.39% | 104 | 2026-10-11 |
 |  | [3456](strategies/3456/) | Book Imbalance Scalper | -49.32% | +6.09% | +49.32% | 308 | 2026-10-11 |
 | ★ | [3215](strategies/3215/) | XRP 4H Pullback In Uptrend | -37.60% | -40.74% | +39.23% | 330 | 2026-10-11 |
 | ★ | [3455](strategies/3455/) | BB RSI Mean Reversion 15m | +7.39% | +6.09% | +7.44% | 1 | 2026-10-11 |
