@@ -6,6 +6,8 @@
  * interval: 1d
  * cash: 10000
  *
+ * 2026-04-27 표시만 바뀜, 매매 판단은 그대로
+ *
  * Why this strategy: Two strategies that capture DIFFERENT regimes are combined.
  * OBV volume-flow trend rides accumulation-driven melt-ups, while Keltner
  * mean-reversion buys deep oversold flushes in confirmed bear/chop markets.
@@ -24,14 +26,20 @@
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const sma200 = ctx.sma(200, 1);
   const sma200prev = ctx.sma(200, 2);
   const ema20 = ctx.ema(20, 1);
   const atr = ctx.atr(14, 1);
   const rsi = ctx.rsi(14, 1);
-  if (sma200 == null || sma200prev == null || ema20 == null || atr == null || rsi == null || atr <= 0) return null;
+  if (sma200 == null || sma200prev == null || ema20 == null || atr == null || rsi == null || atr <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   // Regime: above the 200-day line = OBV trend mode; clearly below = Keltner MR.
   const uptrendMode = price > sma200;
@@ -70,6 +78,7 @@ function onUpdate(ctx) {
   if (pos > 0) {
     if (uptrendMode) {
       // Uptrend mode: exit when OBV rolls over (money flow leaving).
+      ctx.watch([{ side: 'sell', note: 'OBV rollover exit', conds: [{ label: 'OBV falling', ok: obvFalling }] }]);
       if (obvFalling) {
         st.cd = ctx.i + 2;
         return { side: 'sell', qty: pos };
@@ -77,6 +86,7 @@ function onUpdate(ctx) {
       return null;
     }
     // Bear/chop mode: sell on the snap-back to the mid band.
+    ctx.watch([{ side: 'sell', price: ema20, trigger: 'above', note: 'mid band exit' }]);
     if (price > ema20) {
       st.cd = ctx.i + 3;
       return { side: 'sell', qty: pos };
@@ -84,10 +94,14 @@ function onUpdate(ctx) {
     return null;
   }
 
-  if (st.cd != null && ctx.i < st.cd) return null;
+  if (st.cd != null && ctx.i < st.cd) {
+    ctx.watch([{ side: 'buy', note: 'cooldown', conds: [{ label: 'cooldown over', ok: ctx.i >= st.cd }] }]);
+    return null;
+  }
 
   if (uptrendMode) {
     // Uptrend entry: OBV rising + volume confirmation.
+    ctx.watch([{ side: 'buy', note: 'OBV trend entry', conds: [{ label: 'OBV rising', ok: obvRising }, { label: 'Volume > 30d avg', ok: volOk }] }]);
     if (obvRising && volOk) {
       st.cd = null;
       return { side: 'buy', qty: (ctx.cash / price) * 0.95 };
@@ -96,6 +110,7 @@ function onUpdate(ctx) {
   }
 
   // Bear/chop entry: only an EXTREME capitulation flush, clearly below 200-day.
+  ctx.watch([{ side: 'buy', price: lower, trigger: 'below', note: 'Keltner lower capitulation', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true }, { label: 'Bear mode', ok: bearMode }] }]);
   if (bearMode && price <= lower && rsi < 30) {
     st.cd = null;
     // ATR-scaled size: risk 1% of equity per trade, capped at 90% of cash.
