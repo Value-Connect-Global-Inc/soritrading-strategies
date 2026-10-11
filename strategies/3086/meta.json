@@ -3,7 +3,7 @@
   "name": "Defensive Mean Reversion BTC",
   "kind": "custom",
   "verified": {
-    "backtestId": 14786,
+    "backtestId": 17781,
     "return": 8.82,
     "mdd": 1.91,
     "trades": 20,
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-01T12:20:12.243Z",
+  "updatedAt": "2026-10-11T17:44:40.732Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

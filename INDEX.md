@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3086](strategies/3086/) | Defensive Mean Reversion BTC | +8.82% | +90.62% | +1.91% | 20 | 2026-10-11 |
 |  | [3087](strategies/3087/) | Data Probe BTC 1D | +107.40% | +240.27% | +19.36% | 50 | 2026-10-11 |
 | ★ | [3088](strategies/3088/) | SOL Defensive MR ATR-Trail 1D | +14.63% | -91.63% | +0.00% | 14 | 2026-10-11 |
 | ★ | [3093](strategies/3093/) | SOL Trend-Ride Momentum 1D | -13.90% | -14.51% | +46.70% | 15 | 2026-10-11 |
@@ -388,7 +389,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | — | [3099](strategies/3099/) | EURUSD 1h 돌파추세 v1 (ATR 손절·세션 필터) | -49.44% | — | +51.46% | 240 | 2026-10-02 |
 |  | [3080](strategies/3080/) | Claude 실환경 테스트 2026-10-01 (삭제해도 됨) | -11.63% | -11.05% | +36.12% | 1 | 2026-10-02 |
 | — | [3096](strategies/3096/) | SOL Funding-Squeeze Long 1D | -15.05% | — | +15.05% | 8 | 2026-10-02 |
-|  | [3086](strategies/3086/) | Defensive Mean Reversion BTC | +8.82% | +90.62% | +1.91% | 20 | 2026-10-01 |
 |  | [3085](strategies/3085/) | BTC 1D Long-Term SMA100 Trend (upbit) | -31.56% | +39.49% | +58.38% | 63 | 2026-10-01 |
 |  | [3084](strategies/3084/) | BTC 1D Squeeze-Breakout Only (upbit) | -8.00% | +39.49% | +21.12% | 24 | 2026-10-01 |
 |  | [3083](strategies/3083/) | BTC 1D Trend-Gated Vol-Target (upbit) | -71.15% | +39.49% | +84.78% | 1063 | 2026-10-01 |
