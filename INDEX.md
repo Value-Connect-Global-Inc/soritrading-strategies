@@ -4,14 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 481 of 1862 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 480 of 1862 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 269 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [3607](strategies/3607/) | ETH Donchian Plain 4H (baseline) | +20.48% | +15.85% | +25.65% | 80 | 2026-10-11 |
+|  | [3607](strategies/3607/) | ETH Donchian Plain 4H (baseline) | -18.38% | +30.75% | +28.19% | 92 | 2026-10-11 |
 | ★ | [3606](strategies/3606/) | ETH Donchian Volume-Confirmed 4H | +2.65% | -26.02% | +20.39% | 74 | 2026-10-11 |
 | — | [3605](strategies/3605/) | Squeeze Breakout | -5.41% | — | +5.45% | 20 | 2026-10-11 |
 |  | [2955](strategies/2955/) | AI 전략 | -12.84% | +48.84% | +25.32% | 8 | 2026-10-11 |
