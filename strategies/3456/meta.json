@@ -1,0 +1,31 @@
+{
+  "id": 3456,
+  "name": "Book Imbalance Scalper",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 17236,
+    "return": -49.32,
+    "mdd": 49.32,
+    "trades": 308,
+    "vsBuyHold": "lose",
+    "benchRet": 6.09,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1788997500,
+    "tTo": 1791696600,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 3000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "15m",
+      "bars": 3000,
+      "end": 1791711900
+    }
+  },
+  "config": null,
+  "updatedAt": "2026-10-11T09:58:53.207Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
