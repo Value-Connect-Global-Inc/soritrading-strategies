@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |:-:|---:|---|---:|---:|---:|---:|---|
 |  | [3115](strategies/3115/) | SOL Keltner MR 4H Trend-Gated | +406.07% | +1834.47% | +14.05% | 47 | 2026-10-11 |
 |  | [3114](strategies/3114/) | ADA Keltner MR 4H | +406.07% | +1834.47% | +14.05% | 47 | 2026-10-11 |
-| — | [3547](strategies/3547/) | Funding Diagnostic | -98.50% | — | +98.52% | 1455 | 2026-10-11 |
+| — | [3547](strategies/3547/) | Funding Diagnostic | -100.00% | — | +100.00% | 3635 | 2026-10-11 |
 | ★ | [3117](strategies/3117/) | ADA Keltner MR 4H Trend-Gated | -9.92% | -34.68% | +20.90% | 18 | 2026-10-11 |
 | ★ | [3119](strategies/3119/) | BTC 4H US-Session Mean Reversion | +11.85% | -21.09% | +25.80% | 52 | 2026-10-11 |
 |  | [3545](strategies/3545/) | DXY Macro-Gated BTC Breakout 4H | +27.20% | +497.37% | +17.24% | 30 | 2026-10-11 |
