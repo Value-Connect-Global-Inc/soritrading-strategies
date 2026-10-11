@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [3392](strategies/3392/) | BNB Donchian 55/10 BearSized 1D | +1175.38% | +591.46% | +40.04% | 23 | 2026-10-11 |
+| ★ | [3392](strategies/3392/) | BNB Donchian 55/10 BearSized 1D | +72.63% | -58.55% | +37.78% | 16 | 2026-10-11 |
 |  | [3391](strategies/3391/) | SOL Squeeze Breakout 1D | -2.90% | +16.67% | +14.35% | 4 | 2026-10-11 |
 |  | [3390](strategies/3390/) | ETH Mean Reversion RSI TrendFilter 4H | -27.04% | -26.00% | +35.23% | 71 | 2026-10-11 |
 |  | [3389](strategies/3389/) | ETH Mean Reversion RSI 4H | -73.81% | -26.00% | +76.98% | 165 | 2026-10-11 |
