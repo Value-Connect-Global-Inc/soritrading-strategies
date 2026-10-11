@@ -3,16 +3,16 @@
   "name": "Spread Squeeze Imbalance",
   "kind": "custom",
   "verified": {
-    "backtestId": 16970,
-    "return": -0.73,
-    "mdd": 0.73,
-    "trades": 6,
+    "backtestId": 16971,
+    "return": -3.26,
+    "mdd": 3.26,
+    "trades": 26,
     "vsBuyHold": "lose",
-    "benchRet": 5.3,
+    "benchRet": -1.44,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1788697200,
-    "tTo": 1790196900,
+    "tFrom": 1790197200,
+    "tTo": 1791696900,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[유동성/거래량없음] 호가 두께를 판정한 시점의 0% 에서 거래량을 못 받아 합성 호가가 고정 기본값(100000 명목)으로 돌았습니다 — 그 구간의 주문은 종목의 실제 두께가 아니라 이 기본값에 잘렸습니다. 체결량·수익률·MDD 를 그대로 믿지 마세요(거래량이 붙으면 숫자가 달라집니다).",
@@ -23,7 +23,7 @@
       "sym": "BTC",
       "interval": "5m",
       "bars": 5000,
-      "end": 1790197200
+      "end": 1791697200
     }
   },
   "config": null,

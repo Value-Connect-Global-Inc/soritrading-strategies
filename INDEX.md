@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3420](strategies/3420/) | Spread Squeeze Imbalance | -0.73% | +5.30% | +0.73% | 6 | 2026-10-11 |
+|  | [3420](strategies/3420/) | Spread Squeeze Imbalance | -3.26% | -1.44% | +3.26% | 26 | 2026-10-11 |
 | ★ | [3416](strategies/3416/) | BTC Vol Squeeze Breakout 4H | -15.17% | -57.14% | +18.59% | 77 | 2026-10-11 |
 |  | [3419](strategies/3419/) | BTC EMA Pullback 1D | +48.57% | +580.47% | +22.39% | 27 | 2026-10-11 |
 |  | [3418](strategies/3418/) | BTC 4H RSI2 Mean Reversion | -92.38% | +312.57% | +92.45% | 1962 | 2026-10-11 |
