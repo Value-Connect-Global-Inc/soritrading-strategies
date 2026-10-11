@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 468 of 1813 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 468 of 1814 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 259 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3555](strategies/3555/) | SOL Mean Reversion Bounce 4H | -2.66% | +854.12% | +10.12% | 32 | 2026-10-11 |
 | — | [3554](strategies/3554/) | Cross-Sectional Momentum 4-Asset 4H | +4.16% | — | +27.35% | 370 | 2026-10-11 |
 | ★ | [3553](strategies/3553/) | ETH Trend-Follow EMA50/200 4H | +36.05% | -53.45% | +33.81% | 38 | 2026-10-11 |
 | ★ | [3104](strategies/3104/) | Keltner MR BTC-SOL 4H | +489.81% | -76.02% | +41.06% | 95 | 2026-10-11 |
