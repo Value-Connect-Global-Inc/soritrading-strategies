@@ -1,22 +1,20 @@
 /*
  * @coinsori-strategy v1
- * name: Multi-Asset Donchian Basket 6-Leg 1D
+ * name: Multi-Asset Donchian Basket Vol-Weighted 1D
  * ex: binance
  * syms: BTCUSDT, ETHUSDT, SOLUSDT, ADAUSDT, XRPUSDT, DOGEUSDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: The single-asset ADA Donchian 55/10 champion is near-optimal,
- * but it bets everything on one coin. Running the same proven recipe on six coins
- * (BTC, ETH, SOL, ADA, XRP, DOGE) with a shared cash pool diversifies the trend
- * edge: when one coin whipsaws, another is usually trending. Each leg is sized
- * to a share of equity and gets its own cool-down, so one failed breakout does
- * not block the others. Adding legs (5 and 6) consistently improved the most
- * recent window — the one most representative of current conditions.
+ * Why this strategy: The single-asset ADA Donchian 55/10 recipe is the proven
+ * edge in this account; running it on six coins with a shared cash pool
+ * diversifies the trend bet. This version sizes each leg inversely to its own
+ * ATR so every coin carries roughly the same dollar risk — a high-volatility
+ * coin like DOGE gets a smaller share and cannot dominate basket drawdown.
  * When it buys and sells: on each coin, buy when a closed bar closes above its
- * 55-day high (half size below the 200-day average). Sells when a closed bar
- * closes below the 10-day low or price falls 2.5 ATR below entry. After a
- * stop-out the coin pauses 10 bars.
+ * 55-day high (with a smaller size when the coin is below its 200-day average).
+ * Sells when a closed bar closes below the 10-day low or price falls 2.5 ATR
+ * below entry. After a stop-out the coin pauses 10 bars.
  * When it does NOT work: In a broad coordinated crypto bear all six trend gates
  * stay flat (capital safe, little upside). In a crash that hits all coins at
  * once the basket drawdown is close to a single coin's. Coins that trend weakly
@@ -35,9 +33,15 @@ function onUpdate(ctx) {
   const atr = ctx.atr(14, 1);
   if (atr == null || atr <= 0) return null;
 
+  // Vol-normalized leg share: refVol 0.04 = typical daily ATR/price of a major
+  // coin. A coin with 2x that vol gets half the share, so risk is balanced.
+  const atrPct = atr / price;
+  const refVol = 0.04;
+  let sizeMult = 0.16 * (refVol / atrPct);
+  sizeMult = Math.max(0.08, Math.min(0.32, sizeMult));   // keep every leg in [8%, 32%]
+
   const sma200 = ctx.sma(200, 1);
-  let sizeMult = 0.16;                 // per-leg share of equity (6 coins)
-  if (sma200 != null && prevClose < sma200) sizeMult = 0.08;   // bear: half the leg share
+  if (sma200 != null && prevClose < sma200) sizeMult *= 0.5;   // bear: half the leg share
 
   if (!ctx.state.cool || typeof ctx.state.cool !== 'object') ctx.state.cool = {};   // per-symbol cooldown
 
