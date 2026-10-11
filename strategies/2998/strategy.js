@@ -20,6 +20,8 @@
  * When it does NOT work: In a broad bear the rising-trend gate keeps us flat (capital-safe
  * but little upside). A squeeze that resolves DOWN is missed (long-only). It can whipsaw in
  * a flat, tight range where the squeeze fires then immediately reverses.
+ *
+ * 2025-01-05: Display-only changes — added ctx.watch declarations. Trading decisions unchanged.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -39,6 +41,10 @@ function onUpdate(ctx) {
 
   if (pos > 0) {
     // Exit below the 20-day EMA or when the long-term trend turns down.
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'below', note: '20-day EMA exit' },
+      { side: 'sell', price: sma200, trigger: 'below', note: 'trend down exit', conds: [{ label: 'SMA200 falling', ok: sma200 < sma200prev, closed: true }] }
+    ]);
     if (price < ema20 || sma200 < sma200prev) {
       return { side: 'sell', qty: pos };
     }
@@ -47,7 +53,10 @@ function onUpdate(ctx) {
 
   // Only trade inside a rising long-term trend (the shared defensive gate).
   const uptrend = sma200 > sma200prev;
-  if (!uptrend) return null;
+  if (!uptrend) {
+    ctx.watch([{ side: 'buy', price: sma200, trigger: 'above', note: 'trend gate' }]);
+    return null;
+  }
 
   // Mean-reversion pullback entry: price under the ATR-adaptive lower Keltner band + weak RSI.
   const lowerBand = ema20 - 2.5 * atr;
@@ -76,5 +85,11 @@ function onUpdate(ctx) {
     const qty = (Number.isFinite(equity) && equity > 0 ? equity : ctx.cash) / price;
     return { side: 'buy', qty: qty * 0.98 };
   }
+
+  // Waiting for entries — show both lines with their conditions.
+  ctx.watch([
+    { side: 'buy', price: lowerBand, trigger: 'below', note: 'Keltner pullback', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true }] },
+    { side: 'buy', price: high20, trigger: 'above', note: 'squeeze breakout', conds: [{ label: 'BB width pctile', ok: pctile <= 0.2, closed: true }] }
+  ]);
   return null;
 }

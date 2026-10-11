@@ -11,7 +11,9 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [2998](strategies/2998/) | BTC 1D Crash-Buy + Trend-Ride Hybrid | +36.59% | -11.40% | +15.33% | 36 | 2026-10-11 |
 | — | [3588](strategies/3588/) | Multi-Asset Donchian Turtle Portfolio | +9.02% | — | +9.22% | 384 | 2026-10-11 |
+|  | [2999](strategies/2999/) | BTC 1D MR Champion + Trend Trail Exit | +39.61% | +167.91% | +2.61% | 30 | 2026-10-11 |
 | ★ | [3002](strategies/3002/) | ETH 1D Dual-MR Defensive (Bollinger+Keltner) | +1.37% | -0.21% | +4.40% | 7 | 2026-10-11 |
 |  | [3003](strategies/3003/) | SOL 1D Dual-MR Defensive (Bollinger+Keltner) | +6.04% | +202.26% | +5.29% | 10 | 2026-10-11 |
 |  | [3004](strategies/3004/) | BNB 1D Dual-MR Defensive (Bollinger+Keltner) | +3.16% | +141.91% | +10.53% | 16 | 2026-10-11 |
@@ -489,8 +491,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3011](strategies/3011/) | BTC 1D Dual-MR + Dollar Risk-Off Gate | +24.48% | +1205.77% | +18.41% | 10 | 2026-09-29 |
 |  | [3007](strategies/3007/) | BTC 1D Dual-MR Defensive Full-Cash | +51.49% | +94.89% | +10.83% | 12 | 2026-09-29 |
 | ★ | [3005](strategies/3005/) | ADA 1D Dual-MR Defensive (Bollinger+Keltner) | +3.57% | -79.60% | +3.36% | 8 | 2026-09-29 |
-|  | [2999](strategies/2999/) | BTC 1D MR Champion + Trend Trail Exit | +0.25% | +167.91% | +8.71% | 36 | 2026-09-29 |
-| ★ | [2998](strategies/2998/) | BTC 1D Crash-Buy + Trend-Ride Hybrid | +36.59% | -11.40% | +15.33% | 36 | 2026-09-29 |
 |  | [2997](strategies/2997/) | BTC 1D Dual-MR Defensive (copy for early-window validation) | +39.61% | +167.91% | +2.61% | 30 | 2026-09-29 |
 |  | [2996](strategies/2996/) | XRP 1D Donchian Trend-Follower | -0.31% | +109.22% | +71.98% | 11 | 2026-09-29 |
 |  | [2995](strategies/2995/) | Multi-Sym Defensive MR Basket | +6.29% | +111.91% | +6.17% | 20 | 2026-09-29 |

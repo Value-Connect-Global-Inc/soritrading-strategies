@@ -18,6 +18,8 @@
  * When it does NOT work: In a sustained bear the rising-trend gate keeps us flat
  * (capital-safe but little upside), and it lags buy-and-hold in a relentless melt-up.
  * Low trade count means the edge depends on the few flushes that mark a local bottom.
+ *
+ * 2025-01-15: Added ctx.watch declarations (display only, trading logic unchanged).
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -43,10 +45,18 @@ function onUpdate(ctx) {
     if (price > ema20 || rsi > 55) {
       return { side: 'sell', qty: pos };
     }
+    // Display exit levels we're waiting on while holding.
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'above', note: 'EMA20 snap-back' },
+      { side: 'sell', price: null, trigger: 'above', note: 'RSI recovery', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 55, closed: true }] }
+    ]);
     return null;
   }
 
-  if (!uptrend) return null;
+  if (!uptrend) {
+    ctx.watch([]);  // No entry wait — trend gate blocks.
+    return null;
+  }
 
   // Two independent deep-oversold MR triggers, OR'd together.
   const bollingerFlush = price < lowerBand && rsi < 30;
@@ -59,5 +69,11 @@ function onUpdate(ctx) {
     const maxQty = (ctx.cash / price) * 0.9;
     return { side: 'buy', qty: Math.min(qty, maxQty) };
   }
+
+  // Display the two entry levels we're waiting for, with their RSI conditions.
+  ctx.watch([
+    { side: 'buy', price: lowerBand, trigger: 'below', note: 'BB lower flush', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true }] },
+    { side: 'buy', price: keltnerLow, trigger: 'below', note: 'Keltner pullback', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true }] }
+  ]);
   return null;
 }
