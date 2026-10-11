@@ -3,7 +3,7 @@
   "name": "BTC Trend-Gated Vol-Target CrashStop 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 16878,
+    "backtestId": 16987,
     "return": -38.98,
     "mdd": 96.24,
     "trades": 1352,
@@ -29,6 +29,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-11T02:50:31.422Z",
+  "updatedAt": "2026-10-11T06:04:44.093Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

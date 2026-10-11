@@ -4,13 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 440 of 1696 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 440 of 1697 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3405](strategies/3405/) | BTC Trend-Gated Vol-Target CrashStop 1D | -38.98% | +591.46% | +96.24% | 1352 | 2026-10-11 |
+|  | [3422](strategies/3422/) | BTC Vol Squeeze Breakout 1D | +205.53% | +1198.30% | +50.23% | 19 | 2026-10-11 |
 | — | [972](strategies/972/) | Momentum Filter with ATR | -52.92% | — | +104.74% | 1 | 2026-10-11 |
 | ★ | [371](strategies/371/) | BTC 업비트 돈치안 트렌드 스탑 | -1.72% | -23.27% | +5.46% | 4 | 2026-10-11 |
 | ★ | [1000](strategies/1000/) | MACD RSI Mean Reversion Strategy | -10.92% | -16.12% | +13.58% | 23 | 2026-10-11 |
@@ -27,7 +29,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | ★ | [3399](strategies/3399/) | BTC Macro-Regime Trend DXY 1D | +1006.36% | +580.47% | +44.45% | 48 | 2026-10-11 |
 |  | [3407](strategies/3407/) | BTC SMA50 Trend BearSized 1D | -33.66% | -26.04% | +65.23% | 445 | 2026-10-11 |
 | — | [3406](strategies/3406/) | BTC Funding Trend-Confirmation 1D | +69.29% | — | +62.88% | 33 | 2026-10-11 |
-|  | [3405](strategies/3405/) | BTC Trend-Gated Vol-Target CrashStop 1D | -38.98% | +591.46% | +96.24% | 1352 | 2026-10-11 |
 | — | [3401](strategies/3401/) | BTC Funding Contrarian 1D | -40.59% | — | +42.18% | 9 | 2026-10-11 |
 |  | [3404](strategies/3404/) | BTC Squeeze-Breakout Trend 1D | -5.11% | +95.22% | +23.67% | 12 | 2026-10-11 |
 | ★ | [3398](strategies/3398/) | OLD Champion ADA Donchian 55/10 | +1115.40% | +591.46% | +34.45% | 27 | 2026-10-11 |
