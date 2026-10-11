@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [2964](strategies/2964/) | SOL 1D ATR-Adaptive Keltner MR (Vol-Scaled) | +33.21% | — | +22.75% | 14 | 2026-10-11 |
 | ★ | [3598](strategies/3598/) | BTC Donchian Breakout 4H | +9.10% | -22.18% | +27.48% | 78 | 2026-10-11 |
 | ★ | [2969](strategies/2969/) | XRP 1D ATR-Adaptive Keltner MR | +178.15% | +1.26% | +35.02% | 12 | 2026-10-11 |
 |  | [3597](strategies/3597/) | ETH Trend-Follow EMA50/200 4H | -57.31% | -26.02% | +58.75% | 262 | 2026-10-11 |
@@ -527,7 +528,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2977](strategies/2977/) | BTC 1D Fear-Greed Contrarian v3 | -39.46% | +43.77% | +50.04% | 55 | 2026-09-29 |
 |  | [2974](strategies/2974/) | BTC 1D Fear-Greed Contrarian v2 | -22.80% | +240.17% | +23.16% | 20 | 2026-09-29 |
 |  | [2965](strategies/2965/) | SOL 1D Dual-Mode Keltner MR + Trend Ride | +79.55% | +659.58% | +23.13% | 5 | 2026-09-28 |
-| — | [2964](strategies/2964/) | SOL 1D ATR-Adaptive Keltner MR (Vol-Scaled) | +33.21% | — | +22.75% | 14 | 2026-09-28 |
 |  | [2963](strategies/2963/) | Alt 1D ATR-Adaptive Keltner MR | +36.07% | +830.66% | +39.12% | 6 | 2026-09-28 |
 |  | [2962](strategies/2962/) | SOL 1D ATR-Adaptive Keltner MR | +123.41% | +1443.13% | +39.12% | 8 | 2026-09-28 |
 |  | [2960](strategies/2960/) | AI 전략 | +14.96% | +87.94% | +24.82% | 34 | 2026-09-28 |

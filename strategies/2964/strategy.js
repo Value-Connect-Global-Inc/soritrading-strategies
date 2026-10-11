@@ -6,6 +6,8 @@
  * interval: 1d
  * cash: 10000
  *
+ * 2026-04-26: 표시만 바뀜, 매매 판단은 그대로
+ *
  * Why this strategy: same ATR-adaptive Keltner mean-reversion recipe as the
  * validated SOL 1D champion, but with volatility-scaled position sizing. The
  * champion's one weak point is high drawdown on high-beta SOL (39% on the
@@ -42,8 +44,13 @@ function onUpdate(ctx) {
   if (pos > 0) {
     // Take the snap-back profit above the mid band (EMA20) or once RSI turns up.
     if (price > ema20 || rsi > 60) {
+      ctx.watch([]);
       return { side: 'sell', qty: pos };
     }
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'above', note: 'EMA20 snap-back' },
+      { side: 'sell', conds: [{ label: 'RSI(14)', now: rsi, op: '>', ref: 60, closed: true }], note: 'RSI overbought exit' }
+    ]);
     return null;
   }
 
@@ -56,8 +63,18 @@ function onUpdate(ctx) {
     let qty = (ctx.cash * targetVol) / atr;
     // Never risk more than 95% of cash on one entry.
     qty = Math.min(qty, (ctx.cash / price) * 0.95);
-    if (qty <= 0) return null;
+    if (qty <= 0) {
+      ctx.watch([]);
+      return null;
+    }
+    ctx.watch([]);
     return { side: 'buy', qty: qty };
   }
+  ctx.watch([
+    { side: 'buy', price: lowerBand, trigger: 'below', note: 'ATR-adaptive Keltner lower touch', conds: [
+      { label: 'Uptrend SMA200 rising', ok: uptrend },
+      { label: 'RSI(14)', now: rsi, op: '<', ref: 40, closed: true }
+    ]}
+  ]);
   return null;
 }
