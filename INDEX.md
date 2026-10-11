@@ -11,8 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3247](strategies/3247/) | AI 전략 | -63.90% | +260.68% | +64.71% | 122 | 2026-10-11 |
 | ★ | [3436](strategies/3436/) | AI 전략 | +238.36% | +154.38% | +39.60% | 38 | 2026-10-11 |
+|  | [3247](strategies/3247/) | AI 전략 | -63.90% | +260.68% | +64.71% | 122 | 2026-10-11 |
 |  | [3249](strategies/3249/) | BTC 1D Fear-Greed Contrarian | -12.01% | +94.76% | +42.59% | 12 | 2026-10-11 |
 |  | [3435](strategies/3435/) | AI 전략 | -69.79% | -4.95% | +73.32% | 213 | 2026-10-11 |
 |  | [3434](strategies/3434/) | AI 전략 | +12.20% | +154.38% | +50.74% | 7 | 2026-10-11 |
