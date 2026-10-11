@@ -4,13 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 456 of 1740 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 456 of 1742 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3476](strategies/3476/) | Adaptive ATR Breakout 4H | -82.79% | +44.30% | +83.71% | 224 | 2026-10-11 |
+|  | [3475](strategies/3475/) | Volatility Breakout Trend 4H | +455.48% | +458.60% | +55.72% | 1 | 2026-10-11 |
 |  | [3474](strategies/3474/) | Multi-Asset Relative Strength Rotation | +123.78% | +440.21% | +29.87% | 17 | 2026-10-11 |
 |  | [3473](strategies/3473/) | Robust Trend ATR Stop BTC 4H | -54.87% | +35.80% | +58.19% | 376 | 2026-10-11 |
 |  | [3471](strategies/3471/) | Multi-Timeframe Trend Volatility Filter BTC 4H | +0.98% | +44.30% | +39.09% | 264 | 2026-10-11 |
