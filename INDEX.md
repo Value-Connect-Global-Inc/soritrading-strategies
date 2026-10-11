@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3167](strategies/3167/) | AI 전략 | +105.50% | +164.31% | +70.44% | 14 | 2026-10-11 |
 | ★ | [3537](strategies/3537/) | Volatility Breakout BTC 4H | +71.87% | +44.30% | +14.65% | 47 | 2026-10-11 |
 |  | [3166](strategies/3166/) | AI 전략 | +300.39% | +2237.42% | +72.05% | 25 | 2026-10-11 |
 |  | [3174](strategies/3174/) | ETH Trend Ride ATR Trailing 4H | -95.18% | -23.98% | +95.60% | 354 | 2026-10-11 |
@@ -311,7 +312,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3173](strategies/3173/) | BTC RSI2 Panic Reversion 1D | -7.46% | +446.26% | +64.59% | 138 | 2026-10-07 |
 |  | [3171](strategies/3171/) | BTC OBV Trend + Slope Regime 1D | +31.04% | +84.62% | +20.13% | 30 | 2026-10-07 |
 |  | [3169](strategies/3169/) | BTC Sentiment-Gated OBV Trend 1D | -39.01% | +71.23% | +39.22% | 6 | 2026-10-07 |
-|  | [3167](strategies/3167/) | AI 전략 | +105.50% | +164.31% | +70.44% | 14 | 2026-10-07 |
 |  | [3164](strategies/3164/) | AI 전략 | +590.77% | +753.65% | +61.81% | 7 | 2026-10-07 |
 |  | [3162](strategies/3162/) | AI 전략 | +537.59% | +753.65% | +64.75% | 9 | 2026-10-07 |
 |  | [3161](strategies/3161/) | AI 전략 | -42.19% | -23.94% | +68.11% | 45 | 2026-10-07 |
