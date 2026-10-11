@@ -3,10 +3,10 @@
   "name": "SOL 1D Defensive MR Volume-Confirmed",
   "kind": "custom",
   "verified": {
-    "backtestId": 15035,
-    "return": 32.91,
+    "backtestId": 17730,
+    "return": 45.4,
     "mdd": 40.74,
-    "trades": 14,
+    "trades": 16,
     "vsBuyHold": "lose",
     "benchRet": 325.14,
     "benchBasis": "price",
@@ -27,6 +27,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-02T07:23:21.485Z",
+  "updatedAt": "2026-10-11T16:47:03.950Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

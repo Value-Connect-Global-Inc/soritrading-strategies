@@ -21,6 +21,8 @@
  * When it does NOT work: in a broad coordinated bear the rising-trend gate keeps it flat
  * (safe, little upside); the volume filter can miss a quiet capitulation that later turns;
  * in a straight-line melt-up it lags buy-and-hold.
+ * 
+ * 2026-01-12: Added ctx.watch declarations (display only, trading logic unchanged).
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -40,20 +42,62 @@ function onUpdate(ctx) {
 
   if (pos > 0) {
     // Snap-back exit: price recovered above the 20-day EMA, or the long trend broke.
-    if (price > ema20 || !uptrend) {
+    const sellSignal = (price > ema20 || !uptrend);
+    if (sellSignal) {
+      // Display: waiting for exit conditions (already met, will sell this bar)
+      ctx.watch([
+        { side: 'sell', price: ema20, trigger: 'above', note: 'EMA20 snap-back', conds: [
+          { label: 'Price vs EMA20', now: price, op: '>', ref: ema20, closed: true },
+          { label: 'Uptrend', ok: uptrend }
+        ]}
+      ]);
       return { side: 'sell', qty: pos };
     }
+    // Display: holding, waiting for exit triggers
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'above', note: 'EMA20 snap-back', conds: [
+        { label: 'Price vs EMA20', now: price, op: '>', ref: ema20, closed: true }
+      ]},
+      { side: 'sell', price: sma200prev, trigger: 'below', note: 'Trend break', conds: [
+        { label: 'SMA200 rising', ok: uptrend }
+      ]}
+    ]);
     return null;
   }
 
-  if (!uptrend) return null;
+  if (!uptrend) {
+    // Display: waiting for uptrend to resume
+    ctx.watch([
+      { side: 'buy', price: sma200, trigger: 'above', note: 'Uptrend resume', conds: [
+        { label: 'SMA200 rising', ok: uptrend }
+      ]}
+    ]);
+    return null;
+  }
 
   const flush = price < bb.lower && rsi < 30;
   const realVolume = vol > 1.3 * avgVol; // genuine panic, not a slow drift — filters W4-style bleeds
   if (flush && realVolume) {
     const qty = (ctx.cash / price) * 0.99;
     if (qty <= 0) return null;
+    // Display: entry conditions met, will buy this bar
+    ctx.watch([
+      { side: 'buy', price: bb.lower, trigger: 'below', note: 'BB lower + RSI + volume', conds: [
+        { label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true },
+        { label: 'Volume > 1.3x avg', now: vol, op: '>', ref: 1.3 * avgVol, closed: true },
+        { label: 'SMA200 rising', ok: uptrend }
+      ]}
+    ]);
     return { side: 'buy', qty: qty };
   }
+
+  // Display: waiting for entry conditions
+  ctx.watch([
+    { side: 'buy', price: bb.lower, trigger: 'below', note: 'BB lower touch', conds: [
+      { label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true },
+      { label: 'Volume > 1.3x avg', now: vol, op: '>', ref: 1.3 * avgVol, closed: true },
+      { label: 'SMA200 rising', ok: uptrend }
+    ]}
+  ]);
   return null;
 }

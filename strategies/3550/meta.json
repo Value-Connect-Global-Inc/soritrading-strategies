@@ -1,0 +1,29 @@
+{
+  "id": 3550,
+  "name": "Funding Squeeze Long BTC 4H",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 17733,
+    "return": 82.12,
+    "mdd": 19.4,
+    "trades": 53,
+    "vsBuyHold": "unmeasured",
+    "gapPct": 0,
+    "tFrom": 1575720000,
+    "tTo": 1647720000,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "bars": 5000,
+      "end": 1647734400
+    }
+  },
+  "config": null,
+  "updatedAt": "2026-10-11T16:46:40.553Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

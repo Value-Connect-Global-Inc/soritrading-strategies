@@ -4,13 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 467 of 1809 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 256 of them right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 467 of 1810 right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 257 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3110](strategies/3110/) | SOL 1D Defensive MR Volume-Confirmed | +45.40% | +325.14% | +40.74% | 16 | 2026-10-11 |
+| — | [3550](strategies/3550/) | Funding Squeeze Long BTC 4H | +82.12% | — | +19.40% | 53 | 2026-10-11 |
 | — | [3547](strategies/3547/) | Funding Diagnostic | -100.00% | — | +100.00% | 3635 | 2026-10-11 |
 |  | [3115](strategies/3115/) | SOL Keltner MR 4H Trend-Gated | +406.07% | +1834.47% | +14.05% | 47 | 2026-10-11 |
 |  | [3114](strategies/3114/) | ADA Keltner MR 4H | +406.07% | +1834.47% | +14.05% | 47 | 2026-10-11 |
@@ -359,7 +361,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3120](strategies/3120/) | BTC 4H Keltner MR baseline | +148.60% | +420.44% | +28.42% | 90 | 2026-10-03 |
 |  | [3116](strategies/3116/) | BTC Funding-Extreme Reversal 1D | +406.07% | +1834.47% | +14.05% | 47 | 2026-10-03 |
 |  | [3111](strategies/3111/) | BTC 1D Defensive Mean Reversion | +3.46% | +18.88% | +1.44% | 6 | 2026-10-02 |
-|  | [3110](strategies/3110/) | SOL 1D Defensive MR Volume-Confirmed | +32.91% | +325.14% | +40.74% | 14 | 2026-10-02 |
 | ★ | [3109](strategies/3109/) | SOL 1D MR Half-TP + Trend-Ride | -7.64% | -40.93% | +13.84% | 2 | 2026-10-02 |
 | ★ | [3108](strategies/3108/) | BTC 1D Bollinger Squeeze-Breakout | -7.64% | -40.93% | +13.84% | 2 | 2026-10-02 |
 | — | [3107](strategies/3107/) | Data Probe SOL 1D MR | +7.22% | — | +33.64% | 118 | 2026-10-02 |
