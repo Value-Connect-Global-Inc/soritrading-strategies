@@ -7,8 +7,8 @@
  * cash: 10000
  *
  * Why this strategy: Strong 4h BTC moves usually start with a volatility expansion — ATR and volume push above their averages while price breaks a multi-week high. Entering only on that confirmation avoids the fake breakouts a plain Donchian system pays for.
- * When it buys and sells: Buys when flat AND price is above its 300-bar average AND the last closed bar breaks above the prior 55-bar high AND the 14-bar ATR is above its own recent average AND volume is at/above its 50-bar average. Sells when price falls 2.5 ATR below the highest close since entry, never worse than 2.5 ATR below entry.
- * When it does NOT work: In a long sideways range the 55-bar breakout fires on small rips and the trailing stop cuts each one for a small loss. It stays flat through slow steady grind-ups with no volatility expansion, and it never catches a bottom — it only buys after the trend turns up.
+ * When it buys and sells: Buys when flat AND price is above its 300-bar average AND the last closed bar breaks above the prior 55-bar high AND volume is at/above its 50-bar average. ATR must also be expanding — unless price is more than 10% above the 300-bar average, where the trend itself is the confirmation and only normal ATR is needed. Sells when price falls 2.5 ATR below the highest close since entry, never worse than 2.5 ATR below entry.
+ * When it does NOT work: In a long sideways range the 55-bar breakout fires on small rips and the trailing stop cuts each one for a small loss. It never catches a bottom — it only buys after the trend turns up. In a deep bear market it stays flat (trend filter), so it misses shorting opportunities.
  */
 function onUpdate(ctx) {
   const price = ctx.closes.at(-2);
@@ -36,7 +36,7 @@ function onUpdate(ctx) {
   if (sma300 == null || price < sma300) return null;
 
   // Volatility expansion: current ATR above its own average over the last 40 bars.
-  // Why 1.15x: genuine breakouts come on expanding volatility; anything quieter is noise.
+  // Why 1.15x on normal entries: genuine breakouts come on expanding volatility.
   let sum = 0, cnt = 0;
   for (let k = 1; k <= 40; k++) {
     const a = ctx.atr(14, k);
@@ -45,7 +45,13 @@ function onUpdate(ctx) {
   }
   if (cnt < 30) return null;
   const avgAtr = sum / cnt;
-  if (atr == null || atr < 1.15 * avgAtr) return null;
+
+  // Strong-trend relaxation: when price is >10% above its 300-bar average the trend
+  // itself is the confirmation, so a breakout only needs normal ATR (>= average).
+  // This is where the old rule missed steady grind-up bulls.
+  const strongTrend = price > sma300 * 1.10;
+  const atrOk = atr != null && (strongTrend ? atr >= avgAtr : atr >= 1.15 * avgAtr);
+  if (!atrOk) return null;
 
   // Volume confirmation: closed bar volume at/above its 50-bar average.
   const v = ctx.volumes.at(-2);
@@ -56,7 +62,7 @@ function onUpdate(ctx) {
   const lastHi = ctx.high(1, 1);
   const priorHi = ctx.high(55, 2);
   if (lastHi == null || priorHi == null || lastHi <= priorHi) {
-    if (priorHi != null) ctx.watch([{ side: 'buy', price: priorHi, trigger: 'above', note: '55-bar breakout', conds: [{ label: 'ATR expand', ok: atr >= 1.15 * avgAtr }, { label: 'Vol>=avg', ok: v >= av }] }]);
+    if (priorHi != null) ctx.watch([{ side: 'buy', price: priorHi, trigger: 'above', note: '55-bar breakout', conds: [{ label: 'ATR expand', ok: atrOk }, { label: 'Vol>=avg', ok: v >= av }] }]);
     return null;
   }
 

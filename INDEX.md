@@ -11,8 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [3537](strategies/3537/) | Volatility Breakout BTC 4H | +71.09% | +56.53% | +17.71% | 44 | 2026-10-11 |
 |  | [3174](strategies/3174/) | ETH Trend Ride ATR Trailing 4H | -95.18% | -23.98% | +95.60% | 354 | 2026-10-11 |
-| ★ | [3537](strategies/3537/) | Volatility Breakout BTC 4H | +37.75% | +35.80% | +13.40% | 48 | 2026-10-11 |
 |  | [3180](strategies/3180/) | BTC Donchian Breakout 4H | +4.93% | +7.79% | +21.09% | 4 | 2026-10-11 |
 |  | [3181](strategies/3181/) | BTC 4H Bollinger Mean Reversion | +142.73% | +486.12% | +68.02% | 2 | 2026-10-11 |
 | ★ | [3182](strategies/3182/) | ETH 4H Donchian Breakout Trend | +16.82% | +9.87% | +28.42% | 4 | 2026-10-11 |
