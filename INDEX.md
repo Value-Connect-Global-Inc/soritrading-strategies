@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2990](strategies/2990/) | BTC 1D Hybrid MR+Squeeze (ATR Trail Exit) | +105.55% | +1205.77% | +29.46% | 86 | 2026-10-11 |
 | ★ | [3591](strategies/3591/) | BTC Hashrate Trend 1D | +11.21% | -26.04% | +4.73% | 9 | 2026-10-11 |
 |  | [3590](strategies/3590/) | BTC Fear&Greed Contrarian 1D | +0.01% | +95.22% | +8.55% | 12 | 2026-10-11 |
 |  | [2993](strategies/2993/) | BTC 1D Crash-Buy + Trend-Ride Hybrid | -1.98% | +94.89% | +25.86% | 42 | 2026-10-11 |
@@ -501,7 +502,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | ★ | [3005](strategies/3005/) | ADA 1D Dual-MR Defensive (Bollinger+Keltner) | +3.57% | -79.60% | +3.36% | 8 | 2026-09-29 |
 |  | [2995](strategies/2995/) | Multi-Sym Defensive MR Basket | +6.29% | +111.91% | +6.17% | 20 | 2026-09-29 |
 |  | [2994](strategies/2994/) | BTC 1D Dual-MR Defensive (Bollinger+Keltner) | +6.29% | +111.91% | +6.17% | 20 | 2026-09-29 |
-|  | [2990](strategies/2990/) | BTC 1D Hybrid MR+Squeeze (ATR Trail Exit) | +105.55% | +1205.77% | +29.46% | 86 | 2026-09-29 |
 |  | [2989](strategies/2989/) | BTC 1D Macro-Regime Dollar Filter | +11.50% | +1205.77% | +65.97% | 57 | 2026-09-29 |
 | — | [2988](strategies/2988/) | BTC Long-Short Trend (both directions) | +377.94% | — | +55.67% | 58 | 2026-09-29 |
 |  | [2987](strategies/2987/) | BTC 1D Hybrid MR+Squeeze (ATR trail) | -25.86% | +881.10% | +52.35% | 25 | 2026-09-29 |
