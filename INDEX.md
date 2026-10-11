@@ -11,9 +11,10 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [3596](strategies/3596/) | state persistence test | -1.01% | -44.06% | +1.01% | 2 | 2026-10-11 |
+|  | [2975](strategies/2975/) | BTC 1D On-Chain Network-Health Trend | -79.39% | +240.17% | +85.94% | 902 | 2026-10-11 |
 |  | [2976](strategies/2976/) | BTC 1D Bollinger-RSI Defensive MR | +17.90% | +288.09% | +1.62% | 14 | 2026-10-11 |
 |  | [2978](strategies/2978/) | AI 전략 | +27.99% | +43.77% | +1.62% | 22 | 2026-10-11 |
-| ★ | [3596](strategies/3596/) | state persistence test | -1.01% | -44.06% | +1.01% | 2 | 2026-10-11 |
 | — | [2981](strategies/2981/) | AI 전략 | +66.76% | — | +12.14% | 37 | 2026-10-11 |
 | — | [2982](strategies/2982/) | AI 전략 | +140.08% | — | +13.53% | 80 | 2026-10-11 |
 |  | [2983](strategies/2983/) | BTC 1D ATR Chandelier Trend Rider | -38.86% | +43.77% | +59.49% | 47 | 2026-10-11 |
@@ -518,7 +519,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2984](strategies/2984/) | BTC 1D Volatility Squeeze Breakout | +37.95% | +1205.77% | +33.08% | 14 | 2026-09-29 |
 | — | [2980](strategies/2980/) | Multi-Asset Defensive Keltner MR Basket | +140.08% | — | +13.53% | 80 | 2026-09-29 |
 |  | [2977](strategies/2977/) | BTC 1D Fear-Greed Contrarian v3 | -39.46% | +43.77% | +50.04% | 55 | 2026-09-29 |
-|  | [2975](strategies/2975/) | BTC 1D On-Chain Network-Health Trend | -79.39% | +240.17% | +85.94% | 902 | 2026-09-29 |
 |  | [2974](strategies/2974/) | BTC 1D Fear-Greed Contrarian v2 | -22.80% | +240.17% | +23.16% | 20 | 2026-09-29 |
 | ★ | [2971](strategies/2971/) | XRP 1D ATR-Adaptive Keltner MR | +67.31% | +2.87% | +36.60% | 4 | 2026-09-29 |
 |  | [2970](strategies/2970/) | BTC 1D Fear-Greed Sentiment Contrarian | -28.80% | +1205.77% | +28.80% | 4 | 2026-09-29 |
