@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: ADA Donchian 55/15 BearSized Cool10 1D
+ * name: ADA Donchian 55/20 BearSized Cool10 1D
  * ex: binance
  * syms: ADAUSDT
  * interval: 1d
@@ -8,15 +8,15 @@
  *
  * Why this strategy: The ADA Donchian 55/10 champion's exit channel is 10 bars. The ledger shows a
  * 30-bar exit is too slow (gives back gains, higher MDD) and a 3x ATR chandelier is too fast
- * (exits winners early). 10 may also be on the fast side. This version widens the exit channel to
- * 15 bars: a slightly slower exit lets a genuine trend breathe a little longer before taking
- * profit, while still exiting before a full 30-bar unwind. Entry, position sizing and cooldown are
- * unchanged from the champion.
+ * (exits winners early). 15-bar exit improved the 2018-21 bull window greatly (+1332 vs +1148)
+ * at the cost of the choppy 2021-24 window. This version tests 20 bars to see the full curve of
+ * exit-channel widths. Entry, position sizing and cooldown unchanged from the champion.
  * When it buys and sells: Buys when a closed bar closes above the highest 55 bars, unless within
- * 10 bars of a stop-out. Sells when a closed bar closes below the lowest 15 bars. Position is half
+ * 10 bars of a stop-out. Sells when a closed bar closes below the lowest 20 bars. Position is half
  * size below the 200-day average, quarter size when more than 20% below it.
  * When it does NOT work: A wider exit channel gives back more during sharp reversals, so MDD can
- * rise. A long range still loses, just less. A violent crash gaps through any stop.
+ * rise and the choppy-window return can fall. A long range still loses, just less. A violent crash
+ * gaps through any stop.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -44,7 +44,7 @@ function onUpdate(ctx) {
 
   if (pos > 0) {
     const entry = ctx.entryPx || price;
-    const channelLow = Math.min(...closes.slice(-17, -2));
+    const channelLow = Math.min(...closes.slice(-22, -2));
     const exited = prevClose < channelLow || price < entry - 2 * atr;
     ctx.watch([{ side: 'sell', price: entry - 2 * atr, trigger: 'below', note: '2 ATR stop' }]);
     if (exited) {
