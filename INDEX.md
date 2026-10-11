@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3077](strategies/3077/) | ETH 4H Volatility-Scaled Trend Rider | -24.29% | +141.85% | +25.79% | 86 | 2026-10-11 |
 |  | [3079](strategies/3079/) | BTC Daily Defensive Mean Reversion | +32.04% | +91.00% | +5.25% | 34 | 2026-10-11 |
 | ★ | [3560](strategies/3560/) | AI 전략 | +56.30% | +45.28% | +21.53% | 68 | 2026-10-11 |
 |  | [3556](strategies/3556/) | BNB Trend-Follow EMA50/200 4H | +557.58% | +2460.26% | +36.31% | 26 | 2026-10-11 |
@@ -397,7 +398,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3082](strategies/3082/) | BTC 1D EMA Trend-Ride (upbit) | -7.55% | +39.49% | +20.73% | 26 | 2026-10-01 |
 |  | [3081](strategies/3081/) | BTC 1D Hybrid MR + Squeeze-Breakout | -6.50% | +81.42% | +17.26% | 10 | 2026-10-01 |
 | ★ | [3078](strategies/3078/) | Upbit BTC 1D Defensive Mean-Reversion | +2.13% | -42.11% | +1.56% | 42 | 2026-10-01 |
-|  | [3077](strategies/3077/) | ETH 4H Volatility-Scaled Trend Rider | -19.35% | +175.13% | +21.20% | 71 | 2026-10-01 |
 |  | [3076](strategies/3076/) | Upbit BTC 1D Slow Regime Filter | +11.61% | +99.56% | +8.62% | 3 | 2026-10-01 |
 |  | [3075](strategies/3075/) | Upbit BTC 1D Defensive MR v2 | -12.12% | +15.93% | +17.00% | 20 | 2026-10-01 |
 |  | [3074](strategies/3074/) | Upbit BTC 1D Defensive Mean-Reversion | -1.43% | +15.93% | +9.69% | 8 | 2026-10-01 |

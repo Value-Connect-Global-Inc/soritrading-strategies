@@ -17,6 +17,7 @@
  * When it does NOT work: In long sideways chop with no real trend it will whip back
  * and forth and bleed fees. It also lags sharp V-shaped reversals because it waits
  * for a slow average to flip.
+ * 2026-04-12: 표시만 바뀜, 매매 판단은 그대로 (ctx.watch added)
  */
 function onUpdate(ctx) {
   // Medium-term trend: price vs 50-day EMA.
@@ -47,6 +48,16 @@ function onUpdate(ctx) {
 
   if (pos === 0) {
     // Enter only when trend is up and not extremely overbought.
+    ctx.watch([{
+      side: 'buy',
+      price: ema50,
+      trigger: 'above',
+      note: 'trend entry',
+      conds: [
+        { label: 'EMA20 > EMA50', ok: ema20 > ema50, closed: true },
+        { label: 'RSI(14) < 72', now: rsi, op: '<', ref: 72, closed: true }
+      ]
+    }]);
     if (trendUp && rsi < 72) {
       return { side: 'buy', qty: qty };
     }
@@ -56,6 +67,10 @@ function onUpdate(ctx) {
   // Exit: trend flipped down, or price fell more than the volatility stop,
   // or momentum got deeply overbought then rolled over.
   const stopPx = ctx.entryPx - stopDist;
+  ctx.watch([
+    { side: 'sell', price: stopPx, trigger: 'below', note: 'ATR stop' },
+    { side: 'sell', price: ema50, trigger: 'below', note: 'trend flip' }
+  ]);
   if (!trendUp || px < stopPx || rsi > 82) {
     return { side: 'sell', qty: pos };
   }
