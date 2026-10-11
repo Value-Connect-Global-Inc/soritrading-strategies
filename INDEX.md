@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [3591](strategies/3591/) | BTC Hashrate Trend 1D | -2.62% | -26.04% | +4.77% | 168 | 2026-10-11 |
+| ★ | [3591](strategies/3591/) | BTC Hashrate Trend 1D | +11.21% | -26.04% | +4.73% | 9 | 2026-10-11 |
 |  | [3590](strategies/3590/) | BTC Fear&Greed Contrarian 1D | +0.01% | +95.22% | +8.55% | 12 | 2026-10-11 |
 |  | [2993](strategies/2993/) | BTC 1D Crash-Buy + Trend-Ride Hybrid | -1.98% | +94.89% | +25.86% | 42 | 2026-10-11 |
 | ★ | [2991](strategies/2991/) | BTC 1D OI-Funding Sentiment | +115.35% | +47.08% | +15.57% | 108 | 2026-10-11 |

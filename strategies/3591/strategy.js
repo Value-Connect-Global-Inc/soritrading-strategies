@@ -10,15 +10,17 @@
  *   growing (more miners adding machines) it signals confidence in future
  *   price; when it is shrinking, miners are capitulating. Combining this
  *   on-chain fundamental with a price uptrend is a different information
- *   source than the price-only turtle already in the portfolio.
+ *   source than the price-only turtle already in the portfolio. Hashrate
+ *   only confirms entries; price decides exits, so noisy daily hashrate
+ *   data cannot churn the position.
  * When it buys and sells: buys BTC when a closed daily bar is above its 200-day
  *   average AND hashrate is above its own 30-day average (recent hashrate
- *   growth). Sells when price closes below the 200-day average or hashrate
- *   falls below its 30-day average, or on a 5x ATR crash stop.
+ *   growth). Sells when price closes below the 200-day average or on a 5x ATR
+ *   crash stop.
  * When it does NOT work: hashrate is a slow signal, so it reacts late to sharp
  *   price moves; in a bull market where hashrate lags price it may stay out of
- *   the early rally, and in a bear market hashrate only turns down after price
- *   has already fallen a lot.
+ *   the early rally, and in a bear market it only exits after price has
+ *   already fallen a lot.
  */
 function onUpdate(ctx) {
   const hr = ctx.data('hashrate');
@@ -29,8 +31,8 @@ function onUpdate(ctx) {
   const price = ctx.price;
 
   if (ctx.position > 0) {
-    // exit when either trend flips: price below 200d or hashrate decelerating
-    if (prevClose < sma200 || hr < hrSma) return { side: 'sell', qty: ctx.position };
+    // exit on price trend flip or crash stop — hashrate does NOT force exits
+    if (prevClose < sma200) return { side: 'sell', qty: ctx.position };
     const atr = ctx.atr(14, 1);
     const stopPx = atr != null ? ctx.entryPx - 5 * atr : ctx.entryPx * 0.7;
     if (price <= stopPx) return { side: 'sell', qty: ctx.position };
