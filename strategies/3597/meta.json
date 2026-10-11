@@ -3,7 +3,7 @@
   "name": "ETH Trend-Follow EMA50/200 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 18025,
+    "backtestId": 18029,
     "return": -57.31,
     "mdd": 58.75,
     "trades": 262,
