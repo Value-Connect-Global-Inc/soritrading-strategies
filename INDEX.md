@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 463 of 1767 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 463 of 1768 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3504](strategies/3504/) | Simple SMA Crossover Trend | -19.01% | +11.59% | +19.49% | 90 | 2026-10-11 |
 |  | [3502](strategies/3502/) | EMA MACD Trend Momentum Crossover | -6.20% | +11.59% | +17.28% | 58 | 2026-10-11 |
 |  | [3501](strategies/3501/) | Sentiment Gated RSI Bollinger Mean Reversion ETH | -38.16% | +27.69% | +40.77% | 84 | 2026-10-11 |
 | ★ | [3500](strategies/3500/) | RSI Bollinger Mean Reversion | +14.44% | +6.21% | +18.74% | 156 | 2026-10-11 |
