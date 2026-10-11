@@ -11,8 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3110](strategies/3110/) | SOL 1D Defensive MR Volume-Confirmed | +45.40% | +325.14% | +40.74% | 16 | 2026-10-11 |
 | — | [3550](strategies/3550/) | Funding Squeeze Long BTC 4H | +82.12% | — | +19.40% | 53 | 2026-10-11 |
+|  | [3110](strategies/3110/) | SOL 1D Defensive MR Volume-Confirmed | +45.40% | +325.14% | +40.74% | 16 | 2026-10-11 |
 | — | [3547](strategies/3547/) | Funding Diagnostic | -100.00% | — | +100.00% | 3635 | 2026-10-11 |
 |  | [3115](strategies/3115/) | SOL Keltner MR 4H Trend-Gated | +406.07% | +1834.47% | +14.05% | 47 | 2026-10-11 |
 |  | [3114](strategies/3114/) | ADA Keltner MR 4H | +406.07% | +1834.47% | +14.05% | 47 | 2026-10-11 |
