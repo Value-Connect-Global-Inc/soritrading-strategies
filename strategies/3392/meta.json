@@ -3,7 +3,7 @@
   "name": "BNB Donchian 55/10 BearSized 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 16807,
+    "backtestId": 16809,
     "return": 72.63,
     "mdd": 37.78,
     "trades": 16,
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-11T01:25:09.652Z",
+  "updatedAt": "2026-10-11T01:26:38.526Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
