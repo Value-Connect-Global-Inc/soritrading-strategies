@@ -4,14 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 468 of 1799 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 467 of 1799 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 255 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [3537](strategies/3537/) | Volatility Breakout BTC 4H | +71.87% | +44.30% | +14.65% | 47 | 2026-10-11 |
+|  | [3537](strategies/3537/) | Volatility Breakout BTC 4H | +126.39% | +458.60% | +26.93% | 49 | 2026-10-11 |
 |  | [3167](strategies/3167/) | AI 전략 | +105.50% | +164.31% | +70.44% | 14 | 2026-10-11 |
 |  | [3166](strategies/3166/) | AI 전략 | +300.39% | +2237.42% | +72.05% | 25 | 2026-10-11 |
 |  | [3174](strategies/3174/) | ETH Trend Ride ATR Trailing 4H | -95.18% | -23.98% | +95.60% | 354 | 2026-10-11 |
