@@ -30,9 +30,9 @@ function onUpdate(ctx) {
   const pos = ctx.position;
   const inTrend = prevClose > sma200;
   const atrPct = atr / price;
-  // Target ~1.5% daily vol (~28% annualized) — roughly half of buy&hold BTC vol, chosen so
-  // exposure stays near 0.5 in a normal 3% ATR day and never needs leverage.
-  const exposure = Math.min(1, 0.015 / atrPct);
+  // Target ~2.0% daily vol (~38% annualized): higher than v1's 1.5%, deploys ~0.65 of
+  // cash in a normal 3% ATR day so it captures more of the trend without needing leverage.
+  const exposure = Math.min(1, 0.02 / atrPct);
   const targetQty = (ctx.cash * exposure) / price;
 
   if (pos > 0) {
