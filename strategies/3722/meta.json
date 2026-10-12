@@ -3,16 +3,16 @@
   "name": "BTCDualSideTrend",
   "kind": "custom",
   "verified": {
-    "backtestId": 19008,
-    "return": 95.99,
-    "mdd": 14.38,
-    "trades": 136,
-    "vsBuyHold": "win",
-    "benchRet": 52.46,
+    "backtestId": 19012,
+    "return": 81.34,
+    "mdd": 14.72,
+    "trades": 104,
+    "vsBuyHold": "lose",
+    "benchRet": 443.28,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1647835200,
-    "tTo": 1719820800,
+    "tFrom": 1575820800,
+    "tTo": 1647820800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
@@ -22,10 +22,10 @@
       "sym": "BTC",
       "interval": "4h",
       "bars": 5000,
-      "end": 1719835200
+      "end": 1647835200
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "08c064f464348c89bca221bd847dbb7f06a754dd9552cb3836202e80caf44114"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "c8013122534313fcc4e1feabb55cfa1e1b2287717eb656c8d2658b72bdbc7cdb"
   },
   "config": null,
   "updatedAt": "2026-10-12T23:19:32.667Z",
