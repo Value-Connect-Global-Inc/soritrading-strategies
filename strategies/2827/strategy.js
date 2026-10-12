@@ -18,6 +18,8 @@
  * When it does NOT work: on-chain data is daily and lags price, so in a sharp
  * V-shaped melt-up it re-enters late and trails buy-and-hold; and requiring both
  * signals means it is fully out during mixed regimes where only one is rising.
+ *
+ * 2025-01-01: display-only change (ctx.watch added), trading logic unchanged.
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -50,14 +52,29 @@ function onUpdate(ctx) {
   if (pos > 0) {
     // Exit when EITHER fundamental turns down — faster bear exit than one signal alone.
     if (aFalling || hFalling) {
+      ctx.watch([
+        { side: 'sell', price: ctx.entryPx * 0.99, trigger: 'below', qty: pos, note: 'addr falling', conds: [{ label: 'addr sma30', now: addr, op: '<', ref: aPast * 0.99, closed: true }] },
+        { side: 'sell', price: ctx.entryPx * 0.99, trigger: 'below', qty: pos, note: 'hashrate falling', conds: [{ label: 'hashrate sma30', now: hr, op: '<', ref: hPast * 0.99, closed: true }] }
+      ]);
       return { side: 'sell', qty: pos };
     }
+    ctx.watch([
+      { side: 'sell', price: aPast * 0.99, trigger: 'below', qty: pos, note: 'addr turns down', conds: [{ label: 'addr sma30', now: addr, op: '>', ref: aPast * 1.01, closed: true }] },
+      { side: 'sell', price: hPast * 0.99, trigger: 'below', qty: pos, note: 'hashrate turns down', conds: [{ label: 'hashrate sma30', now: hr, op: '>', ref: hPast * 1.01, closed: true }] }
+    ]);
     return null;
   }
 
   // Enter only when BOTH fundamentals confirm a healthy network.
   if (aRising && hRising) {
+    ctx.watch([
+      { side: 'buy', price: price, trigger: 'above', qty: ctx.cash / price * 0.95, note: 'both signals up', conds: [{ label: 'addr rising', ok: true }, { label: 'hashrate rising', ok: true }] }
+    ]);
     return { side: 'buy', qty: ctx.cash / price * 0.95 };
   }
+  ctx.watch([
+    { side: 'buy', price: aPast * 1.01, trigger: 'above', qty: ctx.cash / price * 0.95, note: 'addr rises', conds: [{ label: 'addr sma30', now: addr, op: '>', ref: aPast * 1.01, closed: true }] },
+    { side: 'buy', price: hPast * 1.01, trigger: 'above', qty: ctx.cash / price * 0.95, note: 'hashrate rises', conds: [{ label: 'hashrate sma30', now: hr, op: '>', ref: hPast * 1.01, closed: true }] }
+  ]);
   return null;
 }
