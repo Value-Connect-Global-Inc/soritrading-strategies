@@ -4,14 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 497 of 1912 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 496 of 1912 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 271 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [3657](strategies/3657/) | DonchianSlowEntry | +282.82% | +213.55% | +33.20% | 13 | 2026-10-12 |
+|  | [3657](strategies/3657/) | DonchianSlowEntry | +16.36% | +87.84% | +44.75% | 19 | 2026-10-12 |
 | ★ | [3656](strategies/3656/) | DonchianBaseline | +260.37% | +213.55% | +44.98% | 17 | 2026-10-12 |
 | ★ | [3655](strategies/3655/) | DonchianOiGate | +260.37% | +213.55% | +44.98% | 17 | 2026-10-12 |
 |  | [3654](strategies/3654/) | DonchianWideExit | +117.22% | +213.55% | +63.27% | 13 | 2026-10-12 |
