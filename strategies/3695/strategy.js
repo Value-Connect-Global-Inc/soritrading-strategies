@@ -11,11 +11,13 @@
  * an established uptrend (price above its 200-day average), demand tends to lead
  * price higher. This is an on-chain fundamental signal, not a price pattern, so
  * it is a different edge than the price-based champion.
- * When it buys and sells: buy when active addresses are above their 30-day
- * average AND the close is above the 200-day average AND RSI(14) is below 75
- * (not buying the very top of a melt-up). Sell when active addresses fall back
- * below their 30-day average, or the close drops below the 200-day average, or
- * price hits a 2x ATR stop below entry.
+ * When it buys and sells: buy when active addresses are clearly above their
+ * 30-day average (addr > 1.05 x avg) AND the close is above the 200-day average
+ * AND RSI(14) is below 75 (not buying the very top of a melt-up). Sell when
+ * active addresses clearly fall below their 30-day average (addr < 0.95 x avg),
+ * or the close drops below the 200-day average, or price hits a 2x ATR stop.
+ * The 5% band is hysteresis: daily address data is noisy, so requiring a clear
+ * expansion/contraction avoids churning on every wiggle.
  * When it does NOT work: in a bear market price stays below the 200-day average
  * and the strategy never trades (safe but no profit). Address data lags price by
  * days, so it can confirm a move only after it started; in a slow grind with no
@@ -39,8 +41,8 @@ function onUpdate(ctx) {
   const pos = ctx.position;
   if (pos > 0) {
     const hardStop = ctx.entryPx - 2 * atr; // 2x ATR stop: cap a single bad trade
-    // Demand contraction, trend break, or hard stop ends the position.
-    if (price <= hardStop || addr < addrSma || prevClose < sma200) {
+    // Clear demand contraction, trend break, or hard stop ends the position.
+    if (price <= hardStop || addr < 0.95 * addrSma || prevClose < sma200) {
       ctx.watch([]);
       return { side: 'sell', qty: pos };
     }
@@ -48,14 +50,15 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // Entry: usage expanding (addr>30d avg) in an uptrend, not over-extended.
-  // RSI<75 mirrors the validated champion gate that avoids buying parabolic tops.
-  if (addr > addrSma && prevClose > sma200 && rsi < 75) {
+  // Entry: clear usage expansion (addr > 105% of 30d avg) in an uptrend, not
+  // over-extended. RSI<75 mirrors the validated champion gate that avoids
+  // buying parabolic tops. 1.05 hysteresis: ignore small daily noise.
+  if (addr > 1.05 * addrSma && prevClose > sma200 && rsi < 75) {
     ctx.watch([]);
     return { side: 'buy', qty: (ctx.cash / price) * 0.99 };
   }
   ctx.watch([{ side: 'buy', note: 'on-chain demand expansion in uptrend',
-               conds: [{ label: 'addr vs 30d avg', now: addr / addrSma, op: '>', ref: 1, closed: true },
+               conds: [{ label: 'addr vs 30d avg', now: addr / addrSma, op: '>', ref: 1.05, closed: true },
                        { label: 'close>200d', ok: prevClose > sma200 },
                        { label: 'RSI(14) close', now: rsi, op: '<', ref: 75, closed: true }] }]);
   return null;

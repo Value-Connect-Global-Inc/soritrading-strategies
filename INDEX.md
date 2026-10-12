@@ -11,8 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [2696](strategies/2696/) | Band-Bounce Bull-Regime Exit SOL 4H | -13.21% | -15.65% | +32.74% | 46 | 2026-10-12 |
 |  | [3695](strategies/3695/) | OnchainDemandTrend | -16.99% | +315.94% | +51.19% | 268 | 2026-10-12 |
+| ★ | [2696](strategies/2696/) | Band-Bounce Bull-Regime Exit SOL 4H | -13.21% | -15.65% | +32.74% | 46 | 2026-10-12 |
 | ★ | [2697](strategies/2697/) | Band-Bounce Bull-Regime Exit LINK 4H | +29.08% | +9.46% | +23.72% | 49 | 2026-10-12 |
 |  | [3694](strategies/3694/) | UptrendPullbackRSI | -31.58% | +110.60% | +33.28% | 168 | 2026-10-12 |
 |  | [2699](strategies/2699/) | Band-Bounce Mean Reversion SOL 4H | +12.61% | +29.69% | +6.99% | 10 | 2026-10-12 |
