@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2688](strategies/2688/) | Band-Bounce Mean Reversion ADA 4H | -54.39% | -4.42% | +57.88% | 489 | 2026-10-12 |
 |  | [3695](strategies/3695/) | OnchainDemandTrend | -5.55% | +151.92% | +55.67% | 170 | 2026-10-12 |
 | ★ | [2696](strategies/2696/) | Band-Bounce Bull-Regime Exit SOL 4H | -13.21% | -15.65% | +32.74% | 46 | 2026-10-12 |
 | ★ | [2697](strategies/2697/) | Band-Bounce Bull-Regime Exit LINK 4H | +29.08% | +9.46% | +23.72% | 49 | 2026-10-12 |
@@ -841,7 +842,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2691](strategies/2691/) | Fear-Greed Extreme-Fear Buy BTC 1D | -16.34% | +1258.25% | +35.72% | 4 | 2026-09-26 |
 |  | [2690](strategies/2690/) | Volume-Surge Breakout BTC 4H ATR3 | -42.69% | +449.51% | +48.52% | 244 | 2026-09-26 |
 |  | [2689](strategies/2689/) | VWAP-Pullback LTC 4H | -97.93% | +115.63% | +98.30% | 406 | 2026-09-26 |
-|  | [2688](strategies/2688/) | Band-Bounce Mean Reversion ADA 4H | -54.39% | -4.42% | +57.88% | 489 | 2026-09-26 |
 |  | [2686](strategies/2686/) | Band-Bounce Mean Reversion LINK 4H | +164.41% | +489.70% | +24.03% | 80 | 2026-09-26 |
 |  | [2685](strategies/2685/) | Squeeze Breakout SOL 4H v3 trail | -27.85% | +2922.17% | +37.50% | 8 | 2026-09-26 |
 |  | [2684](strategies/2684/) | Squeeze Breakout SOL 4H v2 | +9.13% | +2922.17% | +3.14% | 8 | 2026-09-26 |

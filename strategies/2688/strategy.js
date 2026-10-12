@@ -17,6 +17,8 @@
  * When it does NOT work: below the 200-SMA it never buys; a panic that keeps
  * falling still loses. The extra entries add trades in chop, so it can now lose
  * more in sideways markets than the pure defensive version.
+ * 
+ * 2024-01-15: Added ctx.watch declarations — display only, trading logic unchanged.
  */
 function onUpdate(ctx) {
   const bb = ctx.bb(20, 2, 1);
@@ -28,11 +30,21 @@ function onUpdate(ctx) {
   const pos = ctx.position;
 
   if (pos > 0) {
+    const atr = ctx.atr(14, 1);
+    if (atr != null) {
+      ctx.watch([
+        { side: 'sell', price: bb.mid, trigger: 'above', note: 'mid band exit' },
+        { side: 'sell', price: ctx.entryPx - atr * 6, trigger: 'below', note: '6-ATR stop' }
+      ]);
+    } else {
+      ctx.watch([
+        { side: 'sell', price: bb.mid, trigger: 'above', note: 'mid band exit' }
+      ]);
+    }
     if (price >= bb.mid || rsi > 50) {
       ctx.state.lastExit = ctx.i;
       return { side: 'sell', qty: pos };
     }
-    const atr = ctx.atr(14, 1);
     if (atr != null && price <= ctx.entryPx - atr * 6) {
       ctx.state.lastExit = ctx.i;
       return { side: 'sell', qty: pos };
@@ -41,12 +53,19 @@ function onUpdate(ctx) {
   }
 
   const lastExit = ctx.state.lastExit || 0;
-  if (ctx.i - lastExit < 5) return null;
+  if (ctx.i - lastExit < 5) {
+    ctx.watch([{ side: 'buy', at: ctx.candle.time + (5 - (ctx.i - lastExit)) * 4 * 3600, note: 'cooldown' }]);
+    return null;
+  }
 
-  if (price < sma200) return null;
+  if (price < sma200) {
+    ctx.watch([]);
+    return null;
+  }
 
   // Entry 1: panic dip below the lower band (the original defensive entry).
   if (price < bb.lower && rsi < 30) {
+    ctx.watch([{ side: 'buy', price: bb.lower, trigger: 'below', note: 'panic dip entry', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true }, { label: 'SMA200 close', ok: price > sma200 }] }]);
     return { side: 'buy', qty: ctx.cash / ctx.price * 0.95 };
   }
 
@@ -54,7 +73,13 @@ function onUpdate(ctx) {
   // RSI 40-60 = a healthy pullback, not a panic and not overbought.
   // This is the new entry that captures melt-up pullbacks.
   if (price <= bb.mid * 1.01 && rsi >= 40 && rsi <= 60) {
+    ctx.watch([{ side: 'buy', price: bb.mid * 1.01, trigger: 'below', note: 'trend pullback entry', conds: [{ label: 'RSI(14) close', now: rsi, op: '>=', ref: 40, closed: true }, { label: 'RSI(14) close', now: rsi, op: '<=', ref: 60, closed: true }, { label: 'SMA200 close', ok: price > sma200 }] }]);
     return { side: 'buy', qty: ctx.cash / ctx.price * 0.95 };
   }
+
+  ctx.watch([
+    { side: 'buy', price: bb.lower, trigger: 'below', note: 'panic dip entry', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true }, { label: 'SMA200 close', ok: price > sma200 }] },
+    { side: 'buy', price: bb.mid * 1.01, trigger: 'below', note: 'trend pullback entry', conds: [{ label: 'RSI(14) close', now: rsi, op: '>=', ref: 40, closed: true }, { label: 'RSI(14) close', now: rsi, op: '<=', ref: 60, closed: true }, { label: 'SMA200 close', ok: price > sma200 }] }
+  ]);
   return null;
 }
