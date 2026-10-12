@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2864](strategies/2864/) | ETH 4H Keltner Mean-Reversion | +90.51% | +1663.94% | +29.11% | 48 | 2026-10-12 |
 |  | [2866](strategies/2866/) | Keltner MR generalization ADA/DOT/XRP | +104.98% | +149.62% | +5.19% | 34 | 2026-10-12 |
 | ★ | [3635](strategies/3635/) | BTC-ETH Confirmed Trend 4H | +61.73% | +48.41% | +18.92% | 104 | 2026-10-12 |
 |  | [3634](strategies/3634/) | BTC Mean Reversion 4H | -25.27% | +35.80% | +30.79% | 124 | 2026-10-12 |
@@ -651,7 +652,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2868](strategies/2868/) | Keltner MR Daily BTC/ETH/SOL | +18.89% | +190.11% | +2.46% | 6 | 2026-09-27 |
 | ★ | [2867](strategies/2867/) | Keltner MR generalization LINK/LTC/DOGE/AVAX/BNB | +35.09% | -23.39% | +6.30% | 30 | 2026-09-27 |
 |  | [2865](strategies/2865/) | BTC 4H Keltner Mean-Reversion (generalization) | +186.13% | +2940.31% | +13.63% | 21 | 2026-09-27 |
-|  | [2864](strategies/2864/) | ETH 4H Keltner Mean-Reversion | +90.51% | +1663.94% | +29.11% | 48 | 2026-09-27 |
 |  | [2863](strategies/2863/) | ETH 4H Stochastic Mean-Reversion | -90.37% | -51.44% | +90.41% | 256 | 2026-09-27 |
 |  | [2862](strategies/2862/) | BTC 1H Intraday Bollinger Mean-Reversion | +0.02% | +22.45% | +4.09% | 20 | 2026-09-27 |
 |  | [2861](strategies/2861/) | 45d OBV Fast Re-Entry BTC 1D | +65.13% | +220.15% | +26.82% | 33 | 2026-09-27 |
