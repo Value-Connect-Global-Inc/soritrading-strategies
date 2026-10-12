@@ -11,10 +11,10 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3658](strategies/3658/) | DonchianRiskSized | +13.51% | +87.84% | +16.63% | 23 | 2026-10-12 |
+| ★ | [3656](strategies/3656/) | DonchianBaseline | +260.37% | +213.55% | +44.98% | 17 | 2026-10-12 |
 |  | [2763](strategies/2763/) | VWAP-Pullback Wide-Stop Trend SOL 4H | -33.99% | -16.56% | +55.26% | 288 | 2026-10-12 |
 |  | [3660](strategies/3660/) | BTPullbackRide | -13.77% | +165.19% | +47.22% | 22 | 2026-10-12 |
-| ★ | [3656](strategies/3656/) | DonchianBaseline | +260.37% | +213.55% | +44.98% | 17 | 2026-10-12 |
-|  | [3658](strategies/3658/) | DonchianRiskSized | +13.51% | +87.84% | +16.63% | 23 | 2026-10-12 |
 |  | [3659](strategies/3659/) | AI 전략 | +74.08% | +165.19% | +20.18% | 20 | 2026-10-12 |
 |  | [2769](strategies/2769/) | Onchain Addr Probe | +296.49% | +315.94% | +52.53% | 1 | 2026-10-12 |
 |  | [2774](strategies/2774/) | Onchain Hashrate Trend BTC 1D | -73.42% | +55.47% | +85.56% | 184 | 2026-10-12 |
