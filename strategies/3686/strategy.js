@@ -9,15 +9,15 @@
  * Why this strategy: the multi-asset Donchian breakout system is the validated
  * champion, but it buys every 55-day high including those at the very top of an
  * exhausted move. Adding a trend gate (price above its 200-day average) and an
- * overbought gate (RSI below 80) keeps only breakouts that occur inside an
+ * overbought gate (RSI below 75) keeps only breakouts that occur inside an
  * uptrend that still has room to run.
  * When it buys and sells: buy when a close is a new 55-day high AND price is
- * above the 200-day average AND RSI(14) close is below 80; sell on a 20-day low
+ * above the 200-day average AND RSI(14) close is below 75; sell on a 20-day low
  * or a 2x ATR stop below entry. Each asset trades a 25% leg.
  * When it does NOT work: in a bear where price stays below the 200-day average
  * it never trades (safe but no profit); in a sideways chop with price above the
- * 200-day it still whipsaws like the base system, just less often. The RSI<80
- * gate can still keep it out of the very hottest part of a melt-up.
+ * 200-day it still whipsaws like the base system, just less often. The RSI<75
+ * gate can keep it out of the strongest part of a melt-up.
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
@@ -46,13 +46,12 @@ function onUpdate(ctx) {
   }
 
   // Regime gate: only breakouts inside an uptrend (price>200d) that is not
-  // over-extended. RSI cap at 80 (not 75) so the gate filters only true vertical
-  // exhaustion, not normal strong-trend RSI that still has room to run.
-  if (prevClose > entryHigh && prevClose > sma200 && rsi < 80) {
+  // over-extended (RSI<75). RSI<75 avoids buying the very top of a parabolic move.
+  if (prevClose > entryHigh && prevClose > sma200 && rsi < 75) {
     ctx.watch([]);
     return { side: 'buy', qty: legQty };
   }
   ctx.watch([{ side: 'buy', price: entryHigh, trigger: 'above', note: '55d breakout entry',
-               conds: [{ label: 'close>200d', ok: prevClose > sma200 }, { label: 'RSI(14) close', now: rsi, op: '<', ref: 80, closed: true }] }]);
+               conds: [{ label: 'close>200d', ok: prevClose > sma200 }, { label: 'RSI(14) close', now: rsi, op: '<', ref: 75, closed: true }] }]);
   return null;
 }
