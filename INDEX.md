@@ -11,9 +11,9 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [3625](strategies/3625/) | AI 전략 | +7.50% | -26.02% | +27.98% | 142 | 2026-10-12 |
 |  | [2891](strategies/2891/) | FearGreed-Timed Keltner MR BTC 1D | +19.61% | +45.60% | +2.46% | 8 | 2026-10-12 |
 |  | [2892](strategies/2892/) | FearGreed-Gated OBV Trend BTC 1D | +1185.65% | +1279.90% | +40.97% | 40 | 2026-10-12 |
-| ★ | [3625](strategies/3625/) | AI 전략 | +7.50% | -26.02% | +27.98% | 142 | 2026-10-12 |
 |  | [2893](strategies/2893/) | FedGate Keltner MR Daily | +18.89% | +190.11% | +2.46% | 6 | 2026-10-12 |
 | ★ | [3624](strategies/3624/) | ETH Fed-Liquidity Trend 4H | -12.03% | -26.02% | +27.69% | 134 | 2026-10-12 |
 | ★ | [2897](strategies/2897/) | Keltner MR Deep-Flush 3ATR | +0.74% | -79.71% | +3.02% | 2 | 2026-10-12 |

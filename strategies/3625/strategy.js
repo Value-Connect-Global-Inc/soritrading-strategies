@@ -1,19 +1,22 @@
 /*
  * @coinsori-strategy v1
- * name: ETH Dollar-Regime Trend 4H
+ * name: ETH Dollar-Regime Trend 4H v2
  * ex: binance
  * syms: ETH/USDT
  * interval: 4h
  * cash: 10000
  *
  * Why this strategy: buy 20-bar breakouts in an uptrend, but only when the US
- *   dollar is not strengthening. A rising dollar pulls money out of crypto,
- *   so entries during dollar up-legs are skipped and resume when it eases.
+ *   dollar is not strengthening and volatility is expanding. A rising dollar
+ *   pulls money out of crypto, and breakouts in a low-volatility regime are
+ *   mostly false moves, so both conditions gate the entry.
  * When it buys and sells: buy on a fresh 20-bar high close above the 100-EMA
- *   with above-average volume, while DXY is below its 30-day average. Sell on
- *   a 20-bar low close, a 2.5x ATR hard stop, or a close back below the 100-EMA.
+ *   with above-average volume, while DXY is below its 30-day average and ATR is
+ *   above its 60-bar average. Sell on a 20-bar low close, a 2.5x ATR hard stop,
+ *   or a close back below the 100-EMA.
  * When it does NOT work: misses melt-ups that happen while the dollar is also
- *   firming, and the regime filter can sit out long stretches in choppy years.
+ *   firming or while volatility is still compressing, and the filters can sit
+ *   out long stretches in choppy years.
  */
 function onUpdate(ctx) {
   const atr = ctx.atr(14, 1);
@@ -33,6 +36,15 @@ function onUpdate(ctx) {
   const dxyAvg = dxyOk ? hist.slice(-30).reduce((a, b) => a + b, 0) / 30 : null;
   const dollarRising = dxyAvg != null && dxy != null && dxy > dxyAvg;
 
+  // rolling ATR history to detect volatility regime (expanding vol = real breakouts)
+  let atrHist = ctx.state.atrHist || [];
+  atrHist.push(atr);
+  if (atrHist.length > 65) atrHist = atrHist.slice(-65);
+  ctx.state.atrHist = atrHist;
+  const atrOk = atrHist.length >= 61;
+  const atrAvg = atrOk ? atrHist.slice(-60).reduce((a, b) => a + b, 0) / 60 : null;
+  const volExpanding = atrAvg != null && atr > atrAvg;
+
   if (ctx.position > 0) {
     const hardStop = ctx.entryPx - 2.5 * atr;
     const ll20 = ctx.low(20, 2);
@@ -46,6 +58,7 @@ function onUpdate(ctx) {
   }
 
   if (dollarRising) return null;   // dollar-regime gate: no entries while DXY above its 30-day average
+  if (!volExpanding) return null;  // volatility gate: skip low-vol chop where breakouts whipsaw
   if (prevClose <= ema100) return null;
   const hh20 = ctx.high(20, 2);
   if (hh20 == null || prevClose <= hh20) return null;
