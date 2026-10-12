@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 482 of 1877 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 482 of 1878 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 270 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3622](strategies/3622/) | ETH Mean Reversion 4H | +13.91% | +1888.22% | +4.36% | 78 | 2026-10-12 |
 |  | [3621](strategies/3621/) | ETH Sentiment-Gated Trend 4H | +4.33% | +1888.22% | +37.18% | 149 | 2026-10-12 |
 |  | [2907](strategies/2907/) | ETH 4H Bollinger Mean-Reversion | -3.88% | +432.52% | +6.54% | 38 | 2026-10-12 |
 |  | [2908](strategies/2908/) | ETH 4H Slow Trend Ride | +405.43% | +432.52% | +35.02% | 66 | 2026-10-12 |
