@@ -15,6 +15,8 @@
  * or a 6-ATR stop; waits 5 bars before re-entering.
  * When it does NOT work: lags strong melt-ups; below the 200-SMA it never buys;
  * a panic that keeps falling still loses. Defensive, not a trend rider.
+ *
+ * 2024-01-15: Only display declarations (ctx.watch) added — trading logic unchanged.
  */
 function onUpdate(ctx) {
   const bb = ctx.bb(20, 2, 1);
@@ -26,11 +28,15 @@ function onUpdate(ctx) {
   const pos = ctx.position;
 
   if (pos > 0) {
+    const atr = ctx.atr(14, 1);
+    ctx.watch([
+      { side: 'sell', price: bb.mid, trigger: 'above', note: 'mid band exit', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 50, closed: true }] },
+      { side: 'sell', price: ctx.entryPx - (atr != null ? atr * 6 : 0), trigger: 'below', note: '6-ATR stop' }
+    ]);
     if (price >= bb.mid || rsi > 50) {
       ctx.state.lastExit = ctx.i;
       return { side: 'sell', qty: pos };
     }
-    const atr = ctx.atr(14, 1);
     if (atr != null && price <= ctx.entryPx - atr * 6) {
       ctx.state.lastExit = ctx.i;
       return { side: 'sell', qty: pos };
@@ -39,9 +45,19 @@ function onUpdate(ctx) {
   }
 
   const lastExit = ctx.state.lastExit || 0;
-  if (ctx.i - lastExit < 5) return null;
+  if (ctx.i - lastExit < 5) {
+    ctx.watch([]);
+    return null;
+  }
 
-  if (price < sma200) return null;
+  if (price < sma200) {
+    ctx.watch([]);
+    return null;
+  }
+
+  ctx.watch([
+    { side: 'buy', price: bb.lower, trigger: 'below', note: 'BB lower touch', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true }] }
+  ]);
 
   if (price < bb.lower && rsi < 30) {
     return { side: 'buy', qty: ctx.cash / ctx.price * 0.95 };

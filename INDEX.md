@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [2713](strategies/2713/) | Band-Bounce Mean Reversion LTC 4H | -12.10% | -15.65% | +32.74% | 46 | 2026-10-12 |
 |  | [3690](strategies/3690/) | DataDiag | +84.40% | +315.94% | +52.97% | 2223 | 2026-10-12 |
 |  | [3687](strategies/3687/) | FearGreedContrarian | +10.59% | +612.44% | +29.66% | 6 | 2026-10-12 |
 |  | [2732](strategies/2732/) | On-Chain Network-Health BTC 1D | -39.60% | +55.47% | +39.60% | 14 | 2026-10-12 |
@@ -813,7 +814,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2716](strategies/2716/) | AI 전략 | +35.71% | +614.25% | +25.46% | 43 | 2026-09-26 |
 | ★ | [2715](strategies/2715/) | Band-Bounce Mean Reversion CRO 4H | -14.23% | -41.84% | +19.51% | 18 | 2026-09-26 |
 | ★ | [2714](strategies/2714/) | Band-Bounce Mean Reversion APT 4H | -14.95% | -45.13% | +31.71% | 20 | 2026-09-26 |
-| ★ | [2713](strategies/2713/) | Band-Bounce Mean Reversion LTC 4H | -12.10% | -15.65% | +32.74% | 46 | 2026-09-26 |
 |  | [2712](strategies/2712/) | Band-Bounce Mean Reversion ETH 1D | -5.93% | +324.12% | +46.40% | 14 | 2026-09-26 |
 |  | [2711](strategies/2711/) | Band-Bounce Mean Reversion ATOM 4H | +205.91% | +945.27% | +28.34% | 91 | 2026-09-26 |
 |  | [2710](strategies/2710/) | Band-Bounce Mean Reversion NEAR 4H | +55.36% | +733.11% | +22.13% | 46 | 2026-09-26 |

@@ -6,23 +6,19 @@
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: diagnostic only — identifies the exact type/shape of
- * external dataset values. Each interpretation buys a DIFFERENT quantity so
- * the trade count (qty-based) reveals which shape is real.
- * When it buys and sells: buys 0.0001 (string), 0.0002 (object .v), or
- * 0.0003 (number) depending on which type test fg passes.
+ * Why this strategy: diagnostic only — verifies that Number(fg) coerces the
+ * external fear_greed value into a real 0..100 index. Buy only when the
+ * coerced value is a plausible index (< 50), then sell next bar.
+ * When it buys and sells: buy 0.0001 BTC when Number(fg)<50, sell next bar.
  * When it does NOT work: n/a (diagnostic).
  */
 function onUpdate(ctx) {
   const fg = ctx.data('fear_greed');
   const sma200 = ctx.sma(200, 1);
   if (sma200 == null || fg == null) return null;
-  const isNum = typeof fg === 'number';
-  const isObj = typeof fg === 'object' && fg != null && Number.isFinite(fg.v);
-  const isStr = typeof fg === 'string' && Number.isFinite(Number(fg));
-  if (isNum) return { side: 'buy', qty: 0.0003 };
-  if (isObj) return { side: 'buy', qty: 0.0002 };
-  if (isStr) return { side: 'buy', qty: 0.0001 };
+  const fgNum = Number(fg);
+  if (!Number.isFinite(fgNum)) return null;
   if (ctx.position > 0) return { side: 'sell', qty: ctx.position };
+  if (fgNum < 50 && fgNum >= 0) return { side: 'buy', qty: 0.0001 };
   return null;
 }
