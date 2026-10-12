@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2684](strategies/2684/) | Squeeze Breakout SOL 4H v2 | +9.13% | +2922.17% | +3.14% | 8 | 2026-10-12 |
 |  | [2685](strategies/2685/) | Squeeze Breakout SOL 4H v3 trail | -27.85% | +2922.17% | +37.50% | 8 | 2026-10-12 |
 |  | [2687](strategies/2687/) | Band-Bounce Mean Reversion AVAX 4H | +7.83% | +11.77% | +5.06% | 10 | 2026-10-12 |
 |  | [2688](strategies/2688/) | Band-Bounce Mean Reversion ADA 4H | -54.39% | -4.42% | +57.88% | 489 | 2026-10-12 |
@@ -845,7 +846,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2690](strategies/2690/) | Volume-Surge Breakout BTC 4H ATR3 | -42.69% | +449.51% | +48.52% | 244 | 2026-09-26 |
 |  | [2689](strategies/2689/) | VWAP-Pullback LTC 4H | -97.93% | +115.63% | +98.30% | 406 | 2026-09-26 |
 |  | [2686](strategies/2686/) | Band-Bounce Mean Reversion LINK 4H | +164.41% | +489.70% | +24.03% | 80 | 2026-09-26 |
-|  | [2684](strategies/2684/) | Squeeze Breakout SOL 4H v2 | +9.13% | +2922.17% | +3.14% | 8 | 2026-09-26 |
 |  | [2683](strategies/2683/) | Squeeze Breakout BNB 4H | -2.18% | +63.93% | +2.18% | 2 | 2026-09-26 |
 |  | [2681](strategies/2681/) | Band-Bounce Mean Reversion TRX 4H | +12.16% | +97.86% | +8.20% | 56 | 2026-09-26 |
 |  | [2679](strategies/2679/) | Band-Bounce Mean Reversion DASH 4H | +8.55% | +174.85% | +27.37% | 61 | 2026-09-26 |

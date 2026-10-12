@@ -16,6 +16,8 @@
  * When it does NOT work: in persistent downtrends the squeeze resolves downward
  * and the upper-band entry fires into a falling market; dead chop triggers and
  * reverses. Needs genuine post-squeeze expansion.
+ *
+ * 2024-01-01 — display only changed, trading logic unchanged.
  */
 function onUpdate(ctx) {
   const bb = ctx.bb(20, 2, 1);
@@ -34,11 +36,25 @@ function onUpdate(ctx) {
       ctx.state.lastExit = ctx.i;
       return { side: 'sell', qty: pos };
     }
+    // Watch exits: middle band, RSI>65, 6-ATR stop
+    const watchExits = [
+      { side: 'sell', price: bb.mid, trigger: 'below', note: 'close below mid band' }
+    ];
+    if (rsi != null) {
+      watchExits.push({ side: 'sell', price: rsi, trigger: 'above', note: 'RSI>65', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 65, closed: true }] });
+    }
+    if (atr != null) {
+      watchExits.push({ side: 'sell', price: ctx.entryPx - atr * 6, trigger: 'below', note: '6-ATR stop' });
+    }
+    ctx.watch(watchExits);
     return null;
   }
 
   const lastExit = ctx.state.lastExit || 0;
-  if (ctx.i - lastExit < 5) return null;
+  if (ctx.i - lastExit < 5) {
+    ctx.watch([{ side: 'buy', at: lastExit + 5, note: 'cooldown after exit' }]);
+    return null;
+  }
 
   // Relative compression: track a rolling EMA of band width in state. Buy when
   // current width drops below 65% of that average (a genuine squeeze) — fires
@@ -53,10 +69,16 @@ function onUpdate(ctx) {
   const vol = ctx.vol;
   const avgVol = ctx.avgVol(20);
   if (vol == null || avgVol == null) return null;
-  if (vol < avgVol * 1.2) return null; // require volume confirmation on the break
+  if (vol < avgVol * 1.2) {
+    // Watch entry price but volume not confirmed
+    ctx.watch([{ side: 'buy', price: bb.upper, trigger: 'above', note: 'BB upper break', conds: [{ label: 'width compress', now: width, op: '<=', ref: wAvg * 0.65, closed: true }, { label: 'volume', now: vol, op: '>=', ref: avgVol * 1.2 }] }]);
+    return null;
+  }
 
   if (width <= wAvg * 0.65 && price > bb.upper) {
     return { side: 'buy', qty: ctx.cash / ctx.price * 0.95 };
   }
+  // Watch entry: need both squeeze and break
+  ctx.watch([{ side: 'buy', price: bb.upper, trigger: 'above', note: 'BB upper break', conds: [{ label: 'width compress', now: width, op: '<=', ref: wAvg * 0.65, closed: true }, { label: 'volume', now: vol, op: '>=', ref: avgVol * 1.2 }] }]);
   return null;
 }
