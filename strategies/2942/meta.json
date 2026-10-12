@@ -3,7 +3,7 @@
   "name": "BTC 1D OBV Money-Flow Trend",
   "kind": "custom",
   "verified": {
-    "backtestId": 13405,
+    "backtestId": 18119,
     "return": 493.88,
     "mdd": 34.49,
     "trades": 26,
@@ -15,17 +15,26 @@
     "tTo": 1643587200,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "거래량은 봉 마감에만 확정 — 봉 중 평가에서 ctx.vol/volumes 가 null 이라 거래량 조건이 걸러졌을 수 있음(봉 중에도 쓰려면 ctx.volPrev·ctx.avgVol)"
+      "거래량은 봉 마감에만 확정 — 봉 중 평가에서 ctx.vol/volumes 가 null 이라 거래량 조건이 걸러졌을 수 있음(봉 중에도 쓰려면 ctx.volPrev·ctx.avgVol)",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1200봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
-      "sym": "BTCUSDT",
+      "sym": "BTC",
       "interval": "1d",
       "bars": 1200,
       "end": 1643673600
     }
   },
-  "config": null,
-  "updatedAt": "2026-09-28T09:30:47.394Z",
+  "config": {
+    "ex": "binance",
+    "cash": 10000,
+    "syms": [
+      "BTC"
+    ],
+    "quote": "USDT",
+    "interval": "1d"
+  },
+  "updatedAt": "2026-10-12T00:13:17.000Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

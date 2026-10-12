@@ -20,18 +20,29 @@
  * When it does NOT work: OBV can diverge from price in choppy sideways markets
  * (whipsaw), and trend signals lag sharp V-shaped tops. It never shorts, so it
  * does not profit from down-moves.
+ *
+ * 2026-04-26 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const sma200 = ctx.sma(200, 1);
-  if (sma200 == null) return null;
+  if (sma200 == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   const closes = ctx.closes;
   const vols = ctx.volumes;
   const LOOKBACK = 45;
-  if (!closes || !vols || closes.length < LOOKBACK + 2) return null;
+  if (!closes || !vols || closes.length < LOOKBACK + 2) {
+    ctx.watch([]);
+    return null;
+  }
 
   // Build the OBV series from closes and volumes.
   let obv = 0;
@@ -43,7 +54,10 @@ function onUpdate(ctx) {
     else if (c < p) obv -= v;
     obvSeries.push(obv);
   }
-  if (obvSeries.length < LOOKBACK + 1) return null;
+  if (obvSeries.length < LOOKBACK + 1) {
+    ctx.watch([]);
+    return null;
+  }
   const obvNow = obvSeries[obvSeries.length - 1];
   const obvPast = obvSeries[obvSeries.length - 1 - LOOKBACK];
 
@@ -59,12 +73,29 @@ function onUpdate(ctx) {
   ctx.state.cd = cd;
 
   if (ctx.position > 0) {
+    ctx.watch([{
+      side: 'sell',
+      conds: [
+        { label: 'OBV falling', ok: falling },
+        { label: 'cooldown done', ok: cd === 0 }
+      ]
+    }]);
     if (falling && cd === 0) {
       ctx.state.cd = 5;
       return { side: 'sell', qty: ctx.position };
     }
     return null;
   }
+
+  ctx.watch([{
+    side: 'buy',
+    conds: [
+      { label: 'OBV rising', ok: rising },
+      { label: 'price > SMA200', now: price, op: '>', ref: sma200 },
+      { label: 'volume confirms', ok: volOk },
+      { label: 'cooldown done', ok: cd === 0 }
+    ]
+  }]);
 
   if (rising && price > sma200 && volOk && cd === 0) {
     ctx.state.cd = 5;
