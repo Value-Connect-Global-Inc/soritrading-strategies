@@ -21,6 +21,8 @@
  * buy-and-hold (defensive by design). In a sustained bear it rarely buys because
  * price stays below the 200-bar average. In a choppy period like 2022-24 it can
  * lose money on dips that keep falling.
+ *
+ * 2026-04-27: 표시만 바뀜, 매매 판단은 그대로.
  */
 function onUpdate(ctx) {
   const bb = ctx.bb(20, 2, 1);
@@ -28,15 +30,33 @@ function onUpdate(ctx) {
   const sma200 = ctx.sma(200, 1);
   const atr = ctx.atr(14, 1);
   const px = ctx.closes[ctx.closes.length - 2];
-  if (bb == null || bb.lower == null || rsi == null || sma200 == null || atr == null || px == null) return null;
+  if (bb == null || bb.lower == null || rsi == null || sma200 == null || atr == null || px == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   // Exit: bounce back to the middle band, or RSI no longer oversold.
   if (ctx.position > 0) {
+    ctx.watch([
+      { side: 'sell', price: bb.mid, trigger: 'above', note: 'Sell bounce to mid band' }
+    ]);
     if (px >= bb.mid || rsi > 60) return { side: 'sell', qty: ctx.position };
     return null;
   }
 
   // Entry: deep dip to lower band + oversold, only above the 200-bar trend line.
+  ctx.watch([
+    {
+      side: 'buy',
+      price: bb.lower,
+      trigger: 'below',
+      note: 'Buy BB lower dip',
+      conds: [
+        { label: 'RSI(14)', now: rsi, op: '<', ref: 35, closed: true },
+        { label: 'close > SMA200', ok: px > sma200, closed: true }
+      ]
+    }
+  ]);
   if (px <= bb.lower && rsi < 35 && px > sma200) {
     // ATR-scaled size: risk 2% of equity on a 2-ATR stop distance, so higher
     // volatility automatically shrinks the position (validated champion sizing).

@@ -3,8 +3,8 @@
   "name": "ETH 4H Keltner ATR-Adaptive Mean-Reversion (Champion)",
   "kind": "custom",
   "verified": {
-    "backtestId": 13289,
-    "return": 9.97,
+    "backtestId": 18187,
+    "return": 9.98,
     "mdd": 14.6,
     "trades": 70,
     "vsBuyHold": "lose",
@@ -14,17 +14,26 @@
     "tFrom": 1574553600,
     "tTo": 1646553600,
     "approxNotes": [
-      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준"
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
-      "sym": "ETHUSDT",
+      "sym": "ETH",
       "interval": "4h",
       "bars": 5000,
       "end": 1646568000
     }
   },
-  "config": null,
-  "updatedAt": "2026-09-28T07:53:04.654Z",
+  "config": {
+    "ex": "binance",
+    "cash": 10000,
+    "syms": [
+      "ETH"
+    ],
+    "quote": "USDT",
+    "interval": "4h"
+  },
+  "updatedAt": "2026-10-12T01:25:30.653Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

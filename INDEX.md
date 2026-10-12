@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2916](strategies/2916/) | ETH 4H Keltner ATR-Adaptive Mean-Reversion (Champion) | +9.98% | +1641.86% | +14.60% | 70 | 2026-10-12 |
 |  | [3619](strategies/3619/) | SOL Volume-Confirmed Trend 4H | +43.65% | +3013.88% | +17.87% | 69 | 2026-10-12 |
 |  | [2918](strategies/2918/) | AI 전략 | +6.44% | +1641.86% | +30.24% | 64 | 2026-10-12 |
 |  | [3618](strategies/3618/) | SOL Mean-Reversion Dip 1H | -14.67% | +13.98% | +15.00% | 68 | 2026-10-12 |
@@ -592,7 +593,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2930](strategies/2930/) | ETH 4H Bollinger MR Uptrend6+RisingSMA | +5.73% | +1658.97% | +11.66% | 44 | 2026-09-28 |
 |  | [2925](strategies/2925/) | ETH 4H Bollinger MR Strong-Uptrend-Only | -10.82% | +39.02% | +19.46% | 28 | 2026-09-28 |
 |  | [2917](strategies/2917/) | AI 전략 | -1.92% | +1641.86% | +30.27% | 50 | 2026-09-28 |
-|  | [2916](strategies/2916/) | ETH 4H Keltner ATR-Adaptive Mean-Reversion (Champion) | +9.97% | +1641.86% | +14.60% | 70 | 2026-09-28 |
 |  | [2915](strategies/2915/) | BTC 4H Keltner ATR-Adaptive Mean-Reversion | -13.32% | +24.99% | +28.14% | 84 | 2026-09-28 |
 |  | [2914](strategies/2914/) | ETH 4H ATR-Adaptive Mean-Reversion | +13.77% | +1641.86% | +30.24% | 70 | 2026-09-28 |
 |  | [2913](strategies/2913/) | ETH 4H Bollinger Mean-Reversion | +10.94% | +1641.86% | +12.61% | 70 | 2026-09-28 |
