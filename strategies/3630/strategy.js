@@ -1,19 +1,21 @@
 /*
  * @coinsori-strategy v1
- * name: BTC Trend 4H No-Gate Control
+ * name: BTC Hashrate-Gated Trend 4H
  * ex: binance
  * syms: BTC/USDT
  * interval: 4h
  * cash: 10000
  *
- * Why this strategy: control group for 3629. Identical 20-bar breakout engine
- *   with the hashrate gate removed, so we can measure whether the gate adds
- *   value or just rides the trend engine.
- * When it buys and sells: buy a 20-bar high close above the 100-EMA with
- *   above-average volume. Sell on a 20-bar low close, a 2.5x ATR hard stop,
- *   or a close back below the 100-EMA.
- * When it does NOT work: same as any breakout follower — whipsaws in chop and
- *   late entries into reversals.
+ * Why this strategy: Bitcoin's hashrate (mining computing power) is a slow,
+ *   hard-to-fake measure of network investment. When miners are adding
+ *   capacity, price trend breakouts tend to continue; when hashrate is
+ *   shrinking, breakouts are more likely to fail.
+ * When it buys and sells: buy a 20-bar high close above the 100-EMA only when
+ *   hashrate is above its 30-day average. Sell on a 20-bar low close, a 2.5x
+ *   ATR hard stop, or a close back below the 100-EMA.
+ * When it does NOT work: hashrate is a slow signal and lags price in fast
+ *   speculative pumps, so it gaps out early moves; after price tops hashrate
+ *   can stay high for a while, letting late entries ride into the reversal.
  */
 function onUpdate(ctx) {
   const atr = ctx.atr(14, 1);
@@ -23,15 +25,23 @@ function onUpdate(ctx) {
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) return null;
 
+  const hr = ctx.data('hashrate');          // raw hashrate
+  const hrAvg = ctx.data('hashrate_sma30'); // 30-day average
+  const gateOk = hr != null && hrAvg != null && hr > hrAvg;
+
   if (ctx.position > 0) {
     const hardStop = ctx.entryPx - 2.5 * atr;
     const ll20 = ctx.low(20, 2);
     if (price <= hardStop) return { side: 'sell', qty: ctx.position };
     if (ll20 != null && prevClose <= ll20) return { side: 'sell', qty: ctx.position };
     if (prevClose < ema100) return { side: 'sell', qty: ctx.position };
+    ctx.watch([{ side: 'sell', price: hardStop, trigger: 'below', note: '2.5x ATR hard stop' },
+               { side: 'sell', price: ll20, trigger: 'below', note: '20-bar channel exit' },
+               { side: 'sell', price: ema100, trigger: 'below', note: '100-EMA trend break' }]);
     return null;
   }
 
+  if (!gateOk) return null;   // hashrate gate: only buy while mining capacity is growing
   if (prevClose <= ema100) return null;
   const hh20 = ctx.high(20, 2);
   if (hh20 == null || prevClose <= hh20) return null;
