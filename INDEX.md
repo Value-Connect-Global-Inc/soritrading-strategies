@@ -11,8 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [2746](strategies/2746/) | Trend-Scaled Band-Bounce XRP 1D | +89.42% | +323.46% | +20.41% | 26 | 2026-10-12 |
 | — | [3668](strategies/3668/) | MultiAssetDonchianTrend | +335.24% | — | +24.36% | 70 | 2026-10-12 |
+|  | [2746](strategies/2746/) | Trend-Scaled Band-Bounce XRP 1D | +89.42% | +323.46% | +20.41% | 26 | 2026-10-12 |
 | ★ | [2754](strategies/2754/) | Donchian Pullback Uptrend ETH 4H | +40.80% | -24.71% | +22.89% | 186 | 2026-10-12 |
 |  | [2758](strategies/2758/) | Regime-Switch Blend ETH 4H | +75.38% | +1620.25% | +38.26% | 178 | 2026-10-12 |
 |  | [3662](strategies/3662/) | AI 전략 | -44.35% | +196.85% | +52.94% | 57 | 2026-10-12 |

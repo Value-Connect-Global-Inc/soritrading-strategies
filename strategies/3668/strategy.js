@@ -1,21 +1,22 @@
 /*
  * @coinsori-strategy v1
- * name: MultiAssetDonchianVolTarget
+ * name: MultiAssetDonchianTrend
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: same validated multi-asset Donchian breakout recipe as the
- * champion, but position size is scaled by each asset's own volatility so the
- * basket is not dominated by the highest-volatility coin and drawdowns are smaller.
- * When it buys and sells: buys a share of equity (max 25%) when a coin closes at a
- * new 55-day high; sells on a 20-day low or a hard 2x ATR stop. The share is
- * reduced for coins whose 14-day ATR is large relative to price.
+ * Why this strategy: sustained trends in crypto start with a breakout — price makes a
+ * new multi-week high and keeps going. The single-asset Donchian system is the
+ * validated champion on BTC; this version runs that proven recipe on four assets at
+ * once so the portfolio can capture a trend in any of them and is not tied to BTC.
+ * When it buys and sells: on each asset, buys a 25% share of equity when its last
+ * close is a new 55-day high; sells when it is a 20-day low, or on a hard 2x ATR
+ * stop below entry. Each asset trades independently.
  * When it does NOT work: in a broad coordinated crypto bear every trend breaks and
  * the 20-day low gives back part of each move; in a long flat market the 55-day
- * highs are hit repeatedly and whipsaw. It also lags a single-coin melt-up because
- * high-vol coins are deliberately under-weighted.
+ * highs are hit repeatedly and whipsaw. It also lags a single straight-line melt-up
+ * of one asset because each leg is only 25% of equity.
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
@@ -28,14 +29,8 @@ function onUpdate(ctx) {
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) { ctx.watch([]); return null; }
 
-  // Vol-target sizing: scale the 25% base weight down for coins whose 14-day ATR
-  // is large relative to price, so each leg contributes similar daily risk.
-  const atrPct = atr / price;
-  const targetAtrPct = 0.03; // reference: ~3% daily move gets full 25% weight
-  const weight = Math.min(0.25, 0.25 * targetAtrPct / atrPct);
-
   const pos = ctx.pos(sym);
-  const legQty = (ctx.cash / price) * weight;
+  const legQty = (ctx.cash / price) * 0.25; // 25% of equity per leg, 4 legs = full book
 
   if (pos > 0) {
     const hardStop = ctx.entryPx - 2 * atr;
