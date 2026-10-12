@@ -1,3 +1,4 @@
+// 2026-04-27: 표시만 바뀜, 매매 판단은 그대로
 /*
  * @coinsori-strategy v1
  * name: 45d OBV Trend Champion BTC 1D
@@ -21,16 +22,25 @@
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const sma100 = ctx.sma(100, 1);
   const atr = ctx.atr(14, 1);
-  if (sma100 == null || atr == null) return null;
+  if (sma100 == null || atr == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   const LOOKBACK = 45;
   const closes = ctx.closes;
   const vols = ctx.volumes;
-  if (!closes || !vols || closes.length < LOOKBACK + 2) return null;
+  if (!closes || !vols || closes.length < LOOKBACK + 2) {
+    ctx.watch([]);
+    return null;
+  }
 
   let obv = 0;
   const obvSeries = [];
@@ -41,7 +51,10 @@ function onUpdate(ctx) {
     else if (c < p) obv -= v;
     obvSeries.push(obv);
   }
-  if (obvSeries.length < LOOKBACK + 1) return null;
+  if (obvSeries.length < LOOKBACK + 1) {
+    ctx.watch([]);
+    return null;
+  }
   const obvNow = obvSeries[obvSeries.length - 1];
   const obvPast = obvSeries[obvSeries.length - 1 - LOOKBACK];
   const rising = obvNow > obvPast * 1.01;
@@ -59,6 +72,23 @@ function onUpdate(ctx) {
   let sizeFrac = 1.0;
   if (atrPct > 0.06) {
     sizeFrac = Math.max(0.5, 1.0 - (atrPct - 0.06) / 0.06);
+  }
+
+  if (pos > 0) {
+    ctx.watch([
+      { side: 'sell', note: 'OBV trend exit', conds: [
+        { label: 'OBV falling 1.5%', ok: falling },
+        { label: 'Cooldown ready', ok: cd === 0 }
+      ]}
+    ]);
+  } else {
+    ctx.watch([
+      { side: 'buy', price: sma100, trigger: 'above', note: 'Price above SMA100', conds: [
+        { label: 'OBV rising 1%', ok: rising },
+        { label: 'Volume > avg(30)', ok: volOk },
+        { label: 'Cooldown ready', ok: cd === 0 }
+      ]}
+    ]);
   }
 
   if (pos > 0) {

@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2876](strategies/2876/) | 45d OBV Trend Champion BTC 1D | +152.95% | +252.51% | +51.17% | 33 | 2026-10-12 |
 |  | [2878](strategies/2878/) | 45d OBV Trend ETH 1D | -19.63% | -0.21% | +35.02% | 26 | 2026-10-12 |
 |  | [3628](strategies/3628/) | ETH Dual-Regime Trend 4H | +13.87% | +2723.53% | +8.61% | 2 | 2026-10-12 |
 | ★ | [3627](strategies/3627/) | ETH On-Chain Trend 4H | +1.66% | -38.72% | +20.12% | 104 | 2026-10-12 |
@@ -636,7 +637,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2886](strategies/2886/) | Keltner MR ATOM 1D | +4.69% | +18.54% | +5.79% | 6 | 2026-09-27 |
 |  | [2884](strategies/2884/) | Dual Onchain-Demand + OBV BTC 1D | -28.62% | +105.65% | +53.27% | 80 | 2026-09-27 |
 | ★ | [2882](strategies/2882/) | 45d OBV Trend SMA50-Gate BTC 1D | +1810.62% | +1279.90% | +43.09% | 46 | 2026-09-27 |
-|  | [2876](strategies/2876/) | 45d OBV Trend Champion BTC 1D | +178.00% | +239.04% | +51.17% | 33 | 2026-09-27 |
 |  | [2875](strategies/2875/) | 20d OBV Trend Faster-Entry BTC 1D | +210.90% | +263.61% | +44.57% | 44 | 2026-09-27 |
 |  | [2872](strategies/2872/) | Onchain Demand Trend BTC 1D (re-validate) | +118.58% | +190.11% | +42.13% | 91 | 2026-09-27 |
 |  | [2871](strategies/2871/) | DIAG multi-asset probe | +18.89% | +305.26% | +2.46% | 6 | 2026-09-27 |
