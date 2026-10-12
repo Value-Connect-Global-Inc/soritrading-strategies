@@ -1,51 +1,59 @@
 /*
  * @coinsori-strategy v1
- * name: FearGreedContrarian
+ * name: DonchianBreakoutVol
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Bitcoin is driven heavily by crowd emotion. When the Fear & Greed
- * index is deep in fear, the crowd has already sold — that is when risk/reward is best.
- * This is a contrarian sentiment strategy: it buys as panic starts to lift and sells as
- * euphoria peaks, the opposite of trend-following.
- * When it buys and sells: buys when the Fear & Greed index crosses UP out of the extreme
- * fear zone (below 25); sells when it reaches the extreme greed zone (above 75) or on a
+ * Why this strategy: sustained trends in BTC start with a breakout — price makes a
+ * new multi-week high and keeps going. A breakout on above-average volume is more
+ * likely to follow through than one on thin volume, so we only enter when the
+ * breakout bar trades more than the recent average.
+ * When it buys and sells: buys full position when the previous close is a new 55-day
+ * high AND that bar's volume is above its 20-bar average; sells on a 20-day low or a
  * hard 2x ATR stop below entry.
- * When it does NOT work: in a prolonged bear market fear can stay extreme for months and
- * a panic-lift is a dead-cat bounce — the 2x ATR stop caps each loss but the strategy
- * can bleed many small losses. It also sits in cash for most of a strong bull market
- * waiting for a fear spike that never comes.
+ * When it does NOT work: in a sideways market breakouts still whipsaw, and the 20-day
+ * low exit gives back part of every move; a low-volume breakout that DOES follow
+ * through is missed by the volume filter.
  */
 function onUpdate(ctx) {
-  const fg = ctx.data('fg');
-  if (fg == null) return null;
-  const s = ctx.state;
-  const prevFg = s.prevFg;
-  s.prevFg = fg;
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
+  const entryHigh = ctx.high(55, 2); // 55-bar high, 2 bars back (excludes last closed bar)
+  const exitLow = ctx.low(20, 2);     // 20-bar low, 2 bars back (excludes last closed bar)
   const atr = ctx.atr(14, 1);
-  if (atr == null || atr <= 0) return null;
+  if (entryHigh == null || exitLow == null || atr == null || atr <= 0) return null;
+  const prevClose = ctx.closes.at(-2);
+  if (prevClose == null) return null;
+
   const pos = ctx.position;
 
   if (pos > 0) {
-    const stop = ctx.entryPx - 2 * atr; // hard stop: one bad trade must not sink the account
-    if (price <= stop || fg > 75) {
+    const hardStop = ctx.entryPx - 2 * atr;
+    if (price <= hardStop || prevClose < exitLow) {
       ctx.watch([]);
       return { side: 'sell', qty: pos };
     }
-    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '2x ATR stop' },
-               { side: 'sell', price: null, trigger: 'above', note: 'greed>75 exit' }]);
+    ctx.watch([{ side: 'sell', price: hardStop, trigger: 'below', note: '2x ATR stop' }]);
     return null;
   }
 
-  // Buy only when panic starts to LIFT (prev below 25, now at/above 25) — avoids buying the falling knife.
-  if (prevFg != null && prevFg < 25 && fg >= 25) {
-    ctx.watch([{ side: 'sell', price: ctx.entryPx - 2 * atr, trigger: 'below', note: '2x ATR stop' }]);
-    return { side: 'buy', qty: (ctx.cash / price) * 0.99 };
+  if (prevClose > entryHigh) {
+    // Volume confirmation: the breakout bar's volume (closed bar) must exceed the
+    // 20-bar average before it. Standard rule — high-volume breakouts follow through.
+    const vols = ctx.volumes;
+    if (vols && vols.length >= 22) {
+      const prevVol = vols.at(-2);
+      let sum = 0;
+      for (let i = vols.length - 3; i >= vols.length - 22; i--) sum += vols[i];
+      const avg = sum / 20;
+      if (prevVol > avg) {
+        ctx.watch([{ side: 'sell', price: ctx.entryPx - 2 * atr, trigger: 'below', note: '2x ATR stop' }]);
+        return { side: 'buy', qty: (ctx.cash / price) * 0.99 };
+      }
+    }
   }
-  ctx.watch([{ side: 'buy', price: null, trigger: 'below', note: 'fg<25 panic', conds: [{ label: 'fear lifting', now: fg, op: '>=', ref: 25, closed: true }] }]);
+  ctx.watch([{ side: 'buy', price: entryHigh, trigger: 'above', note: '55d breakout entry' }]);
   return null;
 }

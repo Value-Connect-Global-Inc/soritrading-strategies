@@ -11,8 +11,9 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [2801](strategies/2801/) | ETH 1D Fed-Funds Rate Regime Gate | +234.20% | +324.12% | +72.21% | 66 | 2026-10-12 |
+| ★ | [2802](strategies/2802/) | SOL 1D Fed-Funds Rate Regime Gate | +67.52% | -28.73% | +59.86% | 41 | 2026-10-12 |
 |  | [3650](strategies/3650/) | AI 전략 | -36.83% | +136.39% | +72.27% | 5 | 2026-10-12 |
+|  | [2801](strategies/2801/) | ETH 1D Fed-Funds Rate Regime Gate | +234.20% | +324.12% | +72.21% | 66 | 2026-10-12 |
 | ★ | [2805](strategies/2805/) | AI 전략 | +14.49% | -24.71% | +23.65% | 48 | 2026-10-12 |
 |  | [3647](strategies/3647/) | DonchianBreakout | +54.08% | +136.39% | +39.36% | 20 | 2026-10-12 |
 |  | [2810](strategies/2810/) | BTC 4H Band-Bounce + On-Chain Demand Gate | +2.69% | +7.85% | +3.83% | 6 | 2026-10-12 |
@@ -719,7 +720,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2806](strategies/2806/) | AI 전략 | +45.97% | +1620.25% | +45.91% | 60 | 2026-09-26 |
 |  | [2804](strategies/2804/) | ETH 4H Band-Bounce Champion Control | +48.59% | +2723.53% | +46.11% | 48 | 2026-09-26 |
 | ★ | [2803](strategies/2803/) | ETH 4H Band-Bounce Champion + Fed Gate | +7.18% | -50.44% | +23.90% | 21 | 2026-09-26 |
-| ★ | [2802](strategies/2802/) | SOL 1D Fed-Funds Rate Regime Gate | +67.52% | -28.73% | +59.86% | 41 | 2026-09-26 |
 |  | [2800](strategies/2800/) | BTC 1D Hashrate Fundamental + Trend Guard | -6.88% | +270.70% | +71.99% | 118 | 2026-09-26 |
 |  | [2799](strategies/2799/) | BTC 1D Fed-Gate + Trend Defense (two-state) | -84.22% | +270.70% | +91.63% | 134 | 2026-09-26 |
 | ★ | [2798](strategies/2798/) | BTC 1D Fed-Funds Gate + Trend-Scaled Size | +62.05% | +55.47% | +19.78% | 638 | 2026-09-26 |

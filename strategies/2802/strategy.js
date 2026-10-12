@@ -18,6 +18,7 @@
  * (no price stop, only the policy gate), and SOL is far more volatile than
  * BTC/ETH so those drawdowns can be very deep; it also misses melt-ups if the
  * gate keeps it out too long after a hiking cycle ends.
+ * 2026-04-12: 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -29,6 +30,10 @@ function onUpdate(ctx) {
 
   // Tightening = current rate meaningfully above its level ~30 rows ago.
   const tightening = fedNow > fedLag + 0.5;
+
+  // No price/time condition drives entries or exits — the fed-funds regime
+  // gate is a macro condition only, so there is no price level to watch.
+  ctx.watch([]);
 
   const pos = ctx.position;
   if (pos > 0 && tightening) {
