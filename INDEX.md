@@ -12,8 +12,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
 | ★ | [3623](strategies/3623/) | ETH On-Chain Network Trend 4H | -6.74% | -26.02% | +25.82% | 268 | 2026-10-12 |
-| ★ | [2904](strategies/2904/) | Vol-Targeted Long-Only BTC/ETH/SOL 1D | +770.40% | +263.61% | +52.84% | 38 | 2026-10-12 |
 |  | [3622](strategies/3622/) | ETH Mean Reversion 4H | +13.91% | +1888.22% | +4.36% | 78 | 2026-10-12 |
+| ★ | [2904](strategies/2904/) | Vol-Targeted Long-Only BTC/ETH/SOL 1D | +770.40% | +263.61% | +52.84% | 38 | 2026-10-12 |
 |  | [3621](strategies/3621/) | ETH Sentiment-Gated Trend 4H | +4.33% | +1888.22% | +37.18% | 149 | 2026-10-12 |
 |  | [2907](strategies/2907/) | ETH 4H Bollinger Mean-Reversion | -3.88% | +432.52% | +6.54% | 38 | 2026-10-12 |
 |  | [2908](strategies/2908/) | ETH 4H Slow Trend Ride | +405.43% | +432.52% | +35.02% | 66 | 2026-10-12 |
