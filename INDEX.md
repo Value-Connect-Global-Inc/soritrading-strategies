@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3636](strategies/3636/) | FearGreedContrarian | -13.99% | +95.22% | +22.85% | 8 | 2026-10-12 |
+|  | [3636](strategies/3636/) | FearGreedContrarian | +122.07% | +612.44% | +27.08% | 32 | 2026-10-12 |
 |  | [2857](strategies/2857/) | AI 전략 | +894.65% | +1009.79% | +38.43% | 45 | 2026-10-12 |
 | ★ | [2858](strategies/2858/) | AI 전략 | +667.16% | +574.98% | +40.97% | 35 | 2026-10-12 |
 |  | [2861](strategies/2861/) | 45d OBV Fast Re-Entry BTC 1D | +65.13% | +220.15% | +26.82% | 33 | 2026-10-12 |
