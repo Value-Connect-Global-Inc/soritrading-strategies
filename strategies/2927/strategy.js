@@ -5,6 +5,7 @@
  * syms: ETHUSDT
  * interval: 4h
  * cash: 10000
+ * date: 2026-04-16 · 표시만 바뀜, 매매 판단은 그대로
  *
  * Why this strategy: ETH overshoots down on fear and snaps back, but buying dips
  * near the 200-bar trend line catches falling knives when a bull phase ends.
@@ -25,12 +26,32 @@ function onUpdate(ctx) {
   const sma200 = ctx.sma(200, 1);
   const atr = ctx.atr(14, 1);
   const px = ctx.closes[ctx.closes.length - 2];
-  if (bb == null || bb.lower == null || rsi == null || sma200 == null || atr == null || px == null) return null;
+  if (bb == null || bb.lower == null || rsi == null || sma200 == null || atr == null || px == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   if (ctx.position > 0) {
+    ctx.watch([
+      { side: 'sell', price: bb.mid, trigger: 'above', note: 'mid band exit' },
+      { side: 'sell', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 60, closed: true }], note: 'RSI exit' }
+    ]);
     if (px >= bb.mid || rsi > 60) return { side: 'sell', qty: ctx.position };
     return null;
   }
+
+  ctx.watch([
+    {
+      side: 'buy',
+      price: bb.lower,
+      trigger: 'below',
+      note: 'BB lower dip',
+      conds: [
+        { label: 'RSI(14) close', now: rsi, op: '<', ref: 35, closed: true },
+        { label: 'close > SMA200*1.10', now: px, op: '>', ref: sma200 * 1.10, closed: true }
+      ]
+    }
+  ]);
 
   if (px <= bb.lower && rsi < 35 && px > sma200 * 1.10) {
     const equity = ctx.cash + ctx.position * ctx.price;
