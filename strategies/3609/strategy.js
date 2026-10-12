@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: SOL Sentiment-Gated Trend 4H
+ * name: SOL Sentiment-Gated Trend 4H (trail exit)
  * ex: binance
  * syms: SOL/USDT
  * interval: 4h
@@ -8,16 +8,16 @@
  *
  * Why this strategy: the Fear & Greed index is the only external data axis that
  *   has worked in this account's backtests, but it has only been tried as a
- *   mean-reversion / sizing input so far. This strategy uses it the other way —
- *   as an ENTRY filter only: buy while the crowd is not in a blow-off top and
- *   the trend is up. No profit-taking on greed — a trend strategy must let
- *   winners run.
- * When it buys and sells: buy when Fear&Greed < 75 (extreme greed blocks entry),
- *   price is above its 100-EMA and makes a fresh 20-bar high; sell when price
- *   closes below the 20-bar low or hits a 2.5x ATR hard stop.
- * When it does NOT work: in a melt-up it enters late and misses part of the
- *   move; in a slow grind down with mild fear the EMA gate keeps it out but it
- *   also misses the bottom. Defensive trend rider, not a bull champion.
+ *   mean-reversion / sizing input so far. This strategy uses it as an ENTRY
+ *   filter: buy while the crowd is not in a blow-off top and the trend is up.
+ *   No profit-taking on greed — a trend strategy must let winners run.
+ * When it buys and sells: buy when Fear&Greed < 75, price above its 100-EMA and
+ *   making a fresh 20-bar high; sell when price hits a ratcheting stop (highest
+ *   recent high minus 2.5x ATR, never lower than the entry-based stop) or closes
+ *   below the 20-bar low. The ratchet locks in gains as the trade moves up.
+ * When it does NOT work: in a melt-up it enters late and misses part of the move;
+ *   in a slow grind down with mild fear the EMA gate keeps it out but it also
+ *   misses the bottom. Defensive trend rider, not a bull champion.
  */
 function onUpdate(ctx) {
   const fg = ctx.data('fg');
@@ -30,11 +30,18 @@ function onUpdate(ctx) {
   if (prevClose == null) return null;
 
   if (ctx.position > 0) {
-    const hardStop = ctx.entryPx - 2.5 * atr;
+    // ratcheting stop: recent 20-bar high minus 2.5x ATR, never below entry-based stop
+    const baseStop = ctx.entryPx - 2.5 * atr;
+    const recentHigh = ctx.high(20, 1);
+    let stop = baseStop;
+    if (recentHigh != null) {
+      const trailStop = recentHigh - 2.5 * atr;
+      if (trailStop > stop) stop = trailStop;  // ratchet up only
+    }
     const ll20 = ctx.low(20, 2);
-    if (price <= hardStop) return { side: 'sell', qty: ctx.position };
+    if (price <= stop) return { side: 'sell', qty: ctx.position };
     if (ll20 != null && prevClose <= ll20) return { side: 'sell', qty: ctx.position };
-    ctx.watch([{ side: 'sell', price: hardStop, trigger: 'below', note: '2.5x ATR hard stop' },
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'trailing stop' },
                { side: 'sell', price: ll20, trigger: 'below', note: '20-bar channel exit' }]);
     return null;
   }

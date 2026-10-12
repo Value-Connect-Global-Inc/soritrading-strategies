@@ -3,16 +3,16 @@
   "name": "SOL Sentiment-Gated Trend 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 18134,
-    "return": -6.95,
-    "mdd": 41.12,
-    "trades": 136,
-    "vsBuyHold": "win",
-    "benchRet": -22.18,
+    "backtestId": 18136,
+    "return": -1.08,
+    "mdd": 32.11,
+    "trades": 144,
+    "vsBuyHold": "lose",
+    "benchRet": 59.94,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1719691200,
-    "tTo": 1791676800,
+    "tFrom": 1647763200,
+    "tTo": 1719748800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
@@ -23,10 +23,10 @@
       "sym": "SOL",
       "interval": "4h",
       "bars": 5000,
-      "end": 1791763200
+      "end": 1719763200
     }
   },
   "config": null,
-  "updatedAt": "2026-10-12T00:29:23.485Z",
+  "updatedAt": "2026-10-12T00:36:42.582Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
