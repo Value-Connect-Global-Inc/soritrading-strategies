@@ -18,6 +18,8 @@
  * When it does NOT work: below the 200-SMA it never buys; a panic that keeps
  * falling still loses; a choppy bull can give back gains before the wide trail
  * triggers. Defensive core, slightly more upside participation.
+ *
+ * 2026-01-20: display-only ctx.watch added — trading logic unchanged.
  */
 function onUpdate(ctx) {
   const bb = ctx.bb(20, 2, 1);
@@ -38,6 +40,11 @@ function onUpdate(ctx) {
       const trail = ctx.state.trail || (ctx.entryPx - atr * 12);
       const newTrail = Math.max(trail, price - atr * 12);
       ctx.state.trail = newTrail;
+      ctx.watch([
+        { side: 'sell', price: newTrail, trigger: 'below', note: '12-ATR trail' },
+        { side: 'sell', price: bb.mid, trigger: 'above', note: 'mid-band exit' },
+        { side: 'sell', price: ctx.entryPx - atr * 6, trigger: 'below', note: '6-ATR stop' }
+      ]);
       if (price <= newTrail) {
         ctx.state.lastExit = ctx.i;
         ctx.state.trail = null;
@@ -45,6 +52,10 @@ function onUpdate(ctx) {
       }
       return null;
     }
+    ctx.watch([
+      { side: 'sell', price: bb.mid, trigger: 'above', note: 'mid-band exit' },
+      { side: 'sell', price: ctx.entryPx - (atr != null ? atr * 6 : 0), trigger: 'below', note: '6-ATR stop' }
+    ]);
     if (price >= bb.mid || rsi > 50) {
       ctx.state.lastExit = ctx.i;
       ctx.state.trail = null;
@@ -59,10 +70,19 @@ function onUpdate(ctx) {
   }
 
   const lastExit = ctx.state.lastExit || 0;
-  if (ctx.i - lastExit < 5) return null;
+  if (ctx.i - lastExit < 5) {
+    ctx.watch([]);
+    return null;
+  }
 
-  if (price < sma200) return null;
+  if (price < sma200) {
+    ctx.watch([]);
+    return null;
+  }
 
+  ctx.watch([
+    { side: 'buy', price: bb.lower, trigger: 'below', note: 'BB lower touch', conds: [ { label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true } ] }
+  ]);
   if (price < bb.lower && rsi < 30) {
     ctx.state.trail = null;
     return { side: 'buy', qty: ctx.cash / ctx.price * 0.95 };
