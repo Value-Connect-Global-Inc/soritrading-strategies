@@ -18,6 +18,8 @@
  * When it does NOT work: lags sharp V-shaped bottoms (waits for on-chain
  * confirmation that lags price) and churns sideways chop where both signals
  * flip-flop. On-chain data is daily so it cannot time intraday moves.
+ *
+ * 2024-01-15: 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const sma200 = ctx.sma(200, 1);
@@ -35,19 +37,30 @@ function onUpdate(ctx) {
   if (pos > 0) {
     // Exit when either trend breaks, or trailing stop hit.
     if (price < sma200 || !onchainUp) {
+      ctx.watch([{ side: 'sell', price: sma200, trigger: 'below', note: '200-SMA trend break' }]);
       return { side: 'sell', qty: pos };
     }
     const atr = ctx.atr(14, 1);
     if (atr != null && price <= ctx.entryPx - atr * 10) {
+      ctx.watch([{ side: 'sell', price: ctx.entryPx - atr * 10, trigger: 'below', note: '10-ATR trailing stop' }]);
       return { side: 'sell', qty: pos };
     }
+    const stopPx = ctx.entryPx - atr * 10;
+    ctx.watch([
+      { side: 'sell', price: sma200, trigger: 'below', note: '200-SMA trend break' },
+      { side: 'sell', price: stopPx, trigger: 'below', note: '10-ATR trailing stop' }
+    ]);
     return null;
   }
 
   // Enter only when BOTH trends confirm: price above 200-SMA and on-chain
   // network growth positive. Slow, deliberate, trend-following entry.
   if (price > sma200 && onchainUp) {
+    ctx.watch([]);
     return { side: 'buy', qty: ctx.cash / ctx.price * 0.98 };
   }
+  ctx.watch([
+    { side: 'buy', price: sma200, trigger: 'above', note: '200-SMA trend', conds: [{ label: 'On-chain addr > 30d avg', ok: onchainUp, closed: true }] }
+  ]);
   return null;
 }

@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2660](strategies/2660/) | On-Chain Trend BTC 1D | +20.90% | +1258.25% | +72.15% | 204 | 2026-10-12 |
 | — | [3698](strategies/3698/) | VolTargetTrendRider | +19.59% | — | +10.84% | 94 | 2026-10-12 |
 | ★ | [2664](strategies/2664/) | VWAP-Pullback SOL 4H MomentumEntry+MidVolSize | +93.64% | +64.11% | +22.84% | 82 | 2026-10-12 |
 | — | [3697](strategies/3697/) | AI 전략 | +354.55% | — | +20.86% | 101 | 2026-10-12 |
@@ -868,7 +869,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | ★ | [2663](strategies/2663/) | VWAP-Pullback SOL 4H Control | +27.17% | -15.65% | +19.54% | 90 | 2026-09-26 |
 |  | [2662](strategies/2662/) | VWAP-Pullback SOL 4H | +132.48% | +693.22% | +24.02% | 36 | 2026-09-26 |
 |  | [2661](strategies/2661/) | On-Chain Regime Momentum BTC 1D | +571.18% | +824.29% | +35.93% | 20 | 2026-09-26 |
-|  | [2660](strategies/2660/) | On-Chain Trend BTC 1D | +20.90% | +1258.25% | +72.15% | 204 | 2026-09-26 |
 |  | [2659](strategies/2659/) | Panic-Bounce NEAR 4H | +1.11% | +180.23% | +40.44% | 40 | 2026-09-26 |
 |  | [2658](strategies/2658/) | RS-Momentum Rotation BTC-ETH-SOL 4H | -93.54% | +26.93% | +94.91% | 447 | 2026-09-26 |
 |  | [2657](strategies/2657/) | Panic-Bounce LINK 4H | +160.39% | +477.73% | +24.03% | 80 | 2026-09-26 |
