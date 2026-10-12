@@ -17,8 +17,11 @@
  * turnarounds, so it can give back more in fast regime changes; if demand
  * falls in a straight line the confirmation only delays the exit slightly.
  * On-chain data is live in the feed (verified).
+ * 2026-04-26 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
+  ctx.watch([]); // no price/time condition — pure on-chain signal
+
   const pos = ctx.position;
 
   const raw = ctx.data('addr_sma30');
