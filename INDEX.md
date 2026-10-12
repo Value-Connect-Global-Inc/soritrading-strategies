@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3633](strategies/3633/) | BTC Fear-Greed Contrarian 1D | +3.00% | +612.44% | +26.47% | 2 | 2026-10-12 |
+|  | [3633](strategies/3633/) | BTC Fear-Greed Contrarian 1D | +3.16% | +612.44% | +24.87% | 4 | 2026-10-12 |
 |  | [3632](strategies/3632/) | BTC DXY-Gated Trend 4H | +8.83% | +459.07% | +13.90% | 12 | 2026-10-12 |
 |  | [2871](strategies/2871/) | DIAG multi-asset probe | +18.89% | +305.26% | +2.46% | 6 | 2026-10-12 |
 |  | [3629](strategies/3629/) | BTC Hashrate-Gated Trend 4H | +23.80% | +48.41% | +20.11% | 104 | 2026-10-12 |

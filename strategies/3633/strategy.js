@@ -7,10 +7,10 @@
  * cash: 10000
  *
  * Why this strategy: The Fear & Greed index measures crowd emotion. History
- *   shows extreme fear (index < 25) marks local bottoms more often than not,
- *   and extreme greed marks tops. We bet the crowd is wrong at the extremes.
- * When it buys and sells: buy when the index drops below 20 (extreme fear),
- *   sell when it rises above 70 (greed) or on a 25% hard stop.
+ *   shows extreme fear marks local bottoms more often than not, and extreme
+ *   greed marks tops. We bet the crowd is wrong at the extremes.
+ * When it buys and sells: buy when the index drops below 35 (fear), sell
+ *   when it rises above 70 (greed) or on a 25% hard stop.
  * When it does NOT work: in a real bear market fear stays high and the price
  *   keeps falling, so each "cheap" buy is a knife; the 25% stop limits the
  *   damage but the strategy can bleed slowly. Also sits in cash for long
@@ -35,7 +35,7 @@ function onUpdate(ctx) {
     return null;
   }
 
-  if (fg >= 20) return null;   // contrarian entry: only at extreme fear
+  if (fg >= 35) return null;   // contrarian entry: buy fear, not calm or greed
   // Only buy if price is above its 200-day average — avoid catching a falling
   // knife in a confirmed long-term downtrend.
   const sma200 = ctx.sma(200, 1);
