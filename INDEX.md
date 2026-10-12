@@ -4,14 +4,16 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 490 of 1896 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 490 of 1897 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 271 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2831](strategies/2831/) | OBV Trend + MR Defense Regime Blend 1D | -3.07% | +46.95% | +8.62% | 8 | 2026-10-12 |
 | ★ | [2833](strategies/2833/) | OBV Trend Fast Lookback 15d BTC 1D | +51.79% | +46.95% | +28.66% | 8 | 2026-10-12 |
+|  | [3641](strategies/3641/) | OnChainNetworkTrend | -17.49% | +47.08% | +29.96% | 348 | 2026-10-12 |
 |  | [2837](strategies/2837/) | OBV Trend Generalization Test BNB/XRP 1D | +496.40% | +1603.49% | +53.82% | 61 | 2026-10-12 |
 |  | [2834](strategies/2834/) | OBV Trend + Drawdown Position Cap BTC 1D | +436.69% | +1098.12% | +38.32% | 18 | 2026-10-12 |
 |  | [2841](strategies/2841/) | On-Chain Demand Trend BTC 1D | +104.27% | +1279.90% | +67.76% | 87 | 2026-10-12 |
@@ -683,7 +685,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | ★ | [2838](strategies/2838/) | OBV Trend Generalization ADA/LTC 1D | +178.72% | +50.89% | +52.51% | 67 | 2026-09-27 |
 | ★ | [2836](strategies/2836/) | OBV Trend + RSI Entry Filter BTC 1D | +328.47% | +263.61% | +39.14% | 34 | 2026-09-27 |
 | ★ | [2835](strategies/2835/) | Price-Momentum Trend ROC BTC 1D | +597.04% | +263.61% | +44.62% | 44 | 2026-09-27 |
-|  | [2831](strategies/2831/) | OBV Trend + MR Defense Regime Blend 1D | -3.07% | +46.95% | +8.62% | 8 | 2026-09-27 |
 |  | [2830](strategies/2830/) | Donchian Channel Breakout BTC 1D | +32.28% | +45.60% | +41.88% | 37 | 2026-09-27 |
 |  | [2829](strategies/2829/) | On-Chain Demand + Vol-Scaled Size BTC 1D | +33.23% | +263.61% | +60.37% | 47 | 2026-09-27 |
 | ★ | [2828](strategies/2828/) | OBV Trend + On-Chain Demand De-Risk BTC 1D | +63.75% | +42.23% | +27.95% | 171 | 2026-09-26 |

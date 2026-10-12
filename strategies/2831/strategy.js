@@ -40,6 +40,11 @@ function onUpdate(ctx) {
     if (pos > 0) {
       const entry = ctx.entryPx;
       const held = ctx.state.mrBar != null ? ctx.i - ctx.state.mrBar : 0;
+      const stopPx = entry != null ? entry - 3 * atr : null;
+      ctx.watch([
+        { side: 'sell', price: bb.mid, trigger: 'above', note: 'MR mid-band exit', qty: pos },
+        { side: 'sell', price: stopPx, trigger: 'below', note: 'MR 3-ATR stop', qty: pos, conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 50, closed: true }] }
+      ]);
       if (price >= bb.mid || rsi > 50 || (entry != null && price <= entry - 3 * atr) || held >= 10) {
         return { side: 'sell', qty: pos };
       }
@@ -53,6 +58,9 @@ function onUpdate(ctx) {
     if (ctx.i - lastTrade < 10) return null;
     ctx.state.lastTradeBar = ctx.i;
     ctx.state.mrBar = ctx.i;
+    ctx.watch([
+      { side: 'buy', price: bb.lower, trigger: 'below', note: 'MR panic dip buy', qty: (ctx.cash / price) * 0.5, conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 25, closed: true }] }
+    ]);
     // Half position: bear-mode dips are riskier than bull trends.
     return { side: 'buy', qty: (ctx.cash / price) * 0.5 };
   }
@@ -94,6 +102,9 @@ function onUpdate(ctx) {
   }
 
   if (pos > 0) {
+    ctx.watch([
+      { side: 'sell', price: obvPast * 0.99, trigger: 'below', note: 'OBV trend exit', qty: pos, conds: [{ label: 'OBV falling', ok: falling }] }
+    ]);
     if (falling && cd === 0) {
       ctx.state.cd = 5;
       return { side: 'sell', qty: pos };
@@ -102,8 +113,11 @@ function onUpdate(ctx) {
   }
 
   if (rising && volOk && cd === 0) {
-    ctx.state.cd = 5;
     const qty = ctx.cash / price * 0.95 * sizeFrac;
+    ctx.watch([
+      { side: 'buy', price: obvPast * 1.01, trigger: 'above', note: 'OBV trend entry', qty: qty, conds: [{ label: 'OBV rising', ok: rising }, { label: 'Vol>avg', ok: volOk }] }
+    ]);
+    ctx.state.cd = 5;
     return { side: 'buy', qty: qty };
   }
   return null;
