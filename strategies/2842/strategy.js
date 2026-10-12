@@ -18,28 +18,44 @@
  * stretches (e.g. a melt-up with flat addresses, or a flush with addresses
  * still high), so this can be late into rallies or exit too early. It is a
  * slow, low-frequency signal — do not expect it to catch sharp moves.
+ *
+ * 2026-05-07 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   // Smoothed on-chain active addresses (precomputed in DB).
   const raw = ctx.data('addr_sma30');
   const now = Number(raw);
-  if (!Number.isFinite(now) || now <= 0) return null;
+  if (!Number.isFinite(now) || now <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   // Continuous rolling buffer — NEVER reset between trades.
   const hist = ctx.state.dhist || [];
   hist.push(now);
   if (hist.length > 30) hist.shift();
   ctx.state.dhist = hist;
-  if (hist.length < 30) return null;
+  if (hist.length < 30) {
+    ctx.watch([]);
+    return null;
+  }
 
   const demandUp = now > hist[0] * 1.003; // 0.3% hysteresis
 
   // --- Exit: demand trend turned down -> step aside ---
   if (pos > 0) {
+    ctx.watch([{
+      side: 'sell',
+      note: 'demand trend down',
+      conds: [{ label: 'AddrSMA30 <= ref', now: now, op: '<=', ref: hist[0] * 1.003 }]
+    }]);
     if (!demandUp) {
       return { side: 'sell', qty: pos };
     }
@@ -47,6 +63,11 @@ function onUpdate(ctx) {
   }
 
   // --- Entry: only when demand is rising ---
+  ctx.watch([{
+    side: 'buy',
+    note: 'demand trend up',
+    conds: [{ label: 'AddrSMA30 > ref', now: now, op: '>', ref: hist[0] * 1.003 }]
+  }]);
   if (demandUp) {
     return { side: 'buy', qty: ctx.cash / price * 0.95 };
   }

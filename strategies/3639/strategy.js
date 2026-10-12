@@ -11,9 +11,10 @@
  * wild ones. Smoothing volatility over time avoids the deep drawdowns of a fixed bet
  * while still capturing the trend.
  * When it buys and sells: invests only while price is above its 200-day average
- * (long uptrend). Within that, exposure is scaled down as volatility (ATR) rises.
- * It sells when the trend filter flips off, when volatility makes the target exposure
- * near zero, or when price drops more than 3x the daily range below entry (hard stop).
+ * (long uptrend). The entry size is scaled down as volatility (ATR) rises, so calm
+ * periods get a bigger bet and wild periods a smaller one. It sells the whole
+ * position when the trend filter flips off or when price drops more than 3x the
+ * daily range below entry (hard stop).
  * When it does NOT work: in a long flat sideways market it churns small positions and
  * pays fees; it lags buy-and-hold in a straight-line melt-up because it intentionally
  * holds less than 100% most of the time.
@@ -30,22 +31,18 @@ function onUpdate(ctx) {
   const pos = ctx.position;
   const inTrend = prevClose > sma200;
   const atrPct = atr / price;
-  // Target ~1.75% daily vol (~33% annualized): middle ground — deploys ~0.58 of cash in a
-  // normal 3% ATR day. Chosen as the balance between v1 (1.5%: +25.6%/MDD10) and v0.02 (+42.9%/MDD18).
-  const exposure = Math.min(1, 0.0175 / atrPct);
+  // Target ~2.0% daily vol (~38% annualized): deploys ~0.65 of cash in a normal 3% ATR day.
+  // Entry sizing only — no intra-position rebalance (the rebalance version was non-monotonic
+  // and sold into vol spikes at bad prices, so it is removed).
+  const exposure = Math.min(1, 0.02 / atrPct);
   const targetQty = (ctx.cash * exposure) / price;
 
   if (pos > 0) {
-    // Hard stop: 3x ATR below entry ≈ 3 daily ranges — cuts a fast crash before the trend filter reacts.
+    // Exit conditions: trend flip, vol collapse, or hard stop 3x ATR below entry.
     const hardStop = ctx.entryPx - 3 * atr;
-    if (price <= hardStop) { ctx.watch([]); return { side: 'sell', qty: pos }; }
-    if (!inTrend || exposure < 0.25) { ctx.watch([]); return { side: 'sell', qty: pos }; }
-    // Rebalance only when >20% off target — keeps turnover/fees low while staying near target.
-    const dev = Math.abs(pos - targetQty) / targetQty;
-    if (dev > 0.2) {
-      const qty = Math.abs(pos - targetQty);
+    if (price <= hardStop || !inTrend || exposure < 0.25) {
       ctx.watch([]);
-      return { side: pos > targetQty ? 'sell' : 'buy', qty };
+      return { side: 'sell', qty: pos };
     }
     ctx.watch([{ side: 'sell', price: hardStop, trigger: 'below', note: '3x ATR hard stop' }]);
     return null;
@@ -56,7 +53,7 @@ function onUpdate(ctx) {
     ctx.watch([{ side: 'sell', price: ctx.entryPx - 3 * atr, trigger: 'below', note: '3x ATR hard stop' }]);
     return { side: 'buy', qty };
   }
-  ctx.watch([{ side: 'buy', price, trigger: 'above', note: 'trend + vol entry', conds: [
+  ctx.watch([{ side: 'buy', price: price, trigger: 'above', note: 'trend + vol entry', conds: [
     { label: 'Close > SMA200', ok: inTrend, closed: true },
     { label: 'Target exposure', now: exposure, op: '>=', ref: 0.4 }
   ]}]);
