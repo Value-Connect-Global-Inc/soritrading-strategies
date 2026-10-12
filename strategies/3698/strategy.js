@@ -13,8 +13,7 @@
  * market volatility, not a clever entry.
  * When it buys and sells: buy when a close is above BOTH the 50-day and
  * 200-day averages; sell when a close falls below the 50-day average or price
- * hits a 2x ATR stop below entry. Each asset is sized to risk a fixed percent
- * of equity.
+ * hits a 2x ATR stop below entry. Each asset is sized to risk 1% of equity.
  * When it does NOT work: in a choppy sideways market where price oscillates
  * around the 50-day average it churns (buys near the top of each wiggle, sells
  * near the bottom). The 200-day filter keeps it out of deep bears, but a slow
@@ -45,12 +44,12 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // Volatility-targeted size: risk a fixed 2.5% of equity per position via a
-  // 2x ATR stop, then cap a single position at 60% of equity so low-vol coins
-  // cannot over-leverage the book. 2.5% x 3 assets = max 7.5% of equity at risk.
-  const riskPerTrade = 0.025 * ctx.cash;
+  // Volatility-targeted size: risk a fixed 1% of equity per position via a
+  // 2x ATR stop, then cap a single position at 40% of equity so low-vol coins
+  // cannot over-leverage the book. 1% x 3 assets = max 3% of equity at risk.
+  const riskPerTrade = 0.01 * ctx.cash;
   let qty = riskPerTrade / (2 * atr);
-  const maxQty = (ctx.cash / price) * 0.60;
+  const maxQty = (ctx.cash / price) * 0.40;
   qty = Math.min(qty, maxQty);
 
   if (prevClose > sma200 && prevClose > sma50) {
