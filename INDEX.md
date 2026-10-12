@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 480 of 1869 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 480 of 1870 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 270 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3614](strategies/3614/) | BTC Mean Reversion 4H | -5.26% | +459.07% | +11.31% | 96 | 2026-10-12 |
 |  | [2931](strategies/2931/) | BTC 4H Bollinger MR Uptrend-6pct | -15.64% | +71.94% | +20.64% | 28 | 2026-10-12 |
 | ★ | [2934](strategies/2934/) | ETH 4H Bollinger MR Macro-Risk Gated | +35.12% | -26.18% | +7.37% | 32 | 2026-10-12 |
 |  | [2932](strategies/2932/) | ETH 4H Funding Contrarian | -3.40% | +9.87% | +10.49% | 32 | 2026-10-12 |
