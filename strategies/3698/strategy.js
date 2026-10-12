@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: VolTargetTrendRider
+ * name: VolTargetTrendRider2
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, BNB/USDT
  * interval: 1d
@@ -12,8 +12,10 @@
  * amount. The key mechanism is risk management — position size adapts to
  * market volatility, not a clever entry.
  * When it buys and sells: buy when a close is above BOTH the 50-day and
- * 200-day averages; sell when a close falls below the 50-day average or price
- * hits a 2x ATR stop below entry. Each asset is sized to risk 1% of equity.
+ * 200-day averages AND the 50-day average is above the 200-day average
+ * (medium trend confirms long trend, filtering out sideways chop). Sell when a
+ * close falls below the 50-day average or price hits a 2x ATR stop below
+ * entry. Each asset is sized to risk 1% of equity.
  * When it does NOT work: in a choppy sideways market where price oscillates
  * around the 50-day average it churns (buys near the top of each wiggle, sells
  * near the bottom). The 200-day filter keeps it out of deep bears, but a slow
@@ -52,11 +54,15 @@ function onUpdate(ctx) {
   const maxQty = (ctx.cash / price) * 0.40;
   qty = Math.min(qty, maxQty);
 
-  if (prevClose > sma200 && prevClose > sma50) {
+  // Trend-alignment gate: also require the 50-day to sit above the 200-day so
+  // a price that is merely above both averages but with no confirmed medium
+  // trend (sideways chop) does not trigger a whipsaw entry.
+  if (prevClose > sma200 && prevClose > sma50 && sma50 > sma200) {
     ctx.watch([]);
     return { side: 'buy', qty };
   }
   ctx.watch([{ side: 'buy', price: sma50, trigger: 'above', note: 'trend re-entry',
-               conds: [{ label: 'close>200d', ok: prevClose > sma200 }] }]);
+               conds: [{ label: 'close>200d', ok: prevClose > sma200 },
+                       { label: '50d>200d', ok: sma50 > sma200 }] }]);
   return null;
 }

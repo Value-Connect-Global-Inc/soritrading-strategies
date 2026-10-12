@@ -11,9 +11,9 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [3698](strategies/3698/) | VolTargetTrendRider | +19.59% | — | +10.84% | 94 | 2026-10-12 |
 | ★ | [2664](strategies/2664/) | VWAP-Pullback SOL 4H MomentumEntry+MidVolSize | +93.64% | +64.11% | +22.84% | 82 | 2026-10-12 |
 | — | [3697](strategies/3697/) | AI 전략 | +354.55% | — | +20.86% | 101 | 2026-10-12 |
-| — | [3698](strategies/3698/) | VolTargetTrendRider | +19.59% | — | +10.84% | 94 | 2026-10-12 |
 |  | [2672](strategies/2672/) | Band-Bounce Mean Reversion XLM 4H | +128.50% | +217.37% | +23.27% | 98 | 2026-10-12 |
 |  | [3696](strategies/3696/) | VolTargetTrendRider | +123.19% | +612.44% | +14.14% | 26 | 2026-10-12 |
 |  | [2681](strategies/2681/) | Band-Bounce Mean Reversion TRX 4H | +12.16% | +97.86% | +8.20% | 56 | 2026-10-12 |
