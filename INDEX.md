@@ -11,9 +11,9 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3639](strategies/3639/) | SimpleTrendDaily | +16.46% | +95.22% | +10.69% | 31 | 2026-10-12 |
 |  | [2848](strategies/2848/) | Sentiment Trend-Follow BTC 1D | -90.07% | +45.60% | +92.22% | 759 | 2026-10-12 |
 | ★ | [2849](strategies/2849/) | Fed Tightening-Onset Regime BTC 1D | +104.74% | +45.60% | +54.48% | 21 | 2026-10-12 |
-|  | [3639](strategies/3639/) | SimpleTrendDaily | +16.46% | +95.22% | +10.69% | 31 | 2026-10-12 |
 | ★ | [3637](strategies/3637/) | PlainTrendControl | +33.67% | -20.96% | +8.34% | 14 | 2026-10-12 |
 | ★ | [3638](strategies/3638/) | MacroDxyTrend | +2.17% | -20.96% | +1.20% | 16 | 2026-10-12 |
 | ★ | [2852](strategies/2852/) | Fed-Filtered OBV Trend BTC 1D | +108.08% | +45.60% | +28.09% | 129 | 2026-10-12 |
