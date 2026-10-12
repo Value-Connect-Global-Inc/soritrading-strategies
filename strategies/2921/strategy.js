@@ -20,6 +20,7 @@
  * and lags buy-and-hold (defensive). In a choppy sideways market the trend gate
  * flips on/off and it may take fewer trades. In a fast crash that starts from a
  * still-uptrending 50/200, the first dip can still be caught.
+ * 2026-05-07: 표시만 바뀜, 매매 판단은 그대로 (ctx.watch 추가)
  */
 function onUpdate(ctx) {
   const bb = ctx.bb(20, 2, 1);
@@ -28,15 +29,31 @@ function onUpdate(ctx) {
   const sma200 = ctx.sma(200, 1);
   const atr = ctx.atr(14, 1);
   const px = ctx.closes[ctx.closes.length - 2];
-  if (bb == null || bb.lower == null || rsi == null || sma50 == null || sma200 == null || atr == null || px == null) return null;
+  if (bb == null || bb.lower == null || rsi == null || sma50 == null || sma200 == null || atr == null || px == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   if (ctx.position > 0) {
+    ctx.watch([{ side: 'sell', price: bb.mid, trigger: 'above', note: 'BB mid exit' }]);
     if (px >= bb.mid || rsi > 60) return { side: 'sell', qty: ctx.position };
     return null;
   }
 
   // Strong trend gate: 50 SMA above 200 SMA means a confirmed uptrend, so a dip
   // to the lower band is a pullback, not a falling knife (fixes the 2022-24 bleed).
+  ctx.watch([{
+    side: 'buy',
+    price: bb.lower,
+    trigger: 'below',
+    note: 'BB lower dip',
+    conds: [
+      { label: 'RSI(14) close', now: rsi, op: '<', ref: 35, closed: true },
+      { label: 'px > SMA200', ok: px > sma200 },
+      { label: 'SMA50 > SMA200', ok: sma50 > sma200 }
+    ]
+  }]);
+
   if (px <= bb.lower && rsi < 35 && px > sma200 && sma50 > sma200) {
     const equity = ctx.cash + ctx.position * ctx.price;
     const stopDist = 2 * atr;
