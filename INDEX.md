@@ -4,13 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 487 of 1891 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 488 of 1892 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 270 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2866](strategies/2866/) | Keltner MR generalization ADA/DOT/XRP | +104.98% | +149.62% | +5.19% | 34 | 2026-10-12 |
+| ★ | [3635](strategies/3635/) | BTC-ETH Confirmed Trend 4H | +61.73% | +48.41% | +18.92% | 104 | 2026-10-12 |
 |  | [3634](strategies/3634/) | BTC Mean Reversion 4H | -25.27% | +35.80% | +30.79% | 124 | 2026-10-12 |
 |  | [3633](strategies/3633/) | BTC Fear-Greed Contrarian 1D | +3.16% | +612.44% | +24.87% | 4 | 2026-10-12 |
 |  | [3632](strategies/3632/) | BTC DXY-Gated Trend 4H | +8.83% | +459.07% | +13.90% | 12 | 2026-10-12 |
@@ -648,7 +650,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2870](strategies/2870/) | BB Squeeze Breakout BTC 1D | -4.49% | +133.21% | +28.57% | 14 | 2026-09-27 |
 |  | [2868](strategies/2868/) | Keltner MR Daily BTC/ETH/SOL | +18.89% | +190.11% | +2.46% | 6 | 2026-09-27 |
 | ★ | [2867](strategies/2867/) | Keltner MR generalization LINK/LTC/DOGE/AVAX/BNB | +35.09% | -23.39% | +6.30% | 30 | 2026-09-27 |
-|  | [2866](strategies/2866/) | Keltner MR generalization ADA/DOT/XRP | +104.98% | +149.62% | +5.19% | 34 | 2026-09-27 |
 |  | [2865](strategies/2865/) | BTC 4H Keltner Mean-Reversion (generalization) | +186.13% | +2940.31% | +13.63% | 21 | 2026-09-27 |
 |  | [2864](strategies/2864/) | ETH 4H Keltner Mean-Reversion | +90.51% | +1663.94% | +29.11% | 48 | 2026-09-27 |
 |  | [2863](strategies/2863/) | ETH 4H Stochastic Mean-Reversion | -90.37% | -51.44% | +90.41% | 256 | 2026-09-27 |
