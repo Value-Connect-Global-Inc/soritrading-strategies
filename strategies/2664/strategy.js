@@ -21,6 +21,7 @@
  * 24-bar time-stop.
  * When it does NOT work: fails in a true downtrend (pullbacks keep falling) and
  * in low-liquidity chop where VWAP gives no support.
+ * 2025-01-20: 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const s = ctx.state;
@@ -49,6 +50,7 @@ function onUpdate(ctx) {
     const prevSma = ctx.sma(50, 5);
     if (prevSma != null && sma50 < prevSma) {
       s.lastExit = ctx.i;
+      ctx.watch([{ side: 'sell', price: price, trigger: 'below', note: '50-SMA turn-down exit' }]);
       return { side: 'sell', qty: pos };
     }
     if (atr != null) {
@@ -56,6 +58,8 @@ function onUpdate(ctx) {
       if (s.entry != null && !s.halfTaken) {
         if (price >= s.entry + atr * 3) {
           s.halfTaken = true;
+          const tp = s.entry + atr * 3;
+          ctx.watch([{ side: 'sell', price: tp, trigger: 'above', qty: pos / 3, note: '+3 ATR partial TP' }]);
           return { side: 'sell', qty: pos / 3 };
         }
       }
@@ -63,12 +67,27 @@ function onUpdate(ctx) {
       // 24 bars ~ 4 days on 4h — enough for a real reversion, cuts grinders.
       if (s.entry != null && !s.halfTaken && ctx.i - s.entryBar > 24) {
         s.lastExit = ctx.i;
+        ctx.watch([{ side: 'sell', price: price, trigger: 'below', note: '24-bar time-stop exit' }]);
         return { side: 'sell', qty: pos };
       }
       if (price <= s.hi - atr * 10) {
         s.lastExit = ctx.i;
+        const trailStop = s.hi - atr * 10;
+        ctx.watch([{ side: 'sell', price: trailStop, trigger: 'below', note: '10-ATR trailing stop' }]);
         return { side: 'sell', qty: pos };
       }
+      // Still holding — declare the exits we're waiting on
+      const tp = s.entry != null ? s.entry + atr * 3 : null;
+      const trailStop = s.hi - atr * 10;
+      const watchEntries = [];
+      if (tp != null && !s.halfTaken) {
+        watchEntries.push({ side: 'sell', price: tp, trigger: 'above', note: '+3 ATR partial TP' });
+      }
+      watchEntries.push({ side: 'sell', price: trailStop, trigger: 'below', note: '10-ATR trailing stop' });
+      if (s.entry != null && !s.halfTaken && ctx.i - s.entryBar <= 24) {
+        watchEntries.push({ side: 'sell', at: ctx.candle.t + (24 - (ctx.i - s.entryBar)) * 4 * 3600, note: 'time-stop' });
+      }
+      ctx.watch(watchEntries);
     }
     return null;
   }
@@ -95,7 +114,20 @@ function onUpdate(ctx) {
       const vol = atr / price;
       if (vol > 0.022) frac = Math.max(0.38, 0.95 - (vol - 0.022) * 18);
     }
+    ctx.watch([{ side: 'buy', price: vwap * 1.02, trigger: 'below', note: 'VWAP pullback entry', conds: [
+      { label: 'RSI(14) close', now: rsi, op: '<=', ref: 65, closed: true },
+      { label: 'RSI turning up', ok: rsi > rsiPrev, closed: true },
+      { label: '50-SMA rising', ok: sma50 > prevSma, closed: true },
+      { label: '200-SMA not falling', ok: sma200 >= sma200prev, closed: true }
+    ] }]);
     return { side: 'buy', qty: ctx.cash / ctx.price * frac };
   }
+  // No entry — show the level we're waiting for
+  ctx.watch([{ side: 'buy', price: vwap * 1.02, trigger: 'below', note: 'VWAP pullback entry', conds: [
+    { label: 'RSI(14) close', now: rsi, op: '<=', ref: 65, closed: true },
+    { label: 'RSI turning up', ok: rsi > rsiPrev, closed: true },
+    { label: '50-SMA rising', ok: sma50 > prevSma, closed: true },
+    { label: '200-SMA not falling', ok: sma200 >= sma200prev, closed: true }
+  ] }]);
   return null;
 }

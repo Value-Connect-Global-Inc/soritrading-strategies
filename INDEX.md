@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [2664](strategies/2664/) | VWAP-Pullback SOL 4H MomentumEntry+MidVolSize | +93.64% | +64.11% | +22.84% | 82 | 2026-10-12 |
 | — | [3697](strategies/3697/) | AI 전략 | +354.55% | — | +20.86% | 101 | 2026-10-12 |
 | — | [3698](strategies/3698/) | VolTargetTrendRider | +19.59% | — | +10.84% | 94 | 2026-10-12 |
 |  | [2672](strategies/2672/) | Band-Bounce Mean Reversion XLM 4H | +128.50% | +217.37% | +23.27% | 98 | 2026-10-12 |
@@ -864,7 +865,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2667](strategies/2667/) | Band-Bounce Mean Reversion BCH 4H | +16.09% | +33.72% | +22.83% | 42 | 2026-09-26 |
 |  | [2666](strategies/2666/) | VWAP-Pullback SOL 4H TimeStop32 | -2.13% | +1658.04% | +42.77% | 16 | 2026-09-26 |
 |  | [2665](strategies/2665/) | VWAP-Pullback SOL 4H TimeStop16 | +522.15% | +2935.18% | +16.25% | 72 | 2026-09-26 |
-| ★ | [2664](strategies/2664/) | VWAP-Pullback SOL 4H MomentumEntry+MidVolSize | +93.64% | +64.11% | +22.84% | 82 | 2026-09-26 |
 | ★ | [2663](strategies/2663/) | VWAP-Pullback SOL 4H Control | +27.17% | -15.65% | +19.54% | 90 | 2026-09-26 |
 |  | [2662](strategies/2662/) | VWAP-Pullback SOL 4H | +132.48% | +693.22% | +24.02% | 36 | 2026-09-26 |
 |  | [2661](strategies/2661/) | On-Chain Regime Momentum BTC 1D | +571.18% | +824.29% | +35.93% | 20 | 2026-09-26 |

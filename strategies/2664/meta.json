@@ -3,7 +3,7 @@
   "name": "VWAP-Pullback SOL 4H MomentumEntry+MidVolSize",
   "kind": "custom",
   "verified": {
-    "backtestId": 11765,
+    "backtestId": 18812,
     "return": 93.64,
     "mdd": 22.84,
     "trades": 82,
@@ -14,17 +14,26 @@
     "tFrom": 1646424000,
     "tTo": 1718409600,
     "approxNotes": [
-      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준"
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
-      "sym": "SOLUSDT",
+      "sym": "SOL",
       "interval": "4h",
       "bars": 5000,
       "end": 1718424000
     }
   },
-  "config": null,
-  "updatedAt": "2026-09-26T13:39:41.773Z",
+  "config": {
+    "ex": "binance",
+    "cash": 10000,
+    "syms": [
+      "SOL"
+    ],
+    "quote": "USDT",
+    "interval": "4h"
+  },
+  "updatedAt": "2026-10-12T18:07:25.501Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
