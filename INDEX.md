@@ -11,8 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [2713](strategies/2713/) | Band-Bounce Mean Reversion LTC 4H | -12.10% | -15.65% | +32.74% | 46 | 2026-10-12 |
 |  | [3690](strategies/3690/) | DataDiag | -0.39% | +315.94% | +0.39% | 2216 | 2026-10-12 |
+| ★ | [2713](strategies/2713/) | Band-Bounce Mean Reversion LTC 4H | -12.10% | -15.65% | +32.74% | 46 | 2026-10-12 |
 |  | [3687](strategies/3687/) | FearGreedContrarian | +10.59% | +612.44% | +29.66% | 6 | 2026-10-12 |
 |  | [2732](strategies/2732/) | On-Chain Network-Health BTC 1D | -39.60% | +55.47% | +39.60% | 14 | 2026-10-12 |
 |  | [2734](strategies/2734/) | Band-Bounce Mean Reversion AVAX 4H | +29.26% | +1443.71% | +36.72% | 37 | 2026-10-12 |
