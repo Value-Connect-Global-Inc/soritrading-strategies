@@ -10,47 +10,20 @@
  *   coins over the last 40 bars tends to keep outperforming for a while
  *   (relative-strength persistence). Instead of betting on one trend, this rides
  *   whichever coin is currently the strongest.
- * When it buys and sells: a coin is held only while it is the top-momentum coin,
- *   above its 200-SMA, AND BTC itself is above its 200-SMA (risk-on regime). It
- *   enters on a fresh 55-bar high break and exits when it loses leadership,
- *   breaks its 20-bar channel low, hits a 2.5x ATR hard stop, or BTC turns
- *   risk-off (flattens everything).
+ * When it buys and sells: a coin is held only while it is the top-momentum coin
+ *   AND above its 200-SMA; it enters on a fresh 55-bar high break and exits when
+ *   it loses the leadership, breaks its 20-bar channel low, or hits a 2.5x ATR
+ *   hard stop.
  * When it does NOT work: when all coins move together in a tight range or a
  *   synchronized bear, the leader keeps changing and rotation pays fees without
- *   gains. The BTC regime filter also keeps it out of alt rallies that happen
- *   while BTC is below its long-term trend (rare, but it misses those).
+ *   gains.
  */
 function onUpdate(ctx) {
   const syms = (ctx.syms && ctx.syms.length) ? ctx.syms : [ctx.sym];
   const lookback = 40;
   const atr = ctx.atr(14, 1);
   const sma200 = ctx.sma(200, 1);
-  const prevClose = ctx.closes.at(-2);
-  if (atr == null || sma200 == null || prevClose == null) return null;
-
-  // BTC regime: is the market anchor above its own 200-SMA? (risk-on filter)
-  // In a synchronized BTC bear all alts fall together, so rotation just pays
-  // fees — stay out until risk-on returns. Detect BTC by base symbol so it
-  // works whether ctx.sym is 'BTC' or 'BTC/USDT'.
-  let btcRiskOn = null;
-  for (const s of syms) {
-    const base = s.split('/')[0];
-    if (base !== 'BTC') continue;
-    let bc = null;
-    if (s === ctx.sym) {
-      bc = ctx.closes;
-    } else {
-      const m = ctx.market(s);
-      bc = m && m.closes;
-    }
-    if (bc && bc.length > 201) {
-      let sum = 0;
-      for (let i = bc.length - 2; i >= bc.length - 202; i--) sum += bc[i];
-      btcRiskOn = bc.at(-2) > sum / 200;
-    }
-    break;
-  }
-  if (btcRiskOn == null) return null;
+  if (atr == null || sma200 == null) return null;
 
   // momentum score per symbol: current price vs close `lookback` bars ago
   const scores = [];
@@ -75,11 +48,11 @@ function onUpdate(ctx) {
   const isLeader = scores[0].sym === ctx.sym;
 
   const price = ctx.price;
+  const prevClose = ctx.closes.at(-2);
 
   if (ctx.position > 0) {
     const hardStop = ctx.entryPx - 2.5 * atr;
     const ll20 = ctx.low(20, 2);
-    if (!btcRiskOn) return { side: 'sell', qty: ctx.position };   // risk-off -> flatten
     if (price <= hardStop) return { side: 'sell', qty: ctx.position };
     if (ll20 != null && prevClose <= ll20) return { side: 'sell', qty: ctx.position };
     if (!isLeader) return { side: 'sell', qty: ctx.position };   // lost leadership -> rotate out
@@ -89,7 +62,6 @@ function onUpdate(ctx) {
   }
 
   if (!isLeader) return null;
-  if (!btcRiskOn) return null;   // risk-off: don't open new exposure
   if (prevClose <= sma200) return null;   // don't buy a leader that is below its long-term trend
   const hh55 = ctx.high(55, 2);
   if (hh55 == null || prevClose <= hh55) return null;   // enter only on a FRESH breakout

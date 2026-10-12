@@ -11,8 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [2944](strategies/2944/) | SOL 1D Vol-Scaled Mean Reversion | -28.84% | +985.64% | +40.82% | 10 | 2026-10-12 |
 | — | [3608](strategies/3608/) | Multi-Asset Momentum Rotation 4H | +53.16% | — | +15.22% | 76 | 2026-10-12 |
+|  | [2944](strategies/2944/) | SOL 1D Vol-Scaled Mean Reversion | -28.84% | +985.64% | +40.82% | 10 | 2026-10-12 |
 |  | [2946](strategies/2946/) | BTC 1D Donchian Breakout with ATR Trailing Stop | -89.65% | +50.97% | +90.81% | 143 | 2026-10-12 |
 |  | [3607](strategies/3607/) | ETH Donchian Plain 4H (baseline) | -18.38% | +30.75% | +28.19% | 92 | 2026-10-11 |
 | ★ | [3606](strategies/3606/) | ETH Donchian Volume-Confirmed 4H | +2.65% | -26.02% | +20.39% | 74 | 2026-10-11 |
