@@ -3,7 +3,7 @@
   "name": "ETH Fear-Greed Mean Reversion 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 18270,
+    "backtestId": 18275,
     "return": -4.69,
     "mdd": 7.62,
     "trades": 4,
