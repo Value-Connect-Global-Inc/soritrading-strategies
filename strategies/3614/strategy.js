@@ -6,23 +6,26 @@
  * interval: 4h
  * cash: 10000
  *
- * Why this strategy: markets overreact, then snap back. When price is stretched
- *   far below its average band and momentum is exhausted (RSI very low), the
- *   odds favour a bounce toward the mean. This is the opposite bet from the
- *   trend riders built in earlier cycles — a mean-reversion family.
- * When it buys and sells: buy when RSI(14) is below 30 and the close is below
- *   the lower Bollinger band (20,2); sell when the close climbs back above the
- *   middle band or RSI recovers above 55, or a 1.5x ATR hard stop is hit.
- * When it does NOT work: in a strong downtrend price keeps falling below the
- *   band and the hard stop is hit again and again — it bleeds slowly. It also
- *   sits in cash through big trending rallies and misses them entirely.
+ * Why this strategy: markets overreact and then snap back — but only when there
+ *   is a mean to revert to. The plain version (no regime filter) failed on all
+ *   three windows because it kept fading downtrends. This version only buys
+ *   dips inside an uptrend (price above its 200-EMA): the dip is temporary, the
+ *   trend is not.
+ * When it buys and sells: buy when RSI(14) is below 30, the close is below the
+ *   lower Bollinger band (20,2) AND the close is above the 200-EMA; sell when
+ *   the close climbs back above the middle band or RSI recovers above 55, or a
+ *   1.5x ATR hard stop is hit.
+ * When it does NOT work: in a choppy market the 200-EMA filter lets it in and
+ *   out too often; in a bear market it never buys, so it just sits in cash and
+ *   misses the bottom. It also bleeds if a strong uptrend reverses hard.
  */
 function onUpdate(ctx) {
   const st = ctx.state || {};
   const rsi = ctx.rsi(14, 1);
   const bb = ctx.bb(20, 2, 1);
   const atr = ctx.atr(14, 1);
-  if (rsi == null || bb == null || atr == null) return null;
+  const ema200 = ctx.ema(200, 1);
+  if (rsi == null || bb == null || atr == null || ema200 == null) return null;
 
   const price = ctx.price;
   const prevClose = ctx.closes.at(-2);
@@ -41,6 +44,7 @@ function onUpdate(ctx) {
 
   if (rsi >= 30) return null;              // only enter when momentum is exhausted
   if (prevClose >= bb.lower) return null;  // only enter stretched below the lower band
+  if (prevClose <= ema200) return null;    // regime guard: only fade dips in an uptrend
   if (st.lastExit != null && ctx.i - st.lastExit < 10) return null;  // cooldown: don't re-catch the same knife
 
   // risk 1% of cash on the 1.5x ATR stop (tight stop = small size, cannot ruin the account)
