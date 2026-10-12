@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [3701](strategies/3701/) | AI 전략 ‡ | +278.45% | — | +20.81% | 104 | 2026-10-12 |
+| — | [3701](strategies/3701/) | AI 전략 | +317.68% | — | +20.81% | 84 | 2026-10-12 |
 | — | [3700](strategies/3700/) | FearGreedTrendDip | +93.75% | — | +13.45% | 134 | 2026-10-12 |
 | ★ | [2653](strategies/2653/) | Band-Bounce Mean Reversion DOGE 4H | +94.76% | +9.39% | +34.99% | 191 | 2026-10-12 |
 |  | [2654](strategies/2654/) | OnChain-Confirmed Band-Bounce BTC 4H | -18.15% | +26.93% | +28.02% | 44 | 2026-10-12 |
