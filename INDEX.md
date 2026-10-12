@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2746](strategies/2746/) | Trend-Scaled Band-Bounce XRP 1D | +89.42% | +323.46% | +20.41% | 26 | 2026-10-12 |
 | — | [3668](strategies/3668/) | MultiAssetDonchianTrend | +335.24% | — | +24.36% | 70 | 2026-10-12 |
 | ★ | [2754](strategies/2754/) | Donchian Pullback Uptrend ETH 4H | +40.80% | -24.71% | +22.89% | 186 | 2026-10-12 |
 |  | [2758](strategies/2758/) | Regime-Switch Blend ETH 4H | +75.38% | +1620.25% | +38.26% | 178 | 2026-10-12 |
@@ -778,7 +779,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2751](strategies/2751/) | RSI2 Short-Term Mean Reversion BTC 4H | -97.02% | +449.51% | +97.05% | 1289 | 2026-09-26 |
 |  | [2750](strategies/2750/) | Refined Trend-Scaled Band-Bounce BCH 1D | -2.46% | +32.58% | +30.56% | 69 | 2026-09-26 |
 |  | [2748](strategies/2748/) | Trend-Scaled Band-Bounce BCH 1D | +17.64% | +165.92% | +29.60% | 41 | 2026-09-26 |
-|  | [2746](strategies/2746/) | Trend-Scaled Band-Bounce XRP 1D | +89.42% | +323.46% | +20.41% | 26 | 2026-09-26 |
 |  | [2745](strategies/2745/) | Regime-Switch Blend XRP 1D | -38.09% | +323.46% | +79.32% | 87 | 2026-09-26 |
 |  | [2744](strategies/2744/) | Band-Bounce Mean Reversion BCH 1D | +187.50% | +262.64% | +28.00% | 27 | 2026-09-26 |
 | ★ | [2743](strategies/2743/) | Band-Bounce Mean Reversion XRP 1D | +29.49% | -14.41% | +42.89% | 8 | 2026-09-26 |
