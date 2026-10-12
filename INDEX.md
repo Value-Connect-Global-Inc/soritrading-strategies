@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3687](strategies/3687/) | FearGreedContrarian | -27.99% | +95.22% | +27.99% | 16 | 2026-10-12 |
+|  | [3687](strategies/3687/) | FearGreedContrarian | +10.59% | +612.44% | +29.66% | 6 | 2026-10-12 |
 |  | [2732](strategies/2732/) | On-Chain Network-Health BTC 1D | -39.60% | +55.47% | +39.60% | 14 | 2026-10-12 |
 |  | [2734](strategies/2734/) | Band-Bounce Mean Reversion AVAX 4H | +29.26% | +1443.71% | +36.72% | 37 | 2026-10-12 |
 |  | [3556](strategies/3556/) | BNB Trend-Follow EMA50/200 4H | +1401.30% | +43740.00% | +36.31% | 217 | 2026-10-12 |

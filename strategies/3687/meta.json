@@ -3,16 +3,16 @@
   "name": "FearGreedContrarian",
   "kind": "custom",
   "verified": {
-    "backtestId": 18729,
-    "return": -27.99,
-    "mdd": 27.99,
-    "trades": 16,
+    "backtestId": 18732,
+    "return": 10.59,
+    "mdd": 29.66,
+    "trades": 6,
     "vsBuyHold": "lose",
-    "benchRet": 95.22,
+    "benchRet": 612.44,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1705276800,
-    "tTo": 1791590400,
+    "tFrom": 1532563200,
+    "tTo": 1618876800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
@@ -23,7 +23,7 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1000,
-      "end": 1791763200
+      "end": 1618963200
     }
   },
   "config": null,
