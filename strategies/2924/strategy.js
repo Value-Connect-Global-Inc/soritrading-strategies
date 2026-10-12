@@ -19,6 +19,8 @@
  * buy-and-hold. In a sustained bear it rarely buys because price stays below the
  * 200-day average. Very few trades (a handful per year), so a single bad entry
  * matters a lot.
+ *
+ * 2025-01-14: display-only watch declaration added; trading logic unchanged.
  */
 function onUpdate(ctx) {
   const bb = ctx.bb(20, 2, 1);
@@ -29,9 +31,21 @@ function onUpdate(ctx) {
   if (bb == null || bb.lower == null || rsi == null || sma200 == null || atr == null || px == null) return null;
 
   if (ctx.position > 0) {
+    ctx.watch([
+      { side: 'sell', price: bb.mid, trigger: 'above', note: 'BB mid target', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 60, closed: true }] },
+      { side: 'sell', price: bb.mid, trigger: 'above', note: 'BB mid target' },
+      { side: 'sell', price: 0, trigger: 'below', note: 'RSI exit', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 60, closed: true }] }
+    ]);
     if (px >= bb.mid || rsi > 60) return { side: 'sell', qty: ctx.position };
     return null;
   }
+
+  ctx.watch([
+    { side: 'buy', price: bb.lower, trigger: 'below', note: 'BB lower dip', conds: [
+      { label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true },
+      { label: 'Close > SMA200', ok: px > sma200 }
+    ]}
+  ]);
 
   if (px <= bb.lower && rsi < 30 && px > sma200) {
     const equity = ctx.cash + ctx.position * ctx.price;

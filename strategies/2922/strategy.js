@@ -20,6 +20,8 @@
  * and lags buy-and-hold (defensive). In a choppy sideways market the rising-SMA
  * gate may reject most dips, giving few trades. It still cannot avoid every
  * bad entry when a crash starts from a still-rising 200 SMA.
+ * 
+ * 2024-01-01: watch 선언만 추가됨 (표시만 바뀜, 매매 판단은 그대로)
  */
 function onUpdate(ctx) {
   const bb = ctx.bb(20, 2, 1);
@@ -31,7 +33,17 @@ function onUpdate(ctx) {
   if (bb == null || bb.lower == null || rsi == null || sma200 == null || sma200old == null || atr == null || px == null) return null;
 
   if (ctx.position > 0) {
-    if (px >= bb.mid || rsi > 60) return { side: 'sell', qty: ctx.position };
+    if (px >= bb.mid || rsi > 60) {
+      ctx.watch([
+        { side: 'sell', price: bb.mid, trigger: 'above', qty: ctx.position, note: 'BB mid exit' },
+        { side: 'sell', price: null, trigger: 'above', qty: ctx.position, note: 'RSI>60 exit', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 60, closed: true }] }
+      ]);
+      return { side: 'sell', qty: ctx.position };
+    }
+    ctx.watch([
+      { side: 'sell', price: bb.mid, trigger: 'above', qty: ctx.position, note: 'BB mid exit' },
+      { side: 'sell', price: null, trigger: 'above', qty: ctx.position, note: 'RSI>60 exit', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 60, closed: true }] }
+    ]);
     return null;
   }
 
@@ -41,7 +53,17 @@ function onUpdate(ctx) {
     const equity = ctx.cash + ctx.position * ctx.price;
     const stopDist = 2 * atr;
     const qty = Math.max(0, Math.min((equity * 0.02) / stopDist, (ctx.cash / ctx.price) * 0.95));
-    if (qty > 0) return { side: 'buy', qty: qty };
+    if (qty > 0) {
+      ctx.watch([
+        { side: 'buy', price: bb.lower, trigger: 'below', qty: qty, note: 'BB lower dip', conds: [
+          { label: 'RSI(14) close', now: rsi, op: '<', ref: 35, closed: true },
+          { label: 'Price > SMA200', ok: px > sma200 },
+          { label: 'SMA200 rising', ok: sma200 > sma200old }
+        ]}
+      ]);
+      return { side: 'buy', qty: qty };
+    }
   }
+  ctx.watch([]);
   return null;
 }
