@@ -16,22 +16,37 @@
  * Position is ATR-scaled so volatile assets get smaller size.
  * When it does NOT work: in a persistent downtrend below the 200-day average it
  * stays idle, and it lags straight-line melt-ups (few deep flushes to catch).
+ * 2025-04-26 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const ema20 = ctx.ema(20, 1);
   const atr = ctx.atr(14, 1);
   const sma200 = ctx.sma(200, 1);
   const rsi = ctx.rsi(14, 1);
-  if (ema20 == null || atr == null || sma200 == null || rsi == null || atr <= 0) return null;
+  if (ema20 == null || atr == null || sma200 == null || rsi == null || atr <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const lower = ema20 - 2.5 * atr;
   const st = ctx.state;
+  const cooldownActive = st.cooldown != null && ctx.i < st.cooldown;
 
   if (pos > 0) {
+    ctx.watch([{
+      side: 'sell',
+      price: ema20,
+      trigger: 'above',
+      qty: pos,
+      note: 'EMA20 snap-back'
+    }]);
     if (price > ema20) {
       st.cooldown = ctx.i + 2;
       return { side: 'sell', qty: pos };
@@ -39,7 +54,31 @@ function onUpdate(ctx) {
     return null;
   }
 
-  if (st.cooldown != null && ctx.i < st.cooldown) return null;
+  if (cooldownActive) {
+    ctx.watch([{
+      side: 'buy',
+      price: lower,
+      trigger: 'below',
+      note: 'Keltner lower band',
+      conds: [
+        { label: 'price > SMA200', now: price, op: '>', ref: sma200 },
+        { label: 'RSI(14) < 40', now: rsi, op: '<', ref: 40, closed: true },
+        { label: 'cooldown done', ok: false }
+      ]
+    }]);
+    return null;
+  }
+
+  ctx.watch([{
+    side: 'buy',
+    price: lower,
+    trigger: 'below',
+    note: 'Keltner lower band',
+    conds: [
+      { label: 'price > SMA200', now: price, op: '>', ref: sma200 },
+      { label: 'RSI(14) < 40', now: rsi, op: '<', ref: 40, closed: true }
+    ]
+  }]);
 
   if (price > sma200 && price <= lower && rsi < 40) {
     st.cooldown = null;

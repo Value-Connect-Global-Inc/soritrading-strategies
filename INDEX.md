@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2871](strategies/2871/) | DIAG multi-asset probe | +18.89% | +305.26% | +2.46% | 6 | 2026-10-12 |
 |  | [3629](strategies/3629/) | BTC Hashrate-Gated Trend 4H | +23.80% | +48.41% | +20.11% | 104 | 2026-10-12 |
 |  | [3630](strategies/3630/) | BTC Trend 4H No-Gate Control | +115.22% | +459.07% | +16.85% | 159 | 2026-10-12 |
 |  | [2876](strategies/2876/) | 45d OBV Trend Champion BTC 1D | +152.95% | +252.51% | +51.17% | 33 | 2026-10-12 |
@@ -641,7 +642,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | ★ | [2882](strategies/2882/) | 45d OBV Trend SMA50-Gate BTC 1D | +1810.62% | +1279.90% | +43.09% | 46 | 2026-09-27 |
 |  | [2875](strategies/2875/) | 20d OBV Trend Faster-Entry BTC 1D | +210.90% | +263.61% | +44.57% | 44 | 2026-09-27 |
 |  | [2872](strategies/2872/) | Onchain Demand Trend BTC 1D (re-validate) | +118.58% | +190.11% | +42.13% | 91 | 2026-09-27 |
-|  | [2871](strategies/2871/) | DIAG multi-asset probe | +18.89% | +305.26% | +2.46% | 6 | 2026-09-27 |
 |  | [2870](strategies/2870/) | BB Squeeze Breakout BTC 1D | -4.49% | +133.21% | +28.57% | 14 | 2026-09-27 |
 |  | [2868](strategies/2868/) | Keltner MR Daily BTC/ETH/SOL | +18.89% | +190.11% | +2.46% | 6 | 2026-09-27 |
 | ★ | [2867](strategies/2867/) | Keltner MR generalization LINK/LTC/DOGE/AVAX/BNB | +35.09% | -23.39% | +6.30% | 30 | 2026-09-27 |
