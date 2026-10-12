@@ -16,6 +16,7 @@
  * When it does NOT work: in a choppy sideways market the 14-day OBV slope flips
  * often and whipsaws. In a slow grinding bull it exits early on small pullbacks.
  * It is a long-only trend follower, so it sits in cash during bear markets.
+ * 2026-04-26 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const closes = ctx.closes;
@@ -46,10 +47,18 @@ function onUpdate(ctx) {
   if (sma50 == null || px == null) return null;
 
   if (ctx.position > 0) {
+    ctx.watch([
+      { side: 'sell', price: sma50, trigger: 'below', note: 'SMA50 break' },
+      { side: 'sell', note: 'OBV rollover', conds: [{ label: 'OBV 14D falling', ok: obv < obvPrev, closed: true }] }
+    ]);
     // exit on OBV rollover or price breaking the 50-day average
     if (obv < obvPrev || px < sma50) return { side: 'sell', qty: ctx.position };
     return null;
   }
+
+  ctx.watch([
+    { side: 'buy', price: sma50, trigger: 'above', note: 'SMA50 reclaim', conds: [{ label: 'OBV 14D rising', ok: obv > obvPrev, closed: true }] }
+  ]);
 
   // enter on rising OBV flow while above the 50-day trend line
   if (obv > obvPrev && px > sma50) {
