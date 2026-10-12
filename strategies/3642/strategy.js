@@ -44,9 +44,10 @@ function onUpdate(ctx) {
   }
 
   if (inTrend && minersExpanding) {
-    // Half cash per trade so a bad stretch cannot ruin the account.
+    // Full cash when the on-chain + trend signal aligns: the hashrate gate already
+    // keeps us out of most false signals, so sizing up captures more of the trend.
     ctx.watch([{ side: 'sell', price: ctx.entryPx - 3 * atr, trigger: 'below', note: '3x ATR stop' }]);
-    return { side: 'buy', qty: (ctx.cash * 0.5) / price * 0.99 };
+    return { side: 'buy', qty: (ctx.cash / price) * 0.99 };
   }
   ctx.watch([{ side: 'buy', price: price, trigger: 'above', note: 'hashrate + trend entry', conds: [
     { label: 'Hashrate > 30d avg', ok: minersExpanding, closed: true },
