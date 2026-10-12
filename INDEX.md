@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3647](strategies/3647/) | DonchianBreakout | +31.92% | +87.84% | +38.09% | 23 | 2026-10-12 |
+|  | [3647](strategies/3647/) | DonchianBreakout | +83.14% | +134.23% | +27.45% | 10 | 2026-10-12 |
 |  | [3646](strategies/3646/) | MeanReversionDips | -10.73% | +116.17% | +13.49% | 6 | 2026-10-12 |
 |  | [2818](strategies/2818/) | OBV Trend Vol-Scaled Size BTC 1D | -4.85% | +55.47% | +4.85% | 2 | 2026-10-12 |
 | ★ | [2821](strategies/2821/) | OBV Relaxed Gate + Fed Buy-Blocker 1D | +18.83% | -21.08% | +34.47% | 68 | 2026-10-12 |
