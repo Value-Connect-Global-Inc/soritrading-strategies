@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [2824](strategies/2824/) | OBV Relaxed Gate + ATR Trail 1D | +46.89% | +45.78% | +38.62% | 63 | 2026-10-12 |
 |  | [3644](strategies/3644/) | OnChainHashrateTrendOrig | +25.80% | +44.16% | +36.86% | 19 | 2026-10-12 |
 | ★ | [3643](strategies/3643/) | OnChainHashrateTrend2 | +308.52% | +116.17% | +54.24% | 9 | 2026-10-12 |
 |  | [2827](strategies/2827/) | Composite On-Chain Demand BTC 1D | +124.51% | +1258.25% | +60.37% | 44 | 2026-10-12 |
@@ -694,7 +695,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | ★ | [2835](strategies/2835/) | Price-Momentum Trend ROC BTC 1D | +597.04% | +263.61% | +44.62% | 44 | 2026-09-27 |
 |  | [2826](strategies/2826/) | OBV Relaxed Gate + Trend-Line Exit 1D | +750.60% | +1129.04% | +50.00% | 21 | 2026-09-26 |
 | ★ | [2825](strategies/2825/) | OBV Relaxed Gate + Fear-Greed De-risk 1D | +52.79% | +45.78% | +36.15% | 61 | 2026-09-26 |
-| ★ | [2824](strategies/2824/) | OBV Relaxed Gate + ATR Trail 1D | +46.89% | +45.78% | +38.62% | 63 | 2026-09-26 |
 |  | [2823](strategies/2823/) | OBV Relaxed Gate + Short Rising Filter 1D | +310.15% | +386.92% | +44.50% | 42 | 2026-09-26 |
 |  | [2822](strategies/2822/) | OBV Relaxed Gate + Rising Trend Filter 1D | +341.83% | +1147.75% | +50.50% | 26 | 2026-09-26 |
 | ★ | [2821](strategies/2821/) | OBV Relaxed Gate + Fed Buy-Blocker 1D | +18.83% | -21.08% | +34.47% | 68 | 2026-09-26 |

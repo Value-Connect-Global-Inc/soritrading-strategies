@@ -1,4 +1,5 @@
 /*
+ * 2026-04-26 표시만 바뀜, 매매 판단은 그대로
  * @coinsori-strategy v1
  * name: OBV Relaxed Gate + ATR Trail 1D
  * ex: binance
@@ -22,15 +23,24 @@
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const sma100 = ctx.sma(100, 1);
   const atr = ctx.atr(14, 1);
-  if (sma100 == null || atr == null) return null;
+  if (sma100 == null || atr == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   const closes = ctx.closes;
   const vols = ctx.volumes;
-  if (!closes || !vols || closes.length < 32) return null;
+  if (!closes || !vols || closes.length < 32) {
+    ctx.watch([]);
+    return null;
+  }
 
   let obv = 0;
   const obvSeries = [];
@@ -41,7 +51,10 @@ function onUpdate(ctx) {
     else if (c < p) obv -= v;
     obvSeries.push(obv);
   }
-  if (obvSeries.length < 32) return null;
+  if (obvSeries.length < 32) {
+    ctx.watch([]);
+    return null;
+  }
   const obvNow = obvSeries[obvSeries.length - 1];
   const obvPast = obvSeries[obvSeries.length - 31];
   const rising = obvNow > obvPast * 1.01;
@@ -70,6 +83,15 @@ function onUpdate(ctx) {
     // (which are ~2-3 ATR) but catches violent reversals. Chosen a priori.
     const trailStop = hi - 5 * atr;
     const stopped = price < trailStop;
+
+    // 표시 전용: 현재 포지션의 청산 대기선
+    const exitWatch = [];
+    if (Number.isFinite(trailStop) && trailStop > 0) {
+      exitWatch.push({ side: 'sell', price: trailStop, trigger: 'below', note: 'ATR trail' });
+    }
+    exitWatch.push({ side: 'sell', conds: [{ label: 'OBV falling', ok: falling }], note: 'OBV turn exit' });
+    ctx.watch(exitWatch);
+
     if (stopped && cd === 0) {
       ctx.state.cd = 5;
       return { side: 'sell', qty: pos };
@@ -80,6 +102,20 @@ function onUpdate(ctx) {
     }
     return null;
   }
+
+  // 표시 전용: 진입 대기선
+  const entryWatch = [{
+    side: 'buy',
+    price: sma100,
+    trigger: 'above',
+    note: 'price above SMA100',
+    conds: [
+      { label: 'OBV rising', ok: rising },
+      { label: 'volume confirms', ok: volOk },
+      { label: 'cooldown done', ok: cd === 0 }
+    ]
+  }];
+  ctx.watch(entryWatch);
 
   if (rising && price > sma100 && volOk && cd === 0) {
     ctx.state.cd = 5;
