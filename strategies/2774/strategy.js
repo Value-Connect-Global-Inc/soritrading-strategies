@@ -17,6 +17,7 @@
  * so this may just hold through everything (little filtering power) — it can
  * lag sharp price moves and miss the timing that price/addr capture better.
  * On-chain data is live in the feed (verified).
+ * 2025-04-11: watch declarations added — display only, trading logic unchanged.
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -36,11 +37,17 @@ function onUpdate(ctx) {
   const falling = now < past * 0.995;
 
   if (pos > 0) {
-    if (falling) return { side: 'sell', qty: pos };
+    if (falling) {
+      ctx.watch([{ side: 'sell', price: ctx.price, trigger: 'below', note: 'hashrate falling' }]);
+      return { side: 'sell', qty: pos };
+    }
+    ctx.watch([{ side: 'sell', price: past * 0.995, trigger: 'below', note: 'hashrate drop exit' }]);
     return null;
   }
   if (rising) {
+    ctx.watch([{ side: 'buy', price: ctx.price, trigger: 'above', note: 'hashrate rising' }]);
     return { side: 'buy', qty: ctx.cash / ctx.price * 0.95 };
   }
+  ctx.watch([{ side: 'buy', price: past * 1.005, trigger: 'above', note: 'hashrate rise entry' }]);
   return null;
 }
