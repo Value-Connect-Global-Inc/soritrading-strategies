@@ -6,16 +6,16 @@
  * interval: 4h
  * cash: 10000
  *
- * Why this strategy: A weak US dollar (DXY below its 100 reference) is
- *   usually risk-on, which favors crypto breakouts; a strong dollar is
- *   risk-off and breakouts tend to fail. This is a macro regime filter on
- *   top of a simple trend engine.
+ * Why this strategy: A falling US dollar (DXY below its own recent average)
+ *   is usually risk-on and favors crypto breakouts; a strengthening dollar
+ *   is risk-off and breakouts tend to fail. This is a macro regime filter
+ *   on top of a simple trend engine.
  * When it buys and sells: buy a 20-bar high close above the 100-EMA only
- *   when DXY < 100. Sell on a 20-bar low close, a 2.5x ATR hard stop, or a
- *   close back below the 100-EMA.
+ *   when DXY is below its ~30-day average. Sell on a 20-bar low close, a
+ *   2.5x ATR hard stop, or a close back below the 100-EMA.
  * When it does NOT work: DXY is slow and can stay weak while crypto falls
- *   for its own reasons; the fixed 100 level is a blunt tool, so in a
- *   strong-dollar regime the strategy sits out even strong crypto rallies.
+ *   for its own reasons; the gate also sits out strong crypto rallies in
+ *   dollar-strengthening regimes.
  */
 function onUpdate(ctx) {
   const atr = ctx.atr(14, 1);
@@ -25,8 +25,21 @@ function onUpdate(ctx) {
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) return null;
 
-  const dxy = ctx.data('dxy');            // US dollar index from user's dataset
-  const gateOk = dxy != null && dxy < 100; // 100 = long-run reference of the DXY index (set in 1973)
+  const dxy = ctx.data('dxy');            // US dollar index (daily value from user's dataset)
+  if (dxy == null) return null;
+
+  // Keep a rolling buffer of DXY values to build our own ~30-day average.
+  const st = ctx.state || {};
+  const hist = st.dxyHist || [];
+  hist.push(dxy);
+  if (hist.length > 180) hist.shift();    // 4h bars: 180 bars = 30 days
+  ctx.state = { dxyHist: hist };
+  if (hist.length < 90) return null;      // need at least ~15 days of history to judge the trend
+
+  let sum = 0;
+  for (let i = 0; i < hist.length; i++) sum += hist[i];
+  const dxyAvg = sum / hist.length;
+  const gateOk = dxy < dxyAvg;            // relative gate: dollar weakening vs its own recent average
 
   if (ctx.position > 0) {
     const hardStop = ctx.entryPx - 2.5 * atr;
@@ -40,7 +53,7 @@ function onUpdate(ctx) {
     return null;
   }
 
-  if (!gateOk) return null;   // macro gate: only buy while the dollar is weak
+  if (!gateOk) return null;   // macro gate: only buy while the dollar is weakening
   if (prevClose <= ema100) return null;
   const hh20 = ctx.high(20, 2);
   if (hh20 == null || prevClose <= hh20) return null;
