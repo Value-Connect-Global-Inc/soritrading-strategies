@@ -11,8 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [2922](strategies/2922/) | ETH 4H Bollinger MR Rising-200SMA Gate | +0.57% | -26.18% | +12.14% | 45 | 2026-10-12 |
 | ★ | [3616](strategies/3616/) | SOL Macro-Gated Breakout 4H | -5.35% | -22.18% | +8.96% | 8 | 2026-10-12 |
+| ★ | [2922](strategies/2922/) | ETH 4H Bollinger MR Rising-200SMA Gate | +0.57% | -26.18% | +12.14% | 45 | 2026-10-12 |
 | ★ | [3615](strategies/3615/) | SOL Dip-in-Uptrend 4H | -12.26% | -22.18% | +21.12% | 106 | 2026-10-12 |
 |  | [2924](strategies/2924/) | ETH 1D Bollinger Mean-Reversion | -3.37% | +599.41% | +4.85% | 6 | 2026-10-12 |
 |  | [2928](strategies/2928/) | ETH 4H Bollinger MR Uptrend-6pct | +3.26% | +9.87% | +1.60% | 4 | 2026-10-12 |
