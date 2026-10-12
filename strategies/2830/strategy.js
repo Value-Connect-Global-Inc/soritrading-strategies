@@ -20,13 +20,20 @@
  * gives back a large part of gains in sharp reversals (high drawdown), and in
  * range-bound chop the 55-day breakout fires late and exits late, whipsawing.
  */
+// 2026-04-26 표시만 바뀜, 매매 판단은 그대로
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const closes = ctx.closes;
-  if (!closes || closes.length < 56) return null;
+  if (!closes || closes.length < 56) {
+    ctx.watch([]);
+    return null;
+  }
 
   const i = ctx.i;
   // High of the prior 55 days (excluding current bar) for entry.
@@ -41,15 +48,20 @@ function onUpdate(ctx) {
     const l = ctx.low(1, k);
     if (l != null && l < lo) lo = l;
   }
-  if (!Number.isFinite(hi) || !Number.isFinite(lo)) return null;
+  if (!Number.isFinite(hi) || !Number.isFinite(lo)) {
+    ctx.watch([]);
+    return null;
+  }
 
   if (pos > 0) {
+    ctx.watch([{ side: 'sell', price: lo, trigger: 'below', note: 'Donchian 30D low exit' }]);
     if (price < lo) {
       return { side: 'sell', qty: pos };
     }
     return null;
   }
 
+  ctx.watch([{ side: 'buy', price: hi, trigger: 'above', note: 'Donchian 55D high entry' }]);
   if (price > hi) {
     return { side: 'buy', qty: ctx.cash / price * 0.95 };
   }

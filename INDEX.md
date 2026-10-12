@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2830](strategies/2830/) | Donchian Channel Breakout BTC 1D | +32.28% | +45.60% | +41.88% | 37 | 2026-10-12 |
 |  | [2831](strategies/2831/) | OBV Trend + MR Defense Regime Blend 1D | -3.07% | +46.95% | +8.62% | 8 | 2026-10-12 |
 | ★ | [2833](strategies/2833/) | OBV Trend Fast Lookback 15d BTC 1D | +51.79% | +46.95% | +28.66% | 8 | 2026-10-12 |
 |  | [3641](strategies/3641/) | OnChainNetworkTrend | -17.49% | +47.08% | +29.96% | 348 | 2026-10-12 |
@@ -685,7 +686,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | ★ | [2838](strategies/2838/) | OBV Trend Generalization ADA/LTC 1D | +178.72% | +50.89% | +52.51% | 67 | 2026-09-27 |
 | ★ | [2836](strategies/2836/) | OBV Trend + RSI Entry Filter BTC 1D | +328.47% | +263.61% | +39.14% | 34 | 2026-09-27 |
 | ★ | [2835](strategies/2835/) | Price-Momentum Trend ROC BTC 1D | +597.04% | +263.61% | +44.62% | 44 | 2026-09-27 |
-|  | [2830](strategies/2830/) | Donchian Channel Breakout BTC 1D | +32.28% | +45.60% | +41.88% | 37 | 2026-09-27 |
 |  | [2829](strategies/2829/) | On-Chain Demand + Vol-Scaled Size BTC 1D | +33.23% | +263.61% | +60.37% | 47 | 2026-09-27 |
 | ★ | [2828](strategies/2828/) | OBV Trend + On-Chain Demand De-Risk BTC 1D | +63.75% | +42.23% | +27.95% | 171 | 2026-09-26 |
 |  | [2827](strategies/2827/) | Composite On-Chain Demand BTC 1D | +124.83% | +1258.25% | +60.37% | 44 | 2026-09-26 |
