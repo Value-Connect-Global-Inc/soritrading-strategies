@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2857](strategies/2857/) | AI 전략 | +894.65% | +1009.79% | +38.43% | 45 | 2026-10-12 |
 | ★ | [2858](strategies/2858/) | AI 전략 | +667.16% | +574.98% | +40.97% | 35 | 2026-10-12 |
 |  | [2861](strategies/2861/) | 45d OBV Fast Re-Entry BTC 1D | +65.13% | +220.15% | +26.82% | 33 | 2026-10-12 |
 |  | [2860](strategies/2860/) | 45d OBV No-Volume-Gate BTC 1D | +63.05% | +220.15% | +27.26% | 29 | 2026-10-12 |
@@ -658,7 +659,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2863](strategies/2863/) | ETH 4H Stochastic Mean-Reversion | -90.37% | -51.44% | +90.41% | 256 | 2026-09-27 |
 |  | [2862](strategies/2862/) | BTC 1H Intraday Bollinger Mean-Reversion | +0.02% | +22.45% | +4.09% | 20 | 2026-09-27 |
 | ★ | [2859](strategies/2859/) | 45d OBV Partial Scale-Out BTC 1D | +728.32% | +574.98% | +40.98% | 36 | 2026-09-27 |
-|  | [2857](strategies/2857/) | AI 전략 | +894.65% | +1009.79% | +38.43% | 45 | 2026-09-27 |
 | ★ | [2856](strategies/2856/) | AI 전략 | +77.00% | -11.28% | +10.49% | 14 | 2026-09-27 |
 |  | [2855](strategies/2855/) | OBV Champion Pure BTC 1D (baseline) | +145.29% | +167.91% | +26.06% | 109 | 2026-09-27 |
 |  | [2853](strategies/2853/) | OBV Champion Pure BTC 1D (A/B) | -11.21% | +35.51% | +29.52% | 158 | 2026-09-27 |
