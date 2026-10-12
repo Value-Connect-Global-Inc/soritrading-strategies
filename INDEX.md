@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2702](strategies/2702/) | Band-Bounce Mean Reversion DOGE 4H | +151.21% | +192.63% | +10.46% | 25 | 2026-10-12 |
 |  | [2704](strategies/2704/) | Band-Bounce Bull-Ride Exit SOL 4H | +112.94% | +2922.17% | +15.52% | 23 | 2026-10-12 |
 |  | [3690](strategies/3690/) | DataDiag | -0.39% | +315.94% | +0.39% | 2216 | 2026-10-12 |
 |  | [3693](strategies/3693/) | HashrateRegimeTrend | -36.85% | -20.96% | +52.19% | 65 | 2026-10-12 |
@@ -825,7 +826,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2708](strategies/2708/) | Band-Bounce Mean Reversion ADA 4H | +118.53% | +2219.96% | +24.84% | 62 | 2026-09-26 |
 |  | [2707](strategies/2707/) | Regime-Switch Hybrid MDD-Capped SOL 4H | +237.49% | +2922.17% | +50.57% | 280 | 2026-09-26 |
 |  | [2706](strategies/2706/) | Macro-Regime Band-Bounce BTC 4H | +17.71% | +449.51% | +17.69% | 32 | 2026-09-26 |
-|  | [2702](strategies/2702/) | Band-Bounce Mean Reversion DOGE 4H | +151.21% | +192.63% | +10.46% | 25 | 2026-09-26 |
 |  | [2701](strategies/2701/) | SOL Trend-Ride Pullback 4H | -16.57% | +1670.97% | +16.57% | 12 | 2026-09-26 |
 | ★ | [2700](strategies/2700/) | Fed-Regime Macro Trend BTC 1D | +77.39% | +63.93% | +9.18% | 44 | 2026-09-26 |
 | ★ | [2698](strategies/2698/) | Band-Bounce Mean Reversion BNB 4H | +1.99% | -63.74% | +27.41% | 50 | 2026-09-26 |
