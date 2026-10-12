@@ -14,23 +14,37 @@
  * or a 6-ATR stop; then waits 5 bars before re-entering.
  * When it does NOT work: lags strong melt-ups; below the 200-SMA it never buys;
  * a panic that keeps falling still loses. Defensive, not a trend rider.
+ * 2026-04-26 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const bb = ctx.bb(20, 2, 1);
   const rsi = ctx.rsi(14, 1);
   const sma200 = ctx.sma(200, 1);
-  if (bb == null || rsi == null || sma200 == null) return null;
+  if (bb == null || rsi == null || sma200 == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   const price = ctx.price;
   const pos = ctx.position;
 
   if (pos > 0) {
+    const atr = ctx.atr(14, 1);
+    const entryPx = ctx.entryPx;
+    const stopPrice = atr != null && entryPx != null ? entryPx - atr * 6 : null;
+    const watch = [
+      { side: 'sell', price: bb.mid, trigger: 'above', qty: pos, note: '중간밴드 익절' },
+      { side: 'sell', qty: pos, note: 'RSI>50 청산', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 50, closed: true }] }
+    ];
+    if (stopPrice != null) watch.push({ side: 'sell', price: stopPrice, trigger: 'below', qty: pos, note: '6 ATR 손절' });
+    ctx.watch(watch);
+
     if (price >= bb.mid || rsi > 50) {
       ctx.state.lastExit = ctx.i;
       return { side: 'sell', qty: pos };
     }
-    const atr = ctx.atr(14, 1);
     if (atr != null && price <= ctx.entryPx - atr * 6) {
+      ctx.state = ctx.state || {};
       ctx.state.lastExit = ctx.i;
       return { side: 'sell', qty: pos };
     }
@@ -38,7 +52,23 @@ function onUpdate(ctx) {
   }
 
   const lastExit = ctx.state.lastExit || 0;
-  if (ctx.i - lastExit < 5) return null;
+  const cooldownOk = ctx.i - lastExit >= 5;
+  const aboveSma = price >= sma200;
+  const entryWatch = {
+    side: 'buy',
+    price: bb.lower,
+    trigger: 'below',
+    qty: ctx.cash / ctx.price * 0.95,
+    note: 'BB 하단 + RSI<30 매수',
+    conds: [
+      { label: '5-bar cooldown', ok: cooldownOk },
+      { label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true },
+      { label: 'SMA200 close', now: price, op: '>=', ref: sma200, closed: false }
+    ]
+  };
+  ctx.watch([entryWatch]);
+
+  if (!cooldownOk) return null;
 
   if (price < sma200) return null;
 
