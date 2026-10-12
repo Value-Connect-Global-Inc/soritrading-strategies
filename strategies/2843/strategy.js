@@ -19,6 +19,8 @@
  * is late into new uptrends and slow to exit — it can give back gains in
  * sharp reversals and misses fast initial rallies. In a flat market it may
  * churn between the two conditions.
+ *
+ * 2024-01-01: display-only change — added ctx.watch declarations; trading logic unchanged.
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -40,14 +42,37 @@ function onUpdate(ctx) {
   // --- Exit: either regime or trend breaks ---
   if (pos > 0) {
     if (!hashUp || !priceUp) {
+      ctx.watch([{ side: 'sell', price: price, trigger: 'below', note: 'regime/treak break', conds: [
+        { label: 'hashrate > SMA30', ok: hashUp },
+        { label: 'price > SMA50', ok: priceUp }
+      ]}]);
       return { side: 'sell', qty: pos };
     }
+    ctx.watch([{ side: 'sell', price: sma50, trigger: 'below', note: 'SMA50 break' },
+               { side: 'sell', price: hrSma * 1.01, trigger: 'below', note: 'hashrate SMA30 break' }]);
     return null;
   }
 
   // --- Entry: both conditions must hold ---
   if (hashUp && priceUp) {
+    ctx.watch([{ side: 'buy', price: sma50, trigger: 'above', note: 'SMA50 hold', conds: [
+      { label: 'hashrate > SMA30', ok: hashUp }
+    ]}]);
     return { side: 'buy', qty: ctx.cash / price * 0.95 };
   }
+
+  // No position, not entering — watch for entry conditions
+  const watchEntries = [];
+  if (!hashUp) {
+    watchEntries.push({ side: 'buy', price: hrSma * 1.01, trigger: 'above', note: 'hashrate SMA30', conds: [
+      { label: 'price > SMA50', ok: priceUp }
+    ]});
+  }
+  if (!priceUp) {
+    watchEntries.push({ side: 'buy', price: sma50, trigger: 'above', note: 'SMA50', conds: [
+      { label: 'hashrate > SMA30', ok: hashUp }
+    ]});
+  }
+  ctx.watch(watchEntries);
   return null;
 }
