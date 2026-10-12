@@ -11,9 +11,9 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3635](strategies/3635/) | BTC-ETH Confirmed Trend 4H | +175.37% | +1888.22% | +15.76% | 117 | 2026-10-12 |
 |  | [2864](strategies/2864/) | ETH 4H Keltner Mean-Reversion | +90.51% | +1663.94% | +29.11% | 48 | 2026-10-12 |
 |  | [2866](strategies/2866/) | Keltner MR generalization ADA/DOT/XRP | +104.98% | +149.62% | +5.19% | 34 | 2026-10-12 |
-|  | [3635](strategies/3635/) | BTC-ETH Confirmed Trend 4H | +175.37% | +1888.22% | +15.76% | 117 | 2026-10-12 |
 |  | [3634](strategies/3634/) | BTC Mean Reversion 4H | -25.27% | +35.80% | +30.79% | 124 | 2026-10-12 |
 |  | [3633](strategies/3633/) | BTC Fear-Greed Contrarian 1D | +3.16% | +612.44% | +24.87% | 4 | 2026-10-12 |
 |  | [3632](strategies/3632/) | BTC DXY-Gated Trend 4H | +8.83% | +459.07% | +13.90% | 12 | 2026-10-12 |
