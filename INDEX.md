@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 488 of 1892 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 487 of 1892 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 270 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |:-:|---:|---|---:|---:|---:|---:|---|
 |  | [2864](strategies/2864/) | ETH 4H Keltner Mean-Reversion | +90.51% | +1663.94% | +29.11% | 48 | 2026-10-12 |
 |  | [2866](strategies/2866/) | Keltner MR generalization ADA/DOT/XRP | +104.98% | +149.62% | +5.19% | 34 | 2026-10-12 |
-| ★ | [3635](strategies/3635/) | BTC-ETH Confirmed Trend 4H | +61.73% | +48.41% | +18.92% | 104 | 2026-10-12 |
+|  | [3635](strategies/3635/) | BTC-ETH Confirmed Trend 4H | +175.37% | +1888.22% | +15.76% | 117 | 2026-10-12 |
 |  | [3634](strategies/3634/) | BTC Mean Reversion 4H | -25.27% | +35.80% | +30.79% | 124 | 2026-10-12 |
 |  | [3633](strategies/3633/) | BTC Fear-Greed Contrarian 1D | +3.16% | +612.44% | +24.87% | 4 | 2026-10-12 |
 |  | [3632](strategies/3632/) | BTC DXY-Gated Trend 4H | +8.83% | +459.07% | +13.90% | 12 | 2026-10-12 |
