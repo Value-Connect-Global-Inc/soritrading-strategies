@@ -3,9 +3,9 @@
   "name": "DollarRegimeBTC",
   "kind": "custom",
   "verified": {
-    "backtestId": 18910,
-    "return": -0.02,
-    "mdd": 0.02,
+    "backtestId": 18913,
+    "return": -0.2,
+    "mdd": 0.2,
     "trades": 2,
     "vsBuyHold": "lose",
     "benchRet": 95.22,
@@ -26,9 +26,9 @@
       "end": 1791763200
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "5f145fa8f91b887fba7d376f9b052b30bc7d33d3bf6b1327aa9f1c31e947e064"
+    "verifiedCodeSha256": "9d3021f852889bbe80c75aa842003bee0c91b87a94f6096a68cd0810a31ce2b5"
   },
   "config": null,
-  "updatedAt": "2026-10-12T21:56:45.148Z",
+  "updatedAt": "2026-10-12T21:57:36.020Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
