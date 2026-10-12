@@ -11,10 +11,10 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [3697](strategies/3697/) | AI 전략 | +354.55% | — | +20.86% | 101 | 2026-10-12 |
 | — | [3698](strategies/3698/) | VolTargetTrendRider | +19.59% | — | +10.84% | 94 | 2026-10-12 |
 |  | [2672](strategies/2672/) | Band-Bounce Mean Reversion XLM 4H | +128.50% | +217.37% | +23.27% | 98 | 2026-10-12 |
 |  | [3696](strategies/3696/) | VolTargetTrendRider | +123.19% | +612.44% | +14.14% | 26 | 2026-10-12 |
-| — | [3697](strategies/3697/) | AI 전략 | +354.55% | — | +20.86% | 101 | 2026-10-12 |
 |  | [2681](strategies/2681/) | Band-Bounce Mean Reversion TRX 4H | +12.16% | +97.86% | +8.20% | 56 | 2026-10-12 |
 |  | [2684](strategies/2684/) | Squeeze Breakout SOL 4H v2 | +9.13% | +2922.17% | +3.14% | 8 | 2026-10-12 |
 |  | [2685](strategies/2685/) | Squeeze Breakout SOL 4H v3 trail | -27.85% | +2922.17% | +37.50% | 8 | 2026-10-12 |
