@@ -11,10 +11,10 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [2824](strategies/2824/) | OBV Relaxed Gate + ATR Trail 1D | +46.89% | +45.78% | +38.62% | 63 | 2026-10-12 |
 | ★ | [3645](strategies/3645/) | PureSMA200Trend | +318.86% | +116.17% | +53.47% | 9 | 2026-10-12 |
 |  | [3644](strategies/3644/) | OnChainHashrateTrendOrig | +25.80% | +44.16% | +36.86% | 19 | 2026-10-12 |
 | ★ | [3643](strategies/3643/) | OnChainHashrateTrend2 | +308.52% | +116.17% | +54.24% | 9 | 2026-10-12 |
+| ★ | [2824](strategies/2824/) | OBV Relaxed Gate + ATR Trail 1D | +46.89% | +45.78% | +38.62% | 63 | 2026-10-12 |
 |  | [2827](strategies/2827/) | Composite On-Chain Demand BTC 1D | +124.51% | +1258.25% | +60.37% | 44 | 2026-10-12 |
 | ★ | [2828](strategies/2828/) | OBV Trend + On-Chain Demand De-Risk BTC 1D | +58.59% | +42.23% | +28.20% | 175 | 2026-10-12 |
 |  | [2829](strategies/2829/) | On-Chain Demand + Vol-Scaled Size BTC 1D | +33.23% | +263.61% | +60.37% | 47 | 2026-10-12 |
