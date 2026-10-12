@@ -10,12 +10,11 @@
  * uptrend (price above its 50-day and 200-day averages) while sizing each
  * position by inverse volatility so every position risks the same fixed dollar
  * amount. The key mechanism is risk management — position size adapts to
- * market volatility, not a clever entry. An RSI<75 gate keeps it from buying
- * the very top of an exhausted parabolic move.
+ * market volatility, not a clever entry.
  * When it buys and sells: buy when a close is above BOTH the 50-day and
- * 200-day averages AND RSI(14) close is below 75; sell when a close falls
- * below the 50-day average or price hits a 2x ATR stop below entry. Each
- * asset is sized to risk 1% of equity.
+ * 200-day averages; sell when a close falls below the 50-day average or price
+ * hits a 2x ATR stop below entry. Each asset is sized to risk a fixed percent
+ * of equity.
  * When it does NOT work: in a choppy sideways market where price oscillates
  * around the 50-day average it churns (buys near the top of each wiggle, sells
  * near the bottom). The 200-day filter keeps it out of deep bears, but a slow
@@ -30,8 +29,7 @@ function onUpdate(ctx) {
   const sma200 = ctx.sma(200, 1);
   const sma50 = ctx.sma(50, 1);
   const atr = ctx.atr(14, 1);
-  const rsi = ctx.rsi(14, 1);
-  if (sma200 == null || sma50 == null || atr == null || atr <= 0 || rsi == null) return null;
+  if (sma200 == null || sma50 == null || atr == null || atr <= 0) return null;
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) { ctx.watch([]); return null; }
 
@@ -47,21 +45,19 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // Volatility-targeted size: risk a fixed 1% of equity per position via a
-  // 2x ATR stop, then cap a single position at 40% of equity so low-vol coins
-  // cannot over-leverage the book. 1% x 3 assets = max 3% of equity at risk.
-  const riskPerTrade = 0.01 * ctx.cash;
+  // Volatility-targeted size: risk a fixed 2.5% of equity per position via a
+  // 2x ATR stop, then cap a single position at 60% of equity so low-vol coins
+  // cannot over-leverage the book. 2.5% x 3 assets = max 7.5% of equity at risk.
+  const riskPerTrade = 0.025 * ctx.cash;
   let qty = riskPerTrade / (2 * atr);
-  const maxQty = (ctx.cash / price) * 0.40;
+  const maxQty = (ctx.cash / price) * 0.60;
   qty = Math.min(qty, maxQty);
 
-  // RSI<75 gate: same reason as the champion — do not buy the top of a move.
-  if (prevClose > sma200 && prevClose > sma50 && rsi < 75) {
+  if (prevClose > sma200 && prevClose > sma50) {
     ctx.watch([]);
     return { side: 'buy', qty };
   }
   ctx.watch([{ side: 'buy', price: sma50, trigger: 'above', note: 'trend re-entry',
-               conds: [{ label: 'close>200d', ok: prevClose > sma200 },
-                       { label: 'RSI(14) close', now: rsi, op: '<', ref: 75, closed: true }] }]);
+               conds: [{ label: 'close>200d', ok: prevClose > sma200 }] }]);
   return null;
 }
