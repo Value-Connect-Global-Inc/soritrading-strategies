@@ -4,13 +4,16 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 496 of 1914 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 496 of 1915 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 271 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3660](strategies/3660/) | BTPullbackRide | -13.77% | +165.19% | +47.22% | 22 | 2026-10-12 |
+| ★ | [3656](strategies/3656/) | DonchianBaseline | +260.37% | +213.55% | +44.98% | 17 | 2026-10-12 |
+|  | [3658](strategies/3658/) | DonchianRiskSized | +13.51% | +87.84% | +16.63% | 23 | 2026-10-12 |
 |  | [3659](strategies/3659/) | AI 전략 | +74.08% | +165.19% | +20.18% | 20 | 2026-10-12 |
 |  | [2769](strategies/2769/) | Onchain Addr Probe | +296.49% | +315.94% | +52.53% | 1 | 2026-10-12 |
 |  | [2774](strategies/2774/) | Onchain Hashrate Trend BTC 1D | -73.42% | +55.47% | +85.56% | 184 | 2026-10-12 |
@@ -18,9 +21,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | ★ | [2776](strategies/2776/) | AI 전략 | +70.98% | +42.23% | +64.39% | 92 | 2026-10-12 |
 |  | [2777](strategies/2777/) | AI 전략 | +40.01% | +1258.25% | +85.06% | 6 | 2026-10-12 |
 |  | [2780](strategies/2780/) | Volume-Panic Mean Reversion BTC 4H | -41.51% | +435.09% | +53.84% | 130 | 2026-10-12 |
-|  | [3658](strategies/3658/) | DonchianRiskSized | +13.51% | +87.84% | +16.63% | 23 | 2026-10-12 |
 |  | [3657](strategies/3657/) | DonchianSlowEntry | +16.36% | +87.84% | +44.75% | 19 | 2026-10-12 |
-| ★ | [3656](strategies/3656/) | DonchianBaseline | +260.37% | +213.55% | +44.98% | 17 | 2026-10-12 |
 | ★ | [3655](strategies/3655/) | DonchianOiGate | +260.37% | +213.55% | +44.98% | 17 | 2026-10-12 |
 |  | [3654](strategies/3654/) | DonchianWideExit | +117.22% | +213.55% | +63.27% | 13 | 2026-10-12 |
 | ★ | [3653](strategies/3653/) | DonchianDxyGate | +65.03% | +44.16% | +38.99% | 19 | 2026-10-12 |
