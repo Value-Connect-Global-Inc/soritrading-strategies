@@ -3,32 +3,31 @@
   "name": "SolOversoldReversion",
   "kind": "custom",
   "verified": {
-    "backtestId": 18889,
-    "return": -2.21,
-    "mdd": 7.65,
-    "trades": 39,
+    "backtestId": 18894,
+    "return": 4.28,
+    "mdd": 4.35,
+    "trades": 12,
     "vsBuyHold": "lose",
-    "benchRet": 16.67,
+    "benchRet": 861.13,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1705276800,
-    "tTo": 1791590400,
+    "tFrom": 1597104000,
+    "tTo": 1618876800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "기간 종료 시 미청산 포지션 1종목 (총자산의 11.93%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 253봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "SOL",
       "interval": "1d",
       "bars": 1000,
-      "end": 1791763200
+      "end": 1618963200
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "2d97cc0f84b91290682d320d90fcf72f13cae46ad8927e9efb89191e2831681f"
+    "verifiedCodeSha256": "c482ba6aa4c0b5f3e96ce67c7d930ff65340dd1e7d5cafe8a19a25024283eea1"
   },
   "config": null,
-  "updatedAt": "2026-10-12T21:37:53.641Z",
+  "updatedAt": "2026-10-12T21:39:40.478Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

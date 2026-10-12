@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3710](strategies/3710/) | SolOversoldReversion | -2.21% | +16.67% | +7.65% | 39 | 2026-10-12 |
+|  | [3710](strategies/3710/) | SolOversoldReversion | +4.28% | +861.13% | +4.35% | 12 | 2026-10-12 |
 |  | [3709](strategies/3709/) | HashrateFundamentalsTrend | -80.01% | +95.22% | +82.58% | 388 | 2026-10-12 |
 |  | [3708](strategies/3708/) | FearGreedContrarianSOL | -52.94% | +332.68% | +62.93% | 6 | 2026-10-12 |
 |  | [3706](strategies/3706/) | FearGreedMeanReversion | -5.76% | +47.08% | +8.52% | 32 | 2026-10-12 |
