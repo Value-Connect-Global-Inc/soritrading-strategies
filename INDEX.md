@@ -11,8 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [3698](strategies/3698/) | VolTargetTrendRider | +341.30% | — | +20.81% | 152 | 2026-10-12 |
 |  | [2660](strategies/2660/) | On-Chain Trend BTC 1D | +20.90% | +1258.25% | +72.15% | 204 | 2026-10-12 |
-| — | [3698](strategies/3698/) | VolTargetTrendRider | +297.08% | — | +20.81% | 152 | 2026-10-12 |
 | ★ | [2664](strategies/2664/) | VWAP-Pullback SOL 4H MomentumEntry+MidVolSize | +93.64% | +64.11% | +22.84% | 82 | 2026-10-12 |
 | — | [3697](strategies/3697/) | AI 전략 | +354.55% | — | +20.86% | 101 | 2026-10-12 |
 |  | [2672](strategies/2672/) | Band-Bounce Mean Reversion XLM 4H | +128.50% | +217.37% | +23.27% | 98 | 2026-10-12 |
