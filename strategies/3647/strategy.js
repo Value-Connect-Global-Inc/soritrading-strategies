@@ -1,20 +1,20 @@
 /*
  * @coinsori-strategy v1
- * name: DonchianBreakout
+ * name: DonchianTrendFiltered
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
  * Why this strategy: sustained trends in BTC start with a breakout — price makes a
- * new multi-week high and keeps going. Entering only on a fresh 55-day high avoids
- * buying into chop and rides the big moves; exiting on a 20-day low cuts the trend
- * before it fully reverses. This is the classic Turtle/Donchian momentum system.
+ * new multi-week high and keeps going. Adding a long-term trend filter (close above
+ * the 200-day average) keeps the system from buying breakouts inside a downtrend,
+ * where they are noise. Classic Turtle momentum with a trend filter.
  * When it buys and sells: buys full position when the previous close is a new 55-day
- * high; sells when it is a 20-day low, or on a hard 2x ATR stop below entry.
+ * high AND above the 200-day trend line; sells on a 20-day low or a hard 2x ATR stop.
  * When it does NOT work: in a sideways market the 55-day high is hit repeatedly and
- * each breakout fails (whipsaw), and the 20-day low exit gives back part of every
- * move — so flat markets are its enemy.
+ * each breakout fails (whipsaw); the filter removes the worst of it but not all.
+ * In a steady grind up it also waits for a breakout, so it lags a straight buy-and-hold.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -22,7 +22,8 @@ function onUpdate(ctx) {
   const entryHigh = ctx.high(55, 2); // 55-bar high, 2 bars back (excludes last closed bar)
   const exitLow = ctx.low(20, 2);     // 20-bar low, 2 bars back (excludes last closed bar)
   const atr = ctx.atr(14, 1);
-  if (entryHigh == null || exitLow == null || atr == null || atr <= 0) return null;
+  const trend = ctx.sma(200, 1);     // long-term trend line, closed bar
+  if (entryHigh == null || exitLow == null || atr == null || atr <= 0 || trend == null) return null;
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) return null;
 
@@ -38,11 +39,14 @@ function onUpdate(ctx) {
     return null;
   }
 
-  if (prevClose > entryHigh) {
-    // Fresh 55-day high = the start of a sustained move, not chop — full position.
+  // Trend filter: only breakouts while the close is above the 200-day average.
+  // Rationale — a 55-day high inside a downtrend is just noise; above the trend
+  // line it is a real regime change. Standard turtle filter, no tuning.
+  const uptrend = prevClose > trend;
+  if (prevClose > entryHigh && uptrend) {
     ctx.watch([{ side: 'sell', price: ctx.entryPx - 2 * atr, trigger: 'below', note: '2x ATR stop' }]);
     return { side: 'buy', qty: (ctx.cash / price) * 0.99 };
   }
-  ctx.watch([{ side: 'buy', price: entryHigh, trigger: 'above', note: '55d breakout entry' }]);
+  ctx.watch([{ side: 'buy', price: entryHigh, trigger: 'above', note: '55d breakout', conds: [{ label: 'close > SMA200', ok: uptrend }] }]);
   return null;
 }
