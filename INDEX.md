@@ -12,9 +12,9 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
 |  | [3647](strategies/3647/) | DonchianBreakout | +31.92% | +87.84% | +38.09% | 23 | 2026-10-12 |
+|  | [3646](strategies/3646/) | MeanReversionDips | -10.73% | +116.17% | +13.49% | 6 | 2026-10-12 |
 |  | [2818](strategies/2818/) | OBV Trend Vol-Scaled Size BTC 1D | -4.85% | +55.47% | +4.85% | 2 | 2026-10-12 |
 | ★ | [2821](strategies/2821/) | OBV Relaxed Gate + Fed Buy-Blocker 1D | +18.83% | -21.08% | +34.47% | 68 | 2026-10-12 |
-|  | [3646](strategies/3646/) | MeanReversionDips | -10.73% | +116.17% | +13.49% | 6 | 2026-10-12 |
 | ★ | [3645](strategies/3645/) | PureSMA200Trend | +318.86% | +116.17% | +53.47% | 9 | 2026-10-12 |
 |  | [3644](strategies/3644/) | OnChainHashrateTrendOrig | +25.80% | +44.16% | +36.86% | 19 | 2026-10-12 |
 | ★ | [3643](strategies/3643/) | OnChainHashrateTrend2 | +308.52% | +116.17% | +54.24% | 9 | 2026-10-12 |
