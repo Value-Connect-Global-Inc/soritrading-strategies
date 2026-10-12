@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2769](strategies/2769/) | Onchain Addr Probe | +296.49% | +315.94% | +52.53% | 1 | 2026-10-12 |
 |  | [2774](strategies/2774/) | Onchain Hashrate Trend BTC 1D | -73.42% | +55.47% | +85.56% | 184 | 2026-10-12 |
 |  | [2773](strategies/2773/) | Onchain Hashrate Probe | +296.49% | +315.94% | +52.53% | 1 | 2026-10-12 |
 | ★ | [2776](strategies/2776/) | AI 전략 | +70.98% | +42.23% | +64.39% | 92 | 2026-10-12 |
@@ -759,7 +760,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2772](strategies/2772/) | Onchain Demand Trend BTC 1D | +134.03% | +262.64% | +42.13% | 85 | 2026-09-26 |
 |  | [2771](strategies/2771/) | Onchain Demand Trend BTC 1D | -15.59% | +55.47% | +69.15% | 198 | 2026-09-26 |
 |  | [2770](strategies/2770/) | Onchain Sma30 Probe | +247.17% | +262.64% | +52.47% | 1 | 2026-09-26 |
-|  | [2769](strategies/2769/) | Onchain Addr Probe | +247.17% | +262.64% | +52.47% | 1 | 2026-09-26 |
 | ★ | [2765](strategies/2765/) | Donchian Pullback RSIFloor XRP 4H | -2.71% | -55.99% | +51.91% | 94 | 2026-09-26 |
 |  | [2764](strategies/2764/) | Bollinger Squeeze Breakout ETH 4H | -36.97% | +1620.25% | +63.87% | 102 | 2026-09-26 |
 |  | [2763](strategies/2763/) | VWAP-Pullback Wide-Stop Trend SOL 4H | -33.99% | -16.56% | +55.26% | 288 | 2026-09-26 |
