@@ -11,9 +11,9 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3650](strategies/3650/) | AI 전략 | +8.42% | +87.84% | +30.15% | 17 | 2026-10-12 |
 |  | [2797](strategies/2797/) | BTC 1D Fed-Funds Rate Regime Gate | +44.55% | +55.47% | +47.21% | 22 | 2026-10-12 |
 |  | [2799](strategies/2799/) | BTC 1D Fed-Gate + Trend Defense (two-state) | -84.22% | +270.70% | +91.63% | 134 | 2026-10-12 |
-|  | [3650](strategies/3650/) | AI 전략 | +8.42% | +87.84% | +30.15% | 17 | 2026-10-12 |
 | ★ | [2802](strategies/2802/) | SOL 1D Fed-Funds Rate Regime Gate | +67.52% | -28.73% | +59.86% | 41 | 2026-10-12 |
 |  | [2801](strategies/2801/) | ETH 1D Fed-Funds Rate Regime Gate | +234.20% | +324.12% | +72.21% | 66 | 2026-10-12 |
 | ★ | [2805](strategies/2805/) | AI 전략 | +14.49% | -24.71% | +23.65% | 48 | 2026-10-12 |
