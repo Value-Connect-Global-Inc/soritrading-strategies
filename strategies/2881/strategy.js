@@ -45,6 +45,8 @@ function onUpdate(ctx) {
       ctx.state.cd = 3;
       return { side: 'sell', qty: pos };
     }
+    // Display: waiting for exit below 20-day low
+    ctx.watch([{ side: 'sell', price: lo, trigger: 'below', note: '20-day low exit' }]);
     return null;
   }
 
@@ -54,5 +56,7 @@ function onUpdate(ctx) {
     const qty = ctx.cash / price * 0.95;
     return { side: 'buy', qty: qty };
   }
+  // Display: waiting for entry above 55-day high
+  ctx.watch([{ side: 'buy', price: hi, trigger: 'above', note: '55-day high entry' }]);
   return null;
 }
