@@ -19,6 +19,7 @@
  * so drawdown is higher when OBV rolls over slowly — the risk is the 2022 bear
  * where a slow exit gives back gains. It also re-enters late after genuine
  * trend breaks.
+ * 2026-01-18: display-only ctx.watch added, trading logic unchanged.
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -66,16 +67,20 @@ function onUpdate(ctx) {
 
   if (pos > 0) {
     if (falling && cd === 0) {
+      ctx.watch([{ side: 'sell', price: price, trigger: 'below', note: 'OBV -3% exit', qty: pos, conds: [{ label: 'OBV 45d falling', ok: falling, closed: true }] }]);
       ctx.state.cd = 5;
       return { side: 'sell', qty: pos };
     }
+    ctx.watch([{ side: 'sell', price: price, trigger: 'below', note: 'OBV -3% exit', qty: pos, conds: [{ label: 'OBV 45d falling', ok: falling, closed: true }] }]);
     return null;
   }
 
   if (rising && price > sma100 && volOk && cd === 0) {
+    ctx.watch([{ side: 'buy', price: price, trigger: 'above', note: 'OBV rise + SMA100 + vol', qty: ctx.cash / price * 0.95 * sizeFrac, conds: [{ label: 'OBV 45d rising', ok: rising, closed: true }, { label: 'Price > SMA100', now: price, op: '>', ref: sma100, closed: true }, { label: 'Vol > avg30', ok: volOk, closed: true }] }]);
     ctx.state.cd = 5;
     const qty = ctx.cash / price * 0.95 * sizeFrac;
     return { side: 'buy', qty: qty };
   }
+  ctx.watch([]);
   return null;
 }
