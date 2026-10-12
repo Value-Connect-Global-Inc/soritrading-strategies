@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2883](strategies/2883/) | Hybrid OBV-Trend + Keltner-MR BTC 1D | +56.16% | +1279.90% | +23.54% | 290 | 2026-10-12 |
 | ★ | [3625](strategies/3625/) | AI 전략 | +24.86% | -26.02% | +20.91% | 104 | 2026-10-12 |
 |  | [2887](strategies/2887/) | Macro-Gated Keltner MR BTC 1D | +19.61% | +45.60% | +2.46% | 8 | 2026-10-12 |
 |  | [2888](strategies/2888/) | RSI2 Capitulation BTC 1D | +0.18% | +1279.90% | +0.22% | 86 | 2026-10-12 |
@@ -626,7 +627,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2889](strategies/2889/) | Hashrate-Gated Keltner MR BTC 1D | +19.08% | +45.60% | +2.46% | 8 | 2026-09-27 |
 |  | [2886](strategies/2886/) | Keltner MR ATOM 1D | +4.69% | +18.54% | +5.79% | 6 | 2026-09-27 |
 |  | [2884](strategies/2884/) | Dual Onchain-Demand + OBV BTC 1D | -28.62% | +105.65% | +53.27% | 80 | 2026-09-27 |
-|  | [2883](strategies/2883/) | Hybrid OBV-Trend + Keltner-MR BTC 1D | +56.16% | +1279.90% | +23.54% | 290 | 2026-09-27 |
 | ★ | [2882](strategies/2882/) | 45d OBV Trend SMA50-Gate BTC 1D | +1810.62% | +1279.90% | +43.09% | 46 | 2026-09-27 |
 |  | [2881](strategies/2881/) | Donchian Breakout BTC 1D | +6.25% | +45.60% | +43.33% | 45 | 2026-09-27 |
 |  | [2880](strategies/2880/) | 45d OBV Trend BNB 1D | +3345.94% | +23326.24% | +67.07% | 16 | 2026-09-27 |

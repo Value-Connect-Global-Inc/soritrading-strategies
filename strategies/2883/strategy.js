@@ -71,6 +71,35 @@ function onUpdate(ctx) {
   // TREND mode active?
   const trendMode = obvRising && price > sma100 && volOk;
 
+  // --- watch declaration (display only, no order) ---
+  if (pos > 0) {
+    // In position: show exit lines (OBV down in trend mode, snap-back in MR mode)
+    const watch = [];
+    if (obvFalling && cd === 0) {
+      watch.push({ side: 'sell', price: price, trigger: 'below', note: 'OBV down', conds: [{ label: 'OBV falling', ok: true }] });
+    }
+    if (!trendMode && price > ema20 && cd === 0) {
+      watch.push({ side: 'sell', price: ema20, trigger: 'below', note: 'MR snap-back', conds: [{ label: 'Price > EMA20', now: price, op: '>', ref: ema20, closed: false }] });
+    }
+    if (watch.length === 0) {
+      watch.push({ side: 'sell', price: ema20, trigger: 'below', note: 'Exit level' });
+    }
+    ctx.watch(watch);
+  } else {
+    // No position: show entry lines
+    if (cd > 0) {
+      ctx.watch([]);
+    } else if (trendMode) {
+      ctx.watch([{ side: 'buy', price: price, trigger: 'below', note: 'TREND entry', conds: [{ label: 'OBV rising', ok: true }, { label: 'Price > SMA100', now: price, op: '>', ref: sma100, closed: false }, { label: 'Volume > avg', ok: volOk }] }]);
+    } else {
+      const lower = ema20 - 2.5 * atr;
+      const mrConds = [];
+      if (price > sma200) mrConds.push({ label: 'Price > SMA200', now: price, op: '>', ref: sma200, closed: false });
+      if (rsi < 40) mrConds.push({ label: 'RSI(14) < 40', now: rsi, op: '<', ref: 40, closed: true });
+      ctx.watch([{ side: 'buy', price: lower, trigger: 'below', note: 'MR flush', conds: mrConds }]);
+    }
+  }
+
   if (pos > 0) {
     // In trend mode, exit when OBV turns down. In MR mode, exit on snap-back.
     if (obvFalling && cd === 0) {
