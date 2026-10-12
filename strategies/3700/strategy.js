@@ -1,52 +1,60 @@
 /*
  * @coinsori-strategy v1
- * name: FearGreedTrendDip
+ * name: DollarRegimeTrendRider
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, BNB/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: crowd sentiment is mean-reverting. When the Fear & Greed
- * index hits a fresh panic extreme (lowest in a month) inside an uptrend, the
- * crowd is capitulating and short-term downside is often exhausted — a good
- * place to buy. We hold until the trend itself breaks, letting winners run.
- * When it buys and sells: buy only when the Fear & Greed index is a fresh
- * 30-day low AND is at or below 30 (panic) AND price is above its 200-day
- * average (uptrend). Sell when price closes below its 50-day average or on a
- * 2x ATR stop below entry. No "sell into greed" exit — that caused churn.
- * When it does NOT work: in a long, quiet bull market the index rarely hits a
- * fresh panic extreme, so it trades rarely and misses most of the rally. In a
- * grinding bear where price stays above the 200-day average for a while it
- * can buy a dip that keeps falling. A slow bleed below the 50-day after entry
- * gives back gains before the stop triggers.
+ * Why this strategy: the US dollar index (DXY) is the macro tide crypto floats
+ * on. When the dollar weakens, risk assets like crypto tend to trend up; when
+ * the dollar strengthens, crypto tends to fall. This strategy rides crypto
+ * uptrends but only while the dollar is on the weak side of its own 40-day
+ * average, and exits when the dollar turns clearly strong. It is a macro-regime
+ * filter on top of a simple trend core — a different edge than the price-only
+ * champion and the volatility-targeting rider.
+ * When it buys and sells: buy when a close is above both the 50-day and 200-day
+ * averages AND the dollar index is below its own 40-day average (weak dollar).
+ * Sell when the close drops below the 50-day average, price hits a 2x ATR stop,
+ * or the dollar index rises clearly above its 40-day average (risk-off). Each
+ * position is sized to risk 1% of equity via a 2x ATR stop (volatility target).
+ * When it does NOT work: whenever crypto rallies while the dollar is flat or
+ * rising (crypto-specific drivers like ETFs, halvings, regulation), the filter
+ * keeps it in cash and it misses the move. In a choppy market where DXY wiggles
+ * around its average, the regime gate can flip on and off and cause whipsaws.
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) { ctx.watch([]); return null; }
-  const fg = ctx.data('fear_greed');        // 0-100 daily sentiment index
+
+  const dxy = Number(ctx.data('dxy'));
   const sma200 = ctx.sma(200, 1);
   const sma50 = ctx.sma(50, 1);
   const atr = ctx.atr(14, 1);
-  if (fg == null || sma200 == null || sma50 == null || atr == null || atr <= 0) return null;
+  if (!Number.isFinite(dxy) || dxy <= 0 || sma200 == null || sma50 == null || atr == null || atr <= 0) return null;
+
+  // Rolling DXY history in state (ctx.data has no history access). 40 days.
+  const st = ctx.state;
+  if (st.dxyHist == null) st.dxyHist = [];
+  if (st.dxyBar !== ctx.i) {
+    st.dxyHist.push(dxy);
+    if (st.dxyHist.length > 40) st.dxyHist.shift();
+    st.dxyBar = ctx.i;
+  }
+  if (st.dxyHist.length < 40) return null;
+  const dxySma = st.dxyHist.reduce((a, b) => a + b, 0) / st.dxyHist.length;
+
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) { ctx.watch([]); return null; }
-
-  // Rolling 30-day low of the Fear&Greed index, tracked in state (ctx.data has
-  // no history access). Push current value, drop values older than 30 bars.
-  const st = ctx.state;
-  if (st.fgHist == null) st.fgHist = [];
-  if (st.fgBar !== ctx.i) {
-    st.fgHist.push(fg);
-    if (st.fgHist.length > 30) st.fgHist.shift();
-    st.fgBar = ctx.i;
-  }
-  const fgMin = Math.min(...st.fgHist);
 
   const pos = ctx.pos(sym);
   if (pos > 0) {
     const hardStop = ctx.entryPx - 2 * atr;
-    if (price <= hardStop || prevClose < sma50) {
+    // Exit on trend break, hard stop, or dollar turning clearly strong (DXY
+    // more than 0.5% above its 40-day average). The 0.5% band is hysteresis so
+    // a daily DXY wiggle does not yank us out of a good trend.
+    if (price <= hardStop || prevClose < sma50 || dxy > dxySma * 1.005) {
       ctx.watch([]);
       return { side: 'sell', qty: pos };
     }
@@ -55,14 +63,21 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // Fresh panic extreme: fg is the lowest of the last 30 days AND <=30. This
-  // makes entries rare (a few per year), unlike every fg<=30 day which churned.
-  if (fg <= 30 && fg <= fgMin && prevClose > sma200) {
-    const qty = (ctx.cash / price) * 0.30; // 30% per asset, 3 assets = max 90% book
+  // Volatility-targeted size: risk 1% of equity per position via a 2x ATR
+  // stop, capped at 40% of equity so a low-vol coin cannot over-leverage.
+  const riskPerTrade = 0.01 * ctx.cash;
+  let qty = riskPerTrade / (2 * atr);
+  const maxQty = (ctx.cash / price) * 0.40;
+  qty = Math.min(qty, maxQty);
+
+  // Entry: uptrend (close > 50d and 200d) AND weak dollar (DXY below its own
+  // 40-day average). Both must hold on the closed bar.
+  if (prevClose > sma200 && prevClose > sma50 && dxy < dxySma) {
     ctx.watch([]);
     return { side: 'buy', qty };
   }
-  ctx.watch([{ side: 'buy', price: sma200, trigger: 'above', note: 'uptrend filter',
-               conds: [{ label: 'Fear&Greed fresh low', now: fg, op: '<=', ref: 30, closed: true }] }]);
+  ctx.watch([{ side: 'buy', price: sma50, trigger: 'above', note: 'trend re-entry',
+               conds: [{ label: 'close>200d', ok: prevClose > sma200 },
+                       { label: 'DXY < 40d avg', now: dxy, op: '<', ref: dxySma, closed: true }] }]);
   return null;
 }
