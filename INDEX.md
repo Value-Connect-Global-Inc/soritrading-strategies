@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2763](strategies/2763/) | VWAP-Pullback Wide-Stop Trend SOL 4H | -33.99% | -16.56% | +55.26% | 288 | 2026-10-12 |
 |  | [3660](strategies/3660/) | BTPullbackRide | -13.77% | +165.19% | +47.22% | 22 | 2026-10-12 |
 | ★ | [3656](strategies/3656/) | DonchianBaseline | +260.37% | +213.55% | +44.98% | 17 | 2026-10-12 |
 |  | [3658](strategies/3658/) | DonchianRiskSized | +13.51% | +87.84% | +16.63% | 23 | 2026-10-12 |
@@ -764,7 +765,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2770](strategies/2770/) | Onchain Sma30 Probe | +247.17% | +262.64% | +52.47% | 1 | 2026-09-26 |
 | ★ | [2765](strategies/2765/) | Donchian Pullback RSIFloor XRP 4H | -2.71% | -55.99% | +51.91% | 94 | 2026-09-26 |
 |  | [2764](strategies/2764/) | Bollinger Squeeze Breakout ETH 4H | -36.97% | +1620.25% | +63.87% | 102 | 2026-09-26 |
-|  | [2763](strategies/2763/) | VWAP-Pullback Wide-Stop Trend SOL 4H | -33.99% | -16.56% | +55.26% | 288 | 2026-09-26 |
 | ★ | [2762](strategies/2762/) | AI 전략 | +46.00% | -24.71% | +11.35% | 132 | 2026-09-26 |
 |  | [2761](strategies/2761/) | AI 전략 | +96.72% | +1620.25% | +40.26% | 200 | 2026-09-26 |
 | ★ | [2760](strategies/2760/) | Donchian Pullback Trend-Strength 0.10 ETH 4H | +90.13% | +34.16% | +20.51% | 168 | 2026-09-26 |

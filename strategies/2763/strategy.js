@@ -18,6 +18,8 @@
  * When it does NOT work: in a choppy/sideways regime the 50-SMA turn-down
  * fires often and whipsaws; in a sharp trend reversal the wide stop gives back
  * more than a tight stop would. Below the 200-SMA it sits out entirely.
+ *
+ * 2025-01-15: Added ctx.watch declarations — display only, trading logic unchanged.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -37,24 +39,54 @@ function onUpdate(ctx) {
     ctx.state.peak = Math.max(peak, price);
     if (atr != null && price <= ctx.state.peak - atr * 10) {
       ctx.state.lastExit = ctx.i;
+      ctx.watch([
+        { side: 'sell', price: ctx.state.peak - atr * 10, trigger: 'below', note: 'trailing stop' }
+      ]);
       return { side: 'sell', qty: pos };
     }
     // Exit when the 50-SMA stops rising (trend weakening).
     const sma50prev = ctx.sma(50, 6);
     if (sma50prev != null && sma50 <= sma50prev) {
       ctx.state.lastExit = ctx.i;
+      ctx.watch([
+        { side: 'sell', price: ctx.state.peak - atr * 10, trigger: 'below', note: 'trailing stop' }
+      ]);
       return { side: 'sell', qty: pos };
     }
+    // In position: watch trailing stop and trend exit
+    ctx.watch([
+      { side: 'sell', price: ctx.state.peak - atr * 10, trigger: 'below', note: 'trailing stop' },
+      { side: 'sell', price: sma50prev, trigger: 'below', note: '50-SMA turn-down', conds: [
+        { label: '50-SMA falling', ok: sma50 <= sma50prev, closed: true }
+      ]}
+    ]);
     return null;
   }
 
   const lastExit = ctx.state.lastExit || 0;
-  if (ctx.i - lastExit < 5) return null;
-  if (!uptrend) return null;
+  if (ctx.i - lastExit < 5) {
+    ctx.watch([]);
+    return null;
+  }
+  if (!uptrend) {
+    ctx.watch([]);
+    return null;
+  }
 
   // Buy a shallow pullback: price within 1% above the 20-bar mean (VWAP proxy).
   if (price <= sma20 * 1.01 && price >= sma20 * 0.97) {
+    ctx.watch([
+      { side: 'buy', price: sma20 * 1.01, trigger: 'below', note: 'pullback entry', conds: [
+        { label: 'Uptrend', ok: uptrend, closed: true }
+      ]}
+    ]);
     return { side: 'buy', qty: ctx.cash / ctx.price * 0.95 };
   }
+  // Waiting for pullback to entry zone
+  ctx.watch([
+    { side: 'buy', price: sma20 * 1.01, trigger: 'below', note: 'pullback entry', conds: [
+      { label: 'Uptrend', ok: uptrend, closed: true }
+    ]}
+  ]);
   return null;
 }
