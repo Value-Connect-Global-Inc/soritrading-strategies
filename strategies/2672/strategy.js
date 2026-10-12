@@ -17,6 +17,8 @@
  * When it does NOT work: lags strong melt-ups (sits in cash during rallies);
  * in a sustained downtrend below the 200-SMA it never buys; a panic that keeps
  * falling still loses. Mean reversion is defensive, not a trend rider.
+ *
+ * 2025-01-15: display-only change — added ctx.watch declarations, trading logic unchanged.
  */
 function onUpdate(ctx) {
   const bb = ctx.bb(20, 2, 1);
@@ -28,11 +30,21 @@ function onUpdate(ctx) {
   const pos = ctx.position;
 
   if (pos > 0) {
+    const atr = ctx.atr(14, 1);
+    const exitConds = [];
+    const exitWatches = [];
+    if (atr != null) {
+      const stopPx = ctx.entryPx - atr * 6;
+      exitWatches.push({ side: 'sell', price: stopPx, trigger: 'below', note: 'ATR stop' });
+      exitConds.push({ label: 'ATR(14) close', now: atr, op: '>=', ref: atr, closed: true });
+    }
+    exitWatches.push({ side: 'sell', price: bb.mid, trigger: 'above', note: 'mid band target' });
+    exitConds.push({ label: 'RSI(14) close', now: rsi, op: '>', ref: 50, closed: true });
+    ctx.watch(exitWatches);
     if (price >= bb.mid || rsi > 50) {
       ctx.state.lastExit = ctx.i;
       return { side: 'sell', qty: pos };
     }
-    const atr = ctx.atr(14, 1);
     if (atr != null && price <= ctx.entryPx - atr * 6) {
       ctx.state.lastExit = ctx.i;
       return { side: 'sell', qty: pos };
@@ -46,7 +58,15 @@ function onUpdate(ctx) {
   if (price < sma200) return null;
 
   if (price < bb.lower && rsi < 30) {
+    ctx.watch([{ side: 'buy', price: bb.lower, trigger: 'below', note: 'BB lower touch', conds: [
+      { label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true },
+      { label: 'SMA200 close', now: sma200, op: '<', ref: price, closed: true }
+    ]}]);
     return { side: 'buy', qty: ctx.cash / ctx.price * 0.95 };
   }
+  ctx.watch([{ side: 'buy', price: bb.lower, trigger: 'below', note: 'BB lower touch', conds: [
+    { label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true },
+    { label: 'SMA200 close', now: sma200, op: '<', ref: price, closed: true }
+  ]}]);
   return null;
 }

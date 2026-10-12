@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2672](strategies/2672/) | Band-Bounce Mean Reversion XLM 4H | +128.50% | +217.37% | +23.27% | 98 | 2026-10-12 |
 |  | [3696](strategies/3696/) | VolTargetTrendRider | +123.19% | +612.44% | +14.14% | 26 | 2026-10-12 |
 | — | [3697](strategies/3697/) | AI 전략 | +354.55% | — | +20.86% | 101 | 2026-10-12 |
 |  | [2681](strategies/2681/) | Band-Bounce Mean Reversion TRX 4H | +12.16% | +97.86% | +8.20% | 56 | 2026-10-12 |
@@ -855,7 +856,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2676](strategies/2676/) | Band-Bounce Mean Reversion XRP 4H | +32.48% | +223.30% | +23.66% | 40 | 2026-09-26 |
 |  | [2675](strategies/2675/) | Band-Bounce Mean Reversion MATIC 4H | +42.22% | +115.63% | +21.63% | 51 | 2026-09-26 |
 |  | [2673](strategies/2673/) | RSI-Divergence Mean Reversion ALGO 4H | -36.42% | +250.14% | +41.20% | 91 | 2026-09-26 |
-|  | [2672](strategies/2672/) | Band-Bounce Mean Reversion XLM 4H | +128.48% | +217.37% | +23.27% | 98 | 2026-09-26 |
 |  | [2671](strategies/2671/) | Volume-Confirmed Panic-Bounce ATOM 4H | +33.81% | +944.60% | +27.18% | 51 | 2026-09-26 |
 |  | [2670](strategies/2670/) | AI 전략 | +40.47% | +1500.95% | +32.19% | 18 | 2026-09-26 |
 |  | [2669](strategies/2669/) | AI 전략 | -60.83% | +502.17% | +69.50% | 153 | 2026-09-26 |
