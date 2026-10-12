@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [2697](strategies/2697/) | Band-Bounce Bull-Regime Exit LINK 4H | +29.08% | +9.46% | +23.72% | 49 | 2026-10-12 |
 |  | [3694](strategies/3694/) | UptrendPullbackRSI | -31.58% | +110.60% | +33.28% | 168 | 2026-10-12 |
 |  | [2699](strategies/2699/) | Band-Bounce Mean Reversion SOL 4H | +12.61% | +29.69% | +6.99% | 10 | 2026-10-12 |
 |  | [2701](strategies/2701/) | SOL Trend-Ride Pullback 4H | -16.57% | +1670.97% | +16.57% | 12 | 2026-10-12 |
@@ -831,7 +832,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2706](strategies/2706/) | Macro-Regime Band-Bounce BTC 4H | +17.71% | +449.51% | +17.69% | 32 | 2026-09-26 |
 | ★ | [2700](strategies/2700/) | Fed-Regime Macro Trend BTC 1D | +77.39% | +63.93% | +9.18% | 44 | 2026-09-26 |
 | ★ | [2698](strategies/2698/) | Band-Bounce Mean Reversion BNB 4H | +1.99% | -63.74% | +27.41% | 50 | 2026-09-26 |
-| ★ | [2697](strategies/2697/) | Band-Bounce Bull-Regime Exit LINK 4H | +29.08% | +9.46% | +23.72% | 49 | 2026-09-26 |
 | ★ | [2696](strategies/2696/) | Band-Bounce Bull-Regime Exit SOL 4H | -13.21% | -15.65% | +32.74% | 46 | 2026-09-26 |
 | ★ | [2695](strategies/2695/) | Band-Bounce Baseline DOT 4H | +77.39% | +63.93% | +9.18% | 44 | 2026-09-26 |
 | ★ | [2694](strategies/2694/) | Band-Bounce Mean Reversion AAVE 4H | +2.11% | -79.29% | +2.17% | 8 | 2026-09-26 |
