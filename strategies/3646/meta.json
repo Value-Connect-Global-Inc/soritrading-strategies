@@ -1,0 +1,31 @@
+{
+  "id": 3646,
+  "name": "MeanReversionDips",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 18406,
+    "return": 5.7,
+    "mdd": 4.73,
+    "trades": 4,
+    "vsBuyHold": "lose",
+    "benchRet": 44.16,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1609459200,
+    "tTo": 1703980800,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1095봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 1095,
+      "end": 1704067200
+    }
+  },
+  "config": null,
+  "updatedAt": "2026-10-12T06:13:08.424Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
