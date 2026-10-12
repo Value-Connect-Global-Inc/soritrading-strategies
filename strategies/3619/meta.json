@@ -3,7 +3,7 @@
   "name": "SOL Volume-Confirmed Trend 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 18186,
+    "backtestId": 18190,
     "return": 43.65,
     "mdd": 17.87,
     "trades": 69,
