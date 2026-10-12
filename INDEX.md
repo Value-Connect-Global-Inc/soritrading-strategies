@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 496 of 1925 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 496 of 1926 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 276 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3692](strategies/3692/) | DollarRegimeTrend | -24.34% | +95.22% | +30.11% | 96 | 2026-10-12 |
 |  | [3687](strategies/3687/) | FearGreedContrarian | +10.59% | +612.44% | +29.66% | 6 | 2026-10-12 |
 |  | [3691](strategies/3691/) | FearGreedContrarian | -38.60% | +95.22% | +38.60% | 16 | 2026-10-12 |
 |  | [3690](strategies/3690/) | DataDiag | -0.39% | +315.94% | +0.39% | 2216 | 2026-10-12 |
