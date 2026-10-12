@@ -3,34 +3,32 @@
   "name": "DollarRegimeBTC",
   "kind": "custom",
   "verified": {
-    "backtestId": 18908,
-    "return": -4.79,
-    "mdd": 5.42,
-    "trades": 397,
+    "backtestId": 18910,
+    "return": -0.02,
+    "mdd": 0.02,
+    "trades": 2,
     "vsBuyHold": "lose",
-    "benchRet": 32.6,
+    "benchRet": 95.22,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1783036800,
+    "tFrom": 1705276800,
     "tTo": 1791590400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "[유동성/거래량없음] 호가 두께를 판정한 시점의 1% 에서 거래량을 못 받아 합성 호가가 고정 기본값(100000 명목)으로 돌았습니다 — 그 구간의 주문은 종목의 실제 두께가 아니라 이 기본값에 잘렸습니다. 체결량·수익률·MDD 를 그대로 믿지 마세요(거래량이 붙으면 숫자가 달라집니다).",
-      "기간 종료 시 미청산 포지션 1종목 (총자산의 8.72%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 100봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
-      "bars": 100,
+      "bars": 1000,
       "end": 1791763200
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "76b92ac53bed93654758ef56bc3428e90e2fd036ac2bdc6b5269545fa405a118"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "5f145fa8f91b887fba7d376f9b052b30bc7d33d3bf6b1327aa9f1c31e947e064"
   },
   "config": null,
-  "updatedAt": "2026-10-12T21:55:44.237Z",
+  "updatedAt": "2026-10-12T21:56:45.148Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
