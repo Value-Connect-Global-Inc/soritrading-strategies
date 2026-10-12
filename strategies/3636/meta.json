@@ -3,10 +3,10 @@
   "name": "FearGreedContrarian",
   "kind": "custom",
   "verified": {
-    "backtestId": 18342,
-    "return": -6.81,
-    "mdd": 8.67,
-    "trades": 12,
+    "backtestId": 18345,
+    "return": -13.99,
+    "mdd": 22.85,
+    "trades": 8,
     "vsBuyHold": "lose",
     "benchRet": 95.22,
     "benchBasis": "price",
@@ -27,6 +27,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-12T04:23:09.738Z",
+  "updatedAt": "2026-10-12T04:25:38.847Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
