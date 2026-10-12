@@ -11,9 +11,9 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [3625](strategies/3625/) | AI 전략 | +24.86% | -26.02% | +20.91% | 104 | 2026-10-12 |
 |  | [2887](strategies/2887/) | Macro-Gated Keltner MR BTC 1D | +19.61% | +45.60% | +2.46% | 8 | 2026-10-12 |
 |  | [2888](strategies/2888/) | RSI2 Capitulation BTC 1D | +0.18% | +1279.90% | +0.22% | 86 | 2026-10-12 |
-| ★ | [3625](strategies/3625/) | AI 전략 | +24.86% | -26.02% | +20.91% | 104 | 2026-10-12 |
 |  | [2891](strategies/2891/) | FearGreed-Timed Keltner MR BTC 1D | +19.61% | +45.60% | +2.46% | 8 | 2026-10-12 |
 |  | [2892](strategies/2892/) | FearGreed-Gated OBV Trend BTC 1D | +1185.65% | +1279.90% | +40.97% | 40 | 2026-10-12 |
 |  | [2893](strategies/2893/) | FedGate Keltner MR Daily | +18.89% | +190.11% | +2.46% | 6 | 2026-10-12 |
