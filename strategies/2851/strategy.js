@@ -19,11 +19,15 @@
  * (liquidity-driven bulls), so it can sit out strong rallies. The on-chain
  * overlay can also exit too early in a genuine bull if a short address
  * dip occurs. It is a slow macro-frequency signal with genuine drawdowns.
+ * 2026-04-26 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
+
+  // No price/time condition in this strategy — the signal is purely macro/on-chain.
+  ctx.watch([]);
 
   // Fed funds rate now, and its level 30 days ago (external datasets).
   const now = Number(ctx.data('fed'));
