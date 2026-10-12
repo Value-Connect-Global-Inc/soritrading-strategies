@@ -11,6 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [2653](strategies/2653/) | Band-Bounce Mean Reversion DOGE 4H | +94.76% | +9.39% | +34.99% | 191 | 2026-10-12 |
+|  | [2654](strategies/2654/) | OnChain-Confirmed Band-Bounce BTC 4H | -18.15% | +26.93% | +28.02% | 44 | 2026-10-12 |
 |  | [2655](strategies/2655/) | FearGreed Panic Mean-Reversion BTC 1D | +37.15% | +796.20% | +40.46% | 69 | 2026-10-12 |
 | — | [3699](strategies/3699/) | SqueezeBreakout | +0.81% | — | +14.14% | 71 | 2026-10-12 |
 |  | [2657](strategies/2657/) | Panic-Bounce LINK 4H | +150.59% | +477.73% | +24.03% | 80 | 2026-10-12 |
@@ -875,8 +877,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2659](strategies/2659/) | Panic-Bounce NEAR 4H | +1.11% | +180.23% | +40.44% | 40 | 2026-09-26 |
 |  | [2658](strategies/2658/) | RS-Momentum Rotation BTC-ETH-SOL 4H | -93.54% | +26.93% | +94.91% | 447 | 2026-09-26 |
 |  | [2656](strategies/2656/) | VWAP-Pullback BTC 4H | -40.92% | +26.93% | +68.76% | 192 | 2026-09-26 |
-|  | [2654](strategies/2654/) | OnChain-Confirmed Band-Bounce BTC 4H | +7.70% | +26.93% | +13.00% | 44 | 2026-09-26 |
-| ★ | [2653](strategies/2653/) | Band-Bounce Mean Reversion DOGE 4H | +94.76% | +9.39% | +34.99% | 191 | 2026-09-26 |
 |  | [2652](strategies/2652/) | Regime-Adaptive ETH 4H | +23.34% | +31.85% | +39.04% | 10 | 2026-09-26 |
 |  | [2651](strategies/2651/) | Band-Bounce Mean Reversion AVAX 4H | +106.63% | +209.08% | +69.55% | 19 | 2026-09-26 |
 | ★ | [2650](strategies/2650/) | AI 전략 | -3.28% | -62.48% | +18.12% | 26 | 2026-09-26 |

@@ -21,6 +21,8 @@
  * the filter can be stale and block good entries, or confirm a bounce that then
  * fails anyway. Lags melt-ups; never buys below the 200-SMA. A panic that keeps
  * falling still loses even with on-chain confirmation.
+ *
+ * 2025-04-14: watch declaration added — display only, trading decisions unchanged.
  */
 function onUpdate(ctx) {
   const bb = ctx.bb(20, 2, 1);
@@ -32,12 +34,18 @@ function onUpdate(ctx) {
   const pos = ctx.position;
 
   if (pos > 0) {
+    const atr = ctx.atr(14, 1);
+    const stopPx = atr != null && ctx.entryPx != null ? ctx.entryPx - atr * 6 : null;
+    ctx.watch([
+      { side: 'sell', price: bb.mid, trigger: 'above', note: 'Middle band exit' },
+      { side: 'sell', price: stopPx, trigger: 'below', note: '6-ATR stop' },
+      { side: 'sell', price: 50, trigger: 'above', note: 'RSI>50 exit', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 50, closed: true }] }
+    ]);
     if (price >= bb.mid || rsi > 50) {
       ctx.state.lastExit = ctx.i;
       return { side: 'sell', qty: pos };
     }
-    const atr = ctx.atr(14, 1);
-    if (atr != null && price <= ctx.entryPx - atr * 6) {
+    if (atr != null && ctx.entryPx != null && price <= ctx.entryPx - atr * 6) {
       ctx.state.lastExit = ctx.i;
       return { side: 'sell', qty: pos };
     }
@@ -45,9 +53,25 @@ function onUpdate(ctx) {
   }
 
   const lastExit = ctx.state.lastExit || 0;
-  if (ctx.i - lastExit < 5) return null;
-  if (price < sma200) return null;
-  if (!(price < bb.lower && rsi < 30)) return null;
+  if (ctx.i - lastExit < 5) {
+    ctx.watch([]);
+    return null;
+  }
+  if (price < sma200) {
+    ctx.watch([
+      { side: 'buy', price: sma200, trigger: 'above', note: 'Price above SMA200' },
+      { side: 'buy', price: bb.lower, trigger: 'below', note: 'Lower band touch' },
+      { side: 'buy', price: 30, trigger: 'below', note: 'RSI<30', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true }] }
+    ]);
+    return null;
+  }
+  if (!(price < bb.lower && rsi < 30)) {
+    ctx.watch([
+      { side: 'buy', price: bb.lower, trigger: 'below', note: 'Lower band touch' },
+      { side: 'buy', price: 30, trigger: 'below', note: 'RSI<30', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true }] }
+    ]);
+    return null;
+  }
 
   // On-chain confirmation: network fundamentally healthy = smoothed usage/hash
   // above its own 90-day average. Both must be available; if either is null we
@@ -70,12 +94,27 @@ function onUpdate(ctx) {
   // Real filter: we gate on hashrate being above its 30-day smoothed value is
   // wrong. Use the raw vs smoothed: if hashrate raw > hashrate_sma30, hash is
   // accelerating. Require EITHER hash accelerating OR addresses accelerating.
+  let hashUp = false;
+  let addrUp = false;
   if (hr != null && addr != null) {
-    const hashUp = hrAvg != null && hrAvg > hr;
-    const addrUp = addrAvg != null && addrAvg > addr;
-    if (!hashUp && !addrUp) return null; // no on-chain confirmation, skip
+    hashUp = hrAvg != null && hrAvg > hr;
+    addrUp = addrAvg != null && addrAvg > addr;
+    if (!hashUp && !addrUp) {
+      ctx.watch([
+        { side: 'buy', price: bb.lower, trigger: 'below', note: 'Lower band touch' },
+        { side: 'buy', price: 30, trigger: 'below', note: 'RSI<30', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true }] },
+        { side: 'buy', price: bb.lower, trigger: 'below', note: 'On-chain not confirmed', conds: [{ label: 'Hashrate rising', ok: hashUp }, { label: 'Addresses rising', ok: addrUp }] }
+      ]);
+      return null; // no on-chain confirmation, skip
+    }
   }
   // If data is entirely missing (null), fall through and buy like the champion.
+
+  ctx.watch([
+    { side: 'buy', price: bb.lower, trigger: 'below', note: 'Lower band touch' },
+    { side: 'buy', price: 30, trigger: 'below', note: 'RSI<30', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true }] },
+    { side: 'buy', price: bb.lower, trigger: 'below', note: 'On-chain confirmed', conds: [{ label: 'Hashrate rising', ok: hashUp }, { label: 'Addresses rising', ok: addrUp }] }
+  ]);
 
   ctx.state.lastExit = ctx.i;
   return { side: 'buy', qty: ctx.cash / ctx.price * 0.95 };

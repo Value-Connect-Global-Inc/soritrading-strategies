@@ -16,6 +16,8 @@
  * When it does NOT work: in strong trending rallies where price hugs the outer
  * band for long stretches it stays in cash and misses the move; and it can
  * catch falling knives in persistent downtrends. Defensive, not a bull-chaser.
+ *
+ * 2025-04-08: display-only change — added ctx.watch declarations, trading logic untouched.
  */
 function onUpdate(ctx) {
   const bb = ctx.bb(20, 2, 1);
@@ -28,14 +30,25 @@ function onUpdate(ctx) {
 
   if (pos > 0) {
     // Exit: price back at the middle band, or RSI turning overbought.
-    if (px >= bb.mid || (rsi > 65 && rsiPrev <= 65)) {
+    const exitMid = px >= bb.mid;
+    const exitRsi = rsi > 65 && rsiPrev <= 65;
+    ctx.watch([
+      { side: 'sell', price: bb.mid, trigger: 'above', qty: pos, note: 'middle band target' },
+      { side: 'sell', price: 65, trigger: 'above', qty: pos, note: 'RSI overbought', conds: [{ label: 'RSI(14) prev', now: rsiPrev, op: '<=', ref: 65, closed: true }, { label: 'RSI(14) now', now: rsi, op: '>', ref: 65, closed: true }] }
+    ]);
+    if (exitMid || exitRsi) {
       return { side: 'sell', qty: pos };
     }
     return null;
   }
 
   // Entry: panic sell-off — price at/below the lower band with RSI oversold.
-  if (px <= bb.lower && rsi < 35) {
+  const entryPx = px <= bb.lower;
+  const entryRsi = rsi < 35;
+  ctx.watch([
+    { side: 'buy', price: bb.lower, trigger: 'below', qty: ctx.cash / ctx.price * 0.95, note: 'lower band touch', conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 35, closed: true }] }
+  ]);
+  if (entryPx && entryRsi) {
     return { side: 'buy', qty: ctx.cash / ctx.price * 0.95 };
   }
   return null;
