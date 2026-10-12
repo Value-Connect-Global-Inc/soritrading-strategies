@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 488 of 1894 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 489 of 1895 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 271 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
 |  | [2851](strategies/2851/) | Fed Regime + OnChain Demand Overlay BTC 1D | +411.08% | +1279.90% | +73.94% | 407 | 2026-10-12 |
+| ★ | [3638](strategies/3638/) | MacroDxyTrend | +2.17% | -20.96% | +1.20% | 16 | 2026-10-12 |
 |  | [3636](strategies/3636/) | FearGreedContrarian | +122.07% | +612.44% | +27.08% | 32 | 2026-10-12 |
 |  | [2853](strategies/2853/) | OBV Champion Pure BTC 1D (A/B) | -2.60% | +35.51% | +25.28% | 154 | 2026-10-12 |
 | ★ | [3637](strategies/3637/) | PlainTrendControl | +33.67% | -20.96% | +8.34% | 14 | 2026-10-12 |
