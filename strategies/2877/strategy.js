@@ -16,6 +16,8 @@
  * Position is ATR-scaled so volatile assets get smaller size.
  * When it does NOT work: in a persistent downtrend below the 200-day average it
  * stays idle, and it lags straight-line melt-ups (few deep flushes to catch).
+ *
+ * 2025-01-15: only added ctx.watch declarations — display only, trading logic unchanged.
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -32,6 +34,9 @@ function onUpdate(ctx) {
   const st = ctx.state;
 
   if (pos > 0) {
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'above', qty: pos, note: 'Sell at EMA20 mean-reversion target' },
+    ]);
     if (price > ema20) {
       st.cooldown = ctx.i + 2;
       return { side: 'sell', qty: pos };
@@ -39,15 +44,39 @@ function onUpdate(ctx) {
     return null;
   }
 
-  if (st.cooldown != null && ctx.i < st.cooldown) return null;
+  if (st.cooldown != null && ctx.i < st.cooldown) {
+    ctx.watch([
+      { side: 'buy', price: lower, trigger: 'below', qty: (0.015 * ctx.cash) / atr, note: 'Cooldown until bar ' + st.cooldown, conds: [
+        { label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true },
+        { label: 'Price > SMA200 close', now: price, op: '>', ref: sma200, closed: true },
+      ]},
+      { side: 'sell', price: ema20, trigger: 'above', note: 'Exit at EMA20' },
+    ]);
+    return null;
+  }
 
   if (price > sma200 && price <= lower && rsi < 40) {
-    st.cooldown = null;
-    // ATR-scaled size: risk 1.5% of equity per trade, in coin units.
     const riskEq = 0.015 * ctx.cash;
     const qty = riskEq / atr;
     const maxQty = ctx.cash / price * 0.9;
-    return { side: 'buy', qty: Math.min(qty, maxQty) };
+    const buyQty = Math.min(qty, maxQty);
+    ctx.watch([
+      { side: 'buy', price: lower, trigger: 'below', qty: buyQty, note: 'Buy at lower Keltner band', conds: [
+        { label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true },
+        { label: 'Price > SMA200 close', now: price, op: '>', ref: sma200, closed: true },
+      ]},
+      { side: 'sell', price: ema20, trigger: 'above', note: 'Exit at EMA20' },
+    ]);
+    st.cooldown = null;
+    return { side: 'buy', qty: buyQty };
   }
+
+  ctx.watch([
+    { side: 'buy', price: lower, trigger: 'below', qty: (0.015 * ctx.cash) / atr, note: 'Buy at lower Keltner band', conds: [
+      { label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true },
+      { label: 'Price > SMA200 close', now: price, op: '>', ref: sma200, closed: true },
+    ]},
+    { side: 'sell', price: ema20, trigger: 'above', note: 'Exit at EMA20' },
+  ]);
   return null;
 }
