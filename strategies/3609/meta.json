@@ -3,10 +3,10 @@
   "name": "SOL Sentiment-Gated Trend 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 18131,
-    "return": -15.56,
-    "mdd": 37.08,
-    "trades": 86,
+    "backtestId": 18134,
+    "return": -6.95,
+    "mdd": 41.12,
+    "trades": 136,
     "vsBuyHold": "win",
     "benchRet": -22.18,
     "benchBasis": "price",
@@ -27,6 +27,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-12T00:26:44.617Z",
+  "updatedAt": "2026-10-12T00:29:23.485Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [3609](strategies/3609/) | SOL Sentiment-Gated Trend 4H | -15.56% | -22.18% | +37.08% | 86 | 2026-10-12 |
+| ★ | [3609](strategies/3609/) | SOL Sentiment-Gated Trend 4H | -6.95% | -22.18% | +41.12% | 136 | 2026-10-12 |
 |  | [2939](strategies/2939/) | ETH 4H Trend-Follow DXY Risk Gate | -70.58% | +1658.97% | +85.37% | 290 | 2026-10-12 |
 |  | [2941](strategies/2941/) | BTC 4H Volume-Surge Breakout | -28.90% | +72.42% | +44.24% | 160 | 2026-10-12 |
 | ★ | [2943](strategies/2943/) | BTC 1D OBV Flow Trend Fast | +1430.01% | +1253.33% | +40.27% | 119 | 2026-10-12 |

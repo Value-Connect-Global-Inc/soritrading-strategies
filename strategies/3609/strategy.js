@@ -9,15 +9,15 @@
  * Why this strategy: the Fear & Greed index is the only external data axis that
  *   has worked in this account's backtests, but it has only been tried as a
  *   mean-reversion / sizing input so far. This strategy uses it the other way —
- *   as an ENTRY filter only: buy while the crowd is not euphoric and the trend
- *   is up. No profit-taking on greed — a trend strategy must let winners run.
- * When it buys and sells: buy when Fear&Greed < 55, price is above its 100-EMA
- *   and makes a fresh 20-bar high; sell when price closes below the 20-bar low
- *   or hits a 2.5x ATR hard stop.
- * When it does NOT work: in a melt-up it enters late (after the first euphoric
- *   leg) so it misses part of the move; in a slow grind down with mild fear the
- *   EMA gate keeps it out but it also misses the bottom. It is a defensive trend
- *   rider, not a bull-market champion.
+ *   as an ENTRY filter only: buy while the crowd is not in a blow-off top and
+ *   the trend is up. No profit-taking on greed — a trend strategy must let
+ *   winners run.
+ * When it buys and sells: buy when Fear&Greed < 75 (extreme greed blocks entry),
+ *   price is above its 100-EMA and makes a fresh 20-bar high; sell when price
+ *   closes below the 20-bar low or hits a 2.5x ATR hard stop.
+ * When it does NOT work: in a melt-up it enters late and misses part of the
+ *   move; in a slow grind down with mild fear the EMA gate keeps it out but it
+ *   also misses the bottom. Defensive trend rider, not a bull champion.
  */
 function onUpdate(ctx) {
   const fg = ctx.data('fg');
@@ -39,7 +39,7 @@ function onUpdate(ctx) {
     return null;
   }
 
-  if (fg != null && fg >= 55) return null;   // don't chase into euphoria (fg null = data off, skip gate)
+  if (fg != null && fg >= 75) return null;   // only a blow-off top blocks entry (fg null = data off, skip gate)
   if (prevClose <= ema100) return null;      // only buy in an uptrend
   const hh20 = ctx.high(20, 2);
   if (hh20 == null || prevClose <= hh20) return null;   // enter only on a FRESH breakout
