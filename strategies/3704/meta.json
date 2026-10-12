@@ -3,10 +3,10 @@
   "name": "MomentumRotationTop1",
   "kind": "custom",
   "verified": {
-    "backtestId": 18862,
-    "return": 68.32,
-    "mdd": 12.14,
-    "trades": 254,
+    "backtestId": 18864,
+    "return": 107.83,
+    "mdd": 13.07,
+    "trades": 48,
     "vsBuyHold": "unmeasured",
     "gapPct": 0,
     "tFrom": 1514764800,
@@ -24,9 +24,9 @@
       "syms": 3
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "0b534dd8a8f7c346f6d0a2e8677c9570a504b455528279db3281538d517baf51"
+    "verifiedCodeSha256": "3336b68190612d6cadaf263389e89b66d0dedbcbb16bcd6516ecb35f9f00d43d"
   },
   "config": null,
-  "updatedAt": "2026-10-12T20:07:57.861Z",
+  "updatedAt": "2026-10-12T20:10:44.417Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
