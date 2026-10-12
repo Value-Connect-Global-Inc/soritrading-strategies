@@ -10,11 +10,11 @@
  * price snaps back to the short-term average within days. Buying those dips while
  * the long-term trend is still up is a different bet than trend-following: it
  * profits from mean reversion instead of momentum.
- * When it buys and sells: buys when the price is deeply oversold (RSI below 30 AND
- * price below the lower Bollinger band) but ONLY while price is above its 200-day
- * average (uptrend regime — never catch a falling knife in a bear). Sells when the
- * price recovers back above its 20-day average, when the trend breaks, or on a hard
- * 2x ATR stop below entry. Trades at half size because dip-catching is risky.
+ * When it buys and sells: buys when the price is oversold (RSI below 35 AND price
+ * below the lower Bollinger band) but ONLY while price is above its 200-day average
+ * (uptrend regime — never catch a falling knife in a bear). Sells when the price
+ * recovers back above its 20-day average, when the trend breaks, or on a hard 2x
+ * ATR stop below entry. Trades at half size because dip-catching is risky.
  * When it does NOT work: in a strong downtrend it stays flat (regime filter), and
  * in a fast crash the dip keeps falling and the 2x ATR stop takes the loss.
  */
@@ -44,14 +44,16 @@ function onUpdate(ctx) {
     return null;
   }
 
-  const oversold = rsi < 30 && prevClose < bb.lower; // deep oversold: RSI + lower band agree
+  // 35 instead of 30: still clearly oversold, but triggers often enough to matter
+  // (the strict AND gave only 6/4 trades over 3 years — effectively inactive).
+  const oversold = rsi < 35 && prevClose < bb.lower;
   if (inUptrend && oversold) {
-    // Half cash: buying a falling knife, so never risk the whole account on one dip.
+    // Half position: buying a falling knife, so never risk the whole account on one dip.
     ctx.watch([{ side: 'sell', price: ctx.entryPx - 2 * atr, trigger: 'below', note: '2x ATR stop' }]);
     return { side: 'buy', qty: (ctx.cash / price) * 0.5 };
   }
   ctx.watch([{ side: 'buy', price: price, trigger: 'below', note: 'oversold dip entry', conds: [
-    { label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true },
+    { label: 'RSI(14) close', now: rsi, op: '<', ref: 35, closed: true },
     { label: 'Close > SMA200', ok: inUptrend, closed: true }
   ]}]);
   return null;

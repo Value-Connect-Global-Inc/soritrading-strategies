@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [2821](strategies/2821/) | OBV Relaxed Gate + Fed Buy-Blocker 1D | +18.83% | -21.08% | +34.47% | 68 | 2026-10-12 |
 |  | [3646](strategies/3646/) | MeanReversionDips | +5.70% | +44.16% | +4.73% | 4 | 2026-10-12 |
 | ★ | [3645](strategies/3645/) | PureSMA200Trend | +318.86% | +116.17% | +53.47% | 9 | 2026-10-12 |
 |  | [3644](strategies/3644/) | OnChainHashrateTrendOrig | +25.80% | +44.16% | +36.86% | 19 | 2026-10-12 |
@@ -699,7 +700,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | ★ | [2825](strategies/2825/) | OBV Relaxed Gate + Fear-Greed De-risk 1D | +52.79% | +45.78% | +36.15% | 61 | 2026-09-26 |
 |  | [2823](strategies/2823/) | OBV Relaxed Gate + Short Rising Filter 1D | +310.15% | +386.92% | +44.50% | 42 | 2026-09-26 |
 |  | [2822](strategies/2822/) | OBV Relaxed Gate + Rising Trend Filter 1D | +341.83% | +1147.75% | +50.50% | 26 | 2026-09-26 |
-| ★ | [2821](strategies/2821/) | OBV Relaxed Gate + Fed Buy-Blocker 1D | +18.83% | -21.08% | +34.47% | 68 | 2026-09-26 |
 |  | [2820](strategies/2820/) | OBV Trend Relaxed Gate 1D | +267.21% | +324.12% | +42.57% | 50 | 2026-09-26 |
 |  | [2819](strategies/2819/) | OBV Trend Fast 4H | -32.85% | -24.71% | +47.35% | 176 | 2026-09-26 |
 |  | [2818](strategies/2818/) | OBV Trend Vol-Scaled Size BTC 1D | -4.85% | +55.47% | +4.85% | 2 | 2026-09-26 |

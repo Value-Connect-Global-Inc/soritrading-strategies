@@ -22,19 +22,30 @@
  * non-hiking crash (no price stop — only the policy gate blocks buys); and if
  * the Fed data feed is unavailable the buy-blocker silently does nothing, so it
  * degrades to the plain champion rather than failing.
+ *
+ * 2025-06-11 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const sma100 = ctx.sma(100, 1);
   const atr = ctx.atr(14, 1);
-  if (sma100 == null || atr == null) return null;
+  if (sma100 == null || atr == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   const closes = ctx.closes;
   const vols = ctx.volumes;
-  if (!closes || !vols || closes.length < 32) return null;
+  if (!closes || !vols || closes.length < 32) {
+    ctx.watch([]);
+    return null;
+  }
 
   let obv = 0;
   const obvSeries = [];
@@ -45,7 +56,10 @@ function onUpdate(ctx) {
     else if (c < p) obv -= v;
     obvSeries.push(obv);
   }
-  if (obvSeries.length < 32) return null;
+  if (obvSeries.length < 32) {
+    ctx.watch([]);
+    return null;
+  }
   const obvNow = obvSeries[obvSeries.length - 1];
   const obvPast = obvSeries[obvSeries.length - 31];
   const rising = obvNow > obvPast * 1.01;
@@ -68,6 +82,14 @@ function onUpdate(ctx) {
   }
 
   if (pos > 0) {
+    ctx.watch([{
+      side: 'sell',
+      note: 'OBV trend down',
+      conds: [
+        { label: 'OBV(30) falling', ok: falling },
+        { label: 'cooldown ready', ok: cd === 0 },
+      ],
+    }]);
     if (falling && cd === 0) {
       ctx.state.cd = 5;
       return { side: 'sell', qty: pos };
@@ -84,6 +106,19 @@ function onUpdate(ctx) {
   if (fedNow != null && fedLag != null) {
     tightening = fedNow > fedLag + 0.5;
   }
+
+  ctx.watch([{
+    side: 'buy',
+    price: sma100,
+    trigger: 'above',
+    note: 'close above SMA100',
+    conds: [
+      { label: 'OBV(30) rising', ok: rising },
+      { label: 'volume confirms', ok: volOk },
+      { label: 'cooldown ready', ok: cd === 0 },
+      { label: 'Fed not hiking', ok: !tightening },
+    ],
+  }]);
 
   if (rising && price > sma100 && volOk && cd === 0 && !tightening) {
     ctx.state.cd = 5;
