@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [3673](strategies/3673/) | DonchianTrendMomentumGate | +1016.49% | — | +35.56% | 137 | 2026-10-12 |
+| — | [3673](strategies/3673/) | DonchianTrendMomentumGate | -7.33% | — | +8.39% | 4 | 2026-10-12 |
 |  | [2742](strategies/2742/) | Donchian Trend-Following XRP 1D | -76.06% | +71.26% | +84.88% | 31 | 2026-10-12 |
 | — | [3672](strategies/3672/) | AI 전략 | +18.49% | — | +25.37% | 82 | 2026-10-12 |
 | — | [3668](strategies/3668/) | MultiAssetDonchianTrend | +335.24% | — | +24.36% | 70 | 2026-10-12 |
