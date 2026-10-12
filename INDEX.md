@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2657](strategies/2657/) | Panic-Bounce LINK 4H | +150.59% | +477.73% | +24.03% | 80 | 2026-10-12 |
 | — | [3699](strategies/3699/) | SqueezeBreakout | +0.81% | — | +14.14% | 71 | 2026-10-12 |
 | — | [3698](strategies/3698/) | VolTargetTrendRider | +341.30% | — | +20.81% | 152 | 2026-10-12 |
 |  | [2660](strategies/2660/) | On-Chain Trend BTC 1D | +20.90% | +1258.25% | +72.15% | 204 | 2026-10-12 |
@@ -872,7 +873,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2661](strategies/2661/) | On-Chain Regime Momentum BTC 1D | +571.18% | +824.29% | +35.93% | 20 | 2026-09-26 |
 |  | [2659](strategies/2659/) | Panic-Bounce NEAR 4H | +1.11% | +180.23% | +40.44% | 40 | 2026-09-26 |
 |  | [2658](strategies/2658/) | RS-Momentum Rotation BTC-ETH-SOL 4H | -93.54% | +26.93% | +94.91% | 447 | 2026-09-26 |
-|  | [2657](strategies/2657/) | Panic-Bounce LINK 4H | +160.39% | +477.73% | +24.03% | 80 | 2026-09-26 |
 |  | [2656](strategies/2656/) | VWAP-Pullback BTC 4H | -40.92% | +26.93% | +68.76% | 192 | 2026-09-26 |
 |  | [2655](strategies/2655/) | FearGreed Panic Mean-Reversion BTC 1D | +52.13% | +796.20% | +44.55% | 69 | 2026-09-26 |
 |  | [2654](strategies/2654/) | OnChain-Confirmed Band-Bounce BTC 4H | +7.70% | +26.93% | +13.00% | 44 | 2026-09-26 |

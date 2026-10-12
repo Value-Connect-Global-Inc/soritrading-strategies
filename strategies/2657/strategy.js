@@ -18,6 +18,7 @@
  * When it does NOT work: lags strong melt-ups (never buys without a dip).
  * A panic that keeps falling still loses despite the stop. Never buys below
  * the 200-SMA, so it sits out bear markets (its main protection).
+ * 2025-01-12: display-only watch added; trading logic unchanged.
  */
 function onUpdate(ctx) {
   const bb = ctx.bb(20, 2, 1);
@@ -31,20 +32,34 @@ function onUpdate(ctx) {
   if (pos > 0) {
     if (price >= bb.mid || rsi > 50) {
       ctx.state.lastExit = ctx.i;
+      ctx.watch([{ side: 'sell', price: bb.mid, trigger: 'above', note: 'BB mid target' },
+                 { side: 'sell', price: null, trigger: null, note: 'RSI over 50' }]);
       return { side: 'sell', qty: pos };
     }
     const atr = ctx.atr(14, 1);
     if (atr != null && price <= ctx.entryPx - atr * 6) {
       ctx.state.lastExit = ctx.i;
+      ctx.watch([{ side: 'sell', price: ctx.entryPx - atr * 6, trigger: 'below', note: '6-ATR stop' }]);
       return { side: 'sell', qty: pos };
     }
+    ctx.watch([{ side: 'sell', price: bb.mid, trigger: 'above', note: 'BB mid target' },
+               { side: 'sell', price: ctx.entryPx - atr * 6, trigger: 'below', note: '6-ATR stop' }]);
     return null;
   }
 
   const lastExit = ctx.state.lastExit || 0;
-  if (ctx.i - lastExit < 5) return null;
-  if (price < sma200) return null;
-  if (!(price < bb.lower && rsi < 30)) return null;
+  if (ctx.i - lastExit < 5) {
+    ctx.watch([]);
+    return null;
+  }
+  if (price < sma200) {
+    ctx.watch([{ side: 'buy', price: sma200, trigger: 'above', note: 'Above SMA200' }]);
+    return null;
+  }
+  if (!(price < bb.lower && rsi < 30)) {
+    ctx.watch([{ side: 'buy', price: bb.lower, trigger: 'below', note: 'BB lower', conds: [{ label: 'RSI(14)', now: rsi, op: '<', ref: 30, closed: true }] }]);
+    return null;
+  }
 
   // Two-tier fear-depth sizing: deep fear = smaller position (bounce less
   // reliable). Fall back to 95% if fear-greed data is missing.
@@ -56,5 +71,6 @@ function onUpdate(ctx) {
   }
 
   ctx.state.lastExit = ctx.i;
+  ctx.watch([{ side: 'buy', price: bb.lower, trigger: 'below', note: 'BB lower entry', conds: [{ label: 'RSI(14)', now: rsi, op: '<', ref: 30, closed: true }, { label: 'FG index', now: fg, op: '<', ref: 20 }] }]);
   return { side: 'buy', qty: ctx.cash / ctx.price * frac };
 }
