@@ -17,6 +17,8 @@
  *
  * Does NOT work: in a sustained risk-off regime (rising DXY) it sits in cash
  * and misses rallies; in a relentless straight-line bull it exits too early.
+ *
+ * 2026-04-26 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const px = ctx.price;
@@ -24,7 +26,10 @@ function onUpdate(ctx) {
   const bb = ctx.bb(20, 2, 1);
   const rsi = ctx.rsi(14, 1);
   const dxy = ctx.macro('dxy');
-  if (s200 == null || bb == null || rsi == null) return null;
+  if (s200 == null || bb == null || rsi == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   // DIAGNOSTIC: reveal the dxy shape and how often the gate blocks
   const st = ctx.state || {};
@@ -50,12 +55,21 @@ function onUpdate(ctx) {
   }
 
   if (ctx.position === 0) {
+    ctx.watch([{ side: 'buy', price: bb.lower, trigger: 'below', note: 'BB lower entry', qty: ctx.cash / px * 0.99, conds: [
+      { label: 'px > SMA200*1.06', now: px, op: '>', ref: s200 * 1.06, closed: false },
+      { label: 'RSI(14) < 35', now: rsi, op: '<', ref: 35, closed: true },
+      { label: 'DXY risk-on', ok: riskOn }
+    ]}]);
     if (marginOk && riskOn && px < bb.lower && rsi < 35) {
       return { side: 'buy', qty: ctx.cash / px * 0.99 };
     }
     return null;
   }
 
+  ctx.watch([
+    { side: 'sell', price: bb.mid, trigger: 'above', note: 'mid-band exit', qty: ctx.position },
+    { side: 'sell', note: 'RSI overbought exit', conds: [{ label: 'RSI(14)', now: rsi, op: '>', ref: 65, closed: true }], qty: ctx.position }
+  ]);
   if (px > bb.mid || rsi > 65) {
     return { side: 'sell', qty: ctx.position };
   }
