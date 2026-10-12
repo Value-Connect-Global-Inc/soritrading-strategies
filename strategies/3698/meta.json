@@ -3,10 +3,10 @@
   "name": "VolTargetTrendRider",
   "kind": "custom",
   "verified": {
-    "backtestId": 18805,
-    "return": 349.86,
+    "backtestId": 18808,
+    "return": 329.18,
     "mdd": 20.81,
-    "trades": 100,
+    "trades": 98,
     "vsBuyHold": "unmeasured",
     "gapPct": 0,
     "tFrom": 1532563200,
@@ -26,6 +26,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-12T17:42:39.184Z",
+  "updatedAt": "2026-10-12T17:47:32.878Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

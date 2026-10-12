@@ -10,10 +10,12 @@
  * uptrend (price above its 50-day and 200-day averages) while sizing each
  * position by inverse volatility so every position risks the same fixed dollar
  * amount. The key mechanism is risk management — position size adapts to
- * market volatility, not a clever entry.
+ * market volatility, not a clever entry. An RSI<75 gate keeps it from buying
+ * the very top of an exhausted parabolic move.
  * When it buys and sells: buy when a close is above BOTH the 50-day and
- * 200-day averages; sell when a close falls below the 50-day average or price
- * hits a 2x ATR stop below entry. Each asset is sized to risk 1% of equity.
+ * 200-day averages AND RSI(14) close is below 75; sell when a close falls
+ * below the 50-day average or price hits a 2x ATR stop below entry. Each
+ * asset is sized to risk 1% of equity.
  * When it does NOT work: in a choppy sideways market where price oscillates
  * around the 50-day average it churns (buys near the top of each wiggle, sells
  * near the bottom). The 200-day filter keeps it out of deep bears, but a slow
@@ -28,7 +30,8 @@ function onUpdate(ctx) {
   const sma200 = ctx.sma(200, 1);
   const sma50 = ctx.sma(50, 1);
   const atr = ctx.atr(14, 1);
-  if (sma200 == null || sma50 == null || atr == null || atr <= 0) return null;
+  const rsi = ctx.rsi(14, 1);
+  if (sma200 == null || sma50 == null || atr == null || atr <= 0 || rsi == null) return null;
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) { ctx.watch([]); return null; }
 
@@ -52,11 +55,13 @@ function onUpdate(ctx) {
   const maxQty = (ctx.cash / price) * 0.40;
   qty = Math.min(qty, maxQty);
 
-  if (prevClose > sma200 && prevClose > sma50) {
+  // RSI<75 gate: same reason as the champion — do not buy the top of a move.
+  if (prevClose > sma200 && prevClose > sma50 && rsi < 75) {
     ctx.watch([]);
     return { side: 'buy', qty };
   }
   ctx.watch([{ side: 'buy', price: sma50, trigger: 'above', note: 'trend re-entry',
-               conds: [{ label: 'close>200d', ok: prevClose > sma200 }] }]);
+               conds: [{ label: 'close>200d', ok: prevClose > sma200 },
+                       { label: 'RSI(14) close', now: rsi, op: '<', ref: 75, closed: true }] }]);
   return null;
 }
