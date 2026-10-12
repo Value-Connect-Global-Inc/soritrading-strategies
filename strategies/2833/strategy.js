@@ -1,3 +1,4 @@
+// 2026-04-11 표시만 바뀜, 매매 판단은 그대로
 /*
  * @coinsori-strategy v1
  * name: OBV Trend Fast Lookback 15d BTC 1D
@@ -21,15 +22,24 @@
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const sma100 = ctx.sma(100, 1);
   const atr = ctx.atr(14, 1);
-  if (sma100 == null || atr == null) return null;
+  if (sma100 == null || atr == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   const closes = ctx.closes;
   const vols = ctx.volumes;
-  if (!closes || !vols || closes.length < 17) return null;
+  if (!closes || !vols || closes.length < 17) {
+    ctx.watch([]);
+    return null;
+  }
 
   let obv = 0;
   const obvSeries = [];
@@ -40,7 +50,10 @@ function onUpdate(ctx) {
     else if (c < p) obv -= v;
     obvSeries.push(obv);
   }
-  if (obvSeries.length < 17) return null;
+  if (obvSeries.length < 17) {
+    ctx.watch([]);
+    return null;
+  }
   const obvNow = obvSeries[obvSeries.length - 1];
   const obvPast = obvSeries[obvSeries.length - 16];
   const rising = obvNow > obvPast * 1.01;
@@ -59,6 +72,30 @@ function onUpdate(ctx) {
   if (atrPct > 0.06) {
     sizeFrac = Math.max(0.5, 1.0 - (atrPct - 0.06) / 0.06);
   }
+
+  const watchEntries = [];
+  if (pos > 0) {
+    watchEntries.push({
+      side: 'sell',
+      note: 'OBV 15D downtrend exit',
+      conds: [
+        { label: 'OBV 15D falling', ok: falling },
+        { label: 'cooldown ready', ok: cd === 0 }
+      ]
+    });
+  } else {
+    watchEntries.push({
+      side: 'buy',
+      note: 'OBV 15D uptrend entry',
+      conds: [
+        { label: 'OBV 15D rising', ok: rising },
+        { label: 'Price > SMA100', now: price, op: '>', ref: sma100 },
+        { label: 'Volume > avg30', ok: volOk },
+        { label: 'cooldown ready', ok: cd === 0 }
+      ]
+    });
+  }
+  ctx.watch(watchEntries);
 
   if (pos > 0) {
     if (falling && cd === 0) {
