@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2758](strategies/2758/) | Regime-Switch Blend ETH 4H | +75.38% | +1620.25% | +38.26% | 178 | 2026-10-12 |
 |  | [3662](strategies/3662/) | AI 전략 | -44.35% | +196.85% | +52.94% | 57 | 2026-10-12 |
 |  | [3658](strategies/3658/) | DonchianRiskSized | +13.51% | +87.84% | +16.63% | 23 | 2026-10-12 |
 | ★ | [3656](strategies/3656/) | DonchianBaseline | +260.37% | +213.55% | +44.98% | 17 | 2026-10-12 |
@@ -770,7 +771,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2761](strategies/2761/) | AI 전략 | +96.72% | +1620.25% | +40.26% | 200 | 2026-09-26 |
 | ★ | [2760](strategies/2760/) | Donchian Pullback Trend-Strength 0.10 ETH 4H | +90.13% | +34.16% | +20.51% | 168 | 2026-09-26 |
 |  | [2759](strategies/2759/) | Donchian Pullback Trend-Strength ETH 4H | +231.98% | +435.09% | +16.48% | 180 | 2026-09-26 |
-|  | [2758](strategies/2758/) | Regime-Switch Blend ETH 4H | -16.23% | +1620.25% | +69.77% | 225 | 2026-09-26 |
 | ★ | [2754](strategies/2754/) | Donchian Pullback Uptrend ETH 4H | +40.80% | -24.71% | +22.89% | 186 | 2026-09-26 |
 |  | [2753](strategies/2753/) | Candle-Pattern Panic Reversal BTC 4H | -13.17% | +435.09% | +25.97% | 38 | 2026-09-26 |
 |  | [2752](strategies/2752/) | Bollinger Squeeze Breakout ETH 4H | +16.09% | +32.58% | +22.83% | 42 | 2026-09-26 |
