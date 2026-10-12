@@ -24,7 +24,9 @@
       "interval": "1d",
       "bars": 1500,
       "end": 1531267200
-    }
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "f476d03dde89a7d2ddf79464f36ea8601ea75ce0885b020d20066caabb13866c"
   },
   "config": {
     "ex": "binance",

@@ -8,6 +8,7 @@ Entries stay after a strategy is removed from our own workspace — this is a lo
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 280 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
+**‡** after a name: the code was edited after its last verifying backtest — the published code is current, but the figures are from the previous code until a new backtest verifies it.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
@@ -66,6 +67,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2773](strategies/2773/) | Onchain Hashrate Probe | +296.49% | +315.94% | +52.53% | 1 | 2026-10-12 |
 | ★ | [2776](strategies/2776/) | AI 전략 | +70.98% | +42.23% | +64.39% | 92 | 2026-10-12 |
 |  | [2777](strategies/2777/) | AI 전략 | +40.01% | +1258.25% | +85.06% | 6 | 2026-10-12 |
+|  | [2781](strategies/2781/) | Market-Structure Trend BTC 1D ‡ | -10.98% | +154.52% | +10.98% | 16 | 2026-10-12 |
 |  | [2780](strategies/2780/) | Volume-Panic Mean Reversion BTC 4H | -41.51% | +435.09% | +53.84% | 130 | 2026-10-12 |
 |  | [3657](strategies/3657/) | DonchianSlowEntry | +16.36% | +87.84% | +44.75% | 19 | 2026-10-12 |
 | ★ | [3655](strategies/3655/) | DonchianOiGate | +260.37% | +213.55% | +44.98% | 17 | 2026-10-12 |
@@ -103,6 +105,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | ★ | [2842](strategies/2842/) | BTC 1D Blend + On-Chain Demand Gate | +103.42% | +45.60% | +53.41% | 370 | 2026-10-12 |
 |  | [3639](strategies/3639/) | SimpleTrendDaily | +121.66% | +315.94% | +23.00% | 29 | 2026-10-12 |
 |  | [2843](strategies/2843/) | Hashrate Regime Gate BTC 1D | -50.66% | +827.08% | +67.07% | 315 | 2026-10-12 |
+| ★ | [2845](strategies/2845/) | Hashrate Demand Trend BTC 1D ‡ | +122.40% | -17.74% | +49.45% | 132 | 2026-10-12 |
 |  | [2848](strategies/2848/) | Sentiment Trend-Follow BTC 1D | -90.07% | +45.60% | +92.22% | 759 | 2026-10-12 |
 | ★ | [2849](strategies/2849/) | Fed Tightening-Onset Regime BTC 1D | +104.74% | +45.60% | +54.48% | 21 | 2026-10-12 |
 | ★ | [3637](strategies/3637/) | PlainTrendControl | +33.67% | -20.96% | +8.34% | 14 | 2026-10-12 |
@@ -123,6 +126,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3633](strategies/3633/) | BTC Fear-Greed Contrarian 1D | +3.16% | +612.44% | +24.87% | 4 | 2026-10-12 |
 |  | [3632](strategies/3632/) | BTC DXY-Gated Trend 4H | +8.83% | +459.07% | +13.90% | 12 | 2026-10-12 |
 |  | [2871](strategies/2871/) | DIAG multi-asset probe | +18.89% | +305.26% | +2.46% | 6 | 2026-10-12 |
+|  | [2870](strategies/2870/) | BB Squeeze Breakout BTC 1D ‡ | -4.49% | +133.21% | +28.57% | 14 | 2026-10-12 |
 |  | [3629](strategies/3629/) | BTC Hashrate-Gated Trend 4H | +23.80% | +48.41% | +20.11% | 104 | 2026-10-12 |
 |  | [3630](strategies/3630/) | BTC Trend 4H No-Gate Control | +115.22% | +459.07% | +16.85% | 159 | 2026-10-12 |
 |  | [2876](strategies/2876/) | 45d OBV Trend Champion BTC 1D | +152.95% | +252.51% | +51.17% | 33 | 2026-10-12 |
@@ -211,6 +215,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | — | [2981](strategies/2981/) | AI 전략 | +66.76% | — | +12.14% | 37 | 2026-10-11 |
 | — | [2982](strategies/2982/) | AI 전략 | +140.08% | — | +13.53% | 80 | 2026-10-11 |
 |  | [2983](strategies/2983/) | BTC 1D ATR Chandelier Trend Rider | -38.86% | +43.77% | +59.49% | 47 | 2026-10-11 |
+|  | [2984](strategies/2984/) | BTC 1D Volatility Squeeze Breakout ‡ | +37.95% | +1205.77% | +33.08% | 14 | 2026-10-11 |
 |  | [3594](strategies/3594/) | AI 전략 | +48.68% | +580.47% | +14.90% | 7 | 2026-10-11 |
 |  | [2986](strategies/2986/) | BTC 1D Hybrid MR + Squeeze (BASELINE control) | -2.36% | +66.16% | +31.57% | 82 | 2026-10-11 |
 |  | [3592](strategies/3592/) | AI 전략 | +61.55% | +580.47% | +13.92% | 7 | 2026-10-11 |
@@ -220,6 +225,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2993](strategies/2993/) | BTC 1D Crash-Buy + Trend-Ride Hybrid | -1.98% | +94.89% | +25.86% | 42 | 2026-10-11 |
 | ★ | [2991](strategies/2991/) | BTC 1D OI-Funding Sentiment | +115.35% | +47.08% | +15.57% | 108 | 2026-10-11 |
 |  | [2992](strategies/2992/) | BTC 1D Deep-Crash Capitulation Reversion | -0.68% | +800.36% | +42.12% | 18 | 2026-10-11 |
+|  | [2995](strategies/2995/) | Multi-Sym Defensive MR Basket ‡ | +6.29% | +111.91% | +6.17% | 20 | 2026-10-11 |
 | — | [3589](strategies/3589/) | Multi-Asset Donchian Turtle Portfolio | +9.02% | — | +9.22% | 384 | 2026-10-11 |
 |  | [2996](strategies/2996/) | XRP 1D Donchian Trend-Follower | -0.31% | +109.22% | +71.98% | 11 | 2026-10-11 |
 |  | [2997](strategies/2997/) | BTC 1D Dual-MR Defensive (copy for early-window validation) | +39.61% | +167.91% | +2.61% | 30 | 2026-10-11 |
@@ -228,6 +234,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2999](strategies/2999/) | BTC 1D MR Champion + Trend Trail Exit | +39.61% | +167.91% | +2.61% | 30 | 2026-10-11 |
 | ★ | [3002](strategies/3002/) | ETH 1D Dual-MR Defensive (Bollinger+Keltner) | +1.37% | -0.21% | +4.40% | 7 | 2026-10-11 |
 |  | [3003](strategies/3003/) | SOL 1D Dual-MR Defensive (Bollinger+Keltner) | +6.04% | +202.26% | +5.29% | 10 | 2026-10-11 |
+| ★ | [3005](strategies/3005/) | ADA 1D Dual-MR Defensive (Bollinger+Keltner) ‡ | +3.57% | -79.60% | +3.36% | 8 | 2026-10-11 |
 |  | [3004](strategies/3004/) | BNB 1D Dual-MR Defensive (Bollinger+Keltner) | +3.16% | +141.91% | +10.53% | 16 | 2026-10-11 |
 | ★ | [3006](strategies/3006/) | BTC 1D Dual-MR Defensive Full-Cash | +16.39% | -52.77% | +2.47% | 10 | 2026-10-11 |
 |  | [3587](strategies/3587/) | BTC 4H Donchian Turtle Trend | +58.44% | +457.74% | +7.74% | 89 | 2026-10-11 |
@@ -293,6 +300,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | ★ | [3104](strategies/3104/) | Keltner MR BTC-SOL 4H | +489.81% | -76.02% | +41.06% | 95 | 2026-10-11 |
 | ★ | [3105](strategies/3105/) | Keltner MR Trend-Gated 4H | +7.68% | -27.55% | +26.59% | 30 | 2026-10-11 |
 | — | [3107](strategies/3107/) | Data Probe SOL 1D MR | +7.22% | — | +33.64% | 118 | 2026-10-11 |
+|  | [3106](strategies/3106/) | BTC 1D Defensive Mean-Reversion (trend-gated) ‡ | +120.09% | +325.14% | +21.24% | 69 | 2026-10-11 |
 | ★ | [3108](strategies/3108/) | BTC 1D Bollinger Squeeze-Breakout | -7.64% | -40.93% | +13.84% | 2 | 2026-10-11 |
 | — | [3551](strategies/3551/) | BTC ETH Relative-Strength Rotation 4H | -35.36% | — | +52.71% | 430 | 2026-10-11 |
 | — | [3550](strategies/3550/) | Funding Squeeze Long BTC 4H | +82.12% | — | +19.40% | 53 | 2026-10-11 |
@@ -325,6 +333,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3539](strategies/3539/) | ETH 4H Mean Reversion | -11.80% | +1894.32% | +29.15% | 50 | 2026-10-11 |
 |  | [3538](strategies/3538/) | BTC 4H Mean Reversion | +6.71% | +458.60% | +10.75% | 34 | 2026-10-11 |
 |  | [3150](strategies/3150/) | BTC Hashrate Network Health Trend 1D | -46.53% | +95.22% | +68.34% | 411 | 2026-10-11 |
+|  | [3155](strategies/3155/) | BTC Onchain Network Growth Trend 1D ‡ | -22.19% | +190.54% | +59.85% | 120 | 2026-10-11 |
 |  | [3537](strategies/3537/) | Volatility Breakout BTC 4H | +23.78% | +44.30% | +10.09% | 69 | 2026-10-11 |
 |  | [3159](strategies/3159/) | AI 전략 | +50.37% | +753.65% | +77.91% | 71 | 2026-10-11 |
 |  | [3161](strategies/3161/) | AI 전략 | -42.19% | -23.94% | +68.11% | 45 | 2026-10-11 |
@@ -338,6 +347,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3181](strategies/3181/) | BTC 4H Bollinger Mean Reversion | +142.73% | +486.12% | +68.02% | 2 | 2026-10-11 |
 | ★ | [3182](strategies/3182/) | ETH 4H Donchian Breakout Trend | +16.82% | +9.87% | +28.42% | 4 | 2026-10-11 |
 |  | [3183](strategies/3183/) | BTC 4H Momentum-Confirmed EMA Trend | -51.89% | +435.49% | +56.61% | 78 | 2026-10-11 |
+|  | [3190](strategies/3190/) | BTC 4H Macro-Gated Trend ‡ | +3.06% | +48.89% | +5.15% | 2 | 2026-10-11 |
 |  | [3536](strategies/3536/) | ETH 1h Bollinger Band Mean Reversion | -15.83% | +6.21% | +18.34% | 148 | 2026-10-11 |
 |  | [3535](strategies/3535/) | ETH 4h MTF Trend Continuation | -13.06% | +14.25% | +47.75% | 106 | 2026-10-11 |
 |  | [3534](strategies/3534/) | ETH 4h RSI BB Mean Reversion | +89.13% | +1894.32% | +52.48% | 141 | 2026-10-11 |
@@ -409,6 +419,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | ★ | [3465](strategies/3465/) | Miner Commitment Long BTC 1D | -18.00% | -21.40% | +20.28% | 19 | 2026-10-11 |
 |  | [3464](strategies/3464/) | BTC Trend Rider 1D | -11.40% | +95.22% | +34.89% | 17 | 2026-10-11 |
 | — | [3210](strategies/3210/) | Baseline Champion Reference | +242.21% | — | +37.78% | 18 | 2026-10-11 |
+| — | [3212](strategies/3212/) | AI 전략 ‡ | +11.50% | — | +13.48% | 15 | 2026-10-11 |
 |  | [3463](strategies/3463/) | Fed Regime BTC 1D | -1.24% | +95.22% | +34.54% | 12 | 2026-10-11 |
 |  | [3213](strategies/3213/) | Donchian Breakout BNB 1D | -90.51% | +50.08% | +91.66% | 90 | 2026-10-11 |
 |  | [3218](strategies/3218/) | On-Chain Network Growth BTC 1D | +20.49% | +72.66% | +58.89% | 128 | 2026-10-11 |
@@ -609,7 +620,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | — | [3227](strategies/3227/) | Momentum Rotation 4H | -99.99% | — | +99.99% | 2856 | 2026-10-08 |
 |  | [3224](strategies/3224/) | Uptrend Pullback Reversion (BTC 1D) | +30.88% | +320.57% | +22.00% | 36 | 2026-10-08 |
 |  | [3220](strategies/3220/) | AI 전략 | -43.19% | +174.32% | +56.53% | 14 | 2026-10-08 |
-| — | [3212](strategies/3212/) | AI 전략 | +11.50% | — | +13.48% | 15 | 2026-10-08 |
 | — | [3211](strategies/3211/) | 1D Multi-Asset Momentum Defensive Sizing | +171.82% | — | +35.70% | 18 | 2026-10-08 |
 | — | [3209](strategies/3209/) | 1D Multi-Asset Momentum Strength-Sized | +163.63% | — | +28.35% | 17 | 2026-10-08 |
 | — | [3208](strategies/3208/) | 1D Multi-Asset Momentum Crash-Stop | +4.24% | — | +64.49% | 760 | 2026-10-08 |
@@ -625,7 +635,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3195](strategies/3195/) | BTC 1D RSI2 Extreme-Oversold Bounce | -5.12% | +729.43% | +48.56% | 254 | 2026-10-08 |
 |  | [3192](strategies/3192/) | BTC 1D Long-Horizon Momentum Hysteresis | +49.84% | +94.76% | +16.44% | 5 | 2026-10-08 |
 |  | [3191](strategies/3191/) | BTC 4H Pure EMA50 Trend baseline | +49.39% | +469.54% | +66.95% | 333 | 2026-10-08 |
-|  | [3190](strategies/3190/) | BTC 4H Macro-Gated Trend | +3.06% | +48.89% | +5.15% | 2 | 2026-10-08 |
 |  | [3184](strategies/3184/) | BTC 4H Donchian Turtle Trend | +229.05% | +469.54% | +33.42% | 107 | 2026-10-07 |
 |  | [3179](strategies/3179/) | BTC Long-Horizon Momentum Hysteresis 1D | +7.04% | +194.38% | +59.44% | 9 | 2026-10-07 |
 |  | [3173](strategies/3173/) | BTC RSI2 Panic Reversion 1D | -7.46% | +446.26% | +64.59% | 138 | 2026-10-07 |
@@ -634,7 +643,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3158](strategies/3158/) | BTC Trend + Sentiment Top-Detector 1D | +45.63% | +753.65% | +79.16% | 49 | 2026-10-07 |
 |  | [3157](strategies/3157/) | BTC FearGreed Contrarian v2 1D | -44.34% | +753.65% | +73.23% | 12 | 2026-10-07 |
 |  | [3156](strategies/3156/) | BTC FearGreed Contrarian 1D | -13.08% | -2.80% | +53.82% | 18 | 2026-10-07 |
-|  | [3155](strategies/3155/) | BTC Onchain Network Growth Trend 1D | -22.19% | +190.54% | +59.85% | 120 | 2026-10-07 |
 |  | [3146](strategies/3146/) | AI 전략 | +151.83% | +221.34% | +13.29% | 16 | 2026-10-05 |
 | ★ | [3142](strategies/3142/) | ETH 4H Bollinger-Stoch Mean Reversion | +26.34% | -52.02% | +40.27% | 73 | 2026-10-05 |
 |  | [3132](strategies/3132/) | BTC 4H Trend-Gated Keltner MR SMA100 | +24.49% | +409.78% | +16.51% | 12 | 2026-10-04 |
@@ -646,7 +654,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3116](strategies/3116/) | BTC Funding-Extreme Reversal 1D | +406.07% | +1834.47% | +14.05% | 47 | 2026-10-03 |
 |  | [3111](strategies/3111/) | BTC 1D Defensive Mean Reversion | +3.46% | +18.88% | +1.44% | 6 | 2026-10-02 |
 | ★ | [3109](strategies/3109/) | SOL 1D MR Half-TP + Trend-Ride | -7.64% | -40.93% | +13.84% | 2 | 2026-10-02 |
-|  | [3106](strategies/3106/) | BTC 1D Defensive Mean-Reversion (trend-gated) | +120.09% | +325.14% | +21.24% | 69 | 2026-10-02 |
 |  | [3101](strategies/3101/) | EURUSD 4h 추세·눌림목 v1 (EMA50/200·RSI 되돌림) | +31.73% | +109.48% | +13.48% | 542 | 2026-10-02 |
 | — | [3103](strategies/3103/) | EURUSD 1h 아시아 레인지 → 런던 돌파 v1 | -34.28% | — | +36.20% | 282 | 2026-10-02 |
 | — | [3102](strategies/3102/) | EURUSD 4h 추세·눌림목 v2 (EMA20 트레일 청산) | -16.50% | — | +24.38% | 214 | 2026-10-02 |
@@ -701,17 +708,15 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3015](strategies/3015/) | Multi-Asset Defensive MR Basket BTC/ETH/SOL/XRP | +17.42% | +43.77% | +6.34% | 86 | 2026-09-29 |
 |  | [3011](strategies/3011/) | BTC 1D Dual-MR + Dollar Risk-Off Gate | +24.48% | +1205.77% | +18.41% | 10 | 2026-09-29 |
 |  | [3007](strategies/3007/) | BTC 1D Dual-MR Defensive Full-Cash | +51.49% | +94.89% | +10.83% | 12 | 2026-09-29 |
-| ★ | [3005](strategies/3005/) | ADA 1D Dual-MR Defensive (Bollinger+Keltner) | +3.57% | -79.60% | +3.36% | 8 | 2026-09-29 |
-|  | [2995](strategies/2995/) | Multi-Sym Defensive MR Basket | +6.29% | +111.91% | +6.17% | 20 | 2026-09-29 |
 |  | [2994](strategies/2994/) | BTC 1D Dual-MR Defensive (Bollinger+Keltner) | +6.29% | +111.91% | +6.17% | 20 | 2026-09-29 |
 |  | [2989](strategies/2989/) | BTC 1D Macro-Regime Dollar Filter | +11.50% | +1205.77% | +65.97% | 57 | 2026-09-29 |
 | — | [2988](strategies/2988/) | BTC Long-Short Trend (both directions) | +377.94% | — | +55.67% | 58 | 2026-09-29 |
 |  | [2987](strategies/2987/) | BTC 1D Hybrid MR+Squeeze (ATR trail) | -25.86% | +881.10% | +52.35% | 25 | 2026-09-29 |
 |  | [2985](strategies/2985/) | BTC 1D Hybrid MR + Squeeze Breakout | +166.97% | +240.17% | +25.17% | 110 | 2026-09-29 |
-|  | [2984](strategies/2984/) | BTC 1D Volatility Squeeze Breakout | +37.95% | +1205.77% | +33.08% | 14 | 2026-09-29 |
 | — | [2980](strategies/2980/) | Multi-Asset Defensive Keltner MR Basket | +140.08% | — | +13.53% | 80 | 2026-09-29 |
 |  | [2977](strategies/2977/) | BTC 1D Fear-Greed Contrarian v3 | -39.46% | +43.77% | +50.04% | 55 | 2026-09-29 |
 |  | [2974](strategies/2974/) | BTC 1D Fear-Greed Contrarian v2 | -22.80% | +240.17% | +23.16% | 20 | 2026-09-29 |
+|  | [2779](strategies/2779/) | OBV Volume-Flow Trend BTC 1D | +137.82% | +262.64% | +23.11% | 53 | 2026-09-29 |
 |  | [2965](strategies/2965/) | SOL 1D Dual-Mode Keltner MR + Trend Ride | +79.55% | +659.58% | +23.13% | 5 | 2026-09-28 |
 |  | [2959](strategies/2959/) | BTC 1D Defensive Bollinger-RSI + Trend Ride (CHAMPION BASELI | +12.76% | +116.17% | +15.81% | 22 | 2026-09-28 |
 |  | [2958](strategies/2958/) | BTC 1D Defensive Bollinger-RSI + Trend Ride (Vol-Scaled) | +12.77% | +116.17% | +15.18% | 22 | 2026-09-28 |
@@ -752,7 +757,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | ★ | [2882](strategies/2882/) | 45d OBV Trend SMA50-Gate BTC 1D | +1810.62% | +1279.90% | +43.09% | 46 | 2026-09-27 |
 |  | [2875](strategies/2875/) | 20d OBV Trend Faster-Entry BTC 1D | +210.90% | +263.61% | +44.57% | 44 | 2026-09-27 |
 |  | [2872](strategies/2872/) | Onchain Demand Trend BTC 1D (re-validate) | +118.58% | +190.11% | +42.13% | 91 | 2026-09-27 |
-|  | [2870](strategies/2870/) | BB Squeeze Breakout BTC 1D | -4.49% | +133.21% | +28.57% | 14 | 2026-09-27 |
 |  | [2868](strategies/2868/) | Keltner MR Daily BTC/ETH/SOL | +18.89% | +190.11% | +2.46% | 6 | 2026-09-27 |
 | ★ | [2867](strategies/2867/) | Keltner MR generalization LINK/LTC/DOGE/AVAX/BNB | +35.09% | -23.39% | +6.30% | 30 | 2026-09-27 |
 |  | [2865](strategies/2865/) | BTC 4H Keltner Mean-Reversion (generalization) | +186.13% | +2940.31% | +13.63% | 21 | 2026-09-27 |
@@ -761,7 +765,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | ★ | [2859](strategies/2859/) | 45d OBV Partial Scale-Out BTC 1D | +728.32% | +574.98% | +40.98% | 36 | 2026-09-27 |
 | ★ | [2856](strategies/2856/) | AI 전략 | +77.00% | -11.28% | +10.49% | 14 | 2026-09-27 |
 |  | [2855](strategies/2855/) | OBV Champion Pure BTC 1D (baseline) | +145.29% | +167.91% | +26.06% | 109 | 2026-09-27 |
-| ★ | [2845](strategies/2845/) | Hashrate Demand Trend BTC 1D | +122.40% | -17.74% | +49.45% | 132 | 2026-09-27 |
 |  | [2840](strategies/2840/) | BTC 1D Blend + On-Chain Demand Composite | +23.16% | +45.60% | +18.18% | 40 | 2026-09-27 |
 | ★ | [2839](strategies/2839/) | Regime-Blend Generalization LTC/BNB 1D | +17.15% | -22.57% | +23.70% | 42 | 2026-09-27 |
 | ★ | [2838](strategies/2838/) | OBV Trend Generalization ADA/LTC 1D | +178.72% | +50.89% | +52.51% | 67 | 2026-09-27 |
@@ -793,7 +796,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2792](strategies/2792/) | BTC 1D Trend-Scaled Band-Bounce Mean Reversion | +30.00% | +262.64% | +7.54% | 46 | 2026-09-26 |
 |  | [2791](strategies/2791/) | BTC 1D EMA50/200 Trend + Re-entry | -3.97% | +25.35% | +16.62% | 7 | 2026-09-26 |
 |  | [2790](strategies/2790/) | On-Chain Demand Trend BTC 1D | -100.00% | +1258.25% | +100.00% | 5125 | 2026-09-26 |
-|  | [2779](strategies/2779/) | OBV Volume-Flow Trend BTC 1D | +137.82% | +262.64% | +23.11% | 53 | 2026-09-26 |
 |  | [2788](strategies/2788/) | Regime-Switch Hybrid SOL 4H (DD-reduced) | -75.35% | +62.63% | +86.82% | 380 | 2026-09-26 |
 |  | [2787](strategies/2787/) | Liquidation-Capitulation Contrarian BTC 4H | -0.25% | +8.75% | +20.31% | 13 | 2026-09-26 |
 |  | [2786](strategies/2786/) | Regime-Switch Fear+Trend BTC 1D | +3.65% | +45.78% | +47.63% | 59 | 2026-09-26 |
@@ -801,7 +803,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2784](strategies/2784/) | Hashrate-Gated Trend BTC 1D | -17.39% | +55.47% | +24.12% | 76 | 2026-09-26 |
 |  | [2783](strategies/2783/) | Onchain-Demand Trend BTC 1D | -18.43% | +55.47% | +53.94% | 86 | 2026-09-26 |
 |  | [2782](strategies/2782/) | EMA50/200 Trend BTC 1D | -11.84% | +55.47% | +16.30% | 2 | 2026-09-26 |
-|  | [2781](strategies/2781/) | Market-Structure Trend BTC 1D | -10.98% | +154.52% | +10.98% | 16 | 2026-09-26 |
 |  | [2778](strategies/2778/) | AI 전략 | -59.65% | +1258.25% | +86.61% | 384 | 2026-09-26 |
 |  | [2775](strategies/2775/) | Onchain Demand Fast BTC 1D | +166.28% | +1258.25% | +69.48% | 78 | 2026-09-26 |
 |  | [2772](strategies/2772/) | Onchain Demand Trend BTC 1D | +134.03% | +262.64% | +42.13% | 85 | 2026-09-26 |

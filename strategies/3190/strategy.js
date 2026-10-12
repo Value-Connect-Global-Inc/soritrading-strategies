@@ -15,6 +15,7 @@
  * keeps us out and we miss gains. In flat chop the 50-EMA cross whipsaws.
  */
 function onUpdate(ctx) {
+  // 2025-01-01: display-only ctx.watch added; trading logic unchanged.
   const ema50 = ctx.ema(50, 1);
   if (ema50 == null) return null;
   const closes = ctx.closes;
@@ -40,10 +41,17 @@ function onUpdate(ctx) {
   }
 
   if (ctx.position > 0 && prevClose < ema50) {
+    ctx.watch([{ side: 'sell', price: ema50, trigger: 'below', note: '50-EMA exit', qty: ctx.position }]);
     return { side: 'sell', qty: ctx.position };
   }
   if (ctx.position === 0 && prevClose > ema50 && riskOn) {
+    ctx.watch([{ side: 'buy', price: ema50, trigger: 'above', note: '50-EMA entry', conds: [{ label: 'DXY risk-on', ok: riskOn }] }]);
     return { side: 'buy', qty: ctx.cash / ctx.price * 0.99 };
+  }
+  if (ctx.position === 0) {
+    ctx.watch([{ side: 'buy', price: ema50, trigger: 'above', note: '50-EMA entry' }]);
+  } else {
+    ctx.watch([{ side: 'sell', price: ema50, trigger: 'below', note: '50-EMA exit' }]);
   }
   return null;
 }

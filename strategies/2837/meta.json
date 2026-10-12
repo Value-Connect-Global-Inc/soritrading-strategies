@@ -24,7 +24,9 @@
       "sym": "ETH",
       "interval": "1d",
       "bars": 2500
-    }
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "ae6ab877f4379048a9329919efed3600708a218f4a3f1e2b15cdd5252794f888"
   },
   "config": {
     "ex": "binance",

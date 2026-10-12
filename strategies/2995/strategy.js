@@ -18,11 +18,16 @@
  * When it does NOT work: In a sustained bear the rising-trend gate keeps us flat
  * (capital-safe but little upside), and it lags buy-and-hold in a relentless melt-up.
  * Low trade count means the edge depends on the few flushes that mark a local bottom.
+ *
+ * 2026-04-26: 표시만 바뀜, 매매 판단은 그대로 (ctx.watch added)
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const bb = ctx.bb(20, 2.5, 1);
   const rsi = ctx.rsi(14, 1);
@@ -30,7 +35,10 @@ function onUpdate(ctx) {
   const sma200prev = ctx.sma(200, 2);
   const ema20 = ctx.ema(20, 1);
   const atr = ctx.atr(14, 1);
-  if (bb == null || rsi == null || sma200 == null || sma200prev == null || ema20 == null || atr == null || atr <= 0) return null;
+  if (bb == null || rsi == null || sma200 == null || sma200prev == null || ema20 == null || atr == null || atr <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   // The shared defensive gate: only mean-revert inside a rising long-term trend.
   const uptrend = sma200 > sma200prev;
@@ -39,6 +47,11 @@ function onUpdate(ctx) {
   const keltnerLow = ema20 - 2.5 * atr;
 
   if (pos > 0) {
+    // Declare exit waits: EMA20 snap-back (price > ema20) OR RSI > 55.
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'above', note: 'EMA20 snap-back' },
+      { side: 'sell', price: price, trigger: 'above', note: 'RSI>55', conds: [{ label: 'RSI(14)', now: rsi, op: '>', ref: 55, closed: true }] }
+    ]);
     // Take the snap-back profit above the 20-day EMA or once RSI recovers.
     if (price > ema20 || rsi > 55) {
       return { side: 'sell', qty: pos };
@@ -46,7 +59,16 @@ function onUpdate(ctx) {
     return null;
   }
 
-  if (!uptrend) return null;
+  if (!uptrend) {
+    ctx.watch([]);
+    return null;
+  }
+
+  // Declare entry waits: BB lower flush and ATR-adaptive Keltner pullback.
+  ctx.watch([
+    { side: 'buy', price: lowerBand, trigger: 'below', note: 'BB lower', conds: [{ label: 'RSI(14)', now: rsi, op: '<', ref: 30, closed: true }] },
+    { side: 'buy', price: keltnerLow, trigger: 'below', note: 'Keltner low', conds: [{ label: 'RSI(14)', now: rsi, op: '<', ref: 40, closed: true }] }
+  ]);
 
   // Two independent deep-oversold MR triggers, OR'd together.
   const bollingerFlush = price < lowerBand && rsi < 30;

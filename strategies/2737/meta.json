@@ -23,7 +23,9 @@
       "sym": "SUI",
       "interval": "4h",
       "bars": 1000
-    }
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "8fe99a7009af3e0f9b8cc1049b772c3ffe2a9b1e6d136a508750a91531b567ba"
   },
   "config": {
     "ex": "binance",

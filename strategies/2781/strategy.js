@@ -16,6 +16,8 @@
  * When it does NOT work: in a sustained bear market the pullback keeps
  * falling (the rising-200-SMA gate blocks most but not all); and it lags
  * strong V-shaped recoveries where price jumps back before the RSI dips.
+ * 
+ * 2025-01-01: display-only change — added ctx.watch declarations, no trading logic changed.
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -47,6 +49,15 @@ function onUpdate(ctx) {
   if (pos > 0) {
     const stopPx = st.stopPx || (ctx.entryPx - 3 * atr);
     // Exit on hard stop, trend rollover, or recovery to the 20-day average.
+    ctx.watch([
+      { side: 'sell', price: stopPx, trigger: 'below', note: 'hard stop 3x ATR' },
+      { side: 'sell', price: sma200, trigger: 'below', note: 'trend rollover' },
+      { side: 'sell', price: sma20, trigger: 'above', note: 'recovery to SMA20' },
+      { side: 'sell', price: stopPx, trigger: 'below', note: 'trailing stop', conds: [
+        { label: 'SMA200 rising', ok: sma200 > sma200prev, closed: true },
+        { label: 'ROC(10) close', now: roc10, op: '>', ref: -12, closed: true }
+      ]}
+    ]);
     if (price <= stopPx || price < sma200 || price >= sma20) {
       ctx.state.stopPx = null;
       return { side: 'sell', qty: pos };
@@ -57,6 +68,13 @@ function onUpdate(ctx) {
 
   // Deep pullback (10-day ROC <= -12%) + oversold RSI, inside a rising bull.
   // 12% + RSI<35 filters out shallow noise, keeping only real dips.
+  ctx.watch([
+    { side: 'buy', price: sma200, trigger: 'above', note: 'bull trend confirm', conds: [
+      { label: 'ROC(10) close', now: roc10, op: '<=', ref: -12, closed: true },
+      { label: 'RSI(14) close', now: rsi, op: '<', ref: 35, closed: true },
+      { label: 'SMA200 rising', ok: sma200 > sma200prev, closed: true }
+    ]}
+  ]);
   if (roc10 <= -12 && rsi < 35 && price > sma200) {
     ctx.state.stopPx = price - 3 * atr;
     return { side: 'buy', qty: ctx.cash / price * 0.5 };

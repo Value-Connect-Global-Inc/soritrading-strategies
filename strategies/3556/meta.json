@@ -24,7 +24,9 @@
       "sym": "BNB",
       "interval": "4h",
       "bars": 100000
-    }
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "39669e0522de7d22851f8467353c38900fa767f23a97fb898e1e26dbe5871bff"
   },
   "config": null,
   "updatedAt": "2026-10-12T13:11:07.577Z",

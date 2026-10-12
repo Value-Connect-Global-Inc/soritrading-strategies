@@ -20,6 +20,8 @@
  * stay crowded and keep running (a melt-up with positive funding, a crash
  * with negative funding) — contrarian entries get run over. It is a
  * mean-reversion bet, so it is wrong exactly when the trend is strongest.
+ *
+ * 2025-01-01: display-only change — added ctx.watch declarations. Trading logic unchanged.
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -50,6 +52,7 @@ function onUpdate(ctx) {
 
   // --- Exit: crowded long (funding strongly positive) -> take profit / de-risk ---
   if (pos > 0) {
+    ctx.watch([{ side: 'sell', price: CROWDED_LONG, trigger: 'above', note: 'Funding crowded long', qty: pos }]);
     if (f > CROWDED_LONG) {
       return { side: 'sell', qty: pos };
     }
@@ -59,6 +62,7 @@ function onUpdate(ctx) {
   // --- Entry: washed-out short (funding strongly negative) -> contrarian long ---
   // Require funding to be deeply negative AND not still rising into a fresh
   // crowded-short build (OI not ballooning). Only enter on a genuine washout.
+  ctx.watch([{ side: 'buy', price: WASHED_SHORT, trigger: 'below', note: 'Funding washed short', qty: ctx.cash / price * 0.95 }]);
   if (f < WASHED_SHORT) {
     return { side: 'buy', qty: ctx.cash / price * 0.95 };
   }

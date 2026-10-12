@@ -23,7 +23,9 @@
       "bars": 730,
       "end": 1704067200,
       "syms": 3
-    }
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "2de8655eb3c1d6d47634f68c867025b2b302b6db8c08b35f1c179d89cff9b882"
   },
   "config": null,
   "updatedAt": "2026-10-12T18:28:51.205Z",

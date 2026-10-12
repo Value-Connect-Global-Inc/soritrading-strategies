@@ -23,9 +23,19 @@
       "sym": "SOL",
       "interval": "1d",
       "bars": 2000
-    }
+    },
+    "codeBasis": "previous-code",
+    "verifiedCodeSha256": "bd0ff44f1308b1bab554630ade98ceb400dac3d07e5039d08a8c7533176af970"
   },
-  "config": null,
-  "updatedAt": "2026-10-02T06:49:26.054Z",
+  "config": {
+    "ex": "binance",
+    "cash": 10000,
+    "syms": [
+      "BTC"
+    ],
+    "quote": "USDT",
+    "interval": "1d"
+  },
+  "updatedAt": "2026-10-11T17:00:55.729Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

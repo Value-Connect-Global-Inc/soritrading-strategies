@@ -6,6 +6,8 @@
  * interval: 1d
  * cash: 10000
  *
+ * 2026-04-26: 표시만 바뀜, 매매 판단은 그대로
+ *
  * Why this strategy: A different family from the validated mean-reversion and
  * volume-flow champions. It bets on volatility contraction followed by
  * expansion: after the Bollinger bands squeeze to their narrowest in months,
@@ -20,11 +22,17 @@
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const bb = ctx.bb(20, 2, 1);
   const atr = ctx.atr(14, 1);
-  if (bb == null || atr == null || atr <= 0) return null;
+  if (bb == null || atr == null || atr <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const width = (bb.upper - bb.lower) / bb.mid;
   const st = ctx.state;
@@ -35,14 +43,22 @@ function onUpdate(ctx) {
     st.peak = peak;
     if (price < bb.mid || price <= peak - 5 * atr) {
       st.peak = null;
+      ctx.watch([]);
       return { side: 'sell', qty: pos };
     }
+    ctx.watch([
+      { side: 'sell', price: bb.mid, trigger: 'below', note: 'close below mid band' },
+      { side: 'sell', price: peak - 5 * atr, trigger: 'below', note: 'trailing stop 5*ATR' }
+    ]);
     return null;
   }
 
   // Squeeze: current band width is the narrowest of the last 90 bars.
   const N = 90;
-  if (ctx.i < N) return null;
+  if (ctx.i < N) {
+    ctx.watch([]);
+    return null;
+  }
   let minW = Infinity;
   for (let k = 1; k <= N; k++) {
     const b = ctx.bb(20, 2, k);
@@ -57,7 +73,11 @@ function onUpdate(ctx) {
 
   if (squeezed && price > bb.upper) {
     st.peak = price;
+    ctx.watch([]);
     return { side: 'buy', qty: ctx.cash / price * 0.9 };
   }
+  ctx.watch([
+    { side: 'buy', price: bb.upper, trigger: 'above', note: 'BB upper breakout', conds: [{ label: 'Squeeze', ok: squeezed }] }
+  ]);
   return null;
 }

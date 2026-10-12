@@ -6,6 +6,8 @@
  * interval: 1d
  * cash: 10000
  *
+ * 2026-04-27: 표시만 바뀜, 매매 판단은 그대로
+ *
  * Why this strategy: Volatility squeezes (Bollinger bands compressing inside a quiet range)
  * are often followed by an expansion move. This strategy waits for the squeeze and buys the
  * breakout in the direction of the expansion. v2 adds a 200-day trend gate so upside breaks
@@ -20,7 +22,10 @@
  */
 function onUpdate(ctx) {
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const bb = ctx.bb(20, 2, 1);
   const ema20 = ctx.ema(20, 1);
@@ -28,12 +33,19 @@ function onUpdate(ctx) {
   const sma200 = ctx.sma(200, 1);
   const sma200prev = ctx.sma(200, 2);
   if (bb == null || bb.upper == null || bb.lower == null || ema20 == null || high20 == null ||
-      sma200 == null || sma200prev == null) return null;
+      sma200 == null || sma200prev == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   const pos = ctx.position;
 
   if (pos > 0) {
     // Exit below the 20-day EMA, or if the long-term trend turns down.
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'below', note: '20 EMA exit' },
+      { side: 'sell', conds: [{ label: 'SMA200 trend down', ok: sma200 < sma200prev, closed: true }], note: 'trend down exit' }
+    ]);
     if (price < ema20 || sma200 < sma200prev) {
       return { side: 'sell', qty: pos };
     }
@@ -59,6 +71,20 @@ function onUpdate(ctx) {
 
   // Squeeze + breakout + rising long-term trend (v2 gate: filters bear false breakouts).
   const uptrend = price > sma200 && sma200 > sma200prev;
+  ctx.watch([
+    {
+      side: 'buy',
+      price: high20,
+      trigger: 'above',
+      note: '20-day high breakout',
+      conds: [
+        { label: 'BB width pctile', now: pctile, op: '<=', ref: 0.2, closed: true },
+        { label: 'Width > 0', ok: width > 0, closed: true },
+        { label: 'Price > SMA200', now: price, op: '>', ref: sma200, closed: false },
+        { label: 'SMA200 rising', ok: sma200 > sma200prev, closed: true }
+      ]
+    }
+  ]);
   if (pctile <= 0.2 && price > high20 && width > 0 && uptrend) {
     const equity = ctx.cash + ctx.uPnl;
     const qty = (Number.isFinite(equity) && equity > 0 ? equity : ctx.cash) / price;

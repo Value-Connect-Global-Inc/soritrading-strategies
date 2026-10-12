@@ -22,7 +22,9 @@
       "sym": "SOL",
       "interval": "4h",
       "bars": 1000
-    }
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "4897b74139becefd98dacb45e2805506d245d1930c1601cdc53236bf5804af4e"
   },
   "config": {
     "ex": "binance",

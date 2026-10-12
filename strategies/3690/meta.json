@@ -24,7 +24,9 @@
       "interval": "1d",
       "bars": 1500,
       "end": 1791763200
-    }
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "ddf09662b0030eec79048e78ca7026e513b82236e4a49076bde58a06637ee179"
   },
   "config": null,
   "updatedAt": "2026-10-12T14:52:29.657Z",

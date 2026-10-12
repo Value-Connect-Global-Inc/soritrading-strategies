@@ -24,7 +24,9 @@
       "sym": "AVAX",
       "interval": "4h",
       "bars": 1000
-    }
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "fbbaedc26364bb5d682bcbe2deed6d28365c76fc72cc85fb19dd2e50191f5bb6"
   },
   "config": {
     "ex": "binance",

@@ -25,7 +25,9 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1500
-    }
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "1c011d5ba71780f123fde4142a4e4f930fe934d4d3e9dea444f68b9b0fc7fbc9"
   },
   "config": {
     "ex": "binance",

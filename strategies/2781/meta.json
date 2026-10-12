@@ -22,9 +22,19 @@
       "interval": "1d",
       "bars": 1500,
       "end": 1595980800
-    }
+    },
+    "codeBasis": "previous-code",
+    "verifiedCodeSha256": "95568cbfe2547a5183fcf8e661bb19623b7c17fed80e0400a6c27b61a7e20db2"
   },
-  "config": null,
-  "updatedAt": "2026-09-26T21:51:48.869Z",
+  "config": {
+    "ex": "binance",
+    "cash": 10000,
+    "syms": [
+      "BTC"
+    ],
+    "quote": "USDT",
+    "interval": "1d"
+  },
+  "updatedAt": "2026-10-12T09:34:21.581Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

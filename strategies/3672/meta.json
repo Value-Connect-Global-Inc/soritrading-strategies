@@ -23,7 +23,9 @@
       "bars": 1096,
       "end": 1672531200,
       "syms": 4
-    }
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "ef7dd7971d0109f63e13bac0e5a9b4a18adc871745d15010134e0d8cbfa6ce96"
   },
   "config": null,
   "updatedAt": "2026-10-12T12:06:56.578Z",
