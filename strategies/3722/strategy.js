@@ -13,24 +13,30 @@
  * can only avoid.
  * When it buys and sells: go long when price closes above a rising 200-SMA; go short when
  * price closes below a falling 200-SMA. Flat in the middle (SMA flat or price crossing it
- * with no slope). Always a 2x ATR hard stop on the position, sized to risk 1% of equity.
+ * with no slope). Entries need a confirmed trend: the 200-SMA must have moved more than
+ * 0.05% over the prior 20 bars, so a flat wiggling average cannot whipsaw the position.
+ * Always a 2x ATR hard stop on the position, sized to risk 1% of equity.
  * When it does NOT work: in a sideways market where the 200-SMA slope wiggles around zero it
- * flips between flat and a position and can whipsaw; shorting a violent bear rally (squeeze)
- * hits the stop. Funding is charged on the futures position and is not modeled here — a long
- * hold over many days pays funding that this backtest ignores.
+ * stays flat (safe but no profit); shorting a violent bear rally (squeeze) hits the stop.
+ * Funding is charged on the futures position and is not modeled here — a long hold over many
+ * days pays funding that this backtest ignores.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) { ctx.watch([]); return null; }
   const sma200 = ctx.sma(200, 1);
   const sma200prev = ctx.sma(200, 2);
+  const sma200ago20 = ctx.sma(200, 21);   // 20 bars before the last closed bar = the trend's recent slope
   const atr = ctx.atr(14, 1);
-  if (sma200 == null || sma200prev == null || atr == null || atr <= 0) { ctx.watch([]); return null; }
+  if (sma200 == null || sma200prev == null || sma200ago20 == null || atr == null || atr <= 0) { ctx.watch([]); return null; }
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) { ctx.watch([]); return null; }
 
-  const slopeUp = sma200 > sma200prev;
-  const slopeDown = sma200 < sma200prev;
+  // Confirmed trend: the 200-SMA must have moved >0.05% over the last 20 bars.
+  // 0.05% per 20x4h bars is a slow-but-real drift; anything smaller is chop that whipsaws.
+  const slopePct = (sma200 / sma200ago20 - 1) * 100;
+  const trendUp = slopePct > 0.05;
+  const trendDown = slopePct < -0.05;
 
   const pos = ctx.position;
   if (pos > 0) {
@@ -55,8 +61,8 @@ function onUpdate(ctx) {
   if (qty > maxQty) qty = maxQty;
   if (qty <= 0) { ctx.watch([]); return null; }
 
-  if (slopeUp && prevClose > sma200) { ctx.watch([]); return { side: 'buy', qty }; }
-  if (slopeDown && prevClose < sma200) { ctx.watch([]); return { side: 'sell', qty }; }
+  if (trendUp && prevClose > sma200) { ctx.watch([]); return { side: 'buy', qty }; }
+  if (trendDown && prevClose < sma200) { ctx.watch([]); return { side: 'sell', qty }; }
   ctx.watch([]);
   return null;
 }
