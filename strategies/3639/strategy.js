@@ -30,9 +30,9 @@ function onUpdate(ctx) {
   const pos = ctx.position;
   const inTrend = prevClose > sma200;
   const atrPct = atr / price;
-  // Target ~2.0% daily vol (~38% annualized): higher than v1's 1.5%, deploys ~0.65 of
-  // cash in a normal 3% ATR day so it captures more of the trend without needing leverage.
-  const exposure = Math.min(1, 0.02 / atrPct);
+  // Target ~1.75% daily vol (~33% annualized): middle ground — deploys ~0.58 of cash in a
+  // normal 3% ATR day. Chosen as the balance between v1 (1.5%: +25.6%/MDD10) and v0.02 (+42.9%/MDD18).
+  const exposure = Math.min(1, 0.0175 / atrPct);
   const targetQty = (ctx.cash * exposure) / price;
 
   if (pos > 0) {
