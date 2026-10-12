@@ -6,6 +6,8 @@
  * interval: 1d
  * cash: 10000
  *
+ * 2026-04-11 표시만 바뀜, 매매 판단은 그대로
+ *
  * Why this strategy: The pure fed-funds gate holds Bitcoin while the central
  * bank is not actively hiking, but it rides full drawdowns whenever the Fed
  * is on hold (e.g. 2019, 2025 bears). This version keeps the monetary-policy
@@ -24,11 +26,17 @@
  */
 function onUpdate(ctx) {
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const fedNow = ctx.data('fed');
   const fedLag = ctx.data('fed_lag30');
-  if (fedNow == null || fedLag == null) return null;
+  if (fedNow == null || fedLag == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   // Tightening = current rate meaningfully above its level ~30 rows ago.
   const tightening = fedNow > fedLag + 0.5;
@@ -39,6 +47,19 @@ function onUpdate(ctx) {
   const bearTrend = (sma200 != null && price < sma200);
 
   const pos = ctx.position;
+
+  // Declare what we are waiting for (display only)
+  if (pos > 0) {
+    ctx.watch([
+      { side: 'sell', note: 'trend exit', conds: [{ label: 'price < SMA200', ok: bearTrend }] },
+      { side: 'sell', note: 'policy exit', conds: [{ label: 'Fed hiking', ok: tightening }] }
+    ]);
+  } else {
+    ctx.watch([
+      { side: 'buy', note: 'entry', conds: [{ label: 'Fed not hiking', ok: !tightening }, { label: 'price >= SMA200', ok: !bearTrend }] }
+    ]);
+  }
+
   if (pos > 0 && (tightening || bearTrend)) {
     return { side: 'sell', qty: pos };
   }

@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2799](strategies/2799/) | BTC 1D Fed-Gate + Trend Defense (two-state) | -84.22% | +270.70% | +91.63% | 134 | 2026-10-12 |
 | ★ | [3650](strategies/3650/) | AI 전략 | +57.36% | +44.16% | +17.07% | 13 | 2026-10-12 |
 | ★ | [2802](strategies/2802/) | SOL 1D Fed-Funds Rate Regime Gate | +67.52% | -28.73% | +59.86% | 41 | 2026-10-12 |
 |  | [2801](strategies/2801/) | ETH 1D Fed-Funds Rate Regime Gate | +234.20% | +324.12% | +72.21% | 66 | 2026-10-12 |
@@ -721,7 +722,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2804](strategies/2804/) | ETH 4H Band-Bounce Champion Control | +48.59% | +2723.53% | +46.11% | 48 | 2026-09-26 |
 | ★ | [2803](strategies/2803/) | ETH 4H Band-Bounce Champion + Fed Gate | +7.18% | -50.44% | +23.90% | 21 | 2026-09-26 |
 |  | [2800](strategies/2800/) | BTC 1D Hashrate Fundamental + Trend Guard | -6.88% | +270.70% | +71.99% | 118 | 2026-09-26 |
-|  | [2799](strategies/2799/) | BTC 1D Fed-Gate + Trend Defense (two-state) | -84.22% | +270.70% | +91.63% | 134 | 2026-09-26 |
 | ★ | [2798](strategies/2798/) | BTC 1D Fed-Funds Gate + Trend-Scaled Size | +62.05% | +55.47% | +19.78% | 638 | 2026-09-26 |
 |  | [2797](strategies/2797/) | BTC 1D Fed-Funds Rate Regime Gate | +44.60% | +55.47% | +47.21% | 22 | 2026-09-26 |
 |  | [2796](strategies/2796/) | BTC 1D Regime-Switch Blend, MR Exit Loosened | +141.70% | +245.42% | +55.94% | 30 | 2026-09-26 |
