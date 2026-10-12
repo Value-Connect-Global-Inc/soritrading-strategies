@@ -20,15 +20,25 @@
  * V-shaped melt-up it re-enters late and trails buy-and-hold; and requiring both
  * signals means it is fully out during mixed regimes where only one is rising.
  */
+// 2026-04-26 표시만 바뀜, 매매 판단은 그대로
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const addr = Number(ctx.data('addr_sma30'));
   const hr = Number(ctx.data('hashrate_sma30'));
-  if (!Number.isFinite(addr) || addr <= 0) return null;
-  if (!Number.isFinite(hr) || hr <= 0) return null;
+  if (!Number.isFinite(addr) || addr <= 0) {
+    ctx.watch([]);
+    return null;
+  }
+  if (!Number.isFinite(hr) || hr <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   // Rolling history of both smoothed series for the "vs ~30 bars ago" comparison.
   const st = ctx.state;
@@ -38,7 +48,10 @@ function onUpdate(ctx) {
   st.hHist.push(hr);
   if (st.aHist.length > 30) st.aHist.shift();
   if (st.hHist.length > 30) st.hHist.shift();
-  if (st.aHist.length < 30 || st.hHist.length < 30) return null;
+  if (st.aHist.length < 30 || st.hHist.length < 30) {
+    ctx.watch([]);
+    return null;
+  }
   const aPast = st.aHist[0];
   const hPast = st.hHist[0];
 
@@ -52,6 +65,34 @@ function onUpdate(ctx) {
   let cd = st.cd || 0;
   if (cd > 0) cd--;
   st.cd = cd;
+
+  // Declare what we are waiting for (display only).
+  if (pos > 0) {
+    ctx.watch([
+      {
+        side: 'sell',
+        qty: pos,
+        conds: [
+          { label: 'Addr SMA30 falling', ok: aFalling },
+          { label: 'Hashrate SMA30 falling', ok: hFalling }
+        ],
+        note: 'Exit on on-chain weakness'
+      }
+    ]);
+  } else {
+    const entryNote = cd > 0 ? 'Entry: cooldown + both signals' : 'Entry: both on-chain signals rising';
+    ctx.watch([
+      {
+        side: 'buy',
+        conds: [
+          { label: 'Cooldown over', now: cd, op: '<=', ref: 0 },
+          { label: 'Addr SMA30 rising', ok: aRising },
+          { label: 'Hashrate SMA30 rising', ok: hRising }
+        ],
+        note: entryNote
+      }
+    ]);
+  }
 
   if (pos > 0) {
     if (aFalling || hFalling) {

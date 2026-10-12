@@ -20,19 +20,30 @@
  * so it may stay out of the very first days of a relief rally after a demand
  * contraction; and in a melt-up where both OBV and demand rise it behaves like
  * the pure OBV trend (high drawdown remains in the sharpest reversals).
+ *
+ * 2026-04-26: 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const sma100 = ctx.sma(100, 1);
   const atr = ctx.atr(14, 1);
-  if (sma100 == null || atr == null) return null;
+  if (sma100 == null || atr == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   const closes = ctx.closes;
   const vols = ctx.volumes;
-  if (!closes || !vols || closes.length < 32) return null;
+  if (!closes || !vols || closes.length < 32) {
+    ctx.watch([]);
+    return null;
+  }
 
   let obv = 0;
   const obvSeries = [];
@@ -43,7 +54,10 @@ function onUpdate(ctx) {
     else if (c < p) obv -= v;
     obvSeries.push(obv);
   }
-  if (obvSeries.length < 32) return null;
+  if (obvSeries.length < 32) {
+    ctx.watch([]);
+    return null;
+  }
   const obvNow = obvSeries[obvSeries.length - 1];
   const obvPast = obvSeries[obvSeries.length - 31];
   const rising = obvNow > obvPast * 1.01;
@@ -67,11 +81,31 @@ function onUpdate(ctx) {
   }
 
   if (pos > 0) {
+    ctx.watch([{
+      side: 'sell',
+      note: 'OBV/demand exit',
+      conds: [
+        { label: 'OBV 30d falling', ok: falling },
+        { label: 'Demand contracting', ok: !demandOk }
+      ]
+    }]);
     if (falling || !demandOk) {
       return { side: 'sell', qty: pos };
     }
     return null;
   }
+
+  ctx.watch([{
+    side: 'buy',
+    price: sma100,
+    trigger: 'above',
+    note: 'OBV+demand entry',
+    conds: [
+      { label: 'OBV 30d rising', ok: rising },
+      { label: 'Volume > avg30', ok: volOk },
+      { label: 'Demand not contracting', ok: demandOk }
+    ]
+  }]);
 
   if (rising && price > sma100 && volOk && demandOk) {
     const qty = ctx.cash / price * 0.95;
