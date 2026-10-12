@@ -18,10 +18,12 @@
  * When it does NOT work: if the fed data feed is null (alignment issue) the
  * gate silently does nothing and it equals the champion; and in a melt-up
  * driven by easing it may miss entries right before a hawkish surprise.
+ * 2026-04-08: 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
+  ctx.watch([]);
   if (!Number.isFinite(price) || price <= 0) return null;
 
   const ema20 = ctx.ema(20, 1);
@@ -43,12 +45,26 @@ function onUpdate(ctx) {
   const st = ctx.state;
 
   if (pos > 0) {
+    ctx.watch([{ side: 'sell', qty: pos, price: ema20, trigger: 'above', note: 'Sell at EMA20' }]);
     if (price > ema20) {
       st.cooldown = ctx.i + 2;
       return { side: 'sell', qty: pos };
     }
     return null;
   }
+
+  ctx.watch([{
+    side: 'buy',
+    price: lower,
+    trigger: 'below',
+    note: 'Buy Keltner lower band',
+    conds: [
+      { label: 'Price > SMA200', now: price, op: '>', ref: sma200 },
+      { label: 'RSI(14) < 40', now: rsi, op: '<', ref: 40, closed: true },
+      { label: 'Fed gate OK', ok: fedGate },
+      ...(st.cooldown != null && ctx.i < st.cooldown ? [{ label: 'Cooldown done', ok: ctx.i >= st.cooldown }] : []),
+    ],
+  }]);
 
   if (st.cooldown != null && ctx.i < st.cooldown) return null;
 

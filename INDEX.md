@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2893](strategies/2893/) | FedGate Keltner MR Daily | +18.89% | +190.11% | +2.46% | 6 | 2026-10-12 |
 | ★ | [3624](strategies/3624/) | ETH Fed-Liquidity Trend 4H | -12.03% | -26.02% | +27.69% | 134 | 2026-10-12 |
 | ★ | [2897](strategies/2897/) | Keltner MR Deep-Flush 3ATR | +0.74% | -79.71% | +3.02% | 2 | 2026-10-12 |
 |  | [2899](strategies/2899/) | Trend-Gated Vol-Target CrashStop LINK 1D | -100.00% | +6514.73% | +100.00% | 927 | 2026-10-12 |
@@ -616,7 +617,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2900](strategies/2900/) | Long-Horizon Time-Series Momentum BTC 1D | +38.66% | +384.58% | +47.07% | 51 | 2026-09-27 |
 |  | [2898](strategies/2898/) | CMF Money-Flow Trend BTC 1D | +188.21% | +1279.90% | +47.04% | 68 | 2026-09-27 |
 |  | [2896](strategies/2896/) | OBV Trend BTC 4H (timeframe test) | +53.14% | +68.93% | +28.57% | 92 | 2026-09-27 |
-|  | [2893](strategies/2893/) | FedGate Keltner MR Daily | +18.89% | +190.11% | +2.46% | 6 | 2026-09-27 |
 |  | [2892](strategies/2892/) | FearGreed-Gated OBV Trend BTC 1D | +1185.53% | +1279.90% | +40.98% | 40 | 2026-09-27 |
 |  | [2891](strategies/2891/) | FearGreed-Timed Keltner MR BTC 1D | +19.61% | +45.60% | +2.46% | 8 | 2026-09-27 |
 |  | [2890](strategies/2890/) | Hashrate Regime BTC 1D | -52.87% | +1279.90% | +88.21% | 429 | 2026-09-27 |
