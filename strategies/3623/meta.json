@@ -3,19 +3,18 @@
   "name": "ETH On-Chain Network Trend 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 18233,
-    "return": 42.56,
-    "mdd": 18.64,
+    "backtestId": 18237,
+    "return": 7.58,
+    "mdd": 27.98,
     "trades": 132,
     "vsBuyHold": "win",
-    "benchRet": -53.32,
+    "benchRet": -26.02,
     "benchBasis": "price",
-    "gapPct": 0.3,
-    "tFrom": 1503532800,
-    "tTo": 1575748800,
+    "gapPct": 0,
+    "tFrom": 1719691200,
+    "tTo": 1791676800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "[유동성/미체결] 시장가 주문 17건이 그 봉의 호가 두께를 넘어 일부만 체결됐습니다(전체 요청 금액의 4% 미체결, 남은 물량은 다음 봉으로). 진입·청산이 전략이 의도한 시점보다 늦습니다. ★ 원인은 둘 중 하나이고 이 수만으로는 못 가릅니다 — 종목이 얇거나, 주문이 한 봉이 소화할 수 있는 것보다 크거나. 주문 크기를 줄여 같은 구간을 다시 돌리면…",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
@@ -24,10 +23,10 @@
       "sym": "ETH",
       "interval": "4h",
       "bars": 5000,
-      "end": 1575763200
+      "end": 1791763200
     }
   },
   "config": null,
-  "updatedAt": "2026-10-12T02:15:31.469Z",
+  "updatedAt": "2026-10-12T02:17:34.997Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
