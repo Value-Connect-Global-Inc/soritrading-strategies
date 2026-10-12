@@ -12,13 +12,13 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
 |  | [3639](strategies/3639/) | SimpleTrendDaily | +16.46% | +95.22% | +10.69% | 31 | 2026-10-12 |
+| ★ | [3637](strategies/3637/) | PlainTrendControl | +33.67% | -20.96% | +8.34% | 14 | 2026-10-12 |
 | ★ | [3638](strategies/3638/) | MacroDxyTrend | +2.17% | -20.96% | +1.20% | 16 | 2026-10-12 |
 | ★ | [2852](strategies/2852/) | Fed-Filtered OBV Trend BTC 1D | +108.08% | +45.60% | +28.09% | 129 | 2026-10-12 |
 |  | [2850](strategies/2850/) | On-Chain Demand Trend BTC 1D | +40.87% | +43.67% | +57.99% | 210 | 2026-10-12 |
 |  | [2851](strategies/2851/) | Fed Regime + OnChain Demand Overlay BTC 1D | +411.08% | +1279.90% | +73.94% | 407 | 2026-10-12 |
 |  | [3636](strategies/3636/) | FearGreedContrarian | +122.07% | +612.44% | +27.08% | 32 | 2026-10-12 |
 |  | [2853](strategies/2853/) | OBV Champion Pure BTC 1D (A/B) | -2.60% | +35.51% | +25.28% | 154 | 2026-10-12 |
-| ★ | [3637](strategies/3637/) | PlainTrendControl | +33.67% | -20.96% | +8.34% | 14 | 2026-10-12 |
 |  | [2857](strategies/2857/) | AI 전략 | +894.65% | +1009.79% | +38.43% | 45 | 2026-10-12 |
 | ★ | [2858](strategies/2858/) | AI 전략 | +667.16% | +574.98% | +40.97% | 35 | 2026-10-12 |
 |  | [2861](strategies/2861/) | 45d OBV Fast Re-Entry BTC 1D | +65.13% | +220.15% | +26.82% | 33 | 2026-10-12 |
