@@ -22,17 +22,18 @@
  * lags the sharpest V-shaped melt-ups.
  */
 function onUpdate(ctx) {
+  // 2026-04-26 표시만 바뀜, 매매 판단은 그대로
   const pos = ctx.position;
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) { ctx.watch([]); return null; }
 
   const sma100 = ctx.sma(100, 1);
   const atr = ctx.atr(14, 1);
-  if (sma100 == null || atr == null) return null;
+  if (sma100 == null || atr == null) { ctx.watch([]); return null; }
 
   const closes = ctx.closes;
   const vols = ctx.volumes;
-  if (!closes || !vols || closes.length < 32) return null;
+  if (!closes || !vols || closes.length < 32) { ctx.watch([]); return null; }
 
   let obv = 0;
   const obvSeries = [];
@@ -43,7 +44,7 @@ function onUpdate(ctx) {
     else if (c < p) obv -= v;
     obvSeries.push(obv);
   }
-  if (obvSeries.length < 32) return null;
+  if (obvSeries.length < 32) { ctx.watch([]); return null; }
   const obvNow = obvSeries[obvSeries.length - 1];
   const obvPast = obvSeries[obvSeries.length - 31];
   const rising = obvNow > obvPast * 1.01;
@@ -57,8 +58,6 @@ function onUpdate(ctx) {
   if (cd > 0) cd--;
   ctx.state.cd = cd;
 
-  // GENTLE volatility-target sizing: full size up to 6% ATR; scale linearly to
-  // 50% size at 12% ATR. Only extreme stress cuts exposure, never below half.
   const atrPct = atr / price;
   let sizeFrac = 1.0;
   if (atrPct > 0.06) {
@@ -66,12 +65,32 @@ function onUpdate(ctx) {
   }
 
   if (pos > 0) {
+    ctx.watch([{
+      side: 'sell',
+      note: 'OBV down exit',
+      conds: [
+        { label: 'OBV falling', ok: falling },
+        { label: 'Cooldown ready', ok: cd === 0 }
+      ]
+    }]);
     if (falling && cd === 0) {
       ctx.state.cd = 5;
       return { side: 'sell', qty: pos };
     }
     return null;
   }
+
+  ctx.watch([{
+    side: 'buy',
+    price: sma100,
+    trigger: 'above',
+    note: 'Price > SMA100',
+    conds: [
+      { label: 'OBV rising', ok: rising },
+      { label: 'Volume > avg', ok: volOk },
+      { label: 'Cooldown ready', ok: cd === 0 }
+    ]
+  }]);
 
   if (rising && price > sma100 && volOk && cd === 0) {
     ctx.state.cd = 5;

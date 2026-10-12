@@ -11,6 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2837](strategies/2837/) | OBV Trend Generalization Test BNB/XRP 1D | +496.40% | +1603.49% | +53.82% | 61 | 2026-10-12 |
+|  | [2834](strategies/2834/) | OBV Trend + Drawdown Position Cap BTC 1D | +436.69% | +1098.12% | +38.32% | 18 | 2026-10-12 |
 |  | [2841](strategies/2841/) | On-Chain Demand Trend BTC 1D | +104.27% | +1279.90% | +67.76% | 87 | 2026-10-12 |
 | ★ | [2842](strategies/2842/) | BTC 1D Blend + On-Chain Demand Gate | +103.42% | +45.60% | +53.41% | 370 | 2026-10-12 |
 |  | [3639](strategies/3639/) | SimpleTrendDaily | +121.66% | +315.94% | +23.00% | 29 | 2026-10-12 |
@@ -678,10 +680,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2840](strategies/2840/) | BTC 1D Blend + On-Chain Demand Composite | +23.16% | +45.60% | +18.18% | 40 | 2026-09-27 |
 | ★ | [2839](strategies/2839/) | Regime-Blend Generalization LTC/BNB 1D | +17.15% | -22.57% | +23.70% | 42 | 2026-09-27 |
 | ★ | [2838](strategies/2838/) | OBV Trend Generalization ADA/LTC 1D | +178.72% | +50.89% | +52.51% | 67 | 2026-09-27 |
-|  | [2837](strategies/2837/) | OBV Trend Generalization Test BNB/XRP 1D | +514.89% | +1675.77% | +51.20% | 65 | 2026-09-27 |
 | ★ | [2836](strategies/2836/) | OBV Trend + RSI Entry Filter BTC 1D | +328.47% | +263.61% | +39.14% | 34 | 2026-09-27 |
 | ★ | [2835](strategies/2835/) | Price-Momentum Trend ROC BTC 1D | +597.04% | +263.61% | +44.62% | 44 | 2026-09-27 |
-|  | [2834](strategies/2834/) | OBV Trend + Drawdown Position Cap BTC 1D | +436.69% | +1098.12% | +38.32% | 18 | 2026-09-27 |
 | ★ | [2833](strategies/2833/) | OBV Trend Fast Lookback 15d BTC 1D | +51.78% | +46.95% | +28.67% | 8 | 2026-09-27 |
 |  | [2831](strategies/2831/) | OBV Trend + MR Defense Regime Blend 1D | -3.07% | +46.95% | +8.62% | 8 | 2026-09-27 |
 |  | [2830](strategies/2830/) | Donchian Channel Breakout BTC 1D | +32.28% | +45.60% | +41.88% | 37 | 2026-09-27 |

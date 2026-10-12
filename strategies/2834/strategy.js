@@ -18,6 +18,7 @@
  * When it does NOT work: the cap still trims size during recoveries after a
  * crash, so it misses part of the bounce; and in a long grinding bear it keeps
  * size small just as the recovery starts.
+ * 2025-01-01: 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -75,12 +76,21 @@ function onUpdate(ctx) {
   sizeFrac = sizeFrac * ddFrac;
 
   if (pos > 0) {
+    // Display: waiting to exit when OBV falls below 99% of 30-bar-ago value
+    ctx.watch([
+      { side: 'sell', price: obvPast * 0.99, trigger: 'below', note: 'OBV falling exit', conds: [{ label: 'OBV now', now: obvNow, op: '<', ref: obvPast * 0.99, closed: true }, { label: 'cooldown', ok: cd === 0 }] }
+    ]);
     if (falling && cd === 0) {
       ctx.state.cd = 5;
       return { side: 'sell', qty: pos };
     }
     return null;
   }
+
+  // Display: waiting to buy when OBV rises, price above SMA100, volume OK
+  ctx.watch([
+    { side: 'buy', price: sma100, trigger: 'above', note: 'SMA100 breakout', conds: [{ label: 'OBV rising', ok: rising }, { label: 'volume > avg', ok: volOk }, { label: 'cooldown', ok: cd === 0 }] }
+  ]);
 
   if (rising && price > sma100 && volOk && cd === 0) {
     ctx.state.cd = 5;
