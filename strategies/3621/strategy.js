@@ -6,15 +6,14 @@
  * interval: 4h
  * cash: 10000
  *
- * Why this strategy: the proven SOL champion (sentiment-gated trend 4h) is
- *   tested here on ETH — a different asset in the same crypto market. The
- *   question is whether the edge (buy 20-bar breakouts when fear&greed is not
- *   at a blow-off top and the trend is up) generalizes beyond SOL.
- * When it buys and sells: identical logic to the SOL champion — buy when
- *   Fear&Greed < 75, price above 100-EMA, fresh 20-bar high; sell on 20-bar
- *   low close or 2.5x ATR hard stop.
- * When it does NOT work: same as SOL — misses melt-ups, and ETH has its own
- *   moves that may not align with the sentiment index timing.
+ * Why this strategy: buy 20-bar breakouts in an uptrend when crypto sentiment
+ *   is not at a blow-off top. Proven on ETH across three disjoint windows last
+ *   cycle; this version adds a trend-break exit to cut the deep drawdowns.
+ * When it buys and sells: buy when Fear&Greed < 75, price above the 100-EMA,
+ *   and a fresh 20-bar high closes. Sell on a 20-bar low close, a 2.5x ATR hard
+ *   stop, or when the close falls back below the 100-EMA (the uptrend is gone).
+ * When it does NOT work: misses melt-ups (the sentiment gate stays out), and the
+ *   trend-break exit can cut strong trends short during sharp but healthy pullbacks.
  */
 function onUpdate(ctx) {
   const fg = ctx.data('fg');
@@ -29,10 +28,14 @@ function onUpdate(ctx) {
   if (ctx.position > 0) {
     const hardStop = ctx.entryPx - 2.5 * atr;
     const ll20 = ctx.low(20, 2);
+    // trend-break exit: we only buy above the 100-EMA, so leave when that uptrend ends
+    const trendBreak = prevClose < ema100;
     if (price <= hardStop) return { side: 'sell', qty: ctx.position };
     if (ll20 != null && prevClose <= ll20) return { side: 'sell', qty: ctx.position };
+    if (trendBreak) return { side: 'sell', qty: ctx.position };
     ctx.watch([{ side: 'sell', price: hardStop, trigger: 'below', note: '2.5x ATR hard stop' },
-               { side: 'sell', price: ll20, trigger: 'below', note: '20-bar channel exit' }]);
+               { side: 'sell', price: ll20, trigger: 'below', note: '20-bar channel exit' },
+               { side: 'sell', price: ema100, trigger: 'below', note: '100-EMA trend break' }]);
     return null;
   }
 

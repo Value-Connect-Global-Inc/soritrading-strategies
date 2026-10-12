@@ -11,8 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3621](strategies/3621/) | ETH Sentiment-Gated Trend 4H | +11.60% | +17.78% | +28.15% | 152 | 2026-10-12 |
 |  | [2912](strategies/2912/) | SOL 4H ATR-Adaptive Mean-Reversion | -0.39% | +892.85% | +2.91% | 36 | 2026-10-12 |
-|  | [3621](strategies/3621/) | ETH Sentiment-Gated Trend 4H | +140.27% | +1888.22% | +15.79% | 111 | 2026-10-12 |
 |  | [2917](strategies/2917/) | AI 전략 | -1.91% | +1641.86% | +30.27% | 50 | 2026-10-12 |
 |  | [2916](strategies/2916/) | ETH 4H Keltner ATR-Adaptive Mean-Reversion (Champion) | +9.98% | +1641.86% | +14.60% | 70 | 2026-10-12 |
 |  | [3619](strategies/3619/) | SOL Volume-Confirmed Trend 4H | +43.65% | +3013.88% | +17.87% | 69 | 2026-10-12 |
