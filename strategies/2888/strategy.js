@@ -33,12 +33,17 @@ function onUpdate(ctx) {
     // Exit on recovery above RSI 50 or after a 10-bar max hold.
     if (rsi2 > 50 || (st.entryBar != null && ctx.i - st.entryBar >= 10)) {
       st.cooldown = ctx.i + 5;
+      ctx.watch([{ side: 'sell', price: price, trigger: 'below', note: 'exit now' }]);
       return { side: 'sell', qty: pos };
     }
+    ctx.watch([{ side: 'sell', price: price, trigger: 'below', note: 'exit now' }]);
     return null;
   }
 
-  if (st.cooldown != null && ctx.i < st.cooldown) return null;
+  if (st.cooldown != null && ctx.i < st.cooldown) {
+    ctx.watch([]);
+    return null;
+  }
 
   // Capitulation: RSI(2) below 5 while still in a long-term uptrend.
   if (price > sma200 && rsi2 < 5) {
@@ -46,7 +51,9 @@ function onUpdate(ctx) {
     st.entryBar = ctx.i;
     // Size modestly: risk 1% of equity per trade.
     const qty = 0.01 * ctx.cash / price;
+    ctx.watch([{ side: 'buy', price: price, trigger: 'below', note: 'entry now' }]);
     return { side: 'buy', qty: qty };
   }
+  ctx.watch([{ side: 'buy', price: sma200, trigger: 'above', note: 'SMA200 touch', conds: [{ label: 'RSI(2) close', now: rsi2, op: '<', ref: 5, closed: true }] }]);
   return null;
 }
