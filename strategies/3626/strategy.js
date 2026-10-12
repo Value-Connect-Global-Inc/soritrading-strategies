@@ -12,8 +12,10 @@
  *   This is a contrarian bet, the opposite of a trend-following breakout.
  * When it buys and sells: buy only when the fear-greed index is below 25
  *   (extreme fear) AND RSI(14) is oversold AND the close is below the lower
- *   Bollinger band. Sell when price reverts to the middle band, RSI climbs
- *   back above 50, a 2.5x ATR hard stop is hit, or after 90 bars (~15 days).
+ *   Bollinger band AND price is above the 200-bar EMA (long-term uptrend —
+ *   we fade dips, never catch a falling knife in a bear market). Sell when
+ *   price reverts to the middle band, RSI climbs back above 50, a 2.5x ATR
+ *   hard stop is hit, or after 90 bars (~15 days).
  * When it does NOT work: prolonged bear markets keep stretching price further
  *   down after the first oversold bounce, so early entries hit the stop and
  *   re-entry keeps catching the knife. Low-volatility chop gives few signals.
@@ -23,7 +25,8 @@ function onUpdate(ctx) {
   const rsi = ctx.rsi(14, 1);
   const bb = ctx.bb(20, 2, 1);
   const atr = ctx.atr(14, 1);
-  if (fg == null || rsi == null || bb == null || atr == null) return null;
+  const ema200 = ctx.ema(200, 1);     // long-term trend filter
+  if (fg == null || rsi == null || bb == null || atr == null || ema200 == null) return null;
   const price = ctx.price;
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) return null;
@@ -35,14 +38,14 @@ function onUpdate(ctx) {
     if (rsi > 50) return { side: 'sell', qty: ctx.position };            // momentum turned back up
     if (ctx.i - (ctx.state.entryBar || ctx.i) > 90) return { side: 'sell', qty: ctx.position };  // time stop
     ctx.watch([{ side: 'sell', price: hardStop, trigger: 'below', note: '2.5x ATR hard stop' },
-               { side: 'sell', price: bb.middle, trigger: 'above', note: 'revert to mean' },
-               { side: 'sell', price: bb.middle, trigger: 'above', note: 'RSI>50 exit' }]);
+               { side: 'sell', price: bb.middle, trigger: 'above', note: 'revert to mean' }]);
     return null;
   }
 
   if (fg > 25) return null;            // only buy in extreme fear
   if (rsi >= 30) return null;          // must be oversold
   if (prevClose >= bb.lower) return null;  // price must be stretched below the band
+  if (prevClose <= ema200) return null;    // only fade dips inside a longer uptrend
 
   const riskCash = ctx.cash * 0.02;
   const stopDist = 2.5 * atr;
