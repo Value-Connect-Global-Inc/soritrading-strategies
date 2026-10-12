@@ -4,13 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 482 of 1878 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 484 of 1879 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 270 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [3623](strategies/3623/) | ETH On-Chain Network Trend 4H | +3.51% | -53.32% | +28.18% | 302 | 2026-10-12 |
+| ★ | [2904](strategies/2904/) | Vol-Targeted Long-Only BTC/ETH/SOL 1D | +770.40% | +263.61% | +52.84% | 38 | 2026-10-12 |
 |  | [3622](strategies/3622/) | ETH Mean Reversion 4H | +13.91% | +1888.22% | +4.36% | 78 | 2026-10-12 |
 |  | [3621](strategies/3621/) | ETH Sentiment-Gated Trend 4H | +4.33% | +1888.22% | +37.18% | 149 | 2026-10-12 |
 |  | [2907](strategies/2907/) | ETH 4H Bollinger Mean-Reversion | -3.88% | +432.52% | +6.54% | 38 | 2026-10-12 |
@@ -605,7 +607,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2910](strategies/2910/) | ETH 4H Chandelier Trend-Follow | +5.68% | +1641.86% | +15.26% | 872 | 2026-09-28 |
 |  | [2906](strategies/2906/) | Dual-Mode OBV+Keltner Hybrid v2 | +42.21% | +659.58% | +10.02% | 1 | 2026-09-28 |
 |  | [2905](strategies/2905/) | Deep-Pullback Buy-the-Dip BTC 1D | -24.57% | +1279.90% | +56.58% | 48 | 2026-09-27 |
-|  | [2904](strategies/2904/) | Vol-Targeted Long-Only BTC/ETH/SOL 1D | +58.61% | +263.61% | +62.06% | 68 | 2026-09-27 |
 |  | [2903](strategies/2903/) | Dual-Mode OBV+Keltner Hybrid v2 | +331.89% | +2566.62% | +61.79% | 42 | 2026-09-27 |
 | — | [2902](strategies/2902/) | Fear-Greed Contrarian BTC 1D | +143.90% | — | +68.82% | 18 | 2026-09-27 |
 | ★ | [2901](strategies/2901/) | Long-Horizon Momentum 60d ROC BTC/ETH 1D | +189.93% | +45.60% | +17.46% | 107 | 2026-09-27 |

@@ -18,8 +18,10 @@
  * When it does NOT work: in a long flat chop near the 200-day average the regime flips
  * repeatedly and can whipsaw; it never catches a melt-up while in defensive mode, and
  * it cannot beat buy-and-hold in a relentless straight-line bull.
+ * 2026-04-26 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
+  ctx.watch([]);
   const pos = ctx.position;
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
@@ -66,6 +68,38 @@ function onUpdate(ctx) {
   let sizeFrac = 1.0;
   if (atrPct > 0.06) sizeFrac = Math.max(0.5, 1.0 - (atrPct - 0.06) / 0.06);
 
+  const lower = ema20 - 2.5 * atr;
+
+  // Declare what this tick is waiting for (display only).
+  const watch = [];
+  if (pos > 0) {
+    if (uptrend) {
+      watch.push({ side: 'sell', note: 'OBV turn down', conds: [
+        { label: 'OBV(45) falling', ok: obvFalling },
+        { label: 'cooldown', ok: cd === 0 }
+      ]});
+    } else {
+      watch.push({ side: 'sell', price: ema20, trigger: 'above', note: 'EMA20 snap-back' });
+    }
+  } else {
+    if (uptrend) {
+      watch.push({ side: 'buy', note: 'OBV momentum entry', conds: [
+        { label: 'close > 200SMA', ok: price > sma200 },
+        { label: 'OBV(45) rising', ok: obvRising },
+        { label: 'volume > avgVol(30)', ok: volOk },
+        { label: 'cooldown', ok: cd === 0 }
+      ]});
+    } else {
+      const cooldownOk = !(st.cooldown != null && ctx.i < st.cooldown);
+      watch.push({ side: 'buy', price: lower, trigger: 'below', note: 'Keltner lower flush', conds: [
+        { label: 'RSI(14)', now: rsi, op: '<', ref: 40, closed: true },
+        { label: 'close > 200SMA', ok: price > sma200 },
+        { label: 'cooldown', ok: cooldownOk }
+      ]});
+    }
+  }
+  ctx.watch(watch);
+
   // ---- UPTREND mode: OBV momentum trend capture ----
   if (uptrend) {
     st.mode = 'trend';
@@ -86,7 +120,6 @@ function onUpdate(ctx) {
 
   // ---- DOWNTREND/CHOP mode: Keltner mean-reversion flush-buying ----
   st.mode = 'mr';
-  const lower = ema20 - 2.5 * atr;
   if (pos > 0) {
     if (price > ema20) {
       st.cooldown = ctx.i + 2;
