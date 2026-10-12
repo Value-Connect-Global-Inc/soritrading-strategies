@@ -4,13 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 496 of 1929 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 496 of 1930 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 276 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [2696](strategies/2696/) | Band-Bounce Bull-Regime Exit SOL 4H | -13.21% | -15.65% | +32.74% | 46 | 2026-10-12 |
+|  | [3695](strategies/3695/) | OnchainDemandTrend | -16.99% | +315.94% | +51.19% | 268 | 2026-10-12 |
 | ★ | [2697](strategies/2697/) | Band-Bounce Bull-Regime Exit LINK 4H | +29.08% | +9.46% | +23.72% | 49 | 2026-10-12 |
 |  | [3694](strategies/3694/) | UptrendPullbackRSI | -31.58% | +110.60% | +33.28% | 168 | 2026-10-12 |
 |  | [2699](strategies/2699/) | Band-Bounce Mean Reversion SOL 4H | +12.61% | +29.69% | +6.99% | 10 | 2026-10-12 |
@@ -832,7 +834,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2706](strategies/2706/) | Macro-Regime Band-Bounce BTC 4H | +17.71% | +449.51% | +17.69% | 32 | 2026-09-26 |
 | ★ | [2700](strategies/2700/) | Fed-Regime Macro Trend BTC 1D | +77.39% | +63.93% | +9.18% | 44 | 2026-09-26 |
 | ★ | [2698](strategies/2698/) | Band-Bounce Mean Reversion BNB 4H | +1.99% | -63.74% | +27.41% | 50 | 2026-09-26 |
-| ★ | [2696](strategies/2696/) | Band-Bounce Bull-Regime Exit SOL 4H | -13.21% | -15.65% | +32.74% | 46 | 2026-09-26 |
 | ★ | [2695](strategies/2695/) | Band-Bounce Baseline DOT 4H | +77.39% | +63.93% | +9.18% | 44 | 2026-09-26 |
 | ★ | [2694](strategies/2694/) | Band-Bounce Mean Reversion AAVE 4H | +2.11% | -79.29% | +2.17% | 8 | 2026-09-26 |
 |  | [2693](strategies/2693/) | Band-Bounce Mean Reversion HBAR 4H | +75.94% | +679.29% | +30.02% | 49 | 2026-09-26 |

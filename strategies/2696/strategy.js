@@ -17,13 +17,17 @@
  * default, but holds to the UPPER band when the 200-SMA is rising steeply.
  * When it does NOT work: in a bull that reverses before reaching the upper band
  * it gives back more than the plain champion; below the 200-SMA it never buys.
+ * 2026-04-27 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const bb = ctx.bb(20, 2, 1);
   const rsi = ctx.rsi(14, 1);
   const sma200 = ctx.sma(200, 1);
   const sma200p = ctx.sma(200, 2);
-  if (bb == null || rsi == null || sma200 == null || sma200p == null) return null;
+  if (bb == null || rsi == null || sma200 == null || sma200p == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   const price = ctx.price;
   const pos = ctx.position;
@@ -35,6 +39,21 @@ function onUpdate(ctx) {
   const bullRegime = sma200 > sma200p * 1.0015;
 
   if (pos > 0) {
+    const atr = ctx.atr(14, 1);
+    const stopPrice = atr != null ? ctx.entryPx - atr * 6 : null;
+    const exitWatch = [];
+    if (bullRegime) {
+      exitWatch.push({ side: 'sell', price: bb.upper, trigger: 'above', note: 'bull upper exit' });
+      exitWatch.push({ side: 'sell', note: 'RSI(14)>70', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 70, closed: true }] });
+    } else {
+      exitWatch.push({ side: 'sell', price: bb.mid, trigger: 'above', note: 'mid band exit' });
+      exitWatch.push({ side: 'sell', note: 'RSI(14)>50', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 50, closed: true }] });
+    }
+    if (stopPrice != null) {
+      exitWatch.push({ side: 'sell', price: stopPrice, trigger: 'below', note: 'ATR stop' });
+    }
+    ctx.watch(exitWatch);
+
     if (bullRegime) {
       // In a strong bull, hold to the upper band (let winners run).
       if (price >= bb.upper || rsi > 70) {
@@ -45,7 +64,6 @@ function onUpdate(ctx) {
       ctx.state.lastExit = ctx.i;
       return { side: 'sell', qty: pos };
     }
-    const atr = ctx.atr(14, 1);
     if (atr != null && price <= ctx.entryPx - atr * 6) {
       ctx.state.lastExit = ctx.i;
       return { side: 'sell', qty: pos };
@@ -54,6 +72,19 @@ function onUpdate(ctx) {
   }
 
   const lastExit = ctx.state.lastExit || 0;
+  const cooldownOk = ctx.i - lastExit >= 5;
+  ctx.watch([{
+    side: 'buy',
+    price: bb.lower,
+    trigger: 'below',
+    note: 'BB lower + RSI<30',
+    conds: [
+      { label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true },
+      { label: 'price >= SMA200', now: price, op: '>=', ref: sma200 },
+      { label: 'cooldown done', ok: cooldownOk }
+    ]
+  }]);
+
   if (ctx.i - lastExit < 5) return null;
 
   if (price < sma200) return null;
