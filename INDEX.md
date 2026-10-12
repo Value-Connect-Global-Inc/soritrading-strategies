@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2732](strategies/2732/) | On-Chain Network-Health BTC 1D | -39.60% | +55.47% | +39.60% | 14 | 2026-10-12 |
 |  | [2734](strategies/2734/) | Band-Bounce Mean Reversion AVAX 4H | +29.26% | +1443.71% | +36.72% | 37 | 2026-10-12 |
 |  | [3556](strategies/3556/) | BNB Trend-Follow EMA50/200 4H | +1401.30% | +43740.00% | +36.31% | 217 | 2026-10-12 |
 | — | [3686](strategies/3686/) | DonchianTrendMomentumGate | +13.23% | — | +17.24% | 47 | 2026-10-12 |
@@ -795,7 +796,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | ★ | [2738](strategies/2738/) | Band-Bounce Mean Reversion TON 4H | -55.27% | -74.06% | +55.27% | 8 | 2026-09-26 |
 |  | [2736](strategies/2736/) | Band-Bounce Mean Reversion MATIC 4H | +273.09% | +1698.96% | +39.72% | 75 | 2026-09-26 |
 | ★ | [2733](strategies/2733/) | Band-Bounce Mean Reversion ATOM 4H | -21.82% | -73.64% | +24.50% | 41 | 2026-09-26 |
-|  | [2732](strategies/2732/) | On-Chain Network-Health BTC 1D | -39.60% | +55.47% | +39.60% | 14 | 2026-09-26 |
 |  | [2731](strategies/2731/) | Donchian Trend-Following LTC 1D | -51.96% | -20.17% | +89.71% | 26 | 2026-09-26 |
 |  | [2730](strategies/2730/) | Volume-Confirmed Breakout ALGO 4H | -76.62% | +253.77% | +81.68% | 120 | 2026-09-26 |
 | ★ | [2729](strategies/2729/) | Band-Bounce Mean Reversion ALGO 4H | +29.47% | -20.49% | +10.96% | 62 | 2026-09-26 |
