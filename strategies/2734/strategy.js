@@ -17,6 +17,7 @@
  * buy-and-hold in a big bull); below the 200-SMA it never buys; a panic that
  * keeps falling still loses. Defensive, not a trend rider. Edge fades on the
  * highest-beta newer names and pump-prone assets like ZEC.
+ * 2024-01-15: display-only change, trading logic unchanged
  */
 function onUpdate(ctx) {
   const bb = ctx.bb(20, 2, 1);
@@ -28,11 +29,16 @@ function onUpdate(ctx) {
   const pos = ctx.position;
 
   if (pos > 0) {
+    const atr = ctx.atr(14, 1);
+    const stopPx = ctx.entryPx - (atr != null ? atr * 6 : 0);
+    ctx.watch([
+      { side: 'sell', price: bb.mid, trigger: 'above', note: 'middle band exit', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 50, closed: true }] },
+      { side: 'sell', price: stopPx, trigger: 'below', note: '6-ATR stop', conds: [{ label: 'ATR(14) close', now: atr, op: '>', ref: 0, closed: true }] }
+    ]);
     if (price >= bb.mid || rsi > 50) {
       ctx.state.lastExit = ctx.i;
       return { side: 'sell', qty: pos };
     }
-    const atr = ctx.atr(14, 1);
     if (atr != null && price <= ctx.entryPx - atr * 6) {
       ctx.state.lastExit = ctx.i;
       return { side: 'sell', qty: pos };
@@ -41,7 +47,17 @@ function onUpdate(ctx) {
   }
 
   const lastExit = ctx.state.lastExit || 0;
-  if (ctx.i - lastExit < 5) return null;
+  if (ctx.i - lastExit < 5) {
+    ctx.watch([]);
+    return null;
+  }
+
+  ctx.watch([
+    { side: 'buy', price: bb.lower, trigger: 'below', note: 'BB lower touch', conds: [
+      { label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true },
+      { label: 'Price > SMA200', ok: price > sma200 }
+    ]}
+  ]);
 
   if (price < sma200) return null;
 
