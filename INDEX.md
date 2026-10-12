@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2887](strategies/2887/) | Macro-Gated Keltner MR BTC 1D | +19.61% | +45.60% | +2.46% | 8 | 2026-10-12 |
 |  | [2888](strategies/2888/) | RSI2 Capitulation BTC 1D | +0.18% | +1279.90% | +0.22% | 86 | 2026-10-12 |
 | ★ | [3625](strategies/3625/) | AI 전략 | +24.86% | -26.02% | +20.91% | 104 | 2026-10-12 |
 |  | [2891](strategies/2891/) | FearGreed-Timed Keltner MR BTC 1D | +19.61% | +45.60% | +2.46% | 8 | 2026-10-12 |
@@ -623,7 +624,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2896](strategies/2896/) | OBV Trend BTC 4H (timeframe test) | +53.14% | +68.93% | +28.57% | 92 | 2026-09-27 |
 |  | [2890](strategies/2890/) | Hashrate Regime BTC 1D | -52.87% | +1279.90% | +88.21% | 429 | 2026-09-27 |
 |  | [2889](strategies/2889/) | Hashrate-Gated Keltner MR BTC 1D | +19.08% | +45.60% | +2.46% | 8 | 2026-09-27 |
-|  | [2887](strategies/2887/) | Macro-Gated Keltner MR BTC 1D | +19.61% | +45.60% | +2.46% | 8 | 2026-09-27 |
 |  | [2886](strategies/2886/) | Keltner MR ATOM 1D | +4.69% | +18.54% | +5.79% | 6 | 2026-09-27 |
 |  | [2884](strategies/2884/) | Dual Onchain-Demand + OBV BTC 1D | -28.62% | +105.65% | +53.27% | 80 | 2026-09-27 |
 |  | [2883](strategies/2883/) | Hybrid OBV-Trend + Keltner-MR BTC 1D | +56.16% | +1279.90% | +23.54% | 290 | 2026-09-27 |

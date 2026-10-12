@@ -11,6 +11,8 @@
  * The macro-gate idea only matters if the feed is actually available.
  * When it buys and sells: same Keltner MR recipe as the champion.
  * When it does NOT work: n/a (diagnostic).
+ *
+ * 2025-01-10: Added ctx.watch declarations only — display only, trading logic unchanged.
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -35,6 +37,7 @@ function onUpdate(ctx) {
   }
 
   if (pos > 0) {
+    ctx.watch([{ side: 'sell', price: ema20, trigger: 'above', note: 'exit above EMA20' }]);
     if (price > ema20) {
       st.cooldown = ctx.i + 2;
       return { side: 'sell', qty: pos };
@@ -42,9 +45,28 @@ function onUpdate(ctx) {
     return null;
   }
 
-  if (st.cooldown != null && ctx.i < st.cooldown) return null;
+  if (st.cooldown != null && ctx.i < st.cooldown) {
+    ctx.watch([{ side: 'buy', at: (st.cooldown - ctx.i) * 86400 + ctx.candle.t, note: 'cooldown ends' }]);
+    return null;
+  }
 
-  if (price > sma200 && price <= lower && rsi < 40) {
+  const trendUp = price > sma200;
+  const touchedLower = price <= lower;
+  const rsiOk = rsi < 40;
+  const canBuy = trendUp && touchedLower && rsiOk;
+
+  ctx.watch([{
+    side: 'buy',
+    price: lower,
+    trigger: 'below',
+    note: 'Keltner lower touch',
+    conds: [
+      { label: 'price > SMA200', ok: trendUp },
+      { label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true }
+    ]
+  }]);
+
+  if (canBuy) {
     st.cooldown = null;
     const riskEq = 0.015 * ctx.cash;
     const qty = riskEq / atr;
