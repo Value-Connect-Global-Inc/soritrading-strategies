@@ -17,6 +17,8 @@
  * When it does NOT work: in a strong melt-up it sits in cash and lags buy-and-hold
  * (defensive by design). A hard stop turns a temporary dip into a realized loss
  * right before a rebound, so it can hurt in fast V-shaped recoveries.
+ *
+ * 2025-04-11: display-only change — added ctx.watch declarations, trading logic unchanged.
  */
 function onUpdate(ctx) {
   const bb = ctx.bb(20, 2, 1);
@@ -28,8 +30,17 @@ function onUpdate(ctx) {
 
   if (ctx.position > 0) {
     const entry = ctx.entryPx || 0;
-    if (entry > 0 && px < entry - 2 * atr) return { side: 'sell', qty: ctx.position };
-    if (rsi > 60) return { side: 'sell', qty: ctx.position };
+    if (entry > 0 && px < entry - 2 * atr) {
+      ctx.watch([{ side: 'sell', price: entry - 2 * atr, trigger: 'below', note: '2ATR stop' }]);
+      return { side: 'sell', qty: ctx.position };
+    }
+    if (rsi > 60) {
+      ctx.watch([{ side: 'sell', price: entry - 2 * atr, trigger: 'below', note: '2ATR stop' },
+                 { side: 'sell', price: 60, trigger: 'above', note: 'RSI exit', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 60, closed: true }] }]);
+      return { side: 'sell', qty: ctx.position };
+    }
+    ctx.watch([{ side: 'sell', price: entry - 2 * atr, trigger: 'below', note: '2ATR stop' },
+               { side: 'sell', price: 60, trigger: 'above', note: 'RSI exit', conds: [{ label: 'RSI(14) close', now: rsi, op: '>', ref: 60, closed: true }] }]);
     return null;
   }
 
@@ -37,7 +48,17 @@ function onUpdate(ctx) {
     const equity = ctx.cash + ctx.position * ctx.price;
     const bandDist = Math.max(bb.mid - bb.lower, atr);
     const qty = Math.max(0, Math.min((equity * 0.04) / bandDist, (ctx.cash / ctx.price) * 0.95));
-    if (qty > 0) return { side: 'buy', qty: qty };
+    if (qty > 0) {
+      ctx.watch([{ side: 'buy', price: bb.lower, trigger: 'below', note: 'BB lower entry', conds: [
+        { label: 'RSI(14) close', now: rsi, op: '<', ref: 35, closed: true },
+        { label: 'Close > SMA200', ok: px > sma200 }
+      ] }]);
+      return { side: 'buy', qty: qty };
+    }
   }
+  ctx.watch([{ side: 'buy', price: bb.lower, trigger: 'below', note: 'BB lower entry', conds: [
+    { label: 'RSI(14) close', now: rsi, op: '<', ref: 35, closed: true },
+    { label: 'Close > SMA200', ok: px > sma200 }
+  ] }]);
   return null;
 }

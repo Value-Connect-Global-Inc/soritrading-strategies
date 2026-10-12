@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2919](strategies/2919/) | AI 전략 | +73.54% | +1658.97% | +27.31% | 68 | 2026-10-12 |
 |  | [2921](strategies/2921/) | ETH 4H Bollinger MR Strong-Trend-Gated | -15.29% | +39.02% | +20.77% | 56 | 2026-10-12 |
 |  | [3617](strategies/3617/) | SOL On-Chain Demand Breakout 4H | +23.81% | +3013.88% | +17.66% | 55 | 2026-10-12 |
 |  | [2923](strategies/2923/) | ETH 4H Bollinger MR Deep-Capitulation | +4.17% | +1658.97% | +9.09% | 28 | 2026-10-12 |
@@ -587,7 +588,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2930](strategies/2930/) | ETH 4H Bollinger MR Uptrend6+RisingSMA | +5.73% | +1658.97% | +11.66% | 44 | 2026-09-28 |
 |  | [2925](strategies/2925/) | ETH 4H Bollinger MR Strong-Uptrend-Only | -10.82% | +39.02% | +19.46% | 28 | 2026-09-28 |
 |  | [2920](strategies/2920/) | AI 전략 | +9.97% | +1658.97% | +14.60% | 70 | 2026-09-28 |
-|  | [2919](strategies/2919/) | AI 전략 | +73.53% | +1658.97% | +27.31% | 68 | 2026-09-28 |
 |  | [2918](strategies/2918/) | AI 전략 | +6.44% | +1641.86% | +30.24% | 64 | 2026-09-28 |
 |  | [2917](strategies/2917/) | AI 전략 | -1.92% | +1641.86% | +30.27% | 50 | 2026-09-28 |
 |  | [2916](strategies/2916/) | ETH 4H Keltner ATR-Adaptive Mean-Reversion (Champion) | +9.97% | +1641.86% | +14.60% | 70 | 2026-09-28 |
