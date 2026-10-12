@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 496 of 1922 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 496 of 1923 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 276 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3687](strategies/3687/) | FearGreedContrarian | -27.99% | +95.22% | +27.99% | 16 | 2026-10-12 |
 |  | [2732](strategies/2732/) | On-Chain Network-Health BTC 1D | -39.60% | +55.47% | +39.60% | 14 | 2026-10-12 |
 |  | [2734](strategies/2734/) | Band-Bounce Mean Reversion AVAX 4H | +29.26% | +1443.71% | +36.72% | 37 | 2026-10-12 |
 |  | [3556](strategies/3556/) | BNB Trend-Follow EMA50/200 4H | +1401.30% | +43740.00% | +36.31% | 217 | 2026-10-12 |
