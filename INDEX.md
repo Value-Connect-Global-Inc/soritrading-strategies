@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [3700](strategies/3700/) | FearGreedTrendDip | -11.54% | — | +27.31% | 206 | 2026-10-12 |
+| — | [3700](strategies/3700/) | FearGreedTrendDip | -14.94% | — | +15.27% | 54 | 2026-10-12 |
 | ★ | [2653](strategies/2653/) | Band-Bounce Mean Reversion DOGE 4H | +94.76% | +9.39% | +34.99% | 191 | 2026-10-12 |
 |  | [2654](strategies/2654/) | OnChain-Confirmed Band-Bounce BTC 4H | -18.15% | +26.93% | +28.02% | 44 | 2026-10-12 |
 |  | [2655](strategies/2655/) | FearGreed Panic Mean-Reversion BTC 1D | +37.15% | +796.20% | +40.46% | 69 | 2026-10-12 |

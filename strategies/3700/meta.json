@@ -3,14 +3,14 @@
   "name": "FearGreedTrendDip",
   "kind": "custom",
   "verified": {
-    "backtestId": 18831,
-    "return": -11.54,
-    "mdd": 27.31,
-    "trades": 206,
+    "backtestId": 18835,
+    "return": -14.94,
+    "mdd": 15.27,
+    "trades": 54,
     "vsBuyHold": "unmeasured",
     "gapPct": 0,
-    "tFrom": 1532563200,
-    "tTo": 1618876800,
+    "tFrom": 1618963200,
+    "tTo": 1705276800,
     "approxNotes": [
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 9000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다",
@@ -21,7 +21,7 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1000,
-      "end": 1618963200,
+      "end": 1705363200,
       "syms": 3
     }
   },
