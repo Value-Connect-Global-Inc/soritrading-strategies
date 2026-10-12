@@ -19,19 +19,29 @@
  * drawdown is higher when OBV rolls over slowly. It also re-enters late after
  * genuine trend breaks.
  */
+// 2026-04-12: display-only change (added ctx.watch declarations), trading logic unchanged.
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const sma100 = ctx.sma(100, 1);
   const atr = ctx.atr(14, 1);
-  if (sma100 == null || atr == null) return null;
+  if (sma100 == null || atr == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   const LOOKBACK = 45;
   const closes = ctx.closes;
   const vols = ctx.volumes;
-  if (!closes || !vols || closes.length < LOOKBACK + 2) return null;
+  if (!closes || !vols || closes.length < LOOKBACK + 2) {
+    ctx.watch([]);
+    return null;
+  }
 
   let obv = 0;
   const obvSeries = [];
@@ -42,7 +52,10 @@ function onUpdate(ctx) {
     else if (c < p) obv -= v;
     obvSeries.push(obv);
   }
-  if (obvSeries.length < LOOKBACK + 1) return null;
+  if (obvSeries.length < LOOKBACK + 1) {
+    ctx.watch([]);
+    return null;
+  }
   const obvNow = obvSeries[obvSeries.length - 1];
   const obvPast = obvSeries[obvSeries.length - 1 - LOOKBACK];
   const rising = obvNow > obvPast * 1.01;
@@ -64,12 +77,36 @@ function onUpdate(ctx) {
   }
 
   if (pos > 0) {
+    ctx.watch([
+      {
+        side: 'sell',
+        note: 'OBV exit',
+        conds: [
+          { label: '45d OBV falling', ok: falling },
+          { label: 'cooldown ready', ok: cd === 0 }
+        ]
+      }
+    ]);
     if (falling && cd === 0) {
       ctx.state.cd = 5;
       return { side: 'sell', qty: pos };
     }
     return null;
   }
+
+  ctx.watch([
+    {
+      side: 'buy',
+      price: sma100,
+      trigger: 'above',
+      note: 'OBV trend entry',
+      conds: [
+        { label: '45d OBV rising', ok: rising },
+        { label: 'volume > avg(30)', ok: volOk },
+        { label: 'cooldown ready', ok: cd === 0 }
+      ]
+    }
+  ]);
 
   if (rising && price > sma100 && volOk && cd === 0) {
     ctx.state.cd = 5;
