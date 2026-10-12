@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2777](strategies/2777/) | AI 전략 | +40.01% | +1258.25% | +85.06% | 6 | 2026-10-12 |
 |  | [2780](strategies/2780/) | Volume-Panic Mean Reversion BTC 4H | -41.51% | +435.09% | +53.84% | 130 | 2026-10-12 |
 |  | [3658](strategies/3658/) | DonchianRiskSized | +13.51% | +87.84% | +16.63% | 23 | 2026-10-12 |
 |  | [3657](strategies/3657/) | DonchianSlowEntry | +16.36% | +87.84% | +44.75% | 19 | 2026-10-12 |
@@ -751,7 +752,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2782](strategies/2782/) | EMA50/200 Trend BTC 1D | -11.84% | +55.47% | +16.30% | 2 | 2026-09-26 |
 |  | [2781](strategies/2781/) | Market-Structure Trend BTC 1D | -10.98% | +154.52% | +10.98% | 16 | 2026-09-26 |
 |  | [2778](strategies/2778/) | AI 전략 | -59.65% | +1258.25% | +86.61% | 384 | 2026-09-26 |
-|  | [2777](strategies/2777/) | AI 전략 | +40.01% | +1258.25% | +85.06% | 6 | 2026-09-26 |
 | ★ | [2776](strategies/2776/) | AI 전략 | +49.28% | +42.23% | +64.39% | 93 | 2026-09-26 |
 |  | [2775](strategies/2775/) | Onchain Demand Fast BTC 1D | +166.28% | +1258.25% | +69.48% | 78 | 2026-09-26 |
 |  | [2774](strategies/2774/) | Onchain Hashrate Trend BTC 1D | -73.87% | +55.47% | +85.60% | 184 | 2026-09-26 |
