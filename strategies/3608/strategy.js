@@ -12,11 +12,12 @@
  *   whichever coin is currently the strongest.
  * When it buys and sells: a coin is held only while it is the top-momentum coin
  *   AND above its 200-SMA; it enters on a fresh 55-bar high break and exits when
- *   it loses the leadership, breaks its 20-bar channel low, or hits a 2.5x ATR
- *   hard stop.
+ *   it loses the leadership, breaks its 20-bar channel low, or hits a trailing
+ *   chandelier stop (2.5x ATR below the 55-bar high — ratchets up with the trend).
  * When it does NOT work: when all coins move together in a tight range or a
  *   synchronized bear, the leader keeps changing and rotation pays fees without
- *   gains.
+ *   gains. The trailing stop also exits on a sharp pullback inside an intact
+ *   trend, so it can miss the last leg of a strong move.
  */
 function onUpdate(ctx) {
   const syms = (ctx.syms && ctx.syms.length) ? ctx.syms : [ctx.sym];
@@ -51,12 +52,16 @@ function onUpdate(ctx) {
   const prevClose = ctx.closes.at(-2);
 
   if (ctx.position > 0) {
-    const hardStop = ctx.entryPx - 2.5 * atr;
+    // chandelier stop: ratchets up with the 55-bar high (same 2.5x ATR multiplier),
+    // never looser than the entry-based stop. Locks in gains as the trend rises.
+    const hh55 = ctx.high(55, 1);
+    const chandelier = hh55 != null ? hh55 - 2.5 * atr : ctx.entryPx - 2.5 * atr;
+    const hardStop = Math.max(chandelier, ctx.entryPx - 2.5 * atr);
     const ll20 = ctx.low(20, 2);
     if (price <= hardStop) return { side: 'sell', qty: ctx.position };
     if (ll20 != null && prevClose <= ll20) return { side: 'sell', qty: ctx.position };
     if (!isLeader) return { side: 'sell', qty: ctx.position };   // lost leadership -> rotate out
-    ctx.watch([{ side: 'sell', price: hardStop, trigger: 'below', note: '2.5x ATR hard stop' },
+    ctx.watch([{ side: 'sell', price: hardStop, trigger: 'below', note: 'chandelier stop' },
                { side: 'sell', price: ll20, trigger: 'below', note: '20-bar channel exit' }]);
     return null;
   }
