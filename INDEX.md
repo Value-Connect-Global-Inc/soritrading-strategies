@@ -11,7 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [3608](strategies/3608/) | Multi-Asset Momentum Rotation 4H | +15.20% | — | +34.67% | 326 | 2026-10-12 |
+|  | [2944](strategies/2944/) | SOL 1D Vol-Scaled Mean Reversion | -28.84% | +985.64% | +40.82% | 10 | 2026-10-12 |
+| — | [3608](strategies/3608/) | Multi-Asset Momentum Rotation 4H | +53.16% | — | +15.22% | 76 | 2026-10-12 |
 |  | [2946](strategies/2946/) | BTC 1D Donchian Breakout with ATR Trailing Stop | -89.65% | +50.97% | +90.81% | 143 | 2026-10-12 |
 |  | [3607](strategies/3607/) | ETH Donchian Plain 4H (baseline) | -18.38% | +30.75% | +28.19% | 92 | 2026-10-11 |
 | ★ | [3606](strategies/3606/) | ETH Donchian Volume-Confirmed 4H | +2.65% | -26.02% | +20.39% | 74 | 2026-10-11 |
@@ -555,7 +556,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2948](strategies/2948/) | BTC 1D Dual-Family MR + OBV Trend | -35.34% | +1253.33% | +73.10% | 72 | 2026-09-28 |
 |  | [2947](strategies/2947/) | BTC 1D Bollinger-RSI Mean Reversion | -4.87% | +1253.33% | +19.18% | 4 | 2026-09-28 |
 |  | [2945](strategies/2945/) | BTC 1D On-Chain Network-Health Trend | -45.83% | +50.97% | +72.75% | 160 | 2026-09-28 |
-|  | [2944](strategies/2944/) | SOL 1D Vol-Scaled Mean Reversion | -28.84% | +985.64% | +40.82% | 10 | 2026-09-28 |
 | ★ | [2943](strategies/2943/) | BTC 1D OBV Flow Trend Fast | +1428.38% | +1253.33% | +40.27% | 119 | 2026-09-28 |
 | ★ | [2942](strategies/2942/) | BTC 1D OBV Money-Flow Trend | +493.88% | +483.86% | +34.49% | 26 | 2026-09-28 |
 |  | [2941](strategies/2941/) | BTC 4H Volume-Surge Breakout | -28.90% | +72.42% | +44.24% | 160 | 2026-09-28 |

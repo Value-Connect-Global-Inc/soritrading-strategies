@@ -17,8 +17,10 @@
  * When it does NOT work: in a sustained bear market the price keeps falling
  * through the lower band and "catching the knife" loses money — this strategy
  * needs mean-reversion to win, not a one-way downtrend.
+ * 2026-05-13: 표시만 바뀜, 매매 판단은 그대로 (ctx.watch 선언만 추가)
  */
 function onUpdate(ctx) {
+  ctx.watch([]); // default: no wait condition (warm-up / no concrete level)
   const bb = ctx.bb(20, 2, 1);
   const rsi = ctx.rsi(14, 1);
   const atr = ctx.atr(14, 1);
@@ -30,6 +32,18 @@ function onUpdate(ctx) {
   if (px == null) return null;
 
   const pos = ctx.position || 0;
+
+  // Display-only: declare what this symbol is waiting for right now.
+  if (pos > 0) {
+    ctx.watch([
+      { side: 'sell', price: mid, trigger: 'above', note: 'exit: mid band or RSI>55' }
+    ]);
+  } else {
+    ctx.watch([
+      { side: 'buy', price: bb.lower, trigger: 'below', note: 'entry: lower band touch',
+        conds: [{ label: 'RSI(14) close', now: rsi, op: '<', ref: 30, closed: true }] }
+    ]);
+  }
 
   // EXIT: mean reversion complete when price is back above the middle band,
   // or RSI has recovered strongly. Either means the panic is over.

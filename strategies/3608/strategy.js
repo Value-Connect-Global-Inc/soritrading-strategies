@@ -30,18 +30,25 @@ function onUpdate(ctx) {
 
   // BTC regime: is the market anchor above its own 200-SMA? (risk-on filter)
   // In a synchronized BTC bear all alts fall together, so rotation just pays
-  // fees — stay out until risk-on returns. This is the one new axis this cycle.
+  // fees — stay out until risk-on returns. Detect BTC by base symbol so it
+  // works whether ctx.sym is 'BTC' or 'BTC/USDT'.
   let btcRiskOn = null;
-  if (ctx.sym === 'BTC/USDT') {
-    btcRiskOn = prevClose > sma200;
-  } else {
-    const bm = ctx.market('BTC/USDT');
-    const bc = bm && bm.closes;
-    if (bc && bc.length > 201) {
-      let s = 0;
-      for (let i = bc.length - 2; i >= bc.length - 202; i--) s += bc[i];
-      btcRiskOn = bc.at(-2) > s / 200;
+  for (const s of syms) {
+    const base = s.split('/')[0];
+    if (base !== 'BTC') continue;
+    let bc = null;
+    if (s === ctx.sym) {
+      bc = ctx.closes;
+    } else {
+      const m = ctx.market(s);
+      bc = m && m.closes;
     }
+    if (bc && bc.length > 201) {
+      let sum = 0;
+      for (let i = bc.length - 2; i >= bc.length - 202; i--) sum += bc[i];
+      btcRiskOn = bc.at(-2) > sum / 200;
+    }
+    break;
   }
   if (btcRiskOn == null) return null;
 
