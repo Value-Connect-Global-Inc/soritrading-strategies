@@ -3,10 +3,10 @@
   "name": "DollarRegimeBTC",
   "kind": "custom",
   "verified": {
-    "backtestId": 18923,
-    "return": -1.26,
-    "mdd": 1.26,
-    "trades": 54,
+    "backtestId": 18926,
+    "return": -95.82,
+    "mdd": 95.91,
+    "trades": 3791,
     "vsBuyHold": "lose",
     "benchRet": 95.22,
     "benchBasis": "price",
@@ -15,6 +15,7 @@
     "tTo": 1791590400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 100%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
@@ -25,10 +26,10 @@
       "bars": 1000,
       "end": 1791763200
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "65937d58f84f375991b2a898858345f6bf29d7f702e759936ec0d1b1a1aeb33e"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "3a2b7da19f69b0af2d83be7c56c24b29830659c8db900c63a7fffe49aede45dc"
   },
   "config": null,
-  "updatedAt": "2026-10-12T22:06:28.110Z",
+  "updatedAt": "2026-10-12T22:09:04.413Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

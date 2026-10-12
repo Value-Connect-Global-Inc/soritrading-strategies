@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3712](strategies/3712/) | DollarRegimeBTC ‡ | -1.26% | +95.22% | +1.26% | 54 | 2026-10-12 |
+|  | [3712](strategies/3712/) | DollarRegimeBTC | -95.82% | +95.22% | +95.91% | 3791 | 2026-10-12 |
 | ★ | [3711](strategies/3711/) | DogeDonchianBreakout | -2.30% | -69.12% | +11.68% | 24 | 2026-10-12 |
 |  | [3710](strategies/3710/) | SolOversoldReversion | +4.28% | +861.13% | +4.35% | 12 | 2026-10-12 |
 |  | [3709](strategies/3709/) | HashrateFundamentalsTrend | -80.01% | +95.22% | +82.58% | 388 | 2026-10-12 |
