@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3556](strategies/3556/) | BNB Trend-Follow EMA50/200 4H | +1401.30% | +43740.00% | +36.31% | 217 | 2026-10-12 |
 | — | [3686](strategies/3686/) | DonchianTrendMomentumGate | +13.23% | — | +17.24% | 47 | 2026-10-12 |
 |  | [2737](strategies/2737/) | Band-Bounce Mean Reversion SUI 4H | +2.52% | +18.57% | +9.00% | 12 | 2026-10-12 |
 | — | [3680](strategies/3680/) | AI 전략 | +102.13% | — | +17.39% | 69 | 2026-10-12 |
@@ -242,7 +243,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3077](strategies/3077/) | ETH 4H Volatility-Scaled Trend Rider | -24.29% | +141.85% | +25.79% | 86 | 2026-10-11 |
 |  | [3079](strategies/3079/) | BTC Daily Defensive Mean Reversion | +32.04% | +91.00% | +5.25% | 34 | 2026-10-11 |
 | ★ | [3560](strategies/3560/) | AI 전략 | +56.30% | +45.28% | +21.53% | 68 | 2026-10-11 |
-|  | [3556](strategies/3556/) | BNB Trend-Follow EMA50/200 4H | +557.58% | +2460.26% | +36.31% | 26 | 2026-10-11 |
 |  | [3558](strategies/3558/) | BTC Trend-Follow EMA50/200 4H | +217.73% | +461.93% | +25.39% | 44 | 2026-10-11 |
 |  | [3084](strategies/3084/) | BTC 1D Squeeze-Breakout Only (upbit) | -8.00% | +28.88% | +21.12% | 24 | 2026-10-11 |
 |  | [3086](strategies/3086/) | Defensive Mean Reversion BTC | +8.82% | +90.62% | +1.91% | 20 | 2026-10-11 |
