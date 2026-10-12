@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2931](strategies/2931/) | BTC 4H Bollinger MR Uptrend-6pct | -15.64% | +71.94% | +20.64% | 28 | 2026-10-12 |
 | ★ | [2934](strategies/2934/) | ETH 4H Bollinger MR Macro-Risk Gated | +35.12% | -26.18% | +7.37% | 32 | 2026-10-12 |
 |  | [2932](strategies/2932/) | ETH 4H Funding Contrarian | -3.40% | +9.87% | +10.49% | 32 | 2026-10-12 |
 |  | [3613](strategies/3613/) | BTC Sentiment-Gated Trend 4H | +40.42% | +459.07% | +22.39% | 121 | 2026-10-12 |
@@ -572,7 +573,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2937](strategies/2937/) | BTC 1D OBV Trend Fed-Gated 45d | -1.95% | +139.84% | +22.11% | 16 | 2026-09-28 |
 |  | [2936](strategies/2936/) | ETH 4H Bollinger MR Macro-Risk Gated | +19.45% | +71.94% | +30.90% | 42 | 2026-09-28 |
 |  | [2935](strategies/2935/) | ETH 4H Bollinger MR Full-Cash (no gate) | +53.62% | +1658.97% | +46.17% | 66 | 2026-09-28 |
-|  | [2931](strategies/2931/) | BTC 4H Bollinger MR Uptrend-6pct | -15.64% | +71.94% | +20.64% | 28 | 2026-09-28 |
 |  | [2930](strategies/2930/) | ETH 4H Bollinger MR Uptrend6+RisingSMA | +5.73% | +1658.97% | +11.66% | 44 | 2026-09-28 |
 |  | [2929](strategies/2929/) | ETH 4H Bollinger MR Uptrend-7pct | +5.28% | +1658.97% | +11.66% | 44 | 2026-09-28 |
 | ★ | [2927](strategies/2927/) | ETH 4H Bollinger MR Uptrend-10pct | +2.33% | -26.18% | +6.43% | 14 | 2026-09-28 |
