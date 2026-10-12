@@ -4,14 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 487 of 1882 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 486 of 1882 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 270 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [3626](strategies/3626/) | ETH Fear-Greed Mean Reversion 4H | -36.37% | -82.42% | +38.75% | 52 | 2026-10-12 |
+|  | [2880](strategies/2880/) | 45d OBV Trend BNB 1D | +3345.94% | +23326.24% | +67.07% | 16 | 2026-10-12 |
+|  | [3626](strategies/3626/) | ETH Fear-Greed Mean Reversion 4H | -4.69% | +2723.53% | +7.62% | 4 | 2026-10-12 |
 |  | [2881](strategies/2881/) | Donchian Breakout BTC 1D | +6.25% | +45.60% | +43.33% | 45 | 2026-10-12 |
 |  | [2883](strategies/2883/) | Hybrid OBV-Trend + Keltner-MR BTC 1D | +56.16% | +1279.90% | +23.54% | 290 | 2026-10-12 |
 | ★ | [3625](strategies/3625/) | AI 전략 | +24.86% | -26.02% | +20.91% | 104 | 2026-10-12 |
@@ -630,7 +631,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2886](strategies/2886/) | Keltner MR ATOM 1D | +4.69% | +18.54% | +5.79% | 6 | 2026-09-27 |
 |  | [2884](strategies/2884/) | Dual Onchain-Demand + OBV BTC 1D | -28.62% | +105.65% | +53.27% | 80 | 2026-09-27 |
 | ★ | [2882](strategies/2882/) | 45d OBV Trend SMA50-Gate BTC 1D | +1810.62% | +1279.90% | +43.09% | 46 | 2026-09-27 |
-|  | [2880](strategies/2880/) | 45d OBV Trend BNB 1D | +3345.94% | +23326.24% | +67.07% | 16 | 2026-09-27 |
 |  | [2877](strategies/2877/) | Keltner MR Daily (validated champion) | +18.89% | +190.11% | +2.46% | 6 | 2026-09-27 |
 |  | [2876](strategies/2876/) | 45d OBV Trend Champion BTC 1D | +178.00% | +239.04% | +51.17% | 33 | 2026-09-27 |
 |  | [2875](strategies/2875/) | 20d OBV Trend Faster-Entry BTC 1D | +210.90% | +263.61% | +44.57% | 44 | 2026-09-27 |

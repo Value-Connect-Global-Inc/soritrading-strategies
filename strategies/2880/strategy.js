@@ -16,6 +16,8 @@
  * When it does NOT work: lags straight-line melt-ups because the 100-day gate
  * keeps it out of the early rally, and churns in choppy sideways markets where
  * OBV flips direction. BNB's history is shorter and its early data is thin.
+ *
+ * 2025-01-01: 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -61,12 +63,33 @@ function onUpdate(ctx) {
   }
 
   if (pos > 0) {
+    // 청산 대기: OBV가 내려와 45일 전 대비 1.5% 하락하면 매도
+    ctx.watch([{
+      side: 'sell',
+      price: obvPast * 0.985,
+      trigger: 'below',
+      note: 'OBV 45d 1.5% 하락 시 매도',
+      conds: [{ label: 'cd', now: cd, op: '==', ref: 0 }]
+    }]);
     if (falling && cd === 0) {
       ctx.state.cd = 5;
       return { side: 'sell', qty: pos };
     }
     return null;
   }
+
+  // 진입 대기: OBV 상승 + 가격이 SMA100 위 + 거래량 확인
+  ctx.watch([{
+    side: 'buy',
+    price: sma100,
+    trigger: 'above',
+    note: 'SMA100 상향 돌파',
+    conds: [
+      { label: 'OBV 45d 상승', ok: rising },
+      { label: '거래량 > 30d 평균', ok: volOk },
+      { label: 'cd', now: cd, op: '==', ref: 0 }
+    ]
+  }]);
 
   if (rising && price > sma100 && volOk && cd === 0) {
     ctx.state.cd = 5;

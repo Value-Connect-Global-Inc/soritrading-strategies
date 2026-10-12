@@ -3,7 +3,7 @@
   "name": "45d OBV Trend BNB 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 13052,
+    "backtestId": 18274,
     "return": 3345.94,
     "mdd": 67.07,
     "trades": 16,
@@ -17,17 +17,26 @@
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[유동성/미체결] 시장가 주문 1건이 그 봉의 호가 두께를 넘어 일부만 체결됐습니다(전체 요청 금액의 2% 미체결, 남은 물량은 다음 봉으로). 진입·청산이 전략이 의도한 시점보다 늦습니다. ★ 원인은 둘 중 하나이고 이 수만으로는 못 가릅니다 — 종목이 얇거나, 주문이 한 봉이 소화할 수 있는 것보다 크거나. 주문 크기를 줄여 같은 구간을 다시 돌리면 …",
       "기간 종료 시 미청산 포지션 1종목 (총자산의 99.76%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
-      "거래량은 봉 마감에만 확정 — 봉 중 평가에서 ctx.vol/volumes 가 null 이라 거래량 조건이 걸러졌을 수 있음(봉 중에도 쓰려면 ctx.volPrev·ctx.avgVol)"
+      "거래량은 봉 마감에만 확정 — 봉 중 평가에서 ctx.vol/volumes 가 null 이라 거래량 조건이 걸러졌을 수 있음(봉 중에도 쓰려면 ctx.volPrev·ctx.avgVol)",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1247봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
-      "sym": "BNBUSDT",
+      "sym": "BNB",
       "interval": "1d",
       "bars": 2000,
       "end": 1617667200
     }
   },
-  "config": null,
-  "updatedAt": "2026-09-27T06:04:20.928Z",
+  "config": {
+    "ex": "binance",
+    "cash": 10000,
+    "syms": [
+      "BNB"
+    ],
+    "quote": "USDT",
+    "interval": "1d"
+  },
+  "updatedAt": "2026-10-12T03:12:56.909Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
