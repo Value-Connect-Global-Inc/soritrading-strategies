@@ -4,13 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 487 of 1893 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 488 of 1894 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 271 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2853](strategies/2853/) | OBV Champion Pure BTC 1D (A/B) | -2.60% | +35.51% | +25.28% | 154 | 2026-10-12 |
+| ★ | [3637](strategies/3637/) | PlainTrendControl | +33.67% | -20.96% | +8.34% | 14 | 2026-10-12 |
 |  | [3636](strategies/3636/) | FearGreedContrarian | +122.07% | +612.44% | +27.08% | 32 | 2026-10-12 |
 |  | [2857](strategies/2857/) | AI 전략 | +894.65% | +1009.79% | +38.43% | 45 | 2026-10-12 |
 | ★ | [2858](strategies/2858/) | AI 전략 | +667.16% | +574.98% | +40.97% | 35 | 2026-10-12 |
@@ -662,7 +664,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | ★ | [2859](strategies/2859/) | 45d OBV Partial Scale-Out BTC 1D | +728.32% | +574.98% | +40.98% | 36 | 2026-09-27 |
 | ★ | [2856](strategies/2856/) | AI 전략 | +77.00% | -11.28% | +10.49% | 14 | 2026-09-27 |
 |  | [2855](strategies/2855/) | OBV Champion Pure BTC 1D (baseline) | +145.29% | +167.91% | +26.06% | 109 | 2026-09-27 |
-|  | [2853](strategies/2853/) | OBV Champion Pure BTC 1D (A/B) | -11.21% | +35.51% | +29.52% | 158 | 2026-09-27 |
 | ★ | [2852](strategies/2852/) | Fed-Filtered OBV Trend BTC 1D | +108.08% | +45.60% | +28.09% | 129 | 2026-09-27 |
 |  | [2851](strategies/2851/) | Fed Regime + OnChain Demand Overlay BTC 1D | +410.89% | +1279.90% | +73.95% | 407 | 2026-09-27 |
 |  | [2850](strategies/2850/) | On-Chain Demand Trend BTC 1D | +40.87% | +43.67% | +57.99% | 210 | 2026-09-27 |

@@ -77,13 +77,38 @@ function onUpdate(ctx) {
     sizeFrac = Math.max(0.5, 1.0 - (atrPct - 0.06) / 0.06);
   }
 
+  // 2024-12-08: display-only watch declaration, trading logic unchanged
   if (pos > 0) {
+    // In position — show exit levels (OBV downtrend or on-chain gate off)
+    const exitConds = [];
+    if (!falling && !gateOff) {
+      if (!falling) {
+        exitConds.push({ label: 'OBV 30d rising', ok: rising });
+      }
+      if (!gateOff) {
+        exitConds.push({ label: 'On-chain gate on', ok: gateOk });
+      }
+    }
+    ctx.watch([
+      { side: 'sell', price: sma100, trigger: 'below', note: 'SMA100 support', conds: [{ label: 'OBV falling', ok: falling }, { label: 'Gate off', ok: gateOff }] }
+    ]);
     if ((falling || gateOff) && cd === 0) {
       ctx.state.cd = 5;
       return { side: 'sell', qty: pos };
     }
     return null;
   }
+
+  // Not in position — show entry levels (OBV rising + price above SMA100 + volume + gate)
+  const entryConds = [
+    { label: 'OBV 30d rising', ok: rising },
+    { label: 'Price > SMA100', now: price, op: '>', ref: sma100, closed: true },
+    { label: 'Volume > avg30', ok: volOk },
+    { label: 'On-chain gate on', ok: gateOk }
+  ];
+  ctx.watch([
+    { side: 'buy', price: sma100, trigger: 'above', note: 'SMA100 breakout', conds: entryConds }
+  ]);
 
   if (rising && price > sma100 && volOk && gateOk && cd === 0) {
     ctx.state.cd = 5;
