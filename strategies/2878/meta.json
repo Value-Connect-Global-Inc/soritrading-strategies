@@ -1,0 +1,39 @@
+{
+  "id": 2878,
+  "name": "45d OBV Trend ETH 1D",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 18289,
+    "return": -19.63,
+    "mdd": 35.02,
+    "trades": 26,
+    "vsBuyHold": "lose",
+    "benchRet": -0.21,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1705276800,
+    "tTo": 1791590400,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "거래량은 봉 마감에만 확정 — 봉 중 평가에서 ctx.vol/volumes 가 null 이라 거래량 조건이 걸러졌을 수 있음(봉 중에도 쓰려면 ctx.volPrev·ctx.avgVol)",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "1d",
+      "bars": 1000
+    }
+  },
+  "config": {
+    "ex": "binance",
+    "cash": 10000,
+    "syms": [
+      "ETH"
+    ],
+    "quote": "USDT",
+    "interval": "1d"
+  },
+  "updatedAt": "2026-10-12T03:21:07.999Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
