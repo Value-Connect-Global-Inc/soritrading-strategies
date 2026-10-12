@@ -1,3 +1,4 @@
+// 2026-05-08 표시만 바뀜, 매매 판단은 그대로
 /*
  * @coinsori-strategy v1
  * name: Fed Tightening-Onset Regime BTC 1D
@@ -35,6 +36,23 @@ function onUpdate(ctx) {
   // Hiking if the current rate is above the 30-day-ago level by a small
   // buffer (0.25pp = one typical hike) to avoid churn on tiny moves.
   const hiking = now > lag + 0.25;
+
+  // Display-only: what this symbol is waiting for right now.
+  if (pos > 0) {
+    ctx.watch([{
+      side: 'sell',
+      qty: pos,
+      note: 'Fed hike onset (rate > 30d ago + 0.25)',
+      conds: [{ label: 'Fed funds now', now: now, op: '>', ref: lag + 0.25 }]
+    }]);
+  } else {
+    ctx.watch([{
+      side: 'buy',
+      qty: ctx.cash / price * 0.95,
+      note: 'Fed not hiking (rate <= 30d ago + 0.25)',
+      conds: [{ label: 'Fed funds now', now: now, op: '<=', ref: lag + 0.25 }]
+    }]);
+  }
 
   // --- Exit: a tightening cycle has begun ---
   if (pos > 0) {

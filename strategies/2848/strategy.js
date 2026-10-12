@@ -18,23 +18,33 @@
  * crash the index can drop sharply (good exit) but in a slow grind it
  * whipsaws around its average, generating many small losing trades. It also
  * misses rallies that happen while sentiment stays flat.
+ * 2026-04-26 — 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   // Fear & Greed index (0-100), external dataset.
   const raw = ctx.data('fear_greed');
   const fg = Number(raw);
-  if (!Number.isFinite(fg) || fg <= 0) return null;
+  if (!Number.isFinite(fg) || fg <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   // Rolling 20-bar buffer to compute the sentiment moving average.
   const hist = ctx.state.fghist || [];
   hist.push(fg);
   if (hist.length > 20) hist.shift();
   ctx.state.fghist = hist;
-  if (hist.length < 20) return null;
+  if (hist.length < 20) {
+    ctx.watch([]);
+    return null;
+  }
 
   let sum = 0;
   for (let i = 0; i < hist.length; i++) sum += hist[i];
@@ -44,6 +54,7 @@ function onUpdate(ctx) {
 
   // --- Exit: sentiment deteriorated below its average ---
   if (pos > 0) {
+    ctx.watch([{ side: 'sell', qty: pos, note: 'FG below 20d avg threshold', conds: [{ label: 'FG', now: fg, op: '<=', ref: avg * 1.01 }] }]);
     if (!sentimentUp) {
       return { side: 'sell', qty: pos };
     }
@@ -51,6 +62,7 @@ function onUpdate(ctx) {
   }
 
   // --- Entry: sentiment improving ---
+  ctx.watch([{ side: 'buy', qty: ctx.cash / price * 0.95, note: 'FG above 20d avg threshold', conds: [{ label: 'FG', now: fg, op: '>', ref: avg * 1.01 }] }]);
   if (sentimentUp) {
     return { side: 'buy', qty: ctx.cash / price * 0.95 };
   }

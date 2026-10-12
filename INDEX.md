@@ -11,6 +11,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2848](strategies/2848/) | Sentiment Trend-Follow BTC 1D | -90.07% | +45.60% | +92.22% | 759 | 2026-10-12 |
+| ★ | [2849](strategies/2849/) | Fed Tightening-Onset Regime BTC 1D | +104.74% | +45.60% | +54.48% | 21 | 2026-10-12 |
 |  | [3639](strategies/3639/) | SimpleTrendDaily | +16.46% | +95.22% | +10.69% | 31 | 2026-10-12 |
 | ★ | [3637](strategies/3637/) | PlainTrendControl | +33.67% | -20.96% | +8.34% | 14 | 2026-10-12 |
 | ★ | [3638](strategies/3638/) | MacroDxyTrend | +2.17% | -20.96% | +1.20% | 16 | 2026-10-12 |
@@ -669,8 +671,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | ★ | [2859](strategies/2859/) | 45d OBV Partial Scale-Out BTC 1D | +728.32% | +574.98% | +40.98% | 36 | 2026-09-27 |
 | ★ | [2856](strategies/2856/) | AI 전략 | +77.00% | -11.28% | +10.49% | 14 | 2026-09-27 |
 |  | [2855](strategies/2855/) | OBV Champion Pure BTC 1D (baseline) | +145.29% | +167.91% | +26.06% | 109 | 2026-09-27 |
-| ★ | [2849](strategies/2849/) | Fed Tightening-Onset Regime BTC 1D | +104.74% | +45.60% | +54.48% | 21 | 2026-09-27 |
-|  | [2848](strategies/2848/) | Sentiment Trend-Follow BTC 1D | -90.07% | +45.60% | +92.22% | 759 | 2026-09-27 |
 | ★ | [2845](strategies/2845/) | Hashrate Demand Trend BTC 1D | +122.40% | -17.74% | +49.45% | 132 | 2026-09-27 |
 |  | [2843](strategies/2843/) | Hashrate Regime Gate BTC 1D | -50.66% | +827.08% | +67.07% | 315 | 2026-09-27 |
 |  | [2842](strategies/2842/) | BTC 1D Blend + On-Chain Demand Gate | -49.00% | +45.60% | +76.11% | 377 | 2026-09-27 |
