@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [3704](strategies/3704/) | MomentumRotationTop1 | +107.83% | — | +13.07% | 48 | 2026-10-12 |
+| — | [3704](strategies/3704/) | MomentumRotationTop1 | +20.05% | — | +9.25% | 158 | 2026-10-12 |
 | — | [3702](strategies/3702/) | FedEasingTrend | +248.65% | — | +21.29% | 122 | 2026-10-12 |
 | — | [3701](strategies/3701/) | AI 전략 | +317.68% | — | +20.81% | 84 | 2026-10-12 |
 | — | [3700](strategies/3700/) | FearGreedTrendDip | +93.75% | — | +13.45% | 134 | 2026-10-12 |
