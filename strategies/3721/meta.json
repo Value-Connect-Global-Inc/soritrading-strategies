@@ -3,26 +3,26 @@
   "name": "ETHMultiTFRegimeTrend",
   "kind": "custom",
   "verified": {
-    "backtestId": 18995,
-    "return": -19.74,
-    "mdd": 21.22,
-    "trades": 60,
+    "backtestId": 18997,
+    "return": -19.43,
+    "mdd": 27.02,
+    "trades": 22,
     "vsBuyHold": "win",
-    "benchRet": -26.02,
+    "benchRet": -72.97,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1719691200,
-    "tTo": 1791676800,
+    "tFrom": 1618876800,
+    "tTo": 1791590400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 2000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
-      "sym": "ETH",
-      "interval": "4h",
-      "bars": 5000,
-      "end": 1791835200
+      "sym": "DOGE",
+      "interval": "1d",
+      "bars": 2000,
+      "end": 1791763200
     },
     "codeBasis": "assumed-current",
     "verifiedCodeSha256": "da607a430111c6ddfe8fd35ca2d62c3dcc344a3f98e96342a1d36fa751eb42c3"
