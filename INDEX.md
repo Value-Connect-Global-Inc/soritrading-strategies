@@ -4,15 +4,16 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 480 of 1870 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 480 of 1871 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 270 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [2927](strategies/2927/) | ETH 4H Bollinger MR Uptrend-10pct | +2.33% | -26.18% | +6.43% | 14 | 2026-10-12 |
+|  | [2928](strategies/2928/) | ETH 4H Bollinger MR Uptrend-6pct | +3.26% | +9.87% | +1.60% | 4 | 2026-10-12 |
 |  | [3614](strategies/3614/) | BTC Mean Reversion 4H | -9.57% | +35.80% | +13.47% | 34 | 2026-10-12 |
+| ★ | [2927](strategies/2927/) | ETH 4H Bollinger MR Uptrend-10pct | +2.33% | -26.18% | +6.43% | 14 | 2026-10-12 |
 |  | [2929](strategies/2929/) | ETH 4H Bollinger MR Uptrend-7pct | +5.29% | +1658.97% | +11.66% | 44 | 2026-10-12 |
 |  | [2931](strategies/2931/) | BTC 4H Bollinger MR Uptrend-6pct | -15.64% | +71.94% | +20.64% | 28 | 2026-10-12 |
 | ★ | [2934](strategies/2934/) | ETH 4H Bollinger MR Macro-Risk Gated | +35.12% | -26.18% | +7.37% | 32 | 2026-10-12 |
