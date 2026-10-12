@@ -18,6 +18,8 @@
  * below half size). Exits fully when OBV turns down.
  * When it does NOT work: in a steady grinding bull where vol stays low it
  * under-risks slightly; and it still lags the sharpest V-shaped melt-ups.
+ * 
+ * 2025-01-01: 표시만 바뀜, 매매 판단은 그대로 (ctx.watch 추가)
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -64,12 +66,37 @@ function onUpdate(ctx) {
   }
 
   if (pos > 0) {
+    // Declare exit wait: OBV falling (30-day) triggers full exit
+    ctx.watch([{
+      side: 'sell',
+      price: price, // current price reference (no specific exit level — OBV condition)
+      trigger: 'below',
+      note: 'OBV 30d falling',
+      conds: [
+        { label: 'OBV now vs 30d ago', now: obvNow, op: '<', ref: obvPast * 0.99, closed: true },
+        { label: 'Cooldown', ok: cd === 0 }
+      ]
+    }]);
     if (falling && cd === 0) {
       ctx.state.cd = 5;
       return { side: 'sell', qty: pos };
     }
     return null;
   }
+
+  // Declare entry wait: OBV rising + price > SMA200 + volume confirm
+  ctx.watch([{
+    side: 'buy',
+    price: sma200,
+    trigger: 'above',
+    note: 'SMA200 + OBV rising + vol',
+    conds: [
+      { label: 'OBV now vs 30d ago', now: obvNow, op: '>', ref: obvPast * 1.01, closed: true },
+      { label: 'Price vs SMA200', now: price, op: '>', ref: sma200, closed: true },
+      { label: 'Volume > avg30', ok: volOk },
+      { label: 'Cooldown', ok: cd === 0 }
+    ]
+  }]);
 
   if (rising && price > sma200 && volOk && cd === 0) {
     ctx.state.cd = 5;

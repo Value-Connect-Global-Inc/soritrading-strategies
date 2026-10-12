@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2818](strategies/2818/) | OBV Trend Vol-Scaled Size BTC 1D | -4.85% | +55.47% | +4.85% | 2 | 2026-10-12 |
 | ★ | [2821](strategies/2821/) | OBV Relaxed Gate + Fed Buy-Blocker 1D | +18.83% | -21.08% | +34.47% | 68 | 2026-10-12 |
 |  | [3646](strategies/3646/) | MeanReversionDips | -10.73% | +116.17% | +13.49% | 6 | 2026-10-12 |
 | ★ | [3645](strategies/3645/) | PureSMA200Trend | +318.86% | +116.17% | +53.47% | 9 | 2026-10-12 |
@@ -702,7 +703,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2822](strategies/2822/) | OBV Relaxed Gate + Rising Trend Filter 1D | +341.83% | +1147.75% | +50.50% | 26 | 2026-09-26 |
 |  | [2820](strategies/2820/) | OBV Trend Relaxed Gate 1D | +267.21% | +324.12% | +42.57% | 50 | 2026-09-26 |
 |  | [2819](strategies/2819/) | OBV Trend Fast 4H | -32.85% | -24.71% | +47.35% | 176 | 2026-09-26 |
-|  | [2818](strategies/2818/) | OBV Trend Vol-Scaled Size BTC 1D | -4.85% | +55.47% | +4.85% | 2 | 2026-09-26 |
 |  | [2817](strategies/2817/) | OBV Volume-Flow Trend BTC 1D v3 (relaxed bull gate) | +304.14% | +343.59% | +43.49% | 11 | 2026-09-26 |
 |  | [2816](strategies/2816/) | OBV Volume-Flow Trend BTC 1D v2 (faster + trail) | +159.82% | +270.70% | +55.97% | 46 | 2026-09-26 |
 |  | [2815](strategies/2815/) | ADA 4H Band-Bounce + Fed Tightening Gate | +137.82% | +262.64% | +23.11% | 53 | 2026-09-26 |
