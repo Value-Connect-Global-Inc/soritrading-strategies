@@ -20,6 +20,8 @@
  * sits out; in a fake uptrend the pullback keeps going and the stop catches
  * a falling knife. It whipsaws in a sideways market where the 200-SMA is
  * flat.
+ *
+ * 2025-01-15: display-only ctx.watch added; trading logic unchanged.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -47,16 +49,42 @@ function onUpdate(ctx) {
       ctx.state.lastExit = ctx.i;
       return { side: 'sell', qty: pos };
     }
+    // Display: waiting on exit levels (mid Donchian, uptrend loss, ATR stop)
+    if (dcMid != null && atr != null) {
+      ctx.watch([
+        { side: 'sell', price: dcMid, trigger: 'above', note: 'mid Donchian take-profit' },
+        { side: 'sell', price: ctx.entryPx - atr * 3, trigger: 'below', note: '3x ATR stop' },
+        { side: 'sell', price: sma200, trigger: 'below', note: 'uptrend break', conds: [{ label: 'SMA200 rising', ok: sma200 > sma200prev, closed: true }] }
+      ]);
+    } else {
+      ctx.watch([]);
+    }
     return null;
   }
 
   const lastExit = ctx.state.lastExit || 0;
-  if (ctx.i - lastExit < 5) return null;
-  if (!uptrend) return null;
+  if (ctx.i - lastExit < 5) {
+    // Display: cooldown waiting (time-based, no price)
+    ctx.watch([{ side: 'buy', at: ctx.candle.ts + (5 - (ctx.i - lastExit)) * ctx.candle.interval * 1000, note: 'cooldown' }]);
+    return null;
+  }
+  if (!uptrend) {
+    // Display: waiting for uptrend regime (price-based, but not a direct order condition)
+    ctx.watch([{ side: 'buy', price: sma200, trigger: 'above', note: 'uptrend entry', conds: [{ label: 'SMA200 rising', ok: sma200 > sma200prev, closed: true }] }]);
+    return null;
+  }
 
   const dcLow = ctx.low(20, 1);
   if (dcLow != null && price <= dcLow * 1.01) {
     return { side: 'buy', qty: ctx.cash / ctx.price * 0.95 };
+  }
+  // Display: waiting for pullback to lower Donchian
+  if (dcLow != null) {
+    ctx.watch([
+      { side: 'buy', price: dcLow * 1.01, trigger: 'below', note: 'lower Donchian pullback', conds: [{ label: 'SMA200 rising', ok: sma200 > sma200prev, closed: true }] }
+    ]);
+  } else {
+    ctx.watch([]);
   }
   return null;
 }
