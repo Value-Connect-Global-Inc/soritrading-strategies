@@ -9,14 +9,14 @@
  * Why this strategy: the Fear & Greed index is the only external data axis that
  *   has worked in this account's backtests, but it has only been tried as a
  *   mean-reversion / sizing input so far. This strategy uses it the other way —
- *   as a TREND filter: buy while the crowd is not euphoric and the trend is up,
- *   and take profit when the crowd turns greedy.
+ *   as an ENTRY filter only: buy while the crowd is not euphoric and the trend
+ *   is up. No profit-taking on greed — a trend strategy must let winners run.
  * When it buys and sells: buy when Fear&Greed < 55, price is above its 100-EMA
- *   and makes a fresh 20-bar high; sell when Fear&Greed >= 68, price closes
- *   below the 20-bar low, or price hits a 2.5x ATR hard stop.
- * When it does NOT work: in a melt-up, the FG>=68 exit sells too early and
- *   leaves gains on the table; in a slow grind down with mild fear, the EMA gate
- *   keeps it out but it also misses the eventual bottom. It is a defensive trend
+ *   and makes a fresh 20-bar high; sell when price closes below the 20-bar low
+ *   or hits a 2.5x ATR hard stop.
+ * When it does NOT work: in a melt-up it enters late (after the first euphoric
+ *   leg) so it misses part of the move; in a slow grind down with mild fear the
+ *   EMA gate keeps it out but it also misses the bottom. It is a defensive trend
  *   rider, not a bull-market champion.
  */
 function onUpdate(ctx) {
@@ -34,10 +34,8 @@ function onUpdate(ctx) {
     const ll20 = ctx.low(20, 2);
     if (price <= hardStop) return { side: 'sell', qty: ctx.position };
     if (ll20 != null && prevClose <= ll20) return { side: 'sell', qty: ctx.position };
-    if (fg != null && fg >= 68) return { side: 'sell', qty: ctx.position };   // crowd greed -> take profit
     ctx.watch([{ side: 'sell', price: hardStop, trigger: 'below', note: '2.5x ATR hard stop' },
-               { side: 'sell', price: ll20, trigger: 'below', note: '20-bar channel exit' },
-               { side: 'sell', note: 'FG >= 68 greed exit' }]);
+               { side: 'sell', price: ll20, trigger: 'below', note: '20-bar channel exit' }]);
     return null;
   }
 
