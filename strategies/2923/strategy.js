@@ -18,8 +18,12 @@
  * When it does NOT work: in a slow grind lower without panic flushes it rarely
  * triggers and sits in cash. In a prolonged bear the few capitulation buys can
  * still be early. It lags buy-and-hold in strong melt-ups (defensive).
+ *
+ * 2026-04-27 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
+  ctx.watch([]);
+
   const bb = ctx.bb(20, 2, 1);
   const rsi = ctx.rsi(14, 1);
   const sma200 = ctx.sma(200, 1);
@@ -28,9 +32,27 @@ function onUpdate(ctx) {
   if (bb == null || bb.lower == null || rsi == null || sma200 == null || atr == null || px == null) return null;
 
   if (ctx.position > 0) {
+    ctx.watch([
+      { side: 'sell', price: bb.mid, trigger: 'above', note: 'Mid BB exit' },
+      { side: 'sell', note: 'RSI > 60 exit', conds: [{ label: 'RSI(14)', now: rsi, op: '>', ref: 60, closed: true }] }
+    ]);
+
     if (px >= bb.mid || rsi > 60) return { side: 'sell', qty: ctx.position };
     return null;
   }
+
+  ctx.watch([
+    {
+      side: 'buy',
+      price: bb.lower,
+      trigger: 'below',
+      note: 'Deep capitulation entry',
+      conds: [
+        { label: 'RSI(14)', now: rsi, op: '<', ref: 25, closed: true },
+        { label: 'close > SMA200', now: px, op: '>', ref: sma200, closed: true }
+      ]
+    }
+  ]);
 
   // Deep-capitulation entry: RSI<25 only buys panic flushes, not shallow chop.
   if (px <= bb.lower && rsi < 25 && px > sma200) {

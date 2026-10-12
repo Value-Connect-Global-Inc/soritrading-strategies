@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2923](strategies/2923/) | ETH 4H Bollinger MR Deep-Capitulation | +4.17% | +1658.97% | +9.09% | 28 | 2026-10-12 |
 |  | [3617](strategies/3617/) | SOL On-Chain Demand Breakout 4H | +23.81% | +3013.88% | +17.66% | 55 | 2026-10-12 |
 | ★ | [3616](strategies/3616/) | SOL Macro-Gated Breakout 4H | -5.35% | -22.18% | +8.96% | 8 | 2026-10-12 |
 | ★ | [2922](strategies/2922/) | ETH 4H Bollinger MR Rising-200SMA Gate | +0.57% | -26.18% | +12.14% | 45 | 2026-10-12 |
@@ -584,7 +585,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2935](strategies/2935/) | ETH 4H Bollinger MR Full-Cash (no gate) | +53.62% | +1658.97% | +46.17% | 66 | 2026-09-28 |
 |  | [2930](strategies/2930/) | ETH 4H Bollinger MR Uptrend6+RisingSMA | +5.73% | +1658.97% | +11.66% | 44 | 2026-09-28 |
 |  | [2925](strategies/2925/) | ETH 4H Bollinger MR Strong-Uptrend-Only | -10.82% | +39.02% | +19.46% | 28 | 2026-09-28 |
-|  | [2923](strategies/2923/) | ETH 4H Bollinger MR Deep-Capitulation | +6.23% | +1658.97% | +8.20% | 30 | 2026-09-28 |
 |  | [2921](strategies/2921/) | ETH 4H Bollinger MR Strong-Trend-Gated | -15.29% | +39.02% | +20.77% | 56 | 2026-09-28 |
 |  | [2920](strategies/2920/) | AI 전략 | +9.97% | +1658.97% | +14.60% | 70 | 2026-09-28 |
 |  | [2919](strategies/2919/) | AI 전략 | +73.53% | +1658.97% | +27.31% | 68 | 2026-09-28 |
