@@ -18,8 +18,15 @@
  * (no price stop, only the policy gate), and ETH is more volatile than BTC so
  * those drawdowns can be deep; it also misses melt-ups if the gate keeps it
  * out too long after a hiking cycle ends.
+ *
+ * 2026-02-11 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
+  // This strategy has no price/time wait condition — it only waits for the
+  // fed funds rate regime to flip, which the watch card cannot express as a
+  // price level. Declare an empty watch list every tick.
+  ctx.watch([]);
+
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
