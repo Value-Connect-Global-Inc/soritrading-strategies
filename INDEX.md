@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2742](strategies/2742/) | Donchian Trend-Following XRP 1D | -76.06% | +71.26% | +84.88% | 31 | 2026-10-12 |
 | — | [3672](strategies/3672/) | AI 전략 | +18.49% | — | +25.37% | 82 | 2026-10-12 |
 | — | [3668](strategies/3668/) | MultiAssetDonchianTrend | +335.24% | — | +24.36% | 70 | 2026-10-12 |
 |  | [2746](strategies/2746/) | Trend-Scaled Band-Bounce XRP 1D | +89.42% | +323.46% | +20.41% | 26 | 2026-10-12 |
@@ -783,7 +784,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2745](strategies/2745/) | Regime-Switch Blend XRP 1D | -38.09% | +323.46% | +79.32% | 87 | 2026-09-26 |
 |  | [2744](strategies/2744/) | Band-Bounce Mean Reversion BCH 1D | +187.50% | +262.64% | +28.00% | 27 | 2026-09-26 |
 | ★ | [2743](strategies/2743/) | Band-Bounce Mean Reversion XRP 1D | +29.49% | -14.41% | +42.89% | 8 | 2026-09-26 |
-|  | [2742](strategies/2742/) | Donchian Trend-Following XRP 1D | -76.06% | +71.26% | +84.88% | 31 | 2026-09-26 |
 |  | [2741](strategies/2741/) | Band-Bounce Mean Reversion BCH 4H | +16.09% | +32.58% | +22.83% | 42 | 2026-09-26 |
 |  | [2740](strategies/2740/) | Band-Bounce Mean Reversion DOGE 4H | +242.84% | +5263.55% | +26.59% | 109 | 2026-09-26 |
 |  | [2739](strategies/2739/) | Band-Bounce Mean Reversion INJ 4H | +76.93% | +583.57% | +3.30% | 38 | 2026-09-26 |
