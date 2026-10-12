@@ -16,6 +16,8 @@
  * When it does NOT work: in choppy sideways markets the 200-bar line is crossed
  * repeatedly and it whipsaws, and in a crash it only exits after price falls
  * back below the 200-bar average, giving back a chunk of the drop.
+ *
+ * 2024-01-01: Added ctx.watch declarations only — display changes, trading logic unchanged.
  */
 function onUpdate(ctx) {
   const ema50 = ctx.ema(50, 1);
@@ -25,6 +27,7 @@ function onUpdate(ctx) {
 
   // Exit when the long-term trend breaks (price closes below the 200-bar line).
   if (ctx.position > 0 && px < ema200) {
+    ctx.watch([{ side: 'sell', price: ema200, trigger: 'below', note: 'trend break exit' }]);
     return { side: 'sell', qty: ctx.position };
   }
 
@@ -38,8 +41,15 @@ function onUpdate(ctx) {
     // and price above the long-term line — a slow, confirmed uptrend.
     if (px > ema200 && ema50 > ema200 && ema50 > ema50Prev) {
       const qty = (ctx.cash / ctx.price) * 0.99;
+      ctx.watch([{ side: 'sell', price: ema200, trigger: 'below', note: 'trend break exit' }]);
       return { side: 'buy', qty: qty };
     }
+    ctx.watch([{ side: 'buy', price: ema200, trigger: 'above', note: 'entry: px>ema200 & ema50>ema200 & rising', conds: [
+      { label: 'EMA50 > EMA200', now: ema50, op: '>', ref: ema200, closed: true },
+      { label: 'EMA50 rising', now: ema50, op: '>', ref: ema50Prev, closed: true }
+    ]}]);
+  } else {
+    ctx.watch([{ side: 'sell', price: ema200, trigger: 'below', note: 'trend break exit' }]);
   }
   return null;
 }

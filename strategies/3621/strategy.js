@@ -7,13 +7,16 @@
  * cash: 10000
  *
  * Why this strategy: buy 20-bar breakouts in an uptrend when crypto sentiment
- *   is not at a blow-off top. Proven on ETH across three disjoint windows last
- *   cycle; this version adds a trend-break exit to cut the deep drawdowns.
- * When it buys and sells: buy when Fear&Greed < 75, price above the 100-EMA,
- *   and a fresh 20-bar high closes. Sell on a 20-bar low close, a 2.5x ATR hard
- *   stop, or when the close falls back below the 100-EMA (the uptrend is gone).
- * When it does NOT work: misses melt-ups (the sentiment gate stays out), and the
- *   trend-break exit can cut strong trends short during sharp but healthy pullbacks.
+ *   is not at a blow-off top AND the US dollar is not strengthening. Built on
+ *   the version that added a trend-break exit to cut deep drawdowns; this cycle
+ *   adds a dollar-strength regime filter (risk-off for crypto).
+ * When it buys and sells: buy when Fear&Greed < 75, price above the 100-EMA, a
+ *   fresh 20-bar high closes, and DXY is below its own recent average. Sell on a
+ *   20-bar low close, a 2.5x ATR hard stop, or when the close falls back below
+ *   the 100-EMA. Missing DXY data = gate skipped (no entry block).
+ * When it does NOT work: misses melt-ups (sentiment/dollar gates stay out), the
+ *   trend-break exit can cut strong trends short, and the dollar filter can keep
+ *   it out during late-bull phases while the dollar is still firm.
  */
 function onUpdate(ctx) {
   const fg = ctx.data('fg');
@@ -24,6 +27,21 @@ function onUpdate(ctx) {
   const price = ctx.price;
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) return null;
+
+  // rolling DXY regime: only allow entries while the dollar trades below its own
+  // recent average (dollar strength = crypto risk-off). Missing data => gate off.
+  const dxy = ctx.data('dxy');
+  let dxyHist = ctx.state.dxyHist || [];
+  if (dxy != null) {
+    dxyHist.push(dxy);
+    if (dxyHist.length > 180) dxyHist.shift();  // 180 bars ~ 30 days of DXY
+    ctx.state.dxyHist = dxyHist;
+  }
+  let dxyGate = true;
+  if (dxy != null && dxyHist.length >= 60) {    // need ~10 days of history to judge
+    const avg = dxyHist.reduce((a, b) => a + b, 0) / dxyHist.length;
+    dxyGate = dxy < avg;
+  }
 
   if (ctx.position > 0) {
     const hardStop = ctx.entryPx - 2.5 * atr;
@@ -40,6 +58,7 @@ function onUpdate(ctx) {
   }
 
   if (fg != null && fg >= 75) return null;   // only a blow-off top blocks entry (fg null = data off, skip gate)
+  if (!dxyGate) return null;                 // dollar strengthening = skip new entries
   if (prevClose <= ema100) return null;      // only buy in an uptrend
   const hh20 = ctx.high(20, 2);
   if (hh20 == null || prevClose <= hh20) return null;   // enter only on a FRESH breakout
