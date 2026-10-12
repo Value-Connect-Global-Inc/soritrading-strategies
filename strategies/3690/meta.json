@@ -3,7 +3,7 @@
   "name": "DataDiag",
   "kind": "custom",
   "verified": {
-    "backtestId": 18744,
+    "backtestId": 18746,
     "return": 84.4,
     "mdd": 52.97,
     "trades": 2223,
@@ -28,6 +28,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-12T14:18:40.723Z",
+  "updatedAt": "2026-10-12T14:19:25.656Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
