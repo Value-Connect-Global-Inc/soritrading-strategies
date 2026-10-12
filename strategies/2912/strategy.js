@@ -19,6 +19,8 @@
  * buy-and-hold (defensive by design). In a sustained bear it keeps buying dips
  * that keep going down, so it can lose money while a pure cash position would
  * have done better.
+ *
+ * 2026-01-18: watch 선언만 추가 — 표시만 바뀜, 매매 판단은 그대로.
  */
 function onUpdate(ctx) {
   const ema20 = ctx.ema(20, 1);
@@ -35,6 +37,14 @@ function onUpdate(ctx) {
       ctx.state.lastExit = ctx.i;
       return { side: 'sell', qty: ctx.position };
     }
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'above', note: 'bounce to EMA20', conds: [
+        { label: 'RSI(14) close', now: rsi, op: '>', ref: 60, closed: true }
+      ]},
+      { side: 'sell', price: null, trigger: 'above', note: 'RSI>60', conds: [
+        { label: 'RSI(14) close', now: rsi, op: '>', ref: 60, closed: true }
+      ]}
+    ]);
     return null;
   }
 
@@ -49,5 +59,10 @@ function onUpdate(ctx) {
     const qty = Math.max(0, Math.min((equity * 0.005) / (2 * atr), (ctx.cash / ctx.price) * 0.99));
     if (qty > 0) return { side: 'buy', qty: qty };
   }
+  ctx.watch([
+    { side: 'buy', price: lower, trigger: 'below', note: 'deep dip below adaptive band', conds: [
+      { label: 'RSI(14) close', now: rsi, op: '<', ref: 40, closed: true }
+    ]}
+  ]);
   return null;
 }
