@@ -3,10 +3,10 @@
   "name": "ETH On-Chain Network Trend 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 18225,
-    "return": -6.74,
-    "mdd": 25.82,
-    "trades": 268,
+    "backtestId": 18229,
+    "return": 6.76,
+    "mdd": 28.01,
+    "trades": 142,
     "vsBuyHold": "win",
     "benchRet": -26.02,
     "benchBasis": "price",
@@ -27,6 +27,6 @@
     }
   },
   "config": null,
-  "updatedAt": "2026-10-12T02:06:59.532Z",
+  "updatedAt": "2026-10-12T02:15:31.469Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
