@@ -11,7 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [3686](strategies/3686/) | DonchianTrendMomentumGate | +573.02% | — | +21.16% | 41 | 2026-10-12 |
+| — | [3686](strategies/3686/) | DonchianTrendMomentumGate | +13.23% | — | +17.24% | 47 | 2026-10-12 |
 |  | [2737](strategies/2737/) | Band-Bounce Mean Reversion SUI 4H | +2.52% | +18.57% | +9.00% | 12 | 2026-10-12 |
 | — | [3680](strategies/3680/) | AI 전략 | +102.13% | — | +17.39% | 69 | 2026-10-12 |
 | — | [3673](strategies/3673/) | DonchianTrendMomentumGate | -7.33% | — | +8.39% | 4 | 2026-10-12 |
