@@ -1,22 +1,18 @@
 /*
  * @coinsori-strategy v1
- * name: HashrateRegimeTrend
+ * name: Pure200dTrend
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Bitcoin miners only add computing power (hashrate) when mining is profitable —
- * a rising hashrate is a slow, hard-to-fake sign the network is being valued up. We ride BTC's
- * long-term trend, but only open new positions while the network is expanding (hashrate above its
- * 30-day average). Hashrate is used ONLY to gate entries, never to exit — it is slow and must not
- * trigger per-bar trades.
- * When it buys and sells: Buys when the daily close is above the 200-day average AND hashrate is
- * above its 30-day average. Sells when the close drops below the 200-day average, or a hard 2xATR
- * stop is hit.
- * When it does NOT work: In a bull run that starts on hype before miners expand capacity, the
- * hashrate gate keeps us out of early gains. In a long sideways range above the 200-day average the
- * strategy holds through chop and gives back gains.
+ * Why this strategy: Baseline measurement — the same 200d EMA trend engine with NO hashrate gate,
+ * to see whether the onchain gate adds any value over plain long-term trend following. BTC tends to
+ * trend strongly once above its 200-day average.
+ * When it buys and sells: Buys when the daily close is above the 200-day average. Sells when the
+ * close drops below the 200-day average, or a hard 2xATR stop is hit.
+ * When it does NOT work: In a long sideways range above the 200-day average it holds through chop
+ * and gives back gains; in a violent crash it exits at the 2xATR stop with a loss.
  */
 function onUpdate(ctx) {
   const px = ctx.price;
@@ -27,11 +23,6 @@ function onUpdate(ctx) {
 
   const ema200 = ctx.ema(200, 1);
   if (ema200 == null) return null;
-
-  // Slow regime gate for ENTRIES ONLY: hashrate above its 30-day average = miners expanding.
-  const hr = ctx.data('hashrate');
-  const hrSma = ctx.data('hashrate_sma30');
-  const hrUp = (hr != null && hrSma != null) ? hr > hrSma : false;
 
   const pos = ctx.position || 0;
 
@@ -45,7 +36,6 @@ function onUpdate(ctx) {
   if (lastClose == null) return null;
 
   if (pos > 0) {
-    // Exit ONLY on trend break or stop — hashrate never forces an exit (it is too slow/noisy).
     if (lastClose < ema200) return { side: 'sell', qty: pos };
     ctx.watch([
       { side: 'sell', price: ema200, trigger: 'below', note: '200d avg break' },
@@ -54,8 +44,7 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // Entry: long-term uptrend (close > 200d avg) confirmed by network expansion (entry-only gate).
-  if (lastClose > ema200 && hrUp) {
+  if (lastClose > ema200) {
     const risk = 0.02 * ctx.cash;
     const stopDist = 2 * atr;
     const qty = risk / stopDist;
@@ -66,6 +55,6 @@ function onUpdate(ctx) {
     ]);
     return { side: 'buy', qty: qty };
   }
-  ctx.watch([{ side: 'buy', price: ema200, trigger: 'above', note: '200d avg + hashrate up' }]);
+  ctx.watch([{ side: 'buy', price: ema200, trigger: 'above', note: '200d avg' }]);
   return null;
 }
