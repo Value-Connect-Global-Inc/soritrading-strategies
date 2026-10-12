@@ -18,6 +18,7 @@
  * When it does NOT work: a relaxed exit holds longer into real downturns, so
  * drawdown is higher when OBV rolls over slowly. It also re-enters late after
  * genuine trend breaks.
+ * 2025-01-14: watch declarations added — display only, trading logic unchanged.
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -66,15 +67,19 @@ function onUpdate(ctx) {
   if (pos > 0) {
     if (falling && cd === 0) {
       ctx.state.cd = 5;
+      ctx.watch([{ side: 'sell', price: obvPast * 0.985, trigger: 'below', note: 'OBV 45d falling 1.5%', conds: [{ label: 'OBV 45d', now: obvNow, op: '<', ref: obvPast * 0.985, closed: true }] }]);
       return { side: 'sell', qty: pos };
     }
+    ctx.watch([{ side: 'sell', price: obvPast * 0.985, trigger: 'below', note: 'OBV 45d falling 1.5%', conds: [{ label: 'OBV 45d', now: obvNow, op: '<', ref: obvPast * 0.985, closed: true }] }]);
     return null;
   }
 
   if (rising && price > sma100 && volOk && cd === 0) {
     ctx.state.cd = 5;
     const qty = ctx.cash / price * 0.95 * sizeFrac;
+    ctx.watch([{ side: 'buy', price: obvPast * 1.01, trigger: 'above', note: 'OBV 45d rising 1%', conds: [{ label: 'OBV 45d', now: obvNow, op: '>', ref: obvPast * 1.01, closed: true }, { label: 'Price > SMA100', ok: price > sma100 }, { label: 'Volume > avg30', ok: volOk }] }]);
     return { side: 'buy', qty: qty };
   }
+  ctx.watch([{ side: 'buy', price: obvPast * 1.01, trigger: 'above', note: 'OBV 45d rising 1%', conds: [{ label: 'OBV 45d', now: obvNow, op: '>', ref: obvPast * 1.01, closed: true }, { label: 'Price > SMA100', ok: price > sma100 }, { label: 'Volume > avg30', ok: volOk }] }]);
   return null;
 }
