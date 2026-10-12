@@ -1,56 +1,55 @@
 /*
  * @coinsori-strategy v1
- * name: FearGreedContrarian
+ * name: FearGreedTrend
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: crypto crowds are wrong at extremes — the Fear & Greed index
- * measures crowd emotion, and buying fear while the long-term trend is still up
- * has historically given good risk/reward.
- * When it buys and sells: buys when Fear & Greed <= 40 AND price is above the 200-day
- * average (fear dip in an uptrend). Sells when Fear & Greed >= 65 (greed), or when the
- * price falls 30% from its highest point since entry (trailing stop that lets winners run).
- * When it does NOT work: long bear markets where price stays below the 200-day average
- * (it stays in cash and misses the rebound), and choppy sideways markets where fear
- * dips don't recover.
+ * Why this strategy: long-term uptrends in BTC are real, but buying into euphoric
+ * tops (Fear & Greed above ~75) is where most money is lost. This strategy rides
+ * confirmed uptrends and uses the sentiment index only to avoid chasing euphoria.
+ * When it buys and sells: buys when price is above both the 200-day and 50-day
+ * averages AND Fear & Greed is below 75 (not euphoric). Sells when price closes below
+ * the 50-day average (momentum broken) or when Fear & Greed exceeds 88 (extreme greed).
+ * When it does NOT work: long bear markets (stays in cash, misses the bottom) and
+ * fast V-shaped recoveries where price jumps above the averages so quickly that entries
+ * are late and the 50-day exit cuts the move short.
  */
 function onUpdate(ctx) {
   const fg = ctx.data('fear_greed');
-  const s = ctx.sma(200, 1);
-  if (fg == null || s == null) return null;
+  const s200 = ctx.sma(200, 1);
+  const s50 = ctx.sma(50, 1);
+  if (fg == null || s200 == null || s50 == null) return null;
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) return null;
   const price = ctx.price;
 
   if (ctx.position <= 0) {
-    // Entry: fear + uptrend intact.
-    if (fg <= 40 && prevClose > s) {
+    // Entry: confirmed uptrend (200d + 50d) and NOT euphoric (fg<75).
+    if (prevClose > s200 && prevClose > s50 && fg < 75) {
       ctx.watch([
-        { side: 'sell', price: price * 0.7, trigger: 'below', note: 'trailing stop' },
-        { side: 'sell', price: price * 1.5, trigger: 'above', note: 'greed target' }
+        { side: 'sell', price: s50, trigger: 'below', note: 'momentum break' },
+        { side: 'sell', price: price * 1.5, trigger: 'above', note: 'profit target' }
       ]);
       return { side: 'buy', qty: (ctx.cash * 0.5) / price * 0.99 };
     }
-    ctx.watch([{ side: 'buy', price: price, trigger: 'below', note: 'fear entry', conds: [
-      { label: 'Fear-Greed', now: fg, op: '<=', ref: 40, closed: true },
-      { label: 'Close > SMA200', ok: prevClose > s, closed: true }
+    ctx.watch([{ side: 'buy', price: price, trigger: 'above', note: 'trend entry', conds: [
+      { label: 'Close > SMA200', ok: prevClose > s200, closed: true },
+      { label: 'Close > SMA50', ok: prevClose > s50, closed: true },
+      { label: 'Fear-Greed < 75', now: fg, op: '<', ref: 75, closed: true }
     ] }]);
     return null;
   }
 
-  // Rolling peak of the last 30 closes (approx. trailing high since entry).
-  const peak = Math.max(ctx.entryPx, ...ctx.closes.slice(-30));
-  const trail = peak * 0.7;
-  // Exit on greed or when price trails 30% off its post-entry peak.
-  if (fg >= 65 || prevClose < trail) {
+  // Exit on momentum break below SMA50 or extreme greed (fg>=88).
+  if (prevClose < s50 || fg >= 88) {
     ctx.watch([]);
     return { side: 'sell', qty: ctx.position };
   }
   ctx.watch([
-    { side: 'sell', price: trail, trigger: 'below', note: 'trailing stop' },
-    { side: 'sell', price: ctx.entryPx * 1.5, trigger: 'above', note: 'greed target' }
+    { side: 'sell', price: s50, trigger: 'below', note: 'momentum break' },
+    { side: 'sell', price: ctx.entryPx * 1.5, trigger: 'above', note: 'profit target' }
   ]);
   return null;
 }
