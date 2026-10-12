@@ -7,12 +7,12 @@
  * cash: 10000
  *
  * Why this strategy: buy 20-bar breakouts in an uptrend when crypto sentiment
- *   is not at a blow-off top. Volume confirmation on the breakout bar filters
- *   out weak, fake breakouts.
+ *   is not at a blow-off top. A separate test showed the dollar-strength gate
+ *   (DXY) broke trading entirely, so this version keeps the validated core and
+ *   adds only a volume-confirmation filter on the breakout bar.
  * When it buys and sells: buy when Fear&Greed < 75, price above the 100-EMA, a
- *   fresh 20-bar high closes on above-average volume. Sell on an ATR trailing
- *   stop (ratchets up with the 20-bar high, so winners run), or when the close
- *   falls back below the 100-EMA.
+ *   fresh 20-bar high closes on above-average volume. Sell on a 20-bar low close,
+ *   a 2.5x ATR hard stop, or when the close falls back below the 100-EMA.
  * When it does NOT work: misses melt-ups (sentiment gate stays out), and the
  *   trend-break exit can cut strong trends short during sharp but healthy pullbacks.
  */
@@ -27,14 +27,15 @@ function onUpdate(ctx) {
   if (prevClose == null) return null;
 
   if (ctx.position > 0) {
-    // ATR trailing stop: starts 2.5x ATR below entry, ratchets up with the 20-bar high
-    const hh20 = ctx.high(20, 1);
-    if (hh20 == null) return null;
-    const trail = Math.max(ctx.entryPx - 2.5 * atr, hh20 - 2.5 * atr);
+    const hardStop = ctx.entryPx - 2.5 * atr;
+    const ll20 = ctx.low(20, 2);
+    // trend-break exit: we only buy above the 100-EMA, so leave when that uptrend ends
     const trendBreak = prevClose < ema100;
-    if (price <= trail) return { side: 'sell', qty: ctx.position };
+    if (price <= hardStop) return { side: 'sell', qty: ctx.position };
+    if (ll20 != null && prevClose <= ll20) return { side: 'sell', qty: ctx.position };
     if (trendBreak) return { side: 'sell', qty: ctx.position };
-    ctx.watch([{ side: 'sell', price: trail, trigger: 'below', note: 'ATR trailing stop' },
+    ctx.watch([{ side: 'sell', price: hardStop, trigger: 'below', note: '2.5x ATR hard stop' },
+               { side: 'sell', price: ll20, trigger: 'below', note: '20-bar channel exit' },
                { side: 'sell', price: ema100, trigger: 'below', note: '100-EMA trend break' }]);
     return null;
   }
