@@ -22,16 +22,26 @@
  * both signals also makes it even more conservative — it can miss rallies
  * driven by only one of the two. It is a slow, low-frequency signal.
  */
+// 2026-04-27 표시만 바뀜, 매매 판단은 그대로
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   // Smoothed on-chain active addresses AND hashrate (both precomputed in DB).
   const addr = Number(ctx.data('addr_sma30'));
   const hash = Number(ctx.data('hashrate_sma30'));
-  if (!Number.isFinite(addr) || addr <= 0) return null;
-  if (!Number.isFinite(hash) || hash <= 0) return null;
+  if (!Number.isFinite(addr) || addr <= 0) {
+    ctx.watch([]);
+    return null;
+  }
+  if (!Number.isFinite(hash) || hash <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   // Continuous rolling buffers — NEVER reset between trades.
   const ahist = ctx.state.ahist || [];
@@ -44,7 +54,10 @@ function onUpdate(ctx) {
   if (hhist.length > 30) hhist.shift();
   ctx.state.hhist = hhist;
 
-  if (ahist.length < 30 || hhist.length < 30) return null;
+  if (ahist.length < 30 || hhist.length < 30) {
+    ctx.watch([]);
+    return null;
+  }
 
   const addrUp = addr > ahist[0] * 1.003; // 0.3% hysteresis
   const hashUp = hash > hhist[0] * 1.003;
@@ -52,6 +65,11 @@ function onUpdate(ctx) {
 
   // --- Exit: either demand or hashrate trend turns down -> step aside ---
   if (pos > 0) {
+    ctx.watch([
+      { side: 'sell', note: 'exit: on-chain demand breaks', conds: [
+        { label: 'joint trend broken', ok: !bothUp }
+      ]}
+    ]);
     if (!bothUp) {
       return { side: 'sell', qty: pos };
     }
@@ -59,6 +77,12 @@ function onUpdate(ctx) {
   }
 
   // --- Entry: both must be rising ---
+  ctx.watch([
+    { side: 'buy', note: 'entry: on-chain demand rising', conds: [
+      { label: 'addr rising', ok: addrUp },
+      { label: 'hash rising', ok: hashUp }
+    ]}
+  ]);
   if (bothUp) {
     return { side: 'buy', qty: ctx.cash / price * 0.95 };
   }
