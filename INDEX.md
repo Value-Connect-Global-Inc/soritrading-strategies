@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2939](strategies/2939/) | ETH 4H Trend-Follow DXY Risk Gate | -70.58% | +1658.97% | +85.37% | 290 | 2026-10-12 |
 |  | [2941](strategies/2941/) | BTC 4H Volume-Surge Breakout | -28.90% | +72.42% | +44.24% | 160 | 2026-10-12 |
 | ★ | [2943](strategies/2943/) | BTC 1D OBV Flow Trend Fast | +1430.01% | +1253.33% | +40.27% | 119 | 2026-10-12 |
 | — | [3608](strategies/3608/) | Multi-Asset Momentum Rotation 4H | -36.69% | — | +43.21% | 394 | 2026-10-12 |
@@ -560,7 +561,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2947](strategies/2947/) | BTC 1D Bollinger-RSI Mean Reversion | -4.87% | +1253.33% | +19.18% | 4 | 2026-09-28 |
 |  | [2945](strategies/2945/) | BTC 1D On-Chain Network-Health Trend | -45.83% | +50.97% | +72.75% | 160 | 2026-09-28 |
 |  | [2940](strategies/2940/) | BTC 1D Golden-Cross Trend | -56.68% | +50.97% | +61.73% | 91 | 2026-09-28 |
-|  | [2939](strategies/2939/) | ETH 4H Trend-Follow DXY Risk Gate | -70.58% | +1658.97% | +85.37% | 290 | 2026-09-28 |
 |  | [2938](strategies/2938/) | BTC 1D Fear-Greed Contrarian | +53.62% | +1658.97% | +46.17% | 66 | 2026-09-28 |
 |  | [2937](strategies/2937/) | BTC 1D OBV Trend Fed-Gated 45d | -1.95% | +139.84% | +22.11% | 16 | 2026-09-28 |
 |  | [2936](strategies/2936/) | ETH 4H Bollinger MR Macro-Risk Gated | +19.45% | +71.94% | +30.90% | 42 | 2026-09-28 |

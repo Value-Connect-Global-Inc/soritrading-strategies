@@ -6,6 +6,8 @@
  * interval: 4h
  * cash: 10000
  *
+ * 2026-04-26 표시만 바뀜, 매매 판단은 그대로
+ *
  * Why this strategy: Trend-following rides sustained up-moves and cuts losses
  * fast in down-moves. We add a macro risk switch: the US dollar index (DXY)
  * is the global risk gauge — when DXY is strengthening, risk assets de-rate,
@@ -24,7 +26,10 @@ function onUpdate(ctx) {
   const px = ctx.price;
   const s50 = ctx.sma(50, 1);
   const s200 = ctx.sma(200, 1);
-  if (s50 == null || s200 == null) return null;
+  if (s50 == null || s200 == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   // DXY risk gate: only enter longs when DXY is NOT strengthening. Handle the
   // macro feed as either a plain number or an object with .value.
@@ -51,12 +56,28 @@ function onUpdate(ctx) {
   }
 
   if (ctx.position === 0) {
+    ctx.watch([{
+      side: 'buy',
+      price: s200,
+      trigger: 'above',
+      note: 'SMA200 touch',
+      conds: [
+        { label: 'SMA50 > SMA200', now: s50, op: '>', ref: s200, closed: true },
+        { label: 'DXY risk-on', ok: riskOn }
+      ]
+    }]);
     if (px > s200 && s50 > s200 && riskOn) {
       return { side: 'buy', qty: ctx.cash / px * 0.95 };
     }
     return null;
   }
 
+  ctx.watch([{
+    side: 'sell',
+    price: s200,
+    trigger: 'below',
+    note: 'SMA200 break'
+  }]);
   if (px < s200) {
     return { side: 'sell', qty: ctx.position };
   }
