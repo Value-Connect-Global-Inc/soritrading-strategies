@@ -1,3 +1,4 @@
+// 2026-04-26 표시만 바뀜, 매매 판단은 그대로
 /*
  * @coinsori-strategy v1
  * name: ETH 4H Bollinger MR Deep-Flush RSI30
@@ -26,12 +27,32 @@ function onUpdate(ctx) {
   const sma200 = ctx.sma(200, 1);
   const atr = ctx.atr(14, 1);
   const px = ctx.closes[ctx.closes.length - 2];
-  if (bb == null || bb.lower == null || rsi == null || sma200 == null || atr == null || px == null) return null;
+  if (bb == null || bb.lower == null || rsi == null || sma200 == null || atr == null || px == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   if (ctx.position > 0) {
+    ctx.watch([
+      { side: 'sell', qty: ctx.position, price: bb.mid, trigger: 'above', note: 'BB middle target' },
+      { side: 'sell', qty: ctx.position, conds: [{ label: 'RSI(14)', now: rsi, op: '>', ref: 60, closed: true }], note: 'RSI > 60 exit' }
+    ]);
     if (px >= bb.mid || rsi > 60) return { side: 'sell', qty: ctx.position };
     return null;
   }
+
+  ctx.watch([
+    {
+      side: 'buy',
+      price: bb.lower,
+      trigger: 'below',
+      note: 'BB lower deep-flush',
+      conds: [
+        { label: 'RSI(14)', now: rsi, op: '<', ref: 30, closed: true },
+        { label: 'Close > SMA200', ok: px > sma200 }
+      ]
+    }
+  ]);
 
   // Deeper oversold (RSI<30) to only buy true capitulation flushes, avoiding the
   // shallow dips that keep falling in the choppy 2022-24 bear.
