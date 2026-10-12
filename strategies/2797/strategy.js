@@ -1,3 +1,4 @@
+// 2026-04-26 표시만 바뀜, 매매 판단은 그대로
 /*
  * @coinsori-strategy v1
  * name: BTC 1D Fed-Funds Rate Regime Gate
@@ -23,12 +24,12 @@
  */
 function onUpdate(ctx) {
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) { ctx.watch([]); return null; }
 
   // Current fed funds rate and its level ~30 rows ago.
   const fedNow = ctx.data('fed');
   const fedLag = ctx.data('fed_lag30');
-  if (fedNow == null || fedLag == null) return null;
+  if (fedNow == null || fedLag == null) { ctx.watch([]); return null; }
 
   // Tightening = current rate is meaningfully above where it was recently.
   // 0.5pp is a single typical Fed hike, so it marks an active hiking step.
@@ -36,10 +37,21 @@ function onUpdate(ctx) {
 
   const pos = ctx.position;
   if (pos > 0 && tightening) {
+    ctx.watch([]);
     return { side: 'sell', qty: pos };
   }
   if (pos === 0 && !tightening) {
+    ctx.watch([]);
     return { side: 'buy', qty: ctx.cash / price * 0.98 };
+  }
+
+  // No order this tick — declare what we are waiting for.
+  if (pos > 0) {
+    ctx.watch([{ side: 'sell', note: 'Fed hiking step', conds: [{ label: 'Fed funds rate', now: fedNow, op: '>', ref: fedLag + 0.5 }] }]);
+  } else if (pos === 0) {
+    ctx.watch([{ side: 'buy', note: 'Fed pause/cut', conds: [{ label: 'Fed funds rate', now: fedNow, op: '<=', ref: fedLag + 0.5 }] }]);
+  } else {
+    ctx.watch([]);
   }
   return null;
 }
