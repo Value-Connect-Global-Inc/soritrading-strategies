@@ -18,6 +18,7 @@
  * When it does NOT work: in a strong melt-up it sits in cash and lags buy-and-hold
  * (defensive by design). If dips rarely come on high volume it trades little. In a
  * violent crash below the 200-bar average it stays out entirely.
+ * 2026-04-26: 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const bb = ctx.bb(20, 2, 1);
@@ -27,13 +28,31 @@ function onUpdate(ctx) {
   const px = ctx.closes[ctx.closes.length - 2];
   const vol = ctx.volumes[ctx.volumes.length - 2];
   const avgVol = ctx.avgVol(20);
-  if (bb == null || bb.lower == null || rsi == null || sma200 == null || atr == null || px == null) return null;
-  if (vol == null || avgVol == null || avgVol <= 0) return null;
+  if (bb == null || bb.lower == null || rsi == null || sma200 == null || atr == null || px == null) {
+    ctx.watch([]);
+    return null;
+  }
+  if (vol == null || avgVol == null || avgVol <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   if (ctx.position > 0) {
+    ctx.watch([
+      { side: 'sell', price: bb.mid, trigger: 'above', note: 'BB mid close exit' },
+      { side: 'sell', note: 'RSI > 60 close', conds: [{ label: 'RSI(14)', now: rsi, op: '>', ref: 60, closed: true }] }
+    ]);
     if (px >= bb.mid || rsi > 60) return { side: 'sell', qty: ctx.position };
     return null;
   }
+
+  ctx.watch([
+    { side: 'buy', price: bb.lower, trigger: 'below', note: 'BB lower close entry', conds: [
+        { label: 'RSI(14)', now: rsi, op: '<', ref: 35, closed: true },
+        { label: 'PX > SMA200', now: px, op: '>', ref: sma200, closed: true },
+        { label: 'Vol > AvgVol', now: vol, op: '>', ref: avgVol, closed: true }
+    ]}
+  ]);
 
   // Volume confirmation: only buy a high-volume capitulation flush, not a quiet
   // drift down (the quiet drift is the falling knife that lost money in 2022-24).
