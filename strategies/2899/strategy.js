@@ -19,6 +19,7 @@
  * When it does NOT work: in a violent V-shaped recovery it can sell near the
  * bottom and miss the bounce; LINK's higher volatility means deeper drawdowns
  * in sharp bull corrections than the majors.
+ * 2026-04-26: 표시만 바뀜, 매매 판단은 그대로.
  */
 function onUpdate(ctx) {
   const atr = ctx.atr(14, 1);
@@ -46,6 +47,23 @@ function onUpdate(ctx) {
     const targetValue = (0.02 * equity) / (atr / price);
     targetQty = targetValue / price;
   }
+
+  // Display-only watch declarations (no trade impact)
+  const crashLevel = sma50 - crashDist;
+  const watch = [];
+  if (pos > 0) {
+    watch.push({ side: 'sell', price: crashLevel, trigger: 'below', note: 'crash stop' });
+    if (trendUp) {
+      watch.push({ side: 'sell', price: sma50, trigger: 'below', note: 'trend down' });
+    } else {
+      watch.push({ side: 'buy', price: sma50, trigger: 'above', note: 'trend up' });
+    }
+  } else {
+    if (crashStop) {
+      watch.push({ side: 'buy', price: crashLevel, trigger: 'above', note: 'crash stop clear' });
+    }
+  }
+  ctx.watch(watch);
 
   const diff = targetQty - pos;
   if (Math.abs(diff) < 0.0001 * Math.max(0.0001, pos)) return null;

@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2899](strategies/2899/) | Trend-Gated Vol-Target CrashStop LINK 1D | -100.00% | +6514.73% | +100.00% | 927 | 2026-10-12 |
 | ★ | [3623](strategies/3623/) | ETH On-Chain Network Trend 4H | +7.58% | -26.02% | +27.98% | 132 | 2026-10-12 |
 |  | [3622](strategies/3622/) | ETH Mean Reversion 4H | +13.91% | +1888.22% | +4.36% | 78 | 2026-10-12 |
 | ★ | [2904](strategies/2904/) | Vol-Targeted Long-Only BTC/ETH/SOL 1D | +770.40% | +263.61% | +52.84% | 38 | 2026-10-12 |
@@ -611,7 +612,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | — | [2902](strategies/2902/) | Fear-Greed Contrarian BTC 1D | +143.90% | — | +68.82% | 18 | 2026-09-27 |
 | ★ | [2901](strategies/2901/) | Long-Horizon Momentum 60d ROC BTC/ETH 1D | +189.93% | +45.60% | +17.46% | 107 | 2026-09-27 |
 |  | [2900](strategies/2900/) | Long-Horizon Time-Series Momentum BTC 1D | +38.66% | +384.58% | +47.07% | 51 | 2026-09-27 |
-|  | [2899](strategies/2899/) | Trend-Gated Vol-Target CrashStop LINK 1D | -100.00% | +6514.73% | +100.00% | 927 | 2026-09-27 |
 |  | [2898](strategies/2898/) | CMF Money-Flow Trend BTC 1D | +188.21% | +1279.90% | +47.04% | 68 | 2026-09-27 |
 | ★ | [2897](strategies/2897/) | Keltner MR Deep-Flush 3ATR | +0.74% | -79.71% | +3.02% | 2 | 2026-09-27 |
 |  | [2896](strategies/2896/) | OBV Trend BTC 4H (timeframe test) | +53.14% | +68.93% | +28.57% | 92 | 2026-09-27 |
