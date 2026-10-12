@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 491 of 1900 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 492 of 1901 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 271 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
 | ★ | [2824](strategies/2824/) | OBV Relaxed Gate + ATR Trail 1D | +46.89% | +45.78% | +38.62% | 63 | 2026-10-12 |
+| ★ | [3645](strategies/3645/) | PureSMA200Trend | +318.86% | +116.17% | +53.47% | 9 | 2026-10-12 |
 |  | [3644](strategies/3644/) | OnChainHashrateTrendOrig | +25.80% | +44.16% | +36.86% | 19 | 2026-10-12 |
 | ★ | [3643](strategies/3643/) | OnChainHashrateTrend2 | +308.52% | +116.17% | +54.24% | 9 | 2026-10-12 |
 |  | [2827](strategies/2827/) | Composite On-Chain Demand BTC 1D | +124.51% | +1258.25% | +60.37% | 44 | 2026-10-12 |
