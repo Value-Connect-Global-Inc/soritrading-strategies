@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 496 of 1920 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 496 of 1921 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 275 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2737](strategies/2737/) | Band-Bounce Mean Reversion SUI 4H | +2.52% | +18.57% | +9.00% | 12 | 2026-10-12 |
 | — | [3680](strategies/3680/) | AI 전략 | +102.13% | — | +17.39% | 69 | 2026-10-12 |
 | — | [3673](strategies/3673/) | DonchianTrendMomentumGate | -7.33% | — | +8.39% | 4 | 2026-10-12 |
 |  | [2742](strategies/2742/) | Donchian Trend-Following XRP 1D | -76.06% | +71.26% | +84.88% | 31 | 2026-10-12 |
