@@ -3,18 +3,19 @@
   "name": "SimpleTrendDaily",
   "kind": "custom",
   "verified": {
-    "backtestId": 18379,
-    "return": 150.03,
-    "mdd": 30.42,
-    "trades": 20,
+    "backtestId": 18380,
+    "return": 121.66,
+    "mdd": 23,
+    "trades": 29,
     "vsBuyHold": "lose",
-    "benchRet": 151.92,
+    "benchRet": 315.94,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1532563200,
-    "tTo": 1662076800,
+    "tFrom": 1662076800,
+    "tTo": 1791590400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 99.37%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1500봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
@@ -22,7 +23,7 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1500,
-      "end": 1662163200
+      "end": 1791763200
     }
   },
   "config": null,

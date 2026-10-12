@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |:-:|---:|---|---:|---:|---:|---:|---|
 |  | [2841](strategies/2841/) | On-Chain Demand Trend BTC 1D | +104.27% | +1279.90% | +67.76% | 87 | 2026-10-12 |
 | ★ | [2842](strategies/2842/) | BTC 1D Blend + On-Chain Demand Gate | +103.42% | +45.60% | +53.41% | 370 | 2026-10-12 |
-|  | [3639](strategies/3639/) | SimpleTrendDaily | +150.03% | +151.92% | +30.42% | 20 | 2026-10-12 |
+|  | [3639](strategies/3639/) | SimpleTrendDaily | +121.66% | +315.94% | +23.00% | 29 | 2026-10-12 |
 |  | [2843](strategies/2843/) | Hashrate Regime Gate BTC 1D | -50.66% | +827.08% | +67.07% | 315 | 2026-10-12 |
 |  | [2848](strategies/2848/) | Sentiment Trend-Follow BTC 1D | -90.07% | +45.60% | +92.22% | 759 | 2026-10-12 |
 | ★ | [2849](strategies/2849/) | Fed Tightening-Onset Regime BTC 1D | +104.74% | +45.60% | +54.48% | 21 | 2026-10-12 |
