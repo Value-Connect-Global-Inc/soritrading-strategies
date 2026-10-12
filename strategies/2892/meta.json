@@ -3,9 +3,9 @@
   "name": "FearGreed-Gated OBV Trend BTC 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 13089,
-    "return": 1185.53,
-    "mdd": 40.98,
+    "backtestId": 18250,
+    "return": 1185.65,
+    "mdd": 40.97,
     "trades": 40,
     "vsBuyHold": "lose",
     "benchRet": 1279.9,
@@ -15,17 +15,27 @@
     "tTo": 1617580800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "거래량은 봉 마감에만 확정 — 봉 중 평가에서 ctx.vol/volumes 가 null 이라 거래량 조건이 걸러졌을 수 있음(봉 중에도 쓰려면 ctx.volPrev·ctx.avgVol)"
+      "거래량은 봉 마감에만 확정 — 봉 중 평가에서 ctx.vol/volumes 가 null 이라 거래량 조건이 걸러졌을 수 있음(봉 중에도 쓰려면 ctx.volPrev·ctx.avgVol)",
+      "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1328봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
-      "sym": "BTCUSDT",
+      "sym": "BTC",
       "interval": "1d",
       "bars": 1500,
       "end": 1617667200
     }
   },
-  "config": null,
-  "updatedAt": "2026-09-27T06:45:48.399Z",
+  "config": {
+    "ex": "binance",
+    "cash": 10000,
+    "syms": [
+      "BTC"
+    ],
+    "quote": "USDT",
+    "interval": "1d"
+  },
+  "updatedAt": "2026-10-12T02:42:28.768Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

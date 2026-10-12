@@ -12,17 +12,24 @@
  * fear_greed value periodically.
  * When it buys and sells: same Keltner MR recipe as the champion.
  * When it does NOT work: n/a (diagnostic).
+ * 2025-04-10 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const ema20 = ctx.ema(20, 1);
   const atr = ctx.atr(14, 1);
   const sma200 = ctx.sma(200, 1);
   const rsi = ctx.rsi(14, 1);
-  if (ema20 == null || atr == null || sma200 == null || rsi == null || atr <= 0) return null;
+  if (ema20 == null || atr == null || sma200 == null || rsi == null || atr <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const lower = ema20 - 2.5 * atr;
   const st = ctx.state;
@@ -34,12 +41,25 @@ function onUpdate(ctx) {
   }
 
   if (pos > 0) {
+    ctx.watch([{ side: 'sell', price: ema20, trigger: 'above', note: 'exit above EMA20' }]);
     if (price > ema20) {
       st.cooldown = ctx.i + 2;
       return { side: 'sell', qty: pos };
     }
     return null;
   }
+
+  ctx.watch([{
+    side: 'buy',
+    price: lower,
+    trigger: 'below',
+    note: 'Keltner lower + trend + RSI',
+    conds: [
+      { label: 'cooldown', ok: st.cooldown == null || ctx.i >= st.cooldown },
+      { label: 'price > SMA200', ok: price > sma200 },
+      { label: 'RSI(14) < 40', now: rsi, op: '<', ref: 40, closed: true }
+    ]
+  }]);
 
   if (st.cooldown != null && ctx.i < st.cooldown) return null;
 
