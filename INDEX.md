@@ -4,13 +4,14 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 496 of 1934 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 278 of them right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 496 of 1935 right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 279 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [3699](strategies/3699/) | SqueezeBreakout | +0.81% | — | +14.14% | 71 | 2026-10-12 |
 | — | [3698](strategies/3698/) | VolTargetTrendRider | +341.30% | — | +20.81% | 152 | 2026-10-12 |
 |  | [2660](strategies/2660/) | On-Chain Trend BTC 1D | +20.90% | +1258.25% | +72.15% | 204 | 2026-10-12 |
 | ★ | [2664](strategies/2664/) | VWAP-Pullback SOL 4H MomentumEntry+MidVolSize | +93.64% | +64.11% | +22.84% | 82 | 2026-10-12 |
