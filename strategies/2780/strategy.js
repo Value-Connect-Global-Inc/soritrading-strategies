@@ -19,15 +19,22 @@
  * and the strategy catches falling knives — the time stop and 8% target limit
  * losses but repeated entries bleed. Also whipsaws in deep chop where every
  * drop is followed by another drop.
+ * 2026-04-26 표시만 바뀜, 매매 판단은 그대로
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
+  if (!Number.isFinite(price) || price <= 0) {
+    ctx.watch([]);
+    return null;
+  }
 
   const rsi3 = ctx.rsi(3, 1);
   const closes = ctx.closes;
-  if (rsi3 == null || !closes || closes.length < 5) return null;
+  if (rsi3 == null || !closes || closes.length < 5) {
+    ctx.watch([]);
+    return null;
+  }
 
   // 3-bar drop computed directly from closes (unit-independent).
   const cNow = closes[closes.length - 1];
@@ -46,6 +53,13 @@ function onUpdate(ctx) {
     st.barsHeld = barsHeld;
     const entry = st.entry || price;
     const pnlPct = (price / entry - 1) * 100;
+
+    ctx.watch([
+      { side: 'sell', qty: pos, note: 'RSI recovered', conds: [{ label: 'RSI(3) close', now: rsi3, op: '>', ref: 55, closed: true }] },
+      { side: 'sell', qty: pos, note: 'profit target', conds: [{ label: 'PnL %', now: pnlPct, op: '>=', ref: 8 }] },
+      { side: 'sell', qty: pos, note: 'time stop', conds: [{ label: 'bars held', now: barsHeld, op: '>=', ref: 10 }] }
+    ]);
+
     if (rsi3 > 55 || pnlPct >= 8 || barsHeld >= 10) {
       delete st.barsHeld;
       delete st.entry;
@@ -55,6 +69,14 @@ function onUpdate(ctx) {
   }
 
   // Entry: oversold + sharp drop + panic volume.
+  ctx.watch([
+    { side: 'buy', qty: ctx.cash / price * 0.95, note: 'panic oversold entry', conds: [
+      { label: 'RSI(3) close', now: rsi3, op: '<', ref: 25, closed: true },
+      { label: '3-bar drop %', now: dropPct, op: '<=', ref: -4 },
+      { label: 'vol > 1.3×avg30', ok: volOk }
+    ] }
+  ]);
+
   if (rsi3 < 25 && dropPct <= -4 && volOk) {
     st.entry = price;
     st.barsHeld = 0;
