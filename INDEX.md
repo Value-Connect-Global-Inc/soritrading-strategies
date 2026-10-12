@@ -11,6 +11,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [2907](strategies/2907/) | ETH 4H Bollinger Mean-Reversion | -3.88% | +432.52% | +6.54% | 38 | 2026-10-12 |
 | ★ | [3621](strategies/3621/) | ETH Sentiment-Gated Trend 4H | +11.05% | -33.85% | +27.98% | 136 | 2026-10-12 |
 |  | [2908](strategies/2908/) | ETH 4H Slow Trend Ride | +405.43% | +432.52% | +35.02% | 66 | 2026-10-12 |
 |  | [2912](strategies/2912/) | SOL 4H ATR-Adaptive Mean-Reversion | -0.39% | +892.85% | +2.91% | 36 | 2026-10-12 |
@@ -601,7 +602,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [2913](strategies/2913/) | ETH 4H Bollinger Mean-Reversion | +10.94% | +1641.86% | +12.61% | 70 | 2026-09-28 |
 | ★ | [2911](strategies/2911/) | SOL 4H Bollinger Mean-Reversion | -2.03% | -50.04% | +3.80% | 40 | 2026-09-28 |
 |  | [2910](strategies/2910/) | ETH 4H Chandelier Trend-Follow | +5.68% | +1641.86% | +15.26% | 872 | 2026-09-28 |
-|  | [2907](strategies/2907/) | ETH 4H Bollinger Mean-Reversion | +26.63% | +432.52% | +8.37% | 69 | 2026-09-28 |
 |  | [2906](strategies/2906/) | Dual-Mode OBV+Keltner Hybrid v2 | +42.21% | +659.58% | +10.02% | 1 | 2026-09-28 |
 |  | [2905](strategies/2905/) | Deep-Pullback Buy-the-Dip BTC 1D | -24.57% | +1279.90% | +56.58% | 48 | 2026-09-27 |
 |  | [2904](strategies/2904/) | Vol-Targeted Long-Only BTC/ETH/SOL 1D | +58.61% | +263.61% | +62.06% | 68 | 2026-09-27 |

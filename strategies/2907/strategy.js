@@ -5,6 +5,7 @@
  * syms: ETHUSDT
  * interval: 4h
  * cash: 10000
+ * 2026-04-26 표시만 바뀜, 매매 판단은 그대로
  *
  * Why this strategy: Crypto has long persistent up-trends (melt-ups) that
  * mean-reversion strategies systematically miss because they sell into strength.
@@ -23,7 +24,10 @@ function onUpdate(ctx) {
   const slow = ctx.ema(200, 1);
   const px = ctx.closes[ctx.closes.length - 2];
   const atr = ctx.atr(14, 1);
-  if (fast == null || slow == null || atr == null || px == null) return null;
+  if (fast == null || slow == null || atr == null || px == null) {
+    ctx.watch([]);
+    return null;
+  }
 
   // ATR-scaled position: risk a fixed fraction of equity per trade, smaller
   // size when volatility is high so a single stop-out is cheap.
@@ -37,6 +41,10 @@ function onUpdate(ctx) {
     const trailStop = ctx.price - 2 * atr;
     const entry = ctx.entryPx || 0;
     const stop = Math.max(entry - 2 * atr, trailStop); // ratchet the stop up
+    ctx.watch([
+      { side: 'sell', price: stop, trigger: 'below', note: 'volatility stop' },
+      { side: 'sell', note: 'trend rollover', conds: [{ label: 'fast EMA < slow EMA', ok: fast < slow }] }
+    ]);
     if (px < stop || fast < slow) {
       return { side: 'sell', qty: ctx.position };
     }
@@ -47,8 +55,20 @@ function onUpdate(ctx) {
   // the whipsaw that kills fast crossovers in crypto).
   const fastPrev = ctx.ema(60, 2);
   const slowPrev = ctx.ema(200, 2);
-  if (fastPrev == null || slowPrev == null) return null;
+  if (fastPrev == null || slowPrev == null) {
+    ctx.watch([]);
+    return null;
+  }
   const crossedUp = fastPrev <= slowPrev && fast > slow;
+  ctx.watch([
+    {
+      side: 'buy',
+      price: slow,
+      trigger: 'above',
+      note: 'price above slow EMA',
+      conds: [{ label: 'golden cross', ok: crossedUp }]
+    }
+  ]);
   if (crossedUp && px > slow && qty > 0) {
     return { side: 'buy', qty: qty };
   }
