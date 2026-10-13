@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3796](strategies/3796/) | VolTarget BTC Rider | +103.56% | +245.42% | +45.82% | 378 | 2026-10-13 |
+|  | [3796](strategies/3796/) | VolTarget BTC Rider | +58.58% | +427.47% | +20.96% | 186 | 2026-10-13 |
 | ★ | [3795](strategies/3795/) | DIAG dxy probe | +84.30% | +83.66% | +66.20% | 1 | 2026-10-13 |
 |  | [3792](strategies/3792/) | Donchian Breakout Rider ‡ | +331.27% | +556.86% | +28.79% | 9 | 2026-10-13 |
 | ★ | [3791](strategies/3791/) | SMA50/200 Trend Follower | +105.60% | -4.48% | +19.89% | 3 | 2026-10-13 |
