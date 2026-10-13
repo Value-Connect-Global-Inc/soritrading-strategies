@@ -1,0 +1,35 @@
+{
+  "id": 3824,
+  "name": "BtcHashRibbons",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 20134,
+    "return": -1.92,
+    "mdd": 1.97,
+    "trades": 4000,
+    "vsBuyHold": "lose",
+    "benchRet": 556.86,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1532649600,
+    "tTo": 1618963200,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[유동성/거래량없음] 호가 두께를 판정한 시점의 0% 에서 거래량을 못 받아 합성 호가가 고정 기본값(100000 명목)으로 돌았습니다 — 그 구간의 주문은 종목의 실제 두께가 아니라 이 기본값에 잘렸습니다. 체결량·수익률·MDD 를 그대로 믿지 마세요(거래량이 붙으면 숫자가 달라집니다).",
+      "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 1000,
+      "end": 1619049600
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "98f8c4a40b3022e9209c0c631286251c1277ec86fd3593e168af8486f3ae3c3b"
+  },
+  "config": null,
+  "updatedAt": "2026-10-13T20:37:00.137Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
