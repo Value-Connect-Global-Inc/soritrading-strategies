@@ -3,16 +3,16 @@
   "name": "Donchian Breakout Rider",
   "kind": "custom",
   "verified": {
-    "backtestId": 19884,
-    "return": 114.24,
-    "mdd": 57.96,
-    "trades": 18,
+    "backtestId": 19889,
+    "return": 9.36,
+    "mdd": 26.38,
+    "trades": 24,
     "vsBuyHold": "lose",
-    "benchRet": 142.19,
+    "benchRet": 315.94,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1532649600,
-    "tTo": 1662163200,
+    "tFrom": 1662076800,
+    "tTo": 1791590400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1500봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
@@ -22,10 +22,10 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1500,
-      "end": 1662249600
+      "end": 1791849600
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "aadf4fa024b11ce1efaa3a556e9df11a1f6f28fe05155084685c8ad432d9ea9e"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "5cb4ecb80ffdbc852975f4efa64871b41fdcdb34b116739bc451eb7a31f631b1"
   },
   "config": null,
   "updatedAt": "2026-10-13T10:50:33.626Z",
