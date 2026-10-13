@@ -3,7 +3,7 @@
   "name": "StatePersistenceProbe",
   "kind": "custom",
   "verified": {
-    "backtestId": 19992,
+    "backtestId": 19994,
     "return": 4.73,
     "mdd": 1.38,
     "trades": 2,
@@ -25,10 +25,10 @@
       "bars": 300,
       "end": 1791849600
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "2ee888697badb6b2de1146cd2877a97273fb4d36fca4c279b10b75af41979636"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "0b9152344512b0d44fee7a067ce9a4e0ab60a9c624c76d02aa2521d4ab0aefcf"
   },
   "config": null,
-  "updatedAt": "2026-10-13T16:57:53.649Z",
+  "updatedAt": "2026-10-13T16:58:41.969Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
