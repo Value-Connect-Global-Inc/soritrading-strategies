@@ -10,18 +10,19 @@
  * panic and euphoria; buying right after a panic and selling once the crowd is greedy
  * again has historically rewarded patience on Bitcoin. It reads the fear_greed dataset.
  * When it buys and sells: Buys when the index climbs back above 30 within 10 days of
- * being in extreme fear (<=20) AND price is above its 200-day average (only panic dips
- * in an uptrend). Sells when price falls 4x ATR below the highest close since entry
- * (wide trailing stop that lets a recovery run).
+ * being in extreme fear (<=20) AND the 200-day average is still rising (a panic in a
+ * rising long-term trend is a dip, not a bear market). Sells when price falls 4x ATR
+ * below the highest close since entry (wide trailing stop that lets a recovery run).
  * When it does NOT work: in a long grinding bear market it sits in cash and misses the
- * (profitable-to-shorts) decline. Panics that start below the 200-day average (e.g. a
- * crash from an already-broken trend) are skipped. Long only, so no bear-market profit.
+ * (profitable-to-shorts) decline. Panics that start after the long-term trend has
+ * already turned down are skipped. Long only, so no bear-market profit.
  */
 
 function onUpdate(ctx) {
   const fg = ctx.data('fear_greed');
   const sma200 = ctx.sma(200, 1);
-  if (fg == null || sma200 == null) return null;
+  const sma200b = ctx.sma(200, 51); // 200-day average 50 bars ago
+  if (fg == null || sma200 == null || sma200b == null) return null;
 
   const price = ctx.price;
   const pos = ctx.position || 0;
@@ -31,10 +32,11 @@ function onUpdate(ctx) {
   if (fg <= 20) st.lastFearBar = ctx.i;
 
   if (pos === 0) {
-    // entry: recovered above 30 within 10 bars of extreme fear AND uptrend filter
+    // entry: recovered above 30 within 10 bars of extreme fear
     const recentFear = st.lastFearBar != null && (ctx.i - st.lastFearBar) <= 10;
-    // uptrend filter: only buy panic dips in an established uptrend, bear-market rallies fail
-    if (fg > 30 && recentFear && price > sma200) {
+    // trend filter: long-term average still rising — a panic here is a dip, not a bear market
+    const uptrend = sma200 > sma200b;
+    if (fg > 30 && recentFear && uptrend) {
       const atr = ctx.atr(14, 1);
       if (atr == null) return null;
       st.entryPx = price;
