@@ -20,7 +20,7 @@ function onUpdate(ctx) {
 
   const uptrend = ema50 > ema200; // trend gate: only long in a rising medium-term trend
   const realizedVol = atr / prevClose;
-  const targetVol = 0.015; // 1.5% daily ~ 24% annualized — a moderate, survivable risk budget
+  const targetVol = 0.025; // 2.5% daily ~ 40% annualized — aggressive but still survivable; 1.5% was too timid and gave up the bull
   let exposure = uptrend ? Math.min(1, targetVol / realizedVol) : 0; // in downtrend hold cash
 
   // Disaster stop: 25% below entry, wide enough not to trigger on normal 1d swings.
