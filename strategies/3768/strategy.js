@@ -1,68 +1,81 @@
 /*
  * @coinsori-strategy v1
- * name: SOL Trend-Pullback Dip Buy 4H
+ * name: ETH Dollar-Regime Trend 4H v3 (trailing exit)
  * ex: binance
- * syms: SOL/USDT
+ * syms: ETH/USDT
  * interval: 4h
  * cash: 10000
  *
- * Why this strategy: the validated champion family (ETH/SOL DXY+vol gate breakout trend)
- * enters on NEW highs. This tests a different entry inside the SAME winning regime: buy
- * shallow pullbacks in a confirmed uptrend instead of breakouts. In a strong uptrend,
- * a dip back to the 20-EMA that stays above the 100-EMA is a re-entry point for the
- * trend, not a reversal. Different from both the champion (breakout entry) and the failed
- * deep-dip MR (RSI<30 capitulation): this buys mild weakness and rides the trend out.
- * When it buys and sells: buy when price is above a rising 200-SMA (uptrend regime) AND
- * the last close is below the 20-EMA (pulled back) but still above the 100-EMA (trend
- * intact), with RSI below 55 (not overbought). Sell on a 2.5x ATR hard stop or a close
- * back below the 100-EMA (trend broken).
- * When it does NOT work: in a bear market the rising-200-SMA gate keeps it flat; in a
- * choppy range above the 200-SMA it buys dips that keep dipping and hits the stop; a
- * violent crash through the 100-EMA exits at the stop, not at the trend break.
+ * Why this strategy: buy 20-bar breakouts in an uptrend, but only when the US
+ *   dollar is not strengthening and volatility is expanding. A rising dollar
+ *   pulls money out of crypto, and breakouts in a low-volatility regime are
+ *   mostly false moves, so both conditions gate the entry. v3 changes only the
+ *   exit: a chandelier trailing stop replaces the 20-bar low close exit, so
+ *   winners are given room to run instead of being cut on normal pullbacks.
+ * When it buys and sells: buy on a fresh 20-bar high close above the 100-EMA
+ *   with above-average volume, while DXY is below its 30-day average and ATR is
+ *   above its 60-bar average. Sell on a 3x ATR trailing stop below the highest
+ *   close since entry, a 2.5x ATR floor stop, or a close back below the 100-EMA.
+ * When it does NOT work: misses melt-ups that happen while the dollar is also
+ *   firming or while volatility is still compressing, and the filters can sit
+ *   out long stretches in choppy years.
  */
 function onUpdate(ctx) {
-  const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) { ctx.watch([]); return null; }
-  const sma200 = ctx.sma(200, 1);
-  const sma200ago20 = ctx.sma(200, 21);   // slope of the 200-SMA over the last 20 bars
-  const ema20 = ctx.ema(20, 1);
-  const ema100 = ctx.ema(100, 1);
   const atr = ctx.atr(14, 1);
-  const rsi = ctx.rsi(14, 1);
-  if (sma200 == null || sma200ago20 == null || ema20 == null || ema100 == null || atr == null || atr <= 0 || rsi == null) {
-    ctx.watch([]); return null;
-  }
+  const ema100 = ctx.ema(100, 1);
+  if (atr == null || ema100 == null) return null;
+
+  const price = ctx.price;
   const prevClose = ctx.closes.at(-2);
-  if (prevClose == null) { ctx.watch([]); return null; }
+  if (prevClose == null) return null;
 
-  // Uptrend regime, same gate as the validated champion: price above a 200-SMA that rose
-  // >0.05% over 20 bars. Below that drift the SMA is flat and dips whipsaw.
-  const slopePct = (sma200 / sma200ago20 - 1) * 100;
-  const uptrend = prevClose > sma200 && slopePct > 0.05;
+  // rolling DXY history (4h bars ~ 30 days at 180 bars) to judge dollar direction
+  const dxy = ctx.data('dxy');
+  let hist = ctx.state.dxyHist || [];
+  if (dxy != null) { hist.push(dxy); if (hist.length > 210) hist = hist.slice(-210); }
+  ctx.state.dxyHist = hist;
+  const dxyAvg = hist.length >= 31 ? hist.slice(-30).reduce((a, b) => a + b, 0) / 30 : null;
+  const dollarRising = dxyAvg != null && dxy != null && dxy > dxyAvg;
 
-  const pos = ctx.position;
-  if (pos > 0) {
-    const hardStop = ctx.entryPx - 2.5 * atr;
-    if (price <= hardStop) { ctx.watch([]); return { side: 'sell', qty: pos }; }
-    if (prevClose < ema100) { ctx.watch([]); return { side: 'sell', qty: pos }; }
-    ctx.watch([{ side: 'sell', price: hardStop, trigger: 'below', note: '2.5x ATR hard stop' },
+  // rolling ATR history to detect volatility regime (expanding vol = real breakouts)
+  let atrHist = ctx.state.atrHist || [];
+  atrHist.push(atr);
+  if (atrHist.length > 65) atrHist = atrHist.slice(-65);
+  ctx.state.atrHist = atrHist;
+  const atrAvg = atrHist.length >= 61 ? atrHist.slice(-60).reduce((a, b) => a + b, 0) / 60 : null;
+  const volExpanding = atrAvg != null && atr > atrAvg;
+
+  if (ctx.position > 0) {
+    // chandelier trailing stop: ratchet to the highest close since entry, minus 3x ATR.
+    // 3x ATR gives a normal pullback room to breathe while still capping the loss.
+    let hh = ctx.state.hhSinceEntry;
+    if (hh == null || prevClose > hh) { hh = prevClose; ctx.state.hhSinceEntry = hh; }
+    const trailStop = hh - 3 * atr;
+    const floorStop = ctx.entryPx - 2.5 * atr;   // hard stop: never risk more than the 2.5x ATR entry plan
+    const stop = Math.max(trailStop, floorStop);
+    if (price <= stop) return { side: 'sell', qty: ctx.position };
+    if (prevClose < ema100) return { side: 'sell', qty: ctx.position };
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'chandelier 3x ATR trailing stop' },
                { side: 'sell', price: ema100, trigger: 'below', note: '100-EMA trend break' }]);
     return null;
   }
+  ctx.state.hhSinceEntry = null;
 
-  // Pullback entry: uptrend regime + last close below the 20-EMA (dip) but above the
-  // 100-EMA (trend intact) + RSI below 55 (mild weakness, not a blow-off top).
-  const pullback = uptrend && prevClose < ema20 && prevClose > ema100 && rsi < 55;
-  if (!pullback) { ctx.watch([]); return null; }
+  if (dollarRising) return null;   // dollar-regime gate: no entries while DXY above its 30-day average
+  if (!volExpanding) return null;  // volatility gate: skip low-vol chop where breakouts whipsaw
+  if (prevClose <= ema100) return null;
+  const hh20 = ctx.high(20, 2);
+  if (hh20 == null || prevClose <= hh20) return null;
+  const volPrev = ctx.volPrev;
+  const avgVol = ctx.avgVol(20);
+  if (volPrev == null || avgVol == null || avgVol <= 0) return null;
+  if (volPrev < avgVol) return null;
 
-  const riskCash = 0.01 * ctx.cash;        // risk 1% of equity via the 2.5x ATR stop
-  let qty = riskCash / (2.5 * atr);
+  const riskCash = ctx.cash * 0.02;
+  const stopDist = 2.5 * atr;
+  let qty = stopDist > 0 ? riskCash / stopDist : 0;
   const maxQty = (ctx.cash * 0.99) / price;
   if (qty > maxQty) qty = maxQty;
-  if (qty <= 0) { ctx.watch([]); return null; }
-  ctx.watch([{ side: 'buy', conds: [{ label: 'close < EMA20', ok: prevClose < ema20 },
-                                    { label: 'close > EMA100', ok: prevClose > ema100 },
-                                    { label: 'RSI(14) close', now: rsi, op: '<', ref: 55, closed: true }],
-              note: 'pullback in uptrend' }]);
+  if (qty <= 0) return null;
   return { side: 'buy', qty };
 }
