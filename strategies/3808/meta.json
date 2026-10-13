@@ -3,7 +3,7 @@
   "name": "DxyDataProbe",
   "kind": "custom",
   "verified": {
-    "backtestId": 20006,
+    "backtestId": 20009,
     "return": -34.38,
     "mdd": 90.22,
     "trades": 43,
@@ -26,10 +26,10 @@
       "bars": 1200,
       "end": 1688169600
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "9960127c52e662c0058b251558ec11b5e5e55d53ba973a45586ebe570a968101"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "b5db842c2c3d06a0b0124e9d404fff97b5955710e2af1d04b71b04c0b95e9f74"
   },
   "config": null,
-  "updatedAt": "2026-10-13T17:12:40.714Z",
+  "updatedAt": "2026-10-13T17:13:55.116Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
