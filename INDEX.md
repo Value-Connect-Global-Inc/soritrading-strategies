@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3785](strategies/3785/) | BTC Network-Adoption Trend 1D | +92.40% | +315.94% | +36.67% | 55 | 2026-10-13 |
+|  | [3785](strategies/3785/) | BTC Network-Adoption Trend 1D ‡ | +92.40% | +315.94% | +36.67% | 55 | 2026-10-13 |
 |  | [3783](strategies/3783/) | DIAG hashrate type probe | +3.36% | +142.19% | +8.01% | 19 | 2026-10-13 |
 |  | [3781](strategies/3781/) | BTC Fed-Liquidity Regime 1D | -37.69% | +84.83% | +37.69% | 6 | 2026-10-13 |
 |  | [3780](strategies/3780/) | BTC Fear-Greed Contrarian 1D v2 (trend-filtered) | -77.77% | +142.19% | +80.91% | 12 | 2026-10-13 |
