@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3822](strategies/3822/) | BtcPlainTrend | +188.26% | +824.06% | +22.94% | 25 | 2026-10-13 |
+|  | [3822](strategies/3822/) | BtcPlainTrend | +16.22% | +87.84% | +9.18% | 31 | 2026-10-13 |
 |  | [3821](strategies/3821/) | BtcFedRegime | +163.08% | +824.06% | +18.29% | 25 | 2026-10-13 |
 |  | [3820](strategies/3820/) | BtcDonchianTrend | +2.68% | +95.22% | +16.27% | 18 | 2026-10-13 |
 |  | [3819](strategies/3819/) | BtcAddrAdoption | -49.76% | -16.55% | +56.60% | 362 | 2026-10-13 |
