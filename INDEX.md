@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3792](strategies/3792/) | Donchian Breakout Rider ‡ | +9.36% | +315.94% | +26.38% | 24 | 2026-10-13 |
+|  | [3792](strategies/3792/) | Donchian Breakout Rider | +14.86% | +95.22% | +30.24% | 14 | 2026-10-13 |
 | ★ | [3791](strategies/3791/) | SMA50/200 Trend Follower | +105.60% | -4.48% | +19.89% | 3 | 2026-10-13 |
 |  | [3789](strategies/3789/) | FearGreed Bull Dip Buyer | -70.53% | +705.88% | +77.34% | 18 | 2026-10-13 |
 |  | [3788](strategies/3788/) | OnChain Network Health Trend | -41.89% | +95.22% | +59.92% | 334 | 2026-10-13 |
