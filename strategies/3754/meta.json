@@ -3,31 +3,31 @@
   "name": "BTC Bull-Regime RSI Dip Buy 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 19607,
-    "return": -0.42,
-    "mdd": 5.04,
-    "trades": 92,
-    "vsBuyHold": "lose",
-    "benchRet": 449.17,
+    "backtestId": 19609,
+    "return": -5.38,
+    "mdd": 6.63,
+    "trades": 56,
+    "vsBuyHold": "win",
+    "benchRet": -36.62,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1575849600,
-    "tTo": 1647849600,
+    "tFrom": 1748491200,
+    "tTo": 1791676800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 3000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
-      "ex": "binanceusdm",
-      "sym": "BTC",
+      "ex": "binance",
+      "sym": "SOL",
       "interval": "4h",
-      "bars": 5000,
-      "end": 1647864000
+      "bars": 3000,
+      "end": 1791864000
     },
     "codeBasis": "assumed-current",
     "verifiedCodeSha256": "d2df81622f475df9a8c3d06e389953710383398a46d37586a6891ea2f64136a6"
   },
   "config": null,
-  "updatedAt": "2026-10-13T05:01:36.823Z",
+  "updatedAt": "2026-10-13T05:03:40.092Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
