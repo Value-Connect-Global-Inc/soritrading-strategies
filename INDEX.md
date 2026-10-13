@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3808](strategies/3808/) | DxyDataProbe ‡ | +315.58% | +315.94% | +52.91% | 1 | 2026-10-13 |
+|  | [3808](strategies/3808/) | DxyDataProbe | -34.02% | +465.02% | +88.07% | 148 | 2026-10-13 |
 | ★ | [3807](strategies/3807/) | StatePersistenceProbe ‡ | +4.73% | -3.98% | +1.38% | 2 | 2026-10-13 |
 |  | [3797](strategies/3797/) | OrderBookFlow | +48.36% | +140.77% | +54.92% | 9 | 2026-10-13 |
 |  | [3804](strategies/3804/) | OnChainTrend | -50.97% | +1155.23% | +50.97% | 42 | 2026-10-13 |
