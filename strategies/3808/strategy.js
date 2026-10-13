@@ -12,7 +12,7 @@
  * (a risk-on macro regime).
  * When it buys and sells: Buys when price is above its 200-day average and the
  * trade-weighted dollar index (dxy) is below 115 (both on closed bars). Sells when
- * price falls below its 200-day average or on a 20% hard stop from entry.
+ * price falls below its 200-day average or on a 40% hard stop from entry.
  * When it does NOT work: In a dollar rally that also drags BTC down it stays mostly
  * in cash (safe, but misses BTC rallies that happen despite a strong dollar). Daily
  * data is slow, so it lags sharp moves and gives back part of each trend on exit.
@@ -30,13 +30,15 @@ function onUpdate(ctx) {
   const weakDollar = dxy < 115;
 
   const pos = ctx.position || 0;
-  const stop = ctx.entryPx != null ? ctx.entryPx * 0.80 : null; // 20% hard stop: daily swings can be large, 10% whipsaws
+  // 40% catastrophic stop: daily BTC swings are large (May 2021 -50%), so the
+  // SMA200 is the real exit; the stop only caps a tail disaster.
+  const stop = ctx.entryPx != null ? ctx.entryPx * 0.60 : null;
 
   ctx.watch([
     { side:'buy', price: sma200, trigger:'above', note:'SMA200 break up',
       conds:[{ label:'dollar below 115', now: dxy, op:'<', ref:115, closed:true }] },
     { side:'sell', price: sma200, trigger:'below', note:'SMA200 break down' },
-    { side:'sell', price: stop, trigger:'below', note:'hard stop 20%' }
+    { side:'sell', price: stop, trigger:'below', note:'hard stop 40%' }
   ]);
 
   if (pos === 0) {
