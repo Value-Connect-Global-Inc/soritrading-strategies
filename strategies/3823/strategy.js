@@ -6,9 +6,9 @@
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Crowd sentiment mean-reversion. Extreme fear marks local bottoms, and after panic the recovery usually runs until the 50-day trend turns, so a panic buy held like a trend trade should profit from the rebound.
- * When it buys and sells: Buys on a day the Fear & Greed index is in extreme fear (<25). Sells when price drops below its 50-day average or a 2.5x ATR hard stop is hit. A 15-day cooldown after each exit prevents churn.
- * When it does NOT work: In a grinding bear market repeated panic buys can each be stopped out for small losses; in a powerful bull that never dips to extreme fear it rarely buys and lags the index.
+ * Why this strategy: Crowd sentiment mean-reversion. Extreme fear marks local bottoms and extreme greed marks local tops in BTC, so buying panic and selling euphoria should beat blindly holding through both.
+ * When it buys and sells: Buys on a day the Fear & Greed index is in extreme fear (<25). Sells when sentiment hits extreme greed (>75) or a 2.5x ATR hard stop is hit. A 15-day cooldown after each exit prevents churn.
+ * When it does NOT work: In a grinding bear market fear keeps recurring and each buy can be stopped out for a small loss repeatedly; and because it only buys at fear, it misses calm steady rallies.
  */
 
 let lastExitBar = -1e9;
@@ -18,19 +18,15 @@ function onUpdate(ctx) {
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) return null;
 
-  const sma50 = ctx.sma(50, 1);
   const atr = ctx.atr(14, 1);
   const fg = ctx.data('fear_greed');
-  if (sma50 == null || atr == null || fg == null) return null;
+  if (atr == null || fg == null) return null;
 
   if (pos > 0) {
     const entry = ctx.entryPx != null ? ctx.entryPx : prevClose;
     const stop = entry - 2.5 * atr;
-    ctx.watch([
-      { side: 'sell', price: sma50, trigger: 'below', note: 'SMA50 broken' },
-      { side: 'sell', price: stop, trigger: 'below', note: '2.5x ATR stop' }
-    ]);
-    if (prevClose < sma50 || prevClose < stop) {
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '2.5x ATR stop' }]);
+    if (fg > 75 || prevClose < stop) {
       lastExitBar = ctx.i;
       return { side: 'sell', qty: pos };
     }
