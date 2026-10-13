@@ -3,32 +3,32 @@
   "name": "BTC Network-Adoption Trend 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 19815,
-    "return": -20.66,
-    "mdd": 20.66,
-    "trades": 2,
-    "vsBuyHold": "lose",
-    "benchRet": 84.83,
+    "backtestId": 19818,
+    "return": 205.11,
+    "mdd": 61.23,
+    "trades": 50,
+    "vsBuyHold": "win",
+    "benchRet": 142.19,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1502928000,
-    "tTo": 1532563200,
+    "tFrom": 1532649600,
+    "tTo": 1662163200,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 344봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1500봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
       "bars": 1500,
-      "end": 1532649600
+      "end": 1662249600
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "3f243145f261559bd4a33b308c359dd20e49a51cb28e71caad0bc44cb25bb4c1"
+    "verifiedCodeSha256": "ee4c28c01605a0d62f58e3c8f6ff2f480c89791726c42f2b929dd2cbb71e0113"
   },
   "config": null,
-  "updatedAt": "2026-10-13T07:04:58.222Z",
+  "updatedAt": "2026-10-13T07:06:26.699Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
