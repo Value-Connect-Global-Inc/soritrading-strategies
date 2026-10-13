@@ -3,19 +3,18 @@
   "name": "Donchian Breakout Rider",
   "kind": "custom",
   "verified": {
-    "backtestId": 19877,
-    "return": 126.66,
-    "mdd": 41.49,
-    "trades": 21,
+    "backtestId": 19880,
+    "return": -20.43,
+    "mdd": 44.69,
+    "trades": 28,
     "vsBuyHold": "lose",
-    "benchRet": 705.88,
+    "benchRet": 29.09,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1558569600,
-    "tTo": 1636243200,
+    "tFrom": 1713916800,
+    "tTo": 1791590400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "기간 종료 시 미청산 포지션 1종목 (총자산의 99.52%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 900봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
@@ -23,7 +22,7 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 900,
-      "end": 1636329600
+      "end": 1791849600
     },
     "codeBasis": "assumed-current",
     "verifiedCodeSha256": "516c6040967d8a7d534263f4c07d0a6b8b012d737b76520e2e6b6f0ec6702797"
