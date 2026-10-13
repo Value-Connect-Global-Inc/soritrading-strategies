@@ -3,10 +3,10 @@
   "name": "BtcFearGreedContrarian",
   "kind": "custom",
   "verified": {
-    "backtestId": 20126,
-    "return": 2.14,
-    "mdd": 3.11,
-    "trades": 36,
+    "backtestId": 20130,
+    "return": 0.96,
+    "mdd": 13.27,
+    "trades": 14,
     "vsBuyHold": "lose",
     "benchRet": 556.86,
     "benchBasis": "price",
@@ -25,8 +25,8 @@
       "bars": 1000,
       "end": 1619049600
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "a1b6144e09b8e9a503cc9dcff1fbdd8cec10e229f349ff92471f724cf1c56b0c"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "25987d7288da6b3f84402b950fb7f1797e21ced54db59cad973924fed32045d7"
   },
   "config": null,
   "updatedAt": "2026-10-13T20:33:57.535Z",
