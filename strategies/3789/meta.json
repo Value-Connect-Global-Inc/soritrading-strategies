@@ -3,16 +3,16 @@
   "name": "FearGreed Bull Dip Buyer",
   "kind": "custom",
   "verified": {
-    "backtestId": 19845,
-    "return": 65.03,
-    "mdd": 11.06,
-    "trades": 6,
-    "vsBuyHold": "win",
-    "benchRet": -4.48,
+    "backtestId": 19852,
+    "return": -70.53,
+    "mdd": 77.34,
+    "trades": 18,
+    "vsBuyHold": "lose",
+    "benchRet": 705.88,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1636329600,
-    "tTo": 1714003200,
+    "tFrom": 1558569600,
+    "tTo": 1636243200,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
@@ -23,12 +23,12 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 900,
-      "end": 1714089600
+      "end": 1636329600
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "b8379ed663e6f4997bcc43ca3c6af0126f7eaf88ddb63cc3a78587e41d54f8d2"
+    "verifiedCodeSha256": "1e8c0d6394933f435a8db7b04bc3b77a08787174ccd16642380e8dcb2a50bd48"
   },
   "config": null,
-  "updatedAt": "2026-10-13T09:41:13.786Z",
+  "updatedAt": "2026-10-13T09:45:12.932Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
