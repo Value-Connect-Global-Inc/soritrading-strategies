@@ -11,25 +11,23 @@
  * of equity, so no single coin's crash can sink the account. In a broad bear all
  * five fall below their 200-day average and the basket sits in cash.
  * When it buys and sells: on each asset, buy when the last closed daily bar is
- * above its 200-day average AND that average is rising (200d today > 200d 20 bars
- * ago). Sell when price closes back below the 200-day average. Equal 20% share.
+ * above its 200-day average; sell when it closes back below. Equal 20% share.
  * When it does NOT work: it is slow — it enters only after a long uptrend is
  * established, so it misses the first sharp part of each rally. In a choppy
  * sideways year it whipsaws. A single asset's melt-up is under-captured because
  * only 20% of capital is in it.
  *
- * v2 change: entry now also requires the 200d average to be RISING (200d now vs
- * 200d 20 bars ago). Rationale: a flat or falling 200d means no confirmed long
- * trend, so buying into it just adds whipsaw. This is a general trend-quality
- * filter, not fitted to any specific move. Exit unchanged.
+ * A "rising 200d" entry filter was tested and REJECTED: it cut returns on the
+ * recent window (+97% -> +48%) without meaningfully reducing drawdown (37.5% ->
+ * 38.3%), because it kept the basket out of the market too much. Reverted to
+ * the simple price-above-200d entry.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
   const sma200 = ctx.sma(200, 1);
-  const sma200_20ago = ctx.sma(200, 21);
-  if (sma200 == null || sma200_20ago == null) return null;
+  if (sma200 == null) return null;
 
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) return null;
@@ -45,12 +43,11 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // rising 200d = confirmed long trend; a flat/falling 200d only whipsaws entries.
-  if (prevClose > sma200 && sma200 > sma200_20ago) {
+  if (prevClose > sma200) {
     // 20% share per asset = the basket never over-leverages one coin.
     const qty = (ctx.cash / price) * 0.20;
     if (qty <= 0) return null;
-    ctx.watch([{ side: 'buy', price: sma200, trigger: 'above', note: '200d avg rising' }]);
+    ctx.watch([{ side: 'buy', price: sma200, trigger: 'above', note: '200d avg cross' }]);
     return { side: 'buy', qty: qty };
   }
   ctx.watch([{ side: 'buy', price: sma200, trigger: 'above', note: '200d avg' }]);
