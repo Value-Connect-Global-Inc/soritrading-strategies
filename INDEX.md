@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [3787](strategies/3787/) | Multi-Asset Trend Basket 1D | +97.20% | — | +37.55% | 255 | 2026-10-13 |
+| — | [3787](strategies/3787/) | Multi-Asset Trend Basket 1D ‡ | +97.20% | — | +37.55% | 255 | 2026-10-13 |
 |  | [3785](strategies/3785/) | BTC Network-Adoption Trend 1D | -20.66% | +84.83% | +20.66% | 2 | 2026-10-13 |
 |  | [3783](strategies/3783/) | DIAG hashrate type probe | +3.36% | +142.19% | +8.01% | 19 | 2026-10-13 |
 |  | [3781](strategies/3781/) | BTC Fed-Liquidity Regime 1D | -37.69% | +84.83% | +37.69% | 6 | 2026-10-13 |
