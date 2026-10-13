@@ -3,10 +3,10 @@
   "name": "BtcOversoldReversion",
   "kind": "custom",
   "verified": {
-    "backtestId": 20014,
-    "return": -15.66,
-    "mdd": 43.35,
-    "trades": 56,
+    "backtestId": 20017,
+    "return": 19.43,
+    "mdd": 20.73,
+    "trades": 14,
     "vsBuyHold": "lose",
     "benchRet": 172.56,
     "benchBasis": "price",
@@ -28,6 +28,6 @@
     "verifiedCodeSha256": "3822939d30dcb389eef5c70542867cec66c46aa12904fd96c68004bce3feb026"
   },
   "config": null,
-  "updatedAt": "2026-10-13T17:17:59.107Z",
+  "updatedAt": "2026-10-13T17:18:40.217Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
