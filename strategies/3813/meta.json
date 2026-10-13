@@ -1,0 +1,33 @@
+{
+  "id": 3813,
+  "name": "BtcDonchianTrend",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 20048,
+    "return": 25.05,
+    "mdd": 21.92,
+    "trades": 16,
+    "vsBuyHold": "win",
+    "benchRet": 23.98,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1502928000,
+    "tTo": 1584403200,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 944봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 1200,
+      "end": 1584489600
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "2f11b357e984832ac63296f4935dd9d958a44af39d847478887f58fe8a042c16"
+  },
+  "config": null,
+  "updatedAt": "2026-10-13T17:45:21.963Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
