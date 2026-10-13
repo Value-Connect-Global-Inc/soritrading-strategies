@@ -3,9 +3,9 @@
   "name": "SMA50/200 Trend Follower",
   "kind": "custom",
   "verified": {
-    "backtestId": 19863,
-    "return": 11.59,
-    "mdd": 31.68,
+    "backtestId": 19865,
+    "return": 159.32,
+    "mdd": 58.45,
     "trades": 5,
     "vsBuyHold": "lose",
     "benchRet": 705.88,
@@ -25,8 +25,8 @@
       "bars": 900,
       "end": 1636329600
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "9c20b1fccfdb160c940d2c9c2815fed4a8accaf7fa14cae5f0bb01fe5b3454fa"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "d2c24f7c19d8c4cc6b9729ead2b796217c6cfd3e633dbc4c339b4aeb2f58b525"
   },
   "config": null,
   "updatedAt": "2026-10-13T09:59:44.771Z",
