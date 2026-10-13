@@ -1,33 +1,53 @@
 /*
  * @coinsori-strategy v1
- * name: DxyDataProbe
+ * name: DollarRegimeTrend
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: diagnostic probe. It only exists to answer two questions:
- * (1) does ctx.data('dxy') return real values in a backtest, and (2) does
- * persistent state (ctx.state) survive across ticks. No real trading logic.
- * When it buys and sells: buys exactly once when it has seen 60 bars with a
- * non-null dxy reading; never sells. If it trades, both mechanisms work.
- * When it does NOT work: not a real strategy — diagnostic only.
+ * Why this strategy: Bitcoin is a risk asset that tends to rise when the US dollar is
+ * weak and stall when the dollar strengthens. This strategy only buys BTC when the
+ * longer price trend is up AND the dollar index is below a fixed weak-dollar level
+ * (a risk-on macro regime).
+ * When it buys and sells: Buys when price is above its 200-day average and the
+ * trade-weighted dollar index (dxy) is below 115 (both on closed bars). Sells when
+ * price falls below its 50-day average or on a 20% hard stop from entry.
+ * When it does NOT work: In a dollar rally that also drags BTC down it stays mostly
+ * in cash (safe, but misses BTC rallies that happen despite a strong dollar). Daily
+ * data is slow, so it lags sharp moves and gives back part of each trend on exit.
  */
 
 function onUpdate(ctx) {
+  const price = ctx.price;
+  const sma200 = ctx.sma(200, 1); // closed-bar long-term regime
+  const sma50 = ctx.sma(50, 1);   // closed-bar trend exit line
+  if (sma200 == null || sma50 == null) return null;
+
   const dxy = ctx.data('dxy');
-  let seen = ctx.state.seen || 0;
-  if (dxy != null) seen++;
-  ctx.state.seen = seen;
+  // fixed weak-dollar regime: Fed broad index is Jan 2006 = 100, so 115 is
+  // meaningfully below the ~120 of a strong dollar; above 115 = risk-off.
+  if (dxy == null) return null;
+  const weakDollar = dxy < 115;
 
-  // report every 200 bars so we can see data health in the log tail
-  if (ctx.i % 200 === 0) {
-    ctx.log('i=' + ctx.i + ' dxy=' + dxy + ' seen=' + seen + ' pos=' + (ctx.position || 0));
+  const pos = ctx.position || 0;
+  const stop = ctx.entryPx != null ? ctx.entryPx * 0.80 : null; // 20% hard stop: daily swings can be large, 10% whipsaws
+
+  ctx.watch([
+    { side:'buy', price: sma200, trigger:'above', note:'SMA200 break up',
+      conds:[{ label:'dollar below 115', now: dxy, op:'<', ref:115, closed:true }] },
+    { side:'sell', price: sma50, trigger:'below', note:'SMA50 break down' },
+    { side:'sell', price: stop, trigger:'below', note:'hard stop 20%' }
+  ]);
+
+  if (pos === 0) {
+    if (price > sma200 && weakDollar) {
+      return { side:'buy', qty: ctx.cash / price * 0.99 };
+    }
+    return null;
   }
 
-  if (ctx.position > 0) return null;
-  if (seen >= 60) {
-    return { side:'buy', qty: ctx.cash / ctx.price * 0.99 };
-  }
+  if (stop != null && price <= stop) return { side:'sell', qty: pos };
+  if (price < sma50) return { side:'sell', qty: pos };
   return null;
 }
