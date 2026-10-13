@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3791](strategies/3791/) | SMA50/200 Trend Follower | +220.64% | +705.88% | +54.33% | 11 | 2026-10-13 |
+|  | [3791](strategies/3791/) | SMA50/200 Trend Follower | -11.38% | +29.09% | +27.32% | 3 | 2026-10-13 |
 |  | [3789](strategies/3789/) | FearGreed Bull Dip Buyer | -70.53% | +705.88% | +77.34% | 18 | 2026-10-13 |
 |  | [3788](strategies/3788/) | OnChain Network Health Trend | -41.89% | +95.22% | +59.92% | 334 | 2026-10-13 |
 | — | [3787](strategies/3787/) | Multi-Asset Trend Basket 1D ‡ | +561.63% | — | +39.78% | 43 | 2026-10-13 |

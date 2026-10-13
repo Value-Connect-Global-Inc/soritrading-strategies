@@ -3,19 +3,19 @@
   "name": "SMA50/200 Trend Follower",
   "kind": "custom",
   "verified": {
-    "backtestId": 19867,
-    "return": 220.64,
-    "mdd": 54.33,
-    "trades": 11,
+    "backtestId": 19868,
+    "return": -11.38,
+    "mdd": 27.32,
+    "trades": 3,
     "vsBuyHold": "lose",
-    "benchRet": 705.88,
+    "benchRet": 29.09,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1558569600,
-    "tTo": 1636243200,
+    "tFrom": 1713916800,
+    "tTo": 1791590400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "기간 종료 시 미청산 포지션 1종목 (총자산의 99.57%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 99.29%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 900봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
@@ -23,7 +23,7 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 900,
-      "end": 1636329600
+      "end": 1791849600
     },
     "codeBasis": "assumed-current",
     "verifiedCodeSha256": "f2ec96244735614648ef0e4b3bff3965dcd0052f57ffac23a70791d0099c7ea0"
