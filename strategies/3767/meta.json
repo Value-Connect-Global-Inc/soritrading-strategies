@@ -3,19 +3,18 @@
   "name": "Cross-Sectional Momentum Rotation 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 19632,
-    "return": -99.45,
-    "mdd": 99.51,
-    "trades": 2357,
+    "backtestId": 19687,
+    "return": -93.44,
+    "mdd": 94.05,
+    "trades": 1388,
     "vsBuyHold": "lose",
-    "benchRet": 53.37,
+    "benchRet": 35.8,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1647864000,
-    "tTo": 1719849600,
+    "tFrom": 1719691200,
+    "tTo": 1791676800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "기간 종료 시 미청산 포지션 1종목 (총자산의 99.25%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
@@ -23,10 +22,10 @@
       "sym": "BTC",
       "interval": "4h",
       "bars": 5000,
-      "end": 1719864000
+      "end": 1791864000
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "bccf32a3746614c7874d280801aefe46e82cf6b2b375fd13309de17e36598cb7"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "4d732a64a13b60e193c80a054c889589066b907471c7626f7e3c6913f4201872"
   },
   "config": null,
   "updatedAt": "2026-10-13T05:10:04.575Z",
