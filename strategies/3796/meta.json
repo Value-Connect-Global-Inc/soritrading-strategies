@@ -3,19 +3,19 @@
   "name": "VolTarget BTC Rider",
   "kind": "custom",
   "verified": {
-    "backtestId": 19919,
-    "return": 85.79,
-    "mdd": 29.93,
-    "trades": 478,
-    "vsBuyHold": "win",
-    "benchRet": 83.66,
+    "backtestId": 19924,
+    "return": 65.89,
+    "mdd": 29.77,
+    "trades": 386,
+    "vsBuyHold": "lose",
+    "benchRet": 245.42,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1640995200,
-    "tTo": 1767139200,
+    "tFrom": 1514764800,
+    "tTo": 1640908800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "기간 종료 시 미청산 포지션 1종목 (총자산의 46.62%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 31.68%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1461봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
@@ -23,12 +23,12 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1461,
-      "end": 1767225600
+      "end": 1640995200
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "70f225c113056cc78936d8e0e03b9542fc262b35a0bb1a706882e2c8a5560071"
+    "verifiedCodeSha256": "dc032d3783d2a41ba3867a12a2dea63d92a65088497ea51e18c8d492484d0e51"
   },
   "config": null,
-  "updatedAt": "2026-10-13T12:02:28.123Z",
+  "updatedAt": "2026-10-13T12:04:32.556Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
