@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3823](strategies/3823/) | BtcFearGreedContrarian | -3.76% | +95.22% | +5.69% | 50 | 2026-10-13 |
+|  | [3823](strategies/3823/) | BtcFearGreedContrarian | +2.14% | +556.86% | +3.11% | 36 | 2026-10-13 |
 |  | [3822](strategies/3822/) | BtcPlainTrend | +16.22% | +87.84% | +9.18% | 31 | 2026-10-13 |
 |  | [3821](strategies/3821/) | BtcFedRegime | +163.08% | +824.06% | +18.29% | 25 | 2026-10-13 |
 |  | [3820](strategies/3820/) | BtcDonchianTrend | +2.68% | +95.22% | +16.27% | 18 | 2026-10-13 |
