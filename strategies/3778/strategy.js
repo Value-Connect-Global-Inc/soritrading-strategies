@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: ETH Dollar-Regime Trend 4H v3 (trailing exit)
+ * name: ETH Dollar-Regime Trend 4H v4 (drawdown-scaled)
  * ex: binance
  * syms: ETH/USDT
  * interval: 4h
@@ -9,13 +9,15 @@
  * Why this strategy: buy 20-bar breakouts in an uptrend, but only when the US
  *   dollar is not strengthening and volatility is expanding. A rising dollar
  *   pulls money out of crypto, and breakouts in a low-volatility regime are
- *   mostly false moves, so both conditions gate the entry. v3 changes only the
- *   exit: a chandelier trailing stop replaces the 20-bar low close exit, so
- *   winners are given room to run instead of being cut on normal pullbacks.
+ *   mostly false moves, so both conditions gate the entry. v4 keeps all of v3
+ *   but adds one defensive layer: when the strategy's own account is in a deep
+ *   drawdown (losses cluster in choppy regimes), it cuts position size in half
+ *   until the account recovers, so a bad streak cannot compound.
  * When it buys and sells: buy on a fresh 20-bar high close above the 100-EMA
  *   with above-average volume, while DXY is below its 30-day average and ATR is
- *   above its 60-bar average. Sell on a 3x ATR trailing stop below the highest
- *   close since entry, a 2.5x ATR floor stop, or a close back below the 100-EMA.
+ *   above its 60-bar average — at half size while the account is down 15% or
+ *   more from its peak. Sell on a 3x ATR trailing stop below the highest close
+ *   since entry, a 2.5x ATR floor stop, or a close back below the 100-EMA.
  * When it does NOT work: misses melt-ups that happen while the dollar is also
  *   firming or while volatility is still compressing, and the filters can sit
  *   out long stretches in choppy years.
@@ -28,6 +30,15 @@ function onUpdate(ctx) {
   const price = ctx.price;
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) return null;
+
+  // track the strategy's own mark-to-market equity and its running peak;
+  // losses cluster in choppy regimes, so cut size while deep in a drawdown
+  const equity = ctx.cash + ctx.position * price;
+  let peak = ctx.state.equityPeak || equity;
+  if (equity > peak) peak = equity;
+  ctx.state.equityPeak = peak;
+  const drawdown = peak > 0 ? (peak - equity) / peak : 0;
+  const sizeScale = drawdown > 0.15 ? 0.5 : 1.0;  // 15% DD -> half size: defensive, not market timing
 
   // rolling DXY history (4h bars ~ 30 days at 180 bars) to judge dollar direction
   const dxy = ctx.data('dxy');
@@ -47,8 +58,6 @@ function onUpdate(ctx) {
 
   if (ctx.position > 0) {
     // chandelier trailing stop: ratchet to the highest close since entry, minus 3x ATR.
-    // 3x ATR gives a normal pullback room to breathe while still capping the loss;
-    // a tighter 2.5x variant was tested and whipsawed more (more trades, worse returns).
     let hh = ctx.state.hhSinceEntry;
     if (hh == null || prevClose > hh) { hh = prevClose; ctx.state.hhSinceEntry = hh; }
     const trailStop = hh - 3 * atr;
@@ -72,7 +81,7 @@ function onUpdate(ctx) {
   if (volPrev == null || avgVol == null || avgVol <= 0) return null;
   if (volPrev < avgVol) return null;
 
-  const riskCash = ctx.cash * 0.02;
+  const riskCash = ctx.cash * 0.02 * sizeScale;
   const stopDist = 2.5 * atr;
   let qty = stopDist > 0 ? riskCash / stopDist : 0;
   const maxQty = (ctx.cash * 0.99) / price;
