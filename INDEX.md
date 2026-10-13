@@ -12,9 +12,9 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3556](strategies/3556/) | BNB Trend-Follow EMA50/200 4H | +602.65% | +43740.00% | +36.31% | 190 | 2026-10-13 |
 | ★ | [3778](strategies/3778/) | AI 전략 | +8.61% | -54.49% | +15.93% | 113 | 2026-10-13 |
 | ★ | [3777](strategies/3777/) | ETH NDX Risk-On Trend 4H | +7.49% | -26.02% | +27.13% | 114 | 2026-10-13 |
-|  | [3556](strategies/3556/) | BNB Trend-Follow EMA50/200 4H | +602.65% | +43740.00% | +36.31% | 190 | 2026-10-13 |
 |  | [3776](strategies/3776/) | SOL Dollar-Regime Trend 4H v3 | +36.69% | +64.40% | +21.33% | 116 | 2026-10-13 |
 |  | [3775](strategies/3775/) | AI 전략 ‡ | -19.19% | +17.48% | +35.25% | 128 | 2026-10-13 |
 |  | [3768](strategies/3768/) | SOL Trend-Pullback Dip Buy 4H | +58.03% | +1833.35% | +22.53% | 103 | 2026-10-13 |
