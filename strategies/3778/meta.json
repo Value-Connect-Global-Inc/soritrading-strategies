@@ -3,19 +3,19 @@
   "name": "AI 전략",
   "kind": "custom",
   "verified": {
-    "backtestId": 19766,
-    "return": 8.61,
-    "mdd": 15.93,
-    "trades": 113,
-    "vsBuyHold": "win",
-    "benchRet": -54.49,
+    "backtestId": 19774,
+    "return": 55.24,
+    "mdd": 20.26,
+    "trades": 103,
+    "vsBuyHold": "lose",
+    "benchRet": 1833.35,
     "benchBasis": "price",
-    "gapPct": 0.3,
-    "tFrom": 1503633600,
-    "tTo": 1575849600,
+    "gapPct": 0,
+    "tFrom": 1575849600,
+    "tTo": 1647849600,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "[유동성/미체결] 시장가 주문 16건이 그 봉의 호가 두께를 넘어 일부만 체결됐습니다(전체 요청 금액의 5% 미체결, 남은 물량은 다음 봉으로). 진입·청산이 전략이 의도한 시점보다 늦습니다. ★ 원인은 둘 중 하나이고 이 수만으로는 못 가릅니다 — 종목이 얇거나, 주문이 한 봉이 소화할 수 있는 것보다 크거나. 주문 크기를 줄여 같은 구간을 다시 돌리면…",
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 17.83%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
@@ -24,10 +24,10 @@
       "sym": "ETH",
       "interval": "4h",
       "bars": 5000,
-      "end": 1575864000
+      "end": 1647864000
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "f1639875e983a00558ba77d0a0b2ef94bae094b816b01b28bdd92dda1045865e"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "d598d7aa1b4b7854314e15959fb2f92a1937c7e88c0855532c78c75b43b921e4"
   },
   "config": null,
   "updatedAt": "2026-10-13T06:25:57.412Z",
