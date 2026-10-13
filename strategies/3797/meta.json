@@ -3,7 +3,7 @@
   "name": "OrderBookFlow",
   "kind": "custom",
   "verified": {
-    "backtestId": 19944,
+    "backtestId": 19947,
     "return": 48.36,
     "mdd": 54.92,
     "trades": 9,
@@ -26,8 +26,8 @@
       "bars": 1100,
       "end": 1601769600
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "eafaef036ffd889134cfb744ef5220d861fb8e36d6c5ff2bd6357071668b6d41"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "dca4f9e743d213b034f0f5925cd287301ff5e3dfb0394e97af713630aef1ee6e"
   },
   "config": null,
   "updatedAt": "2026-10-13T13:17:00.781Z",
