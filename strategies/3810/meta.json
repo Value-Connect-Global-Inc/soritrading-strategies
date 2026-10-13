@@ -3,10 +3,10 @@
   "name": "BtcDonchianTrend",
   "kind": "custom",
   "verified": {
-    "backtestId": 20022,
-    "return": -5.67,
-    "mdd": 8.52,
-    "trades": 30,
+    "backtestId": 20026,
+    "return": -12.15,
+    "mdd": 20.49,
+    "trades": 26,
     "vsBuyHold": "lose",
     "benchRet": 23.98,
     "benchBasis": "price",
@@ -25,9 +25,9 @@
       "end": 1584489600
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "da78e73b9ab56956d022e7e4a44f1e7471aeec8c1f432b2beb1ca47f79aa869c"
+    "verifiedCodeSha256": "7715b2b15e553a49cb079c1856a18925aecce89100c101e22df4c46a617133bd"
   },
   "config": null,
-  "updatedAt": "2026-10-13T17:19:25.328Z",
+  "updatedAt": "2026-10-13T17:21:42.505Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

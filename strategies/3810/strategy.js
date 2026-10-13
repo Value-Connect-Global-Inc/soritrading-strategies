@@ -8,13 +8,13 @@
  *
  * Why this strategy: sustained Bitcoin trends are best caught with breakouts, not
  * averages. A close above the 20-day high signals a new up-leg; a close below the
- * 10-day low (or a 3x ATR trailing stop) gets you out before giving back the whole
- * move. Position size is scaled by ATR so a big daily move risks only ~1% of the
+ * 10-day low (or a 4x ATR trailing stop) gets you out before giving back the whole
+ * move. Position size is scaled by ATR so a big daily move risks only ~3% of the
  * account — no single trade can ruin it.
  * When it buys and sells: Buys when the daily close is above the highest close of the
  * last 20 days (and price is above its 200-day average to avoid bear-market rallies).
  * Sells when the close is below the lowest close of the last 10 days, or the price
- * falls 3x ATR below the highest close since entry (trailing stop).
+ * falls 4x ATR below the highest close since entry (trailing stop).
  * When it does NOT work: in a long sideways range breakouts fire and immediately fail
  * (small repeated losses). In a slow grind down it waits for the 200MA filter and can
  * sit in cash while shorts would profit. It is long-only, so it never profits from
@@ -50,11 +50,11 @@ function onUpdate(ctx) {
   } else {
     ctx.state.hiSinceEntry = null;
   }
-  const trailStop = ctx.state.hiSinceEntry != null ? ctx.state.hiSinceEntry - 3 * atr : null;
+  const trailStop = ctx.state.hiSinceEntry != null ? ctx.state.hiSinceEntry - 4 * atr : null;
 
-  // volatility-scaled size: 1% of account risk per 2x ATR adverse move
+  // volatility-scaled size: 3% of account risk per 2x ATR adverse move (~50% deployed)
   const riskPerUnit = 2 * atr; // dollars moved per coin for a 2xATR loss
-  const qty = (ctx.cash * 0.01) / riskPerUnit;
+  const qty = (ctx.cash * 0.03) / riskPerUnit;
 
   ctx.watch([
     { side:'buy', price: hi20, trigger:'above', note:'20d high breakout',

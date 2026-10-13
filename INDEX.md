@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3810](strategies/3810/) | BtcDonchianTrend | -5.67% | +23.98% | +8.52% | 30 | 2026-10-13 |
+|  | [3810](strategies/3810/) | BtcDonchianTrend | -12.15% | +23.98% | +20.49% | 26 | 2026-10-13 |
 |  | [3809](strategies/3809/) | BtcOversoldReversion | +19.43% | +172.56% | +20.73% | 14 | 2026-10-13 |
 |  | [3808](strategies/3808/) | DxyDataProbe | -34.38% | +465.02% | +90.22% | 43 | 2026-10-13 |
 | ★ | [3807](strategies/3807/) | StatePersistenceProbe ‡ | +4.73% | -3.98% | +1.38% | 2 | 2026-10-13 |
