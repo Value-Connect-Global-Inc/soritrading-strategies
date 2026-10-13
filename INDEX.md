@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 504 of 1972 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 505 of 1973 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 284 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [3796](strategies/3796/) | VolTarget BTC Rider | +85.79% | +83.66% | +29.93% | 478 | 2026-10-13 |
 | ★ | [3795](strategies/3795/) | DIAG dxy probe | +84.30% | +83.66% | +66.20% | 1 | 2026-10-13 |
 |  | [3792](strategies/3792/) | Donchian Breakout Rider ‡ | +331.27% | +556.86% | +28.79% | 9 | 2026-10-13 |
 | ★ | [3791](strategies/3791/) | SMA50/200 Trend Follower | +105.60% | -4.48% | +19.89% | 3 | 2026-10-13 |
