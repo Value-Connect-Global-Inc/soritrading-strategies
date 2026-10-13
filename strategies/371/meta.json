@@ -3,26 +3,28 @@
   "name": "BTC 업비트 돈치안 트렌드 스탑",
   "kind": "custom",
   "verified": {
-    "backtestId": 16974,
-    "return": -1.72,
-    "mdd": 5.46,
-    "trades": 4,
+    "backtestId": 19784,
+    "return": 82.12,
+    "mdd": 21.77,
+    "trades": 60,
     "vsBuyHold": "win",
-    "benchRet": -23.27,
+    "benchRet": 60.62,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1748476800,
+    "tFrom": 1618876800,
     "tTo": 1791590400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 500봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 2000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "upbit",
       "sym": "BTC",
       "interval": "1d",
-      "bars": 500
-    }
+      "bars": 2000
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "e38acb0d299649f6db3e8f2baa8587c790116bdaeabf1459ec505ade9db55842"
   },
   "config": {
     "ex": "upbit",
@@ -30,6 +32,7 @@
     "syms": [
       "BTC"
     ],
+    "quote": "KRW",
     "interval": "1d",
     "marketType": "spot"
   },
