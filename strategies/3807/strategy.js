@@ -20,11 +20,9 @@ function onUpdate(ctx) {
   if (arr.length > 15) arr = arr.slice(-15);
   ctx.state.arr = arr;
 
-  const c = ctx.state.c || 0;
-  if (c === 10) {
-    ctx.state.didBuy = true;
-    return { side:'buy', qty: ctx.cash / ctx.price * 0.99 };
-  }
+  const c = (ctx.state.c || 0) + 1;
+  ctx.state.c = c;
+  if (c === 10) return { side:'buy', qty: ctx.cash / ctx.price * 0.99 };
   if (c === 15) return { side:'sell', qty: ctx.position };
   return null;
 }
