@@ -3,7 +3,7 @@
   "name": "BNB Trend-Follow EMA50/200 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 19767,
+    "backtestId": 19769,
     "return": 602.65,
     "mdd": 36.31,
     "trades": 190,
@@ -30,6 +30,6 @@
     "verifiedCodeSha256": "39669e0522de7d22851f8467353c38900fa767f23a97fb898e1e26dbe5871bff"
   },
   "config": null,
-  "updatedAt": "2026-10-13T06:14:42.965Z",
+  "updatedAt": "2026-10-13T06:17:05.746Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
