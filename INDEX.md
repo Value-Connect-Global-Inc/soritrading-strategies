@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3767](strategies/3767/) | Cross-Sectional Momentum Rotation 4H | -99.45% | +53.37% | +99.51% | 2357 | 2026-10-13 |
+|  | [3767](strategies/3767/) | Cross-Sectional Momentum Rotation 4H ‡ | -99.45% | +53.37% | +99.51% | 2357 | 2026-10-13 |
 | ★ | [3754](strategies/3754/) | BTC Bull-Regime RSI Dip Buy 4H | -5.38% | -36.62% | +6.63% | 56 | 2026-10-13 |
 |  | [3753](strategies/3753/) | AI 전략 | +82.05% | +449.17% | +14.72% | 104 | 2026-10-13 |
 |  | [3722](strategies/3722/) | BTCDualSideTrend | +81.34% | +443.28% | +14.72% | 104 | 2026-10-13 |
