@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3768](strategies/3768/) | SOL Trend-Pullback Dip Buy 4H | +54.52% | +2973.84% | +12.03% | 48 | 2026-10-13 |
+|  | [3768](strategies/3768/) | SOL Trend-Pullback Dip Buy 4H | +19.96% | +1833.35% | +9.54% | 102 | 2026-10-13 |
 |  | [3767](strategies/3767/) | Cross-Sectional Momentum Rotation 4H | -93.44% | +35.80% | +94.05% | 1388 | 2026-10-13 |
 |  | [3556](strategies/3556/) | BNB Trend-Follow EMA50/200 4H | +602.65% | +43740.00% | +36.31% | 190 | 2026-10-13 |
 | ★ | [3754](strategies/3754/) | BTC Bull-Regime RSI Dip Buy 4H | -5.38% | -36.62% | +6.63% | 56 | 2026-10-13 |
