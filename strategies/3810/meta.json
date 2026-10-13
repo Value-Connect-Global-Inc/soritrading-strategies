@@ -3,26 +3,26 @@
   "name": "BtcDonchianTrend",
   "kind": "custom",
   "verified": {
-    "backtestId": 20026,
-    "return": -12.15,
-    "mdd": 20.49,
-    "trades": 26,
-    "vsBuyHold": "lose",
-    "benchRet": 23.98,
-    "benchBasis": "price",
+    "backtestId": 20028,
+    "return": -54.76,
+    "mdd": 70.95,
+    "trades": 409,
+    "vsBuyHold": "unmeasured",
     "gapPct": 0,
-    "tFrom": 1502928000,
-    "tTo": 1584403200,
+    "tFrom": 1584489600,
+    "tTo": 1688083200,
     "approxNotes": [
-      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 944봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "기간 종료 시 미청산 포지션 3종목 (총자산의 79.18%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 3454봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다",
+      "[생존 편향] 이 유니버스는 **지금 거래되는 종목**만입니다. 구간 중(또는 그 전에) 상장폐지된 종목은 **처음부터 들어 있지 않습니다** — 망한 종목이 빠져 있어 수익률이 **실제보다 좋게** 나옵니다. 스캐너·랭킹 전략일수록 그 차이가 큽니다."
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
       "bars": 1200,
-      "end": 1584489600
+      "end": 1688169600,
+      "syms": 3
     },
     "codeBasis": "assumed-current",
     "verifiedCodeSha256": "7715b2b15e553a49cb079c1856a18925aecce89100c101e22df4c46a617133bd"
