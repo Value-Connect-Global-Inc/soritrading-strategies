@@ -10,16 +10,18 @@
  * panic and euphoria; buying right after a panic and selling once the crowd is greedy
  * again has historically rewarded patience on Bitcoin. It reads the fear_greed dataset.
  * When it buys and sells: Buys when the index climbs back above 30 within 10 days of
- * being in extreme fear (<=20) — the capitulation is ending, not the free-fall. Sells
- * when the index reaches 70 (greed), or price falls 12% below entry, or after 90 days.
- * When it does NOT work: in a long grinding bear market the index can stay fearful for
- * months and each recovery buys a falling knife (repeated small stop losses). It also
- * sits in cash during strong bull legs where greed never pulls back to a buy zone.
+ * being in extreme fear (<=20) AND price is above its 200-day average (only panic dips
+ * in an uptrend). Sells when the index reaches 70 (greed), or price falls 12% below
+ * entry, or after 90 days.
+ * When it does NOT work: in a long grinding bear market it sits in cash and misses the
+ * (profitable-to-shorts) decline. In a strong bull leg with no panic it also sits in
+ * cash. It never profits from bear markets — long only.
  */
 
 function onUpdate(ctx) {
   const fg = ctx.data('fear_greed');
-  if (fg == null) return null; // sentiment data not available yet
+  const sma200 = ctx.sma(200, 1);
+  if (fg == null || sma200 == null) return null;
 
   const price = ctx.price;
   const pos = ctx.position || 0;
@@ -29,9 +31,10 @@ function onUpdate(ctx) {
   if (fg <= 20) st.lastFearBar = ctx.i;
 
   if (pos === 0) {
-    // entry: fear index recovered above 30 within 10 bars of extreme fear
+    // entry: recovered above 30 within 10 bars of extreme fear AND uptrend filter
     const recentFear = st.lastFearBar != null && (ctx.i - st.lastFearBar) <= 10;
-    if (fg > 30 && recentFear) {
+    // uptrend filter: only buy panic dips in an established uptrend, bear-market rallies fail
+    if (fg > 30 && recentFear && price > sma200) {
       st.entryPx = price;
       st.entryBar = ctx.i;
       // risk 3% of account on a 12% stop => ~25% of account per trade
