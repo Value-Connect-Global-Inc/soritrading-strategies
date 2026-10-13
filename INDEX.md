@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
 |  | [3753](strategies/3753/) | AI 전략 | +82.05% | +449.17% | +14.72% | 104 | 2026-10-13 |
-|  | [3722](strategies/3722/) | BTCDualSideTrend | +81.34% | +443.28% | +14.72% | 104 | 2026-10-12 |
+|  | [3722](strategies/3722/) | BTCDualSideTrend | +81.34% | +443.28% | +14.72% | 104 | 2026-10-13 |
 | ★ | [3721](strategies/3721/) | ETHMultiTFRegimeTrend | -19.43% | -72.97% | +27.02% | 22 | 2026-10-12 |
 |  | [3719](strategies/3719/) | AI 전략 | +91.53% | +193.91% | +39.36% | 116 | 2026-10-12 |
 |  | [3717](strategies/3717/) | SOLDollarRegimeTrend | +37.08% | +2900.96% | +20.90% | 96 | 2026-10-12 |
