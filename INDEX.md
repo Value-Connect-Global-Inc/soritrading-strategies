@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3775](strategies/3775/) | AI 전략 | -19.19% | +17.48% | +35.25% | 128 | 2026-10-13 |
+|  | [3775](strategies/3775/) | AI 전략 ‡ | -19.19% | +17.48% | +35.25% | 128 | 2026-10-13 |
 |  | [3768](strategies/3768/) | SOL Trend-Pullback Dip Buy 4H | +58.03% | +1833.35% | +22.53% | 103 | 2026-10-13 |
 |  | [3767](strategies/3767/) | Cross-Sectional Momentum Rotation 4H | -93.44% | +35.80% | +94.05% | 1388 | 2026-10-13 |
 |  | [3556](strategies/3556/) | BNB Trend-Follow EMA50/200 4H | +602.65% | +43740.00% | +36.31% | 190 | 2026-10-13 |

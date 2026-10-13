@@ -14,7 +14,7 @@
  *   winners are given room to run instead of being cut on normal pullbacks.
  * When it buys and sells: buy on a fresh 20-bar high close above the 100-EMA
  *   with above-average volume, while DXY is below its 30-day average and ATR is
- *   above its 60-bar average. Sell on a 2.5x ATR trailing stop below the highest
+ *   above its 60-bar average. Sell on a 3x ATR trailing stop below the highest
  *   close since entry, a 2.5x ATR floor stop, or a close back below the 100-EMA.
  * When it does NOT work: misses melt-ups that happen while the dollar is also
  *   firming or while volatility is still compressing, and the filters can sit
@@ -46,17 +46,17 @@ function onUpdate(ctx) {
   const volExpanding = atrAvg != null && atr > atrAvg;
 
   if (ctx.position > 0) {
-    // chandelier trailing stop: ratchet to the highest close since entry, minus 2.5x ATR.
-    // Same ATR multiple as the entry risk plan, so the risk budget stays consistent
-    // and pullbacks cannot run deeper than the original stop distance.
+    // chandelier trailing stop: ratchet to the highest close since entry, minus 3x ATR.
+    // 3x ATR gives a normal pullback room to breathe while still capping the loss;
+    // a tighter 2.5x variant was tested and whipsawed more (more trades, worse returns).
     let hh = ctx.state.hhSinceEntry;
     if (hh == null || prevClose > hh) { hh = prevClose; ctx.state.hhSinceEntry = hh; }
-    const trailStop = hh - 2.5 * atr;
+    const trailStop = hh - 3 * atr;
     const floorStop = ctx.entryPx - 2.5 * atr;   // hard stop: never risk more than the 2.5x ATR entry plan
     const stop = Math.max(trailStop, floorStop);
     if (price <= stop) return { side: 'sell', qty: ctx.position };
     if (prevClose < ema100) return { side: 'sell', qty: ctx.position };
-    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'chandelier 2.5x ATR trailing stop' },
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'chandelier 3x ATR trailing stop' },
                { side: 'sell', price: ema100, trigger: 'below', note: '100-EMA trend break' }]);
     return null;
   }
