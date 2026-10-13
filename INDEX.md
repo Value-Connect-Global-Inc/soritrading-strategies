@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3556](strategies/3556/) | BNB Trend-Follow EMA50/200 4H | +602.65% | +43740.00% | +36.31% | 190 | 2026-10-13 |
 |  | [3767](strategies/3767/) | Cross-Sectional Momentum Rotation 4H | -93.44% | +35.80% | +94.05% | 1388 | 2026-10-13 |
 | ★ | [3754](strategies/3754/) | BTC Bull-Regime RSI Dip Buy 4H | -5.38% | -36.62% | +6.63% | 56 | 2026-10-13 |
 |  | [3753](strategies/3753/) | AI 전략 | +82.05% | +449.17% | +14.72% | 104 | 2026-10-13 |
@@ -65,7 +66,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | ★ | [2713](strategies/2713/) | Band-Bounce Mean Reversion LTC 4H | -12.10% | -15.65% | +32.74% | 46 | 2026-10-12 |
 |  | [2732](strategies/2732/) | On-Chain Network-Health BTC 1D | -39.60% | +55.47% | +39.60% | 14 | 2026-10-12 |
 |  | [2734](strategies/2734/) | Band-Bounce Mean Reversion AVAX 4H | +29.26% | +1443.71% | +36.72% | 37 | 2026-10-12 |
-|  | [3556](strategies/3556/) | BNB Trend-Follow EMA50/200 4H | +1401.30% | +43740.00% | +36.31% | 217 | 2026-10-12 |
 | — | [3686](strategies/3686/) | DonchianTrendMomentumGate | +13.23% | — | +17.24% | 47 | 2026-10-12 |
 |  | [2737](strategies/2737/) | Band-Bounce Mean Reversion SUI 4H | +2.52% | +18.57% | +9.00% | 12 | 2026-10-12 |
 | — | [3680](strategies/3680/) | AI 전략 | +102.13% | — | +17.39% | 69 | 2026-10-12 |
