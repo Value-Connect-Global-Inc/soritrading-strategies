@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 500 of 1958 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 500 of 1959 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 283 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3776](strategies/3776/) | SOL Dollar-Regime Trend 4H v3 | +36.69% | +64.40% | +21.33% | 116 | 2026-10-13 |
 |  | [3775](strategies/3775/) | AI 전략 ‡ | -19.19% | +17.48% | +35.25% | 128 | 2026-10-13 |
 |  | [3768](strategies/3768/) | SOL Trend-Pullback Dip Buy 4H | +58.03% | +1833.35% | +22.53% | 103 | 2026-10-13 |
 |  | [3767](strategies/3767/) | Cross-Sectional Momentum Rotation 4H | -93.44% | +35.80% | +94.05% | 1388 | 2026-10-13 |
