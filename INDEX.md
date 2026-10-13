@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 508 of 1988 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 508 of 1989 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 286 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [3820](strategies/3820/) | BtcDonchianTrend | +5.27% | +95.22% | +19.72% | 28 | 2026-10-13 |
 |  | [3819](strategies/3819/) | BtcAddrAdoption | -49.76% | -16.55% | +56.60% | 362 | 2026-10-13 |
 |  | [3817](strategies/3817/) | BtcHashrateCapitulation | -23.49% | -16.55% | +28.11% | 152 | 2026-10-13 |
 |  | [3816](strategies/3816/) | AI 전략 ‡ | +58.31% | +556.86% | +12.81% | 13 | 2026-10-13 |
