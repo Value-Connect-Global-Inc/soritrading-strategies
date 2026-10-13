@@ -1,20 +1,23 @@
 /*
  * @coinsori-strategy v1
- * name: OnChain Pulse
+ * name: OnChain Pulse v2
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Bitcoin's on-chain network usage (daily active addresses) is a
- * health signal that tends to lead price. We only buy when the network is actually
- * growing, and we ride the position while the long-term price trend stays up.
+ * Why this strategy: Bitcoin on-chain usage (daily active addresses) is a slow
+ * network-health signal. The v1 test showed raw daily addresses spike at price
+ * tops, so this version only enters on a STRONG network expansion (5% above the
+ * 30-day mean) together with an intact long-term price trend, and exits only on
+ * a trend break — no noisy intraday churn.
  * When it buys and sells: Buy when price is above its 200-day average AND daily
- * active addresses are above their 30-day average (network expanding). Sell when
- * price falls back below its 200-day average, or on a 25% hard stop below entry.
- * When it does NOT work: In a long bear market price stays under the 200-day average
- * so the strategy sits in cash (no loss, but no gain either). It also lags sharp
- * recoveries because it waits for BOTH price and network confirmation before buying.
+ * active addresses are at least 5% above their 30-day average. Sell when price
+ * falls back below its 200-day average, or on a 25% hard stop.
+ * When it does NOT work: In a long bear market price stays under the 200-day
+ * average and the strategy sits in cash. It also lags sharp recoveries because
+ * it waits for BOTH price and network confirmation, and the strong-expansion
+ * gate makes it miss early-stage rallies.
  */
 function onUpdate(ctx) {
   const prevClose = ctx.closes.at(-2);
@@ -23,20 +26,20 @@ function onUpdate(ctx) {
   const addrS = ctx.data('addr_sma30');
   if (sma200 == null || addr == null || addrS == null) return null;
 
-  const trendUp = prevClose > sma200;      // long-term uptrend intact
-  const netUp = addr > addrS;              // network expanding vs its 30-day mean
+  // 5% above the 30-day mean = clear network expansion, not a daily noise spike
+  const netStrong = addr > addrS * 1.05;
+  const trendUp = prevClose > sma200;
 
   ctx.watch([
     { side:'buy', price: sma200, trigger:'above', note:'SMA200 break up',
-      conds:[{ label:'network expanding', ok: netUp }] },
+      conds:[{ label:'network +5% vs 30d', ok: netStrong }] },
     { side:'sell', price: sma200, trigger:'below', note:'SMA200 break down' }
   ]);
 
   const pos = ctx.position || 0;
 
   if (pos === 0) {
-    // only enter with both trend AND network confirmation
-    if (trendUp && netUp) {
+    if (trendUp && netStrong) {
       return { side:'buy', qty: ctx.cash / ctx.price * 0.99 };
     }
     return null;

@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3797](strategies/3797/) | OrderBookFlow | +48.36% | +140.77% | +54.92% | 9 | 2026-10-13 |
+|  | [3797](strategies/3797/) | OrderBookFlow ‡ | +48.36% | +140.77% | +54.92% | 9 | 2026-10-13 |
 |  | [3796](strategies/3796/) | VolTarget BTC Rider | +58.58% | +427.47% | +20.96% | 186 | 2026-10-13 |
 | ★ | [3795](strategies/3795/) | DIAG dxy probe | +84.30% | +83.66% | +66.20% | 1 | 2026-10-13 |
 |  | [3792](strategies/3792/) | Donchian Breakout Rider ‡ | +331.27% | +556.86% | +28.79% | 9 | 2026-10-13 |
