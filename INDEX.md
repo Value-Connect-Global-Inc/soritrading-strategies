@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3824](strategies/3824/) | BtcHashRibbons ‡ | -1.92% | +556.86% | +1.97% | 4000 | 2026-10-13 |
+|  | [3824](strategies/3824/) | BtcHashRibbons | -0.40% | +487.06% | +2.52% | 8 | 2026-10-13 |
 |  | [3823](strategies/3823/) | BtcFearGreedContrarian | +0.96% | +556.86% | +13.27% | 14 | 2026-10-13 |
 |  | [3822](strategies/3822/) | BtcPlainTrend | +16.22% | +87.84% | +9.18% | 31 | 2026-10-13 |
 |  | [3821](strategies/3821/) | BtcFedRegime | +163.08% | +824.06% | +18.29% | 25 | 2026-10-13 |
