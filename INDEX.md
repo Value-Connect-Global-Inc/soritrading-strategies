@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3820](strategies/3820/) | BtcDonchianTrend | +5.27% | +95.22% | +19.72% | 28 | 2026-10-13 |
+|  | [3820](strategies/3820/) | BtcDonchianTrend | +86.96% | +556.86% | +21.34% | 22 | 2026-10-13 |
 |  | [3819](strategies/3819/) | BtcAddrAdoption | -49.76% | -16.55% | +56.60% | 362 | 2026-10-13 |
 |  | [3817](strategies/3817/) | BtcHashrateCapitulation | -23.49% | -16.55% | +28.11% | 152 | 2026-10-13 |
 |  | [3816](strategies/3816/) | AI 전략 ‡ | +58.31% | +556.86% | +12.81% | 13 | 2026-10-13 |
