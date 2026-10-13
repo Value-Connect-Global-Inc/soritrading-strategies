@@ -3,18 +3,19 @@
   "name": "BtcHashrateTrend",
   "kind": "custom",
   "verified": {
-    "backtestId": 20063,
-    "return": -1.43,
-    "mdd": 15.02,
-    "trades": 248,
+    "backtestId": 20066,
+    "return": -12.58,
+    "mdd": 18.4,
+    "trades": 53,
     "vsBuyHold": "lose",
-    "benchRet": 556.86,
+    "benchRet": 95.22,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1532649600,
-    "tTo": 1618963200,
+    "tFrom": 1705276800,
+    "tTo": 1791590400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 22.59%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
@@ -23,12 +24,12 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1000,
-      "end": 1619049600
+      "end": 1791849600
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "78df87e1f5f9946fc87d47d0ffe9181d9fb2f9fe0c30a1a33d51b6f6a6817ffd"
+    "verifiedCodeSha256": "a743488c0b63cb000081f19674194af5a4667a4212c7391a3cf112d347cbefe1"
   },
   "config": null,
-  "updatedAt": "2026-10-13T18:18:05.842Z",
+  "updatedAt": "2026-10-13T18:19:07.961Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
