@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3812](strategies/3812/) | FundingAvailabilityProbe | -3.92% | +172.56% | +39.88% | 29 | 2026-10-13 |
+|  | [3812](strategies/3812/) | FundingAvailabilityProbe | -8.94% | +35.34% | +21.78% | 22 | 2026-10-13 |
 | — | [3810](strategies/3810/) | BtcDonchianTrend | -54.76% | — | +70.95% | 409 | 2026-10-13 |
 |  | [3809](strategies/3809/) | BtcOversoldReversion | +19.43% | +172.56% | +20.73% | 14 | 2026-10-13 |
 |  | [3808](strategies/3808/) | DxyDataProbe | -34.38% | +465.02% | +90.22% | 43 | 2026-10-13 |

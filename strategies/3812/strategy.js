@@ -45,8 +45,8 @@ function onUpdate(ctx) {
   }
   const trailStop = ctx.state.hiSinceEntry != null ? ctx.state.hiSinceEntry - 4 * atr : null;
 
-  // volatility-scaled size: 3% of account risk per 2x ATR adverse move
-  const riskPerUnit = 2 * atr;
+  // volatility-scaled size: 3% of account risk per 4x ATR (the actual stop distance)
+  const riskPerUnit = 4 * atr;
   const qty = (ctx.cash * 0.03) / riskPerUnit;
 
   ctx.watch([
