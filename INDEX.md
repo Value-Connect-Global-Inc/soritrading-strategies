@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [3804](strategies/3804/) | OnChainTrend | -13.92% | +315.94% | +13.92% | 12 | 2026-10-13 |
+|  | [3804](strategies/3804/) | OnChainTrend | -50.97% | +1155.23% | +50.97% | 42 | 2026-10-13 |
 |  | [3803](strategies/3803/) | OnChainNetworkTrend | -78.15% | +23.98% | +78.15% | 186 | 2026-10-13 |
 | — | [3802](strategies/3802/) | FundingProbe4 ‡ | -100.00% | — | +100.00% | 11494 | 2026-10-13 |
 |  | [3797](strategies/3797/) | OrderBookFlow | +48.36% | +140.77% | +54.92% | 9 | 2026-10-13 |
