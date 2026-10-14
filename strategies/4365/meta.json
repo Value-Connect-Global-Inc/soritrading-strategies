@@ -3,9 +3,9 @@
   "name": "Donchian Basket Vol-Scaled Sizing 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 20423,
-    "return": 34.4,
-    "mdd": 18.39,
+    "backtestId": 20424,
+    "return": 32.11,
+    "mdd": 19.38,
     "trades": 104,
     "vsBuyHold": "unmeasured",
     "gapPct": 0,
@@ -23,8 +23,8 @@
       "end": 1791936000,
       "syms": 5
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "1275d668e7ad0785b0388b2d53b888da29399e6bdbaa6344a060d9090db74961"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "6fe3249af64c617ad1e68923cd0fe676dabed1208cf44061f6b5815a1057b98c"
   },
   "config": null,
   "updatedAt": "2026-10-14T18:10:21.060Z",
