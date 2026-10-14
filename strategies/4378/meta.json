@@ -3,16 +3,16 @@
   "name": "Fear-Greed Contrarian Dip Buyer",
   "kind": "custom",
   "verified": {
-    "backtestId": 20515,
-    "return": -11.79,
-    "mdd": 12.75,
-    "trades": 358,
+    "backtestId": 20518,
+    "return": -3.75,
+    "mdd": 4.86,
+    "trades": 14,
     "vsBuyHold": "lose",
-    "benchRet": 528.46,
+    "benchRet": 95.22,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1532736000,
-    "tTo": 1619049600,
+    "tFrom": 1705276800,
+    "tTo": 1791590400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
@@ -23,12 +23,12 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1000,
-      "end": 1619136000
+      "end": 1791936000
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "f2f8b47f8e3d0888fb805b900d144af48b58b93b74d77c802e124d5fd30d93c2"
+    "verifiedCodeSha256": "b95965bb3acf7d98f82d7f0b34f9439be580724d0ce2e9d062254ed7f6f77301"
   },
   "config": null,
-  "updatedAt": "2026-10-14T20:29:03.053Z",
+  "updatedAt": "2026-10-14T20:31:32.682Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
