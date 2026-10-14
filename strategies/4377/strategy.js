@@ -9,18 +9,18 @@
  * Why this strategy: Five major cryptos run an independent Donchian breakout
  *   (55-bar high entry, 20-bar low exit) with a 2.5x ATR hard stop, each sized
  *   to 20% of cash. On top of the basket sits a regime filter: only OPEN a new
- *   breakout when the coin's own 100-day EMA is RISING (today above yesterday).
- *   A breakout into a falling long-term trend is a bear-market rally that
- *   whipsaws; requiring an uptrending EMA removes those losing trades, which is
- *   exactly what the plain basket's recent flat/bear windows showed.
+ *   breakout when the coin's own 100-day EMA is clearly RISING (slope > 0.1% per
+ *   day, i.e. today above yesterday * 1.001). A breakout into a flat or falling
+ *   long-term trend is a bear-market rally that whipsaws; requiring a real
+ *   uptrend slope removes those losing trades.
  * When it buys and sells: for each coin, buy on a fresh 55-bar high close with a
- *   hard 2.5x ATR stop, but only while the 100-day EMA is rising. Sell on a
- *   20-bar low close, the ATR stop, or a close back below its 100-day EMA.
+ *   hard 2.5x ATR stop, but only while the 100-day EMA is clearly rising. Sell
+ *   on a 20-bar low close, the ATR stop, or a close back below its 100-day EMA.
  * When it does NOT work: in a choppy sideways market where the 100-EMA is flat
  *   it sits in cash and misses range rallies; in a straight-line rally it still
  *   buys late (55-bar entry) and sells late (20-bar exit), underperforming
  *   buy-and-hold of the hottest coin. The most recent 2-year window was still
- *   slightly negative (-4.7%) even with the filter.
+ *   slightly negative even with the filter.
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
@@ -48,12 +48,12 @@ function onUpdate(ctx) {
     return null;
   }
 
-  const emaRising = ema100 > ema100Prev;  // long-term trend must be up
+  const emaRising = ema100 > ema100Prev * 1.001;  // clearly rising 100-EMA, not a flat one (0.1%/day slope)
   const hh55 = ctx.high(55, 2);
   if (hh55 == null) return null;
   ctx.watch([{ side: 'buy', price: hh55, trigger: 'above', note: '55-bar breakout',
                conds: [{ label: 'close > 100-EMA', ok: prevClose > ema100, closed: true },
-                       { label: '100-EMA rising', ok: emaRising, closed: true }] }]);
+                       { label: '100-EMA rising >0.1%/d', ok: emaRising, closed: true }] }]);
   if (prevClose <= hh55) return null;
   if (prevClose < ema100) return null;
   if (!emaRising) return null;
