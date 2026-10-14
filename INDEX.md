@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4367](strategies/4367/) | Donchian Basket DXY-Gated 1D | +154.63% | — | +26.10% | 94 | 2026-10-14 |
+| — | [4367](strategies/4367/) | Donchian Basket DXY-Gated 1D ‡ | +154.63% | — | +26.10% | 94 | 2026-10-14 |
 |  | [4366](strategies/4366/) | BTC Hashrate Cycle 1D | -66.60% | +143.61% | +87.74% | 379 | 2026-10-14 |
 | — | [4365](strategies/4365/) | Donchian Basket Vol-Scaled Sizing 1D | +32.11% | — | +19.38% | 104 | 2026-10-14 |
 | — | [4361](strategies/4361/) | Donchian Basket Baseline (for comparison) | +154.63% | — | +26.10% | 94 | 2026-10-14 |
