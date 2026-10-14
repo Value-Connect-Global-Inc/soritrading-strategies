@@ -3,32 +3,32 @@
   "name": "Fear-Greed Panic Buy BTC 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 20669,
-    "return": -1.05,
-    "mdd": 3.49,
-    "trades": 2,
+    "backtestId": 20671,
+    "return": 0.37,
+    "mdd": 1.95,
+    "trades": 6,
     "vsBuyHold": "lose",
-    "benchRet": 92.62,
+    "benchRet": 258.75,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1706745600,
-    "tTo": 1791590400,
+    "tFrom": 1517443200,
+    "tTo": 1612051200,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 983봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1096봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
-      "bars": 987,
-      "end": 1792020335
+      "bars": 1096,
+      "end": 1612137600
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "2fb905269c93f3f10a2a59b8de30a29f38d23606c10e29dd6721a9b212b02b36"
+    "verifiedCodeSha256": "08d5c838dea5aa7efb724ae4ca7090441079d8e5043d2b4f66a3abac163ac212"
   },
   "config": null,
-  "updatedAt": "2026-10-14T23:24:57.669Z",
+  "updatedAt": "2026-10-14T23:26:23.514Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
