@@ -13,8 +13,8 @@
  *   BTC when BOTH the price trend (above the 50-day EMA) and the network trend
  *   (hash rate above its 30-day average) point up.
  * When it buys and sells: buy BTC when the close is above the 50-day EMA AND
- *   hash rate is above its 30-day average. Sell when price falls 20% below its
- *   highest close since entry, or when a 2.5x ATR hard stop hits.
+ *   hash rate is above its 30-day average. Sell when the close drops below the
+ *   50-day EMA or a 2.5x ATR hard stop hits.
  * When it does NOT work: hash rate is a slow, lagging series — it can stay
  *   high for weeks after price tops, so the strategy can buy late into a
  *   rally. In a bear market the 50-day EMA keeps it mostly in cash but it
@@ -34,14 +34,11 @@ function onUpdate(ctx) {
 
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
-    const peak = Math.max(ctx.state.peak || prevClose, prevClose);
-    ctx.state.peak = peak;
-    const trailStop = peak * 0.80;             // give back 20% of the run before exiting
     const hardStop = ctx.entryPx - 2.5 * atr;
     if (price <= hardStop) return { side: 'sell', qty: pos };
-    if (price <= trailStop) return { side: 'sell', qty: pos };
+    if (prevClose < ema50) return { side: 'sell', qty: pos };
     ctx.watch([{ side: 'sell', price: hardStop, trigger: 'below', note: '2.5x ATR stop' },
-               { side: 'sell', price: trailStop, trigger: 'below', note: 'trailing -20%' }]);
+               { side: 'sell', price: ema50, trigger: 'below', note: '50-day trend break' }]);
     return null;
   }
 
