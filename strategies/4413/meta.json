@@ -3,10 +3,10 @@
   "name": "DXY Regime Trend BTC 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 20624,
-    "return": 18.57,
-    "mdd": 24.24,
-    "trades": 23,
+    "backtestId": 20627,
+    "return": 17.03,
+    "mdd": 24.16,
+    "trades": 31,
     "vsBuyHold": "lose",
     "benchRet": 143.61,
     "benchBasis": "price",
@@ -27,9 +27,9 @@
       "end": 1601856000
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "aeb9a0d645d2e002c2e44700368a036afaf710cf78dae5c5dc1904446ac753d9"
+    "verifiedCodeSha256": "b9846c030267d7394cf5e14fef027c5de97d3715fd8d4b6fc5a0208c91672d89"
   },
   "config": null,
-  "updatedAt": "2026-10-14T22:42:18.722Z",
+  "updatedAt": "2026-10-14T22:50:05.376Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

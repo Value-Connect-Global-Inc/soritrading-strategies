@@ -7,19 +7,18 @@
  * cash: 10000
  *
  * Why this strategy: Bitcoin is an inflation hedge and a risk asset, so it tends
- * to rally when the US dollar is falling and to struggle when the dollar is
- * rising. We combine that macro regime with a long-term trend filter: only buy
- * when BTC is above its 200-day EMA AND the dollar has been falling over the
- * last 5 days.
+ * to struggle when the US dollar is rallying hard. We ride the long-term trend
+ * and only skip entries when the dollar is in a sharp 5-day rally — a classic
+ * risk-off regime for crypto. This keeps most of the bull-market upside while
+ * avoiding the worst macro-driven drawdowns.
  * When it buys and sells: buys when the previous close is above the 200-day EMA
- * AND the 5-day change of the trade-weighted dollar index is negative (dollar
- * weakening). Sells when price closes below the 200-day EMA or a 2.5x ATR hard
- * stop is hit. Stays in cash when the dollar is rising.
- * When it does NOT work: dollar regime is a slow filter — in a BTC bull driven
- * by pure crypto liquidity (not dollar weakness) it misses part of the rally,
- * and it can be late into a crash. It is a macro signal, so it adds nothing in
- * a dollar-neutral move. DXY is business-days only, so the series has small
- * gaps on weekends — handled by rolling history.
+ * AND the 5-day change of the trade-weighted dollar index is below +1% (dollar
+ * not in a sharp rally). Sells when price closes below the 200-day EMA or a
+ * 2.5x ATR hard stop is hit.
+ * When it does NOT work: a pure crypto-liquidity bull with a flat or rising
+ * dollar still gets bought, but a dollar-neutral sideways market churns. DXY is
+ * business-days only, so the series has small gaps on weekends — handled by
+ * rolling history.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -56,11 +55,11 @@ function onUpdate(ctx) {
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) return null;
   const uptrend = prevClose > ema200;
-  const weakDollar = dxyChange5 < 0;   // dollar falling over last 5 days
-  ctx.watch([{ side: 'buy', price: ema200, trigger: 'above', note: 'weak dollar + uptrend',
-               conds: [{ label: 'DXY 5d falling', ok: weakDollar, closed: true },
+  const noDollarRally = dxyChange5 < 0.01 * dxyVal;   // skip only sharp 5-day dollar rallies (>1%)
+  ctx.watch([{ side: 'buy', price: ema200, trigger: 'above', note: 'uptrend, no dollar rally',
+               conds: [{ label: 'DXY 5d < +1%', ok: noDollarRally, closed: true },
                        { label: 'close > 200-EMA', ok: uptrend, closed: true }] }]);
-  if (!uptrend || !weakDollar) return null;
+  if (!uptrend || !noDollarRally) return null;
 
   const riskCash = ctx.cash * 0.02;        // risk 2% of cash per trade
   const stopDist = 2.5 * atr;

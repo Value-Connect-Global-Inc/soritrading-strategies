@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4413](strategies/4413/) | DXY Regime Trend BTC 1D | +18.57% | +143.61% | +24.24% | 23 | 2026-10-14 |
+|  | [4413](strategies/4413/) | DXY Regime Trend BTC 1D | +17.03% | +143.61% | +24.16% | 31 | 2026-10-14 |
 |  | [4412](strategies/4412/) | Address Adoption Trend BTC 1D | +121.35% | +528.46% | +23.30% | 15 | 2026-10-14 |
 | ★ | [4411](strategies/4411/) | FearGreed Dip-Buy BTC 1D | -6.00% | -16.33% | +7.23% | 8 | 2026-10-14 |
 |  | [4410](strategies/4410/) | FearGreed Contrarian BTC 1D | -1.57% | +95.22% | +3.36% | 2 | 2026-10-14 |
