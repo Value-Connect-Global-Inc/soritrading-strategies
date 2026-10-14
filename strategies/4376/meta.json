@@ -3,30 +3,31 @@
   "name": "Donchian Basket Portfolio CircuitBreaker 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 20493,
-    "return": 174.78,
-    "mdd": 22.34,
-    "trades": 18,
-    "vsBuyHold": "unmeasured",
+    "backtestId": 20496,
+    "return": -0.84,
+    "mdd": 2.88,
+    "trades": 8,
+    "vsBuyHold": "win",
+    "benchRet": -3.98,
+    "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1597536000,
-    "tTo": 1662249600,
+    "tFrom": 1765756800,
+    "tTo": 1791590400,
     "approxNotes": [
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 3750봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다",
-      "[생존 편향] 이 유니버스는 **지금 거래되는 종목**만입니다. 구간 중(또는 그 전에) 상장폐지된 종목은 **처음부터 들어 있지 않습니다** — 망한 종목이 빠져 있어 수익률이 **실제보다 좋게** 나옵니다. 스캐너·랭킹 전략일수록 그 차이가 큽니다."
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 300봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
-      "bars": 750,
-      "end": 1662336000,
-      "syms": 5
+      "bars": 300,
+      "end": 1791936000
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "5d61de1a450861801f5929d355bb491e3f7dbeb3793e1e405c927065349e6375"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "77e7b9bef21b99831e4fc4b18363d35242d3079783444f3525c3bfb44762ec2c"
   },
   "config": null,
-  "updatedAt": "2026-10-14T19:55:13.574Z",
+  "updatedAt": "2026-10-14T19:56:38.704Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
