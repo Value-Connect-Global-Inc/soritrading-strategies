@@ -4,14 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 508 of 2000 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 289 of them right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 508 of 2001 right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 290 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 **‡** after a name: the code was edited after its last verifying backtest — the published code is current, but the figures are from the previous code until a new backtest verifies it.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [4351](strategies/4351/) | Cross-Sectional Momentum Rotation 1D | -58.33% | — | +58.33% | 284 | 2026-10-14 |
 | — | [4350](strategies/4350/) | Weak-Dollar Gated Donchian Basket 1D | +33.23% | — | +14.69% | 53 | 2026-10-14 |
 |  | [4349](strategies/4349/) | Fed-Easing Gated Donchian BTC 1D | -0.58% | +196.85% | +11.75% | 8 | 2026-10-14 |
 |  | [4348](strategies/4348/) | On-Chain Confirmed BTC Trend 1D | -10.00% | +155.65% | +40.78% | 23 | 2026-10-14 |
