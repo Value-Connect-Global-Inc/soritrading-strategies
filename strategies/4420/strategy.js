@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: Hashrate-Confirmed BTC Trend 1D (trailing stop)
+ * name: Hashrate-Confirmed BTC Trend 1D (risk 4%)
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
@@ -10,12 +10,12 @@
  * mining investment — it tends to rise over the long term as the network grows.
  * A rising hash rate confirms that a price rally has real network support behind
  * it, while a falling hash rate flags a rally that miners are abandoning. This
- * strategy only buys when BOTH the price trend and the network-health trend agree,
- * and a trailing stop lets winners run in strong bulls instead of exiting early.
+ * strategy only buys when BOTH the price trend and the network-health trend agree.
  * When it buys and sells: buys when the previous close is above the 50-day EMA
- * AND the hash rate is above its own 30-day average (network expanding). Sells
- * when price falls 2.5x ATR below the highest close since entry (trailing stop)
- * or closes below the 50-day EMA.
+ * (a faster trend line than the 200-day) AND the hash rate is above its own
+ * 30-day average (network expanding). Sells when price closes below the 50-day
+ * EMA or a 2.5x ATR hard stop is hit. Positions are sized so each trade risks
+ * 4% of cash, twice the conservative default, so the edge shows in returns.
  * When it does NOT work: hash rate is a slow-moving level, so in a short
  * speculative spike it stays in cash and misses the move; and in a crash driven
  * purely by macro (not mining) it can hold too long. It is trend-following, so
@@ -36,22 +36,17 @@ function onUpdate(ctx) {
   const hrAvg = hrSma == null ? null : Number(hrSma);
   const networkHealthy = (hrVal != null && hrAvg != null && Number.isFinite(hrVal) && Number.isFinite(hrAvg) && hrAvg > 0 && hrVal > hrAvg);
 
-  const st = ctx.state;
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
-    // track highest CLOSED bar since entry for the trailing stop
-    const prevClose = ctx.closes.at(-2);
-    if (prevClose != null && (st.highest == null || prevClose > st.highest)) st.highest = prevClose;
-    const trailBase = st.highest != null ? st.highest : ctx.entryPx;
-    const stop = Math.max(ctx.entryPx - 2.5 * atr, trailBase - 2.5 * atr);   // chandelier: ratchet up with price
+    const stop = ctx.entryPx - 2.5 * atr;   // hard stop: 2.5x daily ATR below entry
     if (price <= stop) return { side: 'sell', qty: pos };
+    const prevClose = ctx.closes.at(-2);
     if (prevClose != null && prevClose < ema50) return { side: 'sell', qty: pos };
-    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'trailing ATR stop' },
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '2.5x ATR stop' },
                { side: 'sell', price: ema50, trigger: 'below', note: '50-day trend break' }]);
     return null;
   }
 
-  st.highest = null;
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) return null;
   const uptrend = prevClose > ema50;
@@ -60,7 +55,7 @@ function onUpdate(ctx) {
                        { label: 'hashrate > 30d avg', ok: networkHealthy, closed: true }] }]);
   if (!uptrend || !networkHealthy) return null;
 
-  const riskCash = ctx.cash * 0.02;        // risk 2% of cash per trade
+  const riskCash = ctx.cash * 0.04;        // risk 4% of cash per trade (was 2%)
   const stopDist = 2.5 * atr;
   let qty = stopDist > 0 ? riskCash / stopDist : 0;
   const maxQty = (ctx.cash / price) * 0.95;
