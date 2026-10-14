@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4380](strategies/4380/) | Fear-Greed Contrarian Trend | -5.03% | +95.22% | +5.03% | 8 | 2026-10-14 |
+|  | [4380](strategies/4380/) | Fear-Greed Contrarian Trend ‡ | -5.03% | +95.22% | +5.03% | 8 | 2026-10-14 |
 | — | [4377](strategies/4377/) | Multi-Asset Donchian Basket EMA-Slope | -6.57% | — | +10.86% | 56 | 2026-10-14 |
 |  | [4378](strategies/4378/) | Fear-Greed Contrarian Dip Buyer | -3.75% | +95.22% | +4.86% | 14 | 2026-10-14 |
 | — | [4376](strategies/4376/) | Donchian Basket Portfolio CircuitBreaker 1D | +533.42% | — | +26.64% | 206 | 2026-10-14 |
