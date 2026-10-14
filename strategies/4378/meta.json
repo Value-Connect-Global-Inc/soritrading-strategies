@@ -3,10 +3,10 @@
   "name": "Fear-Greed Contrarian Dip Buyer",
   "kind": "custom",
   "verified": {
-    "backtestId": 20509,
-    "return": -2.89,
-    "mdd": 4.25,
-    "trades": 4,
+    "backtestId": 20515,
+    "return": -11.79,
+    "mdd": 12.75,
+    "trades": 358,
     "vsBuyHold": "lose",
     "benchRet": 528.46,
     "benchBasis": "price",
@@ -25,8 +25,8 @@
       "bars": 1000,
       "end": 1619136000
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "c9f3746300feaf40eec750025e2bd8ac2c28470b6fbcb8fdaef401cb8f476f89"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "f2f8b47f8e3d0888fb805b900d144af48b58b93b74d77c802e124d5fd30d93c2"
   },
   "config": null,
   "updatedAt": "2026-10-14T20:29:03.053Z",
