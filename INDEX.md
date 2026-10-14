@@ -5,14 +5,14 @@ Nothing is filtered out by return — the ones that lost money are part of the r
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
 **★ marks a strategy that out-returned buy & hold over the same window** — 509 of 2017 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 300 of them right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 299 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 **‡** after a name: the code was edited after its last verifying backtest — the published code is current, but the figures are from the previous code until a new backtest verifies it.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4367](strategies/4367/) | Donchian Basket DXY-Gated 1D ‡ | +154.63% | — | +26.10% | 94 | 2026-10-14 |
+|  | [4367](strategies/4367/) | Donchian Basket DXY-Gated 1D | +2.76% | +155.65% | +5.11% | 18 | 2026-10-14 |
 |  | [4366](strategies/4366/) | BTC Hashrate Cycle 1D | -66.60% | +143.61% | +87.74% | 379 | 2026-10-14 |
 | — | [4365](strategies/4365/) | Donchian Basket Vol-Scaled Sizing 1D | +32.11% | — | +19.38% | 104 | 2026-10-14 |
 | — | [4361](strategies/4361/) | Donchian Basket Baseline (for comparison) | +154.63% | — | +26.10% | 94 | 2026-10-14 |
