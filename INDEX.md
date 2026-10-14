@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 508 of 1998 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 508 of 1999 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 288 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [4349](strategies/4349/) | Fed-Easing Gated Donchian BTC 1D | -0.58% | +196.85% | +11.75% | 8 | 2026-10-14 |
 |  | [4348](strategies/4348/) | On-Chain Confirmed BTC Trend 1D | -10.00% | +155.65% | +40.78% | 23 | 2026-10-14 |
 | — | [4346](strategies/4346/) | Multi-Asset Donchian Basket 1D | +32.11% | — | +19.38% | 104 | 2026-10-14 |
 | — | [4345](strategies/4345/) | Multi-Asset Trend Basket 1D | +19.58% | — | +32.45% | 147 | 2026-10-14 |
