@@ -1,23 +1,24 @@
 /*
  * @coinsori-strategy v1
- * name: Donchian Basket Volatility-Scaled Sizing 1D
+ * name: Multi-Asset Donchian Basket 1D
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, XRP/USDT, BNB/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Same 5-coin Donchian breakout basket as the champion
- *   (55-bar high entry, 20-bar low exit, 2.5x ATR hard stop) but the position
- *   cap per leg shrinks when a coin is in a panic-volatility regime (ATR% above
- *   6%). Breakouts bought into extreme volatility fail more often, so sizing
- *   down then protects capital without touching the proven entry/exit rules.
- * When it buys and sells: buy on a fresh 55-bar high close above the 100-day
- *   EMA. Sell on a 20-bar low close, the 2.5x ATR hard stop, or a close below
- *   the 100-day EMA. Leg cap is 20% of cash normally, 8% when ATR% > 6%.
+ * Why this strategy: Five major cryptos run an independent Donchian breakout
+ *   (55-bar high entry, 20-bar low exit) with a 2.5x ATR hard stop, each sized
+ *   to 20% of cash. Donchian breaks only the 200-day filter's habit of buying
+ *   late and selling late; the ledger showed this recipe on a basket beats the
+ *   plain 200d trend basket on the same windows. Diversification is the point:
+ *   winners carry losers, and each coin's own stop caps its damage.
+ * When it buys and sells: for each coin, buy on a fresh 55-bar high close with a
+ *   hard 2.5x ATR stop. Sell on a 20-bar low close, the ATR stop, or a close
+ *   back below its 100-day EMA.
  * When it does NOT work: in a broad coordinated crypto bear all five legs go
- *   flat (safe, no upside); the 55-bar entry still buys late into melt-ups; and
- *   if a huge trend starts from a panic-volatility regime, the small position
- *   size caps the profit on that leg — it trades safety for upside.
+ *   flat (safe, no upside); the 55-bar entry buys late into melt-ups and the
+ *   20-bar exit sells late into dips, so it underperforms buy-and-hold of the
+ *   hottest coin in a straight-line rally.
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
@@ -54,10 +55,7 @@ function onUpdate(ctx) {
   const riskCash = ctx.cash * 0.02;
   const stopDist = 2.5 * atr;
   let qty = stopDist > 0 ? riskCash / stopDist : 0;
-  const atrPct = atr / price;
-  // panic regime: shrink the leg cap so we are not full-size into high-vol breakouts
-  const capPct = atrPct > 0.06 ? 0.08 : 0.20;
-  const maxQty = (ctx.cash / price) * capPct;
+  const maxQty = (ctx.cash / price) * 0.20; // cap each leg at 20% of cash
   if (qty > maxQty) qty = maxQty;
   if (qty <= 0) return null;
   return { side: 'buy', qty };
