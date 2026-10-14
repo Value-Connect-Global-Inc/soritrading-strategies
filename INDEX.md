@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4425](strategies/4425/) | Fed Policy Regime BTC 1D | -16.82% | +143.61% | +60.57% | 13 | 2026-10-14 |
+|  | [4425](strategies/4425/) | Fed Policy Regime BTC 1D | +58.09% | +155.65% | +64.89% | 2 | 2026-10-14 |
 |  | [4424](strategies/4424/) | AI 전략 ‡ | -25.37% | +315.94% | +26.15% | 219 | 2026-10-14 |
 |  | [4422](strategies/4422/) | AI 전략 | +58.19% | +427.47% | +23.17% | 66 | 2026-10-14 |
 |  | [4423](strategies/4423/) | Champion 4419 (comparison) ‡ | +88.00% | +129.73% | +29.10% | 180 | 2026-10-14 |
