@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4393](strategies/4393/) | Stochastic Oversold Trend Bounce | +0.01% | +143.16% | +3.82% | 8 | 2026-10-14 |
+|  | [4393](strategies/4393/) | Stochastic Oversold Trend Bounce | +25.64% | +315.94% | +6.04% | 22 | 2026-10-14 |
 |  | [4386](strategies/4386/) | Hashrate-Confirmed BTC Trend | +249.96% | +528.46% | +20.04% | 58 | 2026-10-14 |
 |  | [4385](strategies/4385/) | Array State Probe | -7.48% | +528.46% | +7.49% | 24 | 2026-10-14 |
 |  | [4378](strategies/4378/) | Fear-Greed Contrarian Dip Buyer | -3.75% | +95.22% | +4.86% | 14 | 2026-10-14 |
