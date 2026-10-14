@@ -1,0 +1,33 @@
+{
+  "id": 4393,
+  "name": "Stochastic Oversold Trend Bounce",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 20566,
+    "return": 0.01,
+    "mdd": 3.82,
+    "trades": 8,
+    "vsBuyHold": "lose",
+    "benchRet": 143.16,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1532736000,
+    "tTo": 1662249600,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1500봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 1500,
+      "end": 1662336000
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "b0a952e58e5f15a262d6ba13a8aa38b2934b2f0f6fbf6bec2e0c8ee9a3264177"
+  },
+  "config": null,
+  "updatedAt": "2026-10-14T21:52:56.274Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
