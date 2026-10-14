@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: Hashrate-Confirmed BTC Trend 1D (froth filter)
+ * name: Hashrate-Confirmed BTC Trend 1D (froth, risk 4%)
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
@@ -17,7 +17,8 @@
  * Greed index is above 75 (extreme greed) — buying at a mania top is bad
  * risk/reward, so sentiment is a second confirmation. Sells when price closes
  * below the 50-day EMA or a 2.5x ATR hard stop is hit. Positions are sized so
- * each trade risks 2% of cash.
+ * each trade risks 4% of cash, twice the conservative default, so the edge shows
+ * in returns.
  * When it does NOT work: hash rate is a slow-moving level, so in a short
  * speculative spike it stays in cash and misses the move; and in a crash driven
  * purely by macro (not mining) it can hold too long. It is trend-following, so
@@ -65,7 +66,7 @@ function onUpdate(ctx) {
                        { label: 'F&G not extreme greed', ok: notFroth, closed: true }] }]);
   if (!uptrend || !networkHealthy || !notFroth) return null;
 
-  const riskCash = ctx.cash * 0.02;         // risk 2% of cash per trade
+  const riskCash = ctx.cash * 0.04;         // risk 4% of cash per trade
   const stopDist = 2.5 * atr;
   let qty = stopDist > 0 ? riskCash / stopDist : 0;
   const maxQty = (ctx.cash / price) * 0.95;
