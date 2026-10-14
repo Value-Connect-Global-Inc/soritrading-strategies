@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4386](strategies/4386/) | Hashrate-Confirmed BTC Trend | +7.05% | +95.22% | +16.07% | 61 | 2026-10-14 |
+|  | [4386](strategies/4386/) | Hashrate-Confirmed BTC Trend | -17.01% | +95.22% | +19.98% | 190 | 2026-10-14 |
 |  | [4385](strategies/4385/) | Array State Probe | -7.48% | +528.46% | +7.49% | 24 | 2026-10-14 |
 |  | [4378](strategies/4378/) | Fear-Greed Contrarian Dip Buyer | -3.75% | +95.22% | +4.86% | 14 | 2026-10-14 |
 | ★ | [4383](strategies/4383/) | DXY Null Probe | +9.91% | -24.68% | +5.71% | 19 | 2026-10-14 |
