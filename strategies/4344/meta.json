@@ -1,0 +1,34 @@
+{
+  "id": 4344,
+  "name": "BTC Vol-Target Trend 1D",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 20325,
+    "return": 16.04,
+    "mdd": 21.65,
+    "trades": 9,
+    "vsBuyHold": "lose",
+    "benchRet": 143.61,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1506816000,
+    "tTo": 1601769600,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 17.99%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1100봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 1100,
+      "end": 1601856000
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "e291d4234da992ac5c70772546bab6567ae856034c430d93d578ff5057074413"
+  },
+  "config": null,
+  "updatedAt": "2026-10-14T15:15:04.117Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
