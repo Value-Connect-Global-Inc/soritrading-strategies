@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 510 of 2029 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 510 of 2030 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 305 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,12 +12,13 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [4386](strategies/4386/) | Hashrate-Confirmed BTC Trend | +7.05% | +95.22% | +16.07% | 61 | 2026-10-14 |
 |  | [4385](strategies/4385/) | Array State Probe | -7.48% | +528.46% | +7.49% | 24 | 2026-10-14 |
+|  | [4378](strategies/4378/) | Fear-Greed Contrarian Dip Buyer | -3.75% | +95.22% | +4.86% | 14 | 2026-10-14 |
 | ★ | [4383](strategies/4383/) | DXY Null Probe | +9.91% | -24.68% | +5.71% | 19 | 2026-10-14 |
 |  | [4382](strategies/4382/) | State Persistence Probe | +8.65% | +32.60% | +2.39% | 1 | 2026-10-14 |
 |  | [4380](strategies/4380/) | Fear-Greed Contrarian Trend ‡ | -5.03% | +95.22% | +5.03% | 8 | 2026-10-14 |
 | — | [4377](strategies/4377/) | Multi-Asset Donchian Basket EMA-Slope | -6.57% | — | +10.86% | 56 | 2026-10-14 |
-|  | [4378](strategies/4378/) | Fear-Greed Contrarian Dip Buyer | -3.75% | +95.22% | +4.86% | 14 | 2026-10-14 |
 | — | [4376](strategies/4376/) | Donchian Basket Portfolio CircuitBreaker 1D | +533.42% | — | +26.64% | 206 | 2026-10-14 |
 | — | [4375](strategies/4375/) | 4H Multi-Asset EMA Trend ‡ | -21.33% | — | +54.35% | 1026 | 2026-10-14 |
 | — | [4374](strategies/4374/) | 1D BB-Squeeze Breakout Basket | -3.95% | — | +6.40% | 10 | 2026-10-14 |
