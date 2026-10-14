@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: Hashrate-Confirmed BTC Trend 1D (slow exit)
+ * name: Hashrate-Confirmed BTC Trend 1D (risk 4%)
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
@@ -12,24 +12,22 @@
  * it, while a falling hash rate flags a rally that miners are abandoning. This
  * strategy only buys when BOTH the price trend and the network-health trend agree.
  * When it buys and sells: buys when the previous close is above the 50-day EMA
- * (fast trend line, gets in early) AND the hash rate is above its own 30-day
- * average (network expanding). Sells when price closes below the 100-day EMA
- * (slower exit lets winners ride a full trend instead of being shaken out) or a
- * 2.5x ATR hard stop is hit. Positions are sized so each trade risks 2% of cash.
+ * (a faster trend line than the 200-day) AND the hash rate is above its own
+ * 30-day average (network expanding). Sells when price closes below the 50-day
+ * EMA or a 2.5x ATR hard stop is hit. Positions are sized so each trade risks
+ * 4% of cash, twice the conservative default, so the edge shows in returns.
  * When it does NOT work: hash rate is a slow-moving level, so in a short
  * speculative spike it stays in cash and misses the move; and in a crash driven
  * purely by macro (not mining) it can hold too long. It is trend-following, so
- * it does not profit from range-bound price action. The slower exit also gives
- * back more on a reversal before it triggers.
+ * it does not profit from range-bound price action.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
   const ema50 = ctx.ema(50, 1);
-  const ema100 = ctx.ema(100, 1);
   const atr = ctx.atr(14, 1);
-  if (ema50 == null || ema100 == null || atr == null || atr <= 0) return null;
+  if (ema50 == null || atr == null || atr <= 0) return null;
 
   // Network health: current hash rate vs its own 30-day average
   const hr = ctx.data('hashrate');
@@ -43,9 +41,9 @@ function onUpdate(ctx) {
     const stop = ctx.entryPx - 2.5 * atr;   // hard stop: 2.5x daily ATR below entry
     if (price <= stop) return { side: 'sell', qty: pos };
     const prevClose = ctx.closes.at(-2);
-    if (prevClose != null && prevClose < ema100) return { side: 'sell', qty: pos };
+    if (prevClose != null && prevClose < ema50) return { side: 'sell', qty: pos };
     ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '2.5x ATR stop' },
-               { side: 'sell', price: ema100, trigger: 'below', note: '100-day trend break' }]);
+               { side: 'sell', price: ema50, trigger: 'below', note: '50-day trend break' }]);
     return null;
   }
 
@@ -57,7 +55,7 @@ function onUpdate(ctx) {
                        { label: 'hashrate > 30d avg', ok: networkHealthy, closed: true }] }]);
   if (!uptrend || !networkHealthy) return null;
 
-  const riskCash = ctx.cash * 0.02;         // risk 2% of cash per trade
+  const riskCash = ctx.cash * 0.04;         // risk 4% of cash per trade
   const stopDist = 2.5 * atr;
   let qty = stopDist > 0 ? riskCash / stopDist : 0;
   const maxQty = (ctx.cash / price) * 0.95;

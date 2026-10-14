@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4423](strategies/4423/) | Champion 4419 (comparison) | +88.00% | +129.73% | +29.10% | 180 | 2026-10-14 |
+|  | [4423](strategies/4423/) | Champion 4419 (comparison) ‡ | +88.00% | +129.73% | +29.10% | 180 | 2026-10-14 |
 |  | [4422](strategies/4422/) | AI 전략 | +58.19% | +427.47% | +23.17% | 66 | 2026-10-14 |
 |  | [4421](strategies/4421/) | Fear-Greed Panic Buy BTC 1D ‡ | -2.21% | +258.75% | +15.35% | 24 | 2026-10-14 |
 |  | [4420](strategies/4420/) | Address Adoption Trend BTC 1D (copy) | +51.97% | +196.85% | +30.01% | 63 | 2026-10-14 |
