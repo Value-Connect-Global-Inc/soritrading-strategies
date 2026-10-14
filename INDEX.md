@@ -4,14 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 509 of 2007 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 294 of them right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 509 of 2008 right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 295 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 **‡** after a name: the code was edited after its last verifying backtest — the published code is current, but the figures are from the previous code until a new backtest verifies it.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [4358](strategies/4358/) | Champion Comparison Copy | +523.02% | — | +20.04% | 78 | 2026-10-14 |
 | — | [4357](strategies/4357/) | Volatility Squeeze Breakout Basket 1D | +62.07% | — | +27.97% | 149 | 2026-10-14 |
 |  | [4356](strategies/4356/) | BTC Address-Momentum Trend 1D | +51.57% | +528.46% | +6.20% | 204 | 2026-10-14 |
 | — | [4355](strategies/4355/) | Multi-Asset Contrarian Reversion 1D | -19.26% | — | +22.17% | 67 | 2026-10-14 |
