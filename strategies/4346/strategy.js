@@ -46,7 +46,10 @@ function onUpdate(ctx) {
   }
 
   const hh55 = ctx.high(55, 2);
-  if (hh55 == null || prevClose <= hh55) return null;  // need a fresh 55-bar high close
+  if (hh55 == null) return null;  // not enough history yet
+  ctx.watch([{ side: 'buy', price: hh55, trigger: 'above', note: '55-bar breakout',
+               conds: [{ label: 'close > 100-EMA', ok: prevClose > ema100, closed: true }] }]);
+  if (prevClose <= hh55) return null;  // need a fresh 55-bar high close
   if (prevClose < ema100) return null;
 
   const riskCash = ctx.cash * 0.02;
