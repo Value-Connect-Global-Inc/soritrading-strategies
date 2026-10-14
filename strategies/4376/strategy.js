@@ -49,6 +49,7 @@ function onUpdate(ctx) {
 
   // DXY regime filter — only open NEW positions while USD is not strengthening.
   const dxy = ctx.macro('dxy');
+  ctx.log('DXY_VAL', dxy, typeof dxy);
   const st = ctx.state;
   if (st.dxyHist === undefined) st.dxyHist = [];
   if (dxy != null) {
