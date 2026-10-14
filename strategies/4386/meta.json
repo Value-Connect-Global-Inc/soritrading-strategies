@@ -3,16 +3,16 @@
   "name": "Hashrate-Confirmed BTC Trend",
   "kind": "custom",
   "verified": {
-    "backtestId": 20546,
-    "return": -17.01,
-    "mdd": 19.98,
-    "trades": 190,
+    "backtestId": 20549,
+    "return": 249.96,
+    "mdd": 20.04,
+    "trades": 58,
     "vsBuyHold": "lose",
-    "benchRet": 95.22,
+    "benchRet": 528.46,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1705276800,
-    "tTo": 1791590400,
+    "tFrom": 1532736000,
+    "tTo": 1619049600,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
@@ -23,10 +23,10 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1000,
-      "end": 1791936000
+      "end": 1619136000
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "48c8c98271175946fc194358cce686f474be6383656cf088a6b7c11e8ebfce5d"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "94c5132c8e8e62f124a8c386dbc301e7c96e78b1241e9c2f543f973bb866b6bb"
   },
   "config": null,
   "updatedAt": "2026-10-14T21:14:23.304Z",
