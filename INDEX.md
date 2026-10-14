@@ -13,10 +13,10 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
 | — | [4365](strategies/4365/) | Donchian Basket Vol-Scaled Sizing 1D | +32.11% | — | +19.38% | 104 | 2026-10-14 |
+| — | [4361](strategies/4361/) | Donchian Basket Baseline (for comparison) | +154.63% | — | +26.10% | 94 | 2026-10-14 |
 |  | [4364](strategies/4364/) | BTC 4H Donchian Breakout | -16.94% | +485.61% | +33.42% | 247 | 2026-10-14 |
 |  | [4363](strategies/4363/) | Donchian Basket 200-SMA Regime Filter 1D | +29.56% | +485.61% | +7.37% | 83 | 2026-10-14 |
 | — | [4362](strategies/4362/) | Donchian Basket Chandelier Exit 1D | +83.09% | — | +38.23% | 92 | 2026-10-14 |
-| — | [4361](strategies/4361/) | Donchian Basket Baseline (for comparison) | +154.63% | — | +26.10% | 94 | 2026-10-14 |
 |  | [4360](strategies/4360/) | BTC On-Chain Demand Trend 1D | +4.06% | +143.61% | +17.04% | 128 | 2026-10-14 |
 | — | [4359](strategies/4359/) | Mean-Reversion Pullback Basket 1D | +4.25% | — | +6.85% | 42 | 2026-10-14 |
 | — | [4358](strategies/4358/) | Champion Comparison Copy | +523.02% | — | +20.04% | 78 | 2026-10-14 |
