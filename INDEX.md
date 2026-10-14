@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4359](strategies/4359/) | Mean-Reversion Pullback Basket 1D | -24.18% | — | +25.43% | 150 | 2026-10-14 |
+| — | [4359](strategies/4359/) | Mean-Reversion Pullback Basket 1D ‡ | -24.18% | — | +25.43% | 150 | 2026-10-14 |
 | — | [4358](strategies/4358/) | Champion Comparison Copy | +523.02% | — | +20.04% | 78 | 2026-10-14 |
 | — | [4357](strategies/4357/) | Volatility Squeeze Breakout Basket 1D | +62.07% | — | +27.97% | 149 | 2026-10-14 |
 |  | [4356](strategies/4356/) | BTC Address-Momentum Trend 1D | +51.57% | +528.46% | +6.20% | 204 | 2026-10-14 |
