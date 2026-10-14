@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4344](strategies/4344/) | BTC Vol-Target Trend 1D | +16.04% | +143.61% | +21.65% | 9 | 2026-10-14 |
+|  | [4344](strategies/4344/) | BTC Vol-Target Trend 1D | +7.03% | +196.85% | +8.58% | 31 | 2026-10-14 |
 |  | [4343](strategies/4343/) | ETH On-Chain Gated Breakout 4H | -28.61% | -26.02% | +33.21% | 138 | 2026-10-14 |
 |  | [3824](strategies/3824/) | BtcHashRibbons | -0.40% | +487.06% | +2.52% | 8 | 2026-10-13 |
 |  | [3823](strategies/3823/) | BtcFearGreedContrarian | +0.96% | +556.86% | +13.27% | 14 | 2026-10-13 |
