@@ -47,28 +47,17 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // BISECT: constant DXY to test filter logic vs actual macro data
-  const dxy = 100;
-  const st = ctx.state;
-  if (st.dxyHist === undefined) st.dxyHist = [];
-  if (dxy != null) {
-    st.dxyHist.push(dxy);
-    if (st.dxyHist.length > 30) st.dxyHist.shift();
-  }
-  let riskOn = true;
-  if (st.dxyHist.length >= 20) {
-    let sum = 0;
-    const n = st.dxyHist.length;
-    for (let k = 0; k < 20; k++) sum += st.dxyHist[n - 1 - k];
-    const dxyMean20 = sum / 20;
-    riskOn = dxy <= dxyMean20;
-  }
+  // SCALE PROBE: allow entries only if DXY is a normal index (<1e9). If DXY were
+  // an epoch timestamp or huge value, this blocks everything — so trade count
+  // reveals the true scale of ctx.macro('dxy').
+  const dxy = ctx.macro('dxy');
+  let riskOn = dxy == null || dxy < 1e9;
 
   const hh55 = ctx.high(55, 2);
   if (hh55 == null) return null;
   ctx.watch([{ side: 'buy', price: hh55, trigger: 'above', note: '55-bar breakout',
                conds: [{ label: 'close > 100-EMA', ok: prevClose > ema100, closed: true },
-                       { label: 'DXY risk-on', ok: riskOn }] }]);
+                       { label: 'DXY sane', ok: riskOn }] }]);
   if (prevClose <= hh55) return null;
   if (prevClose < ema100) return null;
   if (!riskOn) return null;

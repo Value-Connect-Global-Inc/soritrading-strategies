@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [4376](strategies/4376/) | Donchian Basket Portfolio CircuitBreaker 1D | -0.84% | -3.98% | +2.88% | 8 | 2026-10-14 |
+| ★ | [4376](strategies/4376/) | Donchian Basket Portfolio CircuitBreaker 1D ‡ | -0.84% | -3.98% | +2.88% | 8 | 2026-10-14 |
 | — | [4375](strategies/4375/) | 4H Multi-Asset EMA Trend ‡ | -21.33% | — | +54.35% | 1026 | 2026-10-14 |
 | — | [4374](strategies/4374/) | 1D BB-Squeeze Breakout Basket | -3.95% | — | +6.40% | 10 | 2026-10-14 |
 | — | [4372](strategies/4372/) | 4H Keltner MR Basket | -16.67% | — | +16.89% | 71 | 2026-10-14 |
