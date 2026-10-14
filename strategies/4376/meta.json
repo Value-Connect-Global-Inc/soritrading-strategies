@@ -3,14 +3,14 @@
   "name": "Donchian Basket Portfolio CircuitBreaker 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 20491,
-    "return": -1.98,
-    "mdd": 12.73,
-    "trades": 666,
+    "backtestId": 20493,
+    "return": 174.78,
+    "mdd": 22.34,
+    "trades": 18,
     "vsBuyHold": "unmeasured",
     "gapPct": 0,
-    "tFrom": 1662336000,
-    "tTo": 1727049600,
+    "tFrom": 1597536000,
+    "tTo": 1662249600,
     "approxNotes": [
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 3750봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다",
       "[생존 편향] 이 유니버스는 **지금 거래되는 종목**만입니다. 구간 중(또는 그 전에) 상장폐지된 종목은 **처음부터 들어 있지 않습니다** — 망한 종목이 빠져 있어 수익률이 **실제보다 좋게** 나옵니다. 스캐너·랭킹 전략일수록 그 차이가 큽니다."
@@ -20,11 +20,11 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 750,
-      "end": 1727136000,
+      "end": 1662336000,
       "syms": 5
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "3504b41a2de1dd77b605c5eb84d72ec581f348096e341ec99317d670c6ba355c"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "5d61de1a450861801f5929d355bb491e3f7dbeb3793e1e405c927065349e6375"
   },
   "config": null,
   "updatedAt": "2026-10-14T19:52:07.649Z",
