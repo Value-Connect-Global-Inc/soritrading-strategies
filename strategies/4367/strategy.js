@@ -35,12 +35,11 @@ function onUpdate(ctx) {
   // macro gate: carry dxy forward, keep 60-day history
   const st = ctx.state;
   if (!Array.isArray(st.dxyHist)) st.dxyHist = [];
-  const dxy = ctx.macro('dxy');
+  const dxy = ctx.data('dxy');
+  if (dxy != null) ctx.log('dxy', dxy, 'i', ctx.i);
   if (dxy != null && Number.isFinite(dxy)) {
     st.dxyHist.push(dxy);
     if (st.dxyHist.length > 60) st.dxyHist.shift();
-  } else if (st.dxyHist.length === 0) {
-    return null; // no macro data yet — wait
   }
   let dollarStrong = false;
   if (st.dxyHist.length >= 60) {
