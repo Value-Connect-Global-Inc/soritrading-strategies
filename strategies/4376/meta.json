@@ -3,31 +3,30 @@
   "name": "Donchian Basket Portfolio CircuitBreaker 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 20496,
-    "return": -0.84,
-    "mdd": 2.88,
-    "trades": 8,
-    "vsBuyHold": "win",
-    "benchRet": -3.98,
-    "benchBasis": "price",
+    "backtestId": 20500,
+    "return": -4.74,
+    "mdd": 11.72,
+    "trades": 56,
+    "vsBuyHold": "unmeasured",
     "gapPct": 0,
-    "tFrom": 1765756800,
+    "tFrom": 1726876800,
     "tTo": 1791590400,
     "approxNotes": [
-      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 300봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 3750봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다",
+      "[생존 편향] 이 유니버스는 **지금 거래되는 종목**만입니다. 구간 중(또는 그 전에) 상장폐지된 종목은 **처음부터 들어 있지 않습니다** — 망한 종목이 빠져 있어 수익률이 **실제보다 좋게** 나옵니다. 스캐너·랭킹 전략일수록 그 차이가 큽니다."
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
-      "bars": 300,
-      "end": 1791936000
+      "bars": 750,
+      "end": 1791936000,
+      "syms": 5
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "77e7b9bef21b99831e4fc4b18363d35242d3079783444f3525c3bfb44762ec2c"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "567080e077f50a4f0654bed2cc6889fd3e5ba9b41aa8478eb75e89e864a6dd2d"
   },
   "config": null,
-  "updatedAt": "2026-10-14T19:59:25.280Z",
+  "updatedAt": "2026-10-14T20:00:05.829Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

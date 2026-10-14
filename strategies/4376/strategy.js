@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: Multi-Asset Donchian Basket DXY-Filtered
+ * name: Multi-Asset Donchian Basket EMA-Slope
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, XRP/USDT, BNB/USDT
  * interval: 1d
@@ -8,19 +8,19 @@
  *
  * Why this strategy: Five major cryptos run an independent Donchian breakout
  *   (55-bar high entry, 20-bar low exit) with a 2.5x ATR hard stop, each sized
- *   to 20% of cash — the same basket as the champion. Added on top: a MACRO
- *   regime filter that pauses NEW entries while the US dollar is strengthening
- *   (DXY above its 20-day mean). Crypto is a risk asset: when the dollar
- *   rallies, breakouts whipsaw and trend-following bleeds, which is exactly
- *   what the champion's recent windows showed.
+ *   to 20% of cash — the same basket as the champion. Added on top: a regime
+ *   filter that only opens NEW breakouts when the coin's own 100-day EMA is
+ *   RISING (today above yesterday). A breakout into a falling long-term trend
+ *   is a bear-market rally that whipsaws; requiring an uptrending EMA filters
+ *   those out. This targets the champion's known weakness: it bought breakouts
+ *   right before the recent flat/bear windows.
  * When it buys and sells: for each coin, buy on a fresh 55-bar high close with a
- *   hard 2.5x ATR stop, but only when DXY is below its 20-day mean (risk-on).
- *   Sell on a 20-bar low close, the ATR stop, or a close back below its 100-day EMA.
- * When it does NOT work: if DXY stays strong for long stretches it sits in cash
- *   and misses rallies; in a broad coordinated crypto bear all legs still go
- *   flat (safe, no upside). The 55-bar entry buys late into melt-ups and the
- *   20-bar exit sells late into dips, so it underperforms buy-and-hold in a
- *   straight-line rally.
+ *   hard 2.5x ATR stop, but only while the 100-day EMA is rising. Sell on a
+ *   20-bar low close, the ATR stop, or a close back below its 100-day EMA.
+ * When it does NOT work: in a choppy sideways market where the 100-EMA is flat
+ *   it sits in cash and misses range rallies; in a straight-line rally it still
+ *   buys late (55-bar entry) and sells late (20-bar exit), underperforming
+ *   buy-and-hold of the hottest coin.
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
@@ -29,7 +29,8 @@ function onUpdate(ctx) {
 
   const atr = ctx.atr(14, 1);
   const ema100 = ctx.ema(100, 1);
-  if (atr == null || atr <= 0 || ema100 == null) return null;
+  const ema100Prev = ctx.ema(100, 2);
+  if (atr == null || atr <= 0 || ema100 == null || ema100Prev == null) return null;
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) return null;
 
@@ -47,20 +48,15 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // SCALE PROBE: allow entries only if DXY is a normal index (<1e9). If DXY were
-  // an epoch timestamp or huge value, this blocks everything — so trade count
-  // reveals the true scale of ctx.macro('dxy').
-  const dxy = ctx.macro('dxy');
-  let riskOn = dxy == null || dxy < 1e9;
-
+  const emaRising = ema100 > ema100Prev;  // long-term trend must be up
   const hh55 = ctx.high(55, 2);
   if (hh55 == null) return null;
   ctx.watch([{ side: 'buy', price: hh55, trigger: 'above', note: '55-bar breakout',
                conds: [{ label: 'close > 100-EMA', ok: prevClose > ema100, closed: true },
-                       { label: 'DXY sane', ok: riskOn }] }]);
+                       { label: '100-EMA rising', ok: emaRising, closed: true }] }]);
   if (prevClose <= hh55) return null;
   if (prevClose < ema100) return null;
-  if (!riskOn) return null;
+  if (!emaRising) return null;
 
   const riskCash = ctx.cash * 0.02;
   const stopDist = 2.5 * atr;
