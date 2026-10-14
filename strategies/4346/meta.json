@@ -3,7 +3,7 @@
   "name": "Multi-Asset Donchian Basket 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 20334,
+    "backtestId": 20335,
     "return": 32.11,
     "mdd": 19.38,
     "trades": 104,
@@ -27,6 +27,6 @@
     "verifiedCodeSha256": "ec44bff89462a3435e60107705f6612853171f078b166b9333b6df48770ee34d"
   },
   "config": null,
-  "updatedAt": "2026-10-14T15:22:17.768Z",
+  "updatedAt": "2026-10-14T15:24:52.620Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
