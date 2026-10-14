@@ -3,10 +3,10 @@
   "name": "Fear-Greed Panic Buy BTC 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 20671,
-    "return": 0.37,
-    "mdd": 1.95,
-    "trades": 6,
+    "backtestId": 20673,
+    "return": -2.21,
+    "mdd": 15.35,
+    "trades": 24,
     "vsBuyHold": "lose",
     "benchRet": 258.75,
     "benchBasis": "price",
@@ -26,9 +26,9 @@
       "end": 1612137600
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "08d5c838dea5aa7efb724ae4ca7090441079d8e5043d2b4f66a3abac163ac212"
+    "verifiedCodeSha256": "1c029bc921aec23fb9fbf1d319b2043b84d6d38b95cf1b749801cd648f138c4b"
   },
   "config": null,
-  "updatedAt": "2026-10-14T23:26:23.514Z",
+  "updatedAt": "2026-10-14T23:27:15.062Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
