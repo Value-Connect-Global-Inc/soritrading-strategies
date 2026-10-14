@@ -1,43 +1,59 @@
 /*
  * @coinsori-strategy v1
- * name: Fed Policy Regime BTC 1D
+ * name: Hashrate-Confirmed BTC Trend 1D (risk 4%)
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Bitcoin behaves like a risk asset that thrives when central
- * banks keep money cheap. The US federal funds rate is the clearest public gauge
- * of that policy stance, and it is a completely different signal family from
- * price trend, on-chain metrics or sentiment indexes.
- * When it buys and sells: buys and holds BTC while the fed funds rate is below
- * 2% (accommodative policy = risk-on); sells flat when the rate rises to 2% or
- * above (tight policy = risk-off), or when a 2.5x ATR hard stop is hit.
- * When it does NOT work: the rate moves in long slow waves, so it reacts late to
- * policy turns and can re-enter late after a crash; and it ignores all price,
- * volume and on-chain information, so it stays long through sharp drawdowns that
- * a price-based rule would have dodged.
+ * Why this strategy: Bitcoin's network hash rate is a real, physical measure of
+ * mining investment — it tends to rise over the long term as the network grows.
+ * A rising hash rate confirms that a price rally has real network support behind
+ * it, while a falling hash rate flags a rally that miners are abandoning. This
+ * strategy only buys when BOTH the price trend and the network-health trend agree.
+ * When it buys and sells: buys when the previous close is above the 50-day EMA
+ * (a faster trend line than the 200-day) AND the hash rate is above its own
+ * 30-day average (network expanding). Sells when price closes below the 50-day
+ * EMA or a 2.5x ATR hard stop is hit. Positions are sized so each trade risks
+ * 4% of cash, twice the conservative default, so the edge shows in returns.
+ * When it does NOT work: hash rate is a slow-moving level, so in a short
+ * speculative spike it stays in cash and misses the move; and in a crash driven
+ * purely by macro (not mining) it can hold too long. It is trend-following, so
+ * it does not profit from range-bound price action.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
+  const ema50 = ctx.ema(50, 1);
   const atr = ctx.atr(14, 1);
-  if (atr == null || atr <= 0) return null;
+  if (ema50 == null || atr == null || atr <= 0) return null;
 
-  const fed = ctx.data('fed');
-  const fedVal = fed == null ? null : Number(fed);
-  const easy = fedVal != null && Number.isFinite(fedVal) && fedVal < 2.0;  // loose-money regime
+  // Network health: current hash rate vs its own 30-day average
+  const hr = ctx.data('hashrate');
+  const hrSma = ctx.data('hashrate_sma30');
+  const hrVal = hr == null ? null : Number(hr);
+  const hrAvg = hrSma == null ? null : Number(hrSma);
+  const networkHealthy = (hrVal != null && hrAvg != null && Number.isFinite(hrVal) && Number.isFinite(hrAvg) && hrAvg > 0 && hrVal > hrAvg);
 
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
     const stop = ctx.entryPx - 2.5 * atr;   // hard stop: 2.5x daily ATR below entry
     if (price <= stop) return { side: 'sell', qty: pos };
-    if (!easy) return { side: 'sell', qty: pos };
+    const prevClose = ctx.closes.at(-2);
+    if (prevClose != null && prevClose < ema50) return { side: 'sell', qty: pos };
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '2.5x ATR stop' },
+               { side: 'sell', price: ema50, trigger: 'below', note: '50-day trend break' }]);
     return null;
   }
 
-  if (!easy) return null;
+  const prevClose = ctx.closes.at(-2);
+  if (prevClose == null) return null;
+  const uptrend = prevClose > ema50;
+  ctx.watch([{ side: 'buy', price: ema50, trigger: 'above', note: 'close above 50-day EMA',
+               conds: [{ label: 'close > 50-EMA', ok: uptrend, closed: true },
+                       { label: 'hashrate > 30d avg', ok: networkHealthy, closed: true }] }]);
+  if (!uptrend || !networkHealthy) return null;
 
   const riskCash = ctx.cash * 0.04;         // risk 4% of cash per trade
   const stopDist = 2.5 * atr;

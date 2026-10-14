@@ -3,10 +3,10 @@
   "name": "Fed Policy Regime BTC 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 20703,
-    "return": 58.09,
-    "mdd": 64.89,
-    "trades": 2,
+    "backtestId": 20707,
+    "return": 70.23,
+    "mdd": 24.35,
+    "trades": 57,
     "vsBuyHold": "lose",
     "benchRet": 155.65,
     "benchBasis": "price",
@@ -15,6 +15,7 @@
     "tTo": 1696809600,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 76.89%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1100봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
@@ -26,9 +27,9 @@
       "end": 1696896000
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "72bdb48436cff2be88ebca33ec3c0337cf37a47bc3d37ebdb8233ed07c9d4a3f"
+    "verifiedCodeSha256": "e6f6001805671f8aba23e091ae6a9e87b2b2bf61674163f1a5d46ad8cbffcdda"
   },
   "config": null,
-  "updatedAt": "2026-10-14T23:53:54.577Z",
+  "updatedAt": "2026-10-14T23:55:12.582Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
