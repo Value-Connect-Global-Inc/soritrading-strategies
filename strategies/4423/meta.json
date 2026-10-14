@@ -3,16 +3,16 @@
   "name": "Champion 4419 (comparison)",
   "kind": "custom",
   "verified": {
-    "backtestId": 20686,
-    "return": 29.41,
-    "mdd": 12.16,
-    "trades": 66,
+    "backtestId": 20690,
+    "return": 88,
+    "mdd": 29.1,
+    "trades": 180,
     "vsBuyHold": "lose",
-    "benchRet": 427.47,
+    "benchRet": 129.73,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1672531200,
-    "tTo": 1767139200,
+    "tFrom": 1577836800,
+    "tTo": 1672444800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
@@ -23,12 +23,12 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1096,
-      "end": 1767225600
+      "end": 1672531200
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "68cecd33a7456a11f7b4b5d8e513a04571f668e2d108c7ae0c548ed9c77d7c23"
+    "verifiedCodeSha256": "45e9eff88ae531cb29d113a1d4d87006862e656f389ed27e53a9f26501b4a5db"
   },
   "config": null,
-  "updatedAt": "2026-10-14T23:36:01.314Z",
+  "updatedAt": "2026-10-14T23:40:13.726Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
