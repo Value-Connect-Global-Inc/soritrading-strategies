@@ -1,0 +1,34 @@
+{
+  "id": 4354,
+  "name": "Liq-Fade OI Probe BTC Perp 4H",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 20371,
+    "return": -14.18,
+    "mdd": 39.98,
+    "trades": 224,
+    "vsBuyHold": "win",
+    "benchRet": -19.68,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1762891200,
+    "tTo": 1791676800,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[유동성/전무] 시장가 주문 7716건은 **한 주도 체결되지 않았습니다**. 부분체결이 아니라 전무라, 그 시점의 진입·청산은 **일어나지 않았습니다.**",
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 100%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 2000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "bars": 2000
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "987d711d89de19914de4e3adb3e809032bb1687acdf5f663008ba4ba0d199ed9"
+  },
+  "config": null,
+  "updatedAt": "2026-10-14T16:30:52.040Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
