@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4385](strategies/4385/) | Array State Probe ‡ | -9.41% | -3.98% | +14.34% | 9 | 2026-10-14 |
+|  | [4385](strategies/4385/) | Array State Probe | -7.48% | +528.46% | +7.49% | 24 | 2026-10-14 |
 | ★ | [4383](strategies/4383/) | DXY Null Probe | +9.91% | -24.68% | +5.71% | 19 | 2026-10-14 |
 |  | [4382](strategies/4382/) | State Persistence Probe | +8.65% | +32.60% | +2.39% | 1 | 2026-10-14 |
 |  | [4380](strategies/4380/) | Fear-Greed Contrarian Trend ‡ | -5.03% | +95.22% | +5.03% | 8 | 2026-10-14 |
