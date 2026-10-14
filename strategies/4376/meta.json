@@ -3,7 +3,7 @@
   "name": "Donchian Basket Portfolio CircuitBreaker 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 20475,
+    "backtestId": 20478,
     "return": -10.84,
     "mdd": 32.58,
     "trades": 494,
