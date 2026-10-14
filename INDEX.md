@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4357](strategies/4357/) | Volatility Squeeze Breakout Basket 1D | +5.61% | — | +2.19% | 2 | 2026-10-14 |
+| — | [4357](strategies/4357/) | Volatility Squeeze Breakout Basket 1D ‡ | +5.61% | — | +2.19% | 2 | 2026-10-14 |
 |  | [4356](strategies/4356/) | BTC Address-Momentum Trend 1D | +51.57% | +528.46% | +6.20% | 204 | 2026-10-14 |
 | — | [4355](strategies/4355/) | Multi-Asset Contrarian Reversion 1D | -19.26% | — | +22.17% | 67 | 2026-10-14 |
 | ★ | [4354](strategies/4354/) | Liq-Fade OI Probe BTC Perp 4H | -14.18% | -19.68% | +39.98% | 224 | 2026-10-14 |

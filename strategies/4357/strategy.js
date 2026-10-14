@@ -12,11 +12,11 @@
  *   55-bar breakout which can fire after a move is already extended. Each coin
  *   runs its own squeeze breakout with a 2.5x ATR hard stop, sized to 20% of
  *   cash.
- * When it buys and sells: buy a coin when its close breaks above the 20-bar
- *   high AND the Bollinger(20,2) bandwidth is compressed (<4%). Sell on a
+ * When it buys and sells: buy a coin when its close breaks above the 10-bar
+ *   high AND the Bollinger(20,2) bandwidth is compressed (<15%). Sell on a
  *   20-bar low close or the 2.5x ATR hard stop.
  * When it does NOT work: in a low-volatility grind that never breaks out it
- *   sits idle; during a high-volatility regime the 4% bandwidth filter rarely
+ *   sits idle; during a high-volatility regime the bandwidth filter rarely
  *   triggers, so it misses sustained trends and underperforms the 1D champion.
  */
 function onUpdate(ctx) {
@@ -41,17 +41,17 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // squeeze detection: Bollinger(20,2) bandwidth under 4% of the mid
+  // squeeze detection: Bollinger(20,2) bandwidth under 15% of the mid
   const bb = ctx.bb(20, 2, 1);
   if (bb == null) return null;
   const bw = (bb.upper - bb.lower) / bb.mid;
-  if (bw > 0.04) return null; // not squeezed — skip
+  if (bw > 0.15) return null; // not squeezed — skip
 
-  const hh20 = ctx.high(20, 2);
-  if (hh20 == null) return null;
-  ctx.watch([{ side: 'buy', price: hh20, trigger: 'above', note: 'post-squeeze breakout',
-               conds: [{ label: 'BB width < 4%', now: bw, op: '<', ref: 0.04, closed: true }] }]);
-  if (prevClose <= hh20) return null;
+  const hh10 = ctx.high(10, 2);
+  if (hh10 == null) return null;
+  ctx.watch([{ side: 'buy', price: hh10, trigger: 'above', note: 'post-squeeze breakout',
+               conds: [{ label: 'BB width < 15%', now: bw, op: '<', ref: 0.15, closed: true }] }]);
+  if (prevClose <= hh10) return null;
 
   const riskCash = ctx.cash * 0.02;      // risk 2% of cash per leg on the stop
   const stopDist = 2.5 * atr;
