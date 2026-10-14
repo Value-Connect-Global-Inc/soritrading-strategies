@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4375](strategies/4375/) | 4H Multi-Asset EMA Trend | -21.33% | — | +54.35% | 1026 | 2026-10-14 |
+| — | [4375](strategies/4375/) | 4H Multi-Asset EMA Trend ‡ | -21.33% | — | +54.35% | 1026 | 2026-10-14 |
 | — | [4374](strategies/4374/) | 1D BB-Squeeze Breakout Basket | -3.95% | — | +6.40% | 10 | 2026-10-14 |
 | — | [4372](strategies/4372/) | 4H Keltner MR Basket | -16.67% | — | +16.89% | 71 | 2026-10-14 |
 |  | [4370](strategies/4370/) | BTC Volume-Confirmed Donchian 1D | -17.57% | +91.09% | +58.45% | 13 | 2026-10-14 |
