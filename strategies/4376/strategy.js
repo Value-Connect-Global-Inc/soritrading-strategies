@@ -1,26 +1,29 @@
 /*
  * @coinsori-strategy v1
- * name: Donchian Basket Portfolio CircuitBreaker 1D
+ * name: Multi-Asset Donchian Basket DXY-Filtered
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, XRP/USDT, BNB/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: The champion Donchian basket makes the most money but eats
- *   deep 62-76% drawdowns, because each coin's 2.5x ATR stop is wide. This adds
- *   a portfolio-level circuit breaker: it tracks the whole account's equity and,
- *   if it falls 25% from its peak, it forces the basket flat and only re-enters
- *   after the account makes a new high. The per-coin Donchian logic is the same
- *   as the champion; only this portfolio risk layer is added.
- * When it buys and sells: per coin, buy a 55-day high close, sell on a 20-day
- *   low, 2.5x ATR stop, or 100-EMA break. PLUS: if portfolio equity is 25%
- *   below its peak, sell everything and wait for a new equity high.
- * When it does NOT work: after a real crash the circuit breaker keeps it in cash
- *   until the equity fully recovers, so it misses the first leg of the next
- *   bull; in a slow grind it adds nothing. The 25% breaker is a blunt tool that
- *   can lock in a loss instead of riding a V-recovery.
+ * Why this strategy: Five major cryptos run an independent Donchian breakout
+ *   (55-bar high entry, 20-bar low exit) with a 2.5x ATR hard stop, each sized
+ *   to 20% of cash — the same basket as the champion. Added on top: a MACRO
+ *   regime filter that pauses NEW entries while the US dollar is strengthening
+ *   (DXY above its 20-day mean). Crypto is a risk asset: when the dollar
+ *   rallies, breakouts whipsaw and trend-following bleeds, which is exactly
+ *   what the champion's recent windows showed.
+ * When it buys and sells: for each coin, buy on a fresh 55-bar high close with a
+ *   hard 2.5x ATR stop, but only when DXY is below its 20-day mean (risk-on).
+ *   Sell on a 20-bar low close, the ATR stop, or a close back below its 100-day EMA.
+ * When it does NOT work: if DXY stays strong for long stretches it sits in cash
+ *   and misses rallies; in a broad coordinated crypto bear all legs still go
+ *   flat (safe, no upside). The 55-bar entry buys late into melt-ups and the
+ *   20-bar exit sells late into dips, so it underperforms buy-and-hold in a
+ *   straight-line rally.
  */
 function onUpdate(ctx) {
+  const sym = ctx.sym;
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
@@ -30,36 +33,12 @@ function onUpdate(ctx) {
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) return null;
 
-  // Portfolio equity = cash + value of every open position.
-  let held = 0;
-  let pos = 0;
-  try {
-    const positions = ctx.positions();
-    if (Array.isArray(positions)) {
-      for (const p of positions) {
-        const m = ctx.market(p.sym);
-        const px = m && Number.isFinite(m.price) ? m.price : p.entryPx;
-        held += p.qty * px;
-      }
-    }
-  } catch (e) { /* portfolio read unavailable — fall through to per-coin logic */ }
-  pos = ctx.pos(ctx.sym);
-  const equity = ctx.cash + held;
-
-  const st = ctx.state || {};
-  let peak = st.peak;
-  if (peak == null || equity > peak) peak = equity;
-  st.peak = peak;
-  ctx.state = st;
-
-  const drawdown = peak > 0 ? (peak - equity) / peak : 0;
-  const breakerOn = drawdown >= 0.25;
+  const pos = ctx.pos(sym);
 
   if (pos > 0) {
     const hardStop = ctx.entryPx - 2.5 * atr;
     const ll20 = ctx.low(20, 2);
     if (price <= hardStop) return { side: 'sell', qty: pos };
-    if (breakerOn) return { side: 'sell', qty: pos };  // portfolio risk layer
     if (ll20 != null && prevClose <= ll20) return { side: 'sell', qty: pos };
     if (prevClose < ema100) return { side: 'sell', qty: pos };
     ctx.watch([{ side: 'sell', price: hardStop, trigger: 'below', note: '2.5x ATR stop' },
@@ -68,19 +47,36 @@ function onUpdate(ctx) {
     return null;
   }
 
-  if (breakerOn) return null;  // wait for a new equity high before re-entering
+  // DXY regime filter — only open NEW positions while USD is not strengthening.
+  const dxy = ctx.macro('dxy');
+  const st = ctx.state;
+  if (st.dxyHist === undefined) st.dxyHist = [];
+  if (dxy != null) {
+    st.dxyHist.push(dxy);
+    if (st.dxyHist.length > 30) st.dxyHist.shift();
+  }
+  let riskOn = true;  // unknown DXY = don't block entries (macro data may be sparse)
+  if (st.dxyHist.length >= 20) {
+    let sum = 0;
+    const n = st.dxyHist.length;
+    for (let k = 0; k < 20; k++) sum += st.dxyHist[n - 1 - k];
+    const dxyMean20 = sum / 20;
+    riskOn = dxy <= dxyMean20;  // DXY below its 20-day mean = risk-on for crypto
+  }
 
   const hh55 = ctx.high(55, 2);
-  if (hh55 == null) return null;
+  if (hh55 == null) return null;  // not enough history yet
   ctx.watch([{ side: 'buy', price: hh55, trigger: 'above', note: '55-bar breakout',
-               conds: [{ label: 'close > 100-EMA', ok: prevClose > ema100, closed: true }] }]);
-  if (prevClose <= hh55) return null;
+               conds: [{ label: 'close > 100-EMA', ok: prevClose > ema100, closed: true },
+                       { label: 'DXY risk-on', ok: riskOn }] }]);
+  if (prevClose <= hh55) return null;  // need a fresh 55-bar high close
   if (prevClose < ema100) return null;
+  if (!riskOn) return null;
 
   const riskCash = ctx.cash * 0.02;
   const stopDist = 2.5 * atr;
   let qty = stopDist > 0 ? riskCash / stopDist : 0;
-  const maxQty = (ctx.cash / price) * 0.20;
+  const maxQty = (ctx.cash / price) * 0.20; // cap each leg at 20% of cash
   if (qty > maxQty) qty = maxQty;
   if (qty <= 0) return null;
   return { side: 'buy', qty };
