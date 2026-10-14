@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 511 of 2050 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 511 of 2051 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 306 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [4421](strategies/4421/) | Fear-Greed Panic Buy BTC 1D | -1.05% | +92.62% | +3.49% | 2 | 2026-10-14 |
 |  | [4420](strategies/4420/) | Address Adoption Trend BTC 1D (copy) | +51.97% | +196.85% | +30.01% | 63 | 2026-10-14 |
 |  | [4419](strategies/4419/) | Hashrate-Confirmed BTC Trend 1D | +53.83% | +143.61% | +19.85% | 78 | 2026-10-14 |
 |  | [4418](strategies/4418/) | ETH 1D Trend Ride Fixed Stop | -1.00% | +15.93% | +20.47% | 25 | 2026-10-14 |
