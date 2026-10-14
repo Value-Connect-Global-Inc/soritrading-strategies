@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 511 of 2041 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 510 of 2041 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 306 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [4410](strategies/4410/) | FearGreed Contrarian BTC 1D | +4.60% | -16.33% | +12.42% | 20 | 2026-10-14 |
+|  | [4410](strategies/4410/) | FearGreed Contrarian BTC 1D | -1.57% | +95.22% | +3.36% | 2 | 2026-10-14 |
 |  | [4401](strategies/4401/) | AI 전략 ‡ | +265.57% | +528.46% | +38.99% | 1 | 2026-10-14 |
 |  | [4409](strategies/4409/) | AI 전략 | +11.87% | +95.22% | +11.50% | 23 | 2026-10-14 |
 |  | [4408](strategies/4408/) | AI 전략 | +49.41% | +95.22% | +39.70% | 1 | 2026-10-14 |
