@@ -3,16 +3,16 @@
   "name": "Mean-Reversion Pullback Basket 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 20401,
-    "return": -24.18,
-    "mdd": 25.43,
-    "trades": 150,
+    "backtestId": 20404,
+    "return": -2.68,
+    "mdd": 6.08,
+    "trades": 12,
     "vsBuyHold": "unmeasured",
     "gapPct": 0,
-    "tFrom": 1601856000,
-    "tTo": 1696809600,
+    "tFrom": 1506816000,
+    "tTo": 1601769600,
     "approxNotes": [
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5500봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 4204봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다",
       "[생존 편향] 이 유니버스는 **지금 거래되는 종목**만입니다. 구간 중(또는 그 전에) 상장폐지된 종목은 **처음부터 들어 있지 않습니다** — 망한 종목이 빠져 있어 수익률이 **실제보다 좋게** 나옵니다. 스캐너·랭킹 전략일수록 그 차이가 큽니다."
     ],
     "spec": {
@@ -20,13 +20,13 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1100,
-      "end": 1696896000,
+      "end": 1601856000,
       "syms": 5
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "07d34cb0c878cae4da3670a9c940e17a5192cf4812b991c2b87f077fd7d97c50"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "c5905db4b8e2015492601af0e0124e8d2763ac42166b07021c9717752edc721f"
   },
   "config": null,
-  "updatedAt": "2026-10-14T17:28:49.413Z",
+  "updatedAt": "2026-10-14T17:29:44.205Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
