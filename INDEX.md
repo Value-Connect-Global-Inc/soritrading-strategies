@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4377](strategies/4377/) | Multi-Asset Donchian Basket EMA-Slope | +319.66% | — | +20.96% | 59 | 2026-10-14 |
+| — | [4377](strategies/4377/) | Multi-Asset Donchian Basket EMA-Slope | -6.57% | — | +10.86% | 56 | 2026-10-14 |
 | — | [4376](strategies/4376/) | Donchian Basket Portfolio CircuitBreaker 1D | +533.42% | — | +26.64% | 206 | 2026-10-14 |
 | — | [4375](strategies/4375/) | 4H Multi-Asset EMA Trend ‡ | -21.33% | — | +54.35% | 1026 | 2026-10-14 |
 | — | [4374](strategies/4374/) | 1D BB-Squeeze Breakout Basket | -3.95% | — | +6.40% | 10 | 2026-10-14 |
