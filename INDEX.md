@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4420](strategies/4420/) | Address Adoption Trend BTC 1D (copy) | -8.00% | +155.65% | +12.35% | 24 | 2026-10-14 |
+|  | [4420](strategies/4420/) | Address Adoption Trend BTC 1D (copy) | +10.02% | +155.65% | +16.82% | 81 | 2026-10-14 |
 |  | [4419](strategies/4419/) | Hashrate-Confirmed BTC Trend 1D | +53.83% | +143.61% | +19.85% | 78 | 2026-10-14 |
 |  | [4418](strategies/4418/) | ETH 1D Trend Ride Fixed Stop | -1.00% | +15.93% | +20.47% | 25 | 2026-10-14 |
 |  | [4417](strategies/4417/) | Address Adoption Trend BTC 1D ATR-Trail | -7.85% | +143.61% | +20.33% | 71 | 2026-10-14 |

@@ -1,65 +1,64 @@
 /*
  * @coinsori-strategy v1
- * name: Address Adoption Trend BTC 1D (copy for comparison)
+ * name: Hashrate-Confirmed BTC Trend 1D (trailing stop)
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Bitcoin's price is ultimately driven by real network usage.
- * Rising unique active addresses mean more people actually using the network —
- * a sign of genuine adoption, distinct from the hashrate (mining power) signal.
- * This strategy only buys when the long-term trend is up AND network usage is
- * expanding, so it rides rallies backed by real adoption and skips price spikes
- * with no usage behind them.
- * When it buys and sells: buys when the previous close is above the 200-day EMA
- * AND the 30-day smoothed active-address count is higher than it was 10 days ago
- * (usage expanding). Sells when price closes below the 200-day EMA or a 2.5x ATR
- * hard stop is hit.
- * When it does NOT work: active addresses are a slow, noisy series — in a
- * speculative bull with no usage growth it stays in cash and misses the rally;
- * in a crash where usage collapses it can exit late. It is an on-chain signal,
- * so it adds nothing in a pure macro-driven move (e.g. a liquidity shock).
+ * Why this strategy: Bitcoin's network hash rate is a real, physical measure of
+ * mining investment — it tends to rise over the long term as the network grows.
+ * A rising hash rate confirms that a price rally has real network support behind
+ * it, while a falling hash rate flags a rally that miners are abandoning. This
+ * strategy only buys when BOTH the price trend and the network-health trend agree,
+ * and a trailing stop lets winners run in strong bulls instead of exiting early.
+ * When it buys and sells: buys when the previous close is above the 50-day EMA
+ * AND the hash rate is above its own 30-day average (network expanding). Sells
+ * when price falls 2.5x ATR below the highest close since entry (trailing stop)
+ * or closes below the 50-day EMA.
+ * When it does NOT work: hash rate is a slow-moving level, so in a short
+ * speculative spike it stays in cash and misses the move; and in a crash driven
+ * purely by macro (not mining) it can hold too long. It is trend-following, so
+ * it does not profit from range-bound price action.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
-  const ema200 = ctx.ema(200, 1);
+  const ema50 = ctx.ema(50, 1);
   const atr = ctx.atr(14, 1);
-  if (ema200 == null || atr == null || atr <= 0) return null;
+  if (ema50 == null || atr == null || atr <= 0) return null;
 
-  // Active-address usage: 30-day smoothed level vs its own level 10 days ago
+  // Network health: current hash rate vs its own 30-day average
+  const hr = ctx.data('hashrate');
+  const hrSma = ctx.data('hashrate_sma30');
+  const hrVal = hr == null ? null : Number(hr);
+  const hrAvg = hrSma == null ? null : Number(hrSma);
+  const networkHealthy = (hrVal != null && hrAvg != null && Number.isFinite(hrVal) && Number.isFinite(hrAvg) && hrAvg > 0 && hrVal > hrAvg);
+
   const st = ctx.state;
-  if (st.addrHist == null) st.addrHist = [];
-  const addrNow = ctx.data('addr_sma30');
-  const addrVal = addrNow == null ? null : Number(addrNow);
-  if (addrVal != null && Number.isFinite(addrVal) && addrVal > 0) {
-    st.addrHist.push(addrVal);
-    if (st.addrHist.length > 30) st.addrHist.shift();
-  }
-  if (st.addrHist.length < 11) return null;
-  const addrPrev = st.addrHist[st.addrHist.length - 11];
-
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
-    const stop = ctx.entryPx - 2.5 * atr;   // hard stop: 2.5x daily ATR below entry
-    if (price <= stop) return { side: 'sell', qty: pos };
+    // track highest CLOSED bar since entry for the trailing stop
     const prevClose = ctx.closes.at(-2);
-    if (prevClose != null && prevClose < ema200) return { side: 'sell', qty: pos };
-    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '2.5x ATR stop' },
-               { side: 'sell', price: ema200, trigger: 'below', note: '200-day trend break' }]);
+    if (prevClose != null && (st.highest == null || prevClose > st.highest)) st.highest = prevClose;
+    const trailBase = st.highest != null ? st.highest : ctx.entryPx;
+    const stop = Math.max(ctx.entryPx - 2.5 * atr, trailBase - 2.5 * atr);   // chandelier: ratchet up with price
+    if (price <= stop) return { side: 'sell', qty: pos };
+    if (prevClose != null && prevClose < ema50) return { side: 'sell', qty: pos };
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'trailing ATR stop' },
+               { side: 'sell', price: ema50, trigger: 'below', note: '50-day trend break' }]);
     return null;
   }
 
+  st.highest = null;
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) return null;
-  const uptrend = prevClose > ema200;
-  const usageExpanding = addrVal > addrPrev;   // adoption growing over 10 days
-  ctx.watch([{ side: 'buy', price: ema200, trigger: 'above', note: 'usage expanding + uptrend',
-               conds: [{ label: 'addr30 rising 10d', ok: usageExpanding, closed: true },
-                       { label: 'close > 200-EMA', ok: uptrend, closed: true }] }]);
-  if (!uptrend || !usageExpanding) return null;
+  const uptrend = prevClose > ema50;
+  ctx.watch([{ side: 'buy', price: ema50, trigger: 'above', note: 'close above 50-day EMA',
+               conds: [{ label: 'close > 50-EMA', ok: uptrend, closed: true },
+                       { label: 'hashrate > 30d avg', ok: networkHealthy, closed: true }] }]);
+  if (!uptrend || !networkHealthy) return null;
 
   const riskCash = ctx.cash * 0.02;        // risk 2% of cash per trade
   const stopDist = 2.5 * atr;
