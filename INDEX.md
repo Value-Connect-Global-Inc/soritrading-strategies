@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 510 of 2033 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 510 of 2035 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 306 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [4401](strategies/4401/) | AI 전략 | +49.37% | +95.22% | +39.70% | 1 | 2026-10-14 |
+|  | [4400](strategies/4400/) | AI 전략 | +49.37% | +95.22% | +39.70% | 1 | 2026-10-14 |
 | — | [4398](strategies/4398/) | AI 전략 | -100.00% | — | +100.00% | 2273 | 2026-10-14 |
 |  | [4394](strategies/4394/) | AI 전략 | -45.96% | +95.22% | +45.96% | 30 | 2026-10-14 |
 |  | [4393](strategies/4393/) | Stochastic Oversold Trend Bounce | +25.64% | +315.94% | +6.04% | 22 | 2026-10-14 |
