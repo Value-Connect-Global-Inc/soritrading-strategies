@@ -1,0 +1,33 @@
+{
+  "id": 4560,
+  "name": "RSI2 Mean Reversion ETH 1D",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 21409,
+    "return": -76.85,
+    "mdd": 85.12,
+    "trades": 142,
+    "vsBuyHold": "lose",
+    "benchRet": 407.59,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1532822400,
+    "tTo": 1619136000,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "1d",
+      "bars": 1000,
+      "end": 1619222400
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "16a892e5efa7f848ea6c8cadb80483077ea5f861f0890dd69d81914d8b5e60d0"
+  },
+  "config": null,
+  "updatedAt": "2026-10-15T22:05:44.428Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
