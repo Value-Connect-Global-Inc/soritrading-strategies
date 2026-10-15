@@ -3,30 +3,29 @@
   "name": "ATR Spike Crash Protection BTC 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 21494,
-    "return": -6.01,
-    "mdd": 6.01,
-    "trades": 2,
+    "backtestId": 21499,
+    "return": 7.7,
+    "mdd": 29.11,
+    "trades": 63,
     "vsBuyHold": "lose",
-    "benchRet": 91.95,
+    "benchRet": 95.22,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1502928000,
-    "tTo": 1532736000,
+    "tFrom": 1705276800,
+    "tTo": 1791590400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 346봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
       "bars": 1000,
-      "end": 1532822400
+      "end": 1792022400
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "fc52928ae2f4f973580636421652a8aebe4c68921e9f5f57db18982ef2f58692"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "d42360067ba4749845b16db033b4037e660b6636954cc45ba8c76f14ea8bd70a"
   },
   "config": null,
   "updatedAt": "2026-10-15T23:17:11.429Z",
