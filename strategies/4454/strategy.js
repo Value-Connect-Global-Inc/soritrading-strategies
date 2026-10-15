@@ -1,65 +1,48 @@
 /*
- * @coinsori-strategy v1 (Cross-Sectional Momentum Rotation 1D)
+ * @coinsori-strategy v1
+ * name: Hashrate-Gated Multi-Asset Momentum 1D
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Crypto leadership is sticky — the coin that has been rising
- * the most over the last few months tends to keep leading. Instead of holding
- * every coin that is trending (the champion's approach), this strategy holds ONLY
- * the single strongest of BTC/ETH/SOL and switches to a new leader when one
- * overtakes it. This concentrates capital into the strongest trend and avoids
- * holding laggards that drag the basket down.
- * When it buys and sells: every day it ranks the three coins by their 90-day
- * return. It holds only the #1 coin, and only while that coin's 90-day return is
- * still positive. It sells when a different coin takes the lead, when the leader's
- * 90-day return turns negative, or when a 15% hard stop is hit.
- * When it does NOT work: in a broad bull where all three coins rise together, it
- * holds only one coin and misses the gains of the other two; and when leadership
- * flips frequently in a choppy market it switches too often and pays the spread
- * and fees on every switch.
+ * Why this strategy: Crypto rallies are healthier when the Bitcoin network is
+ * growing — rising mining power (hashrate) means more real machines securing
+ * the chain, a slow-moving sign of long-term commitment rather than hype. This
+ * strategy runs the same absolute-momentum rule on three majors as the champion,
+ * but the whole basket is only allowed to hold when Bitcoin's hashrate is above
+ * its own 30-day average (network healthy). It sits in cash when the network is
+ * shrinking, which tends to line up with bear markets.
+ * When it buys and sells: a leg buys when the previous close is above the 200-day
+ * EMA, its 30-day return is positive, AND the hashrate gate is open. It sells when
+ * the close drops below the 200-day EMA, the 30-day return turns negative, the 15%
+ * hard stop is hit, or the hashrate gate closes.
+ * When it does NOT work: in a choppy market where the 30-day return flips sign it
+ * whipsaws; the hashrate gate can keep it out of the very start of a fast recovery
+ * (hashrate lags price); and all crypto majors are correlated, so a broad crash
+ * still hits every held leg.
  */
 function onUpdate(ctx) {
-  const sym = ctx.sym;
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
+  // Network-health gate: Bitcoin hashrate above its own 30-day average.
+  // Unknown data = do nothing (never force a trade on a missing signal).
+  const hr = ctx.data('hashrate');
+  const hrAvg = ctx.data('hashrate_sma30');
+  if (hr == null || hrAvg == null) return null;
+  const networkHealthy = hr > hrAvg;
+
+  const ema200 = ctx.ema(200, 1);
+  if (ema200 == null) return null;
+
+  // 30-day absolute momentum of the last CLOSED bar
   const c = ctx.closes;
-  if (c.length < 92) return null;
+  if (c.length < 32) return null;
   const prevClose = c.at(-2);
+  const mom30 = prevClose / c.at(-32) - 1;
 
-  // maintain aligned closed-close history per symbol in shared state.
-  // Only the last CLOSED close is pushed, so all symbols' series stay aligned
-  // regardless of the order the engine calls each symbol's onUpdate.
-  const st = ctx.state;
-  if (!st.closes) st.closes = {};
-  const arr = st.closes[sym] || [];
-  arr.push(prevClose);
-  if (arr.length > 100) arr.shift();
-  st.closes[sym] = arr;
-
-  // 90-day return for every symbol (needs 91 closed closes)
-  const moms = {};
-  let ready = 0;
-  for (const s of ctx.syms) {
-    const a = st.closes[s];
-    if (a == null || a.length < 91) continue;
-    moms[s] = a[a.length - 1] / a[a.length - 91] - 1;
-    ready++;
-  }
-  if (ready < 2) return null;   // not enough history to rank
-
-  // pick the single strongest asset; the absolute filter = leader must be positive
-  let topSym = null;
-  let topMom = -Infinity;
-  for (const s in moms) {
-    if (moms[s] > topMom) { topMom = moms[s]; topSym = s; }
-  }
-  const isTop = sym === topSym;
-  const topPositive = topMom > 0;
-
-  // volatility-targeted sizing: ~2% daily vol for the single position
+  // volatility targeting: size each leg to ~2% daily vol so no coin dominates
   const atr = ctx.atr(14, 1);
   let volScale = 1;
   if (atr != null && atr > 0 && prevClose > 0) {
@@ -67,18 +50,27 @@ function onUpdate(ctx) {
     volScale = Math.min(1, 0.02 / atrPct);
   }
 
-  const pos = ctx.pos(sym);
+  const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
-    const stopPx = ctx.entryPx * 0.85;       // hard stop: 15% below entry
-    if (price <= stopPx) return { side: 'sell', qty: pos };
-    if (!isTop) return { side: 'sell', qty: pos };         // lost the leadership
-    if (!topPositive) return { side: 'sell', qty: pos };   // absolute momentum gone
-    ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: '15% stop' }]);
+    const stop = ctx.entryPx * 0.85;   // hard stop: 15% below entry
+    if (!networkHealthy || price <= stop || prevClose < ema200 || mom30 < 0) {
+      return { side: 'sell', qty: pos };
+    }
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '15% stop' },
+               { side: 'sell', price: ema200, trigger: 'below', note: '200-day trend break',
+                 conds: [{ label: '30d return > 0', ok: mom30 > 0, closed: true },
+                         { label: 'network healthy', ok: networkHealthy, closed: true }] }]);
     return null;
   }
 
-  if (!isTop || !topPositive) return null;   // only the leader, only in an uptrend
-  const targetCash = ctx.cash * volScale;
+  const uptrend = prevClose > ema200;
+  ctx.watch([{ side: 'buy', price: ema200, trigger: 'above', note: 'close above 200-day EMA',
+               conds: [{ label: '30d return > 0', ok: mom30 > 0, closed: true },
+                       { label: 'close > 200-EMA', ok: uptrend, closed: true },
+                       { label: 'network healthy', ok: networkHealthy, closed: true }] }]);
+  if (!uptrend || !(mom30 > 0) || !networkHealthy) return null;
+
+  const targetCash = ctx.cash * 0.33 * volScale;   // 1/3 of pool, scaled by volatility
   const qty = (targetCash / price) * 0.95;
   if (qty <= 0) return null;
   return { side: 'buy', qty };
