@@ -1,34 +1,36 @@
 /*
  * @coinsori-strategy v1
- * name: 4H Momentum Ride (BTC)
+ * name: Active-Address Confirmed Momentum with ATR Trail (BTC 1D)
  * ex: binance
  * syms: BTC/USDT
- * interval: 4h
+ * interval: 1d
  * cash: 10000
  *
- * Why this strategy: On the 4-hour chart Bitcoin trends are shorter and sharper
- * than on daily charts, so a faster trend rule can catch moves the 1-day
- * strategies miss. We ride the 4h trend while it is up and step aside when it
- * turns down.
- * When it buys and sells: buys when the last CLOSED 4h bar is above the 100-bar
- * EMA and its 24-bar return is positive. Sells when the closed bar drops below
- * the 100-bar EMA, the 24-bar return turns negative, or a 6% hard stop is hit.
- * When it does NOT work: in a choppy sideways market the faster signals flip
- * more often and the 6% stop is hit on normal 4h noise — it whipsaws and pays
- * fees. The 4h timeframe is noisier than 1d, so this is a higher-churn, higher
- * fee strategy than the daily champions.
+ * Why this strategy: Bitcoin's network usage (daily unique active addresses) tends
+ * to GROW while a rally is real and to stall before rallies fade. We only buy when
+ * both price momentum AND network usage are rising, so we skip "dead" rallies that
+ * price alone would let us into. On top of the winning entry logic, we replace the
+ * fixed 15%-below-entry stop with an ATR-trailing stop so a 60% run-up does not
+ * give back 45% of it before the stop fires.
+ * When it buys and sells: buys when the 30-day price return is positive, the close
+ * is above the 200-day EMA, and active addresses are at/above their 30-day average.
+ * Sells when the close falls below the 200-day EMA, the 30-day return turns negative,
+ * or price drops 3 ATR below the highest close since entry (trailing stop).
+ * When it does NOT work: in the early phase of a bull market, right after a crash,
+ * usage is still low — the gate can make us miss the first leg of a recovery. The
+ * trailing stop can whip us out on a sharp but temporary pullback in a strong trend.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
-  const ema100 = ctx.ema(100, 1);
-  if (ema100 == null) return null;
+  const ema200 = ctx.ema(200, 1);
+  if (ema200 == null) return null;
 
   const c = ctx.closes;
-  if (c.length < 26) return null;
+  if (c.length < 32) return null;
   const prevClose = c.at(-2);
-  const mom24 = prevClose / c.at(-26) - 1;   // 24-bar (~4 day) return of the last CLOSED bar
+  const mom30 = prevClose / c.at(-32) - 1;   // 30-day return of the last CLOSED bar
 
   // volatility target: size so the position contributes ~2% daily vol to the pool
   const atr = ctx.atr(14, 1);
@@ -40,21 +42,39 @@ function onUpdate(ctx) {
 
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
-    const stop = ctx.entryPx * 0.94;          // hard stop: 6% below entry (4h noise)
+    // ATR-trailing stop: 3 ATR below the highest close since entry.
+    // Fixed stops give back gains in a rally; a trail locks them in. 3 ATR
+    // chosen (not tuned) to match the ~2% daily vol target (3 ATR ≈ 9 days of vol).
+    const peak = ctx.state.peak != null ? Math.max(ctx.state.peak, prevClose) : prevClose;
+    ctx.state.peak = peak;
+    let stop = null;
+    if (atr != null && atr > 0) stop = peak - 3 * atr;
+    if (stop == null) stop = ctx.entryPx * 0.85;   // fallback if ATR missing
     if (price <= stop) return { side: 'sell', qty: pos };
-    if (prevClose < ema100) return { side: 'sell', qty: pos };   // trend over
-    if (mom24 < 0) return { side: 'sell', qty: pos };            // momentum faded
-    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '6% stop' },
-               { side: 'sell', price: ema100, trigger: 'below', note: '100-bar trend break',
-                 conds: [{ label: '24-bar return > 0', ok: mom24 > 0, closed: true }] }]);
+    if (prevClose < ema200) return { side: 'sell', qty: pos };   // trend over
+    if (mom30 < 0) return { side: 'sell', qty: pos };            // momentum faded
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'ATR trail stop' },
+               { side: 'sell', price: ema200, trigger: 'below', note: '200-day trend break',
+                 conds: [{ label: '30d return > 0', ok: mom30 > 0, closed: true }] }]);
     return null;
   }
 
-  const uptrend = prevClose > ema100;
-  ctx.watch([{ side: 'buy', price: ema100, trigger: 'above', note: 'close above 100-bar EMA',
-               conds: [{ label: '24-bar return > 0', ok: mom24 > 0, closed: true },
-                       { label: 'close > 100-EMA', ok: uptrend, closed: true }] }]);
-  if (!uptrend || !(mom24 > 0)) return null;
+  ctx.state.peak = null;   // reset trail when flat
+
+  // Network-usage gate: only buy when active addresses are at/above their 30-day average.
+  // If the data is missing on a bar, default to allowing the trade so the strategy
+  // never silently blocks on missing data.
+  const addr = ctx.data('addr');
+  const addrAvg = ctx.data('addr_sma30');
+  let usageUp = true;
+  if (addr != null && addrAvg != null) usageUp = addr >= addrAvg;
+
+  const uptrend = prevClose > ema200;
+  ctx.watch([{ side: 'buy', price: ema200, trigger: 'above', note: 'close above 200-day EMA',
+               conds: [{ label: '30d return > 0', ok: mom30 > 0, closed: true },
+                       { label: 'close > 200-EMA', ok: uptrend, closed: true },
+                       { label: 'active addr >= 30d avg', ok: usageUp, closed: true }] }]);
+  if (!uptrend || !(mom30 > 0) || !usageUp) return null;
 
   const targetCash = ctx.cash * volScale;      // single-asset pool, vol-scaled
   const qty = (targetCash / price) * 0.95;
