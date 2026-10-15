@@ -1,23 +1,24 @@
 /*
  * @coinsori-strategy v1
- * name: Donchian + ATR Risk-Sized v3 (ETH 1D)
+ * name: Donchian + ATR Risk-Sized v4 (ETH 1D)
  * ex: binance
  * syms: ETH/USDT
  * interval: 1d
  * cash: 10000
  *
  * Why this strategy: Same Donchian 55/20 close breakout as the validated
- * champion, but position size is scaled by volatility (ATR) so a 2xATR adverse
- * move costs a fixed fraction of equity. Risk appetite 8% deploys most of the
- * capital while ATR still trims size in high-volatility periods.
+ * champion, sized by volatility (ATR) so a 2xATR adverse move costs a fixed
+ * fraction of equity. Key fix vs v1-v3: the 20-day time stop was cutting
+ * winning trends short (32+ trades vs the champion's 15), so it is removed —
+ * winners now ride until the 20-day low breaks, like the champion, while ATR
+ * sizing keeps drawdown bounded.
  * When it buys and sells: buys when the close makes a new 55-day high. Sells on
- * a 2xATR stop, a 20-day close low, or a 20-day time stop.
+ * a 2xATR stop or a 20-day close low.
  * When it does NOT work: choppy sideways markets whipsaw; in fast crashes the
- * 20-day low exit lags and the 2xATR stop takes the hit. Higher risk appetite
- * means bigger swings than the 5% version in those regimes.
+ * 20-day low exit lags and the 2xATR stop takes the hit before the exit fires.
  */
 function onUpdate(ctx) {
-  const RISK_PCT = 0.08; // 8% of equity risked per trade — near full deployment, ATR trims in high-vol
+  const RISK_PCT = 0.06; // 6% of equity risked per trade (2% too small, 8% swings too big)
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
@@ -43,9 +44,7 @@ function onUpdate(ctx) {
   if (pos > 0) {
     const stopPx = ctx.entryPx - 2 * atr; // 2xATR stop (risk = RISK_PCT of equity)
     if (price <= stopPx) return { side: 'sell', qty: pos };
-    if (prevClose < lo20) return { side: 'sell', qty: pos };
-    const held = ctx.state.entryI != null ? ctx.i - ctx.state.entryI : 0;
-    if (held >= 20) return { side: 'sell', qty: pos }; // time stop: no 20d low in 20 days
+    if (prevClose < lo20) return { side: 'sell', qty: pos }; // trend exit: 20d close low
     ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: '2xATR stop' },
                { side: 'sell', price: lo20, trigger: 'below', note: 'exit: 20d low',
                  conds: [{ label: 'close vs 20d low', ok: prevClose >= lo20, closed: true }] }]);
@@ -61,6 +60,5 @@ function onUpdate(ctx) {
   const riskPerTrade = ctx.cash * RISK_PCT;
   const qty = riskPerTrade / (2 * atr);
   if (qty <= 0) return null;
-  ctx.state.entryI = ctx.i;
   return { side: 'buy', qty };
 }
