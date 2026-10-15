@@ -3,16 +3,16 @@
   "name": "Donchian Half-Size (ETH 1D)",
   "kind": "custom",
   "verified": {
-    "backtestId": 21336,
-    "return": 92.52,
-    "mdd": 39.06,
-    "trades": 16,
-    "vsBuyHold": "win",
-    "benchRet": 19.26,
+    "backtestId": 21338,
+    "return": 18.5,
+    "mdd": 21.02,
+    "trades": 22,
+    "vsBuyHold": "lose",
+    "benchRet": 53.44,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1506902400,
-    "tTo": 1601856000,
+    "tFrom": 1696636800,
+    "tTo": 1791590400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1100봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
@@ -22,7 +22,7 @@
       "sym": "ETH",
       "interval": "1d",
       "bars": 1100,
-      "end": 1601942400
+      "end": 1792022400
     },
     "codeBasis": "assumed-current",
     "verifiedCodeSha256": "89b152811fea9db913b3ed802f510d47a6e2af641955be0ae3cd5fabfab1291e"
