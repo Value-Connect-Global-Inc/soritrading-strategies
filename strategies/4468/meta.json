@@ -1,0 +1,33 @@
+{
+  "id": 4468,
+  "name": "4H Momentum Ride (BTC)",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 20936,
+    "return": -45.29,
+    "mdd": 51.79,
+    "trades": 380,
+    "vsBuyHold": "lose",
+    "benchRet": 40.01,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1648036800,
+    "tTo": 1720022400,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "bars": 5000,
+      "end": 1720036800
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "57178e346473c1fad66e7150c3f159d6c1615ed24428f4cc84b3986726fe9a5b"
+  },
+  "config": null,
+  "updatedAt": "2026-10-15T04:36:40.835Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
