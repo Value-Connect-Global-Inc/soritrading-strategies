@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 521 of 2125 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 520 of 2125 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 325 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [4501](strategies/4501/) | VolTarget AlwaysIn BTC 1D ‡ | +68.94% | +47.08% | +48.42% | 221 | 2026-10-15 |
+|  | [4501](strategies/4501/) | VolTarget AlwaysIn BTC 1D | +87.66% | +1067.24% | +38.65% | 156 | 2026-10-15 |
 |  | [4497](strategies/4497/) | Turtle Breakout BTC 1D | +287.67% | +1093.10% | +62.27% | 31 | 2026-10-15 |
 |  | [4500](strategies/4500/) | AI 전략 | -75.63% | +47.08% | +80.55% | 123 | 2026-10-15 |
 |  | [4499](strategies/4499/) | OnChain Growth BTC 1D | -62.24% | +146.40% | +83.34% | 412 | 2026-10-15 |
