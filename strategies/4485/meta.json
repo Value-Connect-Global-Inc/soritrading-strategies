@@ -3,10 +3,10 @@
   "name": "Dollar-Regime Gated Momentum (BTC 1D)",
   "kind": "custom",
   "verified": {
-    "backtestId": 21049,
-    "return": -100,
-    "mdd": 100,
-    "trades": 4000,
+    "backtestId": 21050,
+    "return": -98.36,
+    "mdd": 98.4,
+    "trades": 1430,
     "vsBuyHold": "lose",
     "benchRet": 95.22,
     "benchBasis": "price",
@@ -27,9 +27,9 @@
       "end": 1792022400
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "33a5c108c09681bade6c0056e7f1f91b5c67d95d073aa59946699df73a0a7981"
+    "verifiedCodeSha256": "b82ade68251e231255f9eb1f3e1d683af6dd0b42f3b446d5c0fb763520415bad"
   },
   "config": null,
-  "updatedAt": "2026-10-15T11:09:18.273Z",
+  "updatedAt": "2026-10-15T11:13:34.096Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

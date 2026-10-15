@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4485](strategies/4485/) | Dollar-Regime Gated Momentum (BTC 1D) | -100.00% | +95.22% | +100.00% | 4000 | 2026-10-15 |
+|  | [4485](strategies/4485/) | Dollar-Regime Gated Momentum (BTC 1D) | -98.36% | +95.22% | +98.40% | 1430 | 2026-10-15 |
 |  | [4484](strategies/4484/) | MACD Opposite-Signal Exit (BTC 1D) | +24.14% | +95.22% | +15.46% | 87 | 2026-10-15 |
 |  | [4483](strategies/4483/) | Momentum-Age Exit (BTC 1D) | +33.08% | +95.22% | +11.58% | 95 | 2026-10-15 |
 | ★ | [4482](strategies/4482/) | AI 전략 | +56.39% | -17.42% | +9.36% | 23 | 2026-10-15 |
