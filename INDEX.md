@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4563](strategies/4563/) | BookImbalanceScalper | +169.73% | — | +29.27% | 56 | 2026-10-15 |
+| — | [4563](strategies/4563/) | BookImbalanceScalper ‡ | +169.73% | — | +29.27% | 56 | 2026-10-15 |
 | ★ | [4562](strategies/4562/) | FearGreed Sentiment Regime SOL 1D | -14.40% | -27.94% | +51.10% | 17 | 2026-10-15 |
 |  | [4561](strategies/4561/) | Stoch Turn-Confirm ETH 1D | -13.72% | +11.63% | +27.67% | 10 | 2026-10-15 |
 |  | [4560](strategies/4560/) | RSI2 Mean Reversion ETH 1D | -76.85% | +407.59% | +85.12% | 142 | 2026-10-15 |
