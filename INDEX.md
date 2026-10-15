@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4446](strategies/4446/) | RSI2 Extreme-Oversold Basket 1D | -8.55% | — | +16.36% | 232 | 2026-10-15 |
+| — | [4446](strategies/4446/) | RSI2 Extreme-Oversold Basket 1D ‡ | -8.55% | — | +16.36% | 232 | 2026-10-15 |
 | — | [4445](strategies/4445/) | Donchian Breakout Basket 1D | +301.32% | — | +29.55% | 55 | 2026-10-15 |
 | — | [4444](strategies/4444/) | Multi-Asset Momentum ATR-Trail 1D | +2.42% | — | +24.23% | 1127 | 2026-10-15 |
 | — | [4443](strategies/4443/) | Bollinger MR in Uptrend Basket 1D | -0.56% | — | +4.43% | 42 | 2026-10-15 |
