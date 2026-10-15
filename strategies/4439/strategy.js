@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: Multi-Asset Absolute Momentum 1D (vol-targeted, wide trailing stop)
+ * name: Multi-Asset Absolute Momentum 1D (vol-targeted)
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT
  * interval: 1d
@@ -16,9 +16,7 @@
  * smaller one, so no single leg dominates the portfolio's drawdown.
  * When it buys and sells: a leg buys when the previous close is above the 200-day
  * EMA AND its 30-day return is positive; sells when the previous close drops below
- * the 200-day EMA, the 30-day return turns negative, or price falls 25% below the
- * highest point of the last 20 days (a trailing stop wide enough to ride through
- * normal crypto pullbacks while still locking in most rally gains).
+ * the 200-day EMA, the 30-day return turns negative, or a 15% hard stop is hit.
  * When it does NOT work: in a choppy market where a coin's 30-day return flips
  * sign frequently it whipsaws; and all crypto majors are correlated, so in a
  * broad crash every leg falls together and the basket behaves like holding one
@@ -47,15 +45,11 @@ function onUpdate(ctx) {
 
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
-    if (ctx.entryPx == null) return null;
-    // wide trailing stop: 25% below the highest of (entry, 20-day high)
-    const high20 = ctx.high(20, 1);
-    const stopBase = high20 != null ? Math.max(ctx.entryPx, high20) : ctx.entryPx;
-    const stop = stopBase * 0.75;
+    const stop = ctx.entryPx * 0.85;        // hard stop: 15% below entry
     if (price <= stop) return { side: 'sell', qty: pos };
     if (prevClose < ema200) return { side: 'sell', qty: pos };   // trend over
     if (mom30 < 0) return { side: 'sell', qty: pos };            // momentum faded
-    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'trailing 25% stop' },
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '15% stop' },
                { side: 'sell', price: ema200, trigger: 'below', note: '200-day trend break',
                  conds: [{ label: '30d return > 0', ok: mom30 > 0, closed: true }] }]);
     return null;
