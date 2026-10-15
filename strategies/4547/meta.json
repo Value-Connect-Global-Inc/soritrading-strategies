@@ -25,10 +25,10 @@
       "bars": 1095,
       "end": 1577836800
     },
-    "codeBasis": "assumed-current",
+    "codeBasis": "previous-code",
     "verifiedCodeSha256": "ffa9b4424e82cf469ff2e11e387a59713f16d4f049c0b669673d020c848d43fa"
   },
   "config": null,
-  "updatedAt": "2026-10-15T21:05:19.433Z",
+  "updatedAt": "2026-10-15T21:06:21.289Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
