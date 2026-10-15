@@ -3,32 +3,32 @@
   "name": "DXY Macro Regime BTC 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 21524,
-    "return": 7.79,
-    "mdd": 15.34,
-    "trades": 22,
-    "vsBuyHold": "win",
-    "benchRet": -12.27,
+    "backtestId": 21528,
+    "return": 10.15,
+    "mdd": 26.13,
+    "trades": 52,
+    "vsBuyHold": "lose",
+    "benchRet": 432.51,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1735689600,
-    "tTo": 1791590400,
+    "tFrom": 1672531200,
+    "tTo": 1767052800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 648봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1095봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
-      "bars": 652,
-      "end": 1792022400
+      "bars": 1095,
+      "end": 1767139200
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "1480923de52b1885b18346acd5e0eddb79485edf0dcc88ddb62463367fd22d18"
+    "verifiedCodeSha256": "7e9037762354c7b26a723c14024a1dbb1bbd34be861c0a34c2f938f8e6eced5e"
   },
   "config": null,
-  "updatedAt": "2026-10-15T23:45:09.614Z",
+  "updatedAt": "2026-10-15T23:46:19.906Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
