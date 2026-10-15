@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [4547](strategies/4547/) | Donchian Champion Ref (ETH 1D) | +62.80% | -57.23% | +54.11% | 6 | 2026-10-15 |
+| ★ | [4547](strategies/4547/) | Donchian Champion Ref (ETH 1D) | +23.31% | -57.23% | +65.24% | 6 | 2026-10-15 |
 | ★ | [4546](strategies/4546/) | Donchian Half-Size (ETH 1D) | +119.27% | +108.82% | +41.40% | 19 | 2026-10-15 |
 |  | [4545](strategies/4545/) | Macro Data Diagnostic (ETH 1D) | +63.39% | +360.05% | +50.88% | 20 | 2026-10-15 |
 | ★ | [4544](strategies/4544/) | Donchian + Chandelier Exit (ETH 1D) | +79.46% | +19.26% | +66.70% | 22 | 2026-10-15 |

@@ -1,19 +1,19 @@
 /*
  * @coinsori-strategy v1
- * name: Donchian Trend Breakout Wide Exit (ETH 1D)
+ * name: Donchian Trend Breakout Wide Exit 40 (ETH 1D)
  * ex: binance
  * syms: ETH/USDT
  * interval: 1d
  * cash: 10000
  *
  * Why this strategy: Classic trend-following — a 55-day close high marks the
- * start of a new up-leg, and a 30-day close low exit cuts the trend when it
- * turns. Wider exit than the champion's 20-day to let winners run.
+ * start of a new up-leg, and a 40-day close low exit cuts the trend when it
+ * turns. Even wider exit than the champion's 30-day to let winners run longer.
  * When it buys and sells: buys when the close makes a new 55-day high. Sells
- * when the close makes a new 30-day low, or a 30% hard stop is hit.
- * When it does NOT work: in choppy sideways markets the 55/30 breakout whipsaws
- * repeatedly; in fast crashes the 30-day low exit lags and the stop takes a
- * big hit before the exit fires.
+ * when the close makes a new 40-day low, or a 30% hard stop is hit.
+ * When it does NOT work: in choppy sideways markets the 55/40 breakout whipsaws
+ * repeatedly; in fast crashes the 40-day low exit lags even more than 30-day and
+ * the stop takes a big hit before the exit fires.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -29,19 +29,19 @@ function onUpdate(ctx) {
   for (let i = n - 2 - 55; i <= n - 3; i++) {
     if (closes[i] > hi55) hi55 = closes[i];
   }
-  let lo30 = Infinity;
-  for (let i = n - 2 - 30; i <= n - 3; i++) {
-    if (closes[i] < lo30) lo30 = closes[i];
+  let lo40 = Infinity;
+  for (let i = n - 2 - 40; i <= n - 3; i++) {
+    if (closes[i] < lo40) lo40 = closes[i];
   }
 
   const pos = ctx.position;
   if (pos > 0) {
     const stop = ctx.entryPx * 0.70;
     if (price <= stop) return { side: 'sell', qty: pos };
-    if (prevClose < lo30) return { side: 'sell', qty: pos };
+    if (prevClose < lo40) return { side: 'sell', qty: pos };
     ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '30% stop' },
-               { side: 'sell', price: lo30, trigger: 'below', note: 'exit: 30d low',
-                 conds: [{ label: 'close vs 30d low', ok: prevClose >= lo30, closed: true }] }]);
+               { side: 'sell', price: lo40, trigger: 'below', note: 'exit: 40d low',
+                 conds: [{ label: 'close vs 40d low', ok: prevClose >= lo40, closed: true }] }]);
     return null;
   }
 
