@@ -12,9 +12,9 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [4509](strategies/4509/) | Donchian Breakout Trend (BTC 1D) | +35.24% | -17.42% | +31.02% | 42 | 2026-10-15 |
 |  | [4508](strategies/4508/) | Oversold Dip Mean-Revert (BTC 1D) | +26.17% | +95.22% | +6.93% | 20 | 2026-10-15 |
 |  | [4507](strategies/4507/) | Fear-Greed Contrarian Dip (BTC 1D) | -9.48% | +522.64% | +14.15% | 10 | 2026-10-15 |
+| ★ | [4509](strategies/4509/) | Donchian Breakout Trend (BTC 1D) | +35.24% | -17.42% | +31.02% | 42 | 2026-10-15 |
 |  | [4506](strategies/4506/) | Dual OnChain Confirmed Trend (BTC 1D) | +24.28% | +196.85% | +13.05% | 23 | 2026-10-15 |
 |  | [4505](strategies/4505/) | VolTarget AlwaysIn (re-baseline) | +53.89% | +146.40% | +32.23% | 44 | 2026-10-15 |
 |  | [4504](strategies/4504/) | Open-Interest Confirmed Trend (BTC 1D) | +22.36% | +158.41% | +9.36% | 36 | 2026-10-15 |
