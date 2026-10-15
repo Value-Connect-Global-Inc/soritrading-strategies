@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 520 of 2114 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 520 of 2115 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 324 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [4491](strategies/4491/) | Active-Address Confirmed Momentum (BTC 1D) ref | -11.74% | +91.95% | +11.74% | 12 | 2026-10-15 |
 | ★ | [4490](strategies/4490/) | Fed-Regime Momentum (BTC 1D) | -3.85% | -17.42% | +6.69% | 6 | 2026-10-15 |
 | ★ | [4489](strategies/4489/) | Momentum Core on ETH (ETH/USDT 1D) | +24.55% | -17.42% | +8.45% | 85 | 2026-10-15 |
 |  | [4488](strategies/4488/) | Dual-Regime Momentum: Usage + Dollar (BTC 1D) | +37.02% | +95.22% | +11.45% | 23 | 2026-10-15 |
