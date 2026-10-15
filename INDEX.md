@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4505](strategies/4505/) | VolTarget AlwaysIn (re-baseline) | +27.00% | +158.41% | +48.05% | 70 | 2026-10-15 |
+|  | [4505](strategies/4505/) | VolTarget AlwaysIn (re-baseline) | +53.89% | +146.40% | +32.23% | 44 | 2026-10-15 |
 |  | [4504](strategies/4504/) | Open-Interest Confirmed Trend (BTC 1D) | +22.36% | +158.41% | +9.36% | 36 | 2026-10-15 |
 |  | [4503](strategies/4503/) | Address-Confirmed Momentum (re-baseline) | +35.46% | +196.85% | +16.28% | 29 | 2026-10-15 |
 |  | [4502](strategies/4502/) | Dollar-Weak Trend Rider (BTC 1D) | +197.70% | +393.16% | +23.21% | 2 | 2026-10-15 |
