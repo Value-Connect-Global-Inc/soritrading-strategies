@@ -1,19 +1,21 @@
 /*
  * @coinsori-strategy v1
- * name: Multi-Asset Absolute Momentum 1D (vol-targeted)
+ * name: Multi-Asset Absolute Momentum 1D (5-asset, vol-targeted)
  * ex: binance
- * syms: BTC/USDT, ETH/USDT, SOL/USDT
+ * syms: BTC/USDT, ETH/USDT, SOL/USDT, XRP/USDT, BNB/USDT
  * interval: 1d
  * cash: 10000
  *
  * Why this strategy: Crypto assets tend to keep moving in the direction they
  * have recently moved — momentum persists. By running the SAME simple rule on
- * three assets independently (each leg long only when its own 30-day return is
+ * five assets independently (each leg long only when its own 30-day return is
  * positive and its own 200-day trend is up), the portfolio captures rallies in
  * whichever coin is leading, and sits in cash during bear markets instead of
- * holding a falling coin. Each leg is sized so it contributes roughly EQUAL daily
- * risk (volatility-targeted): a calm coin gets a bigger position, a wild coin a
- * smaller one, so no single leg dominates the portfolio's drawdown.
+ * holding a falling coin. Adding XRP and BNB to the original three gives more
+ * chances to ride the leader and spreads the (correlated) crash risk a little.
+ * Each leg is sized so it contributes roughly EQUAL daily risk (volatility-
+ * targeted): a calm coin gets a bigger position, a wild coin a smaller one, so
+ * no single leg dominates the portfolio's drawdown.
  * When it buys and sells: a leg buys when the previous close is above the 200-day
  * EMA AND its 30-day return is positive; sells when the previous close drops below
  * the 200-day EMA, the 30-day return turns negative, or a 15% hard stop is hit.
@@ -61,7 +63,7 @@ function onUpdate(ctx) {
                        { label: 'close > 200-EMA', ok: uptrend, closed: true }] }]);
   if (!uptrend || !(mom30 > 0)) return null;
 
-  const targetCash = ctx.cash * 0.33 * volScale;  // 1/3 of pool, scaled by volatility
+  const targetCash = ctx.cash * 0.20 * volScale;  // 1/5 of pool, scaled by volatility
   const qty = (targetCash / price) * 0.95;
   if (qty <= 0) return null;
   return { side: 'buy', qty };
