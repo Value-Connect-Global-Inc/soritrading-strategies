@@ -3,33 +3,32 @@
   "name": "Dollar-Regime Gated Momentum (BTC 1D)",
   "kind": "custom",
   "verified": {
-    "backtestId": 21050,
-    "return": -98.36,
-    "mdd": 98.4,
-    "trades": 1430,
+    "backtestId": 21055,
+    "return": -8.1,
+    "mdd": 8.1,
+    "trades": 6,
     "vsBuyHold": "lose",
-    "benchRet": 95.22,
+    "benchRet": 91.95,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1705276800,
-    "tTo": 1791590400,
+    "tFrom": 1502928000,
+    "tTo": 1532736000,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "[유동성/거래량없음] 호가 두께를 판정한 시점의 0% 에서 거래량을 못 받아 합성 호가가 고정 기본값(100000 명목)으로 돌았습니다 — 그 구간의 주문은 종목의 실제 두께가 아니라 이 기본값에 잘렸습니다. 체결량·수익률·MDD 를 그대로 믿지 마세요(거래량이 붙으면 숫자가 달라집니다).",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 346봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
       "bars": 1000,
-      "end": 1792022400
+      "end": 1532822400
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "b82ade68251e231255f9eb1f3e1d683af6dd0b42f3b446d5c0fb763520415bad"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "e5d0c11ac84590127e47665a680d536cc90ccf7f1ced834f78c4536bef0c6a10"
   },
   "config": null,
-  "updatedAt": "2026-10-15T11:14:46.795Z",
+  "updatedAt": "2026-10-15T11:18:29.536Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
