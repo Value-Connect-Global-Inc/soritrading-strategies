@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4549](strategies/4549/) | Donchian 55/30 Vol-Scaled | +278.91% | +814.68% | +53.70% | 12 | 2026-10-15 |
+|  | [4549](strategies/4549/) | Donchian 55/30 Vol-Scaled ‡ | +278.91% | +814.68% | +53.70% | 12 | 2026-10-15 |
 | ★ | [4548](strategies/4548/) | Donchian 55/30 FearGreed Filter | +62.80% | -57.23% | +54.11% | 6 | 2026-10-15 |
 | ★ | [4547](strategies/4547/) | Donchian Champion Ref (ETH 1D) ‡ | +23.31% | -57.23% | +65.24% | 6 | 2026-10-15 |
 | ★ | [4546](strategies/4546/) | Donchian Half-Size (ETH 1D) | +119.27% | +108.82% | +41.40% | 19 | 2026-10-15 |
