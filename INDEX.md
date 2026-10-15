@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 538 of 2166 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 537 of 2166 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 329 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [4559](strategies/4559/) | FearGreed Sentiment Regime ETH 1D | +918.08% | +379.62% | +31.15% | 19 | 2026-10-15 |
+|  | [4559](strategies/4559/) | FearGreed Sentiment Regime ETH 1D | +79.86% | +164.53% | +43.15% | 31 | 2026-10-15 |
 | ★ | [4558](strategies/4558/) | Bollinger Squeeze Breakout (ETH 1D) | -19.27% | -57.23% | +42.42% | 14 | 2026-10-15 |
 | — | [4554](strategies/4554/) | Market-Object Probe (BTC/ETH 1D) | +0.33% | — | +0.70% | 2 | 2026-10-15 |
 | — | [4553](strategies/4553/) | Multi-Sym Alive Probe (BTC/ETH 1D) | +0.33% | — | +0.70% | 2 | 2026-10-15 |
