@@ -3,16 +3,16 @@
   "name": "Donchian Breakout Trend (BTC 1D)",
   "kind": "custom",
   "verified": {
-    "backtestId": 21205,
-    "return": 35.24,
-    "mdd": 31.02,
-    "trades": 42,
-    "vsBuyHold": "win",
-    "benchRet": -17.42,
+    "backtestId": 21210,
+    "return": 23.46,
+    "mdd": 24.62,
+    "trades": 40,
+    "vsBuyHold": "lose",
+    "benchRet": 95.22,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1619222400,
-    "tTo": 1705536000,
+    "tFrom": 1705276800,
+    "tTo": 1791590400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
@@ -22,12 +22,12 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1000,
-      "end": 1705622400
+      "end": 1792022400
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "eca786bbdb2d7643001c70c10f42f5b7acca652dfdd3bc1dd9c5829546ed0c3e"
+    "verifiedCodeSha256": "ad4c8c4bd680e0352c5f8b0cb5be54100137f45fd672bb6eef97e91358760822"
   },
   "config": null,
-  "updatedAt": "2026-10-15T16:54:47.881Z",
+  "updatedAt": "2026-10-15T16:56:25.876Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
