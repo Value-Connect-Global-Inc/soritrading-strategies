@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4439](strategies/4439/) | AI 전략 | +97.87% | — | +18.64% | 80 | 2026-10-15 |
+| — | [4439](strategies/4439/) | AI 전략 | +17.56% | — | +26.62% | 286 | 2026-10-15 |
 |  | [4438](strategies/4438/) | Fed-Easing Regime BTC 1D ‡ | +8.36% | +87.84% | +29.84% | 28 | 2026-10-15 |
 | — | [4437](strategies/4437/) | Multi-Asset Absolute Momentum 1D | +149.18% | — | +31.41% | 80 | 2026-10-15 |
 |  | [4435](strategies/4435/) | Address-Confirmed BTC Trend 1D | -2.37% | +89.28% | +22.61% | 47 | 2026-10-15 |
