@@ -1,24 +1,25 @@
 /*
  * @coinsori-strategy v1
- * name: Donchian + ATR Risk-Sized (ETH 1D)
+ * name: Donchian + ATR Risk-Sized v2 (ETH 1D)
  * ex: binance
  * syms: ETH/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Same Donchian 55/20 close breakout as the champion, but
- * position size is set by volatility (ATR) so each trade risks only 2% of
- * equity. The champion rides trends but takes 40-55% drawdowns in rough
- * windows; sizing by ATR keeps drawdown bounded while keeping the validated
- * entry/exit logic identical. Build for the unknown future — no parameter was
- * tuned to any window.
- * When it buys and sells: buys on a 55-day close high. Sells on a 20-day close
- * low, a 2xATR stop, or a 20-day time stop.
+ * Why this strategy: Same Donchian 55/20 close breakout as the validated
+ * champion, but position size is scaled by volatility (ATR) so a 2xATR adverse
+ * move costs a fixed fraction of equity. v1 used 2% risk which only deployed
+ * ~25% of equity and returned too little; this version raises the risk appetite
+ * so more capital works while drawdown stays ATR-bounded instead of the
+ * champion's 40-55% swings.
+ * When it buys and sells: buys when the close makes a new 55-day high. Sells on
+ * a 2xATR stop, a 20-day close low, or a 20-day time stop.
  * When it does NOT work: choppy sideways markets whipsaw; in fast crashes the
- * 20-day low exit lags and the 2xATR stop takes the hit. ATR sizing does not
- * change WHEN it trades, only how much — so the same losing regimes apply.
+ * 20-day low exit lags and the 2xATR stop takes the hit. Higher risk appetite
+ * means bigger swings than v1 in those regimes.
  */
 function onUpdate(ctx) {
+  const RISK_PCT = 0.05; // 5% of equity risked per trade (v1 was 2% — too small to grow)
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
@@ -42,7 +43,7 @@ function onUpdate(ctx) {
 
   const pos = ctx.position;
   if (pos > 0) {
-    const stopPx = ctx.entryPx - 2 * atr; // 2xATR stop (risk ~2% of equity)
+    const stopPx = ctx.entryPx - 2 * atr; // 2xATR stop (risk = RISK_PCT of equity)
     if (price <= stopPx) return { side: 'sell', qty: pos };
     if (prevClose < lo20) return { side: 'sell', qty: pos };
     const held = ctx.state.entryI != null ? ctx.i - ctx.state.entryI : 0;
@@ -58,8 +59,8 @@ function onUpdate(ctx) {
                conds: [{ label: 'close vs 55d high', ok: breakout, closed: true }] }]);
   if (!breakout) return null;
 
-  // size so a 2xATR adverse move costs ~2% of equity (volatility-scaled risk)
-  const riskPerTrade = ctx.cash * 0.02;
+  // size so a 2xATR adverse move costs RISK_PCT of equity (volatility-scaled)
+  const riskPerTrade = ctx.cash * RISK_PCT;
   const qty = riskPerTrade / (2 * atr);
   if (qty <= 0) return null;
   ctx.state.entryI = ctx.i;
