@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 516 of 2097 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 517 of 2098 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 323 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [4473](strategies/4473/) | Dual-Confirmed Momentum (OBV + Active-Address) BTC 1D | +40.16% | -17.42% | +10.46% | 21 | 2026-10-15 |
 |  | [4472](strategies/4472/) | OI Sentiment Probe (BTC 1D) | +28.21% | +95.22% | +17.95% | 29 | 2026-10-15 |
 |  | [4471](strategies/4471/) | Active-Address + Sentiment-Cap Momentum (BTC 1D) | +42.83% | +95.22% | +10.60% | 27 | 2026-10-15 |
 |  | [4469](strategies/4469/) | Hashrate-Confirmed Momentum (BTC 1D) | +23.00% | +95.22% | +14.00% | 33 | 2026-10-15 |
