@@ -1,23 +1,25 @@
 /*
  * @coinsori-strategy v1
- * name: Dual On-Chain Confirmed BTC Trend 1D
+ * name: Fed-Regime Hashtrend BTC 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Bitcoin's health has two independent on-chain measures —
- * hash rate (mining investment) and active addresses (user adoption). A rally
- * confirmed by BOTH is the strongest signal. This strategy buys only when the
- * price trend, the mining trend AND the usage trend all agree.
- * When it buys and sells: buys when the previous close is above the 50-day EMA
- * AND hash rate is above its 30-day average AND active addresses are above
- * their 30-day average. Sells when price closes below the 50-day EMA or a 2.5x
- * ATR hard stop is hit. Positions risk 4% of cash per trade.
- * When it does NOT work: requiring two confirmations makes it very selective —
- * it sits in cash through rallies that only one of the two measures confirms
- * (e.g. ETF-driven 2024-26 where price ran ahead of retail usage). It is
- * trend-following and does not profit from range-bound price action.
+ * Why this strategy: Bitcoin trends are most reliable when the Fed's policy rate
+ * is low (cheap money, abundant risk appetite) and least reliable when rates are
+ * high (tight liquidity). This adds the Fed funds rate as a regime filter on top
+ * of a proven on-chain trend confirmation. The bet: the same price+hashrate
+ * trend is worth more in a low-rate regime and less in a high-rate one.
+ * When it buys and sells: buys when the previous close is above the 50-day EMA,
+ * the hash rate is above its 30-day average, AND the Fed funds rate is below a
+ * high-rate ceiling. Sells when price closes below the 50-day EMA or a 2.5x ATR
+ * hard stop is hit. Positions risk 4% of cash per trade.
+ * When it does NOT work: the Fed rate is a slow-moving level that changes only
+ * at policy decisions, so it rarely flips — in a regime where the rate sits at
+ * the ceiling for years (e.g. the 2022-23 hiking cycle) the strategy stays in
+ * cash and misses a large part of the eventual recovery. It is trend-following
+ * and does not profit from range-bound price action.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -34,12 +36,14 @@ function onUpdate(ctx) {
   const hrAvg = hrSma == null ? null : Number(hrSma);
   const miningUp = (hrVal != null && hrAvg != null && Number.isFinite(hrVal) && Number.isFinite(hrAvg) && hrAvg > 0 && hrVal > hrAvg);
 
-  // Usage health: active addresses vs their 30-day average
-  const addr = ctx.data('addr');
-  const addrAvg = ctx.data('addr_sma30');
-  const aVal = addr == null ? null : Number(addr);
-  const aAvg = addrAvg == null ? null : Number(addrAvg);
-  const usageUp = (aVal != null && aAvg != null && Number.isFinite(aVal) && Number.isFinite(aAvg) && aAvg > 0 && aVal > aAvg);
+  // Fed regime: the fed funds rate, in percent
+  const fedRaw = ctx.data('fed');
+  const fed = fedRaw == null ? null : Number(fedRaw);
+  // High-rate ceiling: above this the trend is treated as unreliable.
+  // 4% chosen because it separates the 2022-23 tightening cycle (rates ~4-5%)
+  // from the low-rate 2017-21 era and the post-2024 easing (~0-4%). Not tuned.
+  const HIGH_RATE = 4.0;
+  const lowRate = (fed != null && Number.isFinite(fed) && fed < HIGH_RATE);
 
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
@@ -58,8 +62,8 @@ function onUpdate(ctx) {
   ctx.watch([{ side: 'buy', price: ema50, trigger: 'above', note: 'close above 50-day EMA',
                conds: [{ label: 'close > 50-EMA', ok: uptrend, closed: true },
                        { label: 'hashrate > 30d avg', ok: miningUp, closed: true },
-                       { label: 'addr > 30d avg', ok: usageUp, closed: true }] }]);
-  if (!uptrend || !miningUp || !usageUp) return null;
+                       { label: 'fed rate < 4%', ok: lowRate, closed: true }] }]);
+  if (!uptrend || !miningUp || !lowRate) return null;
 
   const riskCash = ctx.cash * 0.04;         // risk 4% of cash per trade
   const stopDist = 2.5 * atr;
