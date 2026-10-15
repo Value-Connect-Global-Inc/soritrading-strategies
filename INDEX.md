@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4468](strategies/4468/) | 4H Momentum Ride (BTC) ‡ | -45.29% | +40.01% | +51.79% | 380 | 2026-10-15 |
+|  | [4468](strategies/4468/) | 4H Momentum Ride (BTC) | +19.69% | +95.22% | +17.95% | 35 | 2026-10-15 |
 |  | [4467](strategies/4467/) | Dual On-Chain Confirmed Momentum (BTC 1D) | +39.18% | +95.22% | +11.73% | 19 | 2026-10-15 |
 |  | [4466](strategies/4466/) | Bollinger Oversold Reversion (BTC 1D) | -62.26% | +522.64% | +64.76% | 34 | 2026-10-15 |
 |  | [4465](strategies/4465/) | Donchian Channel Breakout (BTC 1D) | -18.50% | +95.22% | +40.33% | 23 | 2026-10-15 |
