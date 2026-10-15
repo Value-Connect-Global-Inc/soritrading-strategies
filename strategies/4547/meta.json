@@ -1,0 +1,33 @@
+{
+  "id": 4547,
+  "name": "Donchian Champion Ref (ETH 1D)",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 21346,
+    "return": 59.28,
+    "mdd": 34.33,
+    "trades": 26,
+    "vsBuyHold": "lose",
+    "benchRet": 108.82,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1672531200,
+    "tTo": 1791590400,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1379봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "1d",
+      "bars": 1383,
+      "end": 1792022400
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "ddb1c4ae972684cf728d99bc8e8aa91b20ab3da75f743e5ad4735e1a6245c270"
+  },
+  "config": null,
+  "updatedAt": "2026-10-15T20:43:38.726Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
