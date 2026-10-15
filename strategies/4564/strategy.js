@@ -1,46 +1,45 @@
 /*
  * @coinsori-strategy v1
- * name: FearGreed Regime + Donchian BTC 1D
+ * name: VolTarget Donchian 55/20 BTC 1D (cycle 65 edit)
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: two independently validated edges combined into one.
- * The Fear & Greed sentiment regime (buy greed, exit fear) held up on every
- * asset tested; the VolTarget Donchian trend is a solid defensive trend
- * follower. The regret of the trend follower was lags in bulls — the sentiment
- * regime adds a second, independent confirmation so we only enter when BOTH
- * the price trend AND the crowd mood agree.
- * When it buys and sells: buys when price breaks the 55-day high AND
- * Fear & Greed >= 55 (sentiment confirms the breakout); exits on the 20-day
- * low break, a 2xATR stop, or F&G dropping to <= 40. Size = min(1, 2%/ATR%).
- * When it does NOT work: in a sideways range the double condition still
- * whipsaws; if sentiment lags the price action (common at tops) it enters
- * late. It under-captures straight-line bulls because vol-targeting caps
- * exposure and the F&G condition adds another entry delay.
+ * Why this strategy: crypto trends hard but crashes violently. A slow Donchian
+ * 55-day breakout only enters after a sustained up-move (fewer whipsaws than a
+ * fast breakout), and ATR vol-targeting shrinks the position exactly when
+ * markets get wild. A 2xATR hard stop and a 20-day low exit protect the account.
+ * When it buys and sells: buys when price breaks the 55-day high, exits on the
+ * 20-day low break or a 2xATR stop. Size = min(1, 2% target daily vol / ATR%).
+ * When it does NOT work: in a long sideways range the 55/20 breakout still
+ * whipsaws; a gap down can hit the stop before the exit reacts. It lags
+ * buy-and-hold in a straight-line bull because vol-targeting caps exposure.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
   const atr = ctx.atr(14, 1);
+  if (atr == null) return null;
+
+  // 55-day high / 20-day low from CLOSED bars so backtest == live.
   const hh = ctx.high(55, 1);
   const ll = ctx.low(20, 1);
-  if (atr == null || hh == null || ll == null) return null;
-
-  const fg = ctx.data('fear_greed');
-  if (fg == null) return null; // F&G starts Feb 2018; unknown = do not trade
+  if (hh == null || ll == null) return null;
 
   const pos = ctx.position;
   const atrPct = atr / price;
-  const size = Math.min(1, 0.02 / atrPct); // 2% daily vol target (see #4563)
+  const targetVol = 0.02; // 2% expected daily vol on the account: at 2% ATR we are
+  // fully invested, at 4% ATR we halve. Keeps single-day swings survivable.
+  const size = Math.min(1, targetVol / atrPct);
   const equity = ctx.cash + pos * price;
   const targetQty = (equity * size * 0.95) / price;
 
   if (pos > 0) {
     const entry = ctx.entryPx;
     if (entry != null) {
+      // 2xATR hard stop: caps the loss on any single position.
       const stopPx = entry - 2 * atr;
       if (price <= stopPx) return { side: 'sell', qty: pos };
       if (price < ll) return { side: 'sell', qty: pos };
@@ -50,9 +49,7 @@ function onUpdate(ctx) {
       if (price < ll) return { side: 'sell', qty: pos };
       ctx.watch([{ side: 'sell', price: ll, trigger: 'below', note: 'exit: 20d low' }]);
     }
-    // Sentiment confirmation for exit: leave when the crowd turns fearful even
-    // before the price structure breaks.
-    if (fg <= 40) return { side: 'sell', qty: pos };
+    // Rebalance only on >15% drift to avoid churn from tiny ATR wobbles.
     const diff = targetQty - pos;
     if (Math.abs(diff) / Math.max(pos, 1e-9) > 0.15) {
       return { side: diff > 0 ? 'buy' : 'sell', qty: Math.abs(diff) };
@@ -60,11 +57,11 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // Only buy when BOTH the price breaks out AND the crowd is greedy (>=55).
-  if (price > hh && fg >= 55 && targetQty > 0) {
-    ctx.watch([{ side: 'buy', price: hh, trigger: 'above', note: 'enter: 55d high + F&G>=55' }]);
+  if (price > hh && targetQty > 0) {
+    ctx.watch([{ side: 'buy', price: hh, trigger: 'above', note: 'enter: 55d high' }]);
     return { side: 'buy', qty: targetQty };
   }
-  ctx.watch([{ side: 'buy', price: hh, trigger: 'above', note: 'enter: 55d high + F&G>=55' }]);
+
+  ctx.watch([{ side: 'buy', price: hh, trigger: 'above', note: 'enter: 55d high' }]);
   return null;
 }
