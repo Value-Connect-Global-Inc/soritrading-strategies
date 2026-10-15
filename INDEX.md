@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4543](strategies/4543/) | AI 전략 | +51.94% | +683.90% | +11.39% | 48 | 2026-10-15 |
+|  | [4543](strategies/4543/) | AI 전략 | +17.10% | +360.05% | +8.45% | 34 | 2026-10-15 |
 |  | [4542](strategies/4542/) | AI 전략 | -22.52% | +683.90% | +31.37% | 14 | 2026-10-15 |
 | — | [4539](strategies/4539/) | AI 전략 | -1.46% | — | +1.45% | 1600 | 2026-10-15 |
 |  | [4533](strategies/4533/) | AI 전략 | -37.61% | +47.08% | +59.29% | 62 | 2026-10-15 |
