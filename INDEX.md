@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4461](strategies/4461/) | Active-Address Confirmed Momentum Basket (BTC/ETH/SOL 1D) | +171.30% | — | +17.80% | 88 | 2026-10-15 |
+| — | [4461](strategies/4461/) | Active-Address Confirmed Momentum Basket (BTC/ETH/SOL 1D) ‡ | +171.30% | — | +17.80% | 88 | 2026-10-15 |
 |  | [4460](strategies/4460/) | Active-Address Confirmed Momentum | +42.83% | +95.22% | +10.60% | 27 | 2026-10-15 |
 | — | [4459](strategies/4459/) | FearGreed-Sentiment-Momentum Multi-Asset 1D | +177.91% | — | +18.36% | 70 | 2026-10-15 |
 | — | [4458](strategies/4458/) | Hashrate-Exit Multi-Asset Momentum 1D | +0.69% | — | +26.28% | 1552 | 2026-10-15 |
