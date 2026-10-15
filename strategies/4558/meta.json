@@ -1,0 +1,33 @@
+{
+  "id": 4558,
+  "name": "Bollinger Squeeze Breakout (ETH 1D)",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 21391,
+    "return": -19.27,
+    "mdd": 42.42,
+    "trades": 14,
+    "vsBuyHold": "win",
+    "benchRet": -57.23,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1502928000,
+    "tTo": 1577750400,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 867봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "1d",
+      "bars": 883,
+      "end": 1577836800
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "2a0981603d42fcd7c2d59f2cece7d079b337ca3a76c9c81627ad9e3656f2036d"
+  },
+  "config": null,
+  "updatedAt": "2026-10-15T21:40:37.572Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
