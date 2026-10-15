@@ -1,0 +1,35 @@
+{
+  "id": 4428,
+  "name": "ETH Trend (EMA50, risk 4%)",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 20717,
+    "return": 58.62,
+    "mdd": 27.9,
+    "trades": 67,
+    "vsBuyHold": "win",
+    "benchRet": -23.32,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1502928000,
+    "tTo": 1590883200,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[유동성/미체결] 시장가 주문 9건이 그 봉의 호가 두께를 넘어 일부만 체결됐습니다(전체 요청 금액의 3% 미체결, 남은 물량은 다음 봉으로). 진입·청산이 전략이 의도한 시점보다 늦습니다. ★ 원인은 둘 중 하나이고 이 수만으로는 못 가릅니다 — 종목이 얇거나, 주문이 한 봉이 소화할 수 있는 것보다 크거나. 주문 크기를 줄여 같은 구간을 다시 돌리면 …",
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 28.21%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1019봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "1d",
+      "bars": 1035,
+      "end": 1590969600
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "00952887300ca81c999ceee85df36fed0a483f3cda961f552c0ce98031fb8b3c"
+  },
+  "config": null,
+  "updatedAt": "2026-10-15T00:07:53.445Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

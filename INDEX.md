@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 511 of 2056 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 512 of 2058 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 306 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [4428](strategies/4428/) | ETH Trend (EMA50, risk 4%) | +58.62% | -23.32% | +27.90% | 67 | 2026-10-15 |
+|  | [4427](strategies/4427/) | Two-Trend BTC (EMA50+EMA200, risk 4%) | +68.21% | +256.01% | +22.18% | 57 | 2026-10-15 |
 |  | [4426](strategies/4426/) | Dollar-Regime BTC Trend (risk 3%) | +81.68% | +120.49% | +21.40% | 35 | 2026-10-15 |
 |  | [4425](strategies/4425/) | Fed Policy Regime BTC 1D | +70.23% | +155.65% | +24.35% | 57 | 2026-10-14 |
 |  | [4424](strategies/4424/) | AI 전략 ‡ | -25.37% | +315.94% | +26.15% | 219 | 2026-10-14 |
