@@ -1,25 +1,23 @@
 /*
  * @coinsori-strategy v1
- * name: Hashrate-Confirmed BTC Trend 1D (risk 4%)
+ * name: Dual On-Chain Confirmed BTC Trend 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Bitcoin's network hash rate is a real, physical measure of
- * mining investment — it tends to rise over the long term as the network grows.
- * A rising hash rate confirms that a price rally has real network support behind
- * it, while a falling hash rate flags a rally that miners are abandoning. This
- * strategy only buys when BOTH the price trend and the network-health trend agree.
+ * Why this strategy: Bitcoin's health has two independent on-chain measures —
+ * hash rate (mining investment) and active addresses (user adoption). A rally
+ * confirmed by BOTH is the strongest signal. This strategy buys only when the
+ * price trend, the mining trend AND the usage trend all agree.
  * When it buys and sells: buys when the previous close is above the 50-day EMA
- * (a faster trend line than the 200-day) AND the hash rate is above its own
- * 30-day average (network expanding). Sells when price closes below the 50-day
- * EMA or a 2.5x ATR hard stop is hit. Positions are sized so each trade risks
- * 4% of cash, twice the conservative default, so the edge shows in returns.
- * When it does NOT work: hash rate is a slow-moving level, so in a short
- * speculative spike it stays in cash and misses the move; and in a crash driven
- * purely by macro (not mining) it can hold too long. It is trend-following, so
- * it does not profit from range-bound price action.
+ * AND hash rate is above its 30-day average AND active addresses are above
+ * their 30-day average. Sells when price closes below the 50-day EMA or a 2.5x
+ * ATR hard stop is hit. Positions risk 4% of cash per trade.
+ * When it does NOT work: requiring two confirmations makes it very selective —
+ * it sits in cash through rallies that only one of the two measures confirms
+ * (e.g. ETF-driven 2024-26 where price ran ahead of retail usage). It is
+ * trend-following and does not profit from range-bound price action.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -29,12 +27,19 @@ function onUpdate(ctx) {
   const atr = ctx.atr(14, 1);
   if (ema50 == null || atr == null || atr <= 0) return null;
 
-  // Network health: current hash rate vs its own 30-day average
+  // Mining health: hash rate vs its 30-day average
   const hr = ctx.data('hashrate');
   const hrSma = ctx.data('hashrate_sma30');
   const hrVal = hr == null ? null : Number(hr);
   const hrAvg = hrSma == null ? null : Number(hrSma);
-  const networkHealthy = (hrVal != null && hrAvg != null && Number.isFinite(hrVal) && Number.isFinite(hrAvg) && hrAvg > 0 && hrVal > hrAvg);
+  const miningUp = (hrVal != null && hrAvg != null && Number.isFinite(hrVal) && Number.isFinite(hrAvg) && hrAvg > 0 && hrVal > hrAvg);
+
+  // Usage health: active addresses vs their 30-day average
+  const addr = ctx.data('addr');
+  const addrAvg = ctx.data('addr_sma30');
+  const aVal = addr == null ? null : Number(addr);
+  const aAvg = addrAvg == null ? null : Number(addrAvg);
+  const usageUp = (aVal != null && aAvg != null && Number.isFinite(aVal) && Number.isFinite(aAvg) && aAvg > 0 && aVal > aAvg);
 
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
@@ -52,8 +57,9 @@ function onUpdate(ctx) {
   const uptrend = prevClose > ema50;
   ctx.watch([{ side: 'buy', price: ema50, trigger: 'above', note: 'close above 50-day EMA',
                conds: [{ label: 'close > 50-EMA', ok: uptrend, closed: true },
-                       { label: 'hashrate > 30d avg', ok: networkHealthy, closed: true }] }]);
-  if (!uptrend || !networkHealthy) return null;
+                       { label: 'hashrate > 30d avg', ok: miningUp, closed: true },
+                       { label: 'addr > 30d avg', ok: usageUp, closed: true }] }]);
+  if (!uptrend || !miningUp || !usageUp) return null;
 
   const riskCash = ctx.cash * 0.04;         // risk 4% of cash per trade
   const stopDist = 2.5 * atr;

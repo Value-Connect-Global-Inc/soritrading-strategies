@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 514 of 2061 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 513 of 2061 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 306 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [4431](strategies/4431/) | Hashrate-Confirmed BTC Trend 1D (risk 4%) | +29.83% | +28.61% | +24.35% | 59 | 2026-10-15 |
+|  | [4431](strategies/4431/) | Hashrate-Confirmed BTC Trend 1D (risk 4%) | +16.84% | +28.61% | +24.88% | 55 | 2026-10-15 |
 | ★ | [4430](strategies/4430/) | Network-Usage Confirmed BTC Trend 1D | +343.82% | +164.87% | +25.97% | 61 | 2026-10-15 |
 |  | [4429](strategies/4429/) | BTC 4h EMA50/200 Momentum w/ Re-entry | +22.40% | +28.61% | +57.68% | 7 | 2026-10-15 |
 | ★ | [4428](strategies/4428/) | ETH Trend (EMA50, risk 4%) | +58.62% | -23.32% | +27.90% | 67 | 2026-10-15 |
