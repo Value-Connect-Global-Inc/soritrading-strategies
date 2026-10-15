@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 517 of 2103 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 518 of 2103 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 323 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4478](strategies/4478/) | Hashrate-Confirmed Momentum (BTC 1D) ‡ | +264.37% | +522.64% | +33.73% | 50 | 2026-10-15 |
+| ★ | [4478](strategies/4478/) | Hashrate-Confirmed Momentum (BTC 1D) | +44.36% | -17.42% | +16.36% | 27 | 2026-10-15 |
 |  | [4477](strategies/4477/) | AI 전략 | -20.13% | +55.39% | +30.80% | 2 | 2026-10-15 |
 |  | [4476](strategies/4476/) | AI 전략 | +94.17% | +1033.52% | +19.65% | 3 | 2026-10-15 |
 |  | [4475](strategies/4475/) | Fear-Greed Trend-Gated ETH Momentum (ETH 1D) | -5.34% | +55.39% | +9.93% | 6 | 2026-10-15 |
