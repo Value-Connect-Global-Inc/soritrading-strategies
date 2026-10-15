@@ -1,87 +1,59 @@
 /*
  * @coinsori-strategy v1
- * name: DXY Macro Regime BTC 1D
+ * name: Hashrate Regime BTC 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Bitcoin is a risk asset that historically does well when
- * the US dollar weakens and badly when the dollar strengthens (2018 and 2022
- * crashes both coincided with a rising dollar). Instead of predicting price, we
- * read the macro regime directly from the Fed's broad dollar index and stay
- * long only during dollar weakness.
- * When it buys and sells: buys BTC (full size) when the dollar index is below
- * its own 200-day average (dollar weakening = risk-on); sells when the dollar
- * index rises back above its average (risk-off) or price drops 20% from entry.
- * When it does NOT work: the dollar-BTC link is noisy and not 1:1 — during a
- * dollar-driven selloff it exits late, and in a rising dollar it sits in cash
- * while BTC rallies on its own (missed the 2023-25 bull partially). It also
- * has no position when DXY data is missing.
+ * Why this strategy: Bitcoin network hash rate is a slow, smooth fundamental —
+ * miners commit real hardware and electricity, so a rising hash rate signals a
+ * healthy, growing network that historically precedes price strength, while a
+ * falling hash rate marks miner stress and weak hands. Unlike user addresses it
+ * does not whipsaw bar-to-bar. We use it as a regime filter with a long-term
+ * trend gate so we never buy into a confirmed downtrend.
+ * When it buys and sells: buys BTC (full size) when hash rate is above its
+ * 30-day average AND price is above the 200-day SMA; sells when hash rate falls
+ * below its 30-day average, or price drops 20% from entry (hard stop).
+ * When it does NOT work: hash rate is a lagging, slow-mo signal — it keeps
+ * rising for a while after price tops (miners keep hashing), so the regime can
+ * stay long into the early part of a bear. In the chop after a hype cycle the
+ * 200-day gate keeps it mostly in cash, missing sharp V-recoveries.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
-  // Read the current dollar index value, tolerating a plain number or an
-  // object carrying the number (macro API shape is not documented).
-  const m = ctx.macro('dxy');
-  let dxy = null;
-  if (typeof m === 'number') dxy = m;
-  else if (m != null && typeof m === 'object') {
-    if (typeof m.value === 'number') dxy = m.value;
-    else if (typeof m.v === 'number') dxy = m.v;
-    else if (typeof m.close === 'number') dxy = m.close;
-  }
-  if (dxy == null) return null;
+  // Hash rate regime from the connected on-chain dataset (TH/s, slow level —
+  // compare to its own average, not a fixed threshold).
+  const hr = ctx.data('hashrate');
+  const sma = ctx.data('hashrate_sma30');
+  if (hr == null || sma == null || sma <= 0) return null;
+  const healthy = hr > sma; // network computing power above its 30-day average
 
-  // Get the DXY series. It may be a plain array, or an object keyed by macro
-  // name (e.g. {dxy:[...]}). Collect up to the last 200 points either way.
-  let raw = ctx.macroSeries;
-  let arr = null;
-  if (Array.isArray(raw)) arr = raw;
-  else if (raw != null && typeof raw === 'object') {
-    if (Array.isArray(raw.dxy)) arr = raw.dxy;
-    else if (Array.isArray(raw['dxy'])) arr = raw['dxy'];
-    else {
-      for (const k in raw) { if (Array.isArray(raw[k])) { arr = raw[k]; break; } }
-    }
-  }
-  if (arr == null || arr.length < 120) return null;
-
-  const vals = [];
-  for (let i = arr.length - 200; i < arr.length; i++) {
-    if (i < 0) continue;
-    const x = arr[i];
-    if (typeof x === 'number') vals.push(x);
-    else if (x != null && typeof x === 'object') {
-      if (typeof x.value === 'number') vals.push(x.value);
-      else if (typeof x.v === 'number') vals.push(x.v);
-      else if (typeof x.close === 'number') vals.push(x.close);
-    }
-  }
-  if (vals.length < 120) return null;
-  const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
-  const riskOn = dxy < avg; // dollar below its 200-day average = risk-on regime
+  // Long-term trend gate: never buy into a confirmed downtrend.
+  const trend = ctx.sma(200, 1);
+  if (trend == null) return null;
+  const uptrend = price > trend;
 
   const pos = ctx.position;
   if (pos > 0) {
     const entry = ctx.entryPx;
     if (entry != null) {
-      // 20% hard stop: caps any single position's loss before the slow daily
-      // dollar index can confirm the regime has flipped.
+      // 20% hard stop: caps any single position's loss before the slow hash
+      // rate regime can confirm the flip.
       const stopPx = entry * 0.80;
       if (price <= stopPx) return { side: 'sell', qty: pos };
       ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'stop: -20%' }]);
     }
-    if (!riskOn) return { side: 'sell', qty: pos }; // dollar strengthening -> exit
+    if (!healthy) return { side: 'sell', qty: pos }; // miner stress -> exit
     return null;
   }
 
-  if (riskOn) {
-    ctx.watch([{ side: 'buy', note: 'enter: DXY below 200d avg', conds: [{ label: 'DXY<200d avg', ok: riskOn, closed: true }] }]);
+  if (healthy && uptrend) {
+    ctx.watch([{ side: 'buy', note: 'hashrate > 30d avg & trend up' }]);
     return { side: 'buy', qty: (ctx.cash * 0.95) / price };
   }
-  ctx.watch([{ side: 'buy', note: 'enter: DXY below 200d avg', conds: [{ label: 'DXY<200d avg', ok: riskOn, closed: true }] }]);
+  ctx.watch([{ side: 'buy', note: 'wait: hashrate > 30d avg & trend up' }]);
   return null;
 }
