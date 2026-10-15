@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4569](strategies/4569/) | FearGreed Multi-Asset Regime Basket | +704.14% | — | +45.06% | 82 | 2026-10-15 |
+| — | [4569](strategies/4569/) | FearGreed Multi-Asset Regime Basket | +378.92% | — | +51.13% | 1414 | 2026-10-15 |
 | — | [4568](strategies/4568/) | VolTarget Donchian Multi-Asset Basket | -48.16% | — | +48.76% | 258 | 2026-10-15 |
 |  | [4567](strategies/4567/) | DXY Macro Regime BTC 1D | +10.15% | +432.51% | +26.13% | 52 | 2026-10-15 |
 |  | [4566](strategies/4566/) | DXY Data Probe BTC 1D | +410.74% | +432.51% | +31.81% | 1 | 2026-10-15 |

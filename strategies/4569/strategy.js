@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: FearGreed Multi-Asset Regime Basket v3
+ * name: FearGreed Multi-Asset Regime Basket v4
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT
  * interval: 1d
@@ -12,14 +12,14 @@
  * broken. This rides confirmed sentiment on a 4-coin basket so no single asset
  * decides the account.
  * When it buys and sells: on each asset, buy when Fear & Greed >= 55 AND price
- * is above its 200-day average (closed bar). Sell when price closes below its
- * 200-day average (the trend has broken, before the lagging index says so), or
- * when Fear & Greed <= 40, or when price drops 25% below entry (hard stop).
+ * is above its 200-day average (closed bar). Sell when Fear & Greed <= 40 or
+ * when price falls 20% below the highest price since entry (trailing stop that
+ * locks in gains; it never lets a winning trade turn into a -25% loss).
  * When it does NOT work: in a fast crash the index can still be high while
- * prices are already falling (the index lags) — the 200-day filter reduces
- * these entries but cannot remove all of them. It misses the very start of a
- * bull because it waits for confirmed greed, and the 25% stop turns a normal
- * dip into a realized loss.
+ * prices are already falling (the index lags) — the 200-day entry filter
+ * reduces these entries but cannot remove all of them. It misses the very
+ * start of a bull because it waits for confirmed greed, and the 20% trail can
+ * be hit by a normal dip after a sharp run-up, selling a still-good trend.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -35,18 +35,23 @@ function onUpdate(ctx) {
 
   const pos = ctx.position;
   if (pos > 0) {
-    // Trend-break exit: the F&G index lags price in a crash, so exit when
-    // price closes below its 200-day average even if the index is still high.
-    if (price < sma200) return { side: 'sell', qty: pos };
     if (fg <= 40) return { side: 'sell', qty: pos }; // greed over -> exit
     const entry = ctx.entryPx;
-    if (entry != null) {
-      // 25% hard stop: caps the loss on any single position.
-      if (price <= entry * 0.75) return { side: 'sell', qty: pos };
-      ctx.watch([{ side: 'sell', price: entry * 0.75, trigger: 'below', note: 'stop: -25%' }]);
-    }
+    if (entry == null) return null;
+
+    // Trail the highest price seen since entry (per-symbol state).
+    const hi = ctx.state && ctx.state.hi != null ? Math.max(ctx.state.hi, price) : price;
+    ctx.state = { hi: hi };
+    // Trailing stop 20% below the running high, never worse than -25% from
+    // entry: locks in gains instead of a fixed stop that realizes a normal dip.
+    const stop = Math.max(entry * 0.75, hi * 0.80);
+    if (price <= stop) return { side: 'sell', qty: pos };
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'trail 20%' }]);
     return null;
   }
+
+  // Flat: reset the trailing high.
+  if (ctx.state && ctx.state.hi != null) ctx.state = { hi: null };
 
   // Trend filter on entry: only buy when price is above its 200-day average
   // (closed bar) so we do not buy into a downtrend the index has not yet seen.
