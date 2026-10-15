@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 528 of 2146 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 528 of 2147 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 325 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [4528](strategies/4528/) | Volatility Squeeze Breakout (BTC 1D) | -4.26% | +146.40% | +15.91% | 4 | 2026-10-15 |
 |  | [4527](strategies/4527/) | RSI Mean Reversion (BTC 1D) | -53.47% | +146.40% | +58.35% | 10 | 2026-10-15 |
 | ★ | [4525](strategies/4525/) | Debug Closes (ETH 1D) | +202.38% | +19.26% | +56.23% | 16 | 2026-10-15 |
 |  | [4523](strategies/4523/) | Contrarian Fear-Greed (BTC 1D) | -45.37% | +522.64% | +78.91% | 16 | 2026-10-15 |

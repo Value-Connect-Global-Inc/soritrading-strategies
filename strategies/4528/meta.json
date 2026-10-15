@@ -1,0 +1,33 @@
+{
+  "id": 4528,
+  "name": "Volatility Squeeze Breakout (BTC 1D)",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 21287,
+    "return": -4.26,
+    "mdd": 15.91,
+    "trades": 4,
+    "vsBuyHold": "lose",
+    "benchRet": 146.4,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1506902400,
+    "tTo": 1601856000,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1100봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 1100,
+      "end": 1601942400
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "f21fbaf0d354167d91df7d5401776a6794e4471f6c07c0ddb20c02d1d498746b"
+  },
+  "config": null,
+  "updatedAt": "2026-10-15T19:10:17.259Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
