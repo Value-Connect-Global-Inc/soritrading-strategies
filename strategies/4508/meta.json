@@ -1,0 +1,33 @@
+{
+  "id": 4508,
+  "name": "Oversold Dip Mean-Revert (BTC 1D)",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 21198,
+    "return": 26.17,
+    "mdd": 6.93,
+    "trades": 20,
+    "vsBuyHold": "lose",
+    "benchRet": 95.22,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1705276800,
+    "tTo": 1791590400,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 1000,
+      "end": 1792022400
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "0ee0e0375f1b18e9478edf388cdfab7637759e006bb43dc9fcff954df324679f"
+  },
+  "config": null,
+  "updatedAt": "2026-10-15T16:46:58.457Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
