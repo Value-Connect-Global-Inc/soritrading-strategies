@@ -3,7 +3,7 @@
   "name": "Fear-Greed Capitulation Rebound (BTC 1D)",
   "kind": "custom",
   "verified": {
-    "backtestId": 20981,
+    "backtestId": 20984,
     "return": -39.26,
     "mdd": 59.31,
     "trades": 18,
