@@ -3,31 +3,32 @@
   "name": "Donchian Half-Size (ETH 1D)",
   "kind": "custom",
   "verified": {
-    "backtestId": 21338,
-    "return": 18.5,
-    "mdd": 21.02,
-    "trades": 22,
-    "vsBuyHold": "lose",
-    "benchRet": 53.44,
+    "backtestId": 21343,
+    "return": 119.27,
+    "mdd": 41.4,
+    "trades": 19,
+    "vsBuyHold": "win",
+    "benchRet": 108.82,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1696636800,
+    "tFrom": 1672531200,
     "tTo": 1791590400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1100봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 95.75%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1379봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "ETH",
       "interval": "1d",
-      "bars": 1100,
+      "bars": 1383,
       "end": 1792022400
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "89b152811fea9db913b3ed802f510d47a6e2af641955be0ae3cd5fabfab1291e"
+    "verifiedCodeSha256": "d4c539226365f914ba2c9c6c6a6ccf74473dadfb1f76b583833968d36621a7d5"
   },
   "config": null,
-  "updatedAt": "2026-10-15T20:26:10.979Z",
+  "updatedAt": "2026-10-15T20:41:33.095Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
