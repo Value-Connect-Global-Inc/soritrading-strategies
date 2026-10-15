@@ -1,67 +1,51 @@
 /*
  * @coinsori-strategy v1
- * name: VolTarget Donchian 55/20 BTC 1D
+ * name: OnChain Activity Regime BTC 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: crypto trends hard but crashes violently. A slow Donchian
- * 55-day breakout only enters after a sustained up-move (fewer whipsaws than a
- * fast breakout), and ATR vol-targeting shrinks the position exactly when
- * markets get wild. A 2xATR hard stop and a 20-day low exit protect the account.
- * When it buys and sells: buys when price breaks the 55-day high, exits on the
- * 20-day low break or a 2xATR stop. Size = min(1, 2% target daily vol / ATR%).
- * When it does NOT work: in a long sideways range the 55/20 breakout still
- * whipsaws; a gap down can hit the stop before the exit reacts. It lags
- * buy-and-hold in a straight-line bull because vol-targeting caps exposure.
+ * Why this strategy: Bitcoin's price historically follows real network usage.
+ * Daily active addresses measure people actually using the network. When usage
+ * is rising above its own 30-day average, adoption is growing and price tends
+ * to follow; when usage contracts, price tends to correct. This is a
+ * fundamentally different signal axis from price momentum.
+ * When it buys and sells: buys when active addresses are above their 30-day
+ * average (network growing); sells when they fall back below it (usage
+ * shrinking), or when price drops 15% below entry (hard stop).
+ * When it does NOT work: in the sideways phase after a hype cycle the address
+ * count can stay high while price chops, causing whipsaws; in a deep bear the
+ * address signal lags the crash, so the hard stop does the real work.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
-  const atr = ctx.atr(14, 1);
-  if (atr == null) return null;
-
-  // 55-day high / 20-day low from CLOSED bars so backtest == live.
-  const hh = ctx.high(55, 1);
-  const ll = ctx.low(20, 1);
-  if (hh == null || ll == null) return null;
+  // Network usage regime from the connected on-chain dataset (daily addresses).
+  const addr = ctx.data('addr');
+  const sma = ctx.data('addr_sma30');
+  if (addr == null || sma == null || sma <= 0) return null;
+  const growing = addr > sma; // usage above its own 30-day average = adoption growing
 
   const pos = ctx.position;
-  const atrPct = atr / price;
-  const targetVol = 0.02; // 2% expected daily vol on the account: at 2% ATR we are
-  // fully invested, at 4% ATR we halve. Keeps single-day swings survivable.
-  const size = Math.min(1, targetVol / atrPct);
-  const equity = ctx.cash + pos * price;
-  const targetQty = (equity * size * 0.95) / price;
-
   if (pos > 0) {
     const entry = ctx.entryPx;
     if (entry != null) {
-      // 2xATR hard stop: caps the loss on any single position.
-      const stopPx = entry - 2 * atr;
+      // 15% hard stop: round, defensible cap on any single position's loss.
+      const stopPx = entry * 0.85;
       if (price <= stopPx) return { side: 'sell', qty: pos };
-      if (price < ll) return { side: 'sell', qty: pos };
-      ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'stop: 2xATR' },
-                 { side: 'sell', price: ll, trigger: 'below', note: 'exit: 20d low' }]);
-    } else {
-      if (price < ll) return { side: 'sell', qty: pos };
-      ctx.watch([{ side: 'sell', price: ll, trigger: 'below', note: 'exit: 20d low' }]);
+      ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'stop: -15%' }]);
     }
-    // Rebalance only on >15% drift to avoid churn from tiny ATR wobbles.
-    const diff = targetQty - pos;
-    if (Math.abs(diff) / Math.max(pos, 1e-9) > 0.15) {
-      return { side: diff > 0 ? 'buy' : 'sell', qty: Math.abs(diff) };
-    }
+    if (!growing) return { side: 'sell', qty: pos }; // usage contracting -> exit
     return null;
   }
 
-  if (price > hh && targetQty > 0) {
-    ctx.watch([{ side: 'buy', price: hh, trigger: 'above', note: 'enter: 55d high' }]);
-    return { side: 'buy', qty: targetQty };
+  if (growing) {
+    const qty = (ctx.cash * 0.95) / price;
+    ctx.watch([{ side: 'buy', note: 'network usage growing' }]);
+    return { side: 'buy', qty: qty };
   }
-
-  ctx.watch([{ side: 'buy', price: hh, trigger: 'above', note: 'enter: 55d high' }]);
+  ctx.watch([{ side: 'buy', note: 'wait: addr > 30d avg' }]);
   return null;
 }
