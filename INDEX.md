@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4525](strategies/4525/) | Debug Closes (ETH 1D) | -19.52% | +360.05% | +50.66% | 16 | 2026-10-15 |
+|  | [4525](strategies/4525/) | Debug Closes (ETH 1D) ‡ | -19.52% | +360.05% | +50.66% | 16 | 2026-10-15 |
 |  | [4523](strategies/4523/) | Contrarian Fear-Greed (BTC 1D) | -45.37% | +522.64% | +78.91% | 16 | 2026-10-15 |
 |  | [4522](strategies/4522/) | On-Chain Adoption Trend (BTC 1D) | +24.66% | +95.22% | +28.10% | 17 | 2026-10-15 |
 | ★ | [4521](strategies/4521/) | AI 전략 | +31.49% | -17.42% | +31.18% | 13 | 2026-10-15 |
