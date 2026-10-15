@@ -1,20 +1,22 @@
 /*
  * @coinsori-strategy v1
- * name: Donchian Trend Breakout (ETH 1D)
+ * name: Donchian Trend Breakout + SMA200 Filter (ETH 1D)
  * ex: binance
  * syms: ETH/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Classic trend-following — a 55-day close high marks the
- * start of a new up-leg, and a 20-day close low exit cuts the trend when it
- * turns. No sentiment data, a pure price-action family to compare against the
- * F&G champion (4517) on the same symbol.
- * When it buys and sells: buys when the close makes a new 55-day high. Sells
- * when the close makes a new 20-day low, or a 30% hard stop is hit.
- * When it does NOT work: in choppy sideways markets the 55/20 breakout whipsaws
- * repeatedly; in fast crashes the 20-day low exit lags and the stop takes a
- * big hit before the exit fires.
+ * Why this strategy: Trend-following on ETH daily. A new 55-day close high
+ * marks the start of an up-leg, but only counts as a buy when price is already
+ * above its 200-day average — the long-term filter keeps the breakout out of
+ * bear-market whipsaws where the plain 55/20 version churns. Exits on a 20-day
+ * close low or a 30% hard stop.
+ * When it buys and sells: buys when the close makes a new 55-day high AND the
+ * close is above the 200-day average. Sells when the close makes a new 20-day
+ * low, or a 30% hard stop is hit.
+ * When it does NOT work: in a long sideways market hugging the 200-day average
+ * the filter still lets whipsaws through; in a fast crash the 20-day low exit
+ * lags and the stop takes a big hit before the exit fires.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -22,11 +24,16 @@ function onUpdate(ctx) {
 
   const closes = ctx.closes;
   const n = closes.length;
-  if (n < 60) return null; // need 55 + 20 bars history
+  if (n < 60) return null; // need 55 + 20 bars history for the channel
 
   // CLOSED bars only: prevClose is the last closed bar, and the channel is
   // built from bars STRICTLY BEFORE it, so a new high can actually trigger.
   const prevClose = closes[n - 2];
+
+  // Long-term trend filter: close must be above the 200-day average (closed bar).
+  const sma200 = ctx.sma(200, 1);
+  if (sma200 == null) return null;
+  const trendUp = prevClose > sma200;
 
   // Highest close of the 55 closed bars before prevClose (excludes prevClose).
   let hi55 = -Infinity;
@@ -50,9 +57,10 @@ function onUpdate(ctx) {
     return null;
   }
 
-  const breakout = prevClose > hi55;
+  const breakout = prevClose > hi55 && trendUp;
   ctx.watch([{ side: 'buy', price: hi55, trigger: 'above', note: 'enter: 55d high',
-               conds: [{ label: 'close vs 55d high', ok: breakout, closed: true }] }]);
+               conds: [{ label: 'close vs 55d high', ok: prevClose > hi55, closed: true },
+                       { label: 'close > SMA200', ok: trendUp, closed: true }] }]);
   if (!breakout) return null;
 
   const qty = (ctx.cash * 0.95) / price;
