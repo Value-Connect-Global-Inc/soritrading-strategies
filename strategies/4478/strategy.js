@@ -21,6 +21,8 @@
  * so the gate can stay "on" for long stretches and add little filtering; and it reacts
  * slowly to price crashes (miners keep machines running for weeks), so it may not warn
  * early. It also only checks BTC, so it adds no protection to other coins.
+ * NOTE (diagnostic): this build REQUIRES hashrate data — if ctx.data returns null the
+ * strategy does nothing. Used to verify the dataset is actually loaded on the agent.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -42,6 +44,13 @@ function onUpdate(ctx) {
     volScale = Math.min(1, 0.02 / atrPct);
   }
 
+  // Miner-health gate: only buy when hashrate is at/above its 30-day average.
+  // DIAGNOSTIC: require the data — if missing, do nothing (proves it is loaded).
+  const hr = ctx.data('hashrate');
+  const hrAvg = ctx.data('hashrate_sma30');
+  if (hr == null || hrAvg == null) return null;
+  const hrOk = hr >= hrAvg;
+
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
     const stop = ctx.entryPx * 0.85;          // hard stop: 15% below entry
@@ -53,15 +62,6 @@ function onUpdate(ctx) {
                  conds: [{ label: '30d return > 0', ok: mom30 > 0, closed: true }] }]);
     return null;
   }
-
-  // Miner-health gate: only buy when hashrate is at/above its 30-day average.
-  // Hashrate is a slow secular-rising level, so compare to its own moving average
-  // (dataset note), never a fixed threshold. Missing data defaults to allowing the
-  // trade so the strategy never silently blocks on a gap.
-  const hr = ctx.data('hashrate');
-  const hrAvg = ctx.data('hashrate_sma30');
-  let hrOk = true;
-  if (hr != null && hrAvg != null) hrOk = hr >= hrAvg;
 
   const uptrend = prevClose > ema200;
   ctx.watch([{ side: 'buy', price: ema200, trigger: 'above', note: 'close above 200-day EMA',

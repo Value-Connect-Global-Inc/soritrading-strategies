@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4478](strategies/4478/) | Hashrate-Confirmed Momentum (BTC 1D) | +264.37% | +522.64% | +33.73% | 50 | 2026-10-15 |
+|  | [4478](strategies/4478/) | Hashrate-Confirmed Momentum (BTC 1D) ‡ | +264.37% | +522.64% | +33.73% | 50 | 2026-10-15 |
 |  | [4477](strategies/4477/) | AI 전략 | -20.13% | +55.39% | +30.80% | 2 | 2026-10-15 |
 |  | [4476](strategies/4476/) | AI 전략 | +94.17% | +1033.52% | +19.65% | 3 | 2026-10-15 |
 |  | [4475](strategies/4475/) | Fear-Greed Trend-Gated ETH Momentum (ETH 1D) | -5.34% | +55.39% | +9.93% | 6 | 2026-10-15 |
