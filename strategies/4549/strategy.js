@@ -1,21 +1,22 @@
 /*
  * @coinsori-strategy v1
- * name: Donchian 55/30 Vol-Scaled 5pct (ETH 1D)
+ * name: Donchian 55/30 Vol-Scaled + Breakeven Ratchet (ETH 1D)
  * ex: binance
  * syms: ETH/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Same trend-following core as the champion (55-day close
- * high entry, 30-day close low exit, 30% stop) but position size shrinks only
- * in EXTREME daily volatility, so crashes hit a smaller position while normal
- * melt-ups keep full size.
- * When it buys and sells: buys on a 55-day close high, sized by volatility —
- * full size when ATR(20)/price <= 5%, proportionally smaller only above that.
- * Sells on a 30-day close low or a 30% hard stop.
+ * Why this strategy: Same validated core as the champion (55-day close high
+ * entry, 30-day close low exit, volatility-scaled size) plus ONE new rule: once
+ * a trade is up 50%, the hard stop moves from -30% to breakeven. A fast crash
+ * can no longer turn a mature winner into a loss — it only gives back the gain
+ * since entry. Different mechanism from the failed chandelier: this is a single
+ * floor ratchet, not a trailing stop that cuts incremental gains.
+ * When it buys and sells: buys on a 55-day close high, vol-scaled size. Sells on
+ * a 30-day close low, the 30% hard stop (or breakeven once up 50%).
  * When it does NOT work: in a long sideways market the breakout whipsaws; in a
- * fast crash the 30-day exit lags and the stop still takes a hit (just a smaller
- * one because size was cut).
+ * bull-market pullback that dips back to entry after a 50% run, the breakeven
+ * stop exits early and forfeits the continuation.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -38,10 +39,22 @@ function onUpdate(ctx) {
 
   const pos = ctx.position;
   if (pos > 0) {
-    const stop = ctx.entryPx * 0.70;
-    if (price <= stop) return { side: 'sell', qty: pos };
+    // Track the highest price since entry (persistent across bars via ctx.state).
+    let hi = ctx.state.hi;
+    if (hi == null || price > hi) hi = price;
+    ctx.state.hi = hi;
+
+    // Breakeven ratchet: once the trade has been up 50%, the hard stop floor
+    // rises from -30% to 0%. Reason: at +50% the trade is a mature winner and
+    // protecting principal beats letting a crash turn it into a loss. 50% chosen
+    // (not 30%) so young winners still have room to breathe through pullbacks.
+    const hardStop = ctx.entryPx * 0.70;
+    let stopPx = hardStop;
+    if (hi >= ctx.entryPx * 1.50) stopPx = ctx.entryPx;
+
+    if (price <= stopPx) return { side: 'sell', qty: pos };
     if (prevClose < lo30) return { side: 'sell', qty: pos };
-    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '30% stop' },
+    ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'stop (30% / breakeven)' },
                { side: 'sell', price: lo30, trigger: 'below', note: 'exit: 30d low',
                  conds: [{ label: 'close vs 30d low', ok: prevClose >= lo30, closed: true }] }]);
     return null;
@@ -65,5 +78,6 @@ function onUpdate(ctx) {
 
   const qty = (ctx.cash * frac) / price;
   if (qty <= 0) return null;
+  ctx.state.hi = price; // ratchet anchor = entry price
   return { side: 'buy', qty };
 }
