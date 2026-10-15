@@ -3,10 +3,10 @@
   "name": "EURUSD 4h 미국금리 레짐 눌림목",
   "kind": "custom",
   "verified": {
-    "backtestId": 21025,
-    "return": 2.19,
-    "mdd": 1.72,
-    "trades": 2,
+    "backtestId": 21032,
+    "return": -4.18,
+    "mdd": 17.75,
+    "trades": 46,
     "vsBuyHold": "unmeasured",
     "gapPct": 26.7,
     "tFrom": 1672639200,
@@ -28,8 +28,8 @@
       "bars": 4386,
       "end": 1735689600
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "f73824d472f8e055c23d1f8d70c8dae54d59f5b4f5ccb15629af3d9dabbb6ac2"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "bf688e00794d6b730148c7e92ce8fedc05ef45b263f456b1e3a04c92c062d0b0"
   },
   "config": {
     "ex": "forex",

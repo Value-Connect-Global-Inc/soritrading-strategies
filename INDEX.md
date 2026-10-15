@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4479](strategies/4479/) | EURUSD 4h 미국금리 레짐 눌림목 ‡ | +2.19% | — | +1.72% | 2 | 2026-10-15 |
+| — | [4479](strategies/4479/) | EURUSD 4h 미국금리 레짐 눌림목 | -4.18% | — | +17.75% | 46 | 2026-10-15 |
 |  | [4480](strategies/4480/) | ETH Donchian Breakout | +75.80% | +246.87% | +58.28% | 40 | 2026-10-15 |
 |  | [4478](strategies/4478/) | Hashrate-Confirmed Momentum (BTC 1D) | +318.78% | +522.64% | +34.21% | 56 | 2026-10-15 |
 |  | [4477](strategies/4477/) | AI 전략 | -20.13% | +55.39% | +30.80% | 2 | 2026-10-15 |
