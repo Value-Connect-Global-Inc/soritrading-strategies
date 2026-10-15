@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4509](strategies/4509/) | Donchian Breakout Trend (BTC 1D) | +23.46% | +95.22% | +24.62% | 40 | 2026-10-15 |
+|  | [4509](strategies/4509/) | Donchian Breakout Trend (BTC 1D) ‡ | +23.46% | +95.22% | +24.62% | 40 | 2026-10-15 |
 |  | [4508](strategies/4508/) | Oversold Dip Mean-Revert (BTC 1D) | +26.17% | +95.22% | +6.93% | 20 | 2026-10-15 |
 |  | [4507](strategies/4507/) | Fear-Greed Contrarian Dip (BTC 1D) | -9.48% | +522.64% | +14.15% | 10 | 2026-10-15 |
 |  | [4506](strategies/4506/) | Dual OnChain Confirmed Trend (BTC 1D) | +24.28% | +196.85% | +13.05% | 23 | 2026-10-15 |
