@@ -1,21 +1,21 @@
 /*
  * @coinsori-strategy v1
- * name: Momentum Core on ETH (ETH/USDT 1D)
+ * name: Usage-Exit Confirmed Momentum (BTC 1D)
  * ex: binance
- * syms: ETH/USDT
+ * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: the price-momentum core that won on BTC 1D (30-day return > 0,
- * close above 200-day EMA, 15% hard stop, vol-targeted sizing) is asset-agnostic.
- * ETH has no active-address data connected here, so this tests the pure price core
- * on a second asset — diversification for the user's portfolio.
- * When it buys and sells: buys when 30-day return is positive and close is above the
- * 200-day EMA. Sells when close falls below the 200-day EMA, 30-day return turns
- * negative, or a 15% hard stop is hit.
- * When it does NOT work: without an on-chain usage gate it can buy into "dead"
- * rallies that price alone cannot distinguish. ETH is more volatile than BTC, so
- * whipsaws cost more. It misses the first leg of a recovery after a crash.
+ * Why this strategy: Bitcoin's network usage (daily unique active addresses) grows
+ * during real rallies and stalls before they fade. The champion uses usage as an
+ * entry gate; this variant ALSO exits when usage starts declining while holding,
+ * betting that fading adoption leads price down — cutting drawdowns early.
+ * When it buys and sells: buys when 30d return > 0, close > 200d EMA, and usage >=
+ * its 30d average. Sells on 200d EMA break, 30d return < 0, 15% hard stop, or when
+ * usage falls below its 30d average (new exit).
+ * When it does NOT work: in choppy markets where usage oscillates around its average
+ * without a real trend, the new exit can trigger whipsaw sells that the champion
+ * avoids. If usage is noisy, this variant will trade more often than the champion.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -29,7 +29,6 @@ function onUpdate(ctx) {
   const prevClose = c.at(-2);
   const mom30 = prevClose / c.at(-32) - 1;
 
-  // volatility target: size so the position contributes ~2% daily vol to the pool
   const atr = ctx.atr(14, 1);
   let volScale = 1;
   if (atr != null && atr > 0 && prevClose > 0) {
@@ -37,23 +36,31 @@ function onUpdate(ctx) {
     volScale = Math.min(1, 0.02 / atrPct);
   }
 
+  const addr = ctx.data('addr');
+  const addrAvg = ctx.data('addr_sma30');
+  let usageUp = true;
+  if (addr != null && addrAvg != null) usageUp = addr >= addrAvg;
+
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
-    const stop = ctx.entryPx * 0.85;          // hard stop: 15% below entry
+    const stop = ctx.entryPx * 0.85;
     if (price <= stop) return { side: 'sell', qty: pos };
-    if (prevClose < ema200) return { side: 'sell', qty: pos };   // trend over
-    if (mom30 < 0) return { side: 'sell', qty: pos };            // momentum faded
+    if (prevClose < ema200) return { side: 'sell', qty: pos };
+    if (mom30 < 0) return { side: 'sell', qty: pos };
+    // NEW: exit when network usage fades below its 30d average while holding.
+    if (addr != null && addrAvg != null && addr < addrAvg) return { side: 'sell', qty: pos };
     ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '15% stop' },
-               { side: 'sell', price: ema200, trigger: 'below', note: '200-day trend break',
-                 conds: [{ label: '30d return > 0', ok: mom30 > 0, closed: true }] }]);
+               { side: 'sell', price: ema200, trigger: 'below', note: '200d trend break',
+                 conds: [{ label: 'usage >= 30d avg', ok: usageUp, closed: true }] }]);
     return null;
   }
 
   const uptrend = prevClose > ema200;
-  ctx.watch([{ side: 'buy', price: ema200, trigger: 'above', note: 'close above 200-day EMA',
-               conds: [{ label: '30d return > 0', ok: mom30 > 0, closed: true },
-                       { label: 'close > 200-EMA', ok: uptrend, closed: true }] }]);
-  if (!uptrend || !(mom30 > 0)) return null;
+  ctx.watch([{ side: 'buy', price: ema200, trigger: 'above', note: 'close above 200d EMA',
+    conds: [{ label: '30d return > 0', ok: mom30 > 0, closed: true },
+            { label: 'close > 200-EMA', ok: uptrend, closed: true },
+            { label: 'active addr >= 30d avg', ok: usageUp, closed: true }] }]);
+  if (!uptrend || !(mom30 > 0) || !usageUp) return null;
 
   const targetCash = ctx.cash * volScale;
   const qty = (targetCash / price) * 0.95;
