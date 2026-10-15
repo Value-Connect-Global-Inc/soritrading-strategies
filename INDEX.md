@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4429](strategies/4429/) | BTC 4h EMA50/200 Momentum w/ Re-entry | -31.36% | +28.61% | +73.93% | 15 | 2026-10-15 |
+|  | [4429](strategies/4429/) | BTC 4h EMA50/200 Momentum w/ Re-entry | -28.07% | +164.87% | +34.93% | 2 | 2026-10-15 |
 | ★ | [4428](strategies/4428/) | ETH Trend (EMA50, risk 4%) | +58.62% | -23.32% | +27.90% | 67 | 2026-10-15 |
 |  | [4427](strategies/4427/) | Two-Trend BTC (EMA50+EMA200, risk 4%) | +68.21% | +256.01% | +22.18% | 57 | 2026-10-15 |
 |  | [4426](strategies/4426/) | Dollar-Regime BTC Trend (risk 3%) | +81.68% | +120.49% | +21.40% | 35 | 2026-10-15 |

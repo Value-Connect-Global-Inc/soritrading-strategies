@@ -1,24 +1,24 @@
 /*
  * @coinsori-strategy v1
- * name: FearGreed Contrarian BTC 1D
+ * name: FearGreed Panic Buyer BTC 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
  * Why this strategy: The Crypto Fear & Greed Index (0-100) measures crowd
- * emotion. Historically extreme fear (below 25) marks panic selling where
- * Bitcoin tends to recover, and extreme greed (above 75) marks euphoric tops.
- * This strategy does the opposite of trend-following: it buys panic and sells
- * euphoria.
+ * emotion. In a bull market, extreme fear (below 25) marks a panic dip that
+ * historically recovers; extreme greed (above 75) marks a euphoric top. This
+ * strategy buys panic dips but ONLY while the long-term uptrend is intact —
+ * buying panic in a bear market is catching a falling knife.
  * When it buys and sells: buys when yesterday's Fear & Greed index is below 25
- * AND the previous close is below the 50-day EMA (a panic dip). Sells when the
- * index rises above 75 or a hard stop 25% below entry is hit. Only yesterday's
- * index value is used, so the decision never peeks at today's still-forming day.
- * When it does NOT work: in a long bear market the index can stay below 25 for
- * months while price keeps falling — the stop caps each loss but several
- * stop-outs can come in a row. It also sits in cash through quiet bull grinds
- * where greed never gets extreme.
+ * AND the previous close is above the 200-day SMA (secular uptrend). Sells when
+ * the index rises above 75 (euphoria) or a wide 40% stop is hit (the panic
+ * turned into a real bear). Uses half of cash per trade so a stop-out costs
+ * about 20% of the account. Only yesterday's index value is used (no lookahead).
+ * When it does NOT work: it sits in cash through the early recovery after a
+ * bear (price still below the 200-day SMA), so it misses the first leg of new
+ * bull markets. It also misses quiet bull grinds where greed never gets extreme.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -34,15 +34,15 @@ function onUpdate(ctx) {
   ctx.state.fgPrev = fgVal;
   if (fgPrev == null) return null;
 
-  const ema50 = ctx.ema(50, 1);
-  if (ema50 == null) return null;
+  const sma200 = ctx.sma(200, 1);
+  if (sma200 == null) return null;
 
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
-    const stop = ctx.entryPx * 0.75;   // hard stop: 25% below entry, caps a panic that keeps falling
+    const stop = ctx.entryPx * 0.6;   // wide catastrophic stop: a panic that becomes a bear
     if (price <= stop) return { side: 'sell', qty: pos };
     if (fgPrev > 75) return { side: 'sell', qty: pos };   // euphoria -> take profit
-    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '25% hard stop' },
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '40% stop' },
                { side: 'sell', price: ctx.entryPx, trigger: 'above', note: 'greed>75 exit',
                  conds: [{ label: 'Fear&Greed', now: fgPrev, op: '>', ref: 75, closed: true }] }]);
     return null;
@@ -50,14 +50,14 @@ function onUpdate(ctx) {
 
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) return null;
-  const dip = prevClose < ema50;
+  const bull = prevClose > sma200;   // only buy panics inside a secular uptrend
   const panic = fgPrev < 25;
-  ctx.watch([{ side: 'buy', price: ema50, trigger: 'below', note: 'panic dip buy',
+  ctx.watch([{ side: 'buy', price: sma200, trigger: 'above', note: 'panic buy in uptrend',
                conds: [{ label: 'Fear&Greed', now: fgPrev, op: '<', ref: 25, closed: true },
-                       { label: 'close < 50-EMA', ok: dip, closed: true }] }]);
-  if (!panic || !dip) return null;
+                       { label: 'close > 200-SMA', ok: bull, closed: true }] }]);
+  if (!panic || !bull) return null;
 
-  const qty = (ctx.cash / price) * 0.95;
+  const qty = (ctx.cash / price) * 0.5;   // half cash per trade: a stop-out costs ~20% of cash
   if (qty <= 0) return null;
   return { side: 'buy', qty };
 }
