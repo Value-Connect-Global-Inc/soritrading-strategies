@@ -3,9 +3,9 @@
   "name": "AI 전략",
   "kind": "custom",
   "verified": {
-    "backtestId": 21319,
-    "return": 61.76,
-    "mdd": 26.19,
+    "backtestId": 21321,
+    "return": 86,
+    "mdd": 37.4,
     "trades": 32,
     "vsBuyHold": "win",
     "benchRet": 19.26,
@@ -25,9 +25,9 @@
       "end": 1601942400
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "b96f5adeb082e29e527067ab543e357558bf542df76eb38bfdbb2313d2589e20"
+    "verifiedCodeSha256": "41f30a061d14185a0ee1071ab7f6aed83757392f27fed96f00e93d197d4dc067"
   },
   "config": null,
-  "updatedAt": "2026-10-15T20:08:31.058Z",
+  "updatedAt": "2026-10-15T20:09:23.915Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

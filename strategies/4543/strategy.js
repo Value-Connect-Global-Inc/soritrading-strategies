@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: Donchian + ATR Risk-Sized v2 (ETH 1D)
+ * name: Donchian + ATR Risk-Sized v3 (ETH 1D)
  * ex: binance
  * syms: ETH/USDT
  * interval: 1d
@@ -8,18 +8,16 @@
  *
  * Why this strategy: Same Donchian 55/20 close breakout as the validated
  * champion, but position size is scaled by volatility (ATR) so a 2xATR adverse
- * move costs a fixed fraction of equity. v1 used 2% risk which only deployed
- * ~25% of equity and returned too little; this version raises the risk appetite
- * so more capital works while drawdown stays ATR-bounded instead of the
- * champion's 40-55% swings.
+ * move costs a fixed fraction of equity. Risk appetite 8% deploys most of the
+ * capital while ATR still trims size in high-volatility periods.
  * When it buys and sells: buys when the close makes a new 55-day high. Sells on
  * a 2xATR stop, a 20-day close low, or a 20-day time stop.
  * When it does NOT work: choppy sideways markets whipsaw; in fast crashes the
  * 20-day low exit lags and the 2xATR stop takes the hit. Higher risk appetite
- * means bigger swings than v1 in those regimes.
+ * means bigger swings than the 5% version in those regimes.
  */
 function onUpdate(ctx) {
-  const RISK_PCT = 0.05; // 5% of equity risked per trade (v1 was 2% — too small to grow)
+  const RISK_PCT = 0.08; // 8% of equity risked per trade — near full deployment, ATR trims in high-vol
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
