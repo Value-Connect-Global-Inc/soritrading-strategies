@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4463](strategies/4463/) | Fed-Policy Regime Momentum (BTC 1D) | +824.28% | +915.07% | +59.67% | 158 | 2026-10-15 |
+|  | [4463](strategies/4463/) | Fed-Policy Regime Momentum (BTC 1D) | +198.04% | +522.64% | +59.67% | 56 | 2026-10-15 |
 |  | [4460](strategies/4460/) | Active-Address Confirmed Momentum | +42.83% | +95.22% | +10.60% | 27 | 2026-10-15 |
 | ★ | [4462](strategies/4462/) | Active-Address Confirmed Momentum (BTC 1D) | +56.39% | -17.42% | +9.36% | 23 | 2026-10-15 |
 | — | [4461](strategies/4461/) | Active-Address Confirmed Momentum Basket (BTC/ETH/SOL 1D) ‡ | +171.30% | — | +17.80% | 88 | 2026-10-15 |
