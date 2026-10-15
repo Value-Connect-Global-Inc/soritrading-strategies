@@ -3,7 +3,7 @@
   "name": "DXY Macro Regime BTC 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 21516,
+    "backtestId": 21517,
     "return": 81.36,
     "mdd": 19.31,
     "trades": 1,
@@ -27,9 +27,9 @@
       "end": 1703980800
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "308786399fb25c90bec4c1d2a6bfe73bb38ad06073d9d68f7622b7afce0453e2"
+    "verifiedCodeSha256": "f0cccf5e9a2611f303046d0d5d93feb6097c94fd642db8fb57c67e0fd4a08962"
   },
   "config": null,
-  "updatedAt": "2026-10-15T23:39:03.603Z",
+  "updatedAt": "2026-10-15T23:40:54.296Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

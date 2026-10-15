@@ -6,10 +6,10 @@
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: diagnostic — buys as soon as 20 non-null DXY values
- * accumulate, with NO regime or trend gate. Confirms whether hist reaches 20
- * in the real strategy path (isolating the weakDollar/sma200 gates).
- * When it buys and sells: buys on the 20th accumulated DXY value; holds forever.
+ * Why this strategy: diagnostic — buys when the latest DXY is below its own
+ * 20-value rolling average (weakDollar), WITHOUT the sma200 gate. Isolates
+ * whether the weakDollar condition ever fires.
+ * When it buys and sells: buys on first weakDollar bar; holds forever.
  * When it does NOT work: this is a diagnostic, not a strategy.
  */
 function onUpdate(ctx) {
@@ -22,7 +22,9 @@ function onUpdate(ctx) {
     s.lastBarI = ctx.i;
   }
   if (s.hist == null || s.hist.length < 20) return null;
-  if (ctx.position === 0) {
+  const cur = s.hist[s.hist.length - 1];
+  const avg = s.hist.reduce((a, b) => a + b, 0) / s.hist.length;
+  if (ctx.position === 0 && cur < avg) {
     return { side: 'buy', qty: (ctx.cash / ctx.price) * 0.95 };
   }
   return null;
