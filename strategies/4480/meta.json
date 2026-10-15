@@ -1,0 +1,33 @@
+{
+  "id": 4480,
+  "name": "ETH Donchian Breakout",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 21028,
+    "return": 75.8,
+    "mdd": 58.28,
+    "trades": 40,
+    "vsBuyHold": "lose",
+    "benchRet": 246.87,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1532822400,
+    "tTo": 1662336000,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1500봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "1d",
+      "bars": 1500,
+      "end": 1662422400
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "0879ddb10076a91f607480aa9df5a2f343bcb344bab97049f61f6194b373c6a8"
+  },
+  "config": null,
+  "updatedAt": "2026-10-15T10:21:30.774Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
