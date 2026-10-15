@@ -4,14 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 515 of 2067 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 307 of them right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 515 of 2068 right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 308 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 **‡** after a name: the code was edited after its last verifying backtest — the published code is current, but the figures are from the previous code until a new backtest verifies it.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [4439](strategies/4439/) | AI 전략 | +97.87% | — | +18.64% | 80 | 2026-10-15 |
 |  | [4438](strategies/4438/) | Fed-Easing Regime BTC 1D ‡ | +8.36% | +87.84% | +29.84% | 28 | 2026-10-15 |
 | — | [4437](strategies/4437/) | Multi-Asset Absolute Momentum 1D | +149.18% | — | +31.41% | 80 | 2026-10-15 |
 |  | [4435](strategies/4435/) | Address-Confirmed BTC Trend 1D | -2.37% | +89.28% | +22.61% | 47 | 2026-10-15 |
