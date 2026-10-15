@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 514 of 2062 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 514 of 2063 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 306 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [4433](strategies/4433/) | Donchian Breakout BTC 1D | +15.20% | +95.22% | +28.49% | 24 | 2026-10-15 |
 | ★ | [4431](strategies/4431/) | Hashrate-Confirmed BTC Trend 1D (risk 4%) | +641.17% | +522.64% | +29.49% | 56 | 2026-10-15 |
 |  | [4432](strategies/4432/) | Hashrate-Confirmed BTC Trend 1D (risk 4%) | +10.86% | +95.22% | +30.01% | 61 | 2026-10-15 |
 | ★ | [4430](strategies/4430/) | Network-Usage Confirmed BTC Trend 1D | +343.82% | +164.87% | +25.97% | 61 | 2026-10-15 |
