@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 520 of 2119 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 520 of 2120 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 325 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [4496](strategies/4496/) | Uptrend Dip-Buyer BB (BTC 1D) | -11.75% | +522.64% | +16.86% | 13 | 2026-10-15 |
 | — | [4495](strategies/4495/) | Multi-Asset Trend Basket (BTC/ETH/SOL/BNB 1D) | +22.33% | — | +9.93% | 144 | 2026-10-15 |
 |  | [4494](strategies/4494/) | Miner-Capitulation Recovery (BTC 1D) | +31.64% | +87.84% | +16.52% | 33 | 2026-10-15 |
 |  | [4493](strategies/4493/) | Sentiment-Gated Momentum (BTC 1D) | +31.92% | +95.22% | +16.14% | 41 | 2026-10-15 |
