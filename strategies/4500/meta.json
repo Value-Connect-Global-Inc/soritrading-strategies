@@ -3,27 +3,27 @@
   "name": "AI 전략",
   "kind": "custom",
   "verified": {
-    "backtestId": 21143,
-    "return": 46.95,
-    "mdd": 21.64,
-    "trades": 3,
-    "vsBuyHold": "win",
-    "benchRet": -23.41,
+    "backtestId": 21145,
+    "return": -75.63,
+    "mdd": 80.55,
+    "trades": 123,
+    "vsBuyHold": "lose",
+    "benchRet": 47.08,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1645142400,
-    "tTo": 1688256000,
+    "tFrom": 1618876800,
+    "tTo": 1791590400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "기간 종료 시 미청산 포지션 1종목 (총자산의 99.53%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 500봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 99.34%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 2000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
-      "bars": 500,
-      "end": 1688342400
+      "bars": 2000,
+      "end": 1792022400
     },
     "codeBasis": "assumed-current",
     "verifiedCodeSha256": "4b6a2bf6113f19a04f51553a16d3284c63d9b480da07b059b35627975ee4bccd"
