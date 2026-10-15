@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4438](strategies/4438/) | Fed-Easing Regime BTC 1D | +8.36% | +87.84% | +29.84% | 28 | 2026-10-15 |
+|  | [4438](strategies/4438/) | Fed-Easing Regime BTC 1D ‡ | +8.36% | +87.84% | +29.84% | 28 | 2026-10-15 |
 | — | [4437](strategies/4437/) | Multi-Asset Absolute Momentum 1D | +149.18% | — | +31.41% | 80 | 2026-10-15 |
 |  | [4435](strategies/4435/) | Address-Confirmed BTC Trend 1D | -2.37% | +89.28% | +22.61% | 47 | 2026-10-15 |
 | ★ | [4434](strategies/4434/) | Hashrate Trend copy (head2head) | +54.04% | -17.42% | +24.35% | 47 | 2026-10-15 |

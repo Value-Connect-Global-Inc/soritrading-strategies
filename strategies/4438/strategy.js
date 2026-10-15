@@ -1,58 +1,68 @@
 /*
  * @coinsori-strategy v1
- * name: Fed-Easing Regime BTC 1D
+ * name: Multi-Asset Absolute Momentum 1D
  * ex: binance
- * syms: BTC/USDT
+ * syms: BTC/USDT, ETH/USDT, SOL/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Bitcoin is a liquidity asset — when the US central bank is
- * NOT raising interest rates, cheap money tends to flow into risk assets including
- * crypto. By only being long while the Fed is not hiking (rate <= its level 30 days
- * ago) AND price is above its 200-day trend, the strategy rides bull markets backed
- * by loose or stable policy and sits in cash when the Fed is actively tightening.
- * When it buys and sells: buys when the Fed funds rate is at or below its level
- * 30 days ago (not hiking) and the previous close is above the 200-day EMA; sells
- * when the close drops below the 200-day EMA, the Fed starts hiking again, or a
- * 15% hard stop is hit.
- * When it does NOT work: if the market rallies while the Fed is hiking (e.g. a
- * liquidity-driven bull run during a tightening cycle), this strategy stays in
- * cash and misses the move. It also whipsaws if the Fed pauses rates right at the
- * 30-day comparison boundary. It is a regime filter, not a timing signal.
+ * Why this strategy: Crypto assets tend to keep moving in the direction they
+ * have recently moved — momentum persists. By running the SAME simple rule on
+ * three assets independently (each leg long only when its own 30-day return is
+ * positive and its own 200-day trend is up), the portfolio captures rallies in
+ * whichever coin is leading, and sits in cash during bear markets instead of
+ * holding a falling coin. Each leg is sized so it contributes roughly EQUAL daily
+ * risk (volatility-targeted): a calm coin gets a bigger position, a wild coin a
+ * smaller one, so no single leg dominates the portfolio's drawdown.
+ * When it buys and sells: a leg buys when the previous close is above the 200-day
+ * EMA AND its 30-day return is positive; sells when the previous close drops below
+ * the 200-day EMA, the 30-day return turns negative, or a 15% hard stop is hit.
+ * When it does NOT work: in a choppy market where a coin's 30-day return flips
+ * sign frequently it whipsaws; and all crypto majors are correlated, so in a
+ * broad crash every leg falls together and the basket behaves like holding one
+ * coin. Absolute momentum only protects the cash leg, not the held legs.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
-  const fed = ctx.data('fed');
-  const fedLag = ctx.data('fed_lag30');
   const ema200 = ctx.ema(200, 1);
-  const c = ctx.closes;
-  // guard every data source: any null = unknown, treat as "no trade"
-  if (fed == null || fedLag == null || ema200 == null || c.length < 2) return null;
+  if (ema200 == null) return null;
 
+  // 30-day absolute momentum: compare prev close to the close 31 bars ago
+  const c = ctx.closes;
+  if (c.length < 32) return null;
   const prevClose = c.at(-2);
-  const notHiking = fed <= fedLag;   // rate not above its 30-day-ago level
+  const mom30 = prevClose / c.at(-32) - 1;   // 30-day return of the last CLOSED bar
+
+  // volatility target: size the leg so it contributes ~2% daily vol to the basket
+  const atr = ctx.atr(14, 1);
+  let volScale = 1;
+  if (atr != null && atr > 0 && prevClose > 0) {
+    const atrPct = atr / prevClose;          // daily vol as a fraction of price
+    volScale = Math.min(1, 0.02 / atrPct);   // calm coin = full size, wild coin = smaller
+  }
 
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
-    const stop = ctx.entryPx * 0.85;   // hard stop: 15% below entry
+    const stop = ctx.entryPx * 0.85;        // hard stop: 15% below entry
     if (price <= stop) return { side: 'sell', qty: pos };
     if (prevClose < ema200) return { side: 'sell', qty: pos };   // trend over
-    if (fed > fedLag) return { side: 'sell', qty: pos };         // Fed hiking again
+    if (mom30 < 0) return { side: 'sell', qty: pos };            // momentum faded
     ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '15% stop' },
                { side: 'sell', price: ema200, trigger: 'below', note: '200-day trend break',
-                 conds: [{ label: 'Fed not hiking', ok: notHiking, closed: true }] }]);
+                 conds: [{ label: '30d return > 0', ok: mom30 > 0, closed: true }] }]);
     return null;
   }
 
   const uptrend = prevClose > ema200;
   ctx.watch([{ side: 'buy', price: ema200, trigger: 'above', note: 'close above 200-day EMA',
-               conds: [{ label: 'Fed not hiking', ok: notHiking, closed: true },
+               conds: [{ label: '30d return > 0', ok: mom30 > 0, closed: true },
                        { label: 'close > 200-EMA', ok: uptrend, closed: true }] }]);
-  if (!uptrend || !notHiking) return null;
+  if (!uptrend || !(mom30 > 0)) return null;
 
-  const qty = (ctx.cash / price) * 0.95;
+  const targetCash = ctx.cash * 0.33 * volScale;  // 1/3 of pool, scaled by volatility
+  const qty = (targetCash / price) * 0.95;
   if (qty <= 0) return null;
   return { side: 'buy', qty };
 }
