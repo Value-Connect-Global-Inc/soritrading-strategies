@@ -39,6 +39,6 @@
     ],
     "interval": "4h"
   },
-  "updatedAt": "2026-10-15T10:23:55.579Z",
+  "updatedAt": "2026-10-15T10:25:48.598Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
