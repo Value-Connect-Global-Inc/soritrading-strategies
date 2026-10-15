@@ -1,22 +1,22 @@
 /*
  * @coinsori-strategy v1
- * name: Active-Address Confirmed Momentum (BTC)
+ * name: Active-Address Confirmed Momentum (BTC 1D) + Override
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Bitcoin's network usage (daily unique active addresses) tends
- * to GROW while a rally is real and to stall before rallies fade. We only buy when
- * both price momentum AND network usage are rising, so we skip "dead" rallies that
- * price alone would let us into.
- * When it buys and sells: buys when the 30-day price return is positive, the close
- * is above the 200-day EMA, and active addresses are at/above their 30-day average.
- * Sells when the close falls below the 200-day EMA, the 30-day return turns negative,
- * or a 15% hard stop is hit.
- * When it does NOT work: in the early phase of a bull market, right after a crash,
- * usage is still low — the gate can make us miss the first leg of a recovery. And
- * because the gate only checks BTC usage, it adds no protection to other coins.
+ * Why this strategy: Same as champion — buy only when price momentum AND network
+ * usage are rising. PLUS a momentum override: after a crash, price recovers before
+ * on-chain usage catches up, so we also allow entry when the 30-day return is
+ * extremely strong even if active addresses still lag their average. This fixes
+ * the champion's documented weakness of missing the first leg of a recovery.
+ * When it buys and sells: buys when 30-day return > 0, close above 200-day EMA,
+ * and (active addresses >= 30d avg OR 30-day return >= 30%). Sells when close
+ * falls below 200-day EMA, 30-day return turns negative, or 15% hard stop.
+ * When it does NOT work: the override can let in a dead rally that price alone
+ * would allow — the gate is weaker. In a choppy sideways market the override
+ * never triggers (momentum never extreme) so behavior matches the champion.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -58,12 +58,17 @@ function onUpdate(ctx) {
   let usageUp = true;
   if (addr != null && addrAvg != null) usageUp = addr >= addrAvg;
 
+  // Momentum override: after a crash, price leads and on-chain usage lags.
+  // A 30% 30-day return is too strong to ignore even if addresses haven't caught up.
+  const strongMom = mom30 >= 0.30;
+  const gateOk = usageUp || strongMom;
+
   const uptrend = prevClose > ema200;
   ctx.watch([{ side: 'buy', price: ema200, trigger: 'above', note: 'close above 200-day EMA',
                conds: [{ label: '30d return > 0', ok: mom30 > 0, closed: true },
                        { label: 'close > 200-EMA', ok: uptrend, closed: true },
-                       { label: 'active addr >= 30d avg', ok: usageUp, closed: true }] }]);
-  if (!uptrend || !(mom30 > 0) || !usageUp) return null;
+                       { label: 'addr>=avg OR mom30>=30%', ok: gateOk, closed: true }] }]);
+  if (!uptrend || !(mom30 > 0) || !gateOk) return null;
 
   const targetCash = ctx.cash * volScale;      // single-asset pool, vol-scaled
   const qty = (targetCash / price) * 0.95;
