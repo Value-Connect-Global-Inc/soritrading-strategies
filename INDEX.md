@@ -4,14 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 517 of 2103 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 323 of them right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 517 of 2104 right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 324 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 **‡** after a name: the code was edited after its last verifying backtest — the published code is current, but the figures are from the previous code until a new backtest verifies it.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [4479](strategies/4479/) | EURUSD 4h 미국금리 레짐 눌림목 | +2.19% | — | +1.72% | 2 | 2026-10-15 |
 |  | [4478](strategies/4478/) | Hashrate-Confirmed Momentum (BTC 1D) | +318.78% | +522.64% | +34.21% | 56 | 2026-10-15 |
 |  | [4477](strategies/4477/) | AI 전략 | -20.13% | +55.39% | +30.80% | 2 | 2026-10-15 |
 |  | [4476](strategies/4476/) | AI 전략 | +94.17% | +1033.52% | +19.65% | 3 | 2026-10-15 |
