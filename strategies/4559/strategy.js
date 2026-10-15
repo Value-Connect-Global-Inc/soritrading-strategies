@@ -1,22 +1,24 @@
 /*
  * @coinsori-strategy v1
- * name: FearGreed Sentiment Regime (ETH 1D)
+ * name: FearGreed Sentiment + Trend Filter (ETH/USDT 1D)
  * ex: binance
  * syms: ETH/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Crypto Fear & Greed is a sentiment thermometer. When the
- * crowd is greedy (index >= 55) momentum tends to continue; when it turns
- * fearful (index <= 40) the mood has broken and it is time to leave. This is a
- * pure sentiment-regime system — no price breakout, no trend channel — a
- * different family from the Donchian champion.
- * When it buys and sells: buys (full size) when Fear & Greed >= 55, sells when
- * it drops to <= 40, with a 25% hard stop-loss on every position.
+ * Why this strategy: Crypto Fear & Greed is a sentiment thermometer. Greed
+ * (index >= 55) tends to continue in an uptrend; fear (<= 40) means the mood
+ * has broken. Adding a 200-day trend filter stops us from buying greed during
+ * bear-market rallies, which is the documented weakness of the pure sentiment
+ * version.
+ * When it buys and sells: buys (full size) when Fear & Greed >= 55 AND price is
+ * above its 200-day average; sells when F&G drops to <= 40, with a 25% hard
+ * stop-loss on every position.
  * When it does NOT work: the index is daily and slow, so in a choppy
- * range-bound market the regime flips produce whipsaws; in a slow grinding
- * bear market the index can hover around the threshold and give false entries.
- * The index only exists from Feb 2018 — before that the strategy sits in cash.
+ * range-bound market the regime flips produce whipsaws; if a new bull market
+ * starts while price is still below the 200-day average we miss the first part
+ * of the recovery. The index only exists from Feb 2018 — before that the
+ * strategy sits in cash.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -45,13 +47,20 @@ function onUpdate(ctx) {
     return null;
   }
 
-  if (fg >= 55) {
-    ctx.watch([{ side: 'buy', note: 'enter: F&G >= 55',
-                 conds: [{ label: 'Fear&Greed', now: fg, op: '>=', ref: 55, closed: true }] }]);
+  // 200-day trend filter: only buy greed when the long-term trend is up, so we
+  // skip greed spikes that happen inside a bear market (dead-cat rallies).
+  const trend = ctx.sma(200, 1);
+  if (trend == null) return null;
+
+  if (fg >= 55 && price > trend) {
+    ctx.watch([{ side: 'buy', note: 'enter: F&G >= 55 & uptrend',
+                 conds: [{ label: 'Fear&Greed', now: fg, op: '>=', ref: 55, closed: true },
+                         { label: 'Price > SMA200', ok: price > trend }] }]);
     return { side: 'buy', qty: (ctx.cash * 0.95) / price };
   }
 
-  ctx.watch([{ side: 'buy', note: 'enter: F&G >= 55',
-               conds: [{ label: 'Fear&Greed', now: fg, op: '>=', ref: 55, closed: true }] }]);
+  ctx.watch([{ side: 'buy', note: 'enter: F&G >= 55 & uptrend',
+               conds: [{ label: 'Fear&Greed', now: fg, op: '>=', ref: 55, closed: true },
+                       { label: 'Price > SMA200', ok: price > trend }] }]);
   return null;
 }
