@@ -28,7 +28,7 @@
       "bars": 4386,
       "end": 1735689600
     },
-    "codeBasis": "assumed-current",
+    "codeBasis": "previous-code",
     "verifiedCodeSha256": "f73824d472f8e055c23d1f8d70c8dae54d59f5b4f5ccb15629af3d9dabbb6ac2"
   },
   "config": {
@@ -39,6 +39,6 @@
     ],
     "interval": "4h"
   },
-  "updatedAt": "2026-10-15T10:20:33.641Z",
+  "updatedAt": "2026-10-15T10:23:55.579Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
