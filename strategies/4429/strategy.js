@@ -1,59 +1,63 @@
 /*
  * @coinsori-strategy v1
- * name: BTC 4h EMA50/200 Momentum with Re-entry (risk 4%)
+ * name: FearGreed Contrarian BTC 1D
  * ex: binance
  * syms: BTC/USDT
- * interval: 4h
+ * interval: 1d
  * cash: 10000
  *
- * Why this strategy: On the 4-hour timeframe the 50/200 EMA pair is a proven
- * core momentum signal (ledger: +217% on one window). The edge is that crypto
- * trends persist for days at a time, and a fast 50-EMA pullback exit alone
- * throws you out mid-trend. This version re-enters while flat when the trend
- * is still intact, so it catches the continuation instead of sitting in cash.
- * When it buys and sells: buys when the previous close is above the 50-EMA AND
- * the 50-EMA is above the 200-EMA (trend intact). Sells on a close below the
- * 50-EMA. If flat while the trend is still intact (price above the 200-EMA and
- * 50>200), it re-buys. A 2.5x ATR hard stop protects every position.
- * Positions risk 4% of cash per trade.
- * When it does NOT work: in a choppy sideways market the 50-EMA exit and
- * re-entry churn; and after a genuine trend reversal it re-enters too early
- * because the 200-EMA lags. Trend-following loses in range-bound action.
+ * Why this strategy: The Crypto Fear & Greed Index (0-100) measures crowd
+ * emotion. Historically extreme fear (below 25) marks panic selling where
+ * Bitcoin tends to recover, and extreme greed (above 75) marks euphoric tops.
+ * This strategy does the opposite of trend-following: it buys panic and sells
+ * euphoria.
+ * When it buys and sells: buys when yesterday's Fear & Greed index is below 25
+ * AND the previous close is below the 50-day EMA (a panic dip). Sells when the
+ * index rises above 75 or a hard stop 25% below entry is hit. Only yesterday's
+ * index value is used, so the decision never peeks at today's still-forming day.
+ * When it does NOT work: in a long bear market the index can stay below 25 for
+ * months while price keeps falling — the stop caps each loss but several
+ * stop-outs can come in a row. It also sits in cash through quiet bull grinds
+ * where greed never gets extreme.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
-  const ema50 = ctx.ema(50, 1);
-  const ema200 = ctx.ema(200, 1);
-  const atr = ctx.atr(14, 1);
-  if (ema50 == null || ema200 == null || atr == null || atr <= 0) return null;
+  const fg = ctx.data('fear_greed');
+  if (fg == null) return null;
+  const fgVal = Number(fg);
+  if (!Number.isFinite(fgVal)) return null;
 
-  const prevClose = ctx.closes.at(-2);
-  if (prevClose == null) return null;
+  // Carry yesterday's index in state so today's decision uses only closed data
+  const fgPrev = ctx.state.fgPrev;
+  ctx.state.fgPrev = fgVal;
+  if (fgPrev == null) return null;
+
+  const ema50 = ctx.ema(50, 1);
+  if (ema50 == null) return null;
 
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
-    const stop = ctx.entryPx - 2.5 * atr;   // hard stop: 2.5x 4h ATR below entry
+    const stop = ctx.entryPx * 0.75;   // hard stop: 25% below entry, caps a panic that keeps falling
     if (price <= stop) return { side: 'sell', qty: pos };
-    if (prevClose < ema50) return { side: 'sell', qty: pos };   // momentum broke
-    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '2.5x ATR stop' },
-               { side: 'sell', price: ema50, trigger: 'below', note: '50-EMA break (close)' }]);
+    if (fgPrev > 75) return { side: 'sell', qty: pos };   // euphoria -> take profit
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '25% hard stop' },
+               { side: 'sell', price: ctx.entryPx, trigger: 'above', note: 'greed>75 exit',
+                 conds: [{ label: 'Fear&Greed', now: fgPrev, op: '>', ref: 75, closed: true }] }]);
     return null;
   }
 
-  const trendIntact = ema50 > ema200 && prevClose > ema200;
-  const momentumUp = prevClose > ema50;
-  ctx.watch([{ side: 'buy', price: ema50, trigger: 'above', note: 'close above 50-EMA',
-               conds: [{ label: 'EMA50 > EMA200', ok: ema50 > ema200, closed: true },
-                       { label: 'close > 200-EMA', ok: prevClose > ema200, closed: true }] }]);
-  if (!momentumUp || !trendIntact) return null;
+  const prevClose = ctx.closes.at(-2);
+  if (prevClose == null) return null;
+  const dip = prevClose < ema50;
+  const panic = fgPrev < 25;
+  ctx.watch([{ side: 'buy', price: ema50, trigger: 'below', note: 'panic dip buy',
+               conds: [{ label: 'Fear&Greed', now: fgPrev, op: '<', ref: 25, closed: true },
+                       { label: 'close < 50-EMA', ok: dip, closed: true }] }]);
+  if (!panic || !dip) return null;
 
-  const riskCash = ctx.cash * 0.04;         // risk 4% of cash per trade
-  const stopDist = 2.5 * atr;
-  let qty = stopDist > 0 ? riskCash / stopDist : 0;
-  const maxQty = (ctx.cash / price) * 0.95;
-  if (qty > maxQty) qty = maxQty;
+  const qty = (ctx.cash / price) * 0.95;
   if (qty <= 0) return null;
   return { side: 'buy', qty };
 }
