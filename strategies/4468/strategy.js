@@ -15,7 +15,7 @@
  * When it buys and sells: buys when the 30-day price return is positive, the close
  * is above the 200-day EMA, and active addresses are at/above their 30-day average.
  * Sells when the close falls below the 200-day EMA, the 30-day return turns negative,
- * or price drops 3 ATR below the highest close since entry (trailing stop).
+ * or price drops 5 ATR below the highest close since entry (trailing stop).
  * When it does NOT work: in the early phase of a bull market, right after a crash,
  * usage is still low — the gate can make us miss the first leg of a recovery. The
  * trailing stop can whip us out on a sharp but temporary pullback in a strong trend.
@@ -42,13 +42,12 @@ function onUpdate(ctx) {
 
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
-    // ATR-trailing stop: 3 ATR below the highest close since entry.
-    // Fixed stops give back gains in a rally; a trail locks them in. 3 ATR
-    // chosen (not tuned) to match the ~2% daily vol target (3 ATR ≈ 9 days of vol).
+    // Trail: 5 ATR below the highest close since entry. 5 ATR (~15 days of vol)
+    // is wide enough to survive normal pullbacks yet catches real crashes.
     const peak = ctx.state.peak != null ? Math.max(ctx.state.peak, prevClose) : prevClose;
     ctx.state.peak = peak;
     let stop = null;
-    if (atr != null && atr > 0) stop = peak - 3 * atr;
+    if (atr != null && atr > 0) stop = peak - 5 * atr;
     if (stop == null) stop = ctx.entryPx * 0.85;   // fallback if ATR missing
     if (price <= stop) return { side: 'sell', qty: pos };
     if (prevClose < ema200) return { side: 'sell', qty: pos };   // trend over
@@ -62,8 +61,7 @@ function onUpdate(ctx) {
   ctx.state.peak = null;   // reset trail when flat
 
   // Network-usage gate: only buy when active addresses are at/above their 30-day average.
-  // If the data is missing on a bar, default to allowing the trade so the strategy
-  // never silently blocks on missing data.
+  // If the data is missing on a bar, default to allowing the trade.
   const addr = ctx.data('addr');
   const addrAvg = ctx.data('addr_sma30');
   let usageUp = true;
