@@ -5,14 +5,14 @@ Nothing is filtered out by return — the ones that lost money are part of the r
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
 **★ marks a strategy that out-returned buy & hold over the same window** — 515 of 2073 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 313 of them right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 312 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 **‡** after a name: the code was edited after its last verifying backtest — the published code is current, but the figures are from the previous code until a new backtest verifies it.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4446](strategies/4446/) | RSI2 Extreme-Oversold Basket 1D ‡ | -8.55% | — | +16.36% | 232 | 2026-10-15 |
+|  | [4446](strategies/4446/) | RSI2 Extreme-Oversold Basket 1D | -56.35% | -17.42% | +78.63% | 96 | 2026-10-15 |
 | — | [4445](strategies/4445/) | Donchian Breakout Basket 1D | +301.32% | — | +29.55% | 55 | 2026-10-15 |
 | — | [4444](strategies/4444/) | Multi-Asset Momentum ATR-Trail 1D | +2.42% | — | +24.23% | 1127 | 2026-10-15 |
 | — | [4443](strategies/4443/) | Bollinger MR in Uptrend Basket 1D | -0.56% | — | +4.43% | 42 | 2026-10-15 |
