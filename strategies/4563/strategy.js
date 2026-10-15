@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: VolTarget Donchian 55/20 BTC 1D
+ * name: Donchian 55/20 Trend BTC 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
@@ -8,13 +8,13 @@
  *
  * Why this strategy: crypto trends hard but crashes violently. A slow Donchian
  * 55-day breakout only enters after a sustained up-move (fewer whipsaws than a
- * fast breakout), and ATR vol-targeting shrinks the position exactly when
- * markets get wild. A 2xATR hard stop and a 20-day low exit protect the account.
+ * fast breakout), a 20-day low exit gets out of downtrends, and a 2xATR hard
+ * stop protects the account. Full position when in trend.
  * When it buys and sells: buys when price breaks the 55-day high, exits on the
- * 20-day low break or a 2xATR stop. Size = min(1, 2% target daily vol / ATR%).
- * When it does NOT work: in a long sideways range the 55/20 breakout still
- * whipsaws; a gap down can hit the stop before the exit reacts. It lags
- * buy-and-hold in a straight-line bull because vol-targeting caps exposure.
+ * 20-day low break or a 2xATR stop.
+ * When it does NOT work: in a long sideways range the 55/20 breakout whipsaws;
+ * a gap down can hit the stop before the exit reacts. It lags buy-and-hold in a
+ * straight-line bull because the slow 55-day entry waits for a big move first.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -29,13 +29,6 @@ function onUpdate(ctx) {
   if (hh == null || ll == null) return null;
 
   const pos = ctx.position;
-  const atrPct = atr / price;
-  const targetVol = 0.02; // 2% expected daily vol on the account: at 2% ATR we are
-  // fully invested, at 4% ATR we halve. Keeps single-day swings survivable.
-  const size = Math.min(1, targetVol / atrPct);
-  const equity = ctx.cash + pos * price;
-  const targetQty = (equity * size * 0.95) / price;
-
   if (pos > 0) {
     const entry = ctx.entryPx;
     if (entry != null) {
@@ -49,17 +42,13 @@ function onUpdate(ctx) {
       if (price < ll) return { side: 'sell', qty: pos };
       ctx.watch([{ side: 'sell', price: ll, trigger: 'below', note: 'exit: 20d low' }]);
     }
-    // Rebalance only on >15% drift to avoid churn from tiny ATR wobbles.
-    const diff = targetQty - pos;
-    if (Math.abs(diff) / Math.max(pos, 1e-9) > 0.15) {
-      return { side: diff > 0 ? 'buy' : 'sell', qty: Math.abs(diff) };
-    }
     return null;
   }
 
-  if (price > hh && targetQty > 0) {
+  if (price > hh) {
+    const qty = (ctx.cash * 0.95) / price;
     ctx.watch([{ side: 'buy', price: hh, trigger: 'above', note: 'enter: 55d high' }]);
-    return { side: 'buy', qty: targetQty };
+    return { side: 'buy', qty };
   }
 
   ctx.watch([{ side: 'buy', price: hh, trigger: 'above', note: 'enter: 55d high' }]);
