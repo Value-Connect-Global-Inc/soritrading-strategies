@@ -11,7 +11,7 @@
  * fast breakout), and ATR vol-targeting shrinks the position exactly when
  * markets get wild. A 2xATR hard stop and a 20-day low exit protect the account.
  * When it buys and sells: buys when price breaks the 55-day high, exits on the
- * 20-day low break or a 2xATR stop. Size = min(1, 3% target daily vol / ATR%).
+ * 20-day low break or a 2xATR stop. Size = min(1, 2% target daily vol / ATR%).
  * When it does NOT work: in a long sideways range the 55/20 breakout still
  * whipsaws; a gap down can hit the stop before the exit reacts. It lags
  * buy-and-hold in a straight-line bull because vol-targeting caps exposure.
@@ -30,9 +30,8 @@ function onUpdate(ctx) {
 
   const pos = ctx.position;
   const atrPct = atr / price;
-  const targetVol = 0.03; // 3% expected daily vol on the account: at 3% ATR we
-  // are fully invested, at 6% ATR we halve. Higher than 2% to capture more bull
-  // upside while still cutting size in violent markets.
+  const targetVol = 0.02; // 2% expected daily vol on the account: at 2% ATR we are
+  // fully invested, at 4% ATR we halve. Keeps single-day swings survivable.
   const size = Math.min(1, targetVol / atrPct);
   const equity = ctx.cash + pos * price;
   const targetQty = (equity * size * 0.95) / price;
