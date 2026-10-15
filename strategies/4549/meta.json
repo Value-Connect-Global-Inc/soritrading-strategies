@@ -1,0 +1,33 @@
+{
+  "id": 4549,
+  "name": "Donchian 55/30 Vol-Scaled",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 21362,
+    "return": 278.91,
+    "mdd": 53.7,
+    "trades": 12,
+    "vsBuyHold": "lose",
+    "benchRet": 814.68,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1577836800,
+    "tTo": 1672444800,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1096봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "1d",
+      "bars": 1096,
+      "end": 1672531200
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "a5774f6bbdd6c041fba6e06a2c5fab04a897d8454fc158b09c18effa71d757a7"
+  },
+  "config": null,
+  "updatedAt": "2026-10-15T21:10:43.529Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
