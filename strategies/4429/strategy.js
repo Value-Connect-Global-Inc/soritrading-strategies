@@ -1,24 +1,25 @@
 /*
  * @coinsori-strategy v1
- * name: FearGreed Panic Buyer BTC 1D
+ * name: FearGreed Panic-End Recovery BTC 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
  * Why this strategy: The Crypto Fear & Greed Index (0-100) measures crowd
- * emotion. In a bull market, extreme fear (below 25) marks a panic dip that
- * historically recovers; extreme greed (above 75) marks a euphoric top. This
- * strategy buys panic dips but ONLY while the long-term uptrend is intact —
- * buying panic in a bear market is catching a falling knife.
- * When it buys and sells: buys when yesterday's Fear & Greed index is below 25
- * AND the previous close is above the 200-day SMA (secular uptrend). Sells when
- * the index rises above 75 (euphoria) or a wide 40% stop is hit (the panic
- * turned into a real bear). Uses half of cash per trade so a stop-out costs
- * about 20% of the account. Only yesterday's index value is used (no lookahead).
- * When it does NOT work: it sits in cash through the early recovery after a
- * bear (price still below the 200-day SMA), so it misses the first leg of new
- * bull markets. It also misses quiet bull grinds where greed never gets extreme.
+ * emotion. Buying DURING extreme fear catches a falling knife (price can keep
+ * crashing for months). Instead this strategy waits for the panic to END: it
+ * buys when the index crosses back up through 25 (fear is receding, the bottom
+ * is in) and sells when euphoria fades (index crosses back down through 75).
+ * When it buys and sells: buys when yesterday's index crossed up through 25
+ * from extreme fear. Sells when the index crosses down through 75 (greed is
+ * fading) or a hard stop 25% below entry is hit. Uses 90% of cash per trade.
+ * Only closed-bar index values are used (no lookahead).
+ * When it does NOT work: a panic that resumes into a full bear market (e.g.
+ * late 2025 into 2026) still hits the stop — the stop caps each loss but a
+ * sequence of them hurts. It also sits in cash through long quiet bull grinds
+ * where the index never gets extreme, so it lags buy-and-hold in strong bull
+ * markets.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -29,38 +30,30 @@ function onUpdate(ctx) {
   const fgVal = Number(fg);
   if (!Number.isFinite(fgVal)) return null;
 
-  // Carry yesterday's index in state so today's decision uses only closed data
-  const fgPrev = ctx.state.fgPrev;
+  // Track the last two closed days of the index (both ago>=1, no lookahead)
+  const fgPrev = ctx.state.fgPrev;   // yesterday
+  const fg2 = ctx.state.fg2;         // day before yesterday
+  ctx.state.fg2 = fgPrev;
   ctx.state.fgPrev = fgVal;
-  if (fgPrev == null) return null;
-
-  const sma200 = ctx.sma(200, 1);
-  if (sma200 == null) return null;
+  if (fgPrev == null || fg2 == null) return null;
 
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
-    const stop = ctx.entryPx * 0.6;   // wide catastrophic stop: a panic that becomes a bear
+    const stop = ctx.entryPx * 0.75;   // hard stop: 25% below entry
     if (price <= stop) return { side: 'sell', qty: pos };
-    if (fgPrev > 75) { ctx.log('SELL greed', ctx.i, price, fgPrev); return { side: 'sell', qty: pos }; }
-    if (price <= stop) { ctx.log('SELL stop', ctx.i, price, fgPrev); return { side: 'sell', qty: pos }; }
-    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '40% stop' },
-               { side: 'sell', price: ctx.entryPx, trigger: 'above', note: 'greed>75 exit',
-                 conds: [{ label: 'Fear&Greed', now: fgPrev, op: '>', ref: 75, closed: true }] }]);
+    const euphFading = fgPrev < 75 && fg2 >= 75;   // greed ended -> take profit
+    if (euphFading) return { side: 'sell', qty: pos };
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '25% stop' },
+               { side: 'sell', price: ctx.entryPx, trigger: 'above', note: 'euphoria fade exit',
+                 conds: [{ label: 'Fear&Greed yest', now: fgPrev, op: '<', ref: 75, closed: true },
+                         { label: 'Fear&Greed 2d', now: fg2, op: '>=', ref: 75, closed: true }] }]);
     return null;
   }
 
-  const prevClose = ctx.closes.at(-2);
-  if (prevClose == null) return null;
-  const bull = prevClose > sma200;   // only buy panics inside a secular uptrend
-  const panic = fgPrev < 25;
-  if (panic) ctx.log('PANIC day', ctx.i, price, fgPrev, 'bull=' + bull, 'sma200=' + sma200.toFixed(0));
-  ctx.watch([{ side: 'buy', price: sma200, trigger: 'above', note: 'panic buy in uptrend',
-               conds: [{ label: 'Fear&Greed', now: fgPrev, op: '<', ref: 25, closed: true },
-                       { label: 'close > 200-SMA', ok: bull, closed: true }] }]);
-  if (!panic || !bull) return null;
+  const panicEnd = fgPrev > 25 && fg2 <= 25;   // panic ended -> buy the recovery
+  if (!panicEnd) return null;
 
-  const qty = (ctx.cash / price) * 0.5;   // half cash per trade: a stop-out costs ~20% of cash
+  const qty = (ctx.cash / price) * 0.9;
   if (qty <= 0) return null;
-  ctx.log('BUY', ctx.i, price, fgPrev);
   return { side: 'buy', qty };
 }
