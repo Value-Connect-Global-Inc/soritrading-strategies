@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4452](strategies/4452/) | On-Chain Network-Health Momentum 1D | +34.48% | — | +17.80% | 72 | 2026-10-15 |
+| — | [4452](strategies/4452/) | On-Chain Network-Health Momentum 1D | +16.97% | — | +10.23% | 90 | 2026-10-15 |
 | — | [4451](strategies/4451/) | Multi-Asset Momentum + Portfolio Crash Brake 1D | -5.26% | — | +9.88% | 88 | 2026-10-15 |
 | — | [4450](strategies/4450/) | Multi-Asset Defensive MR Basket 1D | +1.06% | — | +9.17% | 9 | 2026-10-15 |
 | — | [4449](strategies/4449/) | OI Sentiment Probe BTC | +64.83% | — | +13.00% | 111 | 2026-10-15 |
