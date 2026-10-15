@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4500](strategies/4500/) | AI 전략 | -70.43% | +196.85% | +75.69% | 79 | 2026-10-15 |
+|  | [4500](strategies/4500/) | AI 전략 | +18.52% | +1093.10% | +80.06% | 57 | 2026-10-15 |
 |  | [4499](strategies/4499/) | OnChain Growth BTC 1D | -62.24% | +146.40% | +83.34% | 412 | 2026-10-15 |
 |  | [4498](strategies/4498/) | FearGreed Contrarian BTC 1D | -41.19% | +146.40% | +42.66% | 8 | 2026-10-15 |
 |  | [4497](strategies/4497/) | Turtle Breakout BTC 1D | +287.67% | +1093.10% | +62.27% | 31 | 2026-10-15 |
