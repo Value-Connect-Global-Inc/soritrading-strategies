@@ -13,7 +13,8 @@
  * both rising, and we step aside when the long-term trend breaks.
  * When it buys and sells: buys when the 30-day smoothed hashrate is above the raw
  * hashrate (hashrate rising) AND the close is above the 200-day moving average.
- * Sells when the close falls back below the 200-day moving average.
+ * Sells when the close falls back below the 200-day moving average or a 30% hard
+ * stop is hit (risk cap so no single position can damage the account).
  * When it does NOT work: it is only long during confirmed bull regimes, so it misses
  * the first weeks of a rally and can give back gains in choppy ranges where price
  * repeatedly crosses the 200-day line. It is not a market-timing tool for bear rallies.
@@ -36,8 +37,11 @@ function onUpdate(ctx) {
 
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
+    const stop = ctx.entryPx * 0.70;   // hard stop 30% below entry: cap single-position damage
+    if (price <= stop) return { side: 'sell', qty: pos };
     if (prevClose < sma200) return { side: 'sell', qty: pos };   // long-term trend broke
-    ctx.watch([{ side: 'sell', price: sma200, trigger: 'below', note: 'exit: below 200d MA',
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '30% stop' },
+               { side: 'sell', price: sma200, trigger: 'below', note: 'exit: below 200d MA',
                  conds: [{ label: 'close > 200d MA', ok: prevClose > sma200, closed: true }] }]);
     return null;
   }

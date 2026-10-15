@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [4512](strategies/4512/) | Hashrate Regime Trend (BTC 1D) | +26.52% | -17.42% | +31.30% | 11 | 2026-10-15 |
+| ★ | [4512](strategies/4512/) | Hashrate Regime Trend (BTC 1D) | +697.03% | +522.64% | +46.73% | 7 | 2026-10-15 |
 | ★ | [4511](strategies/4511/) | Donchian Breakout Trend (ETH 1D) | +15.63% | +11.63% | +17.48% | 39 | 2026-10-15 |
 |  | [4510](strategies/4510/) | ETH Panic-Dip Mean Reversion (1D) | -3.28% | +55.39% | +5.25% | 44 | 2026-10-15 |
 |  | [4509](strategies/4509/) | Donchian Breakout Trend (BTC 1D) | +240.56% | +522.64% | +15.70% | 38 | 2026-10-15 |
