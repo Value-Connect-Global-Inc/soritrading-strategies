@@ -12,10 +12,10 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [4497](strategies/4497/) | Turtle Breakout BTC 1D | +287.67% | +1093.10% | +62.27% | 31 | 2026-10-15 |
 |  | [4500](strategies/4500/) | AI 전략 | -75.63% | +47.08% | +80.55% | 123 | 2026-10-15 |
 |  | [4499](strategies/4499/) | OnChain Growth BTC 1D | -62.24% | +146.40% | +83.34% | 412 | 2026-10-15 |
 |  | [4498](strategies/4498/) | FearGreed Contrarian BTC 1D | -41.19% | +146.40% | +42.66% | 8 | 2026-10-15 |
-|  | [4497](strategies/4497/) | Turtle Breakout BTC 1D | +287.67% | +1093.10% | +62.27% | 31 | 2026-10-15 |
 |  | [4496](strategies/4496/) | Uptrend Dip-Buyer BB (BTC 1D) | -11.75% | +522.64% | +16.86% | 13 | 2026-10-15 |
 | — | [4495](strategies/4495/) | Multi-Asset Trend Basket (BTC/ETH/SOL/BNB 1D) | +22.33% | — | +9.93% | 144 | 2026-10-15 |
 |  | [4494](strategies/4494/) | Miner-Capitulation Recovery (BTC 1D) | +31.64% | +87.84% | +16.52% | 33 | 2026-10-15 |
