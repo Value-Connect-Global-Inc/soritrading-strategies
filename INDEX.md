@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4440](strategies/4440/) | FearGreed Contrarian BTC 1D | -54.13% | +116.17% | +82.04% | 30 | 2026-10-15 |
+|  | [4440](strategies/4440/) | FearGreed Contrarian BTC 1D ‡ | -54.13% | +116.17% | +82.04% | 30 | 2026-10-15 |
 | — | [4439](strategies/4439/) | AI 전략 ‡ | +87.63% | — | +23.13% | 94 | 2026-10-15 |
 |  | [4438](strategies/4438/) | Fed-Easing Regime BTC 1D ‡ | +8.36% | +87.84% | +29.84% | 28 | 2026-10-15 |
 | — | [4437](strategies/4437/) | Multi-Asset Absolute Momentum 1D | +149.18% | — | +31.41% | 80 | 2026-10-15 |
