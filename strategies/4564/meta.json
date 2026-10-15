@@ -3,16 +3,16 @@
   "name": "ATR Spike Crash Protection BTC 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 21453,
-    "return": -22.21,
-    "mdd": 37.81,
-    "trades": 58,
+    "backtestId": 21457,
+    "return": 7.7,
+    "mdd": 29.11,
+    "trades": 63,
     "vsBuyHold": "lose",
-    "benchRet": -17.42,
+    "benchRet": 95.22,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1619222400,
-    "tTo": 1705536000,
+    "tFrom": 1705276800,
+    "tTo": 1791590400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
@@ -22,10 +22,10 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1000,
-      "end": 1705622400
+      "end": 1792022400
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "037b925ab3651d9842134de0a765f8e3b3589fcb39632d949136246d424490f5"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "182bb143cb705f0aca64a5a234c57445863d024fa907d3023a96fe5b3ec2ca47"
   },
   "config": null,
   "updatedAt": "2026-10-15T22:50:35.248Z",
