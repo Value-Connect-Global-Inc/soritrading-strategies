@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 523 of 2136 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 523 of 2137 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 325 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [4515](strategies/4515/) | Probe B fear_greed data | +22.99% | +95.22% | +52.97% | 12 | 2026-10-15 |
 | ★ | [4512](strategies/4512/) | Hashrate Regime Trend (BTC 1D) | +697.03% | +522.64% | +46.73% | 7 | 2026-10-15 |
 | ★ | [4511](strategies/4511/) | Donchian Breakout Trend (ETH 1D) | +15.63% | +11.63% | +17.48% | 39 | 2026-10-15 |
 |  | [4510](strategies/4510/) | ETH Panic-Dip Mean Reversion (1D) | -3.28% | +55.39% | +5.25% | 44 | 2026-10-15 |
