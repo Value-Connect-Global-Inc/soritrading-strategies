@@ -10,21 +10,21 @@
  *   Instead of trying to predict WHEN a crash starts (which whipsaws and loses money),
  *   it stays invested and simply holds a smaller position when volatility is high.
  * When it buys and sells: Always holds BTC. Each day it measures volatility (ATR/price)
- *   and sets its position size so that the portfolio's daily swing stays near a target
- *   (2%). High volatility -> small position, low volatility -> full position. It only
- *   trades when the position needs a meaningful adjustment, to limit fees.
+ *   and sets its position size so that the portfolio's daily swing stays near a target.
+ *   High volatility -> small position, low volatility -> full position. It only trades
+ *   when the position needs a meaningful adjustment, to limit fees.
  * When it does NOT work: It is still long in a long bear market, so it loses money -
  *   just less than holding everything. The risk target caps how much it can make in a
  *   calm bull run (it never uses leverage). Fees on rebalancing eat returns if vol
  *   jumps around a lot.
  */
 function onUpdate(ctx) {
-  const atr = ctx.atr(14, 1);
+  const atr = ctx.atr(30, 1); // slower vol estimate: fewer rebalances, less fee drag
   if (atr == null) return null;
   const price = ctx.price;
 
   const equity = ctx.cash + ctx.position * price;
-  const dailyVol = atr / price; // realized daily volatility, e.g. 0.02 = 2%
+  const dailyVol = atr / price;
 
   const targetVol = 0.02; // keep portfolio daily swing near 2% of equity
   let frac = targetVol / dailyVol;
