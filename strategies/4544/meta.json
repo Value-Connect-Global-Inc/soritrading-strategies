@@ -3,11 +3,11 @@
   "name": "Donchian + Chandelier Exit (ETH 1D)",
   "kind": "custom",
   "verified": {
-    "backtestId": 21327,
-    "return": -23.19,
-    "mdd": 71.46,
-    "trades": 30,
-    "vsBuyHold": "lose",
+    "backtestId": 21330,
+    "return": 79.46,
+    "mdd": 66.7,
+    "trades": 22,
+    "vsBuyHold": "win",
     "benchRet": 19.26,
     "benchBasis": "price",
     "gapPct": 0,
@@ -24,8 +24,8 @@
       "bars": 1100,
       "end": 1601942400
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "1fcc6067a700c3cdc9cadcbbc44057095f42d5ec6e9c0625e376ea8ac23a3d9c"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "ad6af3d3cf3a98547625ab7fccb545dc619f97f9e7fdc74d4986b77fe72221c2"
   },
   "config": null,
   "updatedAt": "2026-10-15T20:20:59.577Z",
