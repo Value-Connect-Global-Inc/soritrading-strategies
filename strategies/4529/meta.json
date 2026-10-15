@@ -1,0 +1,33 @@
+{
+  "id": 4529,
+  "name": "Donchian + ATR Risk-Sized (ETH 1D)",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 21290,
+    "return": 23.75,
+    "mdd": 11.39,
+    "trades": 32,
+    "vsBuyHold": "win",
+    "benchRet": 19.26,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1506902400,
+    "tTo": 1601856000,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1100봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "1d",
+      "bars": 1100,
+      "end": 1601942400
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "95647752584542144cc334dab80a34d9148261b476e611996a64595e624b7310"
+  },
+  "config": null,
+  "updatedAt": "2026-10-15T19:16:20.021Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
