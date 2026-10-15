@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 538 of 2168 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 539 of 2169 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 329 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [4562](strategies/4562/) | FearGreed Sentiment Regime SOL 1D | -14.40% | -27.94% | +51.10% | 17 | 2026-10-15 |
 |  | [4561](strategies/4561/) | Stoch Turn-Confirm ETH 1D | -13.72% | +11.63% | +27.67% | 10 | 2026-10-15 |
 |  | [4560](strategies/4560/) | RSI2 Mean Reversion ETH 1D | -76.85% | +407.59% | +85.12% | 142 | 2026-10-15 |
 | ★ | [4559](strategies/4559/) | FearGreed Sentiment Regime ETH 1D | +131.58% | +108.82% | +48.73% | 23 | 2026-10-15 |
