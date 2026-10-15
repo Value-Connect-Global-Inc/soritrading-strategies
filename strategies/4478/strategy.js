@@ -6,23 +6,14 @@
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Same structure as the validated active-address champion, but the
- * confirmation gate uses a DIFFERENT on-chain axis — Bitcoin's network hash rate.
- * Hashrate is miner investment: miners add machines when they expect profit, and
- * capitulate (shut off) when price falls below their cost. So hashrate above its own
- * 30-day average confirms a healthy, invested network; a drop signals miner stress.
- * Hypothesis: buying price momentum only when miners are still investing skips rallies
- * that are already being abandoned by the people who secure the network.
- * When it buys and sells: buys when the 30-day price return is positive, the close is
- * above the 200-day EMA, and hashrate is at/above its 30-day average. Sells when the
- * close falls below the 200-day EMA, the 30-day return turns negative, or a 15% hard
- * stop is hit. Same exit rules and vol-scaled sizing as the champion.
- * When it does NOT work: hashrate has a strong secular uptrend (difficulty ratchets up),
- * so the gate can stay "on" for long stretches and add little filtering; and it reacts
- * slowly to price crashes (miners keep machines running for weeks), so it may not warn
- * early. It also only checks BTC, so it adds no protection to other coins.
- * NOTE (diagnostic): this build REQUIRES hashrate data — if ctx.data returns null the
- * strategy does nothing. Used to verify the dataset is actually loaded on the agent.
+ * Why this strategy: DIAGNOSTIC BUILD. Removes the on-chain gate entirely to answer
+ * one question: does the champion's active-address gate (or a hashrate gate) add
+ * anything over pure EMA200 + 30d-momentum trend following? If this no-gate version
+ * is byte-identical to the champion, the on-chain data is decorative and the edge is
+ * only the trend rules.
+ * When it buys and sells: buys when 30d return > 0 and close above 200d EMA; sells on
+ * EMA200 break, negative 30d return, or 15% stop. Vol-scaled sizing.
+ * When it does NOT work: this is a diagnostic build, not meant for live trading.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -44,13 +35,6 @@ function onUpdate(ctx) {
     volScale = Math.min(1, 0.02 / atrPct);
   }
 
-  // Miner-health gate: only buy when hashrate is at/above its 30-day average.
-  // DIAGNOSTIC: require the data — if missing, do nothing (proves it is loaded).
-  const hr = ctx.data('hashrate');
-  const hrAvg = ctx.data('hashrate_sma30');
-  if (hr == null || hrAvg == null) return null;
-  const hrOk = hr >= hrAvg;
-
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
     const stop = ctx.entryPx * 0.85;          // hard stop: 15% below entry
@@ -66,9 +50,8 @@ function onUpdate(ctx) {
   const uptrend = prevClose > ema200;
   ctx.watch([{ side: 'buy', price: ema200, trigger: 'above', note: 'close above 200-day EMA',
                conds: [{ label: '30d return > 0', ok: mom30 > 0, closed: true },
-                       { label: 'close > 200-EMA', ok: uptrend, closed: true },
-                       { label: 'hashrate >= 30d avg', ok: hrOk, closed: true }] }]);
-  if (!uptrend || !(mom30 > 0) || !hrOk) return null;
+                       { label: 'close > 200-EMA', ok: uptrend, closed: true }] }]);
+  if (!uptrend || !(mom30 > 0)) return null;
 
   const targetCash = ctx.cash * volScale;      // single-asset pool, vol-scaled
   const qty = (targetCash / price) * 0.95;
