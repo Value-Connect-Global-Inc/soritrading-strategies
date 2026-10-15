@@ -3,16 +3,16 @@
   "name": "Debug Closes (ETH 1D)",
   "kind": "custom",
   "verified": {
-    "backtestId": 21279,
-    "return": -19.52,
-    "mdd": 50.66,
+    "backtestId": 21281,
+    "return": 202.38,
+    "mdd": 56.23,
     "trades": 16,
-    "vsBuyHold": "lose",
-    "benchRet": 360.05,
+    "vsBuyHold": "win",
+    "benchRet": 19.26,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1601942400,
-    "tTo": 1696896000,
+    "tFrom": 1506902400,
+    "tTo": 1601856000,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1100봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
@@ -22,10 +22,10 @@
       "sym": "ETH",
       "interval": "1d",
       "bars": 1100,
-      "end": 1696982400
+      "end": 1601942400
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "43d29bcabb4ec07b0ddabda4b838f12dd37e0c2676821fc709aa5fc1bf58c38b"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "01f879682cf58cb11d9eb53134a69b5052c9f1881f2b3fbb8e4dbe4789cdae16"
   },
   "config": null,
   "updatedAt": "2026-10-15T18:55:25.516Z",
