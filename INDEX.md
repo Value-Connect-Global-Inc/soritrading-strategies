@@ -12,8 +12,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4491](strategies/4491/) | Active-Address Confirmed Momentum (BTC 1D) ref | -11.74% | +91.95% | +11.74% | 12 | 2026-10-15 |
 |  | [4492](strategies/4492/) | On-Chain Gated Momentum 4H (BTC/USDT) | +256.34% | +484.12% | +26.21% | 46 | 2026-10-15 |
+|  | [4491](strategies/4491/) | Active-Address Confirmed Momentum (BTC 1D) ref | -11.74% | +91.95% | +11.74% | 12 | 2026-10-15 |
 | ★ | [4490](strategies/4490/) | Fed-Regime Momentum (BTC 1D) | -3.85% | -17.42% | +6.69% | 6 | 2026-10-15 |
 | ★ | [4489](strategies/4489/) | Momentum Core on ETH (ETH/USDT 1D) | +24.55% | -17.42% | +8.45% | 85 | 2026-10-15 |
 |  | [4488](strategies/4488/) | Dual-Regime Momentum: Usage + Dollar (BTC 1D) | +37.02% | +95.22% | +11.45% | 23 | 2026-10-15 |
