@@ -1,79 +1,69 @@
 /*
  * @coinsori-strategy v1
- * name: BTC-ETH Relative Strength Rotation (1D)
+ * name: Donchian 55/30 Vol-Scaled 5pct (ETH 1D)
  * ex: binance
- * syms: BTC/USDT, ETH/USDT
+ * syms: ETH/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: In a rising crypto market one asset usually leads. Holding
- * the stronger of BTC vs ETH, and switching when their 90-day momentum flips,
- * captures the leading asset's trend while avoiding holding the laggard through
- * a drawdown. Cross-sectional relative strength, implemented via a shared
- * ctx.state ring buffer of each symbol's price (ctx.market gives only a live
- * price, no history, so we record our own history per symbol).
- * When it buys and sells: each day, compare BTC's and ETH's 90-day price change.
- * Hold the one with higher momentum; if flat and that one is this symbol, buy it;
- * if holding the laggard, sell it. 15% hard stop on every position.
- * When it does NOT work: when both assets fall together (a coordinated bear), the
- * rotation is fully flat and safe but buys nothing; in a choppy market where the
- * lead flips every few weeks, rotation churns and pays fees without adding value.
+ * Why this strategy: Same trend-following core as the champion (55-day close
+ * high entry, 30-day close low exit, 30% stop) but position size shrinks only
+ * in EXTREME daily volatility, so crashes hit a smaller position while normal
+ * melt-ups keep full size.
+ * When it buys and sells: buys on a 55-day close high, sized by volatility —
+ * full size when ATR(20)/price <= 5%, proportionally smaller only above that.
+ * Sells on a 30-day close low or a 30% hard stop.
+ * When it does NOT work: in a long sideways market the breakout whipsaws; in a
+ * fast crash the 30-day exit lags and the stop still takes a hit (just a smaller
+ * one because size was cut).
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
-  const sym = ctx.sym;
-  const syms = ctx.syms;
-  if (!syms || syms.length < 2) return null;
 
-  const LOOK = 90; // momentum lookback in bars
+  const closes = ctx.closes;
+  const n = closes.length;
+  if (n < 60) return null;
 
-  // Record this symbol's price into a shared ring buffer (ctx.state persists and
-  // is shared across all symbols in the run). We need ~LOOK+2 samples.
-  const st = ctx.state;
-  if (!st.px) st.px = {};
-  if (!st.px[sym]) st.px[sym] = [];
-  const buf = st.px[sym];
-  buf.push(price);
-  if (buf.length > LOOK + 5) buf.shift();
+  const prevClose = closes[n - 2];
 
-  function momentumSeries(arr) {
-    if (!arr || arr.length < LOOK + 2) return null;
-    const now = arr[arr.length - 1];
-    const then = arr[arr.length - LOOK - 1];
-    if (!Number.isFinite(now) || !Number.isFinite(then) || then <= 0) return null;
-    return (now - then) / then;
+  let hi55 = -Infinity;
+  for (let i = n - 2 - 55; i <= n - 3; i++) {
+    if (closes[i] > hi55) hi55 = closes[i];
   }
-
-  // Own momentum from the reliable own-series; other symbol's from the ring buffer.
-  const ownArr = ctx.closes;
-  let ownMom = null;
-  if (Array.isArray(ownArr) && ownArr.length >= LOOK + 3) {
-    const now = ownArr[ownArr.length - 2];
-    const then = ownArr[ownArr.length - 2 - LOOK];
-    if (Number.isFinite(now) && Number.isFinite(then) && then > 0) ownMom = (now - then) / then;
+  let lo30 = Infinity;
+  for (let i = n - 2 - 30; i <= n - 3; i++) {
+    if (closes[i] < lo30) lo30 = closes[i];
   }
-
-  const other = syms.find(s => s !== sym) || null;
-  const otherMom = other ? momentumSeries(st.px[other]) : null;
-
-  if (ownMom == null || otherMom == null) return null;
-
-  const best = ownMom >= otherMom ? sym : other;
 
   const pos = ctx.position;
   if (pos > 0) {
-    const stop = ctx.entryPx * 0.85; // 15% hard stop
+    const stop = ctx.entryPx * 0.70;
     if (price <= stop) return { side: 'sell', qty: pos };
-    if (best !== sym) return { side: 'sell', qty: pos }; // laggard -> rotate out
-    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '15% stop' }]);
+    if (prevClose < lo30) return { side: 'sell', qty: pos };
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '30% stop' },
+               { side: 'sell', price: lo30, trigger: 'below', note: 'exit: 30d low',
+                 conds: [{ label: 'close vs 30d low', ok: prevClose >= lo30, closed: true }] }]);
     return null;
   }
 
-  if (best !== sym) return null; // only the strongest buys
-  if (ownMom <= 0) return null;  // no positive momentum -> stay flat
+  const breakout = prevClose > hi55;
+  ctx.watch([{ side: 'buy', price: hi55, trigger: 'above', note: 'enter: 55d high',
+               conds: [{ label: 'close vs 55d high', ok: breakout, closed: true }] }]);
+  if (!breakout) return null;
 
-  const qty = (ctx.cash * 0.98) / price;
+  // Vol-targeting with a HIGH threshold (5%): only crashes / extreme vol cut size,
+  // normal melt-ups keep full exposure. Reason: 3% scaled down too much in the
+  // 2020-21 bull and forfeited the melt-up; 5% only bites in genuinely extreme regimes.
+  const atr = ctx.atr(20, 1);
+  let frac = 0.95;
+  if (atr != null) {
+    const atrPct = atr / prevClose;
+    if (atrPct > 0.05) frac = 0.95 * (0.05 / atrPct);
+    frac = Math.max(0.10, Math.min(0.95, frac));
+  }
+
+  const qty = (ctx.cash * frac) / price;
   if (qty <= 0) return null;
   return { side: 'buy', qty };
 }

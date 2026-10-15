@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4557](strategies/4557/) | BTC-ETH Relative Strength Rotation (1D) | +136.94% | — | +65.62% | 54 | 2026-10-15 |
+| — | [4557](strategies/4557/) | BTC-ETH Relative Strength Rotation (1D) ‡ | +136.94% | — | +65.62% | 54 | 2026-10-15 |
 | — | [4554](strategies/4554/) | Market-Object Probe (BTC/ETH 1D) | +0.33% | — | +0.70% | 2 | 2026-10-15 |
 | — | [4553](strategies/4553/) | Multi-Sym Alive Probe (BTC/ETH 1D) | +0.33% | — | +0.70% | 2 | 2026-10-15 |
 | ★ | [4549](strategies/4549/) | Donchian 55/30 Vol-Scaled | +75.57% | -57.23% | +50.51% | 6 | 2026-10-15 |
