@@ -12,9 +12,9 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4546](strategies/4546/) | Donchian Half-Size (ETH 1D) | +18.50% | +53.44% | +21.02% | 22 | 2026-10-15 |
 |  | [4545](strategies/4545/) | Macro Data Diagnostic (ETH 1D) | +63.39% | +360.05% | +50.88% | 20 | 2026-10-15 |
 | ★ | [4544](strategies/4544/) | Donchian + Chandelier Exit (ETH 1D) | +79.46% | +19.26% | +66.70% | 22 | 2026-10-15 |
+|  | [4546](strategies/4546/) | Donchian Half-Size (ETH 1D) | +18.50% | +53.44% | +21.02% | 22 | 2026-10-15 |
 |  | [4543](strategies/4543/) | AI 전략 | +148.57% | +360.05% | +50.88% | 20 | 2026-10-15 |
 |  | [4542](strategies/4542/) | AI 전략 | -22.52% | +683.90% | +31.37% | 14 | 2026-10-15 |
 | — | [4539](strategies/4539/) | AI 전략 | -1.46% | — | +1.45% | 1600 | 2026-10-15 |
