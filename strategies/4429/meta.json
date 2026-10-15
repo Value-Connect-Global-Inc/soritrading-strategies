@@ -3,32 +3,33 @@
   "name": "BTC 4h EMA50/200 Momentum w/ Re-entry",
   "kind": "custom",
   "verified": {
-    "backtestId": 20728,
-    "return": -28.07,
-    "mdd": 34.93,
-    "trades": 2,
-    "vsBuyHold": "lose",
-    "benchRet": 164.87,
+    "backtestId": 20731,
+    "return": -7.09,
+    "mdd": 10.47,
+    "trades": 1,
+    "vsBuyHold": "win",
+    "benchRet": -21.29,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1519862400,
-    "tTo": 1609372800,
+    "tFrom": 1617235200,
+    "tTo": 1640908800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 46.4%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1037봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 275봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
-      "bars": 1037,
-      "end": 1609459200
+      "bars": 275,
+      "end": 1640995200
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "97f1693eb3572fede81b29ee094ad47498aee521af313c8f0b551ac49e4be8bb"
+    "verifiedCodeSha256": "53c99ac5c6506f5fa9ecbff5029570705ef2b521da5276fb9adf04519b627c8c"
   },
   "config": null,
-  "updatedAt": "2026-10-15T00:19:03.622Z",
+  "updatedAt": "2026-10-15T00:21:04.390Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

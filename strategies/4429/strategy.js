@@ -41,7 +41,8 @@ function onUpdate(ctx) {
   if (pos > 0) {
     const stop = ctx.entryPx * 0.6;   // wide catastrophic stop: a panic that becomes a bear
     if (price <= stop) return { side: 'sell', qty: pos };
-    if (fgPrev > 75) return { side: 'sell', qty: pos };   // euphoria -> take profit
+    if (fgPrev > 75) { ctx.log('SELL greed', ctx.i, price, fgPrev); return { side: 'sell', qty: pos }; }
+    if (price <= stop) { ctx.log('SELL stop', ctx.i, price, fgPrev); return { side: 'sell', qty: pos }; }
     ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '40% stop' },
                { side: 'sell', price: ctx.entryPx, trigger: 'above', note: 'greed>75 exit',
                  conds: [{ label: 'Fear&Greed', now: fgPrev, op: '>', ref: 75, closed: true }] }]);
@@ -52,6 +53,7 @@ function onUpdate(ctx) {
   if (prevClose == null) return null;
   const bull = prevClose > sma200;   // only buy panics inside a secular uptrend
   const panic = fgPrev < 25;
+  if (panic) ctx.log('PANIC day', ctx.i, price, fgPrev, 'bull=' + bull, 'sma200=' + sma200.toFixed(0));
   ctx.watch([{ side: 'buy', price: sma200, trigger: 'above', note: 'panic buy in uptrend',
                conds: [{ label: 'Fear&Greed', now: fgPrev, op: '<', ref: 25, closed: true },
                        { label: 'close > 200-SMA', ok: bull, closed: true }] }]);
@@ -59,5 +61,6 @@ function onUpdate(ctx) {
 
   const qty = (ctx.cash / price) * 0.5;   // half cash per trade: a stop-out costs ~20% of cash
   if (qty <= 0) return null;
+  ctx.log('BUY', ctx.i, price, fgPrev);
   return { side: 'buy', qty };
 }
