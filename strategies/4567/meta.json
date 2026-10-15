@@ -3,8 +3,8 @@
   "name": "DXY Macro Regime BTC 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 21513,
-    "return": 144.98,
+    "backtestId": 21515,
+    "return": 142.71,
     "mdd": 19.47,
     "trades": 1,
     "vsBuyHold": "lose",
@@ -15,7 +15,7 @@
     "tTo": 1703894400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "기간 종료 시 미청산 포지션 1종목 (총자산의 98.01%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 97.99%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 364봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
@@ -26,10 +26,10 @@
       "bars": 364,
       "end": 1703980800
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "b5507a1225e1c7cb21a3794b95d93279e5ade1cc82315b81e3e3da220e97b904"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "99a82cfed33b9890751b0dafa254144026bcf94452cc0029f7ff7bde08bc9c21"
   },
   "config": null,
-  "updatedAt": "2026-10-15T23:36:52.139Z",
+  "updatedAt": "2026-10-15T23:37:31.551Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
