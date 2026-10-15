@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 515 of 2073 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 515 of 2074 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 312 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [4447](strategies/4447/) | FearGreed Contrarian BTC | -18.00% | -17.42% | +47.71% | 18 | 2026-10-15 |
 |  | [4446](strategies/4446/) | RSI2 Extreme-Oversold Basket 1D | -56.35% | -17.42% | +78.63% | 96 | 2026-10-15 |
 | — | [4445](strategies/4445/) | Donchian Breakout Basket 1D | +301.32% | — | +29.55% | 55 | 2026-10-15 |
 | — | [4444](strategies/4444/) | Multi-Asset Momentum ATR-Trail 1D | +2.42% | — | +24.23% | 1127 | 2026-10-15 |
