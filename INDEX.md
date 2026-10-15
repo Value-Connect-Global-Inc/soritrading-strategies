@@ -4,14 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 539 of 2174 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 329 of them right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 539 of 2175 right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 330 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 **‡** after a name: the code was edited after its last verifying backtest — the published code is current, but the figures are from the previous code until a new backtest verifies it.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [4568](strategies/4568/) | VolTarget Donchian Multi-Asset Basket | -48.16% | — | +48.76% | 258 | 2026-10-15 |
 |  | [4567](strategies/4567/) | DXY Macro Regime BTC 1D | +10.15% | +432.51% | +26.13% | 52 | 2026-10-15 |
 |  | [4566](strategies/4566/) | DXY Data Probe BTC 1D | +410.74% | +432.51% | +31.81% | 1 | 2026-10-15 |
 |  | [4565](strategies/4565/) | FedRate Macro Regime BTC 1D | -47.94% | +69.10% | +64.54% | 13 | 2026-10-15 |
