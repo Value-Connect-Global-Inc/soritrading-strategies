@@ -1,56 +1,70 @@
 /*
  * @coinsori-strategy v1
- * name: FearGreed Contrarian ETH 1D
+ * name: FearGreed Regime + Donchian BTC 1D
  * ex: binance
- * syms: ETH/USDT
+ * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: the Fear & Greed index is a well-documented sentiment
- * gauge. Extreme greed marks crowded long positioning (late buyers), extreme
- * fear marks capitulation. Betting AGAINST the crowd at the extremes — buy
- * panic, take profit into greed — is the classic contrarian edge, on a
- * high-beta asset (ETH) where sentiment swings move price hardest.
- * When it buys and sells: buys (full size) when Fear & Greed drops to <= 15
- * (extreme fear / capitulation), sells when it reaches >= 75 (extreme greed /
- * crowded longs) or price drops 20% from entry (hard stop).
- * When it does NOT work: in a persistent bull, extreme-fear dips are rare and
- * brief, so it sits in cash most of the time and misses the trend; in a slow
- * grind lower, fear can stay low for months and it keeps catching falling
- * knives. It also only has data from Feb 2018.
+ * Why this strategy: two independently validated edges combined into one.
+ * The Fear & Greed sentiment regime (buy greed, exit fear) held up on every
+ * asset tested; the VolTarget Donchian trend is a solid defensive trend
+ * follower. The regret of the trend follower was lags in bulls — the sentiment
+ * regime adds a second, independent confirmation so we only enter when BOTH
+ * the price trend AND the crowd mood agree.
+ * When it buys and sells: buys when price breaks the 55-day high AND
+ * Fear & Greed >= 55 (sentiment confirms the breakout); exits on the 20-day
+ * low break, a 2xATR stop, or F&G dropping to <= 40. Size = min(1, 2%/ATR%).
+ * When it does NOT work: in a sideways range the double condition still
+ * whipsaws; if sentiment lags the price action (common at tops) it enters
+ * late. It under-captures straight-line bulls because vol-targeting caps
+ * exposure and the F&G condition adds another entry delay.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
+  const atr = ctx.atr(14, 1);
+  const hh = ctx.high(55, 1);
+  const ll = ctx.low(20, 1);
+  if (atr == null || hh == null || ll == null) return null;
+
   const fg = ctx.data('fear_greed');
-  // F&G data starts Feb 2018; null = unknown, do not trade on missing data.
-  if (fg == null) return null;
+  if (fg == null) return null; // F&G starts Feb 2018; unknown = do not trade
 
   const pos = ctx.position;
+  const atrPct = atr / price;
+  const size = Math.min(1, 0.02 / atrPct); // 2% daily vol target (see #4563)
+  const equity = ctx.cash + pos * price;
+  const targetQty = (equity * size * 0.95) / price;
+
   if (pos > 0) {
     const entry = ctx.entryPx;
     if (entry != null) {
-      // 20% hard stop: caps any single position's loss before the slow daily
-      // sentiment index can confirm the regime has flipped.
-      const stopPx = entry * 0.80;
+      const stopPx = entry - 2 * atr;
       if (price <= stopPx) return { side: 'sell', qty: pos };
-      ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'stop: -20%' }]);
+      if (price < ll) return { side: 'sell', qty: pos };
+      ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'stop: 2xATR' },
+                 { side: 'sell', price: ll, trigger: 'below', note: 'exit: 20d low' }]);
+    } else {
+      if (price < ll) return { side: 'sell', qty: pos };
+      ctx.watch([{ side: 'sell', price: ll, trigger: 'below', note: 'exit: 20d low' }]);
     }
-    // Take profit into greed: crowded longs are the contrarian sell signal.
-    if (fg >= 75) return { side: 'sell', qty: pos };
-    ctx.watch([{ side: 'sell', note: 'exit: F&G >= 75',
-                 conds: [{ label: 'Fear&Greed', now: fg, op: '<', ref: 75, closed: true }] }]);
+    // Sentiment confirmation for exit: leave when the crowd turns fearful even
+    // before the price structure breaks.
+    if (fg <= 40) return { side: 'sell', qty: pos };
+    const diff = targetQty - pos;
+    if (Math.abs(diff) / Math.max(pos, 1e-9) > 0.15) {
+      return { side: diff > 0 ? 'buy' : 'sell', qty: Math.abs(diff) };
+    }
     return null;
   }
 
-  // Buy capitulation: extreme fear = forced sellers done, low downside.
-  if (fg <= 15) {
-    ctx.watch([{ side: 'buy', note: 'enter: F&G <= 15',
-                 conds: [{ label: 'Fear&Greed', now: fg, op: '<=', ref: 15, closed: true }] }]);
-    return { side: 'buy', qty: (ctx.cash * 0.95) / price };
+  // Only buy when BOTH the price breaks out AND the crowd is greedy (>=55).
+  if (price > hh && fg >= 55 && targetQty > 0) {
+    ctx.watch([{ side: 'buy', price: hh, trigger: 'above', note: 'enter: 55d high + F&G>=55' }]);
+    return { side: 'buy', qty: targetQty };
   }
-  ctx.watch([{ side: 'buy', note: 'enter: F&G <= 15',
-               conds: [{ label: 'Fear&Greed', now: fg, op: '<=', ref: 15, closed: true }] }]);
+  ctx.watch([{ side: 'buy', price: hh, trigger: 'above', note: 'enter: 55d high + F&G>=55' }]);
   return null;
 }
