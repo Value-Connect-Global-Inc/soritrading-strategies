@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4564](strategies/4564/) | ATR Spike Crash Protection BTC 1D ‡ | -12.92% | +522.64% | +56.04% | 240 | 2026-10-15 |
+|  | [4564](strategies/4564/) | ATR Spike Crash Protection BTC 1D | -51.28% | +55.39% | +61.31% | 7 | 2026-10-15 |
 |  | [4563](strategies/4563/) | BookImbalanceScalper | +39.20% | +91.95% | +42.67% | 9 | 2026-10-15 |
 | ★ | [4562](strategies/4562/) | FearGreed Sentiment Regime SOL 1D | -14.40% | -27.94% | +51.10% | 17 | 2026-10-15 |
 |  | [4561](strategies/4561/) | Stoch Turn-Confirm ETH 1D | -13.72% | +11.63% | +27.67% | 10 | 2026-10-15 |
