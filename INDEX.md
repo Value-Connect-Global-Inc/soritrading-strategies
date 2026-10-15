@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4501](strategies/4501/) | VolTarget AlwaysIn BTC 1D | +177.15% | +1067.24% | +42.75% | 206 | 2026-10-15 |
+|  | [4501](strategies/4501/) | VolTarget AlwaysIn BTC 1D ‡ | +177.15% | +1067.24% | +42.75% | 206 | 2026-10-15 |
 |  | [4497](strategies/4497/) | Turtle Breakout BTC 1D | +287.67% | +1093.10% | +62.27% | 31 | 2026-10-15 |
 |  | [4500](strategies/4500/) | AI 전략 | -75.63% | +47.08% | +80.55% | 123 | 2026-10-15 |
 |  | [4499](strategies/4499/) | OnChain Growth BTC 1D | -62.24% | +146.40% | +83.34% | 412 | 2026-10-15 |

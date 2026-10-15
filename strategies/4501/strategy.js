@@ -28,8 +28,8 @@ function onUpdate(ctx) {
 
   const targetVol = 0.02; // keep portfolio daily swing near 2% of equity
   let frac = targetVol / dailyVol;
-  if (frac > 1) frac = 1;   // never leverage, cap at 1x
-  if (frac < 0.15) frac = 0.15; // never fully exit: stay in the market
+  if (frac > 1) frac = 1;        // never leverage, cap at 1x
+  if (frac < 0.05) frac = 0.05;  // never fully exit: stay in the market
 
   const targetQty = equity * frac / price;
   const curQty = ctx.position;
