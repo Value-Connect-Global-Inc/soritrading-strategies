@@ -1,0 +1,33 @@
+{
+  "id": 4544,
+  "name": "Donchian + Chandelier Exit (ETH 1D)",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 21327,
+    "return": -23.19,
+    "mdd": 71.46,
+    "trades": 30,
+    "vsBuyHold": "lose",
+    "benchRet": 19.26,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1506902400,
+    "tTo": 1601856000,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1100봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "1d",
+      "bars": 1100,
+      "end": 1601942400
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "1fcc6067a700c3cdc9cadcbbc44057095f42d5ec6e9c0625e376ea8ac23a3d9c"
+  },
+  "config": null,
+  "updatedAt": "2026-10-15T20:16:58.263Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
