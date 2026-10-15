@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4472](strategies/4472/) | OI Sentiment Probe (BTC 1D) | +31.92% | +95.22% | +16.14% | 41 | 2026-10-15 |
+|  | [4472](strategies/4472/) | OI Sentiment Probe (BTC 1D) ‡ | +31.92% | +95.22% | +16.14% | 41 | 2026-10-15 |
 |  | [4471](strategies/4471/) | Active-Address + Sentiment-Cap Momentum (BTC 1D) | +42.83% | +95.22% | +10.60% | 27 | 2026-10-15 |
 |  | [4469](strategies/4469/) | Hashrate-Confirmed Momentum (BTC 1D) | +23.00% | +95.22% | +14.00% | 33 | 2026-10-15 |
 |  | [4468](strategies/4468/) | 4H Momentum Ride (BTC) | +320.34% | +522.64% | +39.13% | 98 | 2026-10-15 |
