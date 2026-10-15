@@ -12,8 +12,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4456](strategies/4456/) | Champion Baseline Multi-Asset Momentum 1D | +166.06% | — | +18.64% | 100 | 2026-10-15 |
 | — | [4455](strategies/4455/) | EMA-Slope-Confirmed Multi-Asset Momentum 1D | +34.39% | — | +8.62% | 73 | 2026-10-15 |
+| — | [4456](strategies/4456/) | Champion Baseline Multi-Asset Momentum 1D | +166.06% | — | +18.64% | 100 | 2026-10-15 |
 | — | [4454](strategies/4454/) | Cross-Sectional Momentum Rotation 1D | +17.18% | — | +11.31% | 456 | 2026-10-15 |
 | — | [4452](strategies/4452/) | On-Chain Network-Health Momentum 1D | +16.97% | — | +10.23% | 90 | 2026-10-15 |
 | — | [4451](strategies/4451/) | Multi-Asset Momentum + Portfolio Crash Brake 1D | -5.26% | — | +9.88% | 88 | 2026-10-15 |
