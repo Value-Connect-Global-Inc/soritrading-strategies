@@ -3,16 +3,16 @@
   "name": "AI 전략",
   "kind": "custom",
   "verified": {
-    "backtestId": 21323,
-    "return": 104.93,
-    "mdd": 32.43,
-    "trades": 18,
-    "vsBuyHold": "win",
-    "benchRet": 19.26,
+    "backtestId": 21325,
+    "return": 148.57,
+    "mdd": 50.88,
+    "trades": 20,
+    "vsBuyHold": "lose",
+    "benchRet": 360.05,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1506902400,
-    "tTo": 1601856000,
+    "tFrom": 1601942400,
+    "tTo": 1696896000,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1100봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
@@ -22,12 +22,12 @@
       "sym": "ETH",
       "interval": "1d",
       "bars": 1100,
-      "end": 1601942400
+      "end": 1696982400
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "fb851aa21e86bbd5b5b8a227cfe7e4f10943389bfc2a1bc4671b30881cc3eaca"
+    "verifiedCodeSha256": "2fc1bd45e413d923c7206f6c81de462fa7b05786d945038ce8fe4ff91bd297b8"
   },
   "config": null,
-  "updatedAt": "2026-10-15T20:10:47.884Z",
+  "updatedAt": "2026-10-15T20:14:44.404Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
