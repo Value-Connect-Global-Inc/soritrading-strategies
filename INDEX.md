@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4567](strategies/4567/) | DXY Macro Regime BTC 1D | +32.35% | +83.23% | +18.06% | 1 | 2026-10-15 |
+|  | [4567](strategies/4567/) | DXY Macro Regime BTC 1D | +81.36% | +153.60% | +19.31% | 1 | 2026-10-15 |
 |  | [4566](strategies/4566/) | DXY Data Probe BTC 1D | +410.74% | +432.51% | +31.81% | 1 | 2026-10-15 |
 |  | [4565](strategies/4565/) | FedRate Macro Regime BTC 1D | -47.94% | +69.10% | +64.54% | 13 | 2026-10-15 |
 |  | [4564](strategies/4564/) | ATR Spike Crash Protection BTC 1D | +7.70% | +95.22% | +29.11% | 63 | 2026-10-15 |
