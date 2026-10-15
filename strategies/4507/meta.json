@@ -3,10 +3,10 @@
   "name": "Fear-Greed Contrarian Dip (BTC 1D)",
   "kind": "custom",
   "verified": {
-    "backtestId": 21191,
-    "return": -4.69,
-    "mdd": 7.78,
-    "trades": 2,
+    "backtestId": 21195,
+    "return": -9.48,
+    "mdd": 14.15,
+    "trades": 10,
     "vsBuyHold": "lose",
     "benchRet": 522.64,
     "benchBasis": "price",
@@ -26,9 +26,9 @@
       "end": 1619222400
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "20ca98e963c9a854b23e63aa5aad07e92f9d069cfd533d368b83f2f3a112fe33"
+    "verifiedCodeSha256": "e4346c30cb73482cc2cc620688743d863328902f2840ec4b53d06547334ed31e"
   },
   "config": null,
-  "updatedAt": "2026-10-15T16:42:53.515Z",
+  "updatedAt": "2026-10-15T16:44:36.794Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
