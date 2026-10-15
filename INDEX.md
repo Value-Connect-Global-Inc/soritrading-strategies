@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4445](strategies/4445/) | Donchian Breakout Basket 1D | +6.66% | — | +39.05% | 63 | 2026-10-15 |
+| — | [4445](strategies/4445/) | Donchian Breakout Basket 1D | +301.32% | — | +29.55% | 55 | 2026-10-15 |
 | — | [4444](strategies/4444/) | Multi-Asset Momentum ATR-Trail 1D | +2.42% | — | +24.23% | 1127 | 2026-10-15 |
 | — | [4443](strategies/4443/) | Bollinger MR in Uptrend Basket 1D | -0.56% | — | +4.43% | 42 | 2026-10-15 |
 | — | [4440](strategies/4440/) | FearGreed Contrarian BTC 1D | +39.58% | — | +16.64% | 227 | 2026-10-15 |
