@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4712](strategies/4712/) | BTC Fear-Greed Contrarian 1D | -24.99% | +95.22% | +51.73% | 14 | 2026-10-16 |
+|  | [4712](strategies/4712/) | BTC Fear-Greed Contrarian 1D | -36.34% | +512.29% | +44.93% | 4 | 2026-10-16 |
 | — | [4711](strategies/4711/) | Crypto Momentum Trend 1D (BTC/ETH/SOL) | +10.23% | — | +12.42% | 43 | 2026-10-16 |
 |  | [4709](strategies/4709/) | BTC Donchian Profit-Lock 1D | +5.62% | +145.93% | +52.79% | 9 | 2026-10-16 |
 |  | [4708](strategies/4708/) | AI 전략 | +49.71% | +141.30% | +21.27% | 26 | 2026-10-16 |

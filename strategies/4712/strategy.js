@@ -1,25 +1,32 @@
 /*
  * @coinsori-strategy v1
- * name: BTC Fear-Greed Contrarian 1D
+ * name: BTC Fear-Greed Bull-Dip 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: The crypto Fear & Greed Index is a sentiment thermometer — extreme fear
- * (index < 25) has historically marked panic-selling bottoms, and extreme greed (index > 70)
- * has marked euphoric tops. This strategy buys the panic and sells the euphoria.
- * When it buys and sells: buys BTC when the Fear & Greed Index closes below 25. Sells when the
- * index closes above 70, or on a -15% hard stop to cap a falling-knife loss.
- * When it does NOT work: extreme fear can persist for months in a true bear market, so the
- * -15% stop exits at a loss repeatedly. If the index never reaches 70 in a muted rally, the
- * position sits and gives back gains. Needs the fear_greed dataset connected.
+ * Why this strategy: Extreme fear in a bull market marks a dip, not a regime change; extreme
+ * fear in a bear market is a falling knife. So we only buy fear when price is still above its
+ * 200-day average (uptrend intact), and sell on greed or a hard stop.
+ * When it buys and sells: buys when the Fear & Greed Index closes below 25 AND price closes
+ * above the 200-day average. Sells when the index closes above 70, or on a -15% hard stop.
+ * When it does NOT work: in a prolonged bear the 200-day gate keeps us out (good), but the
+ * greed exit is slow so we give back gains in sharp reversals. If the index never reaches 70
+ * in a muted rally the position sits too long. Needs the fear_greed dataset connected.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
   const fg = ctx.data('fear_greed');
-  if (fg == null) return null; // sentiment data not available yet — wait, never treat null as 0
+  if (fg == null) return null; // sentiment data not available yet — never treat null as 0
+  const c = ctx.closes;
+  if (c.length < 202) return null;
+
+  const prevClose = c.at(-2); // last CLOSED bar
+  let s = 0;
+  for (let k = 2; k <= 201; k++) s += c[c.length - k];
+  const sma200 = s / 200;
   const pos = ctx.position;
 
   if (pos > 0) {
@@ -32,15 +39,18 @@ function onUpdate(ctx) {
     return null;
   }
 
-  if (fg < 25) {
+  // only buy fear inside an intact uptrend (price above 200d average) — otherwise it is a knife
+  if (fg < 25 && prevClose > sma200) {
     const qty = ctx.cash * 0.9 / price;
     if (qty <= 0) return null;
-    ctx.watch([{ side: 'buy', price: null, note: 'FG extreme fear entry',
-                 conds: [{ label: 'FG index', now: fg, op: '<', ref: 25, closed: true }] }]);
+    ctx.watch([{ side: 'buy', price: null, note: 'FG<25 fear in uptrend',
+                 conds: [{ label: 'FG index', now: fg, op: '<', ref: 25, closed: true },
+                         { label: 'price>SMA200', ok: prevClose > sma200, closed: true }] }]);
     return { side: 'buy', qty };
   }
 
-  ctx.watch([{ side: 'buy', price: null, note: 'FG extreme fear entry',
-               conds: [{ label: 'FG index', now: fg, op: '<', ref: 25, closed: true }] }]);
+  ctx.watch([{ side: 'buy', price: null, note: 'FG<25 fear in uptrend',
+               conds: [{ label: 'FG index', now: fg, op: '<', ref: 25, closed: true },
+                       { label: 'price>SMA200', ok: prevClose > sma200, closed: true }] }]);
   return null;
 }

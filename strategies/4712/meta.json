@@ -3,16 +3,16 @@
   "name": "BTC Fear-Greed Contrarian 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 22354,
-    "return": -24.99,
-    "mdd": 51.73,
-    "trades": 14,
+    "backtestId": 22357,
+    "return": -36.34,
+    "mdd": 44.93,
+    "trades": 4,
     "vsBuyHold": "lose",
-    "benchRet": 95.22,
+    "benchRet": 512.29,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1705276800,
-    "tTo": 1791590400,
+    "tFrom": 1532908800,
+    "tTo": 1619222400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
@@ -23,12 +23,12 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1000,
-      "end": 1792108800
+      "end": 1619308800
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "1e99dd954808145d3f9cf853fcd8a506fc0a54dd8f311be0e8014ded53a5b1b4"
+    "verifiedCodeSha256": "18ec33441f3adeee670b5919c45e9d5d46c5f79ee0d36598ed306478d3eea605"
   },
   "config": null,
-  "updatedAt": "2026-10-16T11:24:58.928Z",
+  "updatedAt": "2026-10-16T11:26:27.672Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
