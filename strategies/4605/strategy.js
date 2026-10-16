@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: MultiAsset Trend EMA50/200 4H short-cooldown
+ * name: MultiAsset Trend EMA50/200 4H
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT
  * interval: 4h
@@ -8,23 +8,19 @@
  *
  * Why this strategy: the EMA50/200 trend core is the one family with repeated
  * out-of-sample evidence in this environment (4-asset basket +57/+112/+285%
- * on three disjoint 4h windows). The champion used a 24-bar (4-day) cooldown
- * after an exit to avoid churn. This version shortens that cooldown to 6 bars
- * (1 day): the re-entry rule already requires an intact trend (EMA50>EMA200
- * and price above the 400-period average), so after a stop shakes out weak
- * hands the strategy can re-enter the trend quickly instead of waiting 4 days
- * and missing the resumption. On the oldest window this raised return from
- * +285% to +317% (210 vs 172 trades) — the extra re-entries were net positive.
+ * on three disjoint 4h windows). This widens the basket to 4 liquid coins so a
+ * single asset's crash cannot sink the account. The earlier 4-asset version
+ * failed only because it used a trailing stop that got stopped out on pullbacks
+ * inside intact trends; this uses the fixed 2.5-ATR stop + 24-bar cooldown.
  * When it buys and sells: on each asset, buy when the 50-period EMA crosses
  * above the 200-period EMA, or re-enter while flat when the trend is intact
  * (EMA50>EMA200 and price above the 400-period average). Sell on a death
- * cross or when price falls 2.5 ATR below the entry price. Re-entry waits
- * 6 bars (1 day) after an exit.
+ * cross or when price falls 2.5 ATR below the entry price. Re-entry waits 24
+ * bars (4 days) after an exit.
  * When it does NOT work: in a long choppy sideways range the crossovers
- * whipsaw and the stops turn small dips into realized losses; the shorter
- * cooldown re-enters sooner and can churn more fees in that regime. Long-only
- * means a sustained bear market across all coins is flat-to-loss, and it lags
- * a fast V-shaped recovery after a crash.
+ * whipsaw and the stops turn small dips into realized losses. Long-only means
+ * a sustained bear market across all coins is flat-to-loss, and it lags a fast
+ * V-shaped recovery after a crash.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -53,12 +49,11 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // Cooldown: wait 6 bars (1 day) after an exit before re-entering this asset.
-  // The intact-trend gate (below) already filters out most chop, so a short
-  // cooldown lets the strategy re-enter a resuming trend fast instead of
-  // waiting 4 days and missing the move (champion used 24 bars).
+  // Cooldown: wait 24 bars (4 days) after an exit before re-entering this
+  // asset, otherwise a choppy market churns fees (v1/v2 failure: 1300/580 trades;
+  // cooldown-6 variant overfit older windows and failed the most recent: +21.5%).
   const lastExit = st.cool[sym];
-  if (lastExit != null && ctx.i - lastExit < 6) return null;
+  if (lastExit != null && ctx.i - lastExit < 24) return null;
 
   // Entry: fresh bullish cross, OR re-entry while the trend is intact.
   let enter = false;
