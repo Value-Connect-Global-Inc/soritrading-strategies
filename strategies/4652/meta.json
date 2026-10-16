@@ -3,31 +3,31 @@
   "name": "XRP Donchian Turtle 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 22099,
-    "return": 131.67,
-    "mdd": 32.05,
-    "trades": 62,
+    "backtestId": 22100,
+    "return": 108.31,
+    "mdd": 36.12,
+    "trades": 48,
     "vsBuyHold": "lose",
-    "benchRet": 137.91,
+    "benchRet": 126.64,
     "benchBasis": "price",
-    "gapPct": 0.1,
-    "tFrom": 1546300800,
-    "tTo": 1640980800,
+    "gapPct": 0,
+    "tFrom": 1704067200,
+    "tTo": 1791676800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 6571봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 6085봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "XRP",
       "interval": "4h",
-      "bars": 6576,
-      "end": 1640995200
+      "bars": 6114,
+      "end": 1792108800
     },
     "codeBasis": "assumed-current",
     "verifiedCodeSha256": "c9969da01fae55cfd1172aa4f224484373d1ae8991c00ac9aae6a5aeed3fcdbd"
   },
   "config": null,
-  "updatedAt": "2026-10-16T06:35:25.823Z",
+  "updatedAt": "2026-10-16T06:36:41.582Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
