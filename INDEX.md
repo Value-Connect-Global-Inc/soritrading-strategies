@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4618](strategies/4618/) | Fear Greed Dip Buy 1D | -62.77% | +47.08% | +65.23% | 30 | 2026-10-16 |
+|  | [4618](strategies/4618/) | Fear Greed Dip Buy 1D | -15.26% | +315.94% | +34.21% | 27 | 2026-10-16 |
 | — | [4617](strategies/4617/) | Momentum Rotation Breadth Gated 4H | +109.62% | — | +20.06% | 162 | 2026-10-16 |
 |  | [4616](strategies/4616/) | Fed Policy Regime 1D | -23.01% | +47.08% | +48.71% | 42 | 2026-10-16 |
 |  | [4615](strategies/4615/) | Onchain Expansion Regime 1D | -87.60% | +47.08% | +89.20% | 410 | 2026-10-16 |
