@@ -12,10 +12,10 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4725](strategies/4725/) | AI 전략 | +5.67% | +35.73% | +16.96% | 12 | 2026-10-16 |
+|  | [4722](strategies/4722/) | DualSideTrend4h | +9.08% | +35.73% | +34.35% | 123 | 2026-10-16 |
 |  | [4724](strategies/4724/) | AI 전략 | +0.63% | +99.86% | +2.92% | 6 | 2026-10-16 |
 |  | [4723](strategies/4723/) | FearGreedContrarian4h | -31.27% | +68.31% | +40.07% | 99 | 2026-10-16 |
-|  | [4722](strategies/4722/) | DualSideTrend4h | +9.08% | +35.73% | +34.35% | 123 | 2026-10-16 |
+|  | [4725](strategies/4725/) | AI 전략 | +5.67% | +35.73% | +16.96% | 12 | 2026-10-16 |
 |  | [4720](strategies/4720/) | BTC Chandelier Donchian 1D | +23.43% | +208.79% | +26.25% | 15 | 2026-10-16 |
 |  | [4721](strategies/4721/) | BTC Donchian Wide-Exit 1D (champion baseline) | +54.64% | +208.79% | +38.03% | 15 | 2026-10-16 |
 |  | [4719](strategies/4719/) | BTC Hashrate Momentum 1D | -28.26% | +136.02% | +46.44% | 36 | 2026-10-16 |
