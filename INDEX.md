@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 556 of 2273 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 555 of 2273 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 375 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [4683](strategies/4683/) | BTC FearGreed Contrarian 1D | -5.03% | -15.10% | +7.90% | 4 | 2026-10-16 |
+|  | [4683](strategies/4683/) | BTC FearGreed Contrarian 1D | -3.84% | +95.22% | +11.18% | 14 | 2026-10-16 |
 | ★ | [4682](strategies/4682/) | SOL Mean Reversion 4H | -3.34% | -22.18% | +4.59% | 21 | 2026-10-16 |
 |  | [4675](strategies/4675/) | DIAG State Persistence | +1260.65% | +1610.78% | +38.63% | 1 | 2026-10-16 |
 |  | [4681](strategies/4681/) | BNB Turtle ATR Stop 4H | -24.76% | +30.75% | +31.52% | 72 | 2026-10-16 |

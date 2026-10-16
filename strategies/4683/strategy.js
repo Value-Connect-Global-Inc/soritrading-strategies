@@ -10,15 +10,17 @@
  * fear (<=20) inside an uptrend has historically marked short-term bottoms,
  * because the crowd is most scared near a local low. The index then reverts
  * toward neutral as price recovers — a mean-reversion edge driven by
- * sentiment rather than price.
+ * sentiment rather than price. We let the winner run via an ATR trail
+ * (proven on the multi-asset MR basket) instead of selling early.
  * When it buys and sells: buys when the daily index is <=20 (extreme fear)
  * while price is above the 200-day SMA (pullback in an uptrend). Sells when
- * the index climbs back to >=60 (greed), or price falls 15% from entry (hard
- * stop), or after 120 days (time stop).
+ * price falls below a 2.5x ATR trail anchored to the highest close since
+ * entry, or below the 15% hard stop, or after 120 days (time stop).
  * When it does NOT work: in a sustained bear market price is below the 200-SMA
  * so it stays flat (safe but no upside); if a crash starts from a reading
- * above 20 it never buys the bottom; the hard stop caps but cannot prevent
- * losses when extreme fear keeps printing while price keeps falling.
+ * above 20 it never buys the bottom; the trail can whipsaw an early volatile
+ * recovery and the hard stop caps but cannot prevent losses when extreme fear
+ * keeps printing while price keeps falling.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -31,19 +33,26 @@ function onUpdate(ctx) {
 
   const sma200 = ctx.sma(200, 1);
   const sma200prev = ctx.sma(200, 2);
-  if (sma200 == null || sma200prev == null) return null;
+  const atr = ctx.atr(14, 1);
+  if (sma200 == null || sma200prev == null || atr == null || atr <= 0) return null;
 
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
     const entry = ctx.entryPx;
     const held = ctx.state.held != null ? ctx.state.held + 1 : 1;
     ctx.state.held = held;
-    // three exits: sentiment recovered, hard stop, time stop
-    if (fg >= 60 || (entry != null && price <= entry * 0.85) || held >= 120) {
+    // ATR trail anchored to the highest close since entry — proven on the MR basket
+    const peak = ctx.state.peak != null ? Math.max(ctx.state.peak, price) : price;
+    ctx.state.peak = peak;
+    const trailStop = peak - 2.5 * atr;
+    const hardStop = entry != null ? entry * 0.85 : null;
+    const stop = Math.max(trailStop, hardStop != null ? hardStop : -Infinity);
+    if (price < stop || held >= 120) {
+      ctx.state.peak = null;
       ctx.state.held = null;
       return { side: 'sell', qty: pos };
     }
-    ctx.watch([{ side: 'sell', price: entry != null ? entry * 0.85 : null, trigger: 'below', note: '15% hard stop' },
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'ATR trail / hard stop' },
                { side: 'sell', price: null, trigger: 'below', note: 'time stop 120d' }]);
     return null;
   }
@@ -54,6 +63,7 @@ function onUpdate(ctx) {
 
   const qty = (ctx.cash / price) * 0.40;
   if (qty <= 0) return null;
+  ctx.state.peak = price;
   ctx.state.held = 0;
   ctx.watch([{ side: 'buy', price: price, trigger: 'below', note: 'extreme fear entry',
                conds: [{ label: 'Fear&Greed', now: fg, op: '<=', ref: 20, closed: true },
