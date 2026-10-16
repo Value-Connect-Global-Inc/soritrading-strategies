@@ -9,22 +9,24 @@
  * Why this strategy: The Crypto Fear & Greed Index is a daily sentiment gauge
  * (0 = extreme fear, 100 = extreme greed). Crowds are most wrong at the extremes:
  * buying when everyone is terrified (F&G <= 20) and selling when everyone is
- * euphoric (F&G >= 60) harvests the recovery that follows panic. This is a
- * mean-reversion bet on sentiment, the opposite family from trend-following.
- * When it buys and sells: buy on the first daily bar where Fear & Greed is 20 or
- * below (extreme fear). Sell when Fear & Greed climbs back to 60 or above
- * (recovery into greed), or a 25% hard stop is hit to survive a deeper crash.
- * When it does NOT work: it loses when panic is not a buying opportunity — in a
- * genuine bear market F&G can stay pinned below 20 for months while price keeps
- * falling, and the 25% stop turns those entries into repeated losses. It also
- * misses fast V-recoveries that happen before F&G reacts.
+ * euphoric (F&G >= 60) harvests the recovery that follows panic. The key filter:
+ * panic is only a buying opportunity when the market is still in an uptrend
+ * (price above the 200-SMA) — a fear dip inside an uptrend recovers, while
+ * fear inside a downtrend is a genuine bear that keeps falling.
+ * When it buys and sells: buy when Fear & Greed is 20 or below AND price is
+ * above the 200-SMA. Sell when Fear & Greed climbs back to 60 or above, or a
+ * 25% hard stop is hit.
+ * When it does NOT work: it misses the best panic buys that happen below the
+ * 200-SMA (deep-crash bottoms), and it still loses if an uptrend breaks down
+ * right after the entry. In a slow bear with price above a still-rising 200-SMA
+ * it can buy repeatedly into a deteriorating market.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
   const c = ctx.closes;
-  if (c.length < 30) return null;
+  if (c.length < 220) return null;
 
   // Fear & Greed is daily and aligns with 1d bars (proven in earlier cycles)
   const fg = ctx.data('fear_greed');
@@ -40,10 +42,15 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // Buy extreme fear. Only buy when flat (already guaranteed by early return above).
+  // Buy extreme fear, but ONLY inside an uptrend (price above 200-SMA).
+  // Panic in an uptrend = pullback that recovers; panic in a downtrend = bear.
+  const sma200 = ctx.sma(200, 1);
+  if (sma200 == null) return null;
   if (fg > 20) return null;
+  if (price <= sma200) return null;
 
-  ctx.watch([{ side: 'buy', conds: [{ label: 'F&G <= 20 (extreme fear)', now: fg, op: '<=', ref: 20, closed: true }], note: 'buy panic' }]);
+  ctx.watch([{ side: 'buy', conds: [{ label: 'F&G <= 20 (extreme fear)', now: fg, op: '<=', ref: 20, closed: true },
+                                    { label: 'price > 200-SMA', ok: price > sma200, closed: true }], note: 'buy panic in uptrend' }]);
 
   // Fixed-fraction sizing: 60% of cash — contrarian trades are rare but volatile,
   // and the 25% stop caps the damage if the crash continues.

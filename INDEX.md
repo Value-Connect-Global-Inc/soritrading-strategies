@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4659](strategies/4659/) | XRP FearGreed Contrarian 1D | -39.68% | +135.40% | +64.82% | 18 | 2026-10-16 |
+|  | [4659](strategies/4659/) | XRP FearGreed Contrarian 1D ‡ | -39.68% | +135.40% | +64.82% | 18 | 2026-10-16 |
 | ★ | [4658](strategies/4658/) | XRP Donchian Turtle 1D control | -14.37% | -47.42% | +17.23% | 12 | 2026-10-16 |
 |  | [4657](strategies/4657/) | XRP Donchian FearGreed Gate 1D | +4.37% | +135.40% | +9.88% | 2 | 2026-10-16 |
 | ★ | [4656](strategies/4656/) | XRP Donchian Turtle 1D | -0.35% | -27.88% | +41.85% | 14 | 2026-10-16 |
