@@ -12,8 +12,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [4661](strategies/4661/) | BTC Donchian Turtle 1D v2 | +30.24% | -15.10% | +16.27% | 8 | 2026-10-16 |
 |  | [4662](strategies/4662/) | BTC On-Chain Adoption Trend 1D | -67.23% | +47.08% | +74.14% | 326 | 2026-10-16 |
+| ★ | [4661](strategies/4661/) | BTC Donchian Turtle 1D v2 | +30.24% | -15.10% | +16.27% | 8 | 2026-10-16 |
 |  | [4660](strategies/4660/) | XRP Donchian DXY Gate 4H | +111.35% | +143.60% | +41.77% | 6 | 2026-10-16 |
 | ★ | [4659](strategies/4659/) | XRP FearGreed Contrarian 1D | -32.10% | -47.42% | +35.55% | 4 | 2026-10-16 |
 | ★ | [4658](strategies/4658/) | XRP Donchian Turtle 1D control | -14.37% | -47.42% | +17.23% | 12 | 2026-10-16 |
