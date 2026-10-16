@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: On-Chain Demand Momentum + Profit-Lock Exit 1D
+ * name: On-Chain Demand Momentum + Fast Trend Exit 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
@@ -10,14 +10,13 @@
  * daily active addresses are more durable than rallies on thin usage — new users
  * coming in are what actually pushes price. So we only buy when BOTH price
  * momentum is positive AND on-chain usage is expanding relative to its own 30-day
- * average. The exit adds a profit-lock rule: once a position is up 50% or more, a
- * 25% trailing stop below the run high protects the gain, so a big winner is not
- * ridden all the way back down before the slow 200-day trend exit fires.
+ * average. The exit uses a 100-day EMA instead of the 200-day: a faster trend line
+ * that cuts the give-back at cycle tops while still being slow enough to ride a
+ * real bull run.
  * When it buys and sells: buy when the last closed bar sits above the 200-day EMA,
  * its 30-day return is positive, and daily active addresses are above their 30-day
- * average (network expanding). Sell when price closes below the 200-day EMA, the
- * 30-day return turns negative, the 15% hard stop is hit, or — once the position
- * is up 50% — price falls 25% below its highest close since entry.
+ * average (network expanding). Sell when price closes below the 100-day EMA, the
+ * 30-day return turns negative, or a 15% hard stop is hit.
  * When it does NOT work: active-address data is published with a lag and can stay
  * elevated after a top (usage peaks while price is still falling), so the filter
  * gives a false sense of support in early bear phases; and in a pure liquidity-
@@ -29,6 +28,8 @@ function onUpdate(ctx) {
 
   const ema200 = ctx.ema(200, 1);
   if (ema200 == null) return null;
+  const ema100 = ctx.ema(100, 1);
+  if (ema100 == null) return null;
 
   const c = ctx.closes;
   if (c.length < 32) return null;
@@ -44,22 +45,12 @@ function onUpdate(ctx) {
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
     const entry = ctx.entryPx;
-    const hardStop = entry && entry > 0 ? entry * 0.85 : 0;   // hard stop: 15% below entry
-    // profit-lock: only after a 50% gain does a 25% trail from the run high engage.
-    // before that the 15% hard stop is the only stop, so normal bull pullbacks
-    // (20-30%) do NOT churn us out of a young position.
-    const gain = entry && entry > 0 ? price / entry - 1 : 0;
-    const st = ctx.state || {};
-    const peak = st.peak && st.peak > 0 ? st.peak : prevClose;
-    const newPeak = Math.max(peak, prevClose);
-    st.peak = newPeak;
-    const trailStop = gain > 0.5 ? newPeak * 0.75 : 0;   // 25% below the run high
-    const stop = Math.max(hardStop, trailStop);
+    const stop = entry && entry > 0 ? entry * 0.85 : 0;   // hard stop: 15% below entry
     if (price <= stop) return { side: 'sell', qty: pos };
-    if (prevClose < ema200) return { side: 'sell', qty: pos };   // trend over
+    if (prevClose < ema100) return { side: 'sell', qty: pos };   // faster trend exit: cut give-back at tops
     if (mom30 < 0) return { side: 'sell', qty: pos };            // momentum faded
-    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'stop (hard or profit-lock)' },
-               { side: 'sell', price: ema200, trigger: 'below', note: '200-day trend break',
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '15% stop' },
+               { side: 'sell', price: ema100, trigger: 'below', note: '100-day trend break',
                  conds: [{ label: '30d return > 0', ok: mom30 > 0, closed: true }] }]);
     return null;
   }
@@ -80,7 +71,5 @@ function onUpdate(ctx) {
   const targetCash = ctx.cash * 0.95 * volScale;
   const qty = (targetCash / price) * 0.95;
   if (qty <= 0) return null;
-  const st = ctx.state || {};
-  st.peak = prevClose;   // reset the run-high peak at a fresh entry
   return { side: 'buy', qty };
 }

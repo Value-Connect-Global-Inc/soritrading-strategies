@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [4629](strategies/4629/) | Price-Only Momentum 1D (A/B baseline) | +68.83% | +44.16% | +8.97% | 25 | 2026-10-16 |
+| ★ | [4629](strategies/4629/) | Price-Only Momentum 1D (A/B baseline) | +245.42% | +116.17% | +32.07% | 61 | 2026-10-16 |
 |  | [4628](strategies/4628/) | On-Chain Demand Momentum 1D | -11.18% | +91.62% | +11.18% | 12 | 2026-10-16 |
 | — | [4627](strategies/4627/) | Momentum Vol-Gated Alt Basket 1D | -14.09% | — | +16.97% | 100 | 2026-10-16 |
 | — | [4625](strategies/4625/) | Champion 4621 Baseline Copy | +159.66% | — | +18.64% | 98 | 2026-10-16 |

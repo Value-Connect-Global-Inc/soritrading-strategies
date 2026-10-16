@@ -3,33 +3,33 @@
   "name": "Price-Only Momentum 1D (A/B baseline)",
   "kind": "custom",
   "verified": {
-    "backtestId": 21980,
-    "return": 68.83,
-    "mdd": 8.97,
-    "trades": 25,
+    "backtestId": 21982,
+    "return": 245.42,
+    "mdd": 32.07,
+    "trades": 61,
     "vsBuyHold": "win",
-    "benchRet": 44.16,
+    "benchRet": 116.17,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1609459200,
-    "tTo": 1703980800,
+    "tFrom": 1514764800,
+    "tTo": 1609372800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "기간 종료 시 미청산 포지션 1종목 (총자산의 77.2%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 87.37%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1095봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1096봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
-      "bars": 1095,
-      "end": 1704067200
+      "bars": 1096,
+      "end": 1609459200
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "5c978f692acccfd2f01db28b9c44283985013b717a73e06f7689c5e8052a5740"
+    "verifiedCodeSha256": "49ec9c14875576f04b37265d6b39d1362a3ee78ccd3045f2776aaafc5213cfe5"
   },
   "config": null,
-  "updatedAt": "2026-10-16T04:51:06.165Z",
+  "updatedAt": "2026-10-16T04:52:31.093Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
