@@ -27,8 +27,14 @@ function onUpdate(ctx) {
   if (c.length < 220) return null;
   const prevClose = c.at(-2);
 
-  const dxy = ctx.data('dxy');
-  if (dxy == null || !Number.isFinite(dxy)) return null;   // dataset missing -> no trade
+  // dxy is business-days only (FRED): forward-fill the last known value on null bars
+  const dxyRaw = ctx.data('dxy');
+  let dxy = ctx.state.lastDxy;
+  if (dxyRaw != null && Number.isFinite(dxyRaw)) {
+    dxy = dxyRaw;
+    ctx.state.lastDxy = dxy;
+  }
+  if (dxy == null || !Number.isFinite(dxy)) return null;   // no dxy data at all yet
 
   // Rolling history of dxy (~60 days) for the regime average
   if (ctx.state.dxyHist == null) ctx.state.dxyHist = [];
