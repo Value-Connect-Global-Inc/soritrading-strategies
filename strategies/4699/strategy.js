@@ -46,12 +46,21 @@ function onUpdate(ctx) {
   const pos = ctx.position;
 
   if (pos > 0) {
-    // exits: hard stop on current price, mid-band exit on a closed bar
-    const stop = ctx.entryPx == null ? null : ctx.entryPx - atr * 2.5;
+    // Trailing exit: stop is the higher of (entry - 2.5 ATR) and (highest close since entry - 2.5 ATR).
+    // Trailing lets a working breakout run; the floor at entry keeps a failed breakout loss small.
+    const entry = ctx.entryPx;
+    let hiSince = entry == null ? -Infinity : entry;
+    for (let k = 2; k <= 250; k++) {
+      const v = c.at(-k);
+      if (v == null) break;
+      hiSince = Math.max(hiSince, v);
+    }
+    const trail = hiSince - atr * 2.5;
+    const stop = entry == null ? null : Math.max(entry - atr * 2.5, trail);
     if (stop != null && price <= stop) return { side: 'sell', qty: pos };
     const mid = avg(c.slice(NB - 19, NB + 1));
     if (c[NB] < mid) return { side: 'sell', qty: pos };
-    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '2.5x ATR stop' },
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'trailing 2.5x ATR stop' },
                { side: 'sell', price: mid, trigger: 'below', note: 'close below mid-BB' }]);
     return null;
   }
