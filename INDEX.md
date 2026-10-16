@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4621](strategies/4621/) | Momentum Vol-Regime Gated 1D | +175.07% | — | +18.42% | 144 | 2026-10-16 |
+| — | [4621](strategies/4621/) | Momentum Vol-Regime Gated 1D ‡ | +175.07% | — | +18.42% | 144 | 2026-10-16 |
 | — | [4620](strategies/4620/) | Momentum Base A/B 1D | +118.35% | — | +14.86% | 205 | 2026-10-16 |
 | — | [4619](strategies/4619/) | Momentum Crash-Cooling 1D | +216.55% | — | +18.64% | 162 | 2026-10-16 |
 |  | [4618](strategies/4618/) | Fear Greed Dip Buy 1D | -15.26% | +315.94% | +34.21% | 27 | 2026-10-16 |
