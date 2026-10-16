@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4572](strategies/4572/) | FearGreed Contrarian Basket v1 | -8.70% | — | +42.10% | 46 | 2026-10-16 |
+| — | [4572](strategies/4572/) | FearGreed Contrarian Basket v1 | +12.49% | — | +48.29% | 18 | 2026-10-16 |
 | — | [4571](strategies/4571/) | FearGreed Basket v3 FedFilter ‡ | +71.75% | — | +21.39% | 11 | 2026-10-16 |
 |  | [4570](strategies/4570/) | OnChain Usage Trend BTC ‡ | -53.60% | -15.10% | +75.71% | 312 | 2026-10-16 |
 | — | [4569](strategies/4569/) | FearGreed Multi-Asset Regime Basket | +33.91% | — | +21.57% | 58 | 2026-10-16 |
