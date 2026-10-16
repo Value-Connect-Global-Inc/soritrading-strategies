@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4686](strategies/4686/) | SOL Turtle Hashrate-Gated 4H ‡ | -97.77% | +35.80% | +98.07% | 554 | 2026-10-16 |
+|  | [4686](strategies/4686/) | SOL Turtle Hashrate-Gated 4H | -9.92% | +35.80% | +33.83% | 66 | 2026-10-16 |
 | ★ | [4685](strategies/4685/) | SOL Turtle OI-Confirmed 4H | +42.45% | +24.28% | +24.13% | 56 | 2026-10-16 |
 |  | [4684](strategies/4684/) | BTC OnChain Adoption 1D | -15.49% | +1067.96% | +57.12% | 247 | 2026-10-16 |
 |  | [4683](strategies/4683/) | BTC FearGreed Contrarian 1D | -3.84% | +95.22% | +11.18% | 14 | 2026-10-16 |

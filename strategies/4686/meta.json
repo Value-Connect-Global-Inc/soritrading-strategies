@@ -3,10 +3,10 @@
   "name": "SOL Turtle Hashrate-Gated 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 22248,
-    "return": -97.77,
-    "mdd": 98.07,
-    "trades": 554,
+    "backtestId": 22251,
+    "return": -9.92,
+    "mdd": 33.83,
+    "trades": 66,
     "vsBuyHold": "lose",
     "benchRet": 35.8,
     "benchBasis": "price",
@@ -25,8 +25,8 @@
       "bars": 5000,
       "end": 1792137600
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "18dcc16e23b609cce8defb3ca2f2585cc555dc1009159d61f482917889cd39ab"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "24d3d7548a64dfd31650fc4e129d6e14b99d8ac86d57606b65fed6a5d2ad8c5d"
   },
   "config": null,
   "updatedAt": "2026-10-16T09:15:50.706Z",
