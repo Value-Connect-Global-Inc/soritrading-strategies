@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: On-Chain Demand Momentum + Trailing Stop 1D
+ * name: On-Chain Demand + Hashrate Momentum 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
@@ -8,19 +8,19 @@
  *
  * Why this strategy: Network usage is a demand proxy. Rallies backed by growing
  * daily active addresses are more durable than rallies on thin usage — new users
- * coming in are what actually pushes price. So we only buy when BOTH price
- * momentum is positive AND on-chain usage is expanding relative to its own 30-day
- * average, and we sell when the trend, the momentum, or a trailing stop cuts the
- * ride short so we do not give back the whole move.
+ * coming in are what actually pushes price. We add a SECOND on-chain confirmation:
+ * hash rate must also be above its 30-day average, meaning miners are committing
+ * more computing power (network security spend), which tends to fade earlier than
+ * user counts in early bear phases. So we only buy when BOTH price momentum is
+ * positive AND the network is expanding on two independent dimensions.
  * When it buys and sells: buy when the last closed bar sits above the 200-day EMA,
- * its 30-day return is positive, and daily active addresses are above their 30-day
- * average (network expanding). Sell when price closes below the 200-day EMA, the
- * 30-day return turns negative, the 15% hard stop is hit, or price falls 20% below
- * its highest close since entry (trailing stop).
- * When it does NOT work: active-address data is published with a lag and can stay
- * elevated after a top (usage peaks while price is still falling), so the filter
- * gives a false sense of support in early bear phases; and in a pure liquidity-
- * driven rally with no new users (e.g. stablecoin inflow pumps) it keeps you out.
+ * its 30-day return is positive, daily active addresses are above their 30-day
+ * average, and hash rate is above its 30-day average. Sell when price closes below
+ * the 200-day EMA, the 30-day return turns negative, or a 15% hard stop is hit.
+ * When it does NOT work: on-chain data is published with a lag and can stay elevated
+ * after a top (usage peaks while price is still falling), so the filter gives a
+ * false sense of support in early bear phases; and in a pure liquidity-driven rally
+ * with no new users or miners (e.g. stablecoin inflow pumps) it keeps you out.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -40,32 +40,35 @@ function onUpdate(ctx) {
   const addrSma = ctx.data('addr_sma30');
   const networkUp = addr == null || addrSma == null ? null : addr > addrSma;
 
+  // second on-chain confirmation: hash rate vs its own 30-day average.
+  // Miners commit hardware when the network is healthy; this tends to fade
+  // before user counts in early bear phases, giving an earlier warning.
+  const hr = ctx.data('hashrate');
+  const hrSma = ctx.data('hashrate_sma30');
+  const minersUp = hr == null || hrSma == null ? null : hr > hrSma;
+
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
-    // trailing stop: track the highest close since entry in persistent state.
-    const st = ctx.state || {};
-    const peak = st.peak && st.peak > 0 ? st.peak : prevClose;
-    const newPeak = Math.max(peak, prevClose);
-    st.peak = newPeak;
-    const trailStop = newPeak * 0.80;   // exit if price falls 20% from the run high — locks in gains
     const entry = ctx.entryPx;
-    const hardStop = entry && entry > 0 ? entry * 0.85 : 0;   // 15% below entry
-    if (price <= hardStop || price <= trailStop) return { side: 'sell', qty: pos };
+    const stop = entry && entry > 0 ? entry * 0.85 : 0;   // hard stop: 15% below entry
+    if (price <= stop) return { side: 'sell', qty: pos };
     if (prevClose < ema200) return { side: 'sell', qty: pos };   // trend over
     if (mom30 < 0) return { side: 'sell', qty: pos };            // momentum faded
-    ctx.watch([{ side: 'sell', price: Math.max(hardStop, trailStop), trigger: 'below', note: 'trailing stop' },
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '15% stop' },
                { side: 'sell', price: ema200, trigger: 'below', note: '200-day trend break',
                  conds: [{ label: '30d return > 0', ok: mom30 > 0, closed: true }] }]);
     return null;
   }
 
   const uptrend = prevClose > ema200;
-  // network filter: only enter when usage is expanding (or data unavailable)
-  if (networkUp === false) return null;
+  // network filter: only enter when usage is expanding (or data unavailable).
+  // Both dimensions must be up — a rally on users alone (or miners alone) is thinner.
+  if (networkUp === false || minersUp === false) return null;
   ctx.watch([{ side: 'buy', price: ema200, trigger: 'above', note: 'close above 200-day EMA',
                conds: [{ label: '30d return > 0', ok: mom30 > 0, closed: true },
                        { label: 'close > 200-EMA', ok: uptrend, closed: true },
-                       { label: 'addr > 30d avg', ok: networkUp !== false, closed: true }] }]);
+                       { label: 'addr > 30d avg', ok: networkUp !== false, closed: true },
+                       { label: 'hashrate > 30d avg', ok: minersUp !== false, closed: true }] }]);
   if (!uptrend || !(mom30 > 0)) return null;
 
   const atr = ctx.atr(14, 1);
@@ -75,7 +78,5 @@ function onUpdate(ctx) {
   const targetCash = ctx.cash * 0.95 * volScale;
   const qty = (targetCash / price) * 0.95;
   if (qty <= 0) return null;
-  const st = ctx.state || {};
-  st.peak = prevClose;   // reset the trailing peak at a fresh entry
   return { side: 'buy', qty };
 }
