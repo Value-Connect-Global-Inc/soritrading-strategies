@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4652](strategies/4652/) | XRP Donchian Turtle 4H | +221.72% | +281.17% | +39.23% | 48 | 2026-10-16 |
+|  | [4652](strategies/4652/) | XRP Donchian Turtle 4H ‡ | +221.72% | +281.17% | +39.23% | 48 | 2026-10-16 |
 |  | [4651](strategies/4651/) | BTC Fed-Money Regime 1D | +114.43% | +151.96% | +71.80% | 2 | 2026-10-16 |
 |  | [4649](strategies/4649/) | BTC On-Chain Activity Regime 1D | -16.40% | +196.85% | +68.53% | 212 | 2026-10-16 |
 |  | [4648](strategies/4648/) | BTC On-Chain Activity Regime 1D | +145.10% | +1067.96% | +72.43% | 380 | 2026-10-16 |
