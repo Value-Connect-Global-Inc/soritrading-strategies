@@ -3,33 +3,31 @@
   "name": "AI 전략",
   "kind": "custom",
   "verified": {
-    "backtestId": 22333,
-    "return": 58.61,
-    "mdd": 45.19,
-    "trades": 53,
-    "vsBuyHold": "win",
-    "benchRet": 47.08,
+    "backtestId": 22338,
+    "return": 49.71,
+    "mdd": 21.27,
+    "trades": 26,
+    "vsBuyHold": "lose",
+    "benchRet": 141.3,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1618876800,
-    "tTo": 1791590400,
+    "tFrom": 1502928000,
+    "tTo": 1567382400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "기간 종료 시 미청산 포지션 1종목 (총자산의 99.37%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
-      "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 2000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 747봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
-      "bars": 2000,
-      "end": 1792108800
+      "bars": 1300,
+      "end": 1567468800
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "95e1b6be0c5ad92586dbf6982130c65a23b99668e968680c3a986c1dba2dbeb8"
+    "verifiedCodeSha256": "554e6d521d8f9c5a0702b49d898875ddee138b577a8de0929a04b5eeb1c3d978"
   },
   "config": null,
-  "updatedAt": "2026-10-16T11:01:41.635Z",
+  "updatedAt": "2026-10-16T11:07:26.539Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
