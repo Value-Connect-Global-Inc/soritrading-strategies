@@ -3,16 +3,16 @@
   "name": "Nasdaq Risk-On Crypto Trend",
   "kind": "custom",
   "verified": {
-    "backtestId": 21736,
-    "return": -24.57,
-    "mdd": 70.89,
-    "trades": 300,
+    "backtestId": 21740,
+    "return": -42.66,
+    "mdd": 57.41,
+    "trades": 326,
     "vsBuyHold": "lose",
-    "benchRet": 512.29,
+    "benchRet": 95.22,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1532908800,
-    "tTo": 1619222400,
+    "tFrom": 1705276800,
+    "tTo": 1791590400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
@@ -23,12 +23,12 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1000,
-      "end": 1619308800
+      "end": 1792108800
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "cce20e2ce70e3ff75f2ad82b0d4f38b787d014d1690bbe1c5c69611971013568"
+    "verifiedCodeSha256": "6652075e3a0fe5070768a274090dbc142868bf0d72db48514902bee16562b1fa"
   },
   "config": null,
-  "updatedAt": "2026-10-16T01:40:21.135Z",
+  "updatedAt": "2026-10-16T01:41:39.682Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

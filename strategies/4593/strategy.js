@@ -28,10 +28,11 @@ function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
-  const a30 = ctx.data('addr_sma30');
-  const h30 = ctx.data('hashrate_sma30');
-  // Both smoothed series must be present; null means unknown, never trade on it.
-  if (a30 == null || h30 == null) return null;
+  // ctx.data returns STRINGS — always coerce to number, or comparisons break
+  // (e.g. hashrate values have different digit counts).
+  const a30 = Number(ctx.data('addr_sma30'));
+  const h30 = Number(ctx.data('hashrate_sma30'));
+  if (!Number.isFinite(a30) || !Number.isFinite(h30)) return null;
 
   // Persistent ring buffer of the smoothed series so we can judge their
   // TREND (7 bars back) instead of churning on raw daily noise.

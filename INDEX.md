@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4593](strategies/4593/) | Nasdaq Risk-On Crypto Trend | -24.57% | +512.29% | +70.89% | 300 | 2026-10-16 |
+|  | [4593](strategies/4593/) | Nasdaq Risk-On Crypto Trend | -42.66% | +95.22% | +57.41% | 326 | 2026-10-16 |
 | — | [4592](strategies/4592/) | Fear-Dip Contrarian Basket | +720.38% | — | +40.04% | 62 | 2026-10-16 |
 | — | [4591](strategies/4591/) | Funding-Squeeze Contrarian (futures) | -46.62% | — | +71.54% | 99 | 2026-10-16 |
 | — | [4590](strategies/4590/) | FearGreed Regime Basket v9 BreakevenLock | +24.28% | — | +23.85% | 28 | 2026-10-16 |
