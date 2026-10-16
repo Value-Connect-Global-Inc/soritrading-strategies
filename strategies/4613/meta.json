@@ -3,7 +3,7 @@
   "name": "Data Availability Diagnostic",
   "kind": "custom",
   "verified": {
-    "backtestId": 21888,
+    "backtestId": 21889,
     "return": -8.88,
     "mdd": 17.8,
     "trades": 17,
@@ -26,9 +26,9 @@
       "bars": 3000
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "35a3a81a8ce5513295d1e2fc6f1d44b700cc51d4d66140f7e054c375bce9bb1d"
+    "verifiedCodeSha256": "96eb5b810e5976fd45834f543cce158ba616662c87bdc283482c8d4b04ad93e7"
   },
   "config": null,
-  "updatedAt": "2026-10-16T03:26:41.504Z",
+  "updatedAt": "2026-10-16T03:27:34.324Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
