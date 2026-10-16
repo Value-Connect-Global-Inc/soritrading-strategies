@@ -4,14 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 539 of 2193 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 345 of them right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 539 of 2194 right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 346 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 **‡** after a name: the code was edited after its last verifying backtest — the published code is current, but the figures are from the previous code until a new backtest verifies it.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [4591](strategies/4591/) | Funding-Squeeze Contrarian (futures) | +3.07% | — | +26.09% | 26 | 2026-10-16 |
 | — | [4590](strategies/4590/) | FearGreed Regime Basket v9 BreakevenLock | +24.28% | — | +23.85% | 28 | 2026-10-16 |
 | — | [4589](strategies/4589/) | API Probe2 (do not use) | -10.48% | — | +43.12% | 25 | 2026-10-16 |
 | — | [4586](strategies/4586/) | FearGreed Regime Basket v8 StopCooldown | +716.29% | — | +40.34% | 62 | 2026-10-16 |
