@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 540 of 2213 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 541 of 2214 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 362 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [4613](strategies/4613/) | Data Availability Diagnostic | -10.04% | -23.23% | +27.59% | 33 | 2026-10-16 |
 | — | [4610](strategies/4610/) | MultiAsset Mean Reversion BB/RSI 4H | -5.73% | — | +13.08% | 182 | 2026-10-16 |
 | — | [4609](strategies/4609/) | AI 전략 | +268.40% | — | +24.24% | 229 | 2026-10-16 |
 | — | [4608](strategies/4608/) | AI 전략 | +16.95% | — | +36.39% | 95 | 2026-10-16 |
