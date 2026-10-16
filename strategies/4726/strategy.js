@@ -13,8 +13,8 @@
  * When it buys and sells: buys while money is cheap — the Fed is CUTTING rates,
  * OR the rate is pinned near zero (0.5% or below, maximum liquidity even when
  * flat) — AND price is above its 200-SMA (trend intact). Holds through normal
- * pullbacks and sells only when the Fed starts HIKING again or a wide 4x ATR
- * stop loss hits. Long only.
+ * pullbacks and sells only when the Fed has actually raised rates by a real
+ * 25bp+ step, or a wide 4x ATR stop loss hits. Long only.
  * When it does NOT work: if the Fed sits on hold at a HIGH rate (e.g. 4-5%)
  * for a long stretch while crypto grinds sideways or runs up, it holds cash and
  * misses it. It is defensive by design — it will not capture a bull that runs
@@ -27,7 +27,8 @@ function onUpdate(ctx) {
   if (price == null || fed == null || fedLag == null) return null;
 
   const easing = fed < fedLag;              // rate LOWER now than 30 days ago = cutting
-  const hiking = fed > fedLag;              // rate HIGHER now than 30 days ago = hiking
+  // real tightening = 25bp+ rise in 30d (actual FOMC step); ignores 1-2bp basis-point noise at the zero bound
+  const tightening = fed >= fedLag + 0.25;
   const zeroBound = fed < 0.5;              // pinned near zero = maximum liquidity even if flat
   const atr = ctx.atr(14, 1);
   if (atr == null) return null;
@@ -39,7 +40,7 @@ function onUpdate(ctx) {
     if (ctx.entryPx == null) return null;
     const stop = ctx.entryPx - stopDist;
     ctx.watch([{ side:'sell', price: stop, trigger:'below', note:'4xATR stop' }]);
-    if (hiking || price < stop) return { side:'sell', qty: ctx.position };
+    if (tightening || price < stop) return { side:'sell', qty: ctx.position };
     return null;
   }
 
