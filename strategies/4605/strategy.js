@@ -19,7 +19,7 @@
  * (EMA50>EMA200 and price above the 400-period average). Sell on a death
  * cross, when price falls 2.5 ATR below entry, or at the locked stop (entry
  * +0.5 ATR) once the trade has run +1.5 ATR above entry. Re-entry waits
- * 24 bars (4 days) after an exit.
+ * 6 bars after an exit.
  * When it does NOT work: in a long choppy sideways range the crossovers
  * whipsaw and the stops turn small dips into realized losses; the profit-lock
  * can exit a trade that later resumes its up move, giving back trend profit.
@@ -57,10 +57,9 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // Cooldown: wait 24 bars (4 days) after an exit before re-entering this
-  // asset, otherwise a choppy market churns fees (v1/v2 failure: 1300/580 trades).
+  // Cooldown: wait 6 bars after an exit before re-entering this asset.
   const lastExit = st.cool[sym];
-  if (lastExit != null && ctx.i - lastExit < 24) return null;
+  if (lastExit != null && ctx.i - lastExit < 6) return null;
 
   // Entry: fresh bullish cross, OR re-entry while the trend is intact.
   let enter = false;
@@ -69,9 +68,7 @@ function onUpdate(ctx) {
   if (!enter) return null;
 
   // Size: risk a small fixed share of the per-symbol cash on the stop distance
-  // so a wide-stop trade cannot ruin the account. With 4 assets in the basket,
-  // 1% per asset keeps the total risk budget the same as the 2-asset version
-  // (2% per asset) — diversification without doubling total exposure.
+  // so a wide-stop trade cannot ruin the account.
   const riskCash = ctx.cash * 0.01;
   const stopDist = 2.5 * atr;
   let qty = stopDist > 0 ? riskCash / stopDist : 0;
