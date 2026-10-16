@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: FearGreed Multi-Asset Regime Basket v7a (SMA100 trend)
+ * name: FearGreed Multi-Asset Regime Basket v7b (no trend filter)
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT
  * interval: 1d
@@ -10,16 +10,16 @@
  * In crypto, momentum persists: when the crowd is greedy (index >= 55) prices
  * keep climbing, and when the crowd turns fearful (index <= 40) the trend has
  * broken. This rides confirmed sentiment on a 4-coin basket so no single asset
- * decides the account. v7a is the baseline (fixed 95% sizing, 25% stop, Fed
- * filter) but uses a SOFTER SMA100 trend filter instead of SMA200, to test
- * whether a faster filter catches early bull moves without adding bear noise.
- * When it buys and sells: on each asset, buy when Fear & Greed >= 55 AND price
- * is above its 100-day average AND the Fed is not hiking. Sell when it falls
- * to <= 40 or price drops 25% below entry (hard stop).
- * When it does NOT work: in a fast crash the index can still be high while
- * prices are already falling (the index lags) — a faster filter reduces these
- * entries less than SMA200. The 25% stop turns a normal dip into a realized
- * loss, and it misses the very start of a bull because it waits for greed.
+ * decides the account. v7b is a CONTROL: the baseline minus the SMA200 trend
+ * filter — pure F&G regime + Fed filter — to measure whether the trend filter
+ * actually helps or blocks good entries.
+ * When it buys and sells: on each asset, buy when Fear & Greed >= 55 AND the
+ * Fed is not hiking. Sell when it falls to <= 40 or price drops 25% below
+ * entry (hard stop).
+ * When it does NOT work: without a trend filter it can buy into a fast crash
+ * while the index is still high (the index lags price). The 25% stop turns a
+ * normal dip into a realized loss, and it misses the start of a bull because
+ * it waits for confirmed greed.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -39,22 +39,19 @@ function onUpdate(ctx) {
     return null;
   }
 
-  const sma = ctx.sma(100, 1);
-  if (sma == null) return null;
-
   const fed = Number(ctx.data('fed'));
   const fedLag = Number(ctx.data('fed_lag30'));
   const fedHiking = Number.isFinite(fed) && Number.isFinite(fedLag) && fed > fedLag;
 
-  if (fg >= 55 && price > sma && !fedHiking) {
+  if (fg >= 55 && !fedHiking) {
     return { side: 'buy', qty: (ctx.cash / price) * 0.95 };
   }
 
   ctx.watch([{
     side: 'buy',
-    price: fg >= 55 ? sma : price,
+    price: price,
     trigger: 'above',
-    note: 'enter: greed>=55 & trend up & fed ok',
+    note: 'enter: greed>=55 & fed ok',
     conds: [{ label: 'F&G index', now: fg, op: '>=', ref: 55, closed: true },
            { label: 'Fed not hiking', ok: !fedHiking }]
   }]);
