@@ -3,16 +3,16 @@
   "name": "SOL Turtle Hashrate-Gated 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 22239,
-    "return": 59.28,
-    "mdd": 22.33,
-    "trades": 56,
-    "vsBuyHold": "win",
-    "benchRet": 24.28,
+    "backtestId": 22245,
+    "return": 1.11,
+    "mdd": 28.28,
+    "trades": 70,
+    "vsBuyHold": "lose",
+    "benchRet": 35.8,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1648137600,
-    "tTo": 1720123200,
+    "tFrom": 1719691200,
+    "tTo": 1791676800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "미결제약정·강제청산은 백테스트에 이력이 없어 항상 null — 이 전략은 백테스트로 검증되지 않는다(모의투자로 확인)",
@@ -20,10 +20,10 @@
     ],
     "spec": {
       "ex": "binance",
-      "sym": "SOL",
+      "sym": "BTC",
       "interval": "4h",
       "bars": 5000,
-      "end": 1720137600
+      "end": 1792137600
     },
     "codeBasis": "assumed-current",
     "verifiedCodeSha256": "6d953ca646db7b145f2e0f0a490bf1a74ebe858eb88f258eb3ea4ba1c89a4ee3"
