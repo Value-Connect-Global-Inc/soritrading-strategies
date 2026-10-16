@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 543 of 2241 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 543 of 2242 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 375 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [4643](strategies/4643/) | Champ baseline clone (temp) | +196.95% | +500.45% | +16.11% | 56 | 2026-10-16 |
 |  | [4642](strategies/4642/) | BTC Donchian Turtle Chandelier 4H | +187.37% | +500.45% | +17.25% | 56 | 2026-10-16 |
 | — | [4641](strategies/4641/) | Crypto Relative Strength Rotation 4H | -75.55% | — | +89.14% | 1085 | 2026-10-16 |
 |  | [4640](strategies/4640/) | BTC Donchian+Hashrate 4H | +24.51% | +35.80% | +12.49% | 42 | 2026-10-16 |
