@@ -12,10 +12,10 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4692](strategies/4692/) | BTC BuyTheDip 4H | -29.08% | +515.29% | +31.05% | 140 | 2026-10-16 |
-|  | [4691](strategies/4691/) | BTC Turtle VolRegime 4H | +3.30% | +35.80% | +26.72% | 68 | 2026-10-16 |
 |  | [4690](strategies/4690/) | BTC Turtle Fast Exit 4H | -7.22% | +35.80% | +24.90% | 94 | 2026-10-16 |
 |  | [4689](strategies/4689/) | BTC Turtle Slow Exit 4H | +74.05% | +515.29% | +43.78% | 52 | 2026-10-16 |
+|  | [4692](strategies/4692/) | BTC BuyTheDip 4H | -29.08% | +515.29% | +31.05% | 140 | 2026-10-16 |
+|  | [4691](strategies/4691/) | BTC Turtle VolRegime 4H | +3.30% | +35.80% | +26.72% | 68 | 2026-10-16 |
 |  | [4688](strategies/4688/) | BTC Turtle Chandelier 4H | -62.15% | +29.93% | +62.53% | 292 | 2026-10-16 |
 |  | [4687](strategies/4687/) | Base Turtle BTC control | +15.99% | +29.93% | +21.10% | 68 | 2026-10-16 |
 |  | [4686](strategies/4686/) | SOL Turtle Hashrate-Gated 4H | -9.92% | +35.80% | +33.83% | 66 | 2026-10-16 |
