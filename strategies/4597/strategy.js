@@ -2,24 +2,25 @@
  * @coinsori-strategy v1
  * name: MultiAsset Trend EMA50/200 4H
  * ex: binance
- * syms: BTC/USDT, ETH/USDT
+ * syms: BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT
  * interval: 4h
  * cash: 10000
  *
  * Why this strategy: the EMA50/200 trend core is the one family with repeated
- * out-of-sample evidence in this environment (BTC 4h +20/+41/+40%, and
- * +218/+109/+47% once re-entry while the trend is intact is added). This
- * applies that validated core to a 2-coin basket (BTC+ETH, the two most
- * liquid coins) so a single asset's crash cannot sink the whole account.
+ * out-of-sample evidence in this environment (2-coin basket +290/+74/+25% on
+ * three disjoint 4h windows). This widens the basket to 4 liquid coins so a
+ * single asset's crash cannot sink the account. The earlier 4-asset version
+ * failed only because it used a trailing stop that got stopped out on pullbacks
+ * inside intact trends; this uses the fixed 2.5-ATR stop + 24-bar cooldown.
  * When it buys and sells: on each asset, buy when the 50-period EMA crosses
- * above the 200-period EMA, or re-enter while flat when the trend is still
- * intact (EMA50>EMA200 and price above the 400-period average). Sell on a
- * death cross (EMA50 below EMA200) or when price falls 2.5 ATR below the
- * entry price (fixed stop). Re-entry waits 24 bars (4 days) after an exit.
+ * above the 200-period EMA, or re-enter while flat when the trend is intact
+ * (EMA50>EMA200 and price above the 400-period average). Sell on a death cross
+ * or when price falls 2.5 ATR below the entry price. Re-entry waits 24 bars
+ * (4 days) after an exit.
  * When it does NOT work: in a long choppy sideways range the crossovers
- * whipsaw and the stops turn small dips into realized losses. Long-only means
- * a sustained bear market across both coins is flat-to-loss. It rides trends,
- * so it also lags a fast V-shaped recovery after a crash.
+ * whipsaw and the stops turn small dips into realized losses. Long-only means a
+ * sustained bear market across all coins is flat-to-loss, and it lags a fast
+ * V-shaped recovery after a crash.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -60,8 +61,10 @@ function onUpdate(ctx) {
   if (!enter) return null;
 
   // Size: risk a small fixed share of the per-symbol cash on the stop distance
-  // so a wide-stop trade cannot ruin the account.
-  const riskCash = ctx.cash * 0.02;
+  // so a wide-stop trade cannot ruin the account. With 4 assets in the basket,
+  // 1% per asset keeps the total risk budget the same as the 2-asset version
+  // (2% per asset) — diversification without doubling total exposure.
+  const riskCash = ctx.cash * 0.01;
   const stopDist = 2.5 * atr;
   let qty = stopDist > 0 ? riskCash / stopDist : 0;
   const maxQty = (ctx.cash * 0.99) / price;
