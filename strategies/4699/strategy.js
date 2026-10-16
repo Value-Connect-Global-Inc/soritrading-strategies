@@ -46,22 +46,12 @@ function onUpdate(ctx) {
   const pos = ctx.position;
 
   if (pos > 0) {
-    // Trailing exit: stop is the higher of (entry - 2.5 ATR) and (highest close since entry - 4 ATR).
-    // 4 ATR is wide enough to survive the normal pullback after a squeeze, unlike 2.5 which churned.
-    const entry = ctx.entryPx;
-    let hiSince = entry == null ? -Infinity : entry;
-    for (let k = 2; k <= 250; k++) {
-      const v = c.at(-k);
-      if (v == null) break;
-      hiSince = Math.max(hiSince, v);
-    }
-    const floor = entry == null ? null : entry - atr * 2.5;
-    const trail = hiSince - atr * 4;
-    const stop = entry == null ? null : Math.max(floor, trail);
+    // exits: hard stop on current price, mid-band exit on a closed bar
+    const stop = ctx.entryPx == null ? null : ctx.entryPx - atr * 2.5;
     if (stop != null && price <= stop) return { side: 'sell', qty: pos };
     const mid = avg(c.slice(NB - 19, NB + 1));
     if (c[NB] < mid) return { side: 'sell', qty: pos };
-    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'trailing 4x ATR stop' },
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '2.5x ATR stop' },
                { side: 'sell', price: mid, trigger: 'below', note: 'close below mid-BB' }]);
     return null;
   }
