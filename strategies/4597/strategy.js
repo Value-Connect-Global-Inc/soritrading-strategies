@@ -14,8 +14,9 @@
  * When it buys and sells: on each asset, buy when the 50-period EMA is above
  * the 200-period EMA (closed bars), or re-enter while flat when the trend is
  * still intact (EMA50>EMA200 and price above the 400-period average). Sell on
- * a death cross (EMA50 below EMA200) or when price falls 2.5 ATR below the
- * best close since entry (trailing stop).
+ * a death cross (EMA50 below EMA200) or when price falls 3.5 ATR below the
+ * best close since entry (trailing stop). After any exit, wait 12 bars (2
+ * days) before re-entering that asset so a choppy market cannot churn fees.
  * When it does NOT work: in a long choppy sideways range the crossovers
  * whipsaw and the stops turn small dips into realized losses. Long-only means
  * a sustained bear market across all four coins is flat-to-loss. It rides
@@ -35,18 +36,24 @@ function onUpdate(ctx) {
   const sym = ctx.sym;
   const st = ctx.state || {};
   if (!st.peak) st.peak = {}; // per-symbol peak so one coin cannot drive another's stop
+  if (!st.cool) st.cool = {}; // per-symbol cooldown bar index after an exit
   const peak = st.peak[sym] || price;
 
   const pos = ctx.position;
   if (pos > 0) {
     const newPeak = Math.max(peak, price);
     st.peak[sym] = newPeak;
-    const stopPx = newPeak - 2.5 * atr; // trail 2.5 ATR below best close since entry
-    if (f <= s) return { side: 'sell', qty: pos }; // death cross -> trend over
-    if (price <= stopPx) return { side: 'sell', qty: pos };
-    ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'trail 2.5 ATR' }]);
+    const stopPx = newPeak - 3.5 * atr; // wider trail: alts whipsaw more than BTC on 4h
+    if (f <= s) { st.cool[sym] = ctx.i; return { side: 'sell', qty: pos }; } // death cross -> trend over
+    if (price <= stopPx) { st.cool[sym] = ctx.i; return { side: 'sell', qty: pos }; }
+    ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'trail 3.5 ATR' }]);
     return null;
   }
+
+  // Cooldown: wait 12 bars after an exit before re-entering this asset,
+  // otherwise a choppy market churns fees (the v1 failure: 1300+ trades).
+  const lastExit = st.cool[sym];
+  if (lastExit != null && ctx.i - lastExit < 12) return null;
 
   // Entry: fresh bullish cross, OR re-entry while the trend is intact.
   let enter = false;
@@ -59,7 +66,7 @@ function onUpdate(ctx) {
   // Size: risk a small fixed share of the per-symbol cash on the stop distance
   // so a wide-stop trade cannot ruin the account.
   const riskCash = ctx.cash * 0.02;
-  const stopDist = 2.5 * atr;
+  const stopDist = 3.5 * atr;
   let qty = stopDist > 0 ? riskCash / stopDist : 0;
   const maxQty = (ctx.cash * 0.99) / price;
   if (qty > maxQty) qty = maxQty;
