@@ -1,21 +1,19 @@
 /*
  * @coinsori-strategy v1
- * name: On-Chain Demand Momentum + Fast Trend Exit 1D
+ * name: On-Chain Demand Momentum 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Network usage is a demand proxy. Rallies backed by growing
- * daily active addresses are more durable than rallies on thin usage — new users
- * coming in are what actually pushes price. So we only buy when BOTH price
- * momentum is positive AND on-chain usage is expanding relative to its own 30-day
- * average. The exit uses a 100-day EMA instead of the 200-day: a faster trend line
- * that cuts the give-back at cycle tops while still being slow enough to ride a
- * real bull run.
+ * Why this strategy: Network usage is a demand proxy. Rallies that are backed by
+ * growing daily active addresses are more durable than rallies on thin usage —
+ * new users coming in are what actually pushes price. So we only buy when BOTH
+ * price momentum is positive AND on-chain usage is expanding relative to its own
+ * 30-day average, and we sell when either the trend or the momentum fades.
  * When it buys and sells: buy when the last closed bar sits above the 200-day EMA,
  * its 30-day return is positive, and daily active addresses are above their 30-day
- * average (network expanding). Sell when price closes below the 100-day EMA, the
+ * average (network expanding). Sell when price closes below the 200-day EMA, the
  * 30-day return turns negative, or a 15% hard stop is hit.
  * When it does NOT work: active-address data is published with a lag and can stay
  * elevated after a top (usage peaks while price is still falling), so the filter
@@ -28,8 +26,6 @@ function onUpdate(ctx) {
 
   const ema200 = ctx.ema(200, 1);
   if (ema200 == null) return null;
-  const ema100 = ctx.ema(100, 1);
-  if (ema100 == null) return null;
 
   const c = ctx.closes;
   if (c.length < 32) return null;
@@ -47,10 +43,10 @@ function onUpdate(ctx) {
     const entry = ctx.entryPx;
     const stop = entry && entry > 0 ? entry * 0.85 : 0;   // hard stop: 15% below entry
     if (price <= stop) return { side: 'sell', qty: pos };
-    if (prevClose < ema100) return { side: 'sell', qty: pos };   // faster trend exit: cut give-back at tops
+    if (prevClose < ema200) return { side: 'sell', qty: pos };   // trend over
     if (mom30 < 0) return { side: 'sell', qty: pos };            // momentum faded
     ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '15% stop' },
-               { side: 'sell', price: ema100, trigger: 'below', note: '100-day trend break',
+               { side: 'sell', price: ema200, trigger: 'below', note: '200-day trend break',
                  conds: [{ label: '30d return > 0', ok: mom30 > 0, closed: true }] }]);
     return null;
   }
