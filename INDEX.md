@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 539 of 2186 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 539 of 2187 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 338 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [4582](strategies/4582/) | BTC Donchian Breakout | +216.71% | +512.29% | +35.43% | 20 | 2026-10-16 |
 | — | [4581](strategies/4581/) | Multi-Asset Mean Reversion Basket | +14.27% | — | +63.25% | 83 | 2026-10-16 |
 |  | [4580](strategies/4580/) | BTC Dollar-Regime Macro Filter | -24.19% | +512.29% | +35.26% | 41 | 2026-10-16 |
 |  | [4579](strategies/4579/) | BTC On-Chain Adoption Cycle | -30.14% | -15.10% | +39.52% | 92 | 2026-10-16 |
