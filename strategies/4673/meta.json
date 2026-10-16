@@ -25,10 +25,10 @@
       "interval": "1d",
       "bars": 1000
     },
-    "codeBasis": "assumed-current",
+    "codeBasis": "previous-code",
     "verifiedCodeSha256": "362e1014e67de2397cc07d0a3180358d1b19dd0edd74686a4a18c4a0ebaec3bb"
   },
   "config": null,
-  "updatedAt": "2026-10-16T08:20:32.983Z",
+  "updatedAt": "2026-10-16T08:21:30.881Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
