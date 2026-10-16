@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: FearGreed Multi-Asset Regime Basket v4 (vol-scaled)
+ * name: FearGreed Multi-Asset Regime Basket v4 (vol-targeted)
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT
  * interval: 1d
@@ -11,9 +11,9 @@
  * keep climbing, and when the crowd turns fearful (index <= 40) the trend has
  * broken. This rides confirmed sentiment on a 4-coin basket so no single asset
  * decides the account. v3 added a Fed filter (no entries while the Fed hikes);
- * v4 adds VOLATILITY-SCALED SIZING: each position is sized so that a 1.5x ATR
- * adverse move costs at most 10% of available cash, so a single crash cannot
- * ruin the account (in calm markets the 95% cap still applies).
+ * v4 adds VOL-TARGETED SIZING: each leg is sized to a 2.5% expected daily
+ * volatility, so a coin that gets wild automatically gets a smaller position.
+ * A single crash cannot ruin the account.
  * When it buys and sells: on each asset, buy when Fear & Greed >= 55 AND price
  * is above its 200-day average AND the Fed is not hiking. Sell when it falls
  * to <= 40 or price drops 25% below entry (hard stop).
@@ -21,7 +21,8 @@
  * prices are already falling (the index lags) — the 200-day filter reduces
  * these entries but cannot remove all of them. The 25% stop turns a normal
  * dip into a realized loss, and it misses the very start of a bull because it
- * waits for confirmed greed.
+ * waits for confirmed greed. Vol-targeting also caps upside in a straight bull
+ * because exposure shrinks as volatility climbs.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -57,15 +58,15 @@ function onUpdate(ctx) {
   const fedHiking = Number.isFinite(fed) && Number.isFinite(fedLag) && fed > fedLag;
 
   if (fg >= 55 && price > sma200 && !fedHiking) {
-    // Volatility-scaled size: keep the risk of a 1.5x ATR adverse move at
-    // ~10% of cash. In calm markets this hits the 95% cap; in crashes it
-    // shrinks automatically so one bad entry cannot ruin the account.
+    // Vol-targeted size: position fraction = target daily vol / realized daily
+    // vol. At 2.5% target and ~3-6% realized daily vol this keeps each leg
+    // between ~0.4 and ~0.8 of cash — big enough to matter, small enough that
+    // no single crash breaks the account.
     const atr = ctx.atr(14, 1);
     let frac = 0.95;
     if (atr != null && atr > 0) {
       const volPct = atr / price;
-      const capped = 0.10 / (1.5 * volPct); // risk budget / (k * daily vol)
-      if (capped < frac) frac = capped;
+      frac = Math.min(0.95, 0.025 / volPct);
       if (frac < 0.05) frac = 0.05; // never go below 5% (keeps it alive)
     }
     return { side: 'buy', qty: (ctx.cash / price) * frac };
