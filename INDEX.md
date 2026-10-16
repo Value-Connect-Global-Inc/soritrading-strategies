@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 542 of 2231 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 541 of 2231 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 374 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
 | ★ | [4629](strategies/4629/) | Price-Only Momentum 1D (A/B baseline) ‡ | +245.42% | +116.17% | +32.07% | 61 | 2026-10-16 |
-| ★ | [4631](strategies/4631/) | On-Chain + Vol-Regime Gated BTC 1D | +246.81% | +116.17% | +31.24% | 39 | 2026-10-16 |
+|  | [4631](strategies/4631/) | On-Chain + Vol-Regime Gated BTC 1D | +40.08% | +87.84% | +10.78% | 23 | 2026-10-16 |
 | — | [4630](strategies/4630/) | On-Chain Gated Momentum Basket 1D ‡ | +20.07% | — | +10.23% | 82 | 2026-10-16 |
 |  | [4628](strategies/4628/) | On-Chain Demand Momentum 1D | -11.18% | +91.62% | +11.18% | 12 | 2026-10-16 |
 | — | [4627](strategies/4627/) | Momentum Vol-Gated Alt Basket 1D | -14.09% | — | +16.97% | 100 | 2026-10-16 |
