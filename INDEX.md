@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4642](strategies/4642/) | BTC Donchian Turtle Chandelier 4H ‡ | -15.14% | +500.45% | +32.07% | 80 | 2026-10-16 |
+|  | [4642](strategies/4642/) | BTC Donchian Turtle Chandelier 4H | +187.37% | +500.45% | +17.25% | 56 | 2026-10-16 |
 | — | [4641](strategies/4641/) | Crypto Relative Strength Rotation 4H | -75.55% | — | +89.14% | 1085 | 2026-10-16 |
 |  | [4640](strategies/4640/) | BTC Donchian+Hashrate 4H | +24.51% | +35.80% | +12.49% | 42 | 2026-10-16 |
 |  | [4639](strategies/4639/) | BTC Bollinger Squeeze Breakout 4H | -2.17% | +32.46% | +2.17% | 4 | 2026-10-16 |

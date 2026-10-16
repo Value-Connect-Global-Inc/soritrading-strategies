@@ -3,10 +3,10 @@
   "name": "BTC Donchian Turtle Chandelier 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 22047,
-    "return": -15.14,
-    "mdd": 32.07,
-    "trades": 80,
+    "backtestId": 22049,
+    "return": 187.37,
+    "mdd": 17.25,
+    "trades": 56,
     "vsBuyHold": "lose",
     "benchRet": 500.45,
     "benchBasis": "price",
@@ -24,8 +24,8 @@
       "bars": 5000,
       "end": 1648123200
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "b9ed60cc6739b14dd0645d986caf28e1f9de942583d08319ec7c22021eaa8874"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "94546ce4c86f492e45d60015970cf9f1617d8e82d4f58f5bc00d80780aea1fe1"
   },
   "config": null,
   "updatedAt": "2026-10-16T05:52:31.487Z",
