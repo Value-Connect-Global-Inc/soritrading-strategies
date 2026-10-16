@@ -11,11 +11,12 @@
  * it gives back profits on both bull windows. Replacing it with a chandelier
  * trailing stop (2.5x ATR, ratcheted up with each new high) makes the exit
  * adapt to current volatility, so winners are kept longer and breakdowns cut
- * earlier. Entry stays the proven 55-bar-high breakout with a rising 200-SMA.
+ * earlier. The 20-bar low breakdown exit is kept as a second, slower exit —
+ * whichever triggers first. Entry stays the proven 55-bar-high breakout with a
+ * rising 200-SMA filter.
  * When it buys and sells: buy when the last closed 4h bar exceeds the highest
  * high of the prior 55 closed bars AND the 200-SMA is rising. Sell when price
- * falls below a 2.5x-ATR trailing stop (or a 20-bar low breakdown, whichever
- * triggers first).
+ * falls below the 2.5x-ATR trailing stop, or a closed bar breaks the 20-bar low.
  * When it does NOT work: it whipsaws in a sideways range above a flat 200-SMA
  * and lags the very start of a fresh bull from a falling 200-SMA. A tight
  * ATR stop can exit early on a healthy pullback inside a strong trend.
@@ -49,6 +50,10 @@ function onUpdate(ctx) {
       const newStop = st.highest - mult * atr;
       st.trailStop = (st.trailStop == null) ? newStop : Math.max(st.trailStop, newStop);
       if (price <= st.trailStop) {
+        st.highest = null; st.trailStop = null;
+        return { side: 'sell', qty: pos };
+      }
+      if (prevClose < l20) {   // 20-bar low breakdown exit KEPT
         st.highest = null; st.trailStop = null;
         return { side: 'sell', qty: pos };
       }
