@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: CrossMomentum Rotation Top2 4H
+ * name: CrossMomentum Rotation Top1 4H
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT
  * interval: 4h
@@ -8,15 +8,18 @@
  *
  * Why this strategy: within a basket of liquid coins the strongest asset in an
  * uptrend tends to keep outperforming (cross-sectional momentum persists).
- * Concentrating on the top-2 by recent return is a different mechanism from the
- * time-series EMA-trend core and captures the same persistence with less lag.
- * When it buys and sells: every bar, rank the 4 coins by their 30-bar (5-day)
- * return; hold the top-2 while they trade above their own 200-period average.
- * Sell a coin when it drops out of the top-2, when the risk-on gate turns off,
- * or when it falls 2.5 ATR below its entry. 12-bar cooldown after an exit.
+ * Concentrating on the single top asset by 15-day return is a different
+ * mechanism from the time-series EMA-trend core. v1 (top-2, 5-day lookback)
+ * churned 700+ trades on 4h bars because leadership flipped every few bars;
+ * this version slows the signal (90-bar lookback), holds only the top-1, and
+ * lengthens the cooldown so the ranking cannot flip-flop.
+ * When it buys and sells: every bar, rank the 4 coins by their 90-bar (15-day)
+ * return; hold the leader while it trades above its own 200-period average.
+ * Sell when it loses the top rank, when the risk-on gate turns off, or when it
+ * falls 2.5 ATR below its entry. 24-bar cooldown after an exit.
  * When it does NOT work: in a broad bear market the gate keeps it flat (small
- * loss only); in a choppy market where leadership flips often it churns fees;
- * top-2 concentration means one coin's crash hurts more than a 4-coin basket.
+ * loss only); in a choppy market where leadership still flips it churns fees;
+ * a single held coin means one coin's crash hurts the whole account.
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
@@ -24,9 +27,8 @@ function onUpdate(ctx) {
   if (!st.mom) st.mom = {};
   if (!st.cool) st.cool = {};
 
-  // 5-day return for ranking, from closed bars only so it is identical in
-  // backtest, paper and live.
-  const N = 30;
+  // 15-day return for ranking, closed bars only (identical across modes).
+  const N = 90;
   const cur = ctx.closes.at(-2);
   const prev = ctx.closes.at(-2 - N);
   const sma200 = ctx.sma(200, 1);
@@ -44,11 +46,11 @@ function onUpdate(ctx) {
   }
   if (rows.length < 2) return null;
   rows.sort((a, b) => b.m - a.m);
-  const leaders = rows.slice(0, 2);
-  // Risk-on gate: only hold when both leaders are above their own 200-SMA,
+  const leader = rows[0];
+  // Risk-on gate: only hold the leader while it is above its own 200-SMA,
   // otherwise a broad bear market would ride the least-bad coin down.
-  const riskOn = leaders.every(r => r.px > r.sma);
-  const isLeader = leaders.some(r => r.sym === sym);
+  const riskOn = leader.px > leader.sma;
+  const isLeader = leader.sym === sym;
 
   const pos = ctx.position;
   const atr = ctx.atr(14, 1);
@@ -63,10 +65,10 @@ function onUpdate(ctx) {
 
   // Cooldown after an exit so a stop-out is not instantly re-entered lower.
   const lastExit = st.cool[sym];
-  if (lastExit != null && ctx.i - lastExit < 12) return null;
+  if (lastExit != null && ctx.i - lastExit < 24) return null;
   if (!isLeader || !riskOn) return null;
   if (atr == null) return null;
-  // 2% risk per held coin; two coins = same total risk budget as the 4-coin core.
+  // 2% risk on the single held coin — one position, so keep the budget modest.
   const riskCash = ctx.cash * 0.02;
   const stopDist = 2.5 * atr;
   let qty = stopDist > 0 ? riskCash / stopDist : 0;

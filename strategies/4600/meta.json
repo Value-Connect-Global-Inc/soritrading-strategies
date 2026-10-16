@@ -3,16 +3,16 @@
   "name": "CrossMomentum Rotation Top2 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 21812,
-    "return": -50.5,
-    "mdd": 52.37,
-    "trades": 786,
+    "backtestId": 21814,
+    "return": 3.99,
+    "mdd": 14.03,
+    "trades": 62,
     "vsBuyHold": "unmeasured",
     "gapPct": 0,
-    "tFrom": 1719691200,
-    "tTo": 1791676800,
+    "tFrom": 1576094400,
+    "tTo": 1648094400,
     "approxNotes": [
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 20000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 18541봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다",
       "[생존 편향] 이 유니버스는 **지금 거래되는 종목**만입니다. 구간 중(또는 그 전에) 상장폐지된 종목은 **처음부터 들어 있지 않습니다** — 망한 종목이 빠져 있어 수익률이 **실제보다 좋게** 나옵니다. 스캐너·랭킹 전략일수록 그 차이가 큽니다."
     ],
     "spec": {
@@ -20,13 +20,13 @@
       "sym": "BTC",
       "interval": "4h",
       "bars": 5000,
-      "end": 1792108800,
+      "end": 1648108800,
       "syms": 4
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "a3c170e0780e9b194b72ceb93c17edeb5102d04932fb4efac34794a427605a3d"
+    "verifiedCodeSha256": "ab4d5ba3cb0f431d55373e26640982429c8bea2470c021471cb450a66a230aa1"
   },
   "config": null,
-  "updatedAt": "2026-10-16T02:21:07.329Z",
+  "updatedAt": "2026-10-16T02:22:14.272Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

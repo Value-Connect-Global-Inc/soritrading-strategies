@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4600](strategies/4600/) | CrossMomentum Rotation Top2 4H | -50.50% | — | +52.37% | 786 | 2026-10-16 |
+| — | [4600](strategies/4600/) | CrossMomentum Rotation Top2 4H | +3.99% | — | +14.03% | 62 | 2026-10-16 |
 | — | [4599](strategies/4599/) | Baseline check EMA50/200 (ref) | +57.15% | — | +35.21% | 205 | 2026-10-16 |
 | — | [4598](strategies/4598/) | OnChain Adoption Regime BTC 1D | +206.44% | — | +22.21% | 155 | 2026-10-16 |
 | ★ | [4597](strategies/4597/) | MultiAsset Trend EMA50/200 4H | +58.74% | +35.31% | +13.89% | 48 | 2026-10-16 |
