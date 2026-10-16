@@ -1,25 +1,24 @@
 /*
  * @coinsori-strategy v1
- * name: BTC Donchian Turtle Breakeven 4H
+ * name: BTC Donchian Turtle VolumeFilter 4H
  * ex: binance
  * syms: BTC/USDT
  * interval: 4h
  * cash: 10000
  *
  * Why this strategy: The champion turtle (55-bar breakout + rising 200-SMA +
- * ATR sizing) rode big trends but gave back a fixed 15% on every losing
- * trade. This version adds a breakeven lock: once the trade is up 8% from
- * entry, the hard stop is raised to the entry price, so a winning trade can
- * never turn into a loss. Trends are not cut short - the exit still waits
- * for the 20-bar low breakdown.
- * When it buys and sells: buy when the last closed 4h bar exceeds the
- * highest high of the prior 55 closed bars AND the 200-SMA is rising. Sell
- * on the 20-bar low breakdown, or a 15% hard stop that is raised to
- * breakeven once the trade is up 8%.
- * When it does NOT work: same weaknesses as the champion - lags fresh bulls
+ * ATR sizing) is kept EXACTLY as-is, including its wide exits. The only new
+ * rule is on the ENTRY side: the breakout bar must close on above-average
+ * volume. Breakouts on heavy volume are more likely to be real and sustained,
+ * so this filters out low-volume false breakouts that whip the turtle around.
+ * When it buys and sells: buy when the last closed 4h bar exceeds the highest
+ * high of the prior 55 closed bars, the 200-SMA is rising, AND the breakout
+ * bar's volume is above its 20-bar average. Sell on the 20-bar low breakdown
+ * or the 15% hard stop.
+ * When it does NOT work: same weaknesses as the champion (lags fresh bulls
  * from a falling 200-SMA, whipsaws in a sideways range above a flat 200-SMA,
- * and in a fast crash the 15% stop still eats the loss before any protection
- * kicks in.
+ * wide 15% stop eats fast-crash losses). Volume is noisier on 4h, and some
+ * real trends start on low volume, so it can miss the first breakout.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -39,21 +38,11 @@ function onUpdate(ctx) {
 
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
-    const entryPx = ctx.entryPx;
-    // highest close since entry, trailed on CLOSED bars
-    const hi = ctx.state.entryHi != null ? ctx.state.entryHi : (entryPx != null ? entryPx : prevClose);
-    const newHi = Math.max(hi, prevClose);
-    ctx.state.entryHi = newHi;
-
-    let stop = entryPx != null ? entryPx * 0.85 : null;      // 15% hard stop
-    if (entryPx != null && newHi >= entryPx * 1.08) {        // up 8% -> lock breakeven
-      stop = entryPx;
-    }
-    if (stop == null) stop = l20;
-    stop = Math.max(stop, l20);                               // 20-bar low breakdown
-
+    const stop = ctx.entryPx * 0.85;   // hard stop 15% below entry
     if (price <= stop) return { side: 'sell', qty: pos };
-    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'breakeven/20bar/15% stop' }]);
+    if (prevClose < l20) return { side: 'sell', qty: pos };   // 20-bar low breakdown
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '15% stop' },
+               { side: 'sell', price: l20, trigger: 'below', note: '20-bar low breakdown' }]);
     return null;
   }
 
@@ -61,8 +50,18 @@ function onUpdate(ctx) {
   if (!(prevClose > h55)) return null;                        // breakout
   if (!(sma200 > sma200Prev)) return null;                    // 200-SMA must be RISING
 
+  // volume confirmation: breakout bar volume above its 20-bar average
+  const vols = ctx.volumes;
+  if (vols == null || vols.length < 23) return null;
+  let sum = 0;
+  for (let k = 3; k <= 22; k++) sum += vols.at(-k);           // 20 bars ending 2 back
+  const avgVol = sum / 20;
+  const breakoutVol = vols.at(-2);
+  if (!(breakoutVol > avgVol)) return null;   // low-volume breakout -> skip
+
   ctx.watch([{ side: 'buy', price: h55, trigger: 'above', note: '55-bar high breakout',
-               conds: [{ label: '200-SMA rising', ok: sma200 > sma200Prev, closed: true }] }]);
+               conds: [{ label: '200-SMA rising', ok: sma200 > sma200Prev, closed: true },
+                       { label: 'breakout vol > 20-bar avg', ok: breakoutVol > avgVol, closed: true }] }]);
 
   const atr = ctx.atr(14, 1);
   if (atr == null || atr <= 0 || prevClose <= 0) return null;
@@ -71,6 +70,5 @@ function onUpdate(ctx) {
   const targetCash = ctx.cash * 0.95 * volScale;
   const qty = (targetCash / price) * 0.95;
   if (qty <= 0) return null;
-  ctx.state.entryHi = prevClose;   // reset high-water mark at entry (closed bars)
   return { side: 'buy', qty };
 }
