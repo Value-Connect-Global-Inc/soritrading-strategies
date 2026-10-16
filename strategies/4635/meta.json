@@ -3,16 +3,16 @@
   "name": "BTC Donchian Turtle 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 22017,
-    "return": 175.08,
-    "mdd": 21.31,
+    "backtestId": 22018,
+    "return": 33.34,
+    "mdd": 14.65,
     "trades": 58,
     "vsBuyHold": "lose",
-    "benchRet": 500.45,
+    "benchRet": 35.8,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1576108800,
-    "tTo": 1648108800,
+    "tFrom": 1719691200,
+    "tTo": 1791676800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
@@ -22,12 +22,12 @@
       "sym": "BTC",
       "interval": "4h",
       "bars": 5000,
-      "end": 1648123200
+      "end": 1792123200
     },
     "codeBasis": "assumed-current",
     "verifiedCodeSha256": "014fe0a8b7d5541c50c42e014327bc6ef624c56e1653cdfe7107d562aa77680b"
   },
   "config": null,
-  "updatedAt": "2026-10-16T05:22:56.721Z",
+  "updatedAt": "2026-10-16T05:23:46.763Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
