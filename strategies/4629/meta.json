@@ -1,0 +1,33 @@
+{
+  "id": 4629,
+  "name": "Price-Only Momentum 1D (A/B baseline)",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 21973,
+    "return": 57.15,
+    "mdd": 8.97,
+    "trades": 28,
+    "vsBuyHold": "win",
+    "benchRet": -15.1,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1619308800,
+    "tTo": 1705622400,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 1000,
+      "end": 1705708800
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "5610a7bf88c216b34362be9c23094209ca02bcf10668e746d53c239d20598d58"
+  },
+  "config": null,
+  "updatedAt": "2026-10-16T04:40:25.035Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
