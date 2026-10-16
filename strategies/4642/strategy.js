@@ -40,7 +40,7 @@ function onUpdate(ctx) {
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
     const entryPx = ctx.entryPx;
-    // highest close since entry (closed bars, same in backtest/live)
+    // highest close since entry, trailed on CLOSED bars
     const hi = ctx.state.entryHi != null ? ctx.state.entryHi : (entryPx != null ? entryPx : prevClose);
     const newHi = Math.max(hi, prevClose);
     ctx.state.entryHi = newHi;
@@ -71,5 +71,6 @@ function onUpdate(ctx) {
   const targetCash = ctx.cash * 0.95 * volScale;
   const qty = (targetCash / price) * 0.95;
   if (qty <= 0) return null;
+  ctx.state.entryHi = prevClose;   // reset high-water mark at entry (closed bars)
   return { side: 'buy', qty };
 }
