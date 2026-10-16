@@ -3,7 +3,7 @@
   "name": "SOL Turtle Hashrate-Gated 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 22233,
+    "backtestId": 22236,
     "return": 6.63,
     "mdd": 20.73,
     "trades": 36,
