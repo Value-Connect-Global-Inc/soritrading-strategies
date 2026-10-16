@@ -25,20 +25,21 @@ function onUpdate(ctx) {
   if (!Number.isFinite(price) || price <= 0) return null;
 
   const st = ctx.state || {};
-  if (!st.dxyHist) st.dxyHist = []; // rolling history of the dollar index, one entry per bar
+  if (!st.dxyHist) st.dxyHist = []; // rolling history of the dollar index, one entry per available bar
 
   const v = ctx.data('dxy');
-  if (v == null) return null; // no dollar data -> stand aside rather than guess
+  if (v == null) return null; // no dollar data this bar -> stand aside
   st.dxyHist.push(v);
   const hist = st.dxyHist;
-  if (hist.length > 600) hist.shift();
-  // Need ~90 days of history before judging the regime (6 bars/day on 4h).
-  if (hist.length < 540) return null;
+  if (hist.length > 200) hist.shift();
+  // The dxy dataset is daily, so each non-null observation is ~1 day. Wait for
+  // ~90 observations (~90 days) before judging the regime.
+  if (hist.length < 90) return null;
 
-  // 90-day average of the dollar index over the last 540 bars.
+  // 90-day average of the dollar index over the last 90 observations.
   let sum = 0;
-  for (let k = hist.length - 540; k < hist.length; k++) sum += hist[k];
-  const dxySma = sum / 540;
+  for (let k = hist.length - 90; k < hist.length; k++) sum += hist[k];
+  const dxySma = sum / 90;
   const dollarWeak = v < dxySma;
 
   const sym = ctx.sym;
