@@ -12,10 +12,10 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [4675](strategies/4675/) | DIAG State Persistence | +1260.65% | +1610.78% | +38.63% | 1 | 2026-10-16 |
 |  | [4681](strategies/4681/) | BNB Turtle ATR Stop 4H | -24.76% | +30.75% | +31.52% | 72 | 2026-10-16 |
 | ★ | [4680](strategies/4680/) | SOL Turtle VolFilter 4H | -5.59% | -22.18% | +38.64% | 50 | 2026-10-16 |
 |  | [4673](strategies/4673/) | DIAG DXY Availability ‡ | -14.28% | +16.67% | +72.51% | 1 | 2026-10-16 |
-|  | [4675](strategies/4675/) | DIAG State Persistence | +1260.65% | +1610.78% | +38.63% | 1 | 2026-10-16 |
 | ★ | [4670](strategies/4670/) | SOL Turtle ATR SkipAfterLoss 4H | +58.41% | +24.28% | +23.60% | 56 | 2026-10-16 |
 | ★ | [4669](strategies/4669/) | XRP Turtle ATR Stop 4H ‡ | +59.28% | +24.28% | +22.33% | 56 | 2026-10-16 |
 |  | [4668](strategies/4668/) | BTC Hashrate Regime 1D | -42.86% | +95.22% | +55.66% | 178 | 2026-10-16 |
