@@ -1,59 +1,55 @@
 /*
  * @coinsori-strategy v1
- * name: GoldenCross Multi-Asset Basket v1
+ * name: OnChain Adoption Regime BTC 1D
  * ex: binance
- * syms: BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT
+ * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: long-term trends in crypto persist for months once the
- * 50-day average is above the 200-day average (the classic "golden cross").
- * This is a pure price-trend family — it reacts to the market itself, not to
- * a sentiment index, so it is a different bet from the Fear&Greed champion.
- * When it buys and sells: buy when the 50-day average crosses above the
- * 200-day average (both read from closed bars); hold while the trend is up;
- * sell when the 50-day average crosses back below the 200-day average, or if
- * price falls 30% below entry (hard stop).
- * When it does NOT work: in a long sideways market the two averages cross back
- * and forth and each cross costs a small loss (whipsaw). It also re-enters
- * late after a crash bottom, missing the first sharp rally of a new bull.
+ * Why this strategy: crypto bull markets are driven by new users and new
+ * mining capacity — both visible on-chain before they fully show up in price.
+ * When the number of daily active addresses is above its own 30-day average
+ * AND network hash rate is above its 30-day average, the network is growing
+ * and price tends to follow. This is a slow regime bet on adoption, a
+ * different family from price trend or sentiment indexes.
+ * When it buys and sells: buy when active addresses > their 30-day average
+ * AND hash rate > its 30-day average (both from closed daily bars). Hold
+ * while network growth persists. Sell when active addresses fall back below
+ * their 30-day average, or if price drops 25% below entry (hard stop).
+ * When it does NOT work: in a mature market where price moves on macro
+ * liquidity (interest rates, dollar) while on-chain usage stays flat, this
+ * stays on the sidelines and misses rallies. Active addresses can also stay
+ * elevated for a while after a crash, so the exit lags price.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
-  const sma50 = ctx.sma(50, 1);
-  const sma200 = ctx.sma(200, 1);
-  const sma50p = ctx.sma(50, 2);
-  const sma200p = ctx.sma(200, 2);
-  if (sma50 == null || sma200 == null || sma50p == null || sma200p == null) return null;
+  const addr = ctx.data('addr');
+  const addrSma = ctx.data('addr_sma30');
+  const hash = ctx.data('hashrate');
+  const hashSma = ctx.data('hashrate_sma30');
+  // Data is daily; if any value is missing for this bar, do nothing rather
+  // than guess (null means unknown, never zero).
+  if (addr == null || addrSma == null || hash == null || hashSma == null) return null;
 
   const pos = ctx.position;
   if (pos > 0) {
     const entry = ctx.entryPx;
     if (entry != null) {
-      // Hard stop: backstop for crashes faster than the death cross can react
-      // to. 30% because healthy pullbacks in an uptrend can reach 20-25%.
-      if (price <= entry * 0.70) return { side: 'sell', qty: pos };
-      ctx.watch([{ side: 'sell', price: entry * 0.70, trigger: 'below', note: 'stop: -30%' }]);
+      // Hard stop: 25% because a regime exit is slow (daily data) and cannot
+      // protect against a fast crash on its own.
+      if (price <= entry * 0.75) return { side: 'sell', qty: pos };
+      ctx.watch([{ side: 'sell', price: entry * 0.75, trigger: 'below', note: 'stop: -25%' }]);
     }
-    // Death cross: trend broken, get out.
-    if (sma50p >= sma200p && sma50 < sma200) return { side: 'sell', qty: pos };
+    // Regime exit: network usage stopped growing, adoption trend is over.
+    if (addr < addrSma) return { side: 'sell', qty: pos };
     return null;
   }
 
-  // Golden cross: fresh trend start, enter at fixed 95% sizing (same
-  // philosophy as the proven champion).
-  if (sma50p <= sma200p && sma50 > sma200) {
+  // Regime entry: both adoption and miner confidence growing at once.
+  if (addr > addrSma && hash > hashSma) {
     return { side: 'buy', qty: (ctx.cash / price) * 0.95 };
   }
-
-  ctx.watch([{
-    side: 'buy',
-    price: sma200,
-    trigger: 'above',
-    note: 'golden cross entry',
-    conds: [{ label: 'SMA50 vs SMA200', now: sma50, op: '>', ref: sma200, closed: true }]
-  }]);
   return null;
 }

@@ -3,31 +3,32 @@
   "name": "Nasdaq Risk-On Crypto Trend",
   "kind": "custom",
   "verified": {
-    "backtestId": 21730,
-    "return": 138.94,
-    "mdd": 39.68,
-    "trades": 16,
-    "vsBuyHold": "unmeasured",
+    "backtestId": 21733,
+    "return": -6.43,
+    "mdd": 41.86,
+    "trades": 266,
+    "vsBuyHold": "lose",
+    "benchRet": 95.22,
+    "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1619308800,
-    "tTo": 1705622400,
+    "tFrom": 1705276800,
+    "tTo": 1791590400,
     "approxNotes": [
-      "기간 종료 시 미청산 포지션 4종목 (총자산의 100%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 4000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다",
-      "[생존 편향] 이 유니버스는 **지금 거래되는 종목**만입니다. 구간 중(또는 그 전에) 상장폐지된 종목은 **처음부터 들어 있지 않습니다** — 망한 종목이 빠져 있어 수익률이 **실제보다 좋게** 나옵니다. 스캐너·랭킹 전략일수록 그 차이가 큽니다."
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
       "bars": 1000,
-      "end": 1705708800,
-      "syms": 4
+      "end": 1792108800
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "bba14581a96fc7eb62e94deeee468f8cf6e6c3c734ae365e1f01502a5d50b541"
+    "verifiedCodeSha256": "1e496a3a55e7992a2c6ee67e9f2c4d37f6a403d2e5024f2f2b0a5ec54052bc37"
   },
   "config": null,
-  "updatedAt": "2026-10-16T01:37:54.265Z",
+  "updatedAt": "2026-10-16T01:38:52.512Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
