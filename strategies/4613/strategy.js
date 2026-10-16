@@ -10,36 +10,34 @@
  * to rise while the US dollar is weakening and stall while the dollar is
  * strengthening. This bets on that macro regime instead of on price patterns:
  * it is long the basket only while the Fed's broad trade-weighted dollar index
- * (DXY) is below its 90-day average, and flat while the dollar is strong.
+ * (DXY) is below its short-term average, and flat while the dollar is strong.
  * When it buys and sells: buy each asset when the dollar index falls below its
- * 90-day average (weak-dollar regime), sell when the dollar climbs back above
- * that average or the 2.5-ATR hard stop is hit. 24-bar cooldown after an exit.
+ * 20-observation average (weak-dollar regime), sell when the dollar climbs back
+ * above that average or the 2.5-ATR hard stop is hit. 24-bar cooldown.
  * When it does NOT work: the dollar/crypto link is noisy and can break for
  * months (crypto has rallied during dollar strength on its own drivers). In a
  * flat-dollar regime the strategy flips on and off and churns fees; it is also
- * flat (no loss but no gain) through long dollar-strength periods even when
- * crypto is rallying on its own.
+ * flat through long dollar-strength periods even when crypto is rallying.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
   const st = ctx.state || {};
-  if (!st.dxyHist) st.dxyHist = []; // rolling history of the dollar index, one entry per available bar
+  if (!st.dxyHist) st.dxyHist = []; // rolling history of the dollar index
 
   const v = ctx.data('dxy');
   if (v == null) return null; // no dollar data this bar -> stand aside
   st.dxyHist.push(v);
   const hist = st.dxyHist;
-  if (hist.length > 200) hist.shift();
-  // The dxy dataset is daily, so each non-null observation is ~1 day. Wait for
-  // ~90 observations (~90 days) before judging the regime.
-  if (hist.length < 90) return null;
+  if (hist.length > 60) hist.shift();
+  // dxy is sparse on a 4h chart; wait for 20 observations before judging regime.
+  if (hist.length < 20) return null;
 
-  // 90-day average of the dollar index over the last 90 observations.
+  // 20-observation average of the dollar index.
   let sum = 0;
-  for (let k = hist.length - 90; k < hist.length; k++) sum += hist[k];
-  const dxySma = sum / 90;
+  for (let k = hist.length - 20; k < hist.length; k++) sum += hist[k];
+  const dxySma = sum / 20;
   const dollarWeak = v < dxySma;
 
   const sym = ctx.sym;
