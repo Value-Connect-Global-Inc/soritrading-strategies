@@ -1,24 +1,24 @@
 /*
  * @coinsori-strategy v1
- * name: XRP Donchian DXY Gate 4H
+ * name: XRP Donchian FearGreed Gate 1D
  * ex: binance
  * syms: XRP/USDT
- * interval: 4h
+ * interval: 1d
  * cash: 10000
  *
- * Why this strategy: The proven XRP turtle engine (55-bar breakout, rising 200-SMA,
- * 30-bar low exit, 15% hard stop) gated by the US dollar index. When the dollar
- * is weak (DXY below its own 30-day average), risk appetite is high and crypto
- * breakouts tend to follow through; when the dollar is strong, crypto breakouts
- * are more likely to fail. This macro gate reaches 4h bars via ctx.macro('dxy').
- * When it buys and sells: buy when the last closed 4h bar exceeds the highest
- * high of the prior 55 closed bars AND the 200-SMA is rising AND DXY is below its
- * 30-day average. Sell when a closed bar falls below the lowest low of the prior
- * 30 closed bars, or a 15% hard stop is hit.
+ * Why this strategy: The XRP turtle trend engine (55-bar breakout, rising 200-SMA,
+ * 30-bar low exit, 15% hard stop) on daily bars, gated by the daily Crypto Fear &
+ * Greed Index. On 1d bars the daily F&G value aligns with the bar, so the gate
+ * actually fires here (it is silent on 4h). Buying a breakout while sentiment is
+ * already euphoric (F&G >= 70) is a late-cycle entry, so those are skipped.
+ * When it buys and sells: buy when the last closed 1d bar exceeds the highest high
+ * of the prior 55 closed bars AND the 200-SMA is rising AND Fear & Greed is below
+ * 70. Sell when a closed bar falls below the lowest low of the prior 30 closed
+ * bars, or a 15% hard stop is hit.
  * When it does NOT work: it whipsaws in sideways ranges above a flat 200-SMA,
- * lags fresh bulls that start from a falling 200-SMA, and loses in fast crashes
- * because the 15% stop is wide. The DXY gate also blocks entries during strong
- * crypto rallies that happen while the dollar is firm.
+ * misses the very start of a fresh bull that begins from a falling 200-SMA, and
+ * loses in fast crashes because the 15% stop is wide. The gate does not protect
+ * against crashes that start from moderate sentiment.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -51,29 +51,20 @@ function onUpdate(ctx) {
   if (!(prevClose > h55)) return null;                       // breakout
   if (!(sma200 > sma200Prev)) return null;                   // 200-SMA must be RISING
 
-  // DXY macro gate: only buy breakouts while the dollar is weak.
-  // DXY below its 30-day rolling average = risk-on regime. ctx.macro reaches 4h bars.
-  const dxy = ctx.macro('dxy');
-  if (dxy == null) return null;
-  // Rolling 30-bar average of DXY tracked in state (macro is daily-ish; 30 bars ~ 5 days of 4h data is too short,
-  // so use a longer window of stored values).
-  const state = ctx.state || {};
-  const hist = state.dxyHist || [];
-  hist.push(dxy);
-  if (hist.length > 240) hist.shift();   // keep last 240 bars (~40 days at 4h)
-  state.dxyHist = hist;
-  if (hist.length < 240) return null;    // need 240 bars of DXY history before trading
-  const avg = hist.reduce((a, b) => a + b, 0) / hist.length;
-  if (dxy >= avg) return null;           // dollar not weak -> skip the breakout
+  // Fear & Greed gate: 70+ = extreme-greed (euphoria) zone, skip the breakout buy
+  const fg = ctx.data('fear_greed');
+  if (fg == null || fg >= 70) return null;
 
   ctx.watch([{ side: 'buy', price: h55, trigger: 'above', note: '55-bar high breakout',
                conds: [{ label: '200-SMA rising', ok: sma200 > sma200Prev, closed: true },
-                       { label: 'DXY below 240-bar avg', ok: dxy < avg, closed: true }] }]);
+                       { label: 'F&G below 70', ok: fg < 70, closed: true }] }]);
 
   const atr = ctx.atr(14, 1);
   if (atr == null || atr <= 0 || prevClose <= 0) return null;
   const atrPct = atr / prevClose;
-  const volScale = Math.min(1, 0.015 / atrPct);   // 4h noise: target 1.5% ATR, cap size
+  // Daily ATR% is ~4-6%, so target 4% ATR per bar to deploy real capital
+  // (the 1.5% target that suits 4h bars would leave 1d positions ~75% under-sized).
+  const volScale = Math.min(1, 0.04 / atrPct);
   const targetCash = ctx.cash * 0.95 * volScale;
   const qty = (targetCash / price) * 0.95;
   if (qty <= 0) return null;
