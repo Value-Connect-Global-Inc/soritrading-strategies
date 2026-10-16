@@ -1,21 +1,22 @@
 /*
  * @coinsori-strategy v1
- * name: XRP Turtle ATR Stop 4H
+ * name: SOL Turtle ATR Stop 4H
  * ex: binance
- * syms: XRP/USDT
+ * syms: SOL/USDT
  * interval: 4h
  * cash: 10000
  *
- * Why this strategy: The Donchian turtle engine (55-bar high breakout + rising
- * 200-SMA entry, 20-bar low breakdown exit, volatility-scaled 2.5x ATR stop)
- * has held up on BTC, ETH and SOL 4h. This is the same engine, unchanged,
- * applied to XRP to test whether the edge generalizes to another major alt.
+ * Why this strategy: The Donchian turtle engine proven on BTC and ETH used a
+ * 2.5x ATR stop; the SOL port used a fixed 15% stop which is wider than SOL's
+ * own volatility justifies. A stop scaled by ATR adapts to the market's actual
+ * volatility instead of a fixed percentage.
  * When it buys and sells: buy when a closed 4h bar exceeds the highest high of
  * the prior 55 closed bars AND the 200-SMA is rising. Sell on a 2.5x ATR stop,
- * or when a closed bar falls below the lowest low of the prior 20 bars.
+ * or when a closed bar falls below the lowest low of the prior 20 bars. After a
+ * losing trade, skip the next entry signal (original Turtle System 1 rule).
  * When it does NOT work: whipsaws in sideways ranges, lags fresh bulls from a
- * falling 200-SMA, and the tighter ATR stop means more stop-outs than a fixed
- * percent stop in choppy markets.
+ * falling 200-SMA, and the tighter ATR stop means more stop-outs than the 15%
+ * version in choppy markets.
  */
 
 function onUpdate(ctx) {
@@ -41,8 +42,15 @@ function onUpdate(ctx) {
   if (pos > 0) {
     // stop scaled to market volatility — same 2.5x ATR as the proven BTC/ETH engine
     const stop = ctx.entryPx == null ? null : ctx.entryPx - atr * 2.5;
-    if (stop != null && price <= stop) return { side: 'sell', qty: pos };
-    if (prevClose < l20) return { side: 'sell', qty: pos };   // 20-bar low breakdown
+    if (stop != null && price <= stop) {
+      ctx.state.lastLoss = true;   // a stop-out is a losing trade
+      return { side: 'sell', qty: pos };
+    }
+    if (prevClose < l20) {
+      // 20-bar breakdown exit: losing only if we exit below entry
+      if (ctx.entryPx != null && prevClose < ctx.entryPx) ctx.state.lastLoss = true;
+      return { side: 'sell', qty: pos };
+    }
     ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '2.5x ATR stop' },
                { side: 'sell', price: l20, trigger: 'below', note: '20-bar low breakdown' }]);
     return null;
@@ -52,6 +60,12 @@ function onUpdate(ctx) {
   if (!(prevClose > h55)) return null;                       // breakout
   if (!(sma200 > sma200Prev)) return null;                   // 200-SMA must be RISING
 
+  // Turtle System 1: after a losing trade, skip the very next entry signal
+  if (ctx.state.lastLoss) {
+    ctx.state.lastLoss = false;
+    return null;
+  }
+
   const atrPct = atr / prevClose;
   // 4h ATR% is ~1.5-2.5%, so target 1.5% ATR per bar to deploy real capital
   const volScale = Math.min(1, 0.015 / atrPct);
@@ -60,6 +74,7 @@ function onUpdate(ctx) {
   if (qty <= 0) return null;
 
   ctx.watch([{ side: 'buy', price: h55, trigger: 'above', note: '55-bar high breakout',
-               conds: [{ label: '200-SMA rising', ok: sma200 > sma200Prev, closed: true }] }]);
+               conds: [{ label: '200-SMA rising', ok: sma200 > sma200Prev, closed: true },
+                       { label: 'skip after loss', ok: !ctx.state.lastLoss, closed: true }] }]);
   return { side: 'buy', qty };
 }

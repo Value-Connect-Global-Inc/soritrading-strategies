@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [4669](strategies/4669/) | XRP Turtle ATR Stop 4H | +59.28% | +24.28% | +22.33% | 56 | 2026-10-16 |
+| ★ | [4669](strategies/4669/) | XRP Turtle ATR Stop 4H ‡ | +59.28% | +24.28% | +22.33% | 56 | 2026-10-16 |
 |  | [4668](strategies/4668/) | BTC Hashrate Regime 1D | -42.86% | +95.22% | +55.66% | 178 | 2026-10-16 |
 | ★ | [4667](strategies/4667/) | SOL Turtle ATR Stop 4H | +6.26% | -22.18% | +32.15% | 56 | 2026-10-16 |
 |  | [4666](strategies/4666/) | FearGreedDipInUptrendBTC1d | -11.99% | +95.22% | +21.07% | 2 | 2026-10-16 |
