@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: MultiAsset Trend EMA50/200 4H BE-stop
+ * name: MultiAsset Trend EMA50/200 4H profit-lock
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT
  * interval: 4h
@@ -8,24 +8,23 @@
  *
  * Why this strategy: the EMA50/200 trend core is the one family with repeated
  * out-of-sample evidence in this environment (4-asset basket +57/+112/+285%
- * on three disjoint 4h windows). This version adds a breakeven stop: once a
- * trade runs +2 ATR above entry, the stop ratchets up to the entry price so
- * a winner cannot turn into a loser. This is different from the full trailing
- * stop that failed earlier (which trailed from the very start and got stopped
- * out on pullbacks inside intact trends); here the initial stop stays fixed
- * and only the protected level moves, and only after the trade has already
- * moved in our favour by 2 ATR.
+ * on three disjoint 4h windows). The champion's weak spot is drawdown on the
+ * most recent window (MDD 35%). This version adds a profit-lock stop: once a
+ * trade runs +1.5 ATR above entry, the stop lifts to entry +0.5 ATR so a
+ * winner that reverses cannot give back all its gain. This is NOT a trailing
+ * stop from the start (that churned and failed); the fixed 2.5-ATR stop stays
+ * in place until the profit threshold is reached, then it locks a small gain.
  * When it buys and sells: on each asset, buy when the 50-period EMA crosses
  * above the 200-period EMA, or re-enter while flat when the trend is intact
  * (EMA50>EMA200 and price above the 400-period average). Sell on a death
- * cross, when price falls 2.5 ATR below entry, or at breakeven once the trade
- * has run +2 ATR above entry and then pulled back to entry. Re-entry waits
+ * cross, when price falls 2.5 ATR below entry, or at the locked stop (entry
+ * +0.5 ATR) once the trade has run +1.5 ATR above entry. Re-entry waits
  * 24 bars (4 days) after an exit.
  * When it does NOT work: in a long choppy sideways range the crossovers
- * whipsaw and the stops turn small dips into realized losses, and the
- * breakeven ratchet can exit a trade that later resumes its up move. Long-only
- * means a sustained bear market across all coins is flat-to-loss, and it lags
- * a fast V-shaped recovery after a crash.
+ * whipsaw and the stops turn small dips into realized losses; the profit-lock
+ * can exit a trade that later resumes its up move, giving back trend profit.
+ * Long-only means a sustained bear market across all coins is flat-to-loss,
+ * and it lags a fast V-shaped recovery after a crash.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -47,12 +46,11 @@ function onUpdate(ctx) {
     const entry = ctx.entryPx;
     // Fixed stop from entry, as in the validated core.
     let stopPx = entry != null ? entry - 2.5 * atr : price - 2.5 * atr;
-    // Breakeven ratchet: only once the trade has moved +2 ATR in our favour,
-    // lift the stop to entry so a winner cannot turn into a loser. Not a
-    // trailing stop from the start (that churned) — the fixed stop stays put
-    // until this level is reached. 2 ATR chosen as the threshold for "a real
-    // move, not noise"; it is the same multiple as the stop itself.
-    if (entry != null && price > entry + 2 * atr) stopPx = Math.max(stopPx, entry);
+    // Profit-lock ratchet: once price has run +1.5 ATR above entry, lift the
+    // stop to entry +0.5 ATR. 1.5 ATR = "a real move, not noise"; +0.5 ATR
+    // locks a small gain and covers round-trip fees (~0.2%) so the trade can
+    // never turn from winner into loser. The fixed stop stays put until then.
+    if (entry != null && price > entry + 1.5 * atr) stopPx = Math.max(stopPx, entry + 0.5 * atr);
     if (f <= s) { st.cool[sym] = ctx.i; return { side: 'sell', qty: pos }; } // death cross -> trend over
     if (price <= stopPx) { st.cool[sym] = ctx.i; return { side: 'sell', qty: pos }; }
     ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'stop' }]);
