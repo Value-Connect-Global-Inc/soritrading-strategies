@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 540 of 2215 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 540 of 2216 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 364 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [4615](strategies/4615/) | Onchain Expansion Regime 1D | +79.64% | +1067.96% | +32.75% | 35 | 2026-10-16 |
 | — | [4614](strategies/4614/) | Momentum Rotation Basket 4H | +30.95% | — | +23.32% | 167 | 2026-10-16 |
 | — | [4613](strategies/4613/) | Data Availability Diagnostic | -2.39% | — | +2.39% | 48 | 2026-10-16 |
 | — | [4610](strategies/4610/) | MultiAsset Mean Reversion BB/RSI 4H | -5.73% | — | +13.08% | 182 | 2026-10-16 |
