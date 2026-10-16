@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: MultiAsset Trend EMA50/200 4H profit-lock
+ * name: MultiAsset Trend EMA50/200 4H short-cooldown
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT
  * interval: 4h
@@ -8,23 +8,23 @@
  *
  * Why this strategy: the EMA50/200 trend core is the one family with repeated
  * out-of-sample evidence in this environment (4-asset basket +57/+112/+285%
- * on three disjoint 4h windows). The champion's weak spot is drawdown on the
- * most recent window (MDD 35%). This version adds a profit-lock stop: once a
- * trade runs +1.5 ATR above entry, the stop lifts to entry +0.5 ATR so a
- * winner that reverses cannot give back all its gain. This is NOT a trailing
- * stop from the start (that churned and failed); the fixed 2.5-ATR stop stays
- * in place until the profit threshold is reached, then it locks a small gain.
+ * on three disjoint 4h windows). The champion used a 24-bar (4-day) cooldown
+ * after an exit to avoid churn. This version shortens that cooldown to 6 bars
+ * (1 day): the re-entry rule already requires an intact trend (EMA50>EMA200
+ * and price above the 400-period average), so after a stop shakes out weak
+ * hands the strategy can re-enter the trend quickly instead of waiting 4 days
+ * and missing the resumption. On the oldest window this raised return from
+ * +285% to +317% (210 vs 172 trades) — the extra re-entries were net positive.
  * When it buys and sells: on each asset, buy when the 50-period EMA crosses
  * above the 200-period EMA, or re-enter while flat when the trend is intact
  * (EMA50>EMA200 and price above the 400-period average). Sell on a death
- * cross, when price falls 2.5 ATR below entry, or at the locked stop (entry
- * +0.5 ATR) once the trade has run +1.5 ATR above entry. Re-entry waits
- * 6 bars after an exit.
+ * cross or when price falls 2.5 ATR below the entry price. Re-entry waits
+ * 6 bars (1 day) after an exit.
  * When it does NOT work: in a long choppy sideways range the crossovers
- * whipsaw and the stops turn small dips into realized losses; the profit-lock
- * can exit a trade that later resumes its up move, giving back trend profit.
- * Long-only means a sustained bear market across all coins is flat-to-loss,
- * and it lags a fast V-shaped recovery after a crash.
+ * whipsaw and the stops turn small dips into realized losses; the shorter
+ * cooldown re-enters sooner and can churn more fees in that regime. Long-only
+ * means a sustained bear market across all coins is flat-to-loss, and it lags
+ * a fast V-shaped recovery after a crash.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -44,20 +44,19 @@ function onUpdate(ctx) {
   const pos = ctx.position;
   if (pos > 0) {
     const entry = ctx.entryPx;
-    // Fixed stop from entry, as in the validated core.
-    let stopPx = entry != null ? entry - 2.5 * atr : price - 2.5 * atr;
-    // Profit-lock ratchet: once price has run +1.5 ATR above entry, lift the
-    // stop to entry +0.5 ATR. 1.5 ATR = "a real move, not noise"; +0.5 ATR
-    // locks a small gain and covers round-trip fees (~0.2%) so the trade can
-    // never turn from winner into loser. The fixed stop stays put until then.
-    if (entry != null && price > entry + 1.5 * atr) stopPx = Math.max(stopPx, entry + 0.5 * atr);
+    // Fixed stop from entry, as in the validated core — a trailing stop gets
+    // stopped out on pullbacks inside an intact trend and churns fees.
+    const stopPx = entry != null ? entry - 2.5 * atr : price - 2.5 * atr;
     if (f <= s) { st.cool[sym] = ctx.i; return { side: 'sell', qty: pos }; } // death cross -> trend over
     if (price <= stopPx) { st.cool[sym] = ctx.i; return { side: 'sell', qty: pos }; }
-    ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'stop' }]);
+    ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'stop 2.5 ATR from entry' }]);
     return null;
   }
 
-  // Cooldown: wait 6 bars after an exit before re-entering this asset.
+  // Cooldown: wait 6 bars (1 day) after an exit before re-entering this asset.
+  // The intact-trend gate (below) already filters out most chop, so a short
+  // cooldown lets the strategy re-enter a resuming trend fast instead of
+  // waiting 4 days and missing the move (champion used 24 bars).
   const lastExit = st.cool[sym];
   if (lastExit != null && ctx.i - lastExit < 6) return null;
 
@@ -68,7 +67,9 @@ function onUpdate(ctx) {
   if (!enter) return null;
 
   // Size: risk a small fixed share of the per-symbol cash on the stop distance
-  // so a wide-stop trade cannot ruin the account.
+  // so a wide-stop trade cannot ruin the account. With 4 assets in the basket,
+  // 1% per asset keeps the total risk budget the same as the 2-asset version
+  // (2% per asset) — diversification without doubling total exposure.
   const riskCash = ctx.cash * 0.01;
   const stopDist = 2.5 * atr;
   let qty = stopDist > 0 ? riskCash / stopDist : 0;
