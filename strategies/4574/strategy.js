@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: FearGreed Multi-Asset Regime Basket v4 (vol-targeted)
+ * name: FearGreed Multi-Asset Regime Basket v5 (re-entry cooldown)
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT
  * interval: 1d
@@ -11,18 +11,19 @@
  * keep climbing, and when the crowd turns fearful (index <= 40) the trend has
  * broken. This rides confirmed sentiment on a 4-coin basket so no single asset
  * decides the account. v3 added a Fed filter (no entries while the Fed hikes);
- * v4 adds VOL-TARGETED SIZING: each leg is sized to a 2.5% expected daily
- * volatility, so a coin that gets wild automatically gets a smaller position.
- * A single crash cannot ruin the account.
+ * v5 REMOVES vol-targeting (it cut bull-market returns) and restores the fixed
+ * 95% sizing, then adds a 14-day RE-ENTRY COOLDOWN after a stop-loss exit so a
+ * stopped-out coin cannot be bought back into a falling knife.
  * When it buys and sells: on each asset, buy when Fear & Greed >= 55 AND price
- * is above its 200-day average AND the Fed is not hiking. Sell when it falls
- * to <= 40 or price drops 25% below entry (hard stop).
+ * is above its 200-day average AND the Fed is not hiking AND no stop-loss exit
+ * happened in the last 14 days. Sell when it falls to <= 40 or price drops 25%
+ * below entry (hard stop).
  * When it does NOT work: in a fast crash the index can still be high while
  * prices are already falling (the index lags) — the 200-day filter reduces
  * these entries but cannot remove all of them. The 25% stop turns a normal
  * dip into a realized loss, and it misses the very start of a bull because it
- * waits for confirmed greed. Vol-targeting also caps upside in a straight bull
- * because exposure shrinks as volatility climbs.
+ * waits for confirmed greed. The cooldown makes it slower to re-enter after
+ * a shakeout that quickly recovers.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -32,16 +33,36 @@ function onUpdate(ctx) {
   const fg = Number(ctx.data('fg'));
   if (!Number.isFinite(fg)) return null;
 
+  // ctx.state persists across the run and is shared by all symbols — key the
+  // cooldown bookkeeping per symbol.
+  const st = ctx.state;
+  const sym = ctx.sym;
+  if (st[sym] == null) st[sym] = {};
+
   const pos = ctx.position;
   if (pos > 0) {
     const entry = ctx.entryPx;
     if (entry != null) {
       // 25% hard stop: caps the loss on any single position.
-      if (price <= entry * 0.75) return { side: 'sell', qty: pos };
+      if (price <= entry * 0.75) {
+        st[sym].stopOutAt = ctx.i; // remember the bar so we do not re-enter soon
+        return { side: 'sell', qty: pos };
+      }
       ctx.watch([{ side: 'sell', price: entry * 0.75, trigger: 'below', note: 'stop: -25%' }]);
     }
     if (fg <= 40) return { side: 'sell', qty: pos }; // greed over -> exit
     return null;
+  }
+
+  // Re-entry cooldown: after a stop-loss exit, wait 14 days before buying again.
+  // A stop usually fires during a breakdown that needs time to resolve — jumping
+  // straight back in buys the falling knife.
+  if (st[sym].stopOutAt != null) {
+    if (ctx.i - st[sym].stopOutAt < 14) {
+      ctx.watch([{ side: 'buy', price: price, trigger: 'above', note: 'cooldown: stopped out <14d ago' }]);
+      return null;
+    }
+    delete st[sym].stopOutAt; // cooldown over
   }
 
   // Trend filter: only enter when price is above its 200-day average (closed
@@ -58,18 +79,8 @@ function onUpdate(ctx) {
   const fedHiking = Number.isFinite(fed) && Number.isFinite(fedLag) && fed > fedLag;
 
   if (fg >= 55 && price > sma200 && !fedHiking) {
-    // Vol-targeted size: position fraction = target daily vol / realized daily
-    // vol. At 2.5% target and ~3-6% realized daily vol this keeps each leg
-    // between ~0.4 and ~0.8 of cash — big enough to matter, small enough that
-    // no single crash breaks the account.
-    const atr = ctx.atr(14, 1);
-    let frac = 0.95;
-    if (atr != null && atr > 0) {
-      const volPct = atr / price;
-      frac = Math.min(0.95, 0.025 / volPct);
-      if (frac < 0.05) frac = 0.05; // never go below 5% (keeps it alive)
-    }
-    return { side: 'buy', qty: (ctx.cash / price) * frac };
+    // Fixed 95% sizing (v3 behaviour) — vol-targeting cut bull-market returns.
+    return { side: 'buy', qty: (ctx.cash / price) * 0.95 };
   }
 
   // Declare what we are waiting for so the run card shows it.
