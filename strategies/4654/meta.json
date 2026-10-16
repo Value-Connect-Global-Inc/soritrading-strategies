@@ -1,0 +1,33 @@
+{
+  "id": 4654,
+  "name": "BTC Donchian Turtle 1D",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 22106,
+    "return": -6.05,
+    "mdd": 14.33,
+    "trades": 6,
+    "vsBuyHold": "lose",
+    "benchRet": 145.93,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1506988800,
+    "tTo": 1601942400,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1100봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 1100,
+      "end": 1602028800
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "ef5b298cc50b72a4d624da939cddd3766ec68794e82a5372a5bef2563a0d6204"
+  },
+  "config": null,
+  "updatedAt": "2026-10-16T06:41:43.749Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
