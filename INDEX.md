@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [4613](strategies/4613/) | Data Availability Diagnostic | -10.04% | -23.23% | +27.59% | 33 | 2026-10-16 |
+| ★ | [4613](strategies/4613/) | Data Availability Diagnostic | -8.88% | -23.23% | +17.80% | 17 | 2026-10-16 |
 | — | [4610](strategies/4610/) | MultiAsset Mean Reversion BB/RSI 4H | -5.73% | — | +13.08% | 182 | 2026-10-16 |
 | — | [4609](strategies/4609/) | AI 전략 | +268.40% | — | +24.24% | 229 | 2026-10-16 |
 | — | [4608](strategies/4608/) | AI 전략 | +16.95% | — | +36.39% | 95 | 2026-10-16 |

@@ -1,22 +1,27 @@
 /*
  * @coinsori-strategy v1
- * name: DXY Data Check
+ * name: DXY Variation Check
  * ex: binance
  * syms: BTC/USDT
  * interval: 4h
  * cash: 10000
  *
- * Why this strategy: diagnostic only — checks whether ctx.data('dxy') is loaded
- * by the backtest runner. Buys whenever dxy is non-null.
- * When it buys and sells: buys when ctx.data('dxy') returns non-null, sells on
- * the 2-ATR stop. Not a real strategy.
+ * Why this strategy: diagnostic only — checks whether ctx.data('dxy') VARIES
+ * over time in the backtest runner (vs a constant snapshot). Buys only when the
+ * dxy value differs from the previous bar's value.
+ * When it buys and sells: buys when ctx.data('dxy') changes between bars, sells
+ * on the 2-ATR stop. Not a real strategy.
  * When it does NOT work: irrelevant — this is a diagnostic.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
+  const st = ctx.state || {};
   const dxy = ctx.data('dxy');
   if (dxy == null) return null;
+  const changed = st.prevDxy != null && Math.abs(dxy - st.prevDxy) > 1e-9;
+  st.prevDxy = dxy;
+  if (!changed) return null;
   const pos = ctx.position;
   if (pos > 0) {
     const atr = ctx.atr(14, 1);

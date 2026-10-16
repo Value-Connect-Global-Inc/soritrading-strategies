@@ -3,10 +3,10 @@
   "name": "Data Availability Diagnostic",
   "kind": "custom",
   "verified": {
-    "backtestId": 21887,
-    "return": -10.04,
-    "mdd": 27.59,
-    "trades": 33,
+    "backtestId": 21888,
+    "return": -8.88,
+    "mdd": 17.8,
+    "trades": 17,
     "vsBuyHold": "win",
     "benchRet": -23.23,
     "benchBasis": "price",
@@ -15,7 +15,7 @@
     "tTo": 1791676800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "기간 종료 시 미청산 포지션 1종목 (총자산의 44.88%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 31.11%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 3000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
@@ -26,9 +26,9 @@
       "bars": 3000
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "20aa4cfaec0bb4fbf73010dfc5e2ef2f7e2f01d2ba5339830fe7e22c4694609c"
+    "verifiedCodeSha256": "35a3a81a8ce5513295d1e2fc6f1d44b700cc51d4d66140f7e054c375bce9bb1d"
   },
   "config": null,
-  "updatedAt": "2026-10-16T03:25:33.464Z",
+  "updatedAt": "2026-10-16T03:26:41.504Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
