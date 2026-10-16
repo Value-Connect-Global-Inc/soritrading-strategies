@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4725](strategies/4725/) | AI 전략 | -23.75% | +25.54% | +24.36% | 266 | 2026-10-16 |
+|  | [4725](strategies/4725/) | AI 전략 ‡ | -23.75% | +25.54% | +24.36% | 266 | 2026-10-16 |
 |  | [4724](strategies/4724/) | AI 전략 | +0.63% | +99.86% | +2.92% | 6 | 2026-10-16 |
 |  | [4723](strategies/4723/) | FearGreedContrarian4h | -31.27% | +68.31% | +40.07% | 99 | 2026-10-16 |
 |  | [4722](strategies/4722/) | DualSideTrend4h | +9.08% | +35.73% | +34.35% | 123 | 2026-10-16 |
