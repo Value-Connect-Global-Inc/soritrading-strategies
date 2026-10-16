@@ -1,0 +1,33 @@
+{
+  "id": 4581,
+  "name": "Multi-Asset Mean Reversion Basket",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 21673,
+    "return": 14.27,
+    "mdd": 63.25,
+    "trades": 83,
+    "vsBuyHold": "unmeasured",
+    "gapPct": 0,
+    "tFrom": 1532908800,
+    "tTo": 1619222400,
+    "approxNotes": [
+      "[유동성/미체결] 시장가 주문 8건이 그 봉의 호가 두께를 넘어 일부만 체결됐습니다(전체 요청 금액의 5% 미체결, 남은 물량은 다음 봉으로). 진입·청산이 전략이 의도한 시점보다 늦습니다. ★ 원인은 둘 중 하나이고 이 수만으로는 못 가릅니다 — 종목이 얇거나, 주문이 한 봉이 소화할 수 있는 것보다 크거나. 주문 크기를 줄여 같은 구간을 다시 돌리면 …",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 3257봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다",
+      "[생존 편향] 이 유니버스는 **지금 거래되는 종목**만입니다. 구간 중(또는 그 전에) 상장폐지된 종목은 **처음부터 들어 있지 않습니다** — 망한 종목이 빠져 있어 수익률이 **실제보다 좋게** 나옵니다. 스캐너·랭킹 전략일수록 그 차이가 큽니다."
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 1000,
+      "end": 1619308800,
+      "syms": 4
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "6e022ab447827b85df5abf587ff0721d19ada80b3e08513373579edc82da40c8"
+  },
+  "config": null,
+  "updatedAt": "2026-10-16T01:05:28.735Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
