@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 540 of 2218 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 540 of 2219 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 365 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [4618](strategies/4618/) | Fear Greed Dip Buy 1D | -62.77% | +47.08% | +65.23% | 30 | 2026-10-16 |
 | — | [4617](strategies/4617/) | Momentum Rotation Breadth Gated 4H | +109.62% | — | +20.06% | 162 | 2026-10-16 |
 |  | [4616](strategies/4616/) | Fed Policy Regime 1D | -23.01% | +47.08% | +48.71% | 42 | 2026-10-16 |
 |  | [4615](strategies/4615/) | Onchain Expansion Regime 1D | -87.60% | +47.08% | +89.20% | 410 | 2026-10-16 |
