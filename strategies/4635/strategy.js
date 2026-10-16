@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: BTC Donchian Turtle 4H
+ * name: BTC Donchian Turtle 4H v2 (rising trend filter)
  * ex: binance
  * syms: BTC/USDT
  * interval: 4h
@@ -9,26 +9,27 @@
  * Why this strategy: Classic turtle trend-following. BTC makes sustained moves
  * that start with a breakout above the 55-bar high; riding that until a 20-bar
  * low breakdown captures the trend while the stop protects against false starts.
- * Adding the 200-SMA filter avoids the classic turtle trap of buying every
- * breakout in a long sideways range.
+ * This version adds a rising-200-SMA filter so it only buys breakouts while the
+ * long-term trend is actually climbing, not just while price sits above a
+ * falling average (the classic turtle trap in a topping range).
  * When it buys and sells: buy when the last closed 4h bar exceeds the highest
- * high of the prior 55 closed bars AND price is above the 200-SMA. Sell when a
- * closed bar falls below the lowest low of the prior 20 closed bars, or a 15%
- * hard stop is hit.
- * When it does NOT work: in a long sideways range below the 200-SMA it stays
- * out (good), but in a choppy range ABOVE the 200-SMA it still whipsaws. It
- * also lags the very start of a move (55-bar lookback) so early movers profit
- * before it enters, and it misses the start of a fresh bull that begins below
- * the 200-SMA.
+ * high of the prior 55 closed bars AND the 200-SMA is rising (higher than it
+ * was 20 bars ago). Sell when a closed bar falls below the lowest low of the
+ * prior 20 closed bars, or a 15% hard stop is hit.
+ * When it does NOT work: it lags the very start of a fresh bull that begins
+ * from a falling 200-SMA (it waits for the average to turn up) and it still
+ * whipsaws in a sideways range above a flat 200-SMA. It loses in a fast crash
+ * because the 15% stop is wide.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
   const c = ctx.closes;
-  if (c.length < 62) return null;
+  if (c.length < 260) return null;
   const prevClose = c.at(-2);
   const sma200 = ctx.sma(200, 1);
+  const sma200Prev = ctx.sma(200, 21);   // 200-SMA 20 bars earlier -> slope check
 
   // Donchian levels from CLOSED bars, EXCLUDING the signal bar itself
   let h55 = -Infinity;
@@ -46,11 +47,12 @@ function onUpdate(ctx) {
     return null;
   }
 
-  const trendOk = sma200 == null ? true : prevClose > sma200;
-  if (!(prevClose > h55) || !trendOk) return null;   // breakout + above 200-SMA
+  if (sma200 == null || sma200Prev == null) return null;
+  if (!(prevClose > h55)) return null;                       // breakout
+  if (!(sma200 > sma200Prev)) return null;                   // 200-SMA must be RISING
 
   ctx.watch([{ side: 'buy', price: h55, trigger: 'above', note: '55-bar high breakout',
-               conds: [{ label: 'close > 200-SMA', ok: trendOk, closed: true }] }]);
+               conds: [{ label: '200-SMA rising', ok: sma200 > sma200Prev, closed: true }] }]);
 
   const atr = ctx.atr(14, 1);
   if (atr == null || atr <= 0 || prevClose <= 0) return null;

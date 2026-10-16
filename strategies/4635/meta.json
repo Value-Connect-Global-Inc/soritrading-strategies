@@ -3,19 +3,18 @@
   "name": "BTC Donchian Turtle 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 22013,
-    "return": 185.6,
-    "mdd": 19.05,
-    "trades": 81,
-    "vsBuyHold": "lose",
-    "benchRet": 500.45,
+    "backtestId": 22015,
+    "return": 49.99,
+    "mdd": 18.18,
+    "trades": 60,
+    "vsBuyHold": "win",
+    "benchRet": 32.46,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1576108800,
-    "tTo": 1648108800,
+    "tFrom": 1648123200,
+    "tTo": 1720108800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "기간 종료 시 미청산 포지션 1종목 (총자산의 90.63%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
@@ -23,12 +22,12 @@
       "sym": "BTC",
       "interval": "4h",
       "bars": 5000,
-      "end": 1648123200
+      "end": 1720123200
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "88a2e38c88b1507f77dbb35eb0381d08d55d471be54cf0442e309837325a9b3b"
+    "verifiedCodeSha256": "fd6697aa9bdbbd4873397eab21e8babf4359c5b2200fcdf1e02c914fdafcd09d"
   },
   "config": null,
-  "updatedAt": "2026-10-16T05:19:37.474Z",
+  "updatedAt": "2026-10-16T05:21:22.253Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
