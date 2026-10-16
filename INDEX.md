@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4590](strategies/4590/) | FearGreed Regime Basket v9 BreakevenLock | +716.29% | — | +40.34% | 62 | 2026-10-16 |
+| — | [4590](strategies/4590/) | FearGreed Regime Basket v9 BreakevenLock | +24.28% | — | +23.85% | 28 | 2026-10-16 |
 | — | [4589](strategies/4589/) | API Probe2 (do not use) | -10.48% | — | +43.12% | 25 | 2026-10-16 |
 | — | [4586](strategies/4586/) | FearGreed Regime Basket v8 StopCooldown | +716.29% | — | +40.34% | 62 | 2026-10-16 |
 | — | [4585](strategies/4585/) | FearGreed Regime Basket v7 TrailingStop | +506.71% | — | +45.84% | 806 | 2026-10-16 |
