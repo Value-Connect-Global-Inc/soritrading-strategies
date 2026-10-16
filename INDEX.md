@@ -12,8 +12,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4721](strategies/4721/) | BTC Donchian Wide-Exit 1D (champion baseline) | +54.64% | +208.79% | +38.03% | 15 | 2026-10-16 |
 |  | [4720](strategies/4720/) | BTC Chandelier Donchian 1D | +23.43% | +208.79% | +26.25% | 15 | 2026-10-16 |
+|  | [4721](strategies/4721/) | BTC Donchian Wide-Exit 1D (champion baseline) | +54.64% | +208.79% | +38.03% | 15 | 2026-10-16 |
 |  | [4719](strategies/4719/) | BTC Hashrate Momentum 1D | -28.26% | +136.02% | +46.44% | 36 | 2026-10-16 |
 |  | [4718](strategies/4718/) | BTC Deep-Panic Mean Reversion 1D | +22.69% | +99.96% | +40.10% | 18 | 2026-10-16 |
 |  | [4717](strategies/4717/) | BTC Easy-Money Trend 1D | +277.18% | +512.29% | +32.56% | 7 | 2026-10-16 |
