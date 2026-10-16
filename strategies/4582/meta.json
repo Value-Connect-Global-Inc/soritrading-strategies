@@ -3,16 +3,16 @@
   "name": "BTC Donchian Breakout",
   "kind": "custom",
   "verified": {
-    "backtestId": 21677,
-    "return": 216.71,
-    "mdd": 35.43,
-    "trades": 20,
+    "backtestId": 21679,
+    "return": 8.63,
+    "mdd": 43.33,
+    "trades": 28,
     "vsBuyHold": "lose",
-    "benchRet": 512.29,
+    "benchRet": 95.22,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1532908800,
-    "tTo": 1619222400,
+    "tFrom": 1705276800,
+    "tTo": 1791590400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
@@ -22,12 +22,12 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1000,
-      "end": 1619308800
+      "end": 1792108800
     },
     "codeBasis": "assumed-current",
     "verifiedCodeSha256": "36ff339e8cf2e32e088680c3d73d736ee453209344d02bf86b147ecdcb428dd7"
   },
   "config": null,
-  "updatedAt": "2026-10-16T01:06:41.961Z",
+  "updatedAt": "2026-10-16T01:07:24.264Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
