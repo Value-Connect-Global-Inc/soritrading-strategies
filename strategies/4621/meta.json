@@ -3,10 +3,10 @@
   "name": "Momentum Vol-Regime Gated 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 21941,
-    "return": 96.24,
-    "mdd": 12.22,
-    "trades": 218,
+    "backtestId": 21943,
+    "return": 175.07,
+    "mdd": 18.42,
+    "trades": 144,
     "vsBuyHold": "unmeasured",
     "gapPct": 0,
     "tFrom": 1532908800,
@@ -24,9 +24,9 @@
       "syms": 3
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "cf619a623f18136f281353273bc48f5d9a09c7874eab625b9ea035170ba93d9a"
+    "verifiedCodeSha256": "b8d1826368f0995c17f8dcb55f70df2186fe70a634a66eb0647100ac7cbe4b93"
   },
   "config": null,
-  "updatedAt": "2026-10-16T04:08:22.751Z",
+  "updatedAt": "2026-10-16T04:12:46.513Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

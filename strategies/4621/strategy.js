@@ -1,26 +1,24 @@
 /*
  * @coinsori-strategy v1
- * name: Momentum Vol-Gated + Spike Exit 1D
+ * name: Momentum Vol-Gated + Trend Confirm 1D
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Same validated 30-day momentum + 200-day EMA logic as the
- * vol-regime-gated champion, plus the COMPLEMENTARY mechanism: the champion only
- * gates new ENTRIES on high volatility but does nothing when volatility spikes
- * while a position is open — which is exactly when momentum crashes hit. This
- * version exits on a FRESH volatility spike (ATR% crosses above its own ~90th
- * percentile on the latest closed bar) while holding. The entry gate already
- * blocks re-entry while vol stays high, so the exit does not cause churn.
+ * Why this strategy: Same validated 30-day momentum + 200-day EMA + volatility
+ * regime gate as the champion, plus one extra trend-confirmation filter: the
+ * 200-day EMA itself must be RISING, not just price above it. Momentum works
+ * best in a confirmed long-term uptrend; requiring a rising 200-day EMA filters
+ * out bear-market rallies where price pops above a falling long-term average and
+ * momentum then fails.
  * When it buys and sells: buys when the last closed bar is above the 200-day EMA,
- * its 30-day return is positive, and realized volatility is NOT in its top decile;
- * sells on a fresh volatility spike, a drop below the 200-day EMA, negative 30-day
- * return, or a 15% hard stop.
- * When it does NOT work: in a sustained bull market volatility rises with the
- * rally, so the gate keeps you out of the early explosive phase AND the spike
- * exit can cut a winner right before the biggest part of the move; and in a
- * broad crash every leg falls together regardless of the vol gate.
+ * the 200-day EMA is rising, its 30-day return is positive, and realized
+ * volatility is NOT in its top decile; sells when the closed bar drops below the
+ * 200-day EMA, the 30-day return turns negative, or a 15% hard stop is hit.
+ * When it does NOT work: in a sustained bull market the volatility gate keeps you
+ * out of the early explosive phase (vol is high at the start of a rally), and in
+ * a broad crash every leg falls together regardless of the filters.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -28,6 +26,9 @@ function onUpdate(ctx) {
 
   const ema200 = ctx.ema(200, 1);
   if (ema200 == null) return null;
+  const ema200Prev = ctx.ema(200, 21);   // 200-EMA ~20 bars earlier (about a month)
+  if (ema200Prev == null) return null;
+  const emaRising = ema200 > ema200Prev;
 
   const c = ctx.closes;
   if (c.length < 32) return null;
@@ -47,26 +48,15 @@ function onUpdate(ctx) {
   const p90 = hist.length >= 30 ? hist[Math.floor(hist.length * 0.9)] : 1;
   const highVol = atrPct > p90;
 
-  // fresh vol spike: current closed bar above p90 while the previous closed bar
-  // was below it — the momentum-crash trigger moment (vol expansion is sudden).
-  const atr2 = ctx.atr(14, 2);
-  let freshSpike = false;
-  if (atr2 != null && c.length >= 3) {
-    const p2 = c.at(-3);
-    if (p2 > 0) freshSpike = atrPct > p90 && (atr2 / p2) <= p90;
-  }
-
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
-    if (freshSpike) return { side: 'sell', qty: pos };   // momentum-crash protection
     const stop = ctx.entryPx * 0.85;        // hard stop: 15% below entry
     if (price <= stop) return { side: 'sell', qty: pos };
     if (prevClose < ema200) return { side: 'sell', qty: pos };   // trend over
     if (mom30 < 0) return { side: 'sell', qty: pos };            // momentum faded
     ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '15% stop' },
                { side: 'sell', price: ema200, trigger: 'below', note: '200-day trend break',
-                 conds: [{ label: '30d return > 0', ok: mom30 > 0, closed: true },
-                         { label: 'fresh vol spike', ok: freshSpike, closed: true }] }]);
+                 conds: [{ label: '30d return > 0', ok: mom30 > 0, closed: true }] }]);
     return null;
   }
 
@@ -76,8 +66,9 @@ function onUpdate(ctx) {
   ctx.watch([{ side: 'buy', price: ema200, trigger: 'above', note: 'close above 200-day EMA',
                conds: [{ label: '30d return > 0', ok: mom30 > 0, closed: true },
                        { label: 'close > 200-EMA', ok: uptrend, closed: true },
+                       { label: '200-EMA rising', ok: emaRising, closed: true },
                        { label: 'vol not extreme', ok: !highVol, closed: true }] }]);
-  if (!uptrend || !(mom30 > 0)) return null;
+  if (!uptrend || !(mom30 > 0) || !emaRising) return null;
 
   const volScale = Math.min(1, 0.02 / atrPct);   // calm coin bigger, wild coin smaller
   const targetCash = ctx.cash * 0.33 * volScale;
