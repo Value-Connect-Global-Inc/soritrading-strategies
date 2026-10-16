@@ -8,10 +8,9 @@
  *
  * Why this strategy: Classic turtle trend-following. BTC makes sustained moves
  * that start with a breakout above the 55-bar high; riding that until a 20-bar
- * low breakdown captures the trend while the stop protects against false starts.
- * This version adds a rising-200-SMA filter so it only buys breakouts while the
- * long-term trend is actually climbing, not just while price sits above a
- * falling average (the classic turtle trap in a topping range).
+ * low breakdown captures the trend while a 15% hard stop protects against false
+ * starts. A rising-200-SMA filter keeps it out of breakouts inside a topping
+ * range (price above a falling average) where the classic turtle whipsaws.
  * When it buys and sells: buy when the last closed 4h bar exceeds the highest
  * high of the prior 55 closed bars AND the 200-SMA is rising (higher than it
  * was 20 bars ago). Sell when a closed bar falls below the lowest low of the
