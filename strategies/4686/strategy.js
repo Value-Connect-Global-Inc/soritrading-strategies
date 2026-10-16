@@ -1,81 +1,41 @@
 /*
  * @coinsori-strategy v1
- * name: SOL Turtle OI-Confirmed 4H
+ * name: Onchain Regime Trend BTC
  * ex: binance
- * syms: SOL/USDT
+ * syms: BTC/USDT
  * interval: 4h
  * cash: 10000
  *
- * Why this strategy: The proven SOL 4h Donchian turtle holds all three
- * disjoint windows. This version adds a NEW data axis — open interest — to
- * filter breakouts: a breakout backed by expanding leverage (OI above its own
- * 50-bar average) is more likely to be a genuine trend start with fresh money
- * behind it, rather than a short-covering dead-cat bounce.
- * When it buys and sells: buy when a closed 4h bar exceeds the highest high
- * of the prior 55 closed bars, the 200-SMA is rising, and open interest is
- * above its own 50-bar average. Sell on a 2.5x ATR stop or when a closed bar
- * falls below the lowest low of the prior 20 bars.
- * When it does NOT work: OI can keep rising into a long liquidation cascade
- * (peak leverage = top), so the filter is not a guarantee; it will also sit
- * out valid breakouts that start on light OI. If OI data is unavailable or
- * constant in a backtest the filter silently passes (designed to degrade to
- * the base turtle, never to block all trades).
+ * Why this strategy: Bitcoin's on-chain network activity (unique active addresses) is a slow fundamental gauge of adoption. When addresses expand above their 30-day average, user demand is growing and trend-following longs tend to work; when they contract, the network is shedding users and risk is elevated.
+ * When it buys and sells: Holds BTC only while price stays above its 100-period EMA AND active addresses stay above their 30-day average. Buys when both turn true while flat, sells when either breaks. A hard stop 3x ATR below entry caps any single loss.
+ * When it does NOT work: In flat chop where price whips around the EMA it flips long/flat repeatedly and bleeds fees. It will not catch a rally that starts while addresses are still contracting, and the daily on-chain data reacts slowly on a 4h chart.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
-  if (!Number.isFinite(price) || price <= 0) return null;
-  const c = ctx.closes;
-  if (c.length < 260) return null;
-  const prevClose = c.at(-2);
+  const ema = ctx.ema(100, 1);
+  const addr = ctx.data('addr');
+  const addrSma = ctx.data('addr_sma30');
+  if (ema == null || addr == null || addrSma == null) return null;
 
-  const atr = ctx.atr(14, 1);
-  if (atr == null || atr <= 0) return null;
+  const trendUp = price > ema;
+  const networkExpanding = addr > addrSma; // adoption growing = demand tailwind for longs
 
-  const sma200 = ctx.sma(200, 1);
-  const sma200Prev = ctx.sma(200, 21);   // 200-SMA 20 bars earlier -> slope check
-
-  let h55 = -Infinity;
-  for (let k = 3; k <= 57; k++) h55 = Math.max(h55, c.at(-k));   // 55 prior closed bars
-  let l20 = Infinity;
-  for (let k = 3; k <= 22; k++) l20 = Math.min(l20, c.at(-k));   // 20 prior closed bars
-
-  const pos = ctx.pos(ctx.sym);
-  if (pos > 0) {
-    const stop = ctx.entryPx == null ? null : ctx.entryPx - atr * 2.5;
-    if (stop != null && price <= stop) return { side: 'sell', qty: pos };
-    if (prevClose < l20) return { side: 'sell', qty: pos };
-    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '2.5x ATR stop' },
-               { side: 'sell', price: l20, trigger: 'below', note: '20-bar low breakdown' }]);
+  if (ctx.position > 0) {
+    const atr = ctx.atr(14, 1);
+    if (atr == null) return null;
+    const stop = ctx.entryPx != null ? ctx.entryPx - 3 * atr : null; // hard stop 3x ATR caps single-trade loss
+    ctx.watch([
+      { side: 'sell', price: ema, trigger: 'below', note: 'trend broke EMA100' },
+      { side: 'sell', price: stop, trigger: 'below', note: 'hard stop' }
+    ]);
+    if (!trendUp) return { side: 'sell', qty: ctx.position };
+    if (stop != null && price < stop) return { side: 'sell', qty: ctx.position };
     return null;
   }
 
-  if (sma200 == null || sma200Prev == null) return null;
-  if (!(prevClose > h55)) return null;
-  if (!(sma200 > sma200Prev)) return null;
-
-  // OI filter: current OI above its own 50-bar average. Store rolling history in state.
-  const oi = ctx.binanceOi();
-  if (oi != null && oi > 0) {
-    const hist = ctx.state.oiHist || [];
-    hist.push(oi);
-    if (hist.length > 50) hist.shift();
-    ctx.state.oiHist = hist;
-    let sum = 0;
-    for (const v of hist) sum += v;
-    const avg = sum / hist.length;
-    if (hist.length >= 30 && !(oi > avg)) return null;
+  if (trendUp && networkExpanding) {
+    ctx.watch([{ side: 'buy', price: ema, trigger: 'above', note: 'price over EMA100', conds: [{ label: 'addr>sma30', ok: networkExpanding }] }]);
+    return { side: 'buy', qty: ctx.cash / price * 0.99 };
   }
-  // if OI is null/constant, degrade to base turtle (no extra filter)
-
-  // identical vol-target sizing to base turtle 4667
-  const atrPct = atr / prevClose;
-  const volScale = Math.min(1, 0.015 / atrPct);
-  const targetCash = ctx.cash * 0.95 * volScale;
-  const qty = (targetCash / price) * 0.95;
-  if (qty <= 0) return null;
-
-  ctx.watch([{ side: 'buy', price: h55, trigger: 'above', note: '55-bar high breakout',
-               conds: [{ label: '200-SMA rising', ok: sma200 > sma200Prev, closed: true },
-                       { label: 'OI > 50-bar avg', ok: true, closed: true }] }]);
-  return { side: 'buy', qty };
+  return null;
 }
