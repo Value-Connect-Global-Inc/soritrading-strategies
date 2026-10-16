@@ -9,12 +9,12 @@
  * Why this strategy: Same proven turtle trend-following engine that works on
  * BTC/ETH/SOL 4h, applied to XRP for cross-asset diversification. XRP makes
  * sustained moves that start with a breakout above the 55-bar high; riding that
- * until a 20-bar low breakdown captures the trend while a 15% hard stop protects
+ * until a 30-bar low breakdown captures the trend while a 15% hard stop protects
  * against false starts. A rising-200-SMA filter keeps it out of breakouts inside
  * a topping range where the classic turtle whipsaws.
  * When it buys and sells: buy when the last closed 4h bar exceeds the highest
  * high of the prior 55 closed bars AND the 200-SMA is rising (higher than it was
- * 20 bars ago). Sell when a closed bar falls below the lowest low of the prior 20
+ * 20 bars ago). Sell when a closed bar falls below the lowest low of the prior 30
  * closed bars, or a 15% hard stop is hit.
  * When it does NOT work: it whipsaws in a sideways range above a flat 200-SMA
  * and lags the very start of a fresh bull that begins from a falling 200-SMA.
@@ -33,16 +33,16 @@ function onUpdate(ctx) {
   // Donchian levels from CLOSED bars, EXCLUDING the signal bar itself
   let h55 = -Infinity;
   for (let k = 3; k <= 57; k++) h55 = Math.max(h55, c.at(-k));   // 55 prior bars
-  let l20 = Infinity;
-  for (let k = 3; k <= 22; k++) l20 = Math.min(l20, c.at(-k));   // 20 prior bars
+  let l30 = Infinity;
+  for (let k = 3; k <= 32; k++) l30 = Math.min(l30, c.at(-k));   // 30 prior bars (looser exit)
 
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
     const stop = ctx.entryPx * 0.85;   // hard stop 15% below entry
     if (price <= stop) return { side: 'sell', qty: pos };
-    if (prevClose < l20) return { side: 'sell', qty: pos };   // 20-bar low breakdown
+    if (prevClose < l30) return { side: 'sell', qty: pos };   // 30-bar low breakdown
     ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '15% stop' },
-               { side: 'sell', price: l20, trigger: 'below', note: '20-bar low breakdown' }]);
+               { side: 'sell', price: l30, trigger: 'below', note: '30-bar low breakdown' }]);
     return null;
   }
 

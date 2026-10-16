@@ -3,10 +3,10 @@
   "name": "XRP Donchian Turtle 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 22097,
-    "return": 115.91,
-    "mdd": 39.23,
-    "trades": 74,
+    "backtestId": 22099,
+    "return": 131.67,
+    "mdd": 32.05,
+    "trades": 62,
     "vsBuyHold": "lose",
     "benchRet": 137.91,
     "benchBasis": "price",
@@ -15,7 +15,6 @@
     "tTo": 1640980800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "[유동성/미체결] 시장가 주문 4건이 그 봉의 호가 두께를 넘어 일부만 체결됐습니다(전체 요청 금액의 1% 미체결, 남은 물량은 다음 봉으로). 진입·청산이 전략이 의도한 시점보다 늦습니다. ★ 원인은 둘 중 하나이고 이 수만으로는 못 가릅니다 — 종목이 얇거나, 주문이 한 봉이 소화할 수 있는 것보다 크거나. 주문 크기를 줄여 같은 구간을 다시 돌리면 …",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 6571봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
@@ -26,9 +25,9 @@
       "end": 1640995200
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "f806f23e2da780e960cee6653ab6d52ccb23b343c0c12b9473aa67a9e93b63a4"
+    "verifiedCodeSha256": "c9969da01fae55cfd1172aa4f224484373d1ae8991c00ac9aae6a5aeed3fcdbd"
   },
   "config": null,
-  "updatedAt": "2026-10-16T06:32:13.842Z",
+  "updatedAt": "2026-10-16T06:35:25.823Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
