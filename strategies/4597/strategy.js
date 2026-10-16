@@ -10,14 +10,12 @@
  * out-of-sample evidence in this environment (BTC 4h +20/+41/+40%, and
  * +218/+109/+47% once re-entry while the trend is intact is added). This
  * applies that validated core to a 2-coin basket (BTC+ETH, the two most
- * liquid coins) so a single asset's crash cannot sink the whole account
- * while keeping the whipsaw of smaller alts out of the mix.
- * When it buys and sells: on each asset, buy when the 50-period EMA is above
- * the 200-period EMA (closed bars), or re-enter while flat when the trend is
- * still intact (EMA50>EMA200 and price above the 400-period average). Sell on
- * a death cross (EMA50 below EMA200) or when price falls 4 ATR below the best
- * close since entry (trailing stop). After any exit, wait 24 bars (4 days)
- * before re-entering that asset so a choppy market cannot churn fees.
+ * liquid coins) so a single asset's crash cannot sink the whole account.
+ * When it buys and sells: on each asset, buy when the 50-period EMA crosses
+ * above the 200-period EMA, or re-enter while flat when the trend is still
+ * intact (EMA50>EMA200 and price above the 400-period average). Sell on a
+ * death cross (EMA50 below EMA200) or when price falls 2.5 ATR below the
+ * entry price (fixed stop). Re-entry waits 24 bars (4 days) after an exit.
  * When it does NOT work: in a long choppy sideways range the crossovers
  * whipsaw and the stops turn small dips into realized losses. Long-only means
  * a sustained bear market across both coins is flat-to-loss. It rides trends,
@@ -36,18 +34,17 @@ function onUpdate(ctx) {
 
   const sym = ctx.sym;
   const st = ctx.state || {};
-  if (!st.peak) st.peak = {}; // per-symbol peak so one coin cannot drive another's stop
   if (!st.cool) st.cool = {}; // per-symbol cooldown bar index after an exit
-  const peak = st.peak[sym] || price;
 
   const pos = ctx.position;
   if (pos > 0) {
-    const newPeak = Math.max(peak, price);
-    st.peak[sym] = newPeak;
-    const stopPx = newPeak - 4 * atr; // wide trail: 4h alts whipsaw more than BTC
+    const entry = ctx.entryPx;
+    // Fixed stop from entry, as in the validated core — a trailing stop gets
+    // stopped out on pullbacks inside an intact trend and churns fees.
+    const stopPx = entry != null ? entry - 2.5 * atr : price - 2.5 * atr;
     if (f <= s) { st.cool[sym] = ctx.i; return { side: 'sell', qty: pos }; } // death cross -> trend over
     if (price <= stopPx) { st.cool[sym] = ctx.i; return { side: 'sell', qty: pos }; }
-    ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'trail 4 ATR' }]);
+    ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'stop 2.5 ATR from entry' }]);
     return null;
   }
 
@@ -62,12 +59,10 @@ function onUpdate(ctx) {
   else if (f > s && price > sma400) enter = true;
   if (!enter) return null;
 
-  st.peak[sym] = price;
-
   // Size: risk a small fixed share of the per-symbol cash on the stop distance
   // so a wide-stop trade cannot ruin the account.
   const riskCash = ctx.cash * 0.02;
-  const stopDist = 4 * atr;
+  const stopDist = 2.5 * atr;
   let qty = stopDist > 0 ? riskCash / stopDist : 0;
   const maxQty = (ctx.cash * 0.99) / price;
   if (qty > maxQty) qty = maxQty;

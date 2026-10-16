@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4597](strategies/4597/) | MultiAsset Trend EMA50/200 4H | +19.12% | — | +23.73% | 212 | 2026-10-16 |
+| — | [4597](strategies/4597/) | MultiAsset Trend EMA50/200 4H | +73.74% | — | +26.18% | 92 | 2026-10-16 |
 |  | [4596](strategies/4596/) | DollarRegime BTC 1D | +5.90% | +512.29% | +37.45% | 47 | 2026-10-16 |
 | — | [4595](strategies/4595/) | FearGreed Contrarian Basket 1D | -53.49% | — | +67.69% | 18 | 2026-10-16 |
 | — | [4594](strategies/4594/) | DollarRegime Multi-Asset Basket 1D | -61.45% | — | +67.55% | 368 | 2026-10-16 |
