@@ -3,10 +3,10 @@
   "name": "MultiAsset Trend EMA50/200 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 21786,
-    "return": 112.42,
-    "mdd": 27.03,
-    "trades": 208,
+    "backtestId": 21790,
+    "return": 82.32,
+    "mdd": 23.13,
+    "trades": 154,
     "vsBuyHold": "unmeasured",
     "gapPct": 0,
     "tFrom": 1648108800,
@@ -24,9 +24,9 @@
       "syms": 4
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "ffd395aeefa3b7d8768f1dcaeda127dba4be6266ff4b249fe519ee37ee09759d"
+    "verifiedCodeSha256": "7d66a79dd87802969dbb528f981cb2576c14370bf64b529214c5b3d785ac76d0"
   },
   "config": null,
-  "updatedAt": "2026-10-16T02:03:26.289Z",
+  "updatedAt": "2026-10-16T02:06:57.328Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

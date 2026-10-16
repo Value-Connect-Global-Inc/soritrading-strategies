@@ -14,13 +14,13 @@
  * inside intact trends; this uses the fixed 2.5-ATR stop + 24-bar cooldown.
  * When it buys and sells: on each asset, buy when the 50-period EMA crosses
  * above the 200-period EMA, or re-enter while flat when the trend is intact
- * (EMA50>EMA200 and price above the 400-period average). Sell on a death cross
- * or when price falls 2.5 ATR below the entry price. Re-entry waits 24 bars
- * (4 days) after an exit.
+ * (EMA50>EMA200 and price above the 400-period average). Sell on a death
+ * cross or when price falls 2.5 ATR below the entry price. Re-entry waits 24
+ * bars (4 days) after an exit.
  * When it does NOT work: in a long choppy sideways range the crossovers
- * whipsaw and the stops turn small dips into realized losses. Long-only means a
- * sustained bear market across all coins is flat-to-loss, and it lags a fast
- * V-shaped recovery after a crash.
+ * whipsaw and the stops turn small dips into realized losses. Long-only means
+ * a sustained bear market across all coins is flat-to-loss, and it lags a
+ * fast V-shaped recovery after a crash.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
