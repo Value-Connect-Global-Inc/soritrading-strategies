@@ -1,0 +1,35 @@
+{
+  "id": 4723,
+  "name": "FearGreedContrarian4h",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 22412,
+    "return": -31.27,
+    "mdd": 40.07,
+    "trades": 99,
+    "vsBuyHold": "lose",
+    "benchRet": 68.31,
+    "benchBasis": "price",
+    "gapPct": 0.3,
+    "tFrom": 1503921600,
+    "tTo": 1576137600,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 74.81%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
+      "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "bars": 5000,
+      "end": 1576152000
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "de15ed4e06dee8c2cfd513750b279e8b2872902df4422392adfd4d05c6cbba37"
+  },
+  "config": null,
+  "updatedAt": "2026-10-16T12:19:45.251Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
