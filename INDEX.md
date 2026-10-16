@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4602](strategies/4602/) | MultiAsset OBV Volume-Flow Trend 4H | -64.99% | — | +64.99% | 2296 | 2026-10-16 |
+| — | [4602](strategies/4602/) | MultiAsset OBV Volume-Flow Trend 4H | +17.82% | — | +17.18% | 292 | 2026-10-16 |
 | — | [4601](strategies/4601/) | MultiAsset Trend EMA50/200 + TP 4H | +24.21% | — | +19.88% | 424 | 2026-10-16 |
 | — | [4600](strategies/4600/) | CrossMomentum Rotation Top2 4H | +3.99% | — | +14.03% | 62 | 2026-10-16 |
 | — | [4599](strategies/4599/) | Baseline check EMA50/200 (ref) | +57.15% | — | +35.21% | 205 | 2026-10-16 |
