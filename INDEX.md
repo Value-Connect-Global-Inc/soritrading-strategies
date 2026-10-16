@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4573](strategies/4573/) | SMA200 Trend-Following Basket v1 | -52.68% | — | +52.68% | 78 | 2026-10-16 |
+| — | [4573](strategies/4573/) | SMA200 Trend-Following Basket v1 | +15.10% | — | +27.79% | 58 | 2026-10-16 |
 | — | [4572](strategies/4572/) | FearGreed Contrarian Basket v1 | +12.49% | — | +48.29% | 18 | 2026-10-16 |
 | — | [4571](strategies/4571/) | FearGreed Basket v3 FedFilter ‡ | +71.75% | — | +21.39% | 11 | 2026-10-16 |
 |  | [4570](strategies/4570/) | OnChain Usage Trend BTC ‡ | -53.60% | -15.10% | +75.71% | 312 | 2026-10-16 |
