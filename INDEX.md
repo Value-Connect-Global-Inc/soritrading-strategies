@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4607](strategies/4607/) | AI 전략 | +112.42% | — | +27.03% | 208 | 2026-10-16 |
+| — | [4607](strategies/4607/) | AI 전략 | +214.48% | — | +20.11% | 164 | 2026-10-16 |
 | — | [4606](strategies/4606/) | TrendStrength EMA50/200 4H Basket | +101.61% | — | +20.41% | 134 | 2026-10-16 |
 | — | [4605](strategies/4605/) | MultiTimeframe Trend 1D/4H Basket | +57.15% | — | +35.21% | 205 | 2026-10-16 |
 | — | [4604](strategies/4604/) | MultiAsset Trend EMA50/200 1D | +16.14% | — | +9.76% | 32 | 2026-10-16 |
