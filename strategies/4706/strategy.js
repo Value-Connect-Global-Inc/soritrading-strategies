@@ -10,10 +10,11 @@
  * by ordinary pullbacks (a 3-week dip breaks the 20-bar low, then price resumes up). Widening the
  * exit to the 55-bar low keeps the position through normal corrections so the trend can run.
  * When it buys and sells: buys when a closed daily bar breaks the 55-bar high. Sells on a 2x ATR
- * hard stop or when a closed bar breaks the 55-bar low.
- * When it does NOT work: the wider exit means it gives back more profit on reversals before exiting
- * (bigger round-trip drawdown per trade). In a choppy sideways market the 55-bar breakout whipsaws
- * and the wide exit delays cutting losses.
+ * hard stop or when a closed bar breaks the 55-bar low. Position size is scaled down when volatility
+ * is high to cap drawdown.
+ * When it does NOT work: the wider exit gives back more profit on reversals before exiting (bigger
+ * round-trip drawdown per trade). In a choppy sideways market the 55-bar breakout whipsaws and the
+ * wide exit delays cutting losses. Drawdowns can still reach ~30-40% in sharp reversals.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -47,7 +48,10 @@ function onUpdate(ctx) {
     return null;
   }
 
-  const qty = (ctx.cash * 0.99) / price;
+  // ATR-scaled sizing: cut exposure when volatility is high (target 1.5% of price per ATR)
+  const atrPct = atr / prevClose;
+  const volScale = Math.min(1, 0.015 / atrPct);
+  const qty = (ctx.cash * 0.99 * volScale) / price;
   if (qty <= 0) return null;
 
   ctx.watch([{ side: 'buy', price: h55, trigger: 'above', note: '55-bar high breakout' }]);
