@@ -47,9 +47,7 @@ function onUpdate(ctx) {
     return null;
   }
 
-  const atrPct = atr / prevClose;
-  const volScale = Math.min(1, 0.02 / atrPct);
-  const qty = (ctx.cash * 0.95 * volScale) / price * 0.95;
+  const qty = (ctx.cash * 0.99) / price;
   if (qty <= 0) return null;
 
   ctx.watch([{ side: 'buy', price: h55, trigger: 'above', note: '55-bar high breakout' }]);

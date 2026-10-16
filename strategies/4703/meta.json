@@ -3,32 +3,32 @@
   "name": "BTC Donchian Breakout 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 22305,
-    "return": -2.63,
-    "mdd": 29.16,
-    "trades": 21,
-    "vsBuyHold": "lose",
-    "benchRet": 89.28,
+    "backtestId": 22308,
+    "return": 284.47,
+    "mdd": 33.39,
+    "trades": 17,
+    "vsBuyHold": "win",
+    "benchRet": 116.17,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1704067200,
-    "tTo": 1790726400,
+    "tFrom": 1514764800,
+    "tTo": 1609372800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "기간 종료 시 미청산 포지션 1종목 (총자산의 62.76%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
-      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1004봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 99.68%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1096봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
-      "bars": 1004,
-      "end": 1790812800
+      "bars": 1096,
+      "end": 1609459200
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "a0697357a383a0ad5277deea3f8645f816f055fa865068a22da04b0df95676b5"
+    "verifiedCodeSha256": "cc3b29dd0bf01c286b8619ce3db8d87c23330893b9db811bcc292e0609bba92b"
   },
   "config": null,
-  "updatedAt": "2026-10-16T10:33:36.113Z",
+  "updatedAt": "2026-10-16T10:35:20.233Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
