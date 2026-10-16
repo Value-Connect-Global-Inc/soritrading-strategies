@@ -1,0 +1,33 @@
+{
+  "id": 4670,
+  "name": "SOL Turtle ATR SkipAfterLoss 4H",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 22177,
+    "return": 58.41,
+    "mdd": 23.6,
+    "trades": 56,
+    "vsBuyHold": "win",
+    "benchRet": 24.28,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1648137600,
+    "tTo": 1720123200,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "4h",
+      "bars": 5000,
+      "end": 1720137600
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "87694df8ca5a89eef05ecf17759420eec31eee550c07f13b14745a809370e4f4"
+  },
+  "config": null,
+  "updatedAt": "2026-10-16T08:11:22.307Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
