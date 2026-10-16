@@ -3,16 +3,16 @@
   "name": "BTC Donchian Turtle Chandelier 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 22045,
-    "return": -53.98,
-    "mdd": 54.49,
-    "trades": 210,
+    "backtestId": 22047,
+    "return": -15.14,
+    "mdd": 32.07,
+    "trades": 80,
     "vsBuyHold": "lose",
-    "benchRet": 32.46,
+    "benchRet": 500.45,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1648123200,
-    "tTo": 1720108800,
+    "tFrom": 1576108800,
+    "tTo": 1648108800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
@@ -22,10 +22,10 @@
       "sym": "BTC",
       "interval": "4h",
       "bars": 5000,
-      "end": 1720123200
+      "end": 1648123200
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "e7b50d78aa495f07b49debb73da5d62ec35c0861a7d81a31aee5760a20831e77"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "b9ed60cc6739b14dd0645d986caf28e1f9de942583d08319ec7c22021eaa8874"
   },
   "config": null,
   "updatedAt": "2026-10-16T05:49:22.909Z",
