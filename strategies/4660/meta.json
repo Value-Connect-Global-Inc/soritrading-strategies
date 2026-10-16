@@ -3,7 +3,7 @@
   "name": "XRP Donchian DXY Gate 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 22135,
+    "backtestId": 22137,
     "return": -35.19,
     "mdd": 39.97,
     "trades": 12,
@@ -15,7 +15,6 @@
     "tTo": 1705622400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
@@ -26,9 +25,9 @@
       "end": 1705708800
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "5c4ef058f504d8c5dbcd81ab473e05354c8d3f81f7fabe252ad4c80cbc94c968"
+    "verifiedCodeSha256": "cc21d1fa38cf84682f5a96a4b76e00803cc5cc01756c47001758dcced6a5dbb1"
   },
   "config": null,
-  "updatedAt": "2026-10-16T07:24:55.541Z",
+  "updatedAt": "2026-10-16T07:26:01.975Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
