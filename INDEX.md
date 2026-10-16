@@ -12,10 +12,10 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [4703](strategies/4703/) | BTC Donchian Breakout 1D | +284.47% | +116.17% | +33.39% | 17 | 2026-10-16 |
 |  | [4706](strategies/4706/) | BTC Donchian Wide-Exit 1D | +43.66% | +44.16% | +37.52% | 15 | 2026-10-16 |
 |  | [4705](strategies/4705/) | BTC MACD Trend 1D | +30.38% | +44.16% | +28.27% | 54 | 2026-10-16 |
 |  | [4704](strategies/4704/) | BTC Donchian Trend-Filtered 1D | -5.03% | +89.28% | +38.00% | 15 | 2026-10-16 |
-| ★ | [4703](strategies/4703/) | BTC Donchian Breakout 1D | +284.47% | +116.17% | +33.39% | 17 | 2026-10-16 |
 |  | [4702](strategies/4702/) | BTC Donchian F&G Risk-On 1D | +29.06% | +44.16% | +13.62% | 15 | 2026-10-16 |
 |  | [4700](strategies/4700/) | BTC RSI2 Dip Mean Reversion 1D | -10.33% | +89.28% | +14.11% | 91 | 2026-10-16 |
 |  | [4699](strategies/4699/) | BB Squeeze Breakout BTC 1D | +9.69% | +95.22% | +15.72% | 12 | 2026-10-16 |
