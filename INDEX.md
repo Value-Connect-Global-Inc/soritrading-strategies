@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4624](strategies/4624/) | Momentum ATR-Trailing 1D | -59.60% | — | +59.90% | 1696 | 2026-10-16 |
+| — | [4624](strategies/4624/) | Momentum ATR-Trailing 1D | +0.27% | — | +17.64% | 180 | 2026-10-16 |
 | — | [4623](strategies/4623/) | Momentum Vol-Gated + Strong-Mom Override 1D | +214.11% | — | +18.64% | 160 | 2026-10-16 |
 | — | [4622](strategies/4622/) | Fear-Greed Contrarian 1D | -10.47% | — | +13.73% | 12 | 2026-10-16 |
 | — | [4621](strategies/4621/) | Momentum Vol-Regime Gated 1D ‡ | +175.07% | — | +18.42% | 144 | 2026-10-16 |

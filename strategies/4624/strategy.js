@@ -1,25 +1,27 @@
 /*
  * @coinsori-strategy v1
- * name: Momentum ATR-Trailing 1D
+ * name: Momentum Chandelier-Exit 1D
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT
  * interval: 1d
  * cash: 10000
  *
  * Why this strategy: Same proven momentum core as the champion (close above the
- * 200-day EMA + positive 30-day return + a volatility regime gate that blocks
- * new entries while realized vol is in its own top decile). The DIFFERENCE is
- * the exit: instead of a fixed 15% stop and a trend-break exit, it uses an ATR
- * trailing stop as the ONLY way out. A trailing stop ratchets up with the market
- * and lets winners run through bull-market pullbacks — the regime where the
- * fixed-stop champion is weakest.
+ * 200-day EMA + positive 30-day return + volatility regime gate that blocks new
+ * entries while realized vol is in its own top decile). The DIFFERENCE is the
+ * hard stop: instead of a fixed 15% below entry, it uses a chandelier exit that
+ * ratchets up with the market — the highest close of the last 22 bars minus
+ * 3x ATR. In a strong uptrend the stop rises with price, so winners are never
+ * capped at 15%; in a crash the stop is already high and exits early. The
+ * champion's trend-break and momentum-fade exits are KEPT (a trailing-only
+ * variant without them was catastrophic).
  * When it buys and sells: buys when the last closed bar is above the 200-day EMA,
  * its 30-day return is positive, and realized volatility is NOT in the top decile;
- * sells only when price closes 3x ATR below the highest close since entry.
- * When it does NOT work: in a long slow grind lower (no sharp reversal), the
- * trailing stop is never hit and the position bleeds slowly; and in a choppy
- * sideways market the 200-EMA + momentum entry whipsaws without a trend-break
- * exit to cut it.
+ * sells when price closes below the chandelier stop, below the 200-day EMA, or
+ * when the 30-day return turns negative.
+ * When it does NOT work: in a choppy sideways market the 200-EMA + momentum entry
+ * whipsaws and the chandelier stop is hit often; and in a slow grind lower the
+ * stop ratchets down too slowly and gives back more than a fixed stop would.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -34,7 +36,6 @@ function onUpdate(ctx) {
   const mom30 = prevClose / c.at(-32) - 1;   // 30-day return of the last CLOSED bar
 
   // realized volatility regime: ATR as % of price vs its own ~90th percentile.
-  // Same gate as the champion — do not trust momentum right after a vol spike.
   const atr = ctx.atr(14, 1);
   if (atr == null || atr <= 0 || prevClose <= 0) return null;
   const atrPct = atr / prevClose;
@@ -49,18 +50,22 @@ function onUpdate(ctx) {
 
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
-    const entry = ctx.entryPx;
-    if (entry == null) return null;
-    const s = ctx.state || (ctx.state = {});
-    // ratchet: highest CLOSED price since entry
-    s.hi = Math.max(s.hi || entry, prevClose);
-    // 3x ATR trail — wide enough to survive normal bull pullbacks, tight enough
-    // to exit a crash before most of the damage; k=3 is the judgement call here.
-    const k = 3;
-    const trail = s.hi - k * atr;
-    s.trail = trail;
-    if (price <= trail) return { side: 'sell', qty: pos };
-    ctx.watch([{ side: 'sell', price: trail, trigger: 'below', note: '3x ATR trailing stop' }]);
+    // chandelier exit: highest CLOSED price of the last 22 bars minus 3x ATR.
+    // 22 bars ~ one month of highs; k=3 so normal pullbacks don't trigger it.
+    const lookback = 22;
+    let hi = prevClose;
+    const len = c.length;
+    for (let i = 2; i <= lookback + 1 && i < len; i++) {
+      const v = c.at(-i);
+      if (v > hi) hi = v;
+    }
+    const stop = hi - 3 * atr;
+    if (price <= stop) return { side: 'sell', qty: pos };
+    if (prevClose < ema200) return { side: 'sell', qty: pos };   // trend over
+    if (mom30 < 0) return { side: 'sell', qty: pos };            // momentum faded
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'chandelier stop' },
+               { side: 'sell', price: ema200, trigger: 'below', note: '200-day trend break',
+                 conds: [{ label: '30d return > 0', ok: mom30 > 0, closed: true }] }]);
     return null;
   }
 
