@@ -15,12 +15,12 @@
  * When it buys and sells: buy BTC when price is above its 200-day average AND
  * active addresses are above their 30-day average AND hash rate is above its
  * 30-day average. Sell when price falls below its 200-day average (trend
- * broken) or a hard 20% stop-loss from the entry price is hit.
+ * broken). Full position while the regime is on, flat while it is off.
  * When it does NOT work: in a mature bull where price keeps climbing but
  * on-chain activity plateaus (addresses/hash rate stop expanding), the filter
  * keeps us out of the final leg. In a sharp crash the 200-day gate is slow to
- * flip and the stop-loss takes the damage. The daily data series start later
- * than price, so the first bars of history have no fundamental signal.
+ * flip and we ride the drawdown down. The daily data series start later than
+ * price, so the first bars of history have no fundamental signal.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -42,27 +42,19 @@ function onUpdate(ctx) {
 
   const pos = ctx.position;
   if (pos > 0) {
-    const entry = ctx.entryPx;
-    // Hard 20% stop from entry caps the loss on any single position; the 200-day
-    // trend gate exits when the longer regime turns. 20% is wide enough not to be
-    // shaken out by normal pullbacks but caps the worst case.
-    const stopPx = entry != null ? entry * 0.80 : price * 0.80;
-    if (price <= sma200 || price <= stopPx) return { side: 'sell', qty: pos };
-    ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'stop 20%' },
-               { side: 'sell', price: sma200, trigger: 'below', note: 'trend gate' }]);
+    // Regime exit only: the 200-day trend gate. No tight stop — a regime
+    // strategy on daily bars should not be shaken out by normal pullbacks.
+    if (price <= sma200 || !usageUp || !hashUp) return { side: 'sell', qty: pos };
+    ctx.watch([{ side: 'sell', price: sma200, trigger: 'below', note: 'trend gate' }]);
     return null;
   }
 
   // Entry needs the trend intact AND both fundamentals expanding.
   if (price <= sma200 || !usageUp || !hashUp) return null;
 
-  // Size: risk a small share of cash; with a 20% stop this gives roughly 5%
-  // of the account at risk per position, which is sane for a single asset.
-  const riskCash = ctx.cash * 0.05;
-  const stopDist = price * 0.20;
-  let qty = stopDist > 0 ? riskCash / stopDist : 0;
-  const maxQty = (ctx.cash * 0.99) / price;
-  if (qty > maxQty) qty = maxQty;
+  // Full position while the regime is on — this is a regime switch, not a
+  // risk-managed swing, so we want the exposure the regime is paying for.
+  const qty = (ctx.cash * 0.99) / price;
   if (qty <= 0) return null;
   return { side: 'buy', qty };
 }

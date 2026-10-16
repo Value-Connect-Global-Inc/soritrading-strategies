@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4615](strategies/4615/) | Onchain Expansion Regime 1D | +79.64% | +1067.96% | +32.75% | 35 | 2026-10-16 |
+|  | [4615](strategies/4615/) | Onchain Expansion Regime 1D | -87.60% | +47.08% | +89.20% | 410 | 2026-10-16 |
 | — | [4614](strategies/4614/) | Momentum Rotation Basket 4H | +30.95% | — | +23.32% | 167 | 2026-10-16 |
 | — | [4613](strategies/4613/) | Data Availability Diagnostic | -2.39% | — | +2.39% | 48 | 2026-10-16 |
 | — | [4610](strategies/4610/) | MultiAsset Mean Reversion BB/RSI 4H | -5.73% | — | +13.08% | 182 | 2026-10-16 |
