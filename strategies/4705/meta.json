@@ -1,0 +1,33 @@
+{
+  "id": 4705,
+  "name": "BTC MACD Trend 1D",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 22314,
+    "return": 30.38,
+    "mdd": 28.27,
+    "trades": 54,
+    "vsBuyHold": "lose",
+    "benchRet": 44.16,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1609459200,
+    "tTo": 1703980800,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1095봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 1095,
+      "end": 1704067200
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "741db0511475d0fee65a72f10e32f1f9cb918ecbf01039510b15cdf4898b4d67"
+  },
+  "config": null,
+  "updatedAt": "2026-10-16T10:44:43.152Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
