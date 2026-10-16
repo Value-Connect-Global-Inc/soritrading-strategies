@@ -4,14 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 540 of 2209 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 358 of them right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 540 of 2210 right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 359 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 **‡** after a name: the code was edited after its last verifying backtest — the published code is current, but the figures are from the previous code until a new backtest verifies it.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [4607](strategies/4607/) | AI 전략 | +112.42% | — | +27.03% | 208 | 2026-10-16 |
 | — | [4606](strategies/4606/) | TrendStrength EMA50/200 4H Basket | +101.61% | — | +20.41% | 134 | 2026-10-16 |
 | — | [4605](strategies/4605/) | MultiTimeframe Trend 1D/4H Basket | +57.15% | — | +35.21% | 205 | 2026-10-16 |
 | — | [4604](strategies/4604/) | MultiAsset Trend EMA50/200 1D | +16.14% | — | +9.76% | 32 | 2026-10-16 |
