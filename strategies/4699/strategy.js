@@ -46,8 +46,8 @@ function onUpdate(ctx) {
   const pos = ctx.position;
 
   if (pos > 0) {
-    // Trailing exit: stop is the higher of (entry - 2.5 ATR) and (highest close since entry - 2.5 ATR).
-    // Trailing lets a working breakout run; the floor at entry keeps a failed breakout loss small.
+    // Trailing exit: stop is the higher of (entry - 2.5 ATR) and (highest close since entry - 4 ATR).
+    // 4 ATR is wide enough to survive the normal pullback after a squeeze, unlike 2.5 which churned.
     const entry = ctx.entryPx;
     let hiSince = entry == null ? -Infinity : entry;
     for (let k = 2; k <= 250; k++) {
@@ -55,12 +55,13 @@ function onUpdate(ctx) {
       if (v == null) break;
       hiSince = Math.max(hiSince, v);
     }
-    const trail = hiSince - atr * 2.5;
-    const stop = entry == null ? null : Math.max(entry - atr * 2.5, trail);
+    const floor = entry == null ? null : entry - atr * 2.5;
+    const trail = hiSince - atr * 4;
+    const stop = entry == null ? null : Math.max(floor, trail);
     if (stop != null && price <= stop) return { side: 'sell', qty: pos };
     const mid = avg(c.slice(NB - 19, NB + 1));
     if (c[NB] < mid) return { side: 'sell', qty: pos };
-    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'trailing 2.5x ATR stop' },
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'trailing 4x ATR stop' },
                { side: 'sell', price: mid, trigger: 'below', note: 'close below mid-BB' }]);
     return null;
   }
