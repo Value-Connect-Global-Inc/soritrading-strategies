@@ -1,0 +1,33 @@
+{
+  "id": 4638,
+  "name": "BTC Trend Pullback 4H",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 22031,
+    "return": 28.15,
+    "mdd": 12.82,
+    "trades": 24,
+    "vsBuyHold": "lose",
+    "benchRet": 500.45,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1576108800,
+    "tTo": 1648108800,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "bars": 5000,
+      "end": 1648123200
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "fc3c50c82ee88265a96b267eab4dcf9ac7a96f4aeb3c8e09e030b41ed673c0e4"
+  },
+  "config": null,
+  "updatedAt": "2026-10-16T05:31:47.027Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
