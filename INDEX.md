@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4711](strategies/4711/) | Crypto Momentum Trend 1D (BTC/ETH/SOL) | +19.88% | — | +47.02% | 22 | 2026-10-16 |
+| — | [4711](strategies/4711/) | Crypto Momentum Trend 1D (BTC/ETH/SOL) | +14.83% | — | +33.44% | 22 | 2026-10-16 |
 |  | [4709](strategies/4709/) | BTC Donchian Profit-Lock 1D | +5.62% | +145.93% | +52.79% | 9 | 2026-10-16 |
 |  | [4708](strategies/4708/) | AI 전략 | +49.71% | +141.30% | +21.27% | 26 | 2026-10-16 |
 | ★ | [4706](strategies/4706/) | BTC Donchian Wide-Exit 1D | +142.42% | +116.17% | +32.56% | 11 | 2026-10-16 |

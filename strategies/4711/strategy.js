@@ -11,7 +11,7 @@
  * assets independently, only inside a 200-day uptrend so it steps aside in broad bears.
  * When it buys and sells: on each asset, buys when the trailing 90-day return is positive AND
  * price closes above the 200-day average. Sells when a closed bar closes below the 200-day average.
- * Position per asset is capped at one third of equity.
+ * Position per asset is scaled down when volatility is high, and capped at one third of equity.
  * When it does NOT work: in a choppy sideways market the 200-day gate whipsaws; in a sharp
  * reversal it gives back the move before the 200-day exit fires. It misses the first leg of a
  * new uptrend (needs 90 days of positive momentum to enter).
@@ -23,6 +23,9 @@ function onUpdate(ctx) {
   const c = ctx.closes;
   if (c.length < 202) return null;
 
+  const atr = ctx.atr(14, 1);
+  if (atr == null || atr <= 0) return null;
+
   const prevClose = c.at(-2); // last CLOSED bar
   const pos = ctx.pos(sym);
 
@@ -32,7 +35,6 @@ function onUpdate(ctx) {
   const sma200 = s / 200;
 
   if (pos > 0) {
-    // exit: closed bar below the 200-day average (trend broken)
     if (prevClose < sma200) return { side: 'sell', qty: pos };
     ctx.watch([{ side: 'sell', price: sma200, trigger: 'below', note: '200d SMA breakdown' }]);
     return null;
@@ -50,8 +52,11 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // one third of equity per asset (3 assets = full basket)
-  const qty = (ctx.cash * 0.99 / price) / 3;
+  // ATR-scaled sizing: cut exposure when volatility is high (target 2% of price per ATR),
+  // and never risk more than one third of equity on a single asset.
+  const atrPct = atr / prevClose;
+  const volScale = Math.min(1, 0.02 / atrPct);
+  const qty = (ctx.cash * 0.99 / price) / 3 * volScale;
   if (qty <= 0) return null;
 
   ctx.watch([{ side: 'buy', price: sma200, trigger: 'above', note: '200d SMA reclaim',
