@@ -1,0 +1,33 @@
+{
+  "id": 4669,
+  "name": "XRP Turtle ATR Stop 4H",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 22172,
+    "return": -55.89,
+    "mdd": 57.14,
+    "trades": 60,
+    "vsBuyHold": "lose",
+    "benchRet": -48.81,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1648137600,
+    "tTo": 1720123200,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "XRP",
+      "interval": "4h",
+      "bars": 5000,
+      "end": 1720137600
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "f7eef66189402e3aa35f497335e123f70bfa7e61e917dcbf73ca91262049c94b"
+  },
+  "config": null,
+  "updatedAt": "2026-10-16T08:00:06.435Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
