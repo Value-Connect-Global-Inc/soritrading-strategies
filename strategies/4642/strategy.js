@@ -1,25 +1,25 @@
 /*
  * @coinsori-strategy v1
- * name: BTC Donchian Turtle Chandelier 4H
+ * name: BTC Donchian Turtle Breakeven 4H
  * ex: binance
  * syms: BTC/USDT
  * interval: 4h
  * cash: 10000
  *
- * Why this strategy: Same turtle trend-following as the champion (55-bar
- * breakout entry + rising 200-SMA filter + ATR-scaled position), but the
- * fixed 15% stop is replaced by a chandelier exit: the stop trails 3xATR
- * below the highest close since entry. A dynamic trailing stop locks in
- * profits as the trend runs and exits sooner in a fast crash, instead of
- * giving back a fixed 15% from entry every time.
+ * Why this strategy: The champion turtle (55-bar breakout + rising 200-SMA +
+ * ATR sizing) rode big trends but gave back a fixed 15% on every losing
+ * trade. This version adds a breakeven lock: once the trade is up 8% from
+ * entry, the hard stop is raised to the entry price, so a winning trade can
+ * never turn into a loss. Trends are not cut short - the exit still waits
+ * for the 20-bar low breakdown.
  * When it buys and sells: buy when the last closed 4h bar exceeds the
  * highest high of the prior 55 closed bars AND the 200-SMA is rising. Sell
- * when price falls below the tighter of {chandelier stop = 3xATR below the
- * best close since entry, 20-bar low breakdown, 15% hard stop from entry}.
- * When it does NOT work: same weaknesses as the champion - it lags a fresh
- * bull that starts from a falling 200-SMA and whipsaws in a sideways range
- * above a flat 200-SMA. In a slow grind down the 20-bar low exit can still
- * give back a lot, and a tight chandelier can cut a strong trend short.
+ * on the 20-bar low breakdown, or a 15% hard stop that is raised to
+ * breakeven once the trade is up 8%.
+ * When it does NOT work: same weaknesses as the champion - lags fresh bulls
+ * from a falling 200-SMA, whipsaws in a sideways range above a flat 200-SMA,
+ * and in a fast crash the 15% stop still eats the loss before any protection
+ * kicks in.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -37,26 +37,23 @@ function onUpdate(ctx) {
   let l20 = Infinity;
   for (let k = 3; k <= 22; k++) l20 = Math.min(l20, c.at(-k));   // 20 prior bars
 
-  const atr = ctx.atr(14, 1);
-
   const pos = ctx.pos(ctx.sym);
   if (pos > 0) {
     const entryPx = ctx.entryPx;
-    // highest close since entry, trailed on CLOSED bars (same in backtest/live)
+    // highest close since entry (closed bars, same in backtest/live)
     const hi = ctx.state.entryHi != null ? ctx.state.entryHi : (entryPx != null ? entryPx : prevClose);
     const newHi = Math.max(hi, prevClose);
     ctx.state.entryHi = newHi;
 
-    let stop = entryPx != null ? entryPx * 0.85 : null;      // 15% hard stop floor
-    if (atr != null && atr > 0) {
-      const chand = newHi - 3 * atr;                          // chandelier 3xATR (textbook value)
-      stop = stop == null ? chand : Math.max(stop, chand);
+    let stop = entryPx != null ? entryPx * 0.85 : null;      // 15% hard stop
+    if (entryPx != null && newHi >= entryPx * 1.08) {        // up 8% -> lock breakeven
+      stop = entryPx;
     }
     if (stop == null) stop = l20;
     stop = Math.max(stop, l20);                               // 20-bar low breakdown
 
     if (price <= stop) return { side: 'sell', qty: pos };
-    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'chandelier/20bar/15% stop' }]);
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'breakeven/20bar/15% stop' }]);
     return null;
   }
 
@@ -67,6 +64,7 @@ function onUpdate(ctx) {
   ctx.watch([{ side: 'buy', price: h55, trigger: 'above', note: '55-bar high breakout',
                conds: [{ label: '200-SMA rising', ok: sma200 > sma200Prev, closed: true }] }]);
 
+  const atr = ctx.atr(14, 1);
   if (atr == null || atr <= 0 || prevClose <= 0) return null;
   const atrPct = atr / prevClose;
   const volScale = Math.min(1, 0.015 / atrPct);   // 4h noise: target 1.5% ATR, cap size
