@@ -3,18 +3,19 @@
   "name": "BTC Donchian Turtle 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 22106,
-    "return": -6.05,
-    "mdd": 14.33,
-    "trades": 6,
+    "backtestId": 22107,
+    "return": -2.3,
+    "mdd": 9.63,
+    "trades": 8,
     "vsBuyHold": "lose",
-    "benchRet": 145.93,
+    "benchRet": 151.96,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1506988800,
-    "tTo": 1601942400,
+    "tFrom": 1602028800,
+    "tTo": 1696982400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1100봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
@@ -22,12 +23,12 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1100,
-      "end": 1602028800
+      "end": 1697068800
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "ef5b298cc50b72a4d624da939cddd3766ec68794e82a5372a5bef2563a0d6204"
+    "verifiedCodeSha256": "18c2004317a283fb8f5181a7460fd6bdb4578fdd926ab204fd65f13db14ed13f"
   },
   "config": null,
-  "updatedAt": "2026-10-16T06:41:43.749Z",
+  "updatedAt": "2026-10-16T06:44:07.068Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
