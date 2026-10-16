@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4598](strategies/4598/) | OnChain Adoption Regime BTC 1D | -3.01% | +91.62% | +3.01% | 6 | 2026-10-16 |
+|  | [4598](strategies/4598/) | OnChain Adoption Regime BTC 1D ‡ | -3.01% | +91.62% | +3.01% | 6 | 2026-10-16 |
 | ★ | [4597](strategies/4597/) | MultiAsset Trend EMA50/200 4H | +58.74% | +35.31% | +13.89% | 48 | 2026-10-16 |
 |  | [4596](strategies/4596/) | DollarRegime BTC 1D | +5.90% | +512.29% | +37.45% | 47 | 2026-10-16 |
 | — | [4595](strategies/4595/) | FearGreed Contrarian Basket 1D | -53.49% | — | +67.69% | 18 | 2026-10-16 |
