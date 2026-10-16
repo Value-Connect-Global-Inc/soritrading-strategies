@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4718](strategies/4718/) | BTC Deep-Panic Mean Reversion 1D | +65.46% | +99.96% | +54.21% | 16 | 2026-10-16 |
+|  | [4718](strategies/4718/) | BTC Deep-Panic Mean Reversion 1D | +22.69% | +99.96% | +40.10% | 18 | 2026-10-16 |
 |  | [4717](strategies/4717/) | BTC Easy-Money Trend 1D | +277.18% | +512.29% | +32.56% | 7 | 2026-10-16 |
 |  | [4716](strategies/4716/) | BTC On-Chain Gated Trend 1D | +17.88% | +95.22% | +20.88% | 11 | 2026-10-16 |
 |  | [4715](strategies/4715/) | BTC On-Chain Regime 1D | -33.07% | +95.22% | +49.09% | 261 | 2026-10-16 |

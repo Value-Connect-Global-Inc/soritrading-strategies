@@ -3,10 +3,10 @@
   "name": "BTC Deep-Panic Mean Reversion 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 22381,
-    "return": 65.46,
-    "mdd": 54.21,
-    "trades": 16,
+    "backtestId": 22384,
+    "return": 22.69,
+    "mdd": 40.1,
+    "trades": 18,
     "vsBuyHold": "lose",
     "benchRet": 99.96,
     "benchBasis": "price",
@@ -25,9 +25,9 @@
       "end": 1602720000
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "fb9529823b6808150854980c105d976dd6479cb91d0f5d5c550e6d36a0f1c116"
+    "verifiedCodeSha256": "dee43b702787285a9bac5397183955244e7a827040441f0df909b7e759ed313c"
   },
   "config": null,
-  "updatedAt": "2026-10-16T11:57:44.272Z",
+  "updatedAt": "2026-10-16T11:59:17.168Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
