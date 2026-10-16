@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: FearGreed Multi-Asset Regime Basket v5b (7d cooldown)
+ * name: FearGreed Multi-Asset Regime Basket v6 (trailing stop)
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT
  * interval: 1d
@@ -11,17 +11,17 @@
  * keep climbing, and when the crowd turns fearful (index <= 40) the trend has
  * broken. This rides confirmed sentiment on a 4-coin basket so no single asset
  * decides the account. v3 added a Fed filter (no entries while the Fed hikes).
- * v5b uses a SHORTER 7-day re-entry cooldown after a stop-loss exit, to test
- * whether 14 days was too slow to re-enter a quick recovery.
+ * v6 replaces the fixed 25% stop with a TRAILING stop (20% off the highest
+ * close since entry): a slow decline now locks in gains instead of giving them
+ * all back, and a normal dip no longer triggers a needless stop-out.
  * When it buys and sells: on each asset, buy when Fear & Greed >= 55 AND price
- * is above its 200-day average AND the Fed is not hiking AND no stop-loss exit
- * happened in the last 7 days. Sell when it falls to <= 40 or price drops 25%
- * below entry (hard stop).
+ * is above its 200-day average AND the Fed is not hiking. Sell when it falls
+ * to <= 40, or when price drops 20% below the highest close since entry.
  * When it does NOT work: in a fast crash the index can still be high while
  * prices are already falling (the index lags) — the 200-day filter reduces
- * these entries but cannot remove all of them. The 25% stop turns a normal
- * dip into a realized loss, and it misses the very start of a bull because it
- * waits for confirmed greed.
+ * these entries but cannot remove all of them. The trailing stop still turns a
+ * sharp reversal into a realized loss (it is a stop, not a guarantee), and it
+ * misses the very start of a bull because it waits for confirmed greed.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -36,25 +36,16 @@ function onUpdate(ctx) {
 
   const pos = ctx.position;
   if (pos > 0) {
-    const entry = ctx.entryPx;
-    if (entry != null) {
-      if (price <= entry * 0.75) {
-        st[sym].stopOutAt = ctx.i;
-        return { side: 'sell', qty: pos };
-      }
-      ctx.watch([{ side: 'sell', price: entry * 0.75, trigger: 'below', note: 'stop: -25%' }]);
+    // Track the highest close since entry for the trailing stop.
+    if (st[sym].peak == null || price > st[sym].peak) st[sym].peak = price;
+    const stop = st[sym].peak * 0.80; // trailing stop 20% below the peak
+    if (price <= stop) {
+      delete st[sym].peak;
+      return { side: 'sell', qty: pos };
     }
-    if (fg <= 40) return { side: 'sell', qty: pos };
+    ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'trailing stop: -20% from peak' }]);
+    if (fg <= 40) return { side: 'sell', qty: pos }; // greed over -> exit
     return null;
-  }
-
-  // 7-day re-entry cooldown after a stop-loss exit.
-  if (st[sym].stopOutAt != null) {
-    if (ctx.i - st[sym].stopOutAt < 7) {
-      ctx.watch([{ side: 'buy', price: price, trigger: 'above', note: 'cooldown: stopped out <7d ago' }]);
-      return null;
-    }
-    delete st[sym].stopOutAt;
   }
 
   const sma200 = ctx.sma(200, 1);
