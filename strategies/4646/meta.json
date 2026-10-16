@@ -1,0 +1,33 @@
+{
+  "id": 4646,
+  "name": "SOL Donchian Turtle 4H",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 22065,
+    "return": 5.37,
+    "mdd": 32.37,
+    "trades": 56,
+    "vsBuyHold": "win",
+    "benchRet": -22.18,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1719691200,
+    "tTo": 1791676800,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "4h",
+      "bars": 5000,
+      "end": 1792123200
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "fdd60d69ad68e2f0d4032b05037cdca92f3db19e90700faebd48d1af626b21f2"
+  },
+  "config": null,
+  "updatedAt": "2026-10-16T06:08:37.569Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
