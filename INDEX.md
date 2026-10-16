@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 557 of 2285 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 557 of 2286 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 375 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [4700](strategies/4700/) | BTC RSI2 Dip Mean Reversion 1D | -10.33% | +89.28% | +14.11% | 91 | 2026-10-16 |
 |  | [4699](strategies/4699/) | BB Squeeze Breakout BTC 1D | +9.69% | +95.22% | +15.72% | 12 | 2026-10-16 |
 |  | [4696](strategies/4696/) | AI 전략 | -22.90% | -19.36% | +50.80% | 176 | 2026-10-16 |
 | ★ | [4695](strategies/4695/) | AI 전략 | -2.41% | -8.29% | +25.41% | 222 | 2026-10-16 |
