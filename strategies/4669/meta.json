@@ -3,12 +3,12 @@
   "name": "XRP Turtle ATR Stop 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 22172,
-    "return": -55.89,
-    "mdd": 57.14,
-    "trades": 60,
-    "vsBuyHold": "lose",
-    "benchRet": -48.81,
+    "backtestId": 22175,
+    "return": 59.28,
+    "mdd": 22.33,
+    "trades": 56,
+    "vsBuyHold": "win",
+    "benchRet": 24.28,
     "benchBasis": "price",
     "gapPct": 0,
     "tFrom": 1648137600,
@@ -19,7 +19,7 @@
     ],
     "spec": {
       "ex": "binance",
-      "sym": "XRP",
+      "sym": "SOL",
       "interval": "4h",
       "bars": 5000,
       "end": 1720137600
