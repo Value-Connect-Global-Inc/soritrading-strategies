@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4635](strategies/4635/) | BTC Donchian Turtle 4H | +32.84% | +94.94% | +16.85% | 44 | 2026-10-16 |
+|  | [4635](strategies/4635/) | BTC Donchian Turtle 4H ‡ | +32.84% | +94.94% | +16.85% | 44 | 2026-10-16 |
 | ★ | [4634](strategies/4634/) | BTC Mean Reversion 4H | -25.19% | -26.94% | +28.76% | 78 | 2026-10-16 |
 | ★ | [4633](strategies/4633/) | Fed Easing Trend 1D | +3.16% | -15.10% | +4.27% | 8 | 2026-10-16 |
 |  | [4632](strategies/4632/) | FearGreed Contrarian Trend 1D | -3.30% | +95.22% | +9.07% | 12 | 2026-10-16 |
