@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4604](strategies/4604/) | MultiAsset Trend EMA50/200 1D | +49.83% | — | +20.53% | 57 | 2026-10-16 |
+| — | [4604](strategies/4604/) | MultiAsset Trend EMA50/200 1D | +16.14% | — | +9.76% | 32 | 2026-10-16 |
 | — | [4603](strategies/4603/) | MultiAsset Donchian Breakout 4H | -37.69% | — | +48.76% | 250 | 2026-10-16 |
 | — | [4602](strategies/4602/) | MultiAsset OBV Volume-Flow Trend 4H | +17.82% | — | +17.18% | 292 | 2026-10-16 |
 | — | [4601](strategies/4601/) | MultiAsset Trend EMA50/200 + TP 4H | +24.21% | — | +19.88% | 424 | 2026-10-16 |
