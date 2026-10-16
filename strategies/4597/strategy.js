@@ -2,25 +2,26 @@
  * @coinsori-strategy v1
  * name: MultiAsset Trend EMA50/200 4H
  * ex: binance
- * syms: BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT
+ * syms: BTC/USDT, ETH/USDT
  * interval: 4h
  * cash: 10000
  *
  * Why this strategy: the EMA50/200 trend core is the one family with repeated
  * out-of-sample evidence in this environment (BTC 4h +20/+41/+40%, and
  * +218/+109/+47% once re-entry while the trend is intact is added). This
- * applies that validated core to a 4-coin basket so no single asset decides
- * the account and one coin's crash cannot sink the whole account.
+ * applies that validated core to a 2-coin basket (BTC+ETH, the two most
+ * liquid coins) so a single asset's crash cannot sink the whole account
+ * while keeping the whipsaw of smaller alts out of the mix.
  * When it buys and sells: on each asset, buy when the 50-period EMA is above
  * the 200-period EMA (closed bars), or re-enter while flat when the trend is
  * still intact (EMA50>EMA200 and price above the 400-period average). Sell on
- * a death cross (EMA50 below EMA200) or when price falls 3.5 ATR below the
- * best close since entry (trailing stop). After any exit, wait 12 bars (2
- * days) before re-entering that asset so a choppy market cannot churn fees.
+ * a death cross (EMA50 below EMA200) or when price falls 4 ATR below the best
+ * close since entry (trailing stop). After any exit, wait 24 bars (4 days)
+ * before re-entering that asset so a choppy market cannot churn fees.
  * When it does NOT work: in a long choppy sideways range the crossovers
  * whipsaw and the stops turn small dips into realized losses. Long-only means
- * a sustained bear market across all four coins is flat-to-loss. It rides
- * trends, so it also lags a fast V-shaped recovery after a crash.
+ * a sustained bear market across both coins is flat-to-loss. It rides trends,
+ * so it also lags a fast V-shaped recovery after a crash.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -43,17 +44,17 @@ function onUpdate(ctx) {
   if (pos > 0) {
     const newPeak = Math.max(peak, price);
     st.peak[sym] = newPeak;
-    const stopPx = newPeak - 3.5 * atr; // wider trail: alts whipsaw more than BTC on 4h
+    const stopPx = newPeak - 4 * atr; // wide trail: 4h alts whipsaw more than BTC
     if (f <= s) { st.cool[sym] = ctx.i; return { side: 'sell', qty: pos }; } // death cross -> trend over
     if (price <= stopPx) { st.cool[sym] = ctx.i; return { side: 'sell', qty: pos }; }
-    ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'trail 3.5 ATR' }]);
+    ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'trail 4 ATR' }]);
     return null;
   }
 
-  // Cooldown: wait 12 bars after an exit before re-entering this asset,
-  // otherwise a choppy market churns fees (the v1 failure: 1300+ trades).
+  // Cooldown: wait 24 bars (4 days) after an exit before re-entering this
+  // asset, otherwise a choppy market churns fees (v1/v2 failure: 1300/580 trades).
   const lastExit = st.cool[sym];
-  if (lastExit != null && ctx.i - lastExit < 12) return null;
+  if (lastExit != null && ctx.i - lastExit < 24) return null;
 
   // Entry: fresh bullish cross, OR re-entry while the trend is intact.
   let enter = false;
@@ -66,7 +67,7 @@ function onUpdate(ctx) {
   // Size: risk a small fixed share of the per-symbol cash on the stop distance
   // so a wide-stop trade cannot ruin the account.
   const riskCash = ctx.cash * 0.02;
-  const stopDist = 3.5 * atr;
+  const stopDist = 4 * atr;
   let qty = stopDist > 0 ? riskCash / stopDist : 0;
   const maxQty = (ctx.cash * 0.99) / price;
   if (qty > maxQty) qty = maxQty;
