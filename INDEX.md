@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4699](strategies/4699/) | BB Squeeze Breakout BTC 1D ‡ | -20.41% | -15.10% | +20.41% | 20 | 2026-10-16 |
+|  | [4699](strategies/4699/) | BB Squeeze Breakout BTC 1D | +167.21% | +512.29% | +17.12% | 16 | 2026-10-16 |
 |  | [4696](strategies/4696/) | AI 전략 | -22.90% | -19.36% | +50.80% | 176 | 2026-10-16 |
 | ★ | [4695](strategies/4695/) | AI 전략 | -2.41% | -8.29% | +25.41% | 222 | 2026-10-16 |
 |  | [4690](strategies/4690/) | BTC Turtle Fast Exit 4H | -7.22% | +35.80% | +24.90% | 94 | 2026-10-16 |

@@ -3,16 +3,16 @@
   "name": "BB Squeeze Breakout BTC 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 22288,
-    "return": -20.41,
-    "mdd": 20.41,
-    "trades": 20,
+    "backtestId": 22290,
+    "return": 167.21,
+    "mdd": 17.12,
+    "trades": 16,
     "vsBuyHold": "lose",
-    "benchRet": -15.1,
+    "benchRet": 512.29,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1619308800,
-    "tTo": 1705622400,
+    "tFrom": 1532908800,
+    "tTo": 1619222400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
@@ -22,12 +22,12 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1000,
-      "end": 1705708800
+      "end": 1619308800
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "2be4990b96ffc804c1596f6203ee4bce543d1421f014faf770d192cdf25a2b6c"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "1fa25ea9bc3330980c1234eed96b61eb1c12328f7e45188c3b5ba1eb390e85a8"
   },
   "config": null,
-  "updatedAt": "2026-10-16T10:09:42.594Z",
+  "updatedAt": "2026-10-16T10:10:43.813Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

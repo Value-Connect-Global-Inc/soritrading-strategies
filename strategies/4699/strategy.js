@@ -10,7 +10,7 @@
  * followed by directional expansion. This strategy times the start of that expansion instead of
  * chasing an already-running trend, so it is a different family from the OBV/turtle trend followers.
  * When it buys and sells: buys when a closed daily bar closes above the upper Bollinger band while
- * band width was in its lowest 20% over the last 100 days (a squeeze in place right before the
+ * band width was in its lowest 30% over the last 100 days (a squeeze in place right before the
  * breakout) and price is above the 100-day average (uptrend context). Sells on a 2.5x ATR stop or
  * when a closed bar closes back below the middle band.
  * When it does NOT work: in prolonged low-volatility chop the squeeze fires repeatedly and each
@@ -66,8 +66,8 @@ function onUpdate(ctx) {
   }
   if (hist.length < 50) return null;
   hist.sort((a, b) => a - b);
-  const p20 = hist[Math.floor(hist.length * 0.2)];
-  const squeeze = wPrev <= p20; // band width in lowest 20% of the last 100 days
+  const p30 = hist[Math.floor(hist.length * 0.3)];
+  const squeeze = wPrev <= p30; // band width in lowest 30% of the last 100 days
 
   const win = c.slice(NB - 19, NB + 1);
   const mid = avg(win);
