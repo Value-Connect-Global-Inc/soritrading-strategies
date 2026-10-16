@@ -14,13 +14,12 @@
  * When it buys and sells: buys while the Fed funds rate is FALLING (rate now
  * below its value 30 days ago) OR pinned near zero (below 0.5%), AND price is
  * above its 200-SMA with that SMA rising (trend intact). Holds through normal
- * pullbacks. Sells when the Fed starts HIKING again (outside the zero-rate
- * regime), the 200-SMA turns down, or a trailing 4x ATR stop (highest close
- * since entry minus 4x ATR) is hit. Long only.
+ * pullbacks. Sells when the Fed starts HIKING again, the 200-SMA turns down
+ * (trend broke), or a hard 4x ATR stop from entry is hit. Long only.
  * When it does NOT work: if the Fed sits on hold at a mid level (say 2-4%)
  * while crypto grinds sideways or runs up, it holds cash and misses it. A
  * strong bull that runs while rates are unchanged gives back part of its gains
- * to the trailing stop before the trend rolls over. It cannot profit from a
+ * to the trend-break exit before the top is confirmed. It cannot profit from a
  * downtrend (long only).
  */
 function onUpdate(ctx) {
@@ -31,7 +30,8 @@ function onUpdate(ctx) {
 
   const easing = fed < fedLag;              // rate LOWER now than 30 days ago = cutting
   const hiking = fed > fedLag;              // rate HIGHER now than 30 days ago = hiking
-  const zeroRate = fed < 0.5;               // effective lower bound = max liquidity (2020-21)
+  // effective lower bound is ~0-0.25%; 0.5% cleanly captures the zero-rate regime
+  const zeroRate = fed < 0.5;
 
   const atr = ctx.atr(14, 1);
   if (atr == null) return null;
@@ -45,16 +45,9 @@ function onUpdate(ctx) {
   // ---- exits first ----
   if (ctx.position > 0) {
     if (ctx.entryPx == null) return null;
-    const st = ctx.state || {};
-    // trailing high = highest close since entry, so a big run does not give
-    // back the whole move before the stop fires
-    if (st.hi == null || price > st.hi) st.hi = price;
-    const stop = st.hi - stopDist;
-    ctx.watch([{ side:'sell', price: stop, trigger:'below', note:'trailing 4xATR stop' }]);
-    if ((hiking && !zeroRate) || !trendUp || price < stop) {
-      st.hi = null;
-      return { side:'sell', qty: ctx.position };
-    }
+    const stop = ctx.entryPx - stopDist;    // hard loss cap anchored to entry
+    ctx.watch([{ side:'sell', price: stop, trigger:'below', note:'4xATR stop' }]);
+    if (hiking || !trendUp || price < stop) return { side:'sell', qty: ctx.position };
     return null;
   }
 
@@ -62,8 +55,6 @@ function onUpdate(ctx) {
   const liquid = easing || zeroRate;
   if (liquid && price > sma200 && trendUp) {
     const qty = Math.min(ctx.cash * 0.02 / stopDist, ctx.cash * 4 / ctx.price);
-    const st = ctx.state || {};
-    st.hi = price;
     ctx.watch([{ side:'buy', note:'Fed liquidity + uptrend', conds:[
       { label:'Fed cutting or zero-rate', ok: liquid },
       { label:'price > SMA200', ok: price > sma200 },
