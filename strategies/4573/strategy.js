@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: FearGreed Multi-Asset Regime Basket v5 (hashrate filter)
+ * name: FearGreed Multi-Asset Regime Basket v4 (vol-scaled)
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT
  * interval: 1d
@@ -11,20 +11,17 @@
  * keep climbing, and when the crowd turns fearful (index <= 40) the trend has
  * broken. This rides confirmed sentiment on a 4-coin basket so no single asset
  * decides the account. v3 added a Fed filter (no entries while the Fed hikes);
- * v5 adds a NETWORK-HEALTH filter: only enter when Bitcoin's hash rate is above
- * its 30-day average — miners investing real electricity into the chain is a
- * fundamental support for a bull trend. (Applied to all four coins; hashrate is
- * a network-wide fundamental.)
+ * v4 adds VOLATILITY-SCALED SIZING: each position is sized so that a 1.5x ATR
+ * adverse move costs at most 10% of available cash, so a single crash cannot
+ * ruin the account (in calm markets the 95% cap still applies).
  * When it buys and sells: on each asset, buy when Fear & Greed >= 55 AND price
- * is above its 200-day average AND the Fed is not hiking AND hashrate is above
- * its 30-day average. Sell when it falls to <= 40 or price drops 25% below
- * entry (hard stop).
+ * is above its 200-day average AND the Fed is not hiking. Sell when it falls
+ * to <= 40 or price drops 25% below entry (hard stop).
  * When it does NOT work: in a fast crash the index can still be high while
  * prices are already falling (the index lags) — the 200-day filter reduces
  * these entries but cannot remove all of them. The 25% stop turns a normal
  * dip into a realized loss, and it misses the very start of a bull because it
- * waits for confirmed greed. The hashrate filter can also block good entries
- * if hash power is temporarily flat while price is already rallying.
+ * waits for confirmed greed.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -59,15 +56,19 @@ function onUpdate(ctx) {
   const fedLag = Number(ctx.data('fed_lag30'));
   const fedHiking = Number.isFinite(fed) && Number.isFinite(fedLag) && fed > fedLag;
 
-  // Network-health filter (NEW in v5): only enter when hashrate is above its
-  // 30-day average — miners investing real resources is fundamental support
-  // for the trend. Missing data = permissive.
-  const hr = Number(ctx.data('hashrate'));
-  const hrAvg = Number(ctx.data('hashrate_sma30'));
-  const networkHealthy = Number.isFinite(hr) && Number.isFinite(hrAvg) && hr > hrAvg;
-
-  if (fg >= 55 && price > sma200 && !fedHiking && networkHealthy) {
-    return { side: 'buy', qty: (ctx.cash / price) * 0.95 };
+  if (fg >= 55 && price > sma200 && !fedHiking) {
+    // Volatility-scaled size: keep the risk of a 1.5x ATR adverse move at
+    // ~10% of cash. In calm markets this hits the 95% cap; in crashes it
+    // shrinks automatically so one bad entry cannot ruin the account.
+    const atr = ctx.atr(14, 1);
+    let frac = 0.95;
+    if (atr != null && atr > 0) {
+      const volPct = atr / price;
+      const capped = 0.10 / (1.5 * volPct); // risk budget / (k * daily vol)
+      if (capped < frac) frac = capped;
+      if (frac < 0.05) frac = 0.05; // never go below 5% (keeps it alive)
+    }
+    return { side: 'buy', qty: (ctx.cash / price) * frac };
   }
 
   // Declare what we are waiting for so the run card shows it.
@@ -75,10 +76,9 @@ function onUpdate(ctx) {
     side: 'buy',
     price: fg >= 55 ? sma200 : price,
     trigger: 'above',
-    note: 'enter: greed>=55 & trend up & fed ok & hash ok',
+    note: 'enter: greed>=55 & trend up & fed ok',
     conds: [{ label: 'F&G index', now: fg, op: '>=', ref: 55, closed: true },
-           { label: 'Fed not hiking', ok: !fedHiking },
-           { label: 'Hashrate > 30d avg', ok: networkHealthy }]
+           { label: 'Fed not hiking', ok: !fedHiking }]
   }]);
   return null;
 }
