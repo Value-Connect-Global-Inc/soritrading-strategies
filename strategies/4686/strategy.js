@@ -1,26 +1,25 @@
 /*
  * @coinsori-strategy v1
- * name: SOL Turtle Hashrate-Gated 4H
+ * name: SOL Turtle OI-Confirmed 4H
  * ex: binance
  * syms: SOL/USDT
  * interval: 4h
  * cash: 10000
  *
  * Why this strategy: The proven SOL 4h Donchian turtle holds all three
- * disjoint windows. This adds a NEW fundamental axis — Bitcoin network
- * hashpower. When mining capacity is growing (hashrate above its own 30-day
- * average) the underlying network is healthy and bull trends are more likely
- * to be real; a breakout taken into that regime has more support. It is a
- * regime filter, not a timing signal.
+ * disjoint windows. This version adds a NEW data axis — open interest — to
+ * filter breakouts: a breakout backed by expanding leverage (OI above its own
+ * 50-bar average) is more likely to be a genuine trend start with fresh money
+ * behind it, rather than a short-covering dead-cat bounce.
  * When it buys and sells: buy when a closed 4h bar exceeds the highest high
- * of the prior 55 closed bars, the 200-SMA is rising, and BTC hashrate is
- * above its own 30-day average. Sell on a 2.5x ATR stop or when a closed bar
+ * of the prior 55 closed bars, the 200-SMA is rising, and open interest is
+ * above its own 50-bar average. Sell on a 2.5x ATR stop or when a closed bar
  * falls below the lowest low of the prior 20 bars.
- * When it does NOT work: it will sit out valid breakouts that happen while
- * hashrate is temporarily flat or dipping (e.g. post-halving adjustments);
- * hashrate is a slow level so it does little during fast intra-trend moves.
- * If hashrate data is unavailable in a backtest the filter silently degrades
- * to the base turtle (never blocks all trades).
+ * When it does NOT work: OI can keep rising into a long liquidation cascade
+ * (peak leverage = top), so the filter is not a guarantee; it will also sit
+ * out valid breakouts that start on light OI. If OI data is unavailable or
+ * constant in a backtest the filter silently passes (designed to degrade to
+ * the base turtle, never to block all trades).
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -54,19 +53,29 @@ function onUpdate(ctx) {
   if (!(prevClose > h55)) return null;
   if (!(sma200 > sma200Prev)) return null;
 
-  // Hashrate regime filter: current hashrate vs its own 30-day average.
-  const hr = ctx.data('hashrate');
-  const hrSma = ctx.data('hashrate_sma30');
-  if (hr != null && hrSma != null && hrSma > 0) {
-    if (!(hr > hrSma)) return null;   // mining capacity not growing -> skip
+  // OI filter: current OI above its own 50-bar average. Store rolling history in state.
+  const oi = ctx.binanceOi();
+  if (oi != null && oi > 0) {
+    const hist = ctx.state.oiHist || [];
+    hist.push(oi);
+    if (hist.length > 50) hist.shift();
+    ctx.state.oiHist = hist;
+    let sum = 0;
+    for (const v of hist) sum += v;
+    const avg = sum / hist.length;
+    if (hist.length >= 30 && !(oi > avg)) return null;
   }
-  // if hashrate data missing, degrade to base turtle
+  // if OI is null/constant, degrade to base turtle (no extra filter)
 
-  const qty = (ctx.cash / price) * 0.5;
+  // identical vol-target sizing to base turtle 4667
+  const atrPct = atr / prevClose;
+  const volScale = Math.min(1, 0.015 / atrPct);
+  const targetCash = ctx.cash * 0.95 * volScale;
+  const qty = (targetCash / price) * 0.95;
   if (qty <= 0) return null;
 
   ctx.watch([{ side: 'buy', price: h55, trigger: 'above', note: '55-bar high breakout',
                conds: [{ label: '200-SMA rising', ok: sma200 > sma200Prev, closed: true },
-                       { label: 'hashrate > 30d avg', ok: true, closed: true }] }]);
+                       { label: 'OI > 50-bar avg', ok: true, closed: true }] }]);
   return { side: 'buy', qty };
 }

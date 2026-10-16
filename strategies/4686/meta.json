@@ -3,19 +3,19 @@
   "name": "SOL Turtle Hashrate-Gated 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 22236,
-    "return": 6.63,
-    "mdd": 20.73,
-    "trades": 36,
+    "backtestId": 22239,
+    "return": 59.28,
+    "mdd": 22.33,
+    "trades": 56,
     "vsBuyHold": "win",
-    "benchRet": -22.18,
+    "benchRet": 24.28,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1719691200,
-    "tTo": 1791676800,
+    "tFrom": 1648137600,
+    "tTo": 1720123200,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
+      "미결제약정·강제청산은 백테스트에 이력이 없어 항상 null — 이 전략은 백테스트로 검증되지 않는다(모의투자로 확인)",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
@@ -23,12 +23,12 @@
       "sym": "SOL",
       "interval": "4h",
       "bars": 5000,
-      "end": 1792137600
+      "end": 1720137600
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "c32fc005c55bd0a1122b453d81e88751ff3a1fb527256f4db67fe1810b17c794"
+    "verifiedCodeSha256": "6d953ca646db7b145f2e0f0a490bf1a74ebe858eb88f258eb3ea4ba1c89a4ee3"
   },
   "config": null,
-  "updatedAt": "2026-10-16T08:59:04.087Z",
+  "updatedAt": "2026-10-16T09:02:06.274Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
