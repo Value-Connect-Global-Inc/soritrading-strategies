@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4578](strategies/4578/) | AI 전략 | +72.80% | — | +26.16% | 38 | 2026-10-16 |
+| — | [4578](strategies/4578/) | AI 전략 | +51.42% | — | +26.16% | 48 | 2026-10-16 |
 | — | [4575](strategies/4575/) | AI 전략 | +269.52% | — | +57.77% | 158 | 2026-10-16 |
 | — | [4574](strategies/4574/) | AI 전략 | +716.29% | — | +40.34% | 62 | 2026-10-16 |
 | — | [4573](strategies/4573/) | SMA200 Trend-Following Basket v1 ‡ | +513.15% | — | +29.53% | 35 | 2026-10-16 |

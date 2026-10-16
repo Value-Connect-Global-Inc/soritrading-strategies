@@ -3,10 +3,10 @@
   "name": "AI 전략",
   "kind": "custom",
   "verified": {
-    "backtestId": 21640,
-    "return": 72.8,
+    "backtestId": 21644,
+    "return": 51.42,
     "mdd": 26.16,
-    "trades": 38,
+    "trades": 48,
     "vsBuyHold": "unmeasured",
     "gapPct": 0,
     "tFrom": 1619308800,
