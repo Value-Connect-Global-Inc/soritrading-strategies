@@ -37,24 +37,26 @@ function onUpdate(ctx) {
   if (atr == null) return null;
   const stopDist = 2 * atr;                 // 2x ATR stop distance
 
-  // ---- position sizing: risk 1% of cash per trade, capped at 3x notional ----
-  const qty = Math.min(ctx.cash * 0.01 / stopDist, ctx.cash * 3 / ctx.price);
+  // ---- position sizing: risk 2% of cash per trade, capped at 6x notional ----
+  const qty = Math.min(ctx.cash * 0.02 / stopDist, ctx.cash * 6 / ctx.price);
 
   // ---- exits ----
   if (ctx.position > 0) {
-    if (price < sma || price < ctx.entryPx - stopDist) {
-      ctx.watch([{ side:'sell', price: ctx.entryPx - stopDist, trigger:'below', note:'2xATR stop' }]);
+    const stop = ctx.entryPx - stopDist;
+    if (price < sma || price < stop) {
+      ctx.watch([{ side:'sell', price: stop, trigger:'below', note:'2xATR stop' }]);
       return { side:'sell', qty: ctx.position };
     }
-    ctx.watch([{ side:'sell', price: ctx.entryPx - stopDist, trigger:'below', note:'2xATR stop' }]);
+    ctx.watch([{ side:'sell', price: stop, trigger:'below', note:'2xATR stop' }]);
     return null;
   }
   if (ctx.position < 0) {
-    if (price > sma || price > ctx.entryPx + stopDist) {
-      ctx.watch([{ side:'buy', price: ctx.entryPx + stopDist, trigger:'above', note:'2xATR stop' }]);
+    const stop = ctx.entryPx + stopDist;
+    if (price > sma || price > stop) {
+      ctx.watch([{ side:'buy', price: stop, trigger:'above', note:'2xATR stop' }]);
       return { side:'buy', qty: -ctx.position };
     }
-    ctx.watch([{ side:'buy', price: ctx.entryPx + stopDist, trigger:'above', note:'2xATR stop' }]);
+    ctx.watch([{ side:'buy', price: stop, trigger:'above', note:'2xATR stop' }]);
     return null;
   }
 

@@ -3,9 +3,9 @@
   "name": "DualSideTrend4h",
   "kind": "custom",
   "verified": {
-    "backtestId": 22400,
-    "return": 10.14,
-    "mdd": 18.85,
+    "backtestId": 22404,
+    "return": 26.72,
+    "mdd": 27.06,
     "trades": 93,
     "vsBuyHold": "lose",
     "benchRet": 35.73,
@@ -15,7 +15,7 @@
     "tTo": 1791676800,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "기간 종료 시 미청산 포지션 1종목 (총자산의 43.2%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 85.99%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
       "[데이터/출처] 내 저장소(에이전트 0ccd49…) 5000봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
@@ -26,9 +26,9 @@
       "end": 1792152000
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "04b6aa696fcf3db158eeb743ae0628c6f8ab544b89e18780bf5dcca215f4d78a"
+    "verifiedCodeSha256": "44d98a478e7bc349fbcacab79f7cb09dac937a7e890ac5d0554781db27a05d0a"
   },
   "config": null,
-  "updatedAt": "2026-10-16T12:07:39.470Z",
+  "updatedAt": "2026-10-16T12:09:30.974Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

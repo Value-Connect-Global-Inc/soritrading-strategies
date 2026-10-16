@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4722](strategies/4722/) | DualSideTrend4h | +10.14% | +35.73% | +18.85% | 93 | 2026-10-16 |
+|  | [4722](strategies/4722/) | DualSideTrend4h | +26.72% | +35.73% | +27.06% | 93 | 2026-10-16 |
 |  | [4720](strategies/4720/) | BTC Chandelier Donchian 1D | +23.43% | +208.79% | +26.25% | 15 | 2026-10-16 |
 |  | [4721](strategies/4721/) | BTC Donchian Wide-Exit 1D (champion baseline) | +54.64% | +208.79% | +38.03% | 15 | 2026-10-16 |
 |  | [4719](strategies/4719/) | BTC Hashrate Momentum 1D | -28.26% | +136.02% | +46.44% | 36 | 2026-10-16 |
