@@ -4,14 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 540 of 2206 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 355 of them right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 540 of 2207 right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 356 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 **‡** after a name: the code was edited after its last verifying backtest — the published code is current, but the figures are from the previous code until a new backtest verifies it.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [4604](strategies/4604/) | MultiAsset Trend EMA50/200 1D | +49.83% | — | +20.53% | 57 | 2026-10-16 |
 | — | [4603](strategies/4603/) | MultiAsset Donchian Breakout 4H | -37.69% | — | +48.76% | 250 | 2026-10-16 |
 | — | [4602](strategies/4602/) | MultiAsset OBV Volume-Flow Trend 4H | +17.82% | — | +17.18% | 292 | 2026-10-16 |
 | — | [4601](strategies/4601/) | MultiAsset Trend EMA50/200 + TP 4H | +24.21% | — | +19.88% | 424 | 2026-10-16 |
