@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 548 of 2255 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 548 of 2256 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 375 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [4659](strategies/4659/) | XRP FearGreed Contrarian 1D | -39.68% | +135.40% | +64.82% | 18 | 2026-10-16 |
 | ★ | [4658](strategies/4658/) | XRP Donchian Turtle 1D control | -14.37% | -47.42% | +17.23% | 12 | 2026-10-16 |
 |  | [4657](strategies/4657/) | XRP Donchian FearGreed Gate 1D | +4.37% | +135.40% | +9.88% | 2 | 2026-10-16 |
 | ★ | [4656](strategies/4656/) | XRP Donchian Turtle 1D | -0.35% | -27.88% | +41.85% | 14 | 2026-10-16 |
