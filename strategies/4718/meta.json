@@ -1,0 +1,33 @@
+{
+  "id": 4718,
+  "name": "BTC Deep-Panic Mean Reversion 1D",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 22381,
+    "return": 65.46,
+    "mdd": 54.21,
+    "trades": 16,
+    "vsBuyHold": "lose",
+    "benchRet": 99.96,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1508025600,
+    "tTo": 1602633600,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 0ccd49…) 1096봉 · 1분봉에서 저장소 안에서 만든 파생봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 1096,
+      "end": 1602720000
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "fb9529823b6808150854980c105d976dd6479cb91d0f5d5c550e6d36a0f1c116"
+  },
+  "config": null,
+  "updatedAt": "2026-10-16T11:57:44.272Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
