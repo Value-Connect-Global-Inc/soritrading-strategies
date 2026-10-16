@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: On-Chain Demand Momentum 1D
+ * name: On-Chain Demand Momentum + Trailing Stop 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
