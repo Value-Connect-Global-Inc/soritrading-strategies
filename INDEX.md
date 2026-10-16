@@ -12,8 +12,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| ★ | [4629](strategies/4629/) | Price-Only Momentum 1D (A/B baseline) ‡ | +245.42% | +116.17% | +32.07% | 61 | 2026-10-16 |
 |  | [4631](strategies/4631/) | On-Chain + Vol-Regime Gated BTC 1D | +40.08% | +87.84% | +10.78% | 23 | 2026-10-16 |
+| ★ | [4629](strategies/4629/) | Price-Only Momentum 1D (A/B baseline) ‡ | +245.42% | +116.17% | +32.07% | 61 | 2026-10-16 |
 | — | [4630](strategies/4630/) | On-Chain Gated Momentum Basket 1D ‡ | +20.07% | — | +10.23% | 82 | 2026-10-16 |
 |  | [4628](strategies/4628/) | On-Chain Demand Momentum 1D | -11.18% | +91.62% | +11.18% | 12 | 2026-10-16 |
 | — | [4627](strategies/4627/) | Momentum Vol-Gated Alt Basket 1D | -14.09% | — | +16.97% | 100 | 2026-10-16 |
