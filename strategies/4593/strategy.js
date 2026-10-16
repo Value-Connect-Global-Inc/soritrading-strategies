@@ -1,74 +1,75 @@
 /*
  * @coinsori-strategy v1
- * name: DollarRegime BTC 1D
+ * name: OILiquidation Contrarian BTC 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: bitcoin is a zero-yield risk asset, so its fortunes are
- * largely set by dollar liquidity. When the US dollar is weak (below its own
- * long average), money tends to flow out of cash and into risk assets like
- * BTC; when the dollar is strong, that flow reverses. This is a macro
- * liquidity bet — a completely different family from price trend, sentiment
- * indexes, or on-chain usage.
- * When it buys and sells: buy when the dollar index is below its own 90-day
- * average (weak-dollar regime) AND price is above its 200-day average (avoid
- * buying into a crash). Hold while the dollar stays weak. Sell when the
- * dollar rises back above its 90-day average, or if price drops 25% below
- * entry (hard stop).
- * When it does NOT work: the dollar index is only reported on business days
- * and can be flat for long stretches, so the signal is slow. In a bull run
- * driven purely by crypto-native demand (stablecoin inflow, ETF flows) while
- * the dollar stays range-bound, this can exit too early or miss entries.
+ * Why this strategy: in crypto futures, when the crowd is all on one side,
+ * that side gets liquidated in a cascade and the price overshoots. This
+ * strategy buys the flush: after a burst of long liquidations (crowd forced
+ * out) it steps in, and it exits when the crowd piles back in (open interest
+ * climbing again with price). It is a positioning-sentiment bet — a
+ * different family from price trend, macro, or on-chain usage.
+ * When it buys and sells: buy when recent long liquidations spike AND open
+ * interest is falling (forced deleveraging, not new shorts) AND price is
+ * above its 200-day average. Hold while price recovers. Sell when price
+ * rises 20% above the entry (target), or if price drops 25% below entry
+ * (hard stop).
+ * When it does NOT work: in a persistent downtrend each flush is followed by
+ * another flush — the strategy buys falling knives. It also depends on
+ * futures data, which is not available in all market conditions.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
-  const dxy = Number(ctx.data('dxy'));
-  if (!Number.isFinite(dxy)) return null; // business-days-only data; no data = no decision
+  const oi = ctx.binanceOi();
+  const liqs = ctx.binanceLiqs(5);
+  if (oi == null || liqs == null) return null; // futures data missing -> no decision
 
-  // Keep our own DXY history so we compute the long average ourselves and
-  // control its alignment exactly.
+  // Liquidation data shape is not documented; guard defensively.
+  let longLiq = 0;
+  if (typeof liqs === 'number') {
+    longLiq = liqs;
+  } else if (Array.isArray(liqs)) {
+    for (const l of liqs) {
+      if (l && typeof l.long === 'number') longLiq += l.long;
+    }
+  }
+  if (longLiq <= 0) return null;
+
   const st = ctx.state || {};
-  const bD = st.bD || [];
-  bD.push(dxy);
-  if (bD.length > 90) bD.shift();
-  st.bD = bD;
-  if (bD.length < 90) return null; // warm-up
-
-  const dxyAvg = bD.reduce((s, v) => s + v, 0) / 90;
-  const weakDollar = dxy < dxyAvg;
+  const bO = st.bO || [];
+  bO.push(oi);
+  if (bO.length > 10) bO.shift();
+  st.bO = bO;
+  if (bO.length < 10) return null;
+  const oiPrev = bO[0]; // open interest ~10 bars ago
+  const oiFalling = oi < oiPrev;
 
   const pos = ctx.position;
   if (pos > 0) {
     const entry = ctx.entryPx;
     if (entry != null) {
-      // Hard stop: 25% caps the loss if the macro signal is slow to react.
       if (price <= entry * 0.75) return { side: 'sell', qty: pos };
-      ctx.watch([{ side: 'sell', price: entry * 0.75, trigger: 'below', note: 'stop: -25%' }]);
+      if (price >= entry * 1.20) return { side: 'sell', qty: pos };
+      ctx.watch([
+        { side: 'sell', price: entry * 0.75, trigger: 'below', note: 'stop: -25%' },
+        { side: 'sell', price: entry * 1.20, trigger: 'above', note: 'target: +20%' }
+      ]);
     }
-    // Dollar strengthened -> exit the risk-on regime.
-    if (!weakDollar) return { side: 'sell', qty: pos };
     return null;
   }
 
-  // Trend filter: only enter when price is above its 200-day average (closed
-  // bar) so we do not buy into a crash that the slow dollar signal missed.
   const sma200 = ctx.sma(200, 1);
   if (sma200 == null) return null;
 
-  if (weakDollar && price > sma200) {
+  // Buy the flush: long liquidations spiked AND forced deleveraging (OI down)
+  // AND we are not catching a falling knife (price above 200d average).
+  if (longLiq > 0 && oiFalling && price > sma200) {
     return { side: 'buy', qty: (ctx.cash / price) * 0.95 };
   }
-
-  ctx.watch([{
-    side: 'buy',
-    price: weakDollar ? sma200 : price,
-    trigger: 'above',
-    note: 'enter: weak dollar & trend up',
-    conds: [{ label: 'DXY vs 90d avg', now: dxy, op: '<', ref: dxyAvg, closed: true }]
-  }]);
   return null;
 }
