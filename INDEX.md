@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 540 of 2200 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 540 of 2201 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 349 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+|  | [4598](strategies/4598/) | OnChain Adoption Regime BTC 1D | -3.01% | +91.62% | +3.01% | 6 | 2026-10-16 |
 | ★ | [4597](strategies/4597/) | MultiAsset Trend EMA50/200 4H | +58.74% | +35.31% | +13.89% | 48 | 2026-10-16 |
 |  | [4596](strategies/4596/) | DollarRegime BTC 1D | +5.90% | +512.29% | +37.45% | 47 | 2026-10-16 |
 | — | [4595](strategies/4595/) | FearGreed Contrarian Basket 1D | -53.49% | — | +67.69% | 18 | 2026-10-16 |
