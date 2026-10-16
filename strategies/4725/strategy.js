@@ -11,8 +11,9 @@
  * This is a macro-regime strategy, a different family from price-only timing,
  * which keeps failing the recent choppy market.
  * When it buys and sells: buys while the Fed funds rate is FALLING (rate now
- * below its value 30 days ago) — the wide 4x ATR stop is the risk control.
- * Sells when the Fed starts HIKING again or the stop loss hits. Long only.
+ * below its value 30 days ago) AND price is above its 200-SMA (trend intact).
+ * Holds through normal pullbacks and sells only when the Fed starts HIKING again
+ * or a wide 4x ATR stop loss hits. Long only.
  * When it does NOT work: if the Fed sits on hold (rate unchanged) for a long
  * year while crypto grinds sideways or runs up, it holds cash and misses it —
  * notably the 2020-2021 zero-rate bull, where the rate was flat at ~0% so the
@@ -41,14 +42,17 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // ---- entry: Fed easing (liquidity), wide stop is the risk control ----
-  if (easing) {
+  // ---- entry: Fed easing (liquidity) + price above its 200-SMA ----
+  const sma200 = ctx.sma(200, 1);
+  if (sma200 == null) return null;
+  if (easing && price > sma200) {
     // risk 2% of cash: qty = risk / stopDist, capped at 4x notional
     const qty = Math.min(ctx.cash * 0.02 / stopDist, ctx.cash * 4 / ctx.price);
-    ctx.watch([{ side:'buy', note:'Fed cutting', conds:[
-      { label:'Fed cutting (30d)', ok: easing }
+    ctx.watch([{ side:'buy', note:'Fed cutting + above SMA200', conds:[
+      { label:'Fed cutting (30d)', ok: easing },
+      { label:'price > SMA200', ok: price > sma200 }
     ]}]);
-    return { side:'buy', qty };
+    return { side: 'buy', qty };
   }
   return null;
 }
