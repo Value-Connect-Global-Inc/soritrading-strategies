@@ -12,8 +12,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4846](strategies/4846/) | BtcVixRegimeTrend1d | +18.01% | +610.12% | +29.17% | 13 | 2026-10-18 |
 | ★ | [4845](strategies/4845/) | BtcDonchianBreakout1d | -9.22% | -22.05% | +15.19% | 14 | 2026-10-18 |
+|  | [4846](strategies/4846/) | BtcVixRegimeTrend1d | +18.01% | +610.12% | +29.17% | 13 | 2026-10-18 |
 |  | [4844](strategies/4844/) | BtcMeanReversion1d | +2.77% | +94.66% | +7.15% | 14 | 2026-10-18 |
 |  | [4726](strategies/4726/) | AI 전략 ‡ | +52.53% | +68.31% | +21.03% | 18 | 2026-10-16 |
 |  | [4722](strategies/4722/) | DualSideTrend4h | +9.08% | +35.73% | +34.35% | 123 | 2026-10-16 |
