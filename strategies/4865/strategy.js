@@ -1,20 +1,20 @@
 /*
  * @coinsori-strategy v1
- * name: XSecMom5_v2_slow60
+ * name: XSecMom5_v3_biweekly
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, XRP/USDT, BNB/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: crypto coins show persistent relative strength — the strongest coins keep outperforming for weeks, so holding only the top performers captures more of the trend than a fixed basket. Slower 60-day momentum filters out short-term noise.
- * When it buys and sells: once a week it ranks the 5 coins by 60-day return and holds the top 2 equally; coins that drop out of the top 2 are sold.
- * When it does NOT work: in a broad crash all coins fall together; in a flat market ranks flip weekly and it churns.
+ * Why this strategy: crypto coins show persistent relative strength — holding only the top performers captures more of the trend than a fixed basket. Rebalancing every 2 weeks cuts turnover and fees.
+ * When it buys and sells: every 14 days it ranks the 5 coins by 30-day return and holds the top 2 equally; coins that drop out of the top 2 are sold.
+ * When it does NOT work: in a broad crash all coins fall together; in a flat market ranks flip and it churns.
  */
 function onUpdate(ctx) {
   const syms = ctx.syms;
   if (!syms || syms.length < 2) return null;
 
-  const lookback = 60;
+  const lookback = 30;
   const topN = 2;
 
   const closes = ctx.closes;
@@ -27,7 +27,7 @@ function onUpdate(ctx) {
     ctx.state.mom[ctx.sym] = -Infinity;
   }
 
-  if (ctx.i % 7 !== 0) return null;
+  if (ctx.i % 14 !== 0) return null;
 
   const moms = [];
   for (const s of syms) {

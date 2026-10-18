@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4865](strategies/4865/) | XSecMom5_v4_trendgate | +115.29% | — | +69.63% | 132 | 2026-10-18 |
+| — | [4865](strategies/4865/) | XSecMom5_v4_trendgate | +525.56% | — | +59.80% | 168 | 2026-10-18 |
 | — | [4862](strategies/4862/) | CrossSectionalMomentum5 | +427.94% | — | +53.97% | 232 | 2026-10-18 |
 | — | [4860](strategies/4860/) | CrossSectionalMomentum5 | +77.94% | — | +62.52% | 2 | 2026-10-18 |
 |  | [4859](strategies/4859/) | YieldCurveGatedBtc1d | +267.40% | +1160.22% | +74.93% | 446 | 2026-10-18 |
