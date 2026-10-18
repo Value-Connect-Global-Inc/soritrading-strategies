@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4849](strategies/4849/) | CryptoTrendBasket1d | -46.52% | — | +70.03% | 2124 | 2026-10-18 |
+| — | [4849](strategies/4849/) | CryptoTrendBasket1d | +27.87% | — | +26.15% | 233 | 2026-10-18 |
 | — | [4848](strategies/4848/) | CryptoMomentumRotation1d | -78.31% | — | +95.79% | 804 | 2026-10-18 |
 |  | [4847](strategies/4847/) | BtcVixRegimeTrend1d | +4.48% | +96.28% | +9.98% | 47 | 2026-10-18 |
 | ★ | [4845](strategies/4845/) | BtcDonchianBreakout1d | -9.22% | -22.05% | +15.19% | 14 | 2026-10-18 |
