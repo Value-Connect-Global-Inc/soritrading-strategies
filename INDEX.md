@@ -4,14 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 561 of 2325 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 385 of them right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 561 of 2326 right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 386 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 **‡** after a name: the code was edited after its last verifying backtest — the published code is current, but the figures are from the previous code until a new backtest verifies it.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [4860](strategies/4860/) | CrossSectionalMomentum5 | +77.94% | — | +62.52% | 2 | 2026-10-18 |
 |  | [4859](strategies/4859/) | YieldCurveGatedBtc1d | +267.40% | +1160.22% | +74.93% | 446 | 2026-10-18 |
 |  | [4858](strategies/4858/) | YieldCurveGatedBtc1d | -16.49% | +80.42% | +36.73% | 19 | 2026-10-18 |
 |  | [4857](strategies/4857/) | BtcFearGreedContrarian1d | -16.53% | +610.12% | +28.75% | 4 | 2026-10-18 |
