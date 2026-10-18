@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4857](strategies/4857/) | BtcFearGreedContrarian1d | -12.03% | +96.28% | +15.97% | 2 | 2026-10-18 |
+|  | [4857](strategies/4857/) | BtcFearGreedContrarian1d | -16.53% | +610.12% | +28.75% | 4 | 2026-10-18 |
 | — | [4856](strategies/4856/) | BtcVixRegime1d | +25.57% | — | +22.72% | 132 | 2026-10-18 |
 | — | [4855](strategies/4855/) | BasketMRPullback1d | +0.70% | — | +17.56% | 45 | 2026-10-18 |
 | ★ | [4854](strategies/4854/) | BtcAdoptionTrend1d | -23.44% | -24.42% | +42.64% | 128 | 2026-10-18 |

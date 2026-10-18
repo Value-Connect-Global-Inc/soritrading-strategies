@@ -3,16 +3,16 @@
   "name": "BtcFearGreedContrarian1d",
   "kind": "custom",
   "verified": {
-    "backtestId": 22985,
-    "return": -12.03,
-    "mdd": 15.97,
-    "trades": 2,
+    "backtestId": 22989,
+    "return": -16.53,
+    "mdd": 28.75,
+    "trades": 4,
     "vsBuyHold": "lose",
-    "benchRet": 96.28,
+    "benchRet": 610.12,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1705795200,
-    "tTo": 1792108800,
+    "tFrom": 1533081600,
+    "tTo": 1619395200,
     "approxNotes": [
       "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3349봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
@@ -24,7 +24,7 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1000,
-      "end": 1792281600
+      "end": 1619481600
     },
     "codeBasis": "assumed-current",
     "verifiedCodeSha256": "70481ae9280b5b17d907d5272b1f32cd166d3df53fff83ce986f3f5cc3358913"
