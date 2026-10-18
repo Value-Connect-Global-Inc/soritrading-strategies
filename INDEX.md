@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4844](strategies/4844/) | BtcMeanReversion1d | +3.13% | +322.45% | +13.54% | 66 | 2026-10-18 |
+|  | [4844](strategies/4844/) | BtcMeanReversion1d | +2.77% | +94.66% | +7.15% | 14 | 2026-10-18 |
 |  | [4726](strategies/4726/) | AI 전략 ‡ | +52.53% | +68.31% | +21.03% | 18 | 2026-10-16 |
 |  | [4722](strategies/4722/) | DualSideTrend4h | +9.08% | +35.73% | +34.35% | 123 | 2026-10-16 |
 |  | [4724](strategies/4724/) | AI 전략 | +0.63% | +99.86% | +2.92% | 6 | 2026-10-16 |
