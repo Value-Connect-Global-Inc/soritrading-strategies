@@ -1,51 +1,59 @@
 /*
  * @coinsori-strategy v1
- * name: BtcVixRegime1d
+ * name: CryptoTrendBasket1d v3-VIX (panic gate test)
  * ex: binance
- * syms: BTC/USDT
+ * syms: BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: crypto is a risk asset — it trends when the macro mood is calm (low VIX) and
- * crashes when fear spikes. Instead of reading crypto price momentum alone, this gates BTC exposure by
- * US stock-market volatility: buy only when VIX is low (risk-on) AND price is above its 200-day average,
- * and get out when VIX spikes (panic) or the long trend breaks. A regime filter is a different family
- * from the momentum basket — it uses macro data, not the coin's own price history.
- * When it buys and sells: buys BTC when the 200-day SMA is below price (long uptrend intact) AND VIX is
- * below 25 (calm). Sells when price falls below the 200-day SMA (trend broken) or VIX rises above 30
- * (panic regime — get out before the crash deepens).
- * When it does NOT work: in a grinding bear market price stays below the 200-day SMA so it sits in cash
- * (safe, no profit). If VIX stays low while crypto crashes for its own reasons (e.g. a crypto-specific
- * event), the VIX gate gives no protection and only the slow 200-day SMA break limits the loss. VIX data
- * is published with a lag, so live signals arrive one day late.
+ * Why this strategy: the v3 momentum basket (30d + 90d trend entry, -3% momentum exit, 3x ATR trail) is
+ * robust but its exits are lagging price signals — in a macro panic every coin drops together BEFORE the
+ * individual momentum turns negative. Adding a leading macro gate: when US stock-market volatility (VIX)
+ * spikes above 30, exit everything immediately, because that regime historically precedes deep crypto
+ * drawdowns. The basket then re-enters coins normally as their trends recover.
+ * When it buys and sells: each coin independently buys when 30-day momentum is > 0.5% AND the 90-day
+ * trend is still up. It sells when 30-day momentum < -3%, price falls 3x ATR below its peak, OR VIX > 30
+ * (macro panic — exit all coins regardless of their own momentum).
+ * When it does NOT work: if VIX spikes while crypto keeps rallying (decoupling), the gate exits early and
+ * misses the move, then re-enters at a worse price. A panic that turns out to be a dip costs the spread
+ * and re-entry. VIX data is published with a lag, so the live gate acts one day late.
  */
 function onUpdate(ctx) {
+  const sym = ctx.sym;
   const px = ctx.closes.at(-2); // last CLOSED bar so backtest, paper and live agree
   if (px == null) return null;
-  const sma200 = ctx.sma(200, 1); // long-term trend on closed bars
-  const vix = ctx.data('base_vix'); // US stock-market volatility — macro risk mood
-  if (sma200 == null || vix == null) return null;
+  const mom30 = ctx.change(30, 1); // 30-day momentum on closed bars
+  const mom90 = ctx.change(90, 1); // 90-day trend on closed bars — regime confirmation
+  const atr = ctx.atr(14, 1);
+  const vix = ctx.data('base_vix'); // US stock-market volatility — leading macro panic signal
+  if (mom30 == null || mom90 == null || atr == null || atr <= 0) return null;
+  const momLevel = px / (1 + mom30); // the close 30 days ago
+  const panic = vix != null && vix > 30; // macro panic — exit everything, momentum is lagging
 
-  const trendUp = px > sma200;
-  const calm = vix < 25; // calm risk-on regime — buy only here
-  const panic = vix > 30; // panic regime — get out before the crash deepens
-  const pos = ctx.pos(ctx.sym);
+  const pos = ctx.pos(sym);
+  const st = ctx.state;
+  if (!st.peak) st.peak = {}; // ctx is shared across all symbols — keep per-symbol peak
+  const peak = st.peak[sym] != null ? Math.max(st.peak[sym], px) : px;
+  st.peak[sym] = peak;
+  const trailStop = peak - 3 * atr; // 3 ATR below the peak = let winners run, cut reversals
 
   if (pos > 0) {
-    ctx.watch([{ side: 'sell', price: sma200, trigger: 'below', note: '200d SMA break' },
+    ctx.watch([{ side: 'sell', price: trailStop, trigger: 'below', note: '3x ATR trail' },
+               { side: 'sell', price: momLevel * 0.97, trigger: 'below', note: '30d momentum < -3%' },
                { side: 'sell', price: 30, trigger: 'above', note: 'VIX panic',
                  conds: [{ label: 'VIX now', now: vix, op: '>', ref: 30, closed: true }] }]);
-    if (!trendUp || panic) { // exit on trend break OR macro panic
+    if (mom30 < -0.03 || px < trailStop || panic) { // exit on trend loss OR macro panic
+      st.peak[sym] = null;
       return { side: 'sell', qty: pos };
     }
     return null;
   }
 
-  ctx.watch([{ side: 'buy', price: sma200, trigger: 'above', note: '200d SMA & calm VIX',
-               conds: [{ label: 'VIX < 25', now: vix, op: '<', ref: 25, closed: true }] }]);
-  if (trendUp && calm) { // both the long trend and the macro mood confirm risk-on
-    const qty = (ctx.cash / px) * 0.99; // single-coin: invest most of the account
+  ctx.watch([{ side: 'buy', price: momLevel * 1.005, trigger: 'above', note: '30d mom > 0.5% & 90d up' }]);
+  if (mom30 > 0.005 && mom90 > 0) { // two timescales confirm a trend, not a noise blip
+    const qty = (ctx.cash / px) * 0.25; // cap each coin at 25% of the account
     if (qty <= 0) return null;
+    st.peak[sym] = px;
     return { side: 'buy', qty: qty };
   }
   return null;
