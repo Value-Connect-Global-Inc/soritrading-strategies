@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: CryptoTrendBasket1d v5 (3.5x ATR trail)
+ * name: CryptoTrendBasket1d v3 (3x ATR trail, -3% momentum exit)
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT
  * interval: 1d
@@ -12,11 +12,11 @@
  * shallow pullback inside a real bull re-enters sooner while a bear with a lagging 90d trend stays out.
  * When it buys and sells: each coin independently buys when 30-day momentum is > 0.5% AND the 90-day
  * trend is still up (price above its level 90 days ago). It sells when 30-day momentum turns clearly
- * negative (< -3%) or price falls 3.5x ATR below its own highest close since entry (wider trail than
- * v3's 3x so a strong bull can run further before the trail cuts it). Cash stays for coins not trending.
+ * negative (< -3%, looser than the -2% base so winners run longer) or price falls 3x ATR below its own
+ * highest close since entry. Cash stays for coins not trending.
  * When it does NOT work: in a broad bear all four momentum filters are negative so the basket sits in
  * cash (safe, no profit). A coin that grinds up slowly then reverses hard gives back part of the gain
- * to the trailing stop — the wider trail means more give-back on a sharp reversal.
+ * to the trailing stop. The looser exit keeps positions in longer, so a slow bleed costs more.
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
@@ -33,10 +33,10 @@ function onUpdate(ctx) {
   if (!st.peak) st.peak = {}; // ctx is shared across all symbols — keep per-symbol peak
   const peak = st.peak[sym] != null ? Math.max(st.peak[sym], px) : px;
   st.peak[sym] = peak;
-  const trailStop = peak - 3.5 * atr; // 3.5 ATR below the peak = let winners run even further
+  const trailStop = peak - 3 * atr; // 3 ATR below the peak = let winners run, cut reversals
 
   if (pos > 0) {
-    ctx.watch([{ side: 'sell', price: trailStop, trigger: 'below', note: '3.5x ATR trail' },
+    ctx.watch([{ side: 'sell', price: trailStop, trigger: 'below', note: '3x ATR trail' },
                { side: 'sell', price: momLevel * 0.97, trigger: 'below', note: '30d momentum < -3%' }]);
     if (mom30 < -0.03 || px < trailStop) { // exit only on a clear trend loss, not a tiny flip
       st.peak[sym] = null;
