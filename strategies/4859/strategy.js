@@ -1,55 +1,35 @@
 /*
  * @coinsori-strategy v1
- * name: YieldCurveGatedBtc1d
+ * name: OnChainTrendBtc1d
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: a deeply inverted US yield curve (10Y minus 3M) historically
- * precedes recessions and broad risk-off, which drags crypto down with it. This
- * bets that during deep inversion, holding cash protects the account better than
- * chasing momentum.
- * When it buys and sells: buys BTC when 30-day momentum is positive AND the yield
- * curve is not deeply inverted (spread above -1.5pp). Sells when 30-day momentum
- * turns negative, price falls 3x ATR below entry, or the position is down 20%.
- * When it does NOT work: crypto rallied hard in 2023-24 while the curve was deeply
- * inverted, so the gate can sit in cash during a crypto bull. A steeply positive
- * curve is not a guarantee of a bull either.
+ * Why this strategy: Bitcoin active addresses measure real on-chain usage; sustained growth in usage tends to accompany price uptrends, and usage collapses mark cycle tops.
+ * When it buys and sells: buys when the 30-day average of active addresses is above raw daily addresses (usage expanding); sells when usage rolls over (raw below the 30-day average).
+ * When it does NOT work: in chop where on-chain usage wiggles around its average it whipsaws; on-chain data is daily and slow, so it can lag sharp price moves by days.
  */
 function onUpdate(ctx) {
-  const px = ctx.closes.at(-2); // last CLOSED bar so backtest, paper and live agree
-  if (px == null) return null;
-  const spread = ctx.data("base_t10y3m"); // 10Y-3M spread in percentage points
-  if (spread == null) return null;
-  const riskOn = spread > -1.5; // only deep inversion (2023-24 style) counts as risk-off
+  const addr = ctx.data("addr");
+  const sma30 = ctx.data("addr_sma30");
+  if (addr == null || sma30 == null) return null;
 
+  const price = ctx.price;
+  const cash = ctx.cash;
   const pos = ctx.position;
-  const mom = ctx.change(30, 1); // 30-day momentum as a fraction (0.05 = 5%) on closed bars
-  if (mom == null) return null;
 
+  // usage expanding → hold; rolling over → exit
   if (pos > 0) {
-    const atr = ctx.atr(14, 1);
-    const entry = ctx.entryPx;
-    let stopPx = null;
-    if (atr != null && entry != null) stopPx = entry - 3 * atr; // 3x ATR trail from entry
-    const hardStop = entry != null ? entry * 0.8 : null; // -20% disaster stop
-    const exitPx = (stopPx != null && hardStop != null) ? Math.max(stopPx, hardStop) : (stopPx != null ? stopPx : hardStop);
-    ctx.watch([{ side: 'sell', price: exitPx, trigger: 'below', note: 'ATR trail or -20% stop' },
-               { side: 'sell', note: 'momentum < -2%', conds: [{ label: '30d mom', now: mom, op: '<', ref: -0.02, closed: true }] }]);
-    if (mom < -0.02) return { side: 'sell', qty: pos }; // momentum broke = trend over
-    if (exitPx != null && px <= exitPx) return { side: 'sell', qty: pos };
+    if (addr < sma30) {
+      return { side: 'sell', qty: pos };
+    }
     return null;
   }
 
-  ctx.watch([{ side: 'buy', note: 'mom>2% & curve not deep-inverted', conds: [
-    { label: '30d mom', now: mom, op: '>', ref: 0.02, closed: true },
-    { label: '10Y-3M spread', now: spread, op: '>', ref: -1.5, closed: true }
-  ]}]);
-  if (riskOn && mom > 0.02) { // positive momentum + normal curve = trend regime
-    const qty = (ctx.cash / px) * 0.99;
-    if (qty <= 0) return null;
-    return { side: 'buy', qty: qty };
+  // flat: enter only when usage is expanding
+  if (addr > sma30) {
+    return { side: 'buy', qty: cash / price * 0.99 };
   }
   return null;
 }

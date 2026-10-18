@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4859](strategies/4859/) | YieldCurveGatedBtc1d | -6.69% | +96.28% | +44.88% | 67 | 2026-10-18 |
+|  | [4859](strategies/4859/) | YieldCurveGatedBtc1d ‡ | -6.69% | +96.28% | +44.88% | 67 | 2026-10-18 |
 |  | [4858](strategies/4858/) | YieldCurveGatedBtc1d | -16.49% | +80.42% | +36.73% | 19 | 2026-10-18 |
 |  | [4857](strategies/4857/) | BtcFearGreedContrarian1d | -16.53% | +610.12% | +28.75% | 4 | 2026-10-18 |
 | — | [4856](strategies/4856/) | BtcVixRegime1d | +25.57% | — | +22.72% | 132 | 2026-10-18 |
