@@ -33,6 +33,8 @@ function onUpdate(ctx) {
   const trailStop = peak - 3 * atr; // 3 ATR below the peak = let winners run, cut reversals
 
   if (pos > 0) {
+    ctx.watch([{ side: 'sell', price: trailStop, trigger: 'below', note: '3x ATR trail' },
+               { side: 'sell', price: peak, trigger: 'below', note: 'momentum < -2%' }]);
     if (mom30 < -0.02 || px < trailStop) { // exit only on a clear trend loss, not a tiny flip
       st.peak[sym] = null;
       return { side: 'sell', qty: pos };
@@ -40,6 +42,8 @@ function onUpdate(ctx) {
     return null;
   }
 
+  const momLevel = px / (1 + mom30); // the close 30 days ago — price must stay above it
+  ctx.watch([{ side: 'buy', price: momLevel, trigger: 'above', note: '30d momentum > 2%' }]);
   if (mom30 > 0.02) { // require a clear positive trend before entering, avoids noise flips
     const qty = (ctx.cash / px) * 0.25; // cap each coin at 25% of the account
     if (qty <= 0) return null;
