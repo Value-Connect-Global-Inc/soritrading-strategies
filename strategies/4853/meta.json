@@ -3,16 +3,16 @@
   "name": "FearGreedContrarian v1",
   "kind": "custom",
   "verified": {
-    "backtestId": 22950,
-    "return": -21.99,
-    "mdd": 73.15,
-    "trades": 18,
-    "vsBuyHold": "win",
-    "benchRet": -24.42,
+    "backtestId": 22953,
+    "return": -30.19,
+    "mdd": 40.41,
+    "trades": 4,
+    "vsBuyHold": "lose",
+    "benchRet": 610.12,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1619481600,
-    "tTo": 1705795200,
+    "tFrom": 1533081600,
+    "tTo": 1619395200,
     "approxNotes": [
       "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3349봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
@@ -24,12 +24,12 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1000,
-      "end": 1705881600
+      "end": 1619481600
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "1c58240f3d12fed45bee76d0eadc460e15d2df7e8b676acdd4b34d4c336334a3"
+    "verifiedCodeSha256": "9f99825dc0b4ed893c4d854ac181d8649d497cdbf51f5f29b0df806d4edbc54e"
   },
   "config": null,
-  "updatedAt": "2026-10-18T15:54:26.142Z",
+  "updatedAt": "2026-10-18T15:55:38.916Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
