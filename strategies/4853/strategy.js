@@ -1,20 +1,21 @@
 /*
  * @coinsori-strategy v1
- * name: FearGreedContrarian v2 (trend-filtered)
+ * name: FearGreedContrarian v3 (deep fear, early exit)
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: crowd sentiment extremes mean-revert, but only when the longer trend is up —
- * fear inside an uptrend is a pullback to buy, fear inside a downtrend is a falling knife. The
- * Fear & Greed index (0-100) is a daily sentiment score, a different signal axis from price momentum.
- * When it buys and sells: it buys BTC when the index is at extreme fear (< 25) AND price is above the
- * 200-day average (long-term uptrend intact). It sells when the index reaches extreme greed (> 70) or
- * price falls 15% below the average entry (hard stop against a prolonged fear spell).
+ * Why this strategy: extreme fear in crypto marks washout lows that later recover to neutral — the
+ * mean reversion is from fear to neutral, not all the way to greed. Buying at deep fear (index < 15)
+ * in an uptrend gets a better price, and selling as soon as sentiment recovers to neutral (index > 50)
+ * banks the reversion before the next pullback.
+ * When it buys and sells: it buys BTC when the index is below 15 AND price is above the 200-day
+ * average (long-term uptrend intact). It sells when the index climbs back above 50 or price falls
+ * 20% below the average entry (wide stop — crypto needs room to breathe).
  * When it does NOT work: in a grinding bear the 200-day filter keeps it out (safe, no profit); in a
- * melt-up that never cools below 25 it never enters and misses the rally; a sharp bull correction
- * that dips below 25 but not below the 200-day still risks the 15% stop.
+ * melt-up that never cools below 15 it never enters and misses the rally; a genuine crash that takes
+ * price 20% below entry still stops it out before the bottom.
  */
 function onUpdate(ctx) {
   const px = ctx.closes.at(-2); // last CLOSED bar — identical in backtest, paper and live
@@ -27,18 +28,18 @@ function onUpdate(ctx) {
   const entry = ctx.entryPx;
 
   if (pos > 0) {
-    const stop = entry != null ? entry * 0.85 : null; // hard stop: -15% below average entry
+    const stop = entry != null ? entry * 0.80 : null; // wide stop: -20% below average entry
     if (stop != null) {
-      ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '-15% stop',
-                   conds: [{ label: 'FG index', now: fg, op: '>', ref: 70, closed: true }] }]);
+      ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: '-20% stop',
+                   conds: [{ label: 'FG index', now: fg, op: '>', ref: 50, closed: true }] }]);
     }
-    if (fg > 70 || (stop != null && px < stop)) { // greed exit or stop-out
+    if (fg > 50 || (stop != null && px < stop)) { // sentiment back to neutral, or stop-out
       return { side: 'sell', qty: pos };
     }
     return null;
   }
 
-  if (fg < 25 && px > sma200) { // fear + uptrend = pullback, not knife
+  if (fg < 15 && px > sma200) { // deep fear + uptrend = washout low to buy
     const qty = (ctx.cash / px) * 0.99;
     if (qty <= 0) return null;
     return { side: 'buy', qty: qty };
