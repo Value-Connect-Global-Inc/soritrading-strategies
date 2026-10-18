@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-| — | [4853](strategies/4853/) | FearGreedContrarian v1 ‡ | +20.68% | — | +21.07% | 124 | 2026-10-18 |
+| — | [4853](strategies/4853/) | FearGreedContrarian v1 | +117.53% | — | +38.29% | 488 | 2026-10-18 |
 | — | [4852](strategies/4852/) | AI 전략 | +23.51% | — | +19.96% | 132 | 2026-10-18 |
 | — | [4850](strategies/4850/) | AI 전략 | +206.98% | — | +26.98% | 110 | 2026-10-18 |
 | — | [4851](strategies/4851/) | AI 전략 | +975.30% | — | +29.24% | 111 | 2026-10-18 |
