@@ -3,7 +3,7 @@
   "name": "CryptoTrendBasket1d",
   "kind": "custom",
   "verified": {
-    "backtestId": 22939,
+    "backtestId": 22940,
     "return": 22.65,
     "mdd": 19.52,
     "trades": 140,
@@ -28,9 +28,9 @@
       "syms": 4
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "bbd33cc2fb00d6f7d92561a33ba9b73a688210ff7e052b87b370efb3f8f60a6b"
+    "verifiedCodeSha256": "94f456f8aaaa33026f6bf2a45e1ae524c03bc27e808313cfb40ceaa3f2554740"
   },
   "config": null,
-  "updatedAt": "2026-10-18T15:26:50.997Z",
+  "updatedAt": "2026-10-18T15:32:39.521Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

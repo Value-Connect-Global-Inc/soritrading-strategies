@@ -26,6 +26,7 @@ function onUpdate(ctx) {
   const mom90 = ctx.change(90, 1); // 90-day trend on closed bars — regime confirmation
   const atr = ctx.atr(14, 1);
   if (mom30 == null || mom90 == null || atr == null || atr <= 0) return null;
+  const momLevel = px / (1 + mom30); // the close 30 days ago
 
   const pos = ctx.pos(sym);
   const st = ctx.state;
@@ -36,7 +37,7 @@ function onUpdate(ctx) {
 
   if (pos > 0) {
     ctx.watch([{ side: 'sell', price: trailStop, trigger: 'below', note: '3x ATR trail' },
-               { side: 'sell', price: peak, trigger: 'below', note: 'momentum < -2%' }]);
+               { side: 'sell', price: momLevel * 0.98, trigger: 'below', note: '30d momentum < -2%' }]);
     if (mom30 < -0.02 || px < trailStop) { // exit only on a clear trend loss, not a tiny flip
       st.peak[sym] = null;
       return { side: 'sell', qty: pos };
@@ -44,8 +45,7 @@ function onUpdate(ctx) {
     return null;
   }
 
-  const momLevel = px / (1 + mom30); // the close 30 days ago — price must stay above it
-  ctx.watch([{ side: 'buy', price: momLevel, trigger: 'above', note: '30d mom > 0.5% & 90d up' }]);
+  ctx.watch([{ side: 'buy', price: momLevel * 1.005, trigger: 'above', note: '30d mom > 0.5% & 90d up' }]);
   if (mom30 > 0.005 && mom90 > 0) { // two timescales confirm a trend, not a noise blip
     const qty = (ctx.cash / px) * 0.25; // cap each coin at 25% of the account
     if (qty <= 0) return null;
