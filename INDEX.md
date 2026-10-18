@@ -4,14 +4,15 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 560 of 2313 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 377 of them right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 560 of 2314 right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 378 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 **‡** after a name: the code was edited after its last verifying backtest — the published code is current, but the figures are from the previous code until a new backtest verifies it.
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| — | [4848](strategies/4848/) | CryptoMomentumRotation1d | -78.31% | — | +95.79% | 804 | 2026-10-18 |
 |  | [4847](strategies/4847/) | BtcVixRegimeTrend1d | +4.48% | +96.28% | +9.98% | 47 | 2026-10-18 |
 | ★ | [4845](strategies/4845/) | BtcDonchianBreakout1d | -9.22% | -22.05% | +15.19% | 14 | 2026-10-18 |
 |  | [4846](strategies/4846/) | BtcVixRegimeTrend1d | +18.01% | +610.12% | +29.17% | 13 | 2026-10-18 |
