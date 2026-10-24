@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: SMA200/50 Trend BTC 1D
+ * name: SMA200/50 Trend BTC 1D + ATR trail
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
@@ -9,12 +9,15 @@
  * Why this strategy: A slow entry + fast exit trend filter is a classic robust design.
  * The 200-day average confirms a healthy uptrend before buying (avoiding false bottoms),
  * while the 50-day average catches tops much sooner than the 200-day, so a bear market
- * is exited long before the slow average would signal.
+ * is exited long before the slow average would signal. A 3x ATR(14) trailing stop from
+ * the recent 50-bar peak gives every position a hard stop-loss so a fast crash is cut
+ * before the 50-day exit lags too far.
  * When it buys and sells: Buy when the daily close crosses back above its 200-day
- * average. Sell when the daily close falls back below its 50-day average.
- * When it does NOT work: In choppy ranges the 50-day exit triggers often, converting
- * what would be a single hold into many small round-trips. It also re-enters late after
- * each V-shaped recovery because the 200-day confirmation takes time.
+ * average. Sell when the daily close falls back below its 50-day average OR below the
+ * trailing stop (50-bar peak minus 3x ATR), whichever is hit first.
+ * When it does NOT work: In choppy ranges the 50-day exit and the trail stop trigger
+ * often, converting what would be a single hold into many small round-trips. It also
+ * re-enters late after each V-shaped recovery because the 200-day confirmation takes time.
  */
 
 function onUpdate(ctx) {
@@ -35,8 +38,17 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // Fast exit: leave when the close drops below the 50-day average, well before the 200d.
-  ctx.watch([{ side: 'sell', price: sma50, trigger: 'below', note: 'below 50d avg' }]);
-  if (prevClose < sma50) return { side: 'sell', qty: pos };
+  // Hard stop: trail the recent 50-bar peak by 3x ATR(14). 3x is wide enough to
+  // avoid normal noise but tight enough to cut a fast crash before the 50-day exit.
+  const atr = ctx.atr(14, 1);
+  const peak = ctx.high(50, 1);
+  if (atr == null || peak == null) return null;
+  const trailStop = peak - 3 * atr;
+
+  ctx.watch([
+    { side: 'sell', price: sma50, trigger: 'below', note: 'below 50d avg' },
+    { side: 'sell', price: trailStop, trigger: 'below', note: 'ATR trail stop' }
+  ]);
+  if (prevClose < sma50 || prevClose < trailStop) return { side: 'sell', qty: pos };
   return null;
 }
