@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4880](strategies/4880/) | TrendDipBuyer BTC 1D | -25.34% | +43.90% | +44.89% | 28 | 2026-10-24 |
+|  | [4880](strategies/4880/) | TrendDipBuyer BTC 1D | -19.23% | +67.91% | +38.49% | 6 | 2026-10-24 |
 |  | [4879](strategies/4879/) | Volume-Confirmed Donchian Breakout BTC 1D | +12.10% | +93.29% | +36.63% | 25 | 2026-10-24 |
 |  | [4878](strategies/4878/) | SMA200 Golden-Cross BTC 1D | +76.93% | +136.82% | +38.59% | 12 | 2026-10-24 |
 |  | [4877](strategies/4877/) | Dollar-Regime BTC Rider 1D | -66.99% | +183.54% | +72.54% | 169 | 2026-10-24 |
