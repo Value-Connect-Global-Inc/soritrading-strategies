@@ -3,10 +3,10 @@
   "name": "SMA200 Golden-Cross BTC 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 23073,
-    "return": 65.79,
-    "mdd": 53.47,
-    "trades": 9,
+    "backtestId": 23076,
+    "return": 71.34,
+    "mdd": 40.92,
+    "trades": 12,
     "vsBuyHold": "lose",
     "benchRet": 136.82,
     "benchBasis": "price",
@@ -16,7 +16,6 @@
     "approxNotes": [
       "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3355봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "기간 종료 시 미청산 포지션 1종목 (총자산의 99.56%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
       "[데이터/출처] 내 저장소(에이전트 cd27de…) 1100봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
@@ -27,9 +26,9 @@
       "end": 1602720000
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "01502b43811247469f0ecd10949e091f8088f72fd905bf03a6ac7e2bbe51715e"
+    "verifiedCodeSha256": "d1045f6995b47908be51c6f10bd486f1f7dadb2f580e7236fdfa6d6f07fb4639"
   },
   "config": null,
-  "updatedAt": "2026-10-24T02:07:49.161Z",
+  "updatedAt": "2026-10-24T02:10:49.338Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
