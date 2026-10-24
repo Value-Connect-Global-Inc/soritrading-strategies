@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 561 of 2328 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 562 of 2329 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 388 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -12,6 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
+| ★ | [4873](strategies/4873/) | Network Trend Rider | -23.65% | -26.32% | +35.60% | 117 | 2026-10-24 |
 | — | [4865](strategies/4865/) | XSecMom5_v4_trendgate | +453.55% | — | +59.75% | 116 | 2026-10-18 |
 | — | [4862](strategies/4862/) | CrossSectionalMomentum5 | +427.94% | — | +53.97% | 232 | 2026-10-18 |
 | — | [4860](strategies/4860/) | CrossSectionalMomentum5 | +77.94% | — | +62.52% | 2 | 2026-10-18 |
