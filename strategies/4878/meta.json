@@ -3,7 +3,7 @@
   "name": "SMA200 Golden-Cross BTC 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 23067,
+    "backtestId": 23073,
     "return": 65.79,
     "mdd": 53.47,
     "trades": 9,
@@ -27,9 +27,9 @@
       "end": 1602720000
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "e2066cd48278781f2554f484a1436fee03a2d9dd705534b7c38a324d27d7d97a"
+    "verifiedCodeSha256": "01502b43811247469f0ecd10949e091f8088f72fd905bf03a6ac7e2bbe51715e"
   },
   "config": null,
-  "updatedAt": "2026-10-24T02:06:57.533Z",
+  "updatedAt": "2026-10-24T02:07:49.161Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
