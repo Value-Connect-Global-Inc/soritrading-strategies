@@ -12,7 +12,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|
-|  | [4878](strategies/4878/) | SMA200 Golden-Cross BTC 1D | +71.34% | +136.82% | +40.92% | 12 | 2026-10-24 |
+|  | [4878](strategies/4878/) | SMA200 Golden-Cross BTC 1D ‡ | +71.34% | +136.82% | +40.92% | 12 | 2026-10-24 |
 |  | [4877](strategies/4877/) | Dollar-Regime BTC Rider 1D | -66.99% | +183.54% | +72.54% | 169 | 2026-10-24 |
 |  | [4876](strategies/4876/) | Donchian Breakout Trend BTC 1D | -44.05% | +136.82% | +61.48% | 25 | 2026-10-24 |
 | ★ | [4873](strategies/4873/) | Network Trend Rider | -23.65% | -26.32% | +35.60% | 117 | 2026-10-24 |
