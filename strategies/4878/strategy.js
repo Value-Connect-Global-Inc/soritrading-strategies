@@ -1,6 +1,6 @@
 /*
  * @coinsori-strategy v1
- * name: SMA200/50 Trend BTC 1D + ATR trail
+ * name: SMA200/50 Trend BTC 1D + ATR buffer
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
@@ -9,15 +9,17 @@
  * Why this strategy: A slow entry + fast exit trend filter is a classic robust design.
  * The 200-day average confirms a healthy uptrend before buying (avoiding false bottoms),
  * while the 50-day average catches tops much sooner than the 200-day, so a bear market
- * is exited long before the slow average would signal. A 3x ATR(14) trailing stop from
- * the recent 50-bar peak gives every position a hard stop-loss so a fast crash is cut
- * before the 50-day exit lags too far.
+ * is exited long before the slow average would signal. Two guards reduce whipsaw and
+ * crash risk: (1) the 50-day exit only fires when the close breaks below it by a full
+ * ATR(14), so a mere touch of the line in a chop does not dump the position; (2) a 3x
+ * ATR trailing stop from the recent 50-bar peak gives every position a hard stop-loss
+ * so a violent crash is cut even before the 50-day exit lags.
  * When it buys and sells: Buy when the daily close crosses back above its 200-day
- * average. Sell when the daily close falls back below its 50-day average OR below the
- * trailing stop (50-bar peak minus 3x ATR), whichever is hit first.
- * When it does NOT work: In choppy ranges the 50-day exit and the trail stop trigger
- * often, converting what would be a single hold into many small round-trips. It also
- * re-enters late after each V-shaped recovery because the 200-day confirmation takes time.
+ * average. Sell when the close breaks below the 50-day average by one ATR, or falls
+ * below the trailing stop (50-bar peak minus 3x ATR), whichever comes first.
+ * When it does NOT work: In choppy ranges the exits still trigger more than ideal,
+ * converting a single hold into several round-trips. It re-enters late after each
+ * V-shaped recovery because the 200-day confirmation takes time.
  */
 
 function onUpdate(ctx) {
@@ -38,17 +40,19 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // Hard stop: trail the recent 50-bar peak by 3x ATR(14). 3x is wide enough to
-  // avoid normal noise but tight enough to cut a fast crash before the 50-day exit.
   const atr = ctx.atr(14, 1);
   const peak = ctx.high(50, 1);
   if (atr == null || peak == null) return null;
+
+  // 50-day exit needs a full ATR of breakdown, so a noise-level touch does not dump.
+  const exit50 = sma50 - atr;
+  // Hard stop: trail the recent 50-bar peak by 3x ATR(14) to cut fast crashes.
   const trailStop = peak - 3 * atr;
 
   ctx.watch([
-    { side: 'sell', price: sma50, trigger: 'below', note: 'below 50d avg' },
+    { side: 'sell', price: exit50, trigger: 'below', note: 'break 50d by 1 ATR' },
     { side: 'sell', price: trailStop, trigger: 'below', note: 'ATR trail stop' }
   ]);
-  if (prevClose < sma50 || prevClose < trailStop) return { side: 'sell', qty: pos };
+  if (prevClose < exit50 || prevClose < trailStop) return { side: 'sell', qty: pos };
   return null;
 }
