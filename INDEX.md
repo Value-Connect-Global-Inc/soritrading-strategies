@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5422](strategies/5422/) | BTC VIX-Gated Trend 1D baseline | +80.05% | +714.73% | +8.97% | 28 | 2026-10-26 `n135757c` | 2026-10-26 |
+|  | [5422](strategies/5422/) | BTC VIX-Gated Trend 1D baseline | +10.91% | +86.80% | +5.03% | 34 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5319](strategies/5319/) | BTC VIX-Gated Trend 1D | +26.12% | +425.37% | +6.48% | 38 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5316](strategies/5316/) | BTC RSI Ranging Reversion 1D | -5.45% | +116.17% | +7.51% | 8 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5315](strategies/5315/) | BTC Fear-Greed Contrarian 1D | +4.57% | +83.09% | +11.44% | 12 | 2026-10-26 `n135757c` | 2026-10-26 |
