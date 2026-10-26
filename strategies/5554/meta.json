@@ -3,7 +3,7 @@
   "name": "BTC-ETH-SOL VolTarget Defensive Basket 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 26583,
+    "backtestId": 26586,
     "return": 132.78,
     "mdd": 18.55,
     "trades": 183,
@@ -31,8 +31,8 @@
       "hash": "n135757cd00c",
       "firstSeen": "2026-10-26"
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "d7a4156515ca72ebdaadf0989f8ab4177f145fd49f7b0c358e206332bb278302"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "58e9082a33d884722ec3cc6c5fcf8bc1ae162b1869cd4463e10ab246c8fc2937"
   },
   "config": null,
   "updatedAt": "2026-10-26T23:30:01.174Z",
