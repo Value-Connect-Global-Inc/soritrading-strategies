@@ -13,7 +13,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| ★ | [5539](strategies/5539/) | BTC Yield-Curve-Gated Trend 1D | +37.54% | -1.83% | +6.84% | 35 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5538](strategies/5538/) | PROBE addr level 500k 1D | +0.00% | +176.88% | +0.06% | 35 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5536](strategies/5536/) | PROBE addr_sma30 coverage 1D | -0.14% | +176.88% | +0.15% | 1000 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5534](strategies/5534/) | PROBE addr growing inverted 1D | -0.24% | +176.88% | +0.52% | 1 | 2026-10-26 `n135757c` | 2026-10-26 |
@@ -21,6 +20,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [5531](strategies/5531/) | PROBE addr bar coverage 1D | -0.14% | +176.88% | +0.15% | 1000 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5530](strategies/5530/) | PROBE addr vs addr_sma30 1D | +0.20% | +176.88% | +0.51% | 1 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5528](strategies/5528/) | PROBE addr data flow 1D | +0.20% | +176.88% | +0.51% | 1 | 2026-10-26 `n135757c` | 2026-10-26 |
+| ★ | [5539](strategies/5539/) | BTC Yield-Curve-Gated Trend 1D | +37.54% | -1.83% | +6.84% | 35 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5422](strategies/5422/) | BTC VIX-Gated Trend 1D baseline | +10.91% | +86.80% | +5.03% | 34 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5319](strategies/5319/) | BTC VIX-Gated Trend 1D | +26.12% | +425.37% | +6.48% | 38 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5316](strategies/5316/) | BTC RSI Ranging Reversion 1D | -5.45% | +116.17% | +7.51% | 8 | 2026-10-26 `n135757c` | 2026-10-26 |
