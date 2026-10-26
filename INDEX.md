@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 563 of 2339 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 564 of 2339 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 388 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,6 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+| ★ | [2142](strategies/2142/) | ETH Slow Trend Ride + Volume Filter 4H | +1850.11% | +657.91% | +46.16% | 290 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5314](strategies/5314/) | BTC Fear-Greed Contrarian 1D | -5.19% | +455.01% | +5.19% | 4 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5315](strategies/5315/) | BTC Fear-Greed Contrarian 1D | +4.57% | +83.09% | +11.44% | 12 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5313](strategies/5313/) | BTC Onchain-Gated Trend 1D | +77.66% | +714.73% | +8.97% | 38 | 2026-10-26 `n135757c` | 2026-10-26 |
@@ -875,7 +876,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | — | [972](strategies/972/) | Momentum Filter with ATR | -52.92% | — | +104.74% | 1 | — | 2026-10-11 |
 | ★ | [371](strategies/371/) | BTC 업비트 돈치안 트렌드 스탑 | +82.12% | +60.62% | +21.77% | 60 | — | 2026-10-11 |
 | ★ | [1000](strategies/1000/) | MACD RSI Mean Reversion Strategy | -10.92% | -16.12% | +13.58% | 23 | — | 2026-10-11 |
-|  | [2142](strategies/2142/) | ETH Slow Trend Ride + Volume Filter 4H | +493.35% | +1436.34% | +30.47% | 52 | — | 2026-10-11 |
 |  | [3420](strategies/3420/) | Spread Squeeze Imbalance | -3.26% | -1.44% | +3.26% | 26 | — | 2026-10-11 |
 | ★ | [3416](strategies/3416/) | BTC Vol Squeeze Breakout 4H | -15.17% | -57.14% | +18.59% | 77 | — | 2026-10-11 |
 |  | [3419](strategies/3419/) | BTC EMA Pullback 1D | +48.57% | +580.47% | +22.39% | 27 | — | 2026-10-11 |
