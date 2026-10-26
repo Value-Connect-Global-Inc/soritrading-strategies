@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5539](strategies/5539/) | BTC Yield-Curve-Gated Trend 1D | +36.15% | +79.39% | +8.91% | 23 | 2026-10-26 `n135757c` | 2026-10-26 |
+|  | [5539](strategies/5539/) | BTC Yield-Curve-Gated Trend 1D ‡ | +36.15% | +79.39% | +8.91% | 23 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5538](strategies/5538/) | PROBE addr level 500k 1D | +0.00% | +176.88% | +0.06% | 35 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5536](strategies/5536/) | PROBE addr_sma30 coverage 1D | -0.14% | +176.88% | +0.15% | 1000 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5534](strategies/5534/) | PROBE addr growing inverted 1D | -0.24% | +176.88% | +0.52% | 1 | 2026-10-26 `n135757c` | 2026-10-26 |
