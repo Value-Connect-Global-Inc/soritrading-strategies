@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5549](strategies/5549/) | BTC OnChain-Gate VolTarget 1D | +365.65% | +1141.52% | +38.59% | 12 | 2026-10-26 `n135757c` | 2026-10-26 |
+|  | [5549](strategies/5549/) | BTC OnChain-Gate VolTarget 1D | +56.51% | +164.53% | +38.59% | 11 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5548](strategies/5548/) | BTC YieldCurve-Gate VolTarget 1D | +0.76% | +157.16% | +34.54% | 17 | 2026-10-26 `n135757c` | 2026-10-26 |
 | — | [5547](strategies/5547/) | BTC NDX-Regime-Gated Trend 1D | -84.10% | — | +94.34% | 316 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5539](strategies/5539/) | BTC Yield-Curve-Gated Trend 1D ‡ | +36.15% | +79.39% | +8.91% | 23 | 2026-10-26 `n135757c` | 2026-10-26 |
