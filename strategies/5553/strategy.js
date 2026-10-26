@@ -1,59 +1,71 @@
 /*
  * @coinsori-strategy v1
- * name: BTC Dollar-Regime-Gated Trend 1D
+ * name: BTC-ETH-SOL VolTarget Defensive Basket 1D
  * ex: binance
- * syms: BTC/USDT
+ * syms: BTC/USDT, ETH/USDT, SOL/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Bitcoin is a risk asset and often moves inversely to the US dollar — a weak dollar tends to support BTC, a strong dollar pressures it. Gating a trend breakout on the broad dollar index being below its 200-day average (weak-dollar regime) filters out breakouts that happen while the dollar is strengthening against risk assets. This adds a macro information axis that pure price cannot see.
- * When it buys and sells: Buy when price breaks above the 55-day high AND the broad dollar index is below its 200-day average. Exit when price breaks below the 20-day low or on a 2.5x ATR hard stop. Position is sized to risk 5% of equity on the stop.
- * When it does NOT work: In a period where BTC and the dollar move together (e.g. both rise on crypto-specific adoption), the weak-dollar gate wrongly keeps it out and it misses the rally. It also sits in cash during BTC rallies that happen despite a strong dollar.
+ * Why this strategy: The single-asset BTC vol-target (5550) is the validated winner, but its
+ * 47-56% drawdown comes from being 100% concentrated in one coin. This basket runs the same
+ * proven inverse-volatility engine across BTC, ETH and SOL, each capped at one third of the
+ * account. It stays ALWAYS invested in crypto (never goes to cash) so it still captures the
+ * violent V-recoveries that made 5550 work — but a single coin's crash now only hurts one
+ * third of the account, not all of it.
+ * When it buys and sells: Every day each coin is sized by inverse 14-day ATR (low volatility =
+ * big position, high volatility = small position), targeting a 2.5% daily-vol budget per coin,
+ * rebalanced only when the target moves more than 10%. It never fully exits any coin.
+ * When it does NOT work: In a broad crypto bear where BTC, ETH and SOL fall together, the
+ * basket still bleeds — diversification only helps when coins diverge. It also lags pure-BTC
+ * buy-and-hold in a BTC-led bull because part of the account sits in laggards.
  */
 function onUpdate(ctx) {
-  const dxy = ctx.data("dxy");
-  if (dxy == null) return null;
-  // Broad dollar index (2006=100). Weak-dollar regime = index below its long-run center.
-  // The broad index has spent most of the modern era between ~95 and ~130; 110 is the middle.
-  const DOLLAR_WEAK = 110;
-
-  const price = ctx.price;
-  const pos = ctx.position || 0;
-  const entry = ctx.entryPx;
   const atr = ctx.atr(14, 1);
+  const price = ctx.price;
   if (atr == null || atr <= 0 || price == null || price <= 0) return null;
 
-  // --- Hard stop: exit if price falls 2.5x ATR below entry (protects every position).
-  if (pos > 0 && entry != null) {
-    const stop = entry - 2.5 * atr;
-    ctx.watch([{ side:'sell', price: stop, trigger:'below', note:'hard stop 2.5x ATR' }]);
-    if (price <= stop) {
-      return { side:'sell', qty: pos, reduceOnly: true };
+  const sym = ctx.sym;
+  const pos = ctx.pos(sym);
+
+  // Total portfolio equity = liquid cash + market value of all open positions.
+  // Needed so buying one coin does not shrink the sizing base of the others (avoids a
+  // feedback loop that would slowly drain the basket toward half-invested).
+  let equity = ctx.cash;
+  const positions = ctx.positions;
+  if (positions != null) {
+    const list = Array.isArray(positions) ? positions : Object.values(positions);
+    for (const p of list) {
+      if (p != null && p.qty > 0 && p.price > 0) equity += p.qty * p.price;
     }
   }
+  if (equity <= 0) return null;
 
-  // --- Trailing exit: break below 20-day low closes the trade.
-  const low20 = ctx.low(20, 1);
-  if (pos > 0 && low20 != null) {
-    ctx.watch([{ side:'sell', price: low20, trigger:'below', note:'20d low break' }]);
-    if (price <= low20) {
-      return { side:'sell', qty: pos, reduceOnly: true };
-    }
+  const SLICE = 1 / 3;      // 3 coins, equal notional share of the account
+  const TARGET_VOL = 0.025; // same daily-vol budget as the validated single-asset version 5550
+  const realizedVol = atr / price; // ATR as a fraction of price = daily vol proxy
+  let frac = TARGET_VOL / realizedVol;
+  frac = Math.min(frac, 1.0); // never more than fully invested in a coin
+  if (frac < 0.05) frac = 0.05; // stay minimally invested even in extreme vol
+
+  const qtyTarget = SLICE * frac * equity / price;
+
+  // Rebalance only when the target moved materially — avoids daily fee churn.
+  const threshold = 0.10;
+  if (pos > 0 && Math.abs(qtyTarget - pos) / Math.max(qtyTarget, pos) < threshold) {
+    return null;
   }
 
-  // --- Entry: 55-day breakout gated on a weak dollar regime.
-  const hi55 = ctx.high(55, 1);
-  if (pos === 0 && hi55 != null && price > hi55 && dxy < DOLLAR_WEAK) {
-    const riskPerTrade = 0.05 * ctx.cash;
-    const stopDist = 2.5 * atr;
-    let qty = riskPerTrade / stopDist;
-    const maxQty = ctx.cash / price * 0.99;
-    qty = Math.min(qty, maxQty);
+  if (qtyTarget > pos) {
+    const qty = qtyTarget - pos;
     if (qty <= 0) return null;
-    ctx.watch([{ side:'buy', price: hi55, trigger:'above', note:'55d breakout & dollar weak' }]);
-    return { side:'buy', qty: qty };
+    ctx.watch([{ side: 'buy', note: 'vol-target rebalance up' }]);
+    return { side: 'buy', qty: qty };
   }
-
-  ctx.watch([{ side:'buy', note:'waiting 55d breakout & dollar weak' }]);
+  if (qtyTarget < pos) {
+    const qty = pos - qtyTarget;
+    if (qty <= 0) return null;
+    ctx.watch([{ side: 'sell', note: 'vol-target rebalance down' }]);
+    return { side: 'sell', qty: qty, reduceOnly: true };
+  }
   return null;
 }
