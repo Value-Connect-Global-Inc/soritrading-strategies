@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 564 of 2343 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 564 of 2344 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 388 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,6 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+|  | [5530](strategies/5530/) | PROBE addr vs addr_sma30 1D | +0.20% | +176.88% | +0.51% | 1 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5528](strategies/5528/) | PROBE addr data flow 1D | +0.20% | +176.88% | +0.51% | 1 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5422](strategies/5422/) | BTC VIX-Gated Trend 1D baseline | +10.91% | +86.80% | +5.03% | 34 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5319](strategies/5319/) | BTC VIX-Gated Trend 1D | +26.12% | +425.37% | +6.48% | 38 | 2026-10-26 `n135757c` | 2026-10-26 |
