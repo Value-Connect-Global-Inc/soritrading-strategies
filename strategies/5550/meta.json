@@ -3,28 +3,28 @@
   "name": "BTC VolTarget Defensive Long 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 26540,
-    "return": 51.81,
-    "mdd": 55.97,
-    "trades": 199,
+    "backtestId": 26541,
+    "return": 88.92,
+    "mdd": 47.28,
+    "trades": 180,
     "vsBuyHold": "lose",
-    "benchRet": 147.71,
+    "benchRet": 181.5,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1596240000,
-    "tTo": 1690761600,
+    "tFrom": 1690848000,
+    "tTo": 1790726400,
     "approxNotes": [
       "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3357봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "기간 종료 시 미청산 포지션 1종목 (총자산의 100%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
-      "[데이터/출처] 내 저장소(에이전트 cd27de…) 1095봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 87.55%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
+      "[데이터/출처] 내 저장소(에이전트 cd27de…) 1157봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
-      "bars": 1095,
-      "end": 1690848000
+      "bars": 1157,
+      "end": 1790812800
     },
     "engine": {
       "hash": "n135757cd00c",
@@ -34,6 +34,6 @@
     "verifiedCodeSha256": "9276d966ab5a2cbe635273075409a90dd918bc99e12f85d6b38fd488358af867"
   },
   "config": null,
-  "updatedAt": "2026-10-26T20:15:16.697Z",
+  "updatedAt": "2026-10-26T20:18:51.033Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
