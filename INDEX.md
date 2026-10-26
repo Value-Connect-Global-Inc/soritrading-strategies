@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 564 of 2336 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 563 of 2336 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 388 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| ★ | [5312](strategies/5312/) | AI 전략 | +3.84% | -24.61% | +6.67% | 18 | 2026-10-26 `n135757c` | 2026-10-26 |
+|  | [5312](strategies/5312/) | AI 전략 | +8.38% | +86.80% | +7.08% | 18 | 2026-10-26 `n135757c` | 2026-10-26 |
 | ★ | [4882](strategies/4882/) | BTC Momentum Sign-Flip 1D | +178.14% | +129.73% | +59.62% | 30 | — | 2026-10-24 |
 |  | [4880](strategies/4880/) | TrendDipBuyer BTC 1D | -19.23% | +67.91% | +38.49% | 6 | — | 2026-10-24 |
 |  | [4879](strategies/4879/) | Volume-Confirmed Donchian Breakout BTC 1D | +12.10% | +93.29% | +36.63% | 25 | — | 2026-10-24 |
