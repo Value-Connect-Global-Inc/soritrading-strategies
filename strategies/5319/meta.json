@@ -3,16 +3,16 @@
   "name": "BTC VIX-Gated Trend 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 25551,
-    "return": 80.05,
-    "mdd": 8.97,
-    "trades": 28,
+    "backtestId": 25552,
+    "return": 10.91,
+    "mdd": 5.03,
+    "trades": 34,
     "vsBuyHold": "lose",
-    "benchRet": 714.73,
+    "benchRet": 86.8,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1533772800,
-    "tTo": 1620086400,
+    "tFrom": 1706486400,
+    "tTo": 1792800000,
     "approxNotes": [
       "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3357봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
@@ -24,7 +24,7 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1000,
-      "end": 1620172800
+      "end": 1792972800
     },
     "engine": {
       "hash": "n135757cd00c",
