@@ -14,7 +14,7 @@
  * third of the account, not all of it.
  * When it buys and sells: Every day each coin is sized by inverse 14-day ATR (low volatility =
  * big position, high volatility = small position), targeting a 2.5% daily-vol budget per coin,
- * rebalanced only when the target moves more than 10%. It never fully exits any coin.
+ * rebalanced only when the target moves more than 20%. It never fully exits any coin.
  * When it does NOT work: In a broad crypto bear where BTC, ETH and SOL fall together, the
  * basket still bleeds — diversification only helps when coins diverge. It also lags pure-BTC
  * buy-and-hold in a BTC-led bull because part of the account sits in laggards.
@@ -49,8 +49,9 @@ function onUpdate(ctx) {
 
   const qtyTarget = SLICE * frac * equity / price;
 
-  // Rebalance only when the target moved materially — avoids daily fee churn.
-  const threshold = 0.10;
+  // Rebalance only when the target moved materially — 20% band cuts fee churn vs the
+  // 10% of the first version (300+ trades/window was mostly small rebalance noise).
+  const threshold = 0.20;
   if (pos > 0 && Math.abs(qtyTarget - pos) / Math.max(qtyTarget, pos) < threshold) {
     return null;
   }
