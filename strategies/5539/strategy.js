@@ -1,30 +1,27 @@
 /*
  * @coinsori-strategy v1
- * name: BTC Fear-Greed Contrarian Reversion 1D
+ * name: BTC Yield-Curve-Gated Trend 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Crypto sentiment extremes (Fear & Greed index) tend to overshoot and mean-revert — deep fear marks local bottoms, extreme greed marks tops. This uses sentiment data price alone cannot see.
- * When it buys and sells: Buy when the Fear & Greed index is very low (extreme fear) and price is not in a confirmed downtrend freefall. Sell when the index recovers to neutral or price hits a hard stop.
- * When it does NOT work: In a sustained bear market where fear stays low for months, "buy the dip" keeps catching falling knives. Also fails if the index stays pinned at extremes without reverting.
+ * Why this strategy: A positively-sloped US yield curve (10Y-2Y spread > 0) marks a risk-on macro regime where crypto trends tend to work. When the curve inverts, recession risk historically precedes weak risk assets.
+ * When it buys and sells: Buy on a 20-day price breakout ONLY while the 10Y-2Y spread is positive. Sell when price breaks below the 10-day low or falls 2.5x ATR below entry (hard stop).
+ * When it does NOT work: In a regime where the curve is positive but crypto is in its own bear market (e.g. 2018-19 altcoin winter, or a crypto-specific deleveraging), the gate does not protect you.
  */
 function onUpdate(ctx) {
-  const fg = ctx.data("fear_greed");
-  if (fg == null) return null;           // no sentiment data -> stay out
+  // Macro regime: 10Y minus 2Y spread. Positive = risk-on.
+  const spread = ctx.data("base_t10y2y");
+  if (spread == null) return null;       // no macro data -> stay out
 
-  // Use closed-bar values so backtest/paper/live agree.
-  const fgPrev = ctx.data("fear_greed"); // current value (dataset is daily, aligns with 1d bar)
-  const sma = ctx.sma(50, 1);
-  const atr = ctx.atr(14, 1);
   const price = ctx.price;
-  if (sma == null || atr == null) return null;
-
   const pos = ctx.position;
   const entry = ctx.entryPx;
+  const atr = ctx.atr(14, 1);
+  if (atr == null) return null;
 
-  // --- Hard stop: exit if price falls 2.5x ATR below entry (protect capital in any regime).
+  // --- Hard stop: exit if price falls 2.5x ATR below entry.
   if (pos > 0 && entry != null) {
     const stop = entry - 2.5 * atr;
     ctx.watch([{ side:'sell', price: stop, trigger:'below', note:'hard stop 2.5x ATR' }]);
@@ -33,18 +30,22 @@ function onUpdate(ctx) {
     }
   }
 
-  // --- Exit: sentiment recovered to neutral (>= 55) -> take the reversion profit.
-  if (pos > 0 && fgPrev >= 55) {
-    return { side:'sell', qty: pos, reduceOnly: true };
+  // --- Trend exit: break below 10-day low closes the trade.
+  const low10 = ctx.low(10, 1);
+  if (pos > 0 && low10 != null) {
+    ctx.watch([{ side:'sell', price: low10, trigger:'below', note:'10-day low break' }]);
+    if (price <= low10) {
+      return { side:'sell', qty: pos, reduceOnly: true };
+    }
   }
 
-  // --- Entry: extreme fear (<= 20) and price above SMA50 (not a confirmed crash).
-  // Threshold 20 = deep fear; SMA50 filter avoids catching a confirmed downtrend freefall.
-  if (pos === 0 && fgPrev <= 20 && price > sma) {
-    ctx.watch([{ side:'buy', note:'fear<=20 & price>SMA50' }]);
+  // --- Entry: 20-day breakout while yield curve is positive (risk-on).
+  const hi20 = ctx.high(20, 1);
+  if (pos === 0 && hi20 != null && spread > 0 && price > hi20) {
+    ctx.watch([{ side:'buy', price: hi20, trigger:'above', note:'20d breakout & curve>0' }]);
     return { side:'buy', qty: ctx.cash / price * 0.99 };
   }
 
-  ctx.watch([{ side:'buy', note:'waiting for extreme fear (<=20)' }]);
+  ctx.watch([{ side:'buy', note:'waiting 20d breakout & curve>0' }]);
   return null;
 }
