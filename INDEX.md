@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 569 of 2399 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 569 of 2400 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 406 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,6 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+|  | [5597](strategies/5597/) | BTC OBV Volume-Flow Trend 1D baseline | +36.68% | +93.53% | +47.34% | 22 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5595](strategies/5595/) | BTC RSI Dip-Buy Mean Reversion 1D | -7.10% | +142.37% | +28.93% | 22 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5593](strategies/5593/) | BTC OBV OnChain-Gated Trend 1D | +10.77% | +160.73% | +14.83% | 21 | 2026-10-26 `n135757c` | 2026-10-27 |
 | ★ | [5591](strategies/5591/) | BTC OBV Volume-Flow Trend 4H ‡ | +268.37% | +42.13% | +21.17% | 44 | 2026-10-26 `n135757c` | 2026-10-27 |
