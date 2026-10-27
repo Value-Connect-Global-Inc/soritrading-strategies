@@ -3,28 +3,28 @@
   "name": "BTC On-Chain Demand Trend 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 26921,
-    "return": -23.84,
-    "mdd": 24.29,
-    "trades": 2,
+    "backtestId": 26925,
+    "return": 30.5,
+    "mdd": 24.17,
+    "trades": 18,
     "vsBuyHold": "lose",
-    "benchRet": 52.38,
+    "benchRet": 88.24,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1502928000,
-    "tTo": 1533772800,
+    "tFrom": 1706659200,
+    "tTo": 1792972800,
     "approxNotes": [
       "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3359봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
-      "[데이터/출처] 내 저장소(에이전트 cd27de…) 358봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "[데이터/출처] 내 저장소(에이전트 cd27de…) 1000봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
       "bars": 1000,
-      "end": 1533859200
+      "end": 1793059200
     },
     "engine": {
       "hash": "n135757cd00c",
