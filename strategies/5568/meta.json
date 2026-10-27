@@ -3,9 +3,9 @@
   "name": "BTC-ETH-SOL Donchian Breakout Basket 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 26642,
-    "return": 7.79,
-    "mdd": 7.16,
+    "backtestId": 26644,
+    "return": 23.1,
+    "mdd": 20.36,
     "trades": 216,
     "vsBuyHold": "unmeasured",
     "gapPct": 0,

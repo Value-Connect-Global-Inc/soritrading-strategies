@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| — | [5568](strategies/5568/) | BTC-ETH-SOL Donchian Breakout Basket 1D | +7.79% | — | +7.16% | 216 | 2026-10-26 `n135757c` | 2026-10-27 |
+| — | [5568](strategies/5568/) | BTC-ETH-SOL Donchian Breakout Basket 1D | +23.10% | — | +20.36% | 216 | 2026-10-26 `n135757c` | 2026-10-27 |
 | — | [5567](strategies/5567/) | BTC-ETH-SOL Donchian Breakout Basket 4H | -36.33% | — | +37.28% | 572 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5566](strategies/5566/) | BTC Dollar-Regime Timer 1D | +197.81% | +834.83% | +49.48% | 33 | 2026-10-26 `n135757c` | 2026-10-27 |
 | — | [5565](strategies/5565/) | BTC-ETH-SOL Dip-Buy Mean Reversion 4H | +5.65% | — | +10.88% | 102 | 2026-10-26 `n135757c` | 2026-10-27 |
