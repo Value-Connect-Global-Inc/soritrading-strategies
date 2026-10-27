@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| — | [5555](strategies/5555/) | PROBE ctx.market shape 1D ‡ | +6.40% | — | +5.40% | 2400 | 2026-10-26 `n135757c` | 2026-10-26 |
+| — | [5555](strategies/5555/) | PROBE ctx.market shape 1D | +29.54% | — | +39.00% | 166 | 2026-10-26 `n135757c` | 2026-10-27 |
 | — | [5554](strategies/5554/) | BTC-ETH-SOL VolTarget Defensive Basket 1D | +132.78% | — | +18.55% | 183 | 2026-10-26 `n135757c` | 2026-10-26 |
 | — | [5553](strategies/5553/) | BTC Dollar-Regime-Gated Trend 1D | +4.80% | — | +30.17% | 116 | 2026-10-26 `n135757c` | 2026-10-26 |
 |  | [5551](strategies/5551/) | BTC OnChain-Gated Donchian Trend 1D | +159.66% | +714.73% | +29.42% | 26 | 2026-10-26 `n135757c` | 2026-10-26 |
