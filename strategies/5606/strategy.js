@@ -52,13 +52,26 @@ function onUpdate(ctx) {
   if (cd > 0) cd--;
   ctx.state.cd = cd;
 
+  // Declare what we are waiting for so the run card shows it (display only).
   if (pos > 0) {
+    ctx.watch([
+      { side: 'sell', price: sma200, trigger: 'below', note: 'SMA200 trend break' },
+      { side: 'sell', price: price, trigger: 'below', note: 'OBV flip exit', conds: [{ label: 'OBV(30) falling', ok: falling }] }
+    ]);
     if (falling && cd === 0) {
       ctx.state.cd = 5;
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
     return null;
   }
+
+  ctx.watch([
+    { side: 'buy', price: price, trigger: 'above', note: 'OBV rising entry', conds: [
+      { label: 'OBV(30) rising', ok: rising },
+      { label: 'Price > SMA200', ok: price > sma200 },
+      { label: 'Volume > avg30', ok: volOk }
+    ]}
+  ]);
   if (rising && price > sma200 && volOk && cd === 0) {
     if (ctx.alloc.status !== 'ok') return null;
     ctx.state.cd = 5;
