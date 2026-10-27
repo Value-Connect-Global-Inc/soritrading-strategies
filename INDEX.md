@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5574](strategies/5574/) | BTC Golden-Cross Trend 1D | +2.11% | +1770.46% | +39.39% | 24 | 2026-10-26 `n135757c` | 2026-10-27 |
+|  | [5574](strategies/5574/) | BTC Golden-Cross Trend 1D ‡ | +2.11% | +1770.46% | +39.39% | 24 | 2026-10-26 `n135757c` | 2026-10-27 |
 | — | [5573](strategies/5573/) | BTC On-Chain Capitulation Contrarian 1D | -1.20% | — | +70.83% | 96 | 2026-10-26 `n135757c` | 2026-10-27 |
 | — | [5572](strategies/5572/) | BTC-ETH-SOL Momentum Rotation 1D | +18.63% | — | +7.71% | 36 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5571](strategies/5571/) | BTC Fear-Greed Contrarian 1D | -66.75% | -53.35% | +66.75% | 8 | 2026-10-26 `n135757c` | 2026-10-27 |

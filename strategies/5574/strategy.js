@@ -14,11 +14,11 @@
  * When it buys and sells: It buys BTC when the 50-day EMA crosses above the 200-day
  * SMA (golden cross, on closed bars) and price is above the 200-day SMA. It sells
  * when the 50-day EMA crosses back below the 200-day SMA, or when price falls more
- * than 2x ATR below the highest close since entry (trailing stop).
+ * than 3x ATR below the highest close since entry (trailing stop).
  * When it does NOT work: Trend-following whipsaws in sideways markets — the averages
  * cross back and forth and each cross costs fees. It enters late (needs the cross to
- * confirm, so it misses the first part of a bull) and exits late (so it gives back a
- * top). In a long flat range it can lose slowly to fees.
+ * confirm, so it misses the first part of a bull) and exits late (so it gives back
+ * part of every top). In a long flat range it can lose slowly to fees.
  */
 function onUpdate(ctx) {
   const closes = ctx.closes;
@@ -39,16 +39,16 @@ function onUpdate(ctx) {
   const sma200Prev = ctx.sma(200, 2);
 
   if (pos != null && pos > 0) {
-    // Trailing stop: exit if price closes below (highest close since entry - 2*ATR).
+    // Trailing stop: exit if price closes below (highest close since entry - 3*ATR).
     let st = ctx.state || {};
     if (typeof st.hi !== 'number') st.hi = prevClose;
     if (prevClose > st.hi) st.hi = prevClose;
     ctx.state = st;
-    const trailStop = st.hi - 2 * atr;
+    const trailStop = st.hi - 3 * atr;
     // Death cross: exit when 50d EMA crosses below 200d SMA.
     const deathCross = ema50Prev != null && sma200Prev != null && ema50Prev > sma200Prev && ema50 <= sma200;
     if (deathCross || prevClose < trailStop) {
-      ctx.watch([{ side: 'sell', price: trailStop, trigger: 'below', note: 'trail stop 2xATR' },
+      ctx.watch([{ side: 'sell', price: trailStop, trigger: 'below', note: 'trail stop 3xATR' },
                  { side: 'sell', note: 'death cross' }]);
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
