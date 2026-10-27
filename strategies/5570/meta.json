@@ -3,7 +3,7 @@
   "name": "BTC-ETH-SOL VolTarget Basket + Tail Stop 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 26652,
+    "backtestId": 26655,
     "return": 213.96,
     "mdd": 24.85,
     "trades": 21,
