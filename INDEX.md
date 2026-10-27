@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 564 of 2381 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 564 of 2383 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 406 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,6 +13,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+|  | [5577](strategies/5577/) | BTC GoldenCross Baseline 1D | -1.60% | +44.16% | +21.01% | 5 | 2026-10-26 `n135757c` | 2026-10-27 |
+|  | [5576](strategies/5576/) | BTC GoldenCross VIX-Latch 1D | +40.67% | +116.17% | +46.18% | 6 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5575](strategies/5575/) | BTC Calm-Trend Regime 1D | -2.13% | +44.16% | +46.81% | 25 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5574](strategies/5574/) | BTC Golden-Cross Trend 1D | +46.49% | +834.83% | +43.96% | 6 | 2026-10-26 `n135757c` | 2026-10-27 |
 | — | [5573](strategies/5573/) | BTC On-Chain Capitulation Contrarian 1D | -1.20% | — | +70.83% | 96 | 2026-10-26 `n135757c` | 2026-10-27 |
