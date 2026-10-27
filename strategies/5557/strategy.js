@@ -1,21 +1,23 @@
 /*
  * @coinsori-strategy v1
- * name: 5-Coin VolTarget Defensive Basket 1D
+ * name: BTC-ETH-SOL VolTarget Defensive Basket 1D
  * ex: binance
- * syms: BTC/USDT, ETH/USDT, SOL/USDT, XRP/USDT, BNB/USDT
+ * syms: BTC/USDT, ETH/USDT, SOL/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: The 3-coin basket (5554) is the validated winner — always invested,
- * inverse-ATR sized, equal slices. This version widens the same proven engine to five coins
- * (BTC, ETH, SOL, XRP, BNB), each capped at one fifth of the account. More legs = a single
- * coin's crash hurts even less, and XRP/BNB are less correlated with BTC than SOL is.
- * When it buys and sells: Every day each coin is sized by inverse 14-day ATR toward a 2.5%
- * daily-vol budget, capped at a 1/5 notional share. Rebalances only when the target moves
- * more than 20%. Never fully exits any coin.
- * When it does NOT work: In a broad bear all five coins fall together and the basket still
- * bleeds. More legs dilute the strongest coin's upside further, so it lags buy-and-hold of
- * the best single coin even more than the 3-coin version.
+ * Why this strategy: The single-asset BTC vol-target (5550) is the validated winner, but its
+ * 47-56% drawdown comes from being 100% concentrated in one coin. This basket runs the same
+ * proven inverse-volatility engine across BTC, ETH and SOL, each capped at one third of the
+ * account. It stays ALWAYS invested in crypto (never goes to cash) so it still captures the
+ * violent V-recoveries that made 5550 work — but a single coin's crash now only hurts one
+ * third of the account, not all of it.
+ * When it buys and sells: Every day each coin is sized by inverse 14-day ATR (low volatility =
+ * big position, high volatility = small position), targeting a 2.5% daily-vol budget per coin,
+ * rebalanced only when the target moves more than 20%. It never fully exits any coin.
+ * When it does NOT work: In a broad crypto bear where BTC, ETH and SOL fall together, the
+ * basket still bleeds — diversification only helps when coins diverge. It also lags pure-BTC
+ * buy-and-hold in a BTC-led bull because part of the account sits in laggards.
  */
 function onUpdate(ctx) {
   const atr = ctx.atr(14, 1);
@@ -25,6 +27,9 @@ function onUpdate(ctx) {
   const sym = ctx.sym;
   const pos = ctx.pos(sym);
 
+  // Total portfolio equity = liquid cash + market value of all open positions.
+  // Needed so buying one coin does not shrink the sizing base of the others (avoids a
+  // feedback loop that would slowly drain the basket toward half-invested).
   let equity = ctx.cash;
   const positions = ctx.positions;
   if (positions != null) {
@@ -35,16 +40,17 @@ function onUpdate(ctx) {
   }
   if (equity <= 0) return null;
 
-  const N = 5;               // 5 coins, equal notional share of the account
-  const SLICE = 1 / N;
-  const TARGET_VOL = 0.025;  // same daily-vol budget as the validated 3-coin version
-  const realizedVol = atr / price;
+  const SLICE = 1 / 3;      // 3 coins, equal notional share of the account
+  const TARGET_VOL = 0.025; // same daily-vol budget as the validated single-asset version 5550
+  const realizedVol = atr / price; // ATR as a fraction of price = daily vol proxy
   let frac = TARGET_VOL / realizedVol;
-  frac = Math.min(frac, 1.0);
-  if (frac < 0.05) frac = 0.05;
+  frac = Math.min(frac, 1.0); // never more than fully invested in a coin
+  if (frac < 0.05) frac = 0.05; // stay minimally invested even in extreme vol
 
   const qtyTarget = SLICE * frac * equity / price;
 
+  // Rebalance only when the target moved materially — 20% band cuts fee churn vs the
+  // 10% of the first version (300+ trades/window was mostly small rebalance noise).
   const threshold = 0.20;
   if (pos > 0 && Math.abs(qtyTarget - pos) / Math.max(qtyTarget, pos) < threshold) {
     return null;
