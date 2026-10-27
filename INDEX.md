@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| — | [5570](strategies/5570/) | BTC-ETH-SOL VolTarget Basket + Tail Stop 1D | +213.96% | — | +24.85% | 21 | 2026-10-26 `n135757c` | 2026-10-27 |
+| — | [5570](strategies/5570/) | BTC-ETH-SOL VolTarget Basket + Tail Stop 1D | +238.81% | — | +24.85% | 33 | 2026-10-26 `n135757c` | 2026-10-27 |
 | — | [5569](strategies/5569/) | BTC Donchian Breakout 1D | -12.57% | — | +40.24% | 288 | 2026-10-26 `n135757c` | 2026-10-27 |
 | — | [5568](strategies/5568/) | BTC-ETH-SOL Donchian Breakout Basket 1D | +23.10% | — | +20.36% | 216 | 2026-10-26 `n135757c` | 2026-10-27 |
 | — | [5567](strategies/5567/) | BTC-ETH-SOL Donchian Breakout Basket 4H | -36.33% | — | +37.28% | 572 | 2026-10-26 `n135757c` | 2026-10-27 |
