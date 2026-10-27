@@ -3,7 +3,7 @@
   "name": "BTC Golden-Cross Trend 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 26708,
+    "backtestId": 26712,
     "return": 46.49,
     "mdd": 43.96,
     "trades": 6,
