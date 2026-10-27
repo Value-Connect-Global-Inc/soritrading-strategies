@@ -3,10 +3,10 @@
   "name": "BTC On-Chain Adoption Trend 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 26725,
-    "return": -5.2,
-    "mdd": 37.66,
-    "trades": 33,
+    "backtestId": 26727,
+    "return": 11.87,
+    "mdd": 39.89,
+    "trades": 23,
     "vsBuyHold": "lose",
     "benchRet": 44.16,
     "benchBasis": "price",
@@ -32,9 +32,9 @@
       "firstSeen": "2026-10-26"
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "999b5999fa4b91d9878eb908332779761f70db5348fe61713c562fb718f4066c"
+    "verifiedCodeSha256": "71d6be1e99a69f3ce2cf152cf6f277c549039faba3d31bc71dd5dd879ca4deb6"
   },
   "config": null,
-  "updatedAt": "2026-10-27T05:40:00.074Z",
+  "updatedAt": "2026-10-27T05:41:28.260Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

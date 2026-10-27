@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5578](strategies/5578/) | BTC On-Chain Adoption Trend 1D | -5.20% | +44.16% | +37.66% | 33 | 2026-10-26 `n135757c` | 2026-10-27 |
+|  | [5578](strategies/5578/) | BTC On-Chain Adoption Trend 1D | +11.87% | +44.16% | +39.89% | 23 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5576](strategies/5576/) | BTC GoldenCross VIX-Latch 1D | +40.67% | +116.17% | +46.18% | 6 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5575](strategies/5575/) | BTC Calm-Trend Regime 1D | -2.13% | +44.16% | +46.81% | 25 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5577](strategies/5577/) | BTC GoldenCross Baseline 1D | -1.60% | +44.16% | +21.01% | 5 | 2026-10-26 `n135757c` | 2026-10-27 |
