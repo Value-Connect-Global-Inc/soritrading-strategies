@@ -3,9 +3,9 @@
   "name": "BTC OBV Trend + Vol-Target 3pct 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 26983,
-    "return": 35.33,
-    "mdd": 17.3,
+    "backtestId": 26984,
+    "return": 29.62,
+    "mdd": 13.06,
     "trades": 26,
     "vsBuyHold": "lose",
     "benchRet": 142.37,
