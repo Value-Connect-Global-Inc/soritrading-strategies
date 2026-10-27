@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| ★ | [5610](strategies/5610/) | BTC OBV Plain Control 1D | +125.63% | +12.14% | +16.07% | 36 | 2026-10-26 `n135757c` | 2026-10-27 |
+| ★ | [5610](strategies/5610/) | BTC OBV Plain Control 1D | +335.61% | +172.57% | +24.81% | 26 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5609](strategies/5609/) | BTC OBV Trend Vol-Target 1D | -3.40% | +85.11% | +20.34% | 12 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5608](strategies/5608/) | BTC Fear&Greed Contrarian 1D | +25.59% | +85.11% | +15.92% | 6 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5607](strategies/5607/) | BTC Buy-the-Dip Mean Reversion 1D | -42.67% | +172.57% | +70.22% | 24 | 2026-10-26 `n135757c` | 2026-10-27 |
