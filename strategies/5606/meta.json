@@ -3,7 +3,7 @@
   "name": "BTC OBV Volume-Flow Trend 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 26850,
+    "backtestId": 26851,
     "return": 93.7,
     "mdd": 20.04,
     "trades": 30,
