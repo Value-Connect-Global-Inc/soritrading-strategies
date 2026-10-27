@@ -5,7 +5,7 @@ Nothing is filtered out by return — the ones that lost money are part of the r
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
 **★ marks a strategy that out-returned buy & hold over the same window** — 571 of 2411 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 406 of them right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 407 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 **Engine** is the fingerprint of the backtest engine that produced the figures, with the date it was first used on our side (not a release date). When the engine changes, published entries are not removed or rewritten — the figures stay tied to the engine shown. `—` means the backtest did not record an engine.
@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5612](strategies/5612/) | BTC Vol-Target Trend 1D | -25.51% | -23.85% | +51.37% | 74 | 2026-10-26 `n135757c` | 2026-10-27 |
+| — | [5612](strategies/5612/) | BTC Vol-Target Trend 1D | +402.02% | — | +63.62% | 214 | 2026-10-26 `n135757c` | 2026-10-27 |
 | ★ | [5610](strategies/5610/) | BTC OBV Plain Control 1D | +335.61% | +172.57% | +24.81% | 26 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5611](strategies/5611/) | BTC OBV Slow60 Trend 1D | +611.13% | +834.83% | +41.69% | 18 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5609](strategies/5609/) | BTC OBV Trend Vol-Target 1D | -3.40% | +85.11% | +20.34% | 12 | 2026-10-26 `n135757c` | 2026-10-27 |
