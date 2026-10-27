@@ -3,7 +3,7 @@
   "name": "BTC OBV Champion Pure 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 26752,
+    "backtestId": 26753,
     "return": 31.59,
     "mdd": 20.04,
     "trades": 24,
@@ -31,9 +31,9 @@
       "firstSeen": "2026-10-26"
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "1ac52795431dab9a9aeef157bf531271a49baff90cc4264b2d66f75c0c07d284"
+    "verifiedCodeSha256": "21a5a3d603bf1bde2f3288c9a160054e6cbbbcfc92f8a342cb56dbd1d13a3827"
   },
   "config": null,
-  "updatedAt": "2026-10-27T06:56:04.144Z",
+  "updatedAt": "2026-10-27T06:58:59.634Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
