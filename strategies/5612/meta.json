@@ -1,0 +1,38 @@
+{
+  "id": 5612,
+  "name": "BTC Vol-Target Trend 1D",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 26890,
+    "return": -25.51,
+    "mdd": 51.37,
+    "trades": 74,
+    "vsBuyHold": "lose",
+    "benchRet": -23.85,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1620259200,
+    "tTo": 1706572800,
+    "approxNotes": [
+      "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3359봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 cd27de…) 1000봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 1000,
+      "end": 1706659200
+    },
+    "engine": {
+      "hash": "n135757cd00c",
+      "firstSeen": "2026-10-26"
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "1df9fdcd8b4a30aaf262b46c92f84b7e52e97c5092ff6f422273fcc98e37a6f6"
+  },
+  "config": null,
+  "updatedAt": "2026-10-27T12:32:16.771Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
