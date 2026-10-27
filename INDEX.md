@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 571 of 2425 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 571 of 2426 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 408 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,6 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+|  | [5631](strategies/5631/) | BTC OBV baseline copy for compare | +36.68% | +93.53% | +47.34% | 22 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5630](strategies/5630/) | BTC OBV Trend + Dollar Regime 1D | -0.83% | +93.53% | +36.86% | 14 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5629](strategies/5629/) | DIAG Data Keys Probe 1D | -93.68% | -10.88% | +94.04% | 2400 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5625](strategies/5625/) | BTC 1D VIX-Regime Trend | +50.03% | +463.14% | +40.65% | 33 | 2026-10-26 `n135757c` | 2026-10-27 |
