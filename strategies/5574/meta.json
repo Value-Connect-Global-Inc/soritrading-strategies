@@ -3,26 +3,26 @@
   "name": "BTC Golden-Cross Trend 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 26705,
-    "return": 69.45,
-    "mdd": 31.46,
-    "trades": 10,
+    "backtestId": 26708,
+    "return": 46.49,
+    "mdd": 43.96,
+    "trades": 6,
     "vsBuyHold": "lose",
-    "benchRet": 1240.37,
+    "benchRet": 834.83,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1502928000,
+    "tFrom": 1533859200,
     "tTo": 1620172800,
     "approxNotes": [
       "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3359봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "[데이터/출처] 내 저장소(에이전트 cd27de…) 1358봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "[데이터/출처] 내 저장소(에이전트 cd27de…) 1000봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
-      "bars": 2000,
+      "bars": 1000,
       "end": 1620259200
     },
     "engine": {
@@ -30,9 +30,9 @@
       "firstSeen": "2026-10-26"
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "2c22d1813931688b4ae68e83755e1f5b91531b2f1353732e757c7cb2abaad8cd"
+    "verifiedCodeSha256": "22f0ed1c1ba25c151656639026c45ee5360a7aaf01a93ca5b6fa395a5f071458"
   },
   "config": null,
-  "updatedAt": "2026-10-27T04:55:15.502Z",
+  "updatedAt": "2026-10-27T05:06:24.855Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

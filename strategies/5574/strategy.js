@@ -24,7 +24,7 @@ function onUpdate(ctx) {
   const closes = ctx.closes;
   if (closes == null || closes.length < 210) return null;
 
-  const pos = ctx.pos(ctx.sym);
+  const pos = ctx.position;
   const price = ctx.price;
   if (price == null || price <= 0) return null;
 
@@ -58,6 +58,9 @@ function onUpdate(ctx) {
   // Entry: golden cross on closed bars + price above 200d SMA.
   const goldenCross = ema50Prev != null && sma200Prev != null && ema50Prev <= sma200Prev && ema50 > sma200;
   if (goldenCross && prevClose > sma200) {
+    if (ctx.alloc.status !== 'ok') return null; // reduce-only edge, no new entries
+    // Reset the trailing-stop high for the new position (never inherit the old one).
+    ctx.state = { hi: prevClose };
     const qty = (ctx.cash / price) * 0.99;
     if (qty <= 0) return null;
     ctx.watch([{ side: 'buy', note: 'golden cross above 200d' }]);
