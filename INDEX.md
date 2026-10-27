@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5641](strategies/5641/) | BTC Fear-Greed Contrarian 1D ‡ | +3.96% | +652.85% | +22.70% | 14 | 2026-10-26 `n135757c` | 2026-10-27 |
+|  | [5641](strategies/5641/) | BTC Fear-Greed Contrarian 1D | +2.01% | +31.83% | +6.04% | 2 | 2026-10-26 `n135757c` | 2026-10-27 |
 | ★ | [5640](strategies/5640/) | BTC OBV Trend + Vol-Target ATR14 1D | +221.51% | +129.73% | +23.63% | 18 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5639](strategies/5639/) | BTC OBV Trend + Vol-Target ATR30 1D | +49.03% | +67.91% | +17.38% | 10 | 2026-10-26 `n135757c` | 2026-10-27 |
 | ★ | [5638](strategies/5638/) | BTC OBV Trend + Vol-Target ATR30 1D | +213.58% | +129.73% | +23.33% | 18 | 2026-10-26 `n135757c` | 2026-10-27 |
