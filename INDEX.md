@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 564 of 2371 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 564 of 2372 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 400 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,6 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+|  | [5566](strategies/5566/) | BTC Dollar-Regime Timer 1D | +197.81% | +834.83% | +49.48% | 33 | 2026-10-26 `n135757c` | 2026-10-27 |
 | — | [5565](strategies/5565/) | BTC-ETH-SOL Dip-Buy Mean Reversion 4H | +5.65% | — | +10.88% | 102 | 2026-10-26 `n135757c` | 2026-10-27 |
 | — | [5564](strategies/5564/) | On-Chain Address Trend Basket 1D | +12.22% | — | +30.38% | 180 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5562](strategies/5562/) | BTC Fear-Greed Contrarian Tilt 1D | +234.75% | +834.83% | +61.65% | 50 | 2026-10-26 `n135757c` | 2026-10-27 |
