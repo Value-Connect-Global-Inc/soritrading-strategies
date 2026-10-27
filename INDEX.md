@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5640](strategies/5640/) | BTC OBV Trend + Vol-Target ATR14 1D | +45.98% | +67.91% | +21.94% | 10 | 2026-10-26 `n135757c` | 2026-10-27 |
+|  | [5640](strategies/5640/) | BTC OBV Trend + Vol-Target ATR14 1D | +92.42% | +427.47% | +12.85% | 34 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5639](strategies/5639/) | BTC OBV Trend + Vol-Target ATR30 1D | +49.03% | +67.91% | +17.38% | 10 | 2026-10-26 `n135757c` | 2026-10-27 |
 | ★ | [5638](strategies/5638/) | BTC OBV Trend + Vol-Target ATR30 1D | +213.58% | +129.73% | +23.33% | 18 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5635](strategies/5635/) | BTC OBV Trend + Vol-Target Sizing 1D | +8.52% | +160.73% | +13.55% | 27 | 2026-10-26 `n135757c` | 2026-10-27 |
