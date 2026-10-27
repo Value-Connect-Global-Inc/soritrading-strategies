@@ -51,8 +51,9 @@ function onUpdate(ctx) {
   ctx.state.cd = cd;
 
   if (pos > 0) {
+    // The only exit in code is the OBV flip; declare only that so the run card
+    // matches what actually fires (SMA200 break was tested and rejected).
     ctx.watch([
-      { side: 'sell', price: sma200, trigger: 'below', note: 'SMA200 trend break' },
       { side: 'sell', price: price, trigger: 'below', note: 'OBV flip exit', conds: [{ label: 'OBV(30) falling', ok: falling }] }
     ]);
     if (falling && cd === 0) {
