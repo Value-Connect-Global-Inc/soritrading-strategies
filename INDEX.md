@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5633](strategies/5633/) | BTC OBV Trend + ATR Trail Stop 1D | +3.55% | +160.73% | +18.89% | 27 | 2026-10-26 `n135757c` | 2026-10-27 |
+|  | [5633](strategies/5633/) | BTC OBV Trend + ATR Trail Stop 1D | -11.22% | +93.53% | +63.13% | 34 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5632](strategies/5632/) | BTC OBV Trend + NDX Risk Gate 1D | +36.68% | +93.53% | +47.34% | 22 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5631](strategies/5631/) | BTC OBV baseline copy for compare | +36.68% | +93.53% | +47.34% | 22 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5630](strategies/5630/) | BTC OBV Trend + Dollar Regime 1D | -0.83% | +93.53% | +36.86% | 14 | 2026-10-26 `n135757c` | 2026-10-27 |
