@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5607](strategies/5607/) | BTC Buy-the-Dip Mean Reversion 1D | -13.04% | +1240.37% | +42.69% | 21 | 2026-10-26 `n135757c` | 2026-10-27 |
+|  | [5607](strategies/5607/) | BTC Buy-the-Dip Mean Reversion 1D | -42.67% | +172.57% | +70.22% | 24 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5606](strategies/5606/) | BTC OBV Volume-Flow Trend 1D | +93.70% | +164.61% | +20.04% | 30 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5601](strategies/5601/) | BTC OBV Volume-Flow Trend 1D | +2.83% | +49.60% | +57.50% | 18 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5600](strategies/5600/) | BTC Macro Dollar-Filtered Trend 1D | -71.70% | +356.31% | +86.01% | 107 | 2026-10-26 `n135757c` | 2026-10-27 |
