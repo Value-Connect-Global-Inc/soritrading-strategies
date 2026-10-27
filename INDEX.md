@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| ★ | [5591](strategies/5591/) | BTC OBV Volume-Flow Trend 4H | +75.64% | +40.93% | +37.55% | 143 | 2026-10-26 `n135757c` | 2026-10-27 |
+| ★ | [5591](strategies/5591/) | BTC OBV Volume-Flow Trend 4H | +268.37% | +42.13% | +21.17% | 44 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5590](strategies/5590/) | ETH OBV Volume-Flow Trend 1D | -17.81% | +20.30% | +28.79% | 2 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5589](strategies/5589/) | BTC Dollar-Regime Trend 1D | -61.51% | +88.24% | +69.56% | 69 | 2026-10-26 `n135757c` | 2026-10-27 |
 | ★ | [5588](strategies/5588/) | BTC OBV Pure COMPARE 1D | +123.24% | +42.13% | +20.93% | 124 | 2026-10-26 `n135757c` | 2026-10-27 |
