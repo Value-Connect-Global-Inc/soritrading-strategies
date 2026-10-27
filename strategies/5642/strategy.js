@@ -12,7 +12,7 @@
  * SMA200) before going long keeps us out of crypto-specific drawdowns that a
  * pure cross-asset filter misses.
  * When it buys and sells: long BTC when NDX>SMA200 AND BTC>SMA200; exit when
- * either breaks below its SMA200, or hard stop at -18%.
+ * either breaks below its SMA200, or a 3xATR trailing stop from the high.
  * When it does NOT work: in a crypto-only bull run that equities do not join,
  * NDX stays below its SMA200 and BTC rallies without us.
  */
@@ -43,7 +43,7 @@ function onUpdate(ctx) {
 
   const ndxRiskOn = ndx > ndxSma200;
   const btcTrendUp = price > btcSma200;
-  const riskOn = ndxRiskOn && btcTrendUp; // both anchors agree
+  const riskOn = ndxRiskOn && btcTrendUp;
 
   const pos = ctx.position;
   let cd = st.cd || 0;
@@ -51,23 +51,35 @@ function onUpdate(ctx) {
   ctx.state.cd = cd;
 
   if (pos > 0) {
-    const entry = ctx.entryPx;
+    // track high-water mark for the trailing stop
+    let hwm = st.hwm || price;
+    if (price > hwm) hwm = price;
+    st.hwm = hwm;
+
+    const atr = ctx.atr(14, 1);
+    let trailStop = null;
+    if (atr != null && atr > 0) {
+      trailStop = hwm - 3 * atr; // 3 ATR from the high: wide enough for bull corrections
+    }
+
     const watches = [
       { side: 'sell', price: price, trigger: 'below', note: 'Regime break exit', conds: [
         { label: 'NDX < SMA200', ok: !ndxRiskOn },
         { label: 'BTC < SMA200', ok: !btcTrendUp }
       ]}
     ];
-    if (entry != null && Number.isFinite(entry)) {
-      watches.push({ side: 'sell', price: entry * 0.82, trigger: 'below', note: 'Hard stop -18%' });
+    if (trailStop != null) {
+      watches.push({ side: 'sell', price: trailStop, trigger: 'below', note: '3xATR trailing stop' });
     }
     ctx.watch(watches);
 
     if (!riskOn && cd === 0) {
+      st.hwm = null;
       ctx.state.cd = 5;
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
-    if (entry != null && Number.isFinite(entry) && price < entry * 0.82) {
+    if (trailStop != null && price < trailStop) {
+      st.hwm = null;
       ctx.state.cd = 10;
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
@@ -90,6 +102,7 @@ function onUpdate(ctx) {
       frac = 0.02 / dailyVol;
       frac = Math.max(0.2, Math.min(0.95, frac));
     }
+    st.hwm = null; // reset high-water for the new position
     ctx.state.cd = 5;
     return { side: 'buy', qty: ctx.cash / price * frac };
   }

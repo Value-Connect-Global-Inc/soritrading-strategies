@@ -3,10 +3,10 @@
   "name": "BTC NDX Risk-On Timing 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 27013,
-    "return": 49.99,
-    "mdd": 10.82,
-    "trades": 33,
+    "backtestId": 27015,
+    "return": 25.15,
+    "mdd": 14.02,
+    "trades": 49,
     "vsBuyHold": "win",
     "benchRet": 12.14,
     "benchBasis": "price",
@@ -32,9 +32,9 @@
       "firstSeen": "2026-10-26"
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "636f83df0507c1e63422c312a0461fde8552783e5abad3703bd7821eacbd951b"
+    "verifiedCodeSha256": "c36dbe8bbe7f16484f50acd916f27e359bc19ed8b05bb00e4943cd7c20d931c7"
   },
   "config": null,
-  "updatedAt": "2026-10-27T18:39:37.851Z",
+  "updatedAt": "2026-10-27T18:40:20.528Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
