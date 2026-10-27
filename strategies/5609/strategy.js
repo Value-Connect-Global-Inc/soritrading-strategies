@@ -50,15 +50,15 @@ function onUpdate(ctx) {
   const volOk = avgV != null && Number.isFinite(avgV) && avgV > 0 && ctx.vol > avgV;
 
   // Volatility targeting: ATR(14) as % of price. Scale = targetVol / atrPct,
-  // clamped to [0.3, 1.0]. targetVol 3.5% = typical calm BTC daily range;
-  // when ATR doubles (crash), size halves.
+  // clamped to [0.5, 1.0]. targetVol 0.05 = milder scaling than 0.035 —
+  // only cuts size meaningfully when ATR exceeds 5% of price.
   const atr = ctx.atr(14);
   if (atr == null || !Number.isFinite(atr) || atr <= 0) return null;
   const atrPct = atr / price;
-  const targetVol = 0.035;
+  const targetVol = 0.05;
   let scale = targetVol / atrPct;
   if (scale > 1) scale = 1;
-  if (scale < 0.3) scale = 0.3;
+  if (scale < 0.5) scale = 0.5;
 
   const st = ctx.state;
   let cd = st.cd || 0;
