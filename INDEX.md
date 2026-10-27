@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| — | [5572](strategies/5572/) | BTC-ETH-SOL Momentum Rotation 1D | +211.18% | — | +41.79% | 18 | 2026-10-26 `n135757c` | 2026-10-27 |
+| — | [5572](strategies/5572/) | BTC-ETH-SOL Momentum Rotation 1D | +18.63% | — | +7.71% | 36 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5571](strategies/5571/) | BTC Fear-Greed Contrarian 1D | -66.75% | -53.35% | +66.75% | 8 | 2026-10-26 `n135757c` | 2026-10-27 |
 | — | [5570](strategies/5570/) | BTC-ETH-SOL VolTarget Basket + Tail Stop 1D | +129.81% | — | +30.85% | 208 | 2026-10-26 `n135757c` | 2026-10-27 |
 | — | [5569](strategies/5569/) | BTC Donchian Breakout 1D | -12.57% | — | +40.24% | 288 | 2026-10-26 `n135757c` | 2026-10-27 |
