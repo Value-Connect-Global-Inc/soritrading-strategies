@@ -6,21 +6,23 @@
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: instead of betting on one asset's trend, this strategy
- * bets that crypto leaders persist for a while — the asset with the strongest
- * 90-day momentum tends to keep outperforming. It rotates the whole position
- * into whichever of the four majors has the strongest momentum, so it always
- * rides the current leader instead of being stuck in a laggard.
- * When it buys and sells: each day it ranks the four assets by 90-day price
- * momentum. It holds only the #1 asset, and only when that momentum is
- * positive and price is above its 200-day average; otherwise it stays in
- * cash. When another asset takes the #1 spot, it sells the old one and buys
- * the new one. A cooldown prevents flipping back and forth.
- * When it does NOT work: when the leader keeps changing every few weeks the
- * rotation churns and pays fees; in a bear market all four assets fall
- * together so it sits in cash and misses nothing but also gains nothing;
- * a single asset's melt-up is only partially captured because it must stay
- * the momentum leader.
+ * Why this strategy: crypto leaders persist for a while, so the asset with the
+ * strongest 180-day momentum tends to keep outperforming. This rotates the
+ * whole position into the strongest of four majors. The first version churned
+ * (rotating into marginally-stronger losers), so this uses a longer 180-day
+ * momentum and a takeover HYSTERESIS: it only switches when the new leader is
+ * clearly stronger (at least 10% more momentum), and only exits the current
+ * holding when another asset is clearly ahead. This keeps it from flipping
+ * between closely-ranked assets.
+ * When it buys and sells: ranks the four assets by 180-day momentum. Holds the
+ * leader only when its momentum is positive and price is above its 200-day
+ * average. Switches to a new asset only when that asset's momentum is at least
+ * 10% above the current holding's; otherwise it stays put. A cooldown further
+ * cuts churn.
+ * When it does NOT work: in a bear market all four fall together so it sits in
+ * cash; when leadership genuinely churns every few weeks the hysteresis still
+ * forces occasional switches and fees; a single asset's melt-up is only partly
+ * captured because it must stay the leader.
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
@@ -30,9 +32,8 @@ function onUpdate(ctx) {
   const sma200 = ctx.sma(200, 1);
   if (sma200 == null) return null;
 
-  // 90-day price momentum from a CLOSED bar — stable across the bar, so the
-  // ranking below is consistent for all four symbols in the same bar.
-  const mom = ctx.change(90, 1);
+  // 180-day momentum from a CLOSED bar — stable across the bar, consistent ranking.
+  const mom = ctx.change(180, 1);
   if (mom == null) return null;
 
   const st = ctx.state;
@@ -42,20 +43,22 @@ function onUpdate(ctx) {
   const syms = ctx.syms;
   if (!syms || syms.length < 2) return null;
 
-  // Wait until every symbol has reported momentum at least once.
   let allKnown = true;
   for (const s of syms) {
     if (st.mom[s] == null) { allKnown = false; break; }
   }
   if (!allKnown) return null;
 
-  // Find the #1 momentum symbol (strict inequality -> no ties).
+  // Global #1 by raw momentum.
   let top = null, topMom = -Infinity;
   for (const s of syms) {
     if (st.mom[s] > topMom) { topMom = st.mom[s]; top = s; }
   }
-  const isTop = (sym === top);
+  const isGlobalTop = (sym === top);
   const momPositive = mom > 0;
+
+  // The asset we currently hold (persisted so all four symbols share it).
+  const holding = st.holding || null;
 
   let cd = st.cd || 0;
   if (cd > 0) cd--;
@@ -66,26 +69,32 @@ function onUpdate(ctx) {
   if (pos > 0) {
     ctx.watch([
       { side: 'sell', price: sma200, trigger: 'below', note: 'SMA200 trend break' },
-      { side: 'sell', price: price, trigger: 'below', note: 'lost #1 momentum', conds: [{ label: 'not top momentum', ok: !isTop }] }
+      { side: 'sell', price: price, trigger: 'below', note: 'lost clear lead', conds: [{ label: 'new leader 1.10x ahead', ok: !isGlobalTop && topMom > mom * 1.10 }] }
     ]);
-    // Exit when no longer the leader, momentum turns negative, or trend breaks.
-    if ((!isTop || !momPositive || price < sma200) && cd === 0) {
+    // Exit only when another asset is CLEARLY ahead (10% more momentum), or
+    // momentum turned negative, or the trend broke. A marginal flip is ignored.
+    const clearlyBehind = !isGlobalTop && topMom > mom * 1.10;
+    const exitNow = (clearlyBehind || !momPositive || price < sma200);
+    if (exitNow && cd === 0) {
       st.cd = 5;
+      st.holding = null;
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
     return null;
   }
 
+  // Flat: enter only if THIS symbol is the global #1 with positive momentum in an uptrend.
   ctx.watch([
     { side: 'buy', price: price, trigger: 'above', note: 'momentum leader entry', conds: [
-      { label: 'is #1 momentum', ok: isTop },
+      { label: 'is #1 momentum', ok: isGlobalTop },
       { label: 'momentum > 0', ok: momPositive },
       { label: 'Price > SMA200', ok: price > sma200 }
     ]}
   ]);
-  if (isTop && momPositive && price > sma200 && cd === 0) {
+  if (isGlobalTop && momPositive && price > sma200 && cd === 0) {
     if (ctx.alloc.status !== 'ok') return null;
     st.cd = 5;
+    st.holding = sym;
     return { side: 'buy', qty: ctx.cash / price * 0.95 };
   }
   return null;

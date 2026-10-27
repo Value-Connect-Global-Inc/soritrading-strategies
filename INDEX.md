@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| — | [5620](strategies/5620/) | Crypto Momentum Rotation 4-Asset 1D | -26.35% | — | +52.64% | 89 | 2026-10-26 `n135757c` | 2026-10-27 |
+| — | [5620](strategies/5620/) | Crypto Momentum Rotation 4-Asset 1D | +158.11% | — | +83.73% | 57 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5619](strategies/5619/) | BTC On-Chain Demand Trend 1D | +30.50% | +88.24% | +24.17% | 18 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5618](strategies/5618/) | BTC OBV Regime-Exit Trend 1D | +27.33% | +81.42% | +22.63% | 22 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5617](strategies/5617/) | ETH OBV Volume-Flow Trend 1D | -9.28% | -1.17% | +39.24% | 28 | 2026-10-26 `n135757c` | 2026-10-27 |
