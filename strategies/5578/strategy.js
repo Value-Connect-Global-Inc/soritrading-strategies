@@ -1,71 +1,65 @@
 /*
  * @coinsori-strategy v1
- * name: BTC On-Chain Adoption Trend 1D
- * ex: binance
- * syms: BTC/USDT
+ * name: BTC Kimchi-Premium Mean-Revert 1D
+ * ex: upbit
+ * syms: BTC/KRW
  * interval: 1d
- * cash: 10000
+ * cash: 10000000
  *
- * Why this strategy: Bitcoin's price follows real network usage — when the number
- * of daily active addresses is growing, more people are actually using the chain,
- * which historically accompanies (and sometimes leads) price appreciation. This
- * strategy holds BTC only when on-chain adoption is expanding AND price is above
- * its long-term average, so it buys real usage, not just price momentum.
- * When it buys and sells: Buys when the 30-day average of daily active addresses
- * is higher than the previous day (adoption expanding) and price is above the
- * 200d SMA. Sells on a 3xATR trailing stop from the highest close since entry or
- * when price closes below the 200d SMA.
- * When it does NOT work: Address counts are noisy and are a lagging, not leading,
- * signal — in a rally where usage has not yet caught up it enters late, and in a
- * bear where usage stays high it can hold too long. It also whipsaws in sideways
- * markets like any trend system.
+ * Why this strategy: Korean exchanges sometimes trade BTC at a discount to the
+ * global price (negative "kimchi premium"). That discount usually snaps back
+ * within days. We buy the cheap KRW BTC and sell when the discount closes.
+ * When it buys and sells: Buy when the KRW price is at least 2% cheaper than
+ * the fair value (global USD price x USD/KRW). Sell when the discount narrows
+ * to +0.5% or a 2.5x ATR stop hits.
+ * When it does NOT work: A persistent discount regime (capital controls, no
+ * arbitrage flow) can hold the position underwater for months. Also flat,
+ * gap-less markets give few signals.
  */
 function onUpdate(ctx) {
   const closes = ctx.closes;
-  if (closes == null || closes.length < 210) return null;
-
-  const pos = ctx.position;
+  if (closes == null || closes.length < 40) return null;
   const price = ctx.price;
+  const pos = ctx.position;
   if (price == null || price <= 0) return null;
 
-  const sma200 = ctx.sma(200, 1);
+  // Global reference: binance BTC/USDT price and real USD/KRW rate.
+  const usd = ctx.ref(0);
+  const fx = ctx.fx("KRW");
+  if (usd == null || fx == null || usd <= 0 || fx <= 0) return null;
+
+  const fair = usd * fx; // what KRW price should be if no premium
+  if (fair <= 0) return null;
+  const premium = price / fair - 1; // + = expensive in Korea, - = cheap
+
   const atr = ctx.atr(14, 1);
-  if (sma200 == null || atr == null || atr <= 0) return null;
-
-  const prevClose = closes.at(-2);
-
-  let st = ctx.state || {};
-  if (typeof st.hi !== 'number') st.hi = prevClose;
 
   if (pos != null && pos > 0) {
-    // Trailing stop: exit if price closes below (highest close since entry - 3*ATR).
-    if (prevClose > st.hi) st.hi = prevClose;
+    // Exit when discount closes or stop hit.
+    const exitPremium = premium >= 0.005;
+    let st = ctx.state || {};
+    if (typeof st.hi !== 'number') st.hi = ctx.closes.at(-2);
+    const pc = ctx.closes.at(-2);
+    if (pc > st.hi) st.hi = pc;
     ctx.state = st;
-    const trailStop = st.hi - 3 * atr;
-    if (prevClose < trailStop || prevClose < sma200) {
-      ctx.watch([{ side: 'sell', price: trailStop, trigger: 'below', note: 'trail stop 3xATR' },
-                 { side: 'sell', price: sma200, trigger: 'below', note: 'below 200d SMA' }]);
-      ctx.state = { hi: prevClose };
+    const stop = atr != null && atr > 0 ? st.hi - 2.5 * atr : null;
+    if (exitPremium || (stop != null && price < stop)) {
+      ctx.watch([{ side: 'sell', price: stop, trigger: 'below', note: 'stop 2.5xATR' },
+                 { side: 'sell', note: 'discount closed' }]);
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
     return null;
   }
 
-  // Adoption filter: 30-day avg of active addresses expanding vs the previous day.
-  const a = ctx.data('addr_sma30');
-  if (a == null) return null; // on-chain data unknown -> cannot confirm adoption
-  const lastAddr = st.lastAddr;
-  st.lastAddr = a;
-  const adoptionGrowing = lastAddr != null && a > lastAddr;
-
-  if (adoptionGrowing && prevClose > sma200) {
-    if (ctx.alloc.status !== 'ok') return null; // reduce-only edge, no new entries
-    ctx.state = { hi: prevClose, lastAddr: a };
+  // Entry: deep Korean discount on a closed bar.
+  const premPrev = ctx.closes.at(-2) / fair - 1;
+  if (premPrev <= -0.02) {
+    if (ctx.alloc.status !== 'ok') return null;
+    ctx.state = { hi: ctx.closes.at(-2) };
     const qty = (ctx.cash / price) * 0.99;
     if (qty <= 0) return null;
-    ctx.watch([{ side: 'buy', note: 'adoption expanding above 200d' }]);
+    ctx.watch([{ side: 'buy', note: 'kimchi discount <= -2%' }]);
     return { side: 'buy', qty: qty };
   }
-  ctx.state = st;
   return null;
 }
