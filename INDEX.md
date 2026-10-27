@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5583](strategies/5583/) | BTC OBV Champion Pure 1D | +31.59% | +88.24% | +20.04% | 24 | 2026-10-26 `n135757c` | 2026-10-27 |
+|  | [5583](strategies/5583/) | BTC OBV Champion Pure 1D | +35.52% | +88.24% | +20.04% | 22 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5582](strategies/5582/) | BTC OBV OnChain-Gated 1D | +35.52% | +88.24% | +20.04% | 22 | 2026-10-26 `n135757c` | 2026-10-27 |
 | ★ | [5581](strategies/5581/) | BTC OBV OnChain-Gated 1D | +7.01% | -23.85% | +13.61% | 105 | 2026-10-26 `n135757c` | 2026-10-27 |
 | ★ | [5580](strategies/5580/) | BTC GoldenCross F&G-Filtered 1D | -5.08% | -23.85% | +8.82% | 2 | 2026-10-26 `n135757c` | 2026-10-27 |
