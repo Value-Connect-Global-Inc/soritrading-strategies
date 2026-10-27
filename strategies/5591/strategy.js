@@ -1,40 +1,64 @@
 /*
  * @coinsori-strategy v1
- * name: BTC OBV Volume-Flow Trend 4H
+ * name: OBV Volume-Flow Trend BTC 1D
  * ex: binance
  * syms: BTC/USDT
- * interval: 4h
+ * interval: 1d
  * cash: 10000
  *
- * Why this strategy: The validated BTC 1d OBV volume-flow champion, run on 4h bars to react faster.
- * A rising smoothed OBV with price above its 200-bar average and above-average volume confirms
- * accumulation; a falling OBV warns of distribution. Testing whether the edge survives a shorter
- * (more active) timeframe.
- * When it buys and sells: buys when OBV is clearly rising vs ~30 bars earlier AND price is above its
- * 200-bar average AND volume is above its 30-bar average; sells when OBV turns down. Hysteresis +
- * cooldown reduce churn.
- * When it does NOT work: shorter timeframes whipsaw more in chop and pay more fees; OBV can diverge
- * from price for long stretches in sideways markets. It also lags sharp V-shaped melt-ups.
+ * Why this strategy: A genuinely different signal source — volume flow instead
+ * of price or on-chain addresses. On-Balance Volume (OBV) accumulates up-day
+ * volume and subtracts down-day volume, so it tracks whether money is flowing
+ * in or out over time. Hypothesis: a rising OBV 30-day trend with price above
+ * its 200-day average confirms an accumulation-driven uptrend; a falling OBV
+ * trend warns of distribution even if price looks flat.
+ * When it buys and sells: buys when smoothed OBV is clearly rising vs ~30 days
+ * earlier AND price is above its 200-day average AND today's volume is above
+ * its 30-day average (confirms the flow is real, not a thin quiet drift);
+ * sells when smoothed OBV turns down. Hysteresis + cooldown reduce churn.
+ * When it does NOT work: OBV can diverge from price for long stretches in
+ * choppy sideways markets, causing whipsaw; and like all trend signals it lags
+ * sharp V-shaped melt-ups where volume spikes before the 30-day average catches
+ * up.
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
+  // 200-day trend gate: only hold longs in a confirmed bull regime.
   const sma200 = ctx.sma(200, 1);
   if (sma200 == null) return null;
 
-  // OBV now vs 30 bars ago (platform indicator, O(1) — no manual recompute loop).
-  const obvNow = ctx.obv(30, 0);
-  const obvPast = ctx.obv(30, 30);
-  if (obvNow == null || obvPast == null || obvPast === 0) return null;
+  // Build OBV from volume and close direction.
+  const closes = ctx.closes;
+  const vols = ctx.volumes;
+  if (!closes || !vols || closes.length < 32) return null;
 
+  // Recompute OBV over available history each bar (cheap, deterministic).
+  let obv = 0;
+  const obvSeries = [];
+  for (let k = 1; k < closes.length; k++) {
+    const c = closes[k], p = closes[k - 1], v = vols[k];
+    if (!Number.isFinite(c) || !Number.isFinite(p) || !Number.isFinite(v)) continue;
+    if (c > p) obv += v;
+    else if (c < p) obv -= v;
+    obvSeries.push(obv);
+  }
+  if (obvSeries.length < 32) return null;
+  const obvNow = obvSeries[obvSeries.length - 1];
+  const obvPast = obvSeries[obvSeries.length - 31];
+
+  // Hysteresis: 1.0% instead of 0.5% to cut the 136-trade churn in W3.
   const rising = obvNow > obvPast * 1.01;
   const falling = obvNow < obvPast * 0.99;
 
+  // Volume confirmation: only enter when today's volume is above its 30-day
+  // average — a rising OBV on quiet volume is a weak drift, not accumulation.
   const avgV = ctx.avgVol(30);
   const volOk = avgV != null && Number.isFinite(avgV) && avgV > 0 && ctx.vol > avgV;
 
+  // Cooldown: after a flip, wait 5 bars before flipping again (cuts whipsaw).
   const st = ctx.state;
   let cd = st.cd || 0;
   if (cd > 0) cd--;
@@ -49,7 +73,7 @@ function onUpdate(ctx) {
   }
   if (rising && price > sma200 && volOk && cd === 0) {
     ctx.state.cd = 5;
-    return { side: 'buy', qty: (ctx.cash / price) * 0.95 };
+    return { side: 'buy', qty: ctx.cash / price * 0.95 };
   }
   return null;
 }
