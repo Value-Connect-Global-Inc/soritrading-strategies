@@ -3,7 +3,7 @@
   "name": "BTC Fear&Greed Trend-Confirm 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 26900,
+    "backtestId": 26901,
     "return": 2.47,
     "mdd": 26.4,
     "trades": 24,
@@ -34,6 +34,6 @@
     "verifiedCodeSha256": "4499a212f8b332679d57dbcbc732be428f82a2fc028d942c28598c4cc5dd12e5"
   },
   "config": null,
-  "updatedAt": "2026-10-27T12:54:28.695Z",
+  "updatedAt": "2026-10-27T13:05:54.808Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
