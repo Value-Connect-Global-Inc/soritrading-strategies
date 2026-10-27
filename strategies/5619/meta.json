@@ -3,9 +3,9 @@
   "name": "BTC On-Chain Demand Trend 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 26917,
-    "return": -19.82,
-    "mdd": 19.82,
+    "backtestId": 26921,
+    "return": -23.84,
+    "mdd": 24.29,
     "trades": 2,
     "vsBuyHold": "lose",
     "benchRet": 52.38,
@@ -30,8 +30,8 @@
       "hash": "n135757cd00c",
       "firstSeen": "2026-10-26"
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "79264763604bc47c1d4d2c1a40aea5053e159a43ee95488d3a4fa74d217906cd"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "1f7f467fa7f5874ddd747b595add4418e3d08ab856c35f429b7c39359d10d5b1"
   },
   "config": null,
   "updatedAt": "2026-10-27T14:12:01.734Z",
