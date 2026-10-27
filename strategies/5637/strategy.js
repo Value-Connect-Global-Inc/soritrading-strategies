@@ -1,16 +1,20 @@
 /*
  * @coinsori-strategy v1
- * name: BTC OBV Trend + Vol-Target 3pct 1D
+ * name: BTC OBV Trend + Vol-Target Sizing 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: robustness check of vol-targeted sizing at 3% target daily
- * vol (vs the 2% in 5635 and 1% in 5636). Same OBV trend entries/exits as the
- * champion.
- * When it buys and sells: same as champion; size inversely to ATR.
- * When it does NOT work: same as champion.
+ * Why this strategy: the proven OBV trend finds BTC uptrends but its fixed
+ * 95%-of-cash sizing means a high-volatility crash hits the whole account.
+ * Volatility targeting sizes positions inversely to ATR(14): small positions in
+ * choppy high-vol regimes, full size in calm trends. This lowers drawdown
+ * without changing WHEN the strategy trades.
+ * When it buys and sells: same OBV entries/exits as the champion; only the size
+ * differs — target 2% daily vol, so size = 0.02 / (ATR/price).
+ * When it does NOT work: in a low-volatility grind-up it buys full size and a
+ * sudden vol spike still hits; sizing can never fully replace a good exit.
  */
 function onUpdate(ctx) {
   const pos = ctx.position;
@@ -69,12 +73,13 @@ function onUpdate(ctx) {
   ]);
   if (rising && price > sma200 && volOk && cd === 0) {
     if (ctx.alloc.status !== 'ok') return null;
+    // Vol-target sizing: aim for ~2% daily vol, clamp between 20% and 95% of cash.
     const atr = ctx.atr(14, 1);
     let frac = 0.95;
     if (atr != null && atr > 0) {
-      const dailyVol = atr / price;
-      frac = 0.03 / dailyVol;               // 3% target daily vol
-      frac = Math.max(0.3, Math.min(0.95, frac));
+      const dailyVol = atr / price;         // 1-day ATR as fraction of price
+      frac = 0.02 / dailyVol;               // target 2% daily move
+      frac = Math.max(0.2, Math.min(0.95, frac));
     }
     ctx.state.cd = 5;
     return { side: 'buy', qty: ctx.cash / price * frac };

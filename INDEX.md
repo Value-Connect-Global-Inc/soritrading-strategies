@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5637](strategies/5637/) | BTC OBV Trend + Vol-Target 3pct 1D | +46.01% | +93.53% | +37.65% | 22 | 2026-10-26 `n135757c` | 2026-10-27 |
+|  | [5637](strategies/5637/) | BTC OBV Trend + Vol-Target 3pct 1D | +35.33% | +142.37% | +17.30% | 26 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5636](strategies/5636/) | BTC OBV Trend + Vol-Target 1pct 1D | +5.41% | +160.73% | +8.08% | 27 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5635](strategies/5635/) | BTC OBV Trend + Vol-Target Sizing 1D | +8.52% | +160.73% | +13.55% | 27 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5634](strategies/5634/) | BTC OBV Trend + SMA200 Exit 1D | -7.14% | +160.73% | +18.89% | 27 | 2026-10-26 `n135757c` | 2026-10-27 |
