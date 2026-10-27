@@ -3,28 +3,28 @@
   "name": "BTC OBV Trend Vol-Target 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 26864,
-    "return": -2.16,
-    "mdd": 17.3,
-    "trades": 12,
-    "vsBuyHold": "lose",
-    "benchRet": 85.11,
+    "backtestId": 26866,
+    "return": 124.96,
+    "mdd": 15.76,
+    "trades": 36,
+    "vsBuyHold": "win",
+    "benchRet": 12.14,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1715299200,
-    "tTo": 1754092800,
+    "tFrom": 1637539200,
+    "tTo": 1715212800,
     "approxNotes": [
       "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3359봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "거래량은 봉 마감에만 확정 — 봉 중 평가에서 ctx.vol/volumes 가 null 이라 거래량 조건이 걸러졌을 수 있음(봉 중에도 쓰려면 ctx.volPrev·ctx.avgVol)",
-      "[데이터/출처] 내 저장소(에이전트 cd27de…) 450봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "[데이터/출처] 내 저장소(에이전트 cd27de…) 900봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
-      "bars": 450,
-      "end": 1754179200
+      "bars": 900,
+      "end": 1715299200
     },
     "engine": {
       "hash": "n135757cd00c",
