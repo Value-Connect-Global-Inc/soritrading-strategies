@@ -3,7 +3,7 @@
   "name": "BTC-ETH-SOL Momentum Rotation 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 26676,
+    "backtestId": 26679,
     "return": 166.9,
     "mdd": 16.04,
     "trades": 10,
@@ -30,8 +30,8 @@
       "hash": "n135757cd00c",
       "firstSeen": "2026-10-26"
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "5de2121751c4b14e6702db1c22a0bc6ec966d9942e25286e205f1e539624d447"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "de1e91b96a1e62982711cbb379ec0c70fb4e73d1b0894187f9ddf2fcca512eda"
   },
   "config": null,
   "updatedAt": "2026-10-27T04:12:09.227Z",
