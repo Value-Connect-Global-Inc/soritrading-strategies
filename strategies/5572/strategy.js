@@ -15,14 +15,13 @@
  * When it buys and sells: Every 7 days it compares the 30-day return of BTC, ETH and
  * SOL (on closed bars) and holds the strongest. It switches only when a new leader
  * beats the current one by at least 5% (hysteresis), so small daily rank flips do not
- * cause churn. It sells to cash when the leader's momentum turns negative, when it
- * loses leadership by more than 5%, or when the held coin closes below its 200-day
- * average (long-term trend broken).
+ * cause churn. It sells to cash when the leader's momentum turns negative or when it
+ * loses leadership by more than 5%. It never BUYS a coin below its 200-day average.
  * When it does NOT work: When the three coins move together the concentration means a
- * single coin's crash hits the whole account (the 200d gate limits but does not
- * remove this). The weekly re-check can enter a leader just as its run ends. And
- * momentum is a lagging signal: it misses the very start of a new bull because it
- * needs 30 days of proof first, and the 200d gate keeps it out of early recoveries.
+ * single coin's crash hits the whole account. The weekly re-check can enter a leader
+ * just as its run ends. And momentum is a lagging signal: it misses the very start of
+ * a new bull because it needs 30 days of proof first, and the 200d entry gate keeps
+ * it out of early recoveries that start below the long-term average.
  */
 function onUpdate(ctx) {
   const closes = ctx.closes;
@@ -33,7 +32,6 @@ function onUpdate(ctx) {
   if (!isFinite(mom)) return null;
 
   // 200-day trend (closed bars): last closed close as a ratio of its 200d SMA.
-  // >1 = above the long-term average (uptrend), <1 = below (downtrend).
   const sma200 = ctx.sma(200, 1);
   const trend = (sma200 != null && sma200 > 0) ? closes.at(-2) / sma200 : null;
 
@@ -57,13 +55,6 @@ function onUpdate(ctx) {
   const pos = ctx.pos(ctx.sym);
   const price = ctx.price;
   if (price == null || price <= 0) return null;
-
-  // Daily trend exit: if the held coin closes below its 200-day average (and it has one),
-  // the long-term uptrend is broken — leave instead of waiting 30 days for momentum.
-  if (pos != null && pos > 0 && typeof st.trend[ctx.sym] === 'number' && st.trend[ctx.sym] < 1) {
-    ctx.watch([{ side: 'sell', note: 'below 200d trend - exit' }]);
-    return { side: 'sell', qty: pos, reduceOnly: true };
-  }
 
   // Weekly evaluation gate: decide only every 7 bars (all coins share the same bar index).
   if (ctx.i - st.lastEval < 7) {
