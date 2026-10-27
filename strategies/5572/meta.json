@@ -3,10 +3,10 @@
   "name": "BTC-ETH-SOL Momentum Rotation 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 26679,
-    "return": 166.9,
-    "mdd": 16.04,
-    "trades": 10,
+    "backtestId": 26682,
+    "return": 3.44,
+    "mdd": 16.33,
+    "trades": 4,
     "vsBuyHold": "unmeasured",
     "gapPct": 0,
     "tFrom": 1502928000,
@@ -31,9 +31,9 @@
       "firstSeen": "2026-10-26"
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "de1e91b96a1e62982711cbb379ec0c70fb4e73d1b0894187f9ddf2fcca512eda"
+    "verifiedCodeSha256": "5d0cd9d93f3dcb8b821711af60014d0e3bf0cf4878fb077e932e8a9841f4d342"
   },
   "config": null,
-  "updatedAt": "2026-10-27T04:12:09.227Z",
+  "updatedAt": "2026-10-27T04:20:26.540Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

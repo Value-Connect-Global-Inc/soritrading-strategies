@@ -9,20 +9,20 @@
  * Why this strategy: In crypto the strongest coin tends to keep leading (relative
  * strength persists for weeks). This strategy holds ONLY the coin with the best
  * 30-day momentum, so during a bull it concentrates in the winner instead of being
- * diluted by laggards. It is long only when the leader itself is still trending up
- * (positive momentum) — never holding a falling coin — so a broad bear sends it to
- * cash instead of riding the "least bad" loser down. A hard stop-loss caps the
- * damage of a single-coin crash that the slow momentum signal cannot catch in time.
+ * diluted by laggards. It is long only when the leader is itself trending up — both
+ * its 30-day momentum is positive AND it trades above its 200-day average — so a
+ * broad bear sends it to cash instead of riding the "least bad" loser down.
  * When it buys and sells: Every 7 days it compares the 30-day return of BTC, ETH and
  * SOL (on closed bars) and holds the strongest. It switches only when a new leader
  * beats the current one by at least 5% (hysteresis), so small daily rank flips do not
- * cause churn. If the leader's own momentum turns negative it sells to cash. If a held
- * coin falls 20% below its entry price it is sold immediately (hard stop).
+ * cause churn. It sells to cash when the leader's momentum turns negative, when it
+ * loses leadership by more than 5%, or when the held coin closes below its 200-day
+ * average (long-term trend broken).
  * When it does NOT work: When the three coins move together the concentration means a
- * single coin's crash hits the whole account (the 20% stop limits but does not remove
- * this). The weekly re-check can enter a leader just as its run ends, and the stop can
- * sell a coin on a healthy 20% pullback inside a strong uptrend. Momentum is a lagging
- * signal: it misses the very start of a new bull because it needs 30 days of proof.
+ * single coin's crash hits the whole account (the 200d gate limits but does not
+ * remove this). The weekly re-check can enter a leader just as its run ends. And
+ * momentum is a lagging signal: it misses the very start of a new bull because it
+ * needs 30 days of proof first, and the 200d gate keeps it out of early recoveries.
  */
 function onUpdate(ctx) {
   const closes = ctx.closes;
@@ -32,35 +32,38 @@ function onUpdate(ctx) {
   const mom = closes.at(-2) / closes.at(-31) - 1;
   if (!isFinite(mom)) return null;
 
-  // Restart-surviving shared state: each coin stores its own momentum; decision reads all.
+  // 200-day trend (closed bars): last closed close as a ratio of its 200d SMA.
+  // >1 = above the long-term average (uptrend), <1 = below (downtrend).
+  const sma200 = ctx.sma(200, 1);
+  if (sma200 == null || sma200 <= 0) return null;
+  const trend = closes.at(-2) / sma200;
+
+  // Restart-surviving shared state: each coin stores its own momentum and trend.
   let st = ctx.state || {};
   if (typeof st.mom !== 'object') st.mom = {};
+  if (typeof st.trend !== 'object') st.trend = {};
   st.mom[ctx.sym] = mom;
+  st.trend[ctx.sym] = trend;
   if (typeof st.lastEval !== 'number') st.lastEval = -9999;
   ctx.state = st;
 
   const syms = ctx.syms;
   if (syms == null || syms.length < 3) return null;
   let ready = true;
-  for (const s of syms) { if (typeof st.mom[s] !== 'number') { ready = false; break; } }
+  for (const s of syms) {
+    if (typeof st.mom[s] !== 'number' || typeof st.trend[s] !== 'number') { ready = false; break; }
+  }
   if (!ready) return null;
 
   const pos = ctx.pos(ctx.sym);
   const price = ctx.price;
   if (price == null || price <= 0) return null;
 
-  // HARD STOP-LOSS checked EVERY day (not only at the weekly gate): a 30-day momentum
-  // signal is too slow to escape a single-coin crash, so cap the loss at 20% below entry.
-  if (pos != null && pos > 0) {
-    const entry = ctx.entryPx;
-    if (entry != null && entry > 0) {
-      const stopPx = entry * 0.80;
-      if (price <= stopPx) {
-        ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'hard stop 20%' }]);
-        return { side: 'sell', qty: pos, reduceOnly: true };
-      }
-      ctx.watch([{ side: 'sell', price: stopPx, trigger: 'below', note: 'hard stop 20%' }]);
-    }
+  // Daily trend exit: if the held coin closes below its 200-day average, the long-term
+  // uptrend is broken — leave instead of waiting 30 days for momentum to confirm.
+  if (pos != null && pos > 0 && st.trend[ctx.sym] < 1) {
+    ctx.watch([{ side: 'sell', note: 'below 200d trend - exit' }]);
+    return { side: 'sell', qty: pos, reduceOnly: true };
   }
 
   // Weekly evaluation gate: decide only every 7 bars (all coins share the same bar index).
@@ -91,11 +94,11 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // Flat: buy the leader only if it is trending up.
-  if (leaderMom > 0 && ctx.sym === leader) {
+  // Flat: buy the leader only if it is trending up on BOTH 30d momentum and 200d trend.
+  if (leaderMom > 0 && st.trend[leader] > 1 && ctx.sym === leader) {
     const qty = (ctx.cash / price) * 0.99;
     if (qty <= 0) return null;
-    ctx.watch([{ side: 'buy', note: 'leader with positive momentum' }]);
+    ctx.watch([{ side: 'buy', note: 'leader with positive momentum + uptrend' }]);
     return { side: 'buy', qty: qty };
   }
   return null;
