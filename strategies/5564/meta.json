@@ -3,7 +3,7 @@
   "name": "On-Chain Address Trend Basket 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 26618,
+    "backtestId": 26619,
     "return": 12.22,
     "mdd": 30.38,
     "trades": 180,
@@ -36,6 +36,6 @@
     "verifiedCodeSha256": "cca47579b7f41c3df17505d4bd597a17eda5b9021ef55f3c95408fc42421dd44"
   },
   "config": null,
-  "updatedAt": "2026-10-27T01:32:36.251Z",
+  "updatedAt": "2026-10-27T01:33:40.793Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
