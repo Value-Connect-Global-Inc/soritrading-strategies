@@ -13,9 +13,9 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+|  | [5635](strategies/5635/) | BTC OBV Trend + Vol-Target Sizing 1D | +8.52% | +160.73% | +13.55% | 27 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5637](strategies/5637/) | BTC OBV Trend + Vol-Target 3pct 1D | +29.62% | +142.37% | +13.06% | 26 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5636](strategies/5636/) | BTC OBV Trend + Vol-Target 1pct 1D | +5.41% | +160.73% | +8.08% | 27 | 2026-10-26 `n135757c` | 2026-10-27 |
-|  | [5635](strategies/5635/) | BTC OBV Trend + Vol-Target Sizing 1D | +8.52% | +160.73% | +13.55% | 27 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5634](strategies/5634/) | BTC OBV Trend + SMA200 Exit 1D | -7.14% | +160.73% | +18.89% | 27 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5633](strategies/5633/) | BTC OBV Trend + ATR Trail Stop 1D | -11.22% | +93.53% | +63.13% | 34 | 2026-10-26 `n135757c` | 2026-10-27 |
 |  | [5632](strategies/5632/) | BTC OBV Trend + NDX Risk Gate 1D | +36.68% | +93.53% | +47.34% | 22 | 2026-10-26 `n135757c` | 2026-10-27 |
