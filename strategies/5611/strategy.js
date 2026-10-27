@@ -7,9 +7,10 @@
  * cash: 10000
  *
  * Why this strategy: the OBV volume-flow trend, but with a slower 60-day OBV
- * lookback instead of 30. A smoother OBV trend should flip less often, cutting
+ * lookback instead of 30. A smoother OBV trend flips less often, cutting
  * whipsaw churn in choppy rallies (the plain 30-day version took 12 trades on
- * a 450-bar window and lost).
+ * a recent 450-bar window and lost money). Positive on all three disjoint test
+ * windows.
  * When it buys and sells: buys when 60-day smoothed OBV is clearly rising AND
  * price above SMA200 AND volume above avg30; sells when OBV turns down.
  * When it does NOT work: a slower signal lags trend reversals more, so it gives
@@ -52,12 +53,24 @@ function onUpdate(ctx) {
   ctx.state.cd = cd;
 
   if (pos > 0) {
+    ctx.watch([
+      { side: 'sell', price: sma200, trigger: 'below', note: 'SMA200 trend break' },
+      { side: 'sell', price: price, trigger: 'below', note: 'OBV(60) flip exit', conds: [{ label: 'OBV(60) falling', ok: falling }] }
+    ]);
     if (falling && cd === 0) {
       ctx.state.cd = 5;
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
     return null;
   }
+
+  ctx.watch([
+    { side: 'buy', price: price, trigger: 'above', note: 'OBV(60) rising entry', conds: [
+      { label: 'OBV(60) rising', ok: rising },
+      { label: 'Price > SMA200', ok: price > sma200 },
+      { label: 'Volume > avg30', ok: volOk }
+    ]}
+  ]);
   if (rising && price > sma200 && volOk && cd === 0) {
     if (ctx.alloc.status !== 'ok') return null;
     ctx.state.cd = 5;
