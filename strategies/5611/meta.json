@@ -3,7 +3,7 @@
   "name": "BTC OBV Slow60 Trend 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 26879,
+    "backtestId": 26881,
     "return": 51.86,
     "mdd": 25.23,
     "trades": 24,
@@ -30,10 +30,10 @@
       "hash": "n135757cd00c",
       "firstSeen": "2026-10-26"
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "4bfbb68b4c00d37faf6e3bb9ea11328eb3e83405ae834a8ae1a8e15dcbdaf375"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "68e3750bdad3ecf5c5d1c281acab0c74c68260a8ea16e869b9f40753fb2ff2f5"
   },
   "config": null,
-  "updatedAt": "2026-10-27T11:56:54.957Z",
+  "updatedAt": "2026-10-27T11:57:32.104Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
