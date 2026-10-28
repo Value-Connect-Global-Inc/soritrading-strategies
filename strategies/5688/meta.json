@@ -3,9 +3,9 @@
   "name": "BTC Donchian 55/20 Breakout 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 27210,
-    "return": 15.22,
-    "mdd": 10.84,
+    "backtestId": 27213,
+    "return": 36.22,
+    "mdd": 23.78,
     "trades": 36,
     "vsBuyHold": "lose",
     "benchRet": 142.37,
@@ -29,8 +29,8 @@
       "hash": "n1f44f2a0c32",
       "firstSeen": "2026-10-28"
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "91087532d39bd4056a1b8313d1b6cfc1b5aefcb1801b14f75bc9fbb58fd9bb26"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "b6c71275081684a0d8325c48225758fc022269bf46ca74d26392812e680431a3"
   },
   "config": null,
   "updatedAt": "2026-10-28T17:31:34.065Z",
