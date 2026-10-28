@@ -11,7 +11,6 @@
  * When it does NOT work: In a sideways / choppy market with no persistent trend, breakouts frequently fail and the strategy churns through small losses. It also falls behind buy-and-hold during strong one-way bull runs when it exits early on pullbacks.
  */
 function onUpdate(ctx) {
-  // Warm-up: Donchian 55 (2 bars back = the 55 days BEFORE the last closed day) and ATR
   const dc = ctx.donchian(55, 2);
   const dcExit = ctx.donchian(20, 1);
   const atr = ctx.atr(14, 1);
@@ -19,8 +18,8 @@ function onUpdate(ctx) {
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) return null;
 
-  // Position sizing: risk 2% of cash per trade, stop at 2x ATR from entry
-  const riskPerTrade = 0.02 * ctx.cash;
+  // Position sizing: risk 5% of cash per trade, stop at 2x ATR from entry
+  const riskPerTrade = 0.05 * ctx.cash;
   const stopDist = 2 * atr;
   if (stopDist <= 0) return null;
 
@@ -38,7 +37,6 @@ function onUpdate(ctx) {
       { side: 'sell', price: dcExit.lower, trigger: 'below', note: 'Donchian20 exit' }
     ]);
 
-    // Exit on Donchian 20 break below, or stop hit
     if (prevClose < dcExit.lower) {
       return { side: 'sell', qty: ctx.position, reduceOnly: true };
     }
@@ -48,7 +46,6 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // Flat: buy when last closed day's close breaks above the 55-day high (2 bars back)
   ctx.watch([
     { side: 'buy', price: dc.upper, trigger: 'above', note: 'Donchian55 breakout' }
   ]);
