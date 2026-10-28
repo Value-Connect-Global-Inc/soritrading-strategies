@@ -3,7 +3,7 @@
   "name": "BTC On-Chain Usage Trend 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 27223,
+    "backtestId": 27224,
     "return": 11.53,
     "mdd": 22.79,
     "trades": 21,
@@ -32,9 +32,9 @@
       "firstSeen": "2026-10-28"
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "64145ecac4295ac765b21935aa09a7ccdb7ccb5cea5db2831d50edc3fab4e2b2"
+    "verifiedCodeSha256": "c4949a543ff3cd76b13a6f93c90878098968c5b85602e88e7ace18d7c732c509"
   },
   "config": null,
-  "updatedAt": "2026-10-28T17:59:47.613Z",
+  "updatedAt": "2026-10-28T18:10:05.128Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

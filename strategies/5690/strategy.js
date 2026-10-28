@@ -37,6 +37,10 @@ function onUpdate(ctx) {
     return null;
   }
 
+  // Declare the price level we wait for while flat; usage expansion is the extra gate
+  ctx.watch([
+    { side: 'buy', price: sma200, trigger: 'above', note: 'SMA200 uptrend', conds: [{ label: 'usage expanding', ok: usageExpanding, closed: true }] }
+  ]);
   // Buy only when usage is expanding AND price is in a long-term uptrend
   if (usageExpanding && prevClose > sma200) {
     // 60% of cash per entry; 20% stop limits account risk to ~12%
