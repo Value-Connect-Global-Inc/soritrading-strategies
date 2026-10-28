@@ -3,7 +3,7 @@
   "name": "BTC Fear-Greed Trend Ride 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 27275,
+    "backtestId": 27276,
     "return": 18.31,
     "mdd": 10.53,
     "trades": 5,
@@ -34,6 +34,6 @@
     "verifiedCodeSha256": "25d5282d0cacbddaab33a6a689f9bdac49bc9bc8b968f7be2642271304936309"
   },
   "config": null,
-  "updatedAt": "2026-10-28T20:19:18.584Z",
+  "updatedAt": "2026-10-28T20:29:47.273Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
