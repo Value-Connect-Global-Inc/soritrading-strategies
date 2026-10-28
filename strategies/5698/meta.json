@@ -3,19 +3,20 @@
   "name": "BTC Fear-Greed Trend Ride 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 27268,
-    "return": 94.94,
-    "mdd": 29.76,
-    "trades": 20,
+    "backtestId": 27269,
+    "return": 9.46,
+    "mdd": 12.76,
+    "trades": 13,
     "vsBuyHold": "lose",
-    "benchRet": 604.81,
+    "benchRet": 31.83,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1559865600,
-    "tTo": 1637539200,
+    "tFrom": 1715299200,
+    "tTo": 1792972800,
     "approxNotes": [
       "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3359봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 62.93%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
       "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
       "[데이터/출처] 내 저장소(에이전트 cd27de…) 900봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
@@ -24,14 +25,14 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 900,
-      "end": 1637625600
+      "end": 1793145600
     },
     "engine": {
       "hash": "n1f44f2a0c32",
       "firstSeen": "2026-10-28"
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "f9ef30a066a300bf9971e97eb3bf9ad10c60ee3763bef3da2377c884b4381ea6"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "f77a8b9aec2a8ad55845eb31b5f19f6b612bc8c97e3c78a76d84093c978d7047"
   },
   "config": null,
   "updatedAt": "2026-10-28T20:12:30.080Z",
