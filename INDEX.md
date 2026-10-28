@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 574 of 2443 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 575 of 2444 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 408 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,6 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+| ★ | [5697](strategies/5697/) | BTC Pure Donchian Breakout 1D | +33.94% | -25.71% | +35.85% | 18 | 2026-10-28 `n1f44f2a` | 2026-10-28 |
 |  | [5696](strategies/5696/) | BTC Volume-Confirmed Breakout 1D | +209.38% | +804.85% | +28.08% | 12 | 2026-10-28 `n1f44f2a` | 2026-10-28 |
 |  | [5693](strategies/5693/) | BTC On-Chain Usage Trend 1D | +12.73% | +88.24% | +21.89% | 34 | 2026-10-28 `n1f44f2a` | 2026-10-28 |
 |  | [5692](strategies/5692/) | BTC Dip-Buy RSI2 Uptrend 1D | -30.28% | +88.24% | +33.22% | 231 | 2026-10-28 `n1f44f2a` | 2026-10-28 |
