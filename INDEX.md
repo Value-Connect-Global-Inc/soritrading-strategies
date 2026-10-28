@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5693](strategies/5693/) | BTC On-Chain Usage Trend 1D | +281.65% | +804.85% | +42.75% | 22 | 2026-10-28 `n1f44f2a` | 2026-10-28 |
+|  | [5693](strategies/5693/) | BTC On-Chain Usage Trend 1D | +12.73% | +88.24% | +21.89% | 34 | 2026-10-28 `n1f44f2a` | 2026-10-28 |
 |  | [5692](strategies/5692/) | BTC Dip-Buy RSI2 Uptrend 1D | -30.28% | +88.24% | +33.22% | 231 | 2026-10-28 `n1f44f2a` | 2026-10-28 |
 |  | [5691](strategies/5691/) | BTC Macro Risk-On Regime 1D | +394.55% | +804.85% | +40.29% | 7 | 2026-10-28 `n1f44f2a` | 2026-10-28 |
 |  | [5690](strategies/5690/) | BTC On-Chain Usage Trend 1D | +11.53% | +88.24% | +22.79% | 21 | 2026-10-28 `n1f44f2a` | 2026-10-28 |
