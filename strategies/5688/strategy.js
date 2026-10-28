@@ -1,56 +1,37 @@
 /*
  * @coinsori-strategy v1
- * name: BTC Donchian 55/20 Breakout 1D
+ * name: BTC Fear & Greed Mean Reversion 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Bitcoin trends strongly for extended periods, and Donchian-channel breakouts are a classic way to ride those trends while a hard stop caps the damage when a breakout fails.
- * When it buys and sells: It buys when the previous day's close breaks above the highest high of the 55 days before it, and sells when the close falls below the lowest low of the last 20 days or a 2xATR trailing stop / 25% disaster stop is hit.
- * When it does NOT work: In a sideways / choppy market with no persistent trend, breakouts frequently fail and the strategy churns through small losses. It also falls behind buy-and-hold during strong one-way bull runs when it exits early on pullbacks.
+ * Why this strategy: Crypto sentiment swings to extremes — panic (extreme fear) has historically marked BTC bottoms and euphoria (extreme greed) has marked tops, so buying panic and selling once sentiment recovers is a contrarian edge that is the opposite of trend-following.
+ * When it buys and sells: It buys when the Fear & Greed index is at or below 20 (extreme fear). It sells when the index recovers to 55 (neutral-to-greed) or when price falls 20% below the entry as a disaster stop.
+ * When it does NOT work: In a prolonged bear market extreme fear can persist for months, so each buy can keep losing until the 20% stop hits. It also sits in cash for most of a bull run because it only acts on panic, so it lags buy-and-hold badly in strong one-way markets.
  */
 function onUpdate(ctx) {
-  const dc = ctx.donchian(55, 2);
-  const dcExit = ctx.donchian(20, 1);
-  const atr = ctx.atr(14, 1);
-  if (dc == null || dcExit == null || atr == null) return null;
+  const fg = ctx.data("fear_greed");
+  if (fg == null) return null;
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) return null;
 
-  // Position sizing: risk 5% of cash per trade, stop at 2x ATR from entry
-  const riskPerTrade = 0.05 * ctx.cash;
-  const stopDist = 2 * atr;
-  if (stopDist <= 0) return null;
-
-  const inPos = ctx.position > 0;
-
-  if (inPos) {
-    // Trailing stop: 2x ATR below the highest close since entry
-    const runHigh = Math.max(...ctx.closes.slice(-60));
-    const trailStop = runHigh - 2 * atr;
-    const hardStop = (ctx.entryPx != null) ? ctx.entryPx * 0.75 : null; // 25% disaster stop
-    let stop = Math.max(trailStop, hardStop != null ? hardStop : -Infinity);
-
+  if (ctx.position > 0) {
+    // 20% disaster stop below entry — caps damage if a panic buy keeps falling
+    const hardStop = (ctx.entryPx != null) ? ctx.entryPx * 0.8 : null;
     ctx.watch([
-      { side: 'sell', price: stop, trigger: 'below', note: 'trailing/hard stop' },
-      { side: 'sell', price: dcExit.lower, trigger: 'below', note: 'Donchian20 exit' }
+      { side: 'sell', price: hardStop, trigger: 'below', note: '20% disaster stop' },
+      { side: 'sell', price: prevClose, trigger: 'below', note: 'F&G recovered', conds: [{ label: 'F&G', now: fg, op: '>=', ref: 55, closed: true }] }
     ]);
-
-    if (prevClose < dcExit.lower) {
-      return { side: 'sell', qty: ctx.position, reduceOnly: true };
-    }
-    if (prevClose < stop) {
-      return { side: 'sell', qty: ctx.position, reduceOnly: true };
-    }
+    if (fg >= 55) return { side: 'sell', qty: ctx.position, reduceOnly: true };
+    if (hardStop != null && prevClose < hardStop) return { side: 'sell', qty: ctx.position, reduceOnly: true };
     return null;
   }
 
-  ctx.watch([
-    { side: 'buy', price: dc.upper, trigger: 'above', note: 'Donchian55 breakout' }
-  ]);
-  if (prevClose > dc.upper) {
-    const qty = riskPerTrade / stopDist;
+  // Entry is a pure sentiment trigger (no price level), so no price watch while flat
+  if (fg <= 20) {
+    // 60% of cash per panic buy; 20% stop limits account risk to ~12%
+    const qty = (0.6 * ctx.cash) / ctx.price * 0.99;
     return { side: 'buy', qty: qty };
   }
   return null;
