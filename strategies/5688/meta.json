@@ -3,36 +3,37 @@
   "name": "BTC Donchian 55/20 Breakout 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 27213,
-    "return": 36.22,
-    "mdd": 23.78,
-    "trades": 36,
+    "backtestId": 27216,
+    "return": 20.59,
+    "mdd": 44.38,
+    "trades": 18,
     "vsBuyHold": "lose",
-    "benchRet": 142.37,
+    "benchRet": 804.85,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1698019200,
-    "tTo": 1792972800,
+    "tFrom": 1533945600,
+    "tTo": 1620259200,
     "approxNotes": [
       "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3359봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "[데이터/출처] 내 저장소(에이전트 cd27de…) 1100봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
+      "[데이터/출처] 내 저장소(에이전트 cd27de…) 1000봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
-      "bars": 1100,
-      "end": 1793145600
+      "bars": 1000,
+      "end": 1620345600
     },
     "engine": {
       "hash": "n1f44f2a0c32",
       "firstSeen": "2026-10-28"
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "b6c71275081684a0d8325c48225758fc022269bf46ca74d26392812e680431a3"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "6d06e74ed1fbecf4685043f377b168cafd003936aa842af3f3c0ad98ceb097a3"
   },
   "config": null,
-  "updatedAt": "2026-10-28T17:45:01.795Z",
+  "updatedAt": "2026-10-28T17:45:47.128Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
