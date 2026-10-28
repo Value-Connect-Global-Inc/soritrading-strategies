@@ -3,33 +3,34 @@
   "name": "BTC Volume-Confirmed Breakout 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 27254,
-    "return": 0.33,
-    "mdd": 18.29,
-    "trades": 40,
-    "vsBuyHold": "win",
-    "benchRet": -28.85,
+    "backtestId": 27259,
+    "return": 162.08,
+    "mdd": 27.29,
+    "trades": 12,
+    "vsBuyHold": "lose",
+    "benchRet": 727.88,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1758499200,
-    "tTo": 1792972800,
+    "tFrom": 1585785600,
+    "tTo": 1637539200,
     "approxNotes": [
       "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3359봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "[데이터/출처] 내 저장소(에이전트 cd27de…) 400봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+      "[데이터/출처] 내 저장소(에이전트 cd27de…) 600봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
-      "bars": 400
+      "bars": 600,
+      "end": 1637625600
     },
     "engine": {
       "hash": "n1f44f2a0c32",
       "firstSeen": "2026-10-28"
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "e8b8f5fcdb478d7e5f58a4204e35489c296aee4d9463cb336faa62ad91ce4e1b"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "263c5b778f3a916ee30523a6a794288446000cd51638147884ce271f27704165"
   },
   "config": null,
   "updatedAt": "2026-10-28T19:40:54.783Z",
