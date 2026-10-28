@@ -24,12 +24,11 @@ function onUpdate(ctx) {
     const hardStop = (ctx.entryPx != null) ? ctx.entryPx * 0.8 : null; // 20% disaster stop
     ctx.watch([
       { side: 'sell', price: sma200, trigger: 'below', note: 'SMA200 trend break' },
-      { side: 'sell', price: hardStop, trigger: 'below', note: '20% disaster stop' },
-      { side: 'sell', at: 0, note: 'F&G < 45 exit' }
+      { side: 'sell', price: hardStop, trigger: 'below', note: '20% disaster stop' }
     ]);
     if (prevClose < sma200) return { side: 'sell', qty: ctx.position, reduceOnly: true };
     if (hardStop != null && prevClose < hardStop) return { side: 'sell', qty: ctx.position, reduceOnly: true };
-    if (fg < 45) return { side: 'sell', qty: ctx.position, reduceOnly: true };
+    if (fg < 45) return { side: 'sell', qty: ctx.position, reduceOnly: true }; // sentiment turned bearish
     return null;
   }
 
