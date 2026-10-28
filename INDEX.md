@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5698](strategies/5698/) | BTC Fear-Greed Trend Ride 1D | +9.46% | +31.83% | +12.76% | 13 | 2026-10-28 `n1f44f2a` | 2026-10-28 |
+|  | [5698](strategies/5698/) | BTC Fear-Greed Trend Ride 1D ‡ | +9.46% | +31.83% | +12.76% | 13 | 2026-10-28 `n1f44f2a` | 2026-10-28 |
 | ★ | [5697](strategies/5697/) | BTC Pure Donchian Breakout 1D | +33.94% | -25.71% | +35.85% | 18 | 2026-10-28 `n1f44f2a` | 2026-10-28 |
 |  | [5696](strategies/5696/) | BTC Volume-Confirmed Breakout 1D | +209.38% | +804.85% | +28.08% | 12 | 2026-10-28 `n1f44f2a` | 2026-10-28 |
 |  | [5693](strategies/5693/) | BTC On-Chain Usage Trend 1D | +12.73% | +88.24% | +21.89% | 34 | 2026-10-28 `n1f44f2a` | 2026-10-28 |

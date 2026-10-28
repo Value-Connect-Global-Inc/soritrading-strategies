@@ -7,8 +7,8 @@
  * cash: 10000
  *
  * Why this strategy: Sustained bull markets are marked by persistent 'greed' — the crowd stays optimistic for a long time, not just one day. Buying when the Fear & Greed index is in the greedy zone (60-85) AND price is above its 200-day average rides a confirmed trend instead of fighting it, unlike a pure mean-reversion (buy-the-dip) approach.
- * When it buys and sells: It buys when the previous day's Fear & Greed reading is between 60 and 85 (greedy but not euphoric) and price closes above the 200-day average. It sells when price closes below the 200-day average, Fear & Greed drops below 45, or price falls 20% below entry as a disaster stop.
- * When it does NOT work: In a slow grinding bull where fear never clears 60, it stays in cash and misses the move. It also exits early if a strong bull briefly dips to 'fear' (F&G < 45) on a pullback, missing the subsequent rally.
+ * When it buys and sells: It buys when the previous day's Fear & Greed reading is between 60 and 85 (greedy but not euphoric) and price closes above the 200-day average. It sells when price closes below the 200-day average, Fear & Greed collapses to extreme fear (below 25, a capitulation), or price falls 20% below entry as a disaster stop. It holds through ordinary pullbacks instead of selling at the first sign of fear.
+ * When it does NOT work: In a slow grinding bull where fear never clears 60, it stays in cash and misses the move. It also holds through deep drawdowns in a crash that hasn't yet broken the 200-day average, so the 20% disaster stop is the real protection in fast crashes.
  */
 function onUpdate(ctx) {
   const sma200 = ctx.sma(200, 1);
@@ -17,7 +17,7 @@ function onUpdate(ctx) {
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) return null;
 
-  // 60-85 = greedy-but-not-euphoric; 85+ is euphoria (top risk), 45 = sentiment turned bearish
+  // 60-85 = greedy-but-not-euphoric; 85+ is euphoria (top risk); 25 = extreme fear (capitulation, not a normal pullback)
   const greedyZone = fg >= 60 && fg <= 85;
 
   if (ctx.position > 0) {
@@ -28,7 +28,7 @@ function onUpdate(ctx) {
     ]);
     if (prevClose < sma200) return { side: 'sell', qty: ctx.position, reduceOnly: true };
     if (hardStop != null && prevClose < hardStop) return { side: 'sell', qty: ctx.position, reduceOnly: true };
-    if (fg < 45) return { side: 'sell', qty: ctx.position, reduceOnly: true }; // sentiment turned bearish
+    if (fg < 25) return { side: 'sell', qty: ctx.position, reduceOnly: true }; // extreme fear = conviction broken
     return null;
   }
 
