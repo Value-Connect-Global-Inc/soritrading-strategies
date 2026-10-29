@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 579 of 2461 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 580 of 2462 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 409 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,6 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+| ★ | [5716](strategies/5716/) | BTC On-chain Address Momentum 1D | +63.94% | +38.19% | +30.47% | 67 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5715](strategies/5715/) | BTC Fear&Greed Contrarian 1D | -27.90% | +38.19% | +32.62% | 8 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5714](strategies/5714/) | BTC SMA200 Trend + Vol-Target Size 1D | +169.01% | +1237.54% | +43.01% | 62 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | ★ | [5713](strategies/5713/) | BTC SMA200 Trend + Donchian Trail 1D | +211.35% | +209.70% | +65.81% | 28 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
