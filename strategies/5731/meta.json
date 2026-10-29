@@ -3,7 +3,7 @@
   "name": "BTC Donchian 55/30 Breakout + Vol-Target 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 27441,
+    "backtestId": 27447,
     "return": -3.25,
     "mdd": 27.1,
     "trades": 56,
@@ -29,10 +29,10 @@
       "hash": "n1f44f2a0c32",
       "firstSeen": "2026-10-28"
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "6be6df5df248b9f16d3cce12bda02963bc6239778a201dbda826a9188592c526"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "bdf0963e988afd3a417a18f07a1a54bc2d2384ec8ee4fcbae3483dc974409990"
   },
   "config": null,
-  "updatedAt": "2026-10-29T20:30:03.624Z",
+  "updatedAt": "2026-10-29T20:30:42.396Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

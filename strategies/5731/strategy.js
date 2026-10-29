@@ -1,41 +1,58 @@
 /*
  * @coinsori-strategy v1
- * name: DIAG closes length probe 1D
+ * name: BTC Close-Channel 55/30 Breakout + Vol-Target 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Diagnostic only: logs ctx.closes.length and the SMA20 value so we can see the
- * real array length in this environment.
+ * Why this strategy: Donchian-style breakout (buy a 55-bar close-high break, exit
+ * on a 30-bar close-low break). The channel is built from CLOSE prices over the 54
+ * bars BEFORE the previous close, so the previous close can genuinely break it.
+ * Sized by vol-target to cut drawdown vs full-capital Donchian (ledger exp 547).
+ * When it buys and sells: Buys when the previous close is higher than every close
+ * of the previous 54 days, sized by vol-target (3% daily ATR = full). Sells when
+ * the previous close is lower than every close of the previous 29 days.
+ * When it does NOT work: In a long sideways range it whipsaws across the channel.
+ * It lags sharp V-recoveries and underperforms buy-and-hold in calm choppy years.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
   const closes = ctx.closes;
-  const sma20 = ctx.sma(20, 1);
   const atr20 = ctx.atr(20, 1);
-  if (sma20 == null || atr20 == null) return null;
-
-  if (ctx.i < 8) {
-    ctx.log('i=' + ctx.i + ' closesLen=' + (closes ? closes.length : 'null') +
-      ' at(-2)=' + (closes && closes.at ? closes.at(-2) : 'no-at') +
-      ' sma20=' + sma20);
-  }
-
+  if (atr20 == null || closes.length < 60) return null;
   const prevClose = closes.at(-2);
   if (prevClose == null) return null;
 
+  // channel over the 54 CLOSED bars BEFORE prevClose (exclude index -2 = prevClose itself)
+  let hi55 = -Infinity;
+  for (let k = closes.length - 56; k < closes.length - 2; k++) {
+    if (closes[k] > hi55) hi55 = closes[k];
+  }
+  let lo30 = Infinity;
+  for (let k = closes.length - 31; k < closes.length - 2; k++) {
+    if (closes[k] < lo30) lo30 = closes[k];
+  }
+
   const pos = ctx.position;
+
+  ctx.watch([
+    { side: 'buy', price: hi55, trigger: 'above', note: 'break 55d close high' },
+    { side: 'sell', price: lo30, trigger: 'below', note: 'break 30d close low' }
+  ]);
+
   if (pos > 0) {
-    if (prevClose < sma20) {
+    if (prevClose < lo30) {
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
     return null;
   }
+
   if (ctx.alloc && ctx.alloc.status !== 'ok') return null;
-  if (prevClose > sma20) {
+
+  if (prevClose > hi55) {
     const atrPct = atr20 / price;
     const frac = Math.min(1, 0.03 / atrPct);
     const qty = (0.99 * ctx.cash * frac) / price * 0.99;
