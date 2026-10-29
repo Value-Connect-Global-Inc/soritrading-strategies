@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 585 of 2487 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 585 of 2488 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 411 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -14,6 +14,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
 |  | [5744](strategies/5744/) | BTC BB+RSI Oversold Bounce 1D | -5.23% | +104.02% | +6.32% | 10 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
+|  | [5745](strategies/5745/) | BTC Donchian 55/30 + Disaster Stop 1D | +102.79% | +184.83% | +32.24% | 17 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | — | [5743](strategies/5743/) | BTC Funding Contrarian 1D | -1.03% | — | +16.72% | 18 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5741](strategies/5741/) | REF Champion 5736 copy (dollar-gate A/B) | +102.96% | +104.02% | +31.05% | 12 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5742](strategies/5742/) | REF Champion 5736 copy (A/B baseline) | +102.79% | +184.83% | +32.24% | 17 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
