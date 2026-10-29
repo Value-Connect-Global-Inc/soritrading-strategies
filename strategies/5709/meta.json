@@ -3,16 +3,16 @@
   "name": "BTC OBV Trend Ride 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 27349,
-    "return": -14.21,
-    "mdd": 31.54,
-    "trades": 16,
-    "vsBuyHold": "win",
-    "benchRet": -50.4,
+    "backtestId": 27350,
+    "return": -16.94,
+    "mdd": 25.97,
+    "trades": 30,
+    "vsBuyHold": "lose",
+    "benchRet": -14.95,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1611792000,
-    "tTo": 1672185600,
+    "tFrom": 1732752000,
+    "tTo": 1793145600,
     "approxNotes": [
       "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3359봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
@@ -24,7 +24,7 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 700,
-      "end": 1672272000
+      "end": 1793232000
     },
     "engine": {
       "hash": "n1f44f2a0c32",
