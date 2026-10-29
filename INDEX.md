@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5740](strategies/5740/) | BTC Donchian 55/30 + Adaptive Dollar Gate 1D | +0.16% | +45.44% | +46.94% | 6 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
+|  | [5740](strategies/5740/) | BTC Donchian 55/30 + Adaptive Dollar Gate 1D | +831.06% | +999.65% | +52.19% | 20 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5739](strategies/5739/) | BTC On-Chain Capitulation Bottom-Fish 1D | +162.37% | +330.96% | +35.44% | 26 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5738](strategies/5738/) | BTC Uptrend Dip-Buy Mean Reversion 1D | -55.02% | +209.70% | +57.95% | 16 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5736](strategies/5736/) | BTC Close-Channel 55/30 Breakout + Vol-Target 1D ‡ | -40.79% | +330.96% | +41.89% | 6 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
