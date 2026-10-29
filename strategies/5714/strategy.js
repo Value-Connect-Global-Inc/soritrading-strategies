@@ -15,7 +15,8 @@
  * riding it down at full size.
  * When it buys and sells: Buys when the previous close is above the 200-day
  * average. Position = min(1, 3% / ATR(20)-as-percent-of-price) of equity,
- * re-checked daily with a small deadband to limit trading. Sells when the close
+ * re-checked daily with a wide deadband (20%) so we only rebalance when
+ * volatility changes meaningfully, not on daily noise. Sells when the close
  * falls below the 200-day average (and sells down whenever volatility rises).
  * When it does NOT work: In a long sideways range it whipsaws across the
  * 200-day line. It lags sharp V-shaped recoveries. In a calm-but-falling market
@@ -53,8 +54,9 @@ function onUpdate(ctx) {
   const totalCoins = cash / price + pos;
   const targetQty = totalCoins * frac;
 
-  // deadband: only rebalance when meaningfully off target, to limit fees
-  const deadband = Math.max(0.03 * targetQty, 1e-8);
+  // wide deadband (20%): only rebalance when meaningfully off target, so a
+  // crash (ATR doubling) triggers a sell-down but daily noise does not
+  const deadband = 0.20 * targetQty;
   if (Math.abs(targetQty - pos) < deadband) return null;
 
   if (targetQty > pos) {
