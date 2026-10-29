@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5707](strategies/5707/) | SOL Donchian 55/20 Breakout 4H | -47.81% | +213.66% | +61.05% | 106 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
+|  | [5707](strategies/5707/) | SOL Donchian 55/20 Breakout 4H ‡ | -47.81% | +213.66% | +61.05% | 106 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | ★ | [5706](strategies/5706/) | SOL Bollinger Squeeze Breakout 4H | +10.25% | -50.40% | +8.94% | 2 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | — | [5705](strategies/5705/) | Crypto Momentum Rotation 1D | -55.20% | — | +67.85% | 279 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5703](strategies/5703/) | ETH Chandelier Trend 4H | -97.28% | +118.41% | +97.49% | 830 | 2026-10-28 `n1f44f2a` | 2026-10-29 |

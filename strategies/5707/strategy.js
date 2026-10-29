@@ -13,34 +13,32 @@
  * with a wide ATR trail captures the big moves that pay for the small failed breakouts.
  * When it buys and sells: It buys when the previous close breaks above the 55-bar
  * high as of the bar before it (a genuine new high). It sells when the close falls
- * below the 20-bar low, or on a 2.5-ATR trailing stop below the highest close since
- * entry, or a 25% disaster stop.
+ * below the 20-bar low, or on a 2x-ATR trailing stop below the highest close since
+ * entry, or a 25% disaster stop. Position size is set so that the 2x-ATR stop costs
+ * only 2% of equity — a failed breakout is cheap, a successful one is not capped.
  * When it does NOT work: In a long choppy sideways range it buys every failed
- * breakout and stops out repeatedly — many small losses. It always gives back part
- * of the top before the trail catches the reversal, and it lags a straight-line
- * melt-up if the entry is delayed.
+ * breakout and stops out repeatedly — many small losses that add up. It always
+ * gives back part of the top before the trail catches the reversal, and it lags
+ * a straight-line melt-up if the entry is delayed.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
-  // Breakout level: highest high of the 55 bars BEFORE the last closed bar, so the
-  // last close can actually exceed it (ago=2, not ago=1 which would include itself).
-  const hi55 = ctx.high(55, 2);
+  const hi55 = ctx.high(55, 2); // 55-bar high BEFORE the last close, so a real new high
   const lo20 = ctx.low(20, 1);
   const atr = ctx.atr(14, 1);
   if (hi55 == null || lo20 == null || atr == null || atr <= 0) return null;
 
   const pos = ctx.position;
   if (pos > 0) {
-    // Trail: 2.5 ATR below the highest close since entry — let winners run, cut reversals.
     const peak = ctx.state.peak != null ? Math.max(ctx.state.peak, price) : price;
     ctx.state.peak = peak;
-    const trail = peak - 2.5 * atr;
+    const trail = peak - 2 * atr; // 2x ATR trail = the documented validated setting
     const disaster = ctx.entryPx != null ? ctx.entryPx * 0.75 : null; // 25% disaster stop
     ctx.watch([
       { side: 'sell', price: lo20, trigger: 'below', note: 'Donchian 20 low' },
-      { side: 'sell', price: trail, trigger: 'below', note: '2.5 ATR trail' },
+      { side: 'sell', price: trail, trigger: 'below', note: '2 ATR trail' },
       { side: 'sell', price: disaster, trigger: 'below', note: '25% disaster stop' }
     ]);
     if (price < lo20) { ctx.state.peak = null; return { side: 'sell', qty: pos, reduceOnly: true }; }
@@ -49,11 +47,16 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // Entry: previous close broke above the 55-bar high of the window before it.
   const prevClose = ctx.closes.at(-2);
   if (prevClose == null) return null;
   if (prevClose > hi55) {
-    const qty = (0.95 * ctx.cash) / price * 0.99;
+    // Risk-based sizing: the 2xATR stop distance must cost only 2% of equity.
+    const stopDist = 2 * atr;
+    if (stopDist <= 0) return null;
+    const riskBudget = 0.02 * ctx.cash;
+    let qty = riskBudget / stopDist; // coins so that stopDist*coins = 2% of cash
+    const maxQty = (0.95 * ctx.cash) / price; // never more than ~all-in
+    qty = Math.min(qty, maxQty);
     if (qty <= 0) return null;
     ctx.state.peak = price;
     return { side: 'buy', qty: qty };
