@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 584 of 2475 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 584 of 2476 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 410 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,6 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+|  | [5732](strategies/5732/) | REF Champion SMA200 VolTarget 1D | +479.94% | +1237.54% | +48.72% | 13 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5731](strategies/5731/) | BTC Donchian 55/30 Breakout + Vol-Target 1D | +162.37% | +330.96% | +35.44% | 26 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5729](strategies/5729/) | BTC SMA200 Trend + VIX Risk Gate 1D | +30.52% | +88.30% | +27.71% | 23 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5730](strategies/5730/) | BTC Funding Contrarian Futures 1D | +480.52% | +1237.54% | +48.66% | 15 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
