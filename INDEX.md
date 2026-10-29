@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| ★ | [5748](strategies/5748/) | BTC Donchian 55/30 + Drawdown De-Risk 1D | +66.85% | +38.19% | +23.32% | 34 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
+| ★ | [5748](strategies/5748/) | BTC Donchian 55/30 + Drawdown De-Risk 1D ‡ | +66.85% | +38.19% | +23.32% | 34 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5747](strategies/5747/) | DIAG data keys discover 1D | +804.61% | +1237.54% | +51.99% | 16 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5742](strategies/5742/) | REF Champion 5736 copy (A/B baseline) | +102.79% | +184.83% | +32.24% | 17 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5744](strategies/5744/) | BTC BB+RSI Oversold Bounce 1D | -5.23% | +104.02% | +6.32% | 10 | 2026-10-28 `n1f44f2a` | 2026-10-29 |

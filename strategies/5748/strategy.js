@@ -1,21 +1,23 @@
 /*
  * @coinsori-strategy v1
- * name: BTC Donchian 55/30 + Drawdown De-Risk 1D
+ * name: BTC Donchian 55/30 + Disaster Stop 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: The proven Donchian 55/30 + vol-target breakout (champion 5736)
- * plus ONE risk overlay: when the account is in a drawdown from its equity peak, the
- * position size is cut. Bet: the champion's main weakness is holding a full vol-target
- * position through a crash while the slow 30-day exit catches up. Shrinking size after
- * a loss is a general survival rule that works in any regime, not fitted to one crash.
- * When it buys and sells: buys on a 55-day close-high break, sized by vol-target
- * (3% daily ATR = full), then scaled DOWN by the drawdown multiplier. Sells on a
- * 30-day close-low break. The drawdown multiplier only shrinks size, never forces exits.
- * When it does NOT work: after a big drawdown it stays under-invested and can miss the
- * sharpest rebound. In a choppy range it whipsaws like any channel breakout.
+ * Why this strategy: Donchian-style breakout (buy a 55-bar close-high break, exit
+ * on a 30-bar close-low break), sized by vol-target. This is the proven champion
+ * recipe PLUS one addition: a hard 25% disaster stop so a single black-swan gap
+ * cannot ride all the way to the 30-day low exit. It is pure risk control — it
+ * does not change when we enter or how the normal trend exit works.
+ * When it buys and sells: Buys when the previous close is higher than every close
+ * of the previous 54 days, sized by vol-target (3% daily ATR = full). Sells on a
+ * 30-day close-low break, OR immediately if price falls 25% below entry (disaster
+ * stop, only meant for catastrophic moves).
+ * When it does NOT work: In a long sideways range it whipsaws across the channel.
+ * It lags sharp V-recoveries and underperforms buy-and-hold in calm choppy years.
+ * The 25% stop rarely triggers in normal markets — it only protects against crashes.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -40,21 +42,15 @@ function onUpdate(ctx) {
   const pos = ctx.position;
   const entryPx = ctx.entryPx;
 
-  // track equity peak in restart-surviving state
-  const st = ctx.state.st || { peak: null };
-  const equity = ctx.cash + pos * price;
-  if (st.peak == null || equity > st.peak) st.peak = equity;
-  ctx.state.st = st;
-
-  // drawdown multiplier: full size until -10%, half until -25%, quarter beyond
-  const dd = equity / st.peak - 1;
-  let ddScale = 1;
-  if (dd < -0.25) ddScale = 0.25;       // deep drawdown: trade at quarter size
-  else if (dd < -0.10) ddScale = 0.5;   // moderate drawdown: trade at half size
-
   if (pos > 0) {
-    ctx.watch([{ side: 'sell', price: lo30, trigger: 'below', note: 'break 30d close low' }]);
+    const disaster = (entryPx != null) ? entryPx * 0.75 : null; // 25% below entry
+    const watch = [{ side: 'sell', price: lo30, trigger: 'below', note: 'break 30d close low' }];
+    if (disaster != null) watch.push({ side: 'sell', price: disaster, trigger: 'below', note: '25% disaster stop' });
+    ctx.watch(watch);
     if (prevClose < lo30) {
+      return { side: 'sell', qty: pos, reduceOnly: true };
+    }
+    if (disaster != null && price <= disaster) {
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
     return null;
@@ -66,7 +62,7 @@ function onUpdate(ctx) {
 
   if (prevClose > hi55) {
     const atrPct = atr20 / price;
-    const frac = Math.min(1, 0.03 / atrPct) * ddScale; // vol-target scaled by drawdown
+    const frac = Math.min(1, 0.03 / atrPct); // vol-target: 3% daily ATR = full position
     const qty = (0.99 * ctx.cash * frac) / price * 0.99;
     if (qty <= 0) return null;
     return { side: 'buy', qty: qty };
