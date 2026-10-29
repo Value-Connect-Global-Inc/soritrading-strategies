@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 578 of 2457 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 578 of 2458 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 409 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,6 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+|  | [5712](strategies/5712/) | BTC SMA200 Trend + Chandelier Stop 1D | -35.67% | +45.44% | +35.67% | 4 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | ★ | [5711](strategies/5711/) | BTC Golden-Cross Regime Trend 1D | +217.56% | +209.70% | +59.01% | 18 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5708](strategies/5708/) | BTC Donchian 55/20 Breakout 1D | +23.18% | +476.33% | +9.05% | 34 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | ★ | [5710](strategies/5710/) | BTC Pure SMA200 Trend 1D | +49.36% | -39.65% | +39.25% | 29 | 2026-10-28 `n1f44f2a` | 2026-10-29 |

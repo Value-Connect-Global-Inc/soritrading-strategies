@@ -1,0 +1,38 @@
+{
+  "id": 5712,
+  "name": "BTC SMA200 Trend + Chandelier Stop 1D",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 27363,
+    "return": -35.67,
+    "mdd": 35.67,
+    "trades": 4,
+    "vsBuyHold": "lose",
+    "benchRet": 45.44,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1502928000,
+    "tTo": 1533945600,
+    "approxNotes": [
+      "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3359봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 cd27de…) 360봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 1500,
+      "end": 1534032000
+    },
+    "engine": {
+      "hash": "n1f44f2a0c32",
+      "firstSeen": "2026-10-28"
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "cc7516ca11978a0ba1f10c8f592479cf9aa1bbd98c114391948d04f77b3dfe79"
+  },
+  "config": null,
+  "updatedAt": "2026-10-29T14:32:50.599Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
