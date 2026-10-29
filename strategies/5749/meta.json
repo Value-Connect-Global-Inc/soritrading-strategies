@@ -3,7 +3,7 @@
   "name": "BTC Donchian 55/30 + VIX Gate 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 27538,
+    "backtestId": 27539,
     "return": 15.21,
     "mdd": 34.1,
     "trades": 17,
