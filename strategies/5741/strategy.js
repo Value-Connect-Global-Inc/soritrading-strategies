@@ -1,23 +1,25 @@
 /*
  * @coinsori-strategy v1
- * name: BTC Donchian 55/30 + Adaptive Dollar Gate 1D
+ * name: BTC Donchian 55/30 + Trend-Conditional Dollar Gate 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
  * Why this strategy: BTC is a global risk asset that tends to rally when the US
- * dollar weakens and stall/fall when the dollar strengthens. This strategy rides
- * the proven Donchian 55/30 close-channel breakout but cuts exposure (halves
- * position) when the dollar is in a strengthening regime, to cut drawdown.
- * When it buys and sells: Buys a 55-day close-high breakout near full size when
- * the dollar is weak (dxy below its own 60-day average) and at half size when the
- * dollar is strong. Sells on a 30-day close-low break. The dollar gate is ADAPTIVE
- * (dxy vs its own trailing average), not a fixed level, because the dollar's
- * structural level drifts over the years.
- * When it does NOT work: In a strong dollar rally where BTC still trends up (e.g.
- * 2023-2025), the gate wrongly holds back size and underperforms the plain
- * breakout. It also can't help in a dollar-neutral choppy range.
+ * dollar weakens and stall when it strengthens — but that link is weak whenever
+ * BTC has its own strong uptrend. This rides the proven Donchian 55/30 close-
+ * channel breakout and cuts exposure (half size) to a strong dollar ONLY when BTC
+ * itself is below its 200-day average, i.e. when the dollar headwind actually
+ * matters. In a real BTC uptrend we stay full size, so the dollar never costs us
+ * a bull market (the 2023-25 lesson from the plain dollar gate).
+ * When it buys and sells: Buys a 55-day close-high break at full size when the
+ * dollar is weak OR BTC is above its 200d SMA; at half size only when BTC is below
+ * its 200d SMA AND the dollar is strong. Sells on a 30-day close-low break. The
+ * dollar regime is ADAPTIVE (dxy vs its own trailing 60d average), not fixed.
+ * When it does NOT work: In a long sideways range it whipsaws across the channel.
+ * It lags sharp V-recoveries. The dollar gate can still not help in a dollar-
+ * neutral choppy range, and sizing cuts can't avoid a 2022-style bear entirely.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -25,7 +27,8 @@ function onUpdate(ctx) {
 
   const closes = ctx.closes;
   const atr20 = ctx.atr(20, 1);
-  if (atr20 == null || closes.length < 60) return null;
+  const sma200 = ctx.sma(200, 1);
+  if (atr20 == null || sma200 == null || closes.length < 60) return null;
   const prevClose = closes.at(-2);
   if (prevClose == null) return null;
 
@@ -40,7 +43,7 @@ function onUpdate(ctx) {
   }
 
   // Adaptive dollar regime: accumulate dxy history in ctx.state (survives restart),
-  // then compare the latest closed dxy to its own trailing average.
+  // compare the latest closed dxy to its own trailing average.
   if (!ctx.state.dxyHist) ctx.state.dxyHist = [];
   const dxy = ctx.data('dxy');
   let dollarWeak = false;
@@ -56,10 +59,15 @@ function onUpdate(ctx) {
     }
   }
 
+  // BTC's own trend: above its 200d SMA = the dollar gate does NOT apply.
+  const btcTrendUp = prevClose > sma200;
+
   const pos = ctx.position;
 
   ctx.watch([
-    { side: 'buy', price: hi55, trigger: 'above', note: 'break 55d close high' },
+    { side: 'buy', price: hi55, trigger: 'above', note: 'break 55d close high',
+      conds: [ { label: 'BTC > 200d SMA', ok: btcTrendUp },
+               { label: 'dollar weak (dxy<60d avg)', ok: dollarWeak } ] },
     { side: 'sell', price: lo30, trigger: 'below', note: 'break 30d close low' }
   ]);
 
@@ -75,7 +83,9 @@ function onUpdate(ctx) {
   if (prevClose > hi55) {
     const atrPct = atr20 / price;
     const volFrac = Math.min(1, 0.03 / atrPct);
-    const regimeFrac = dollarWeak ? 1.0 : 0.5; // strong-dollar regime -> half size
+    // Half size ONLY when BTC has no trend of its own AND dollar strong.
+    // In any real uptrend (btcTrendUp) or with a weak dollar, go full size.
+    const regimeFrac = (!btcTrendUp && !dollarWeak) ? 0.5 : 1.0;
     const frac = volFrac * regimeFrac;
     const qty = (0.99 * ctx.cash * frac) / price * 0.99;
     if (qty <= 0) return null;

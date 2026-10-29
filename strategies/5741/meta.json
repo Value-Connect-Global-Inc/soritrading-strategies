@@ -30,10 +30,10 @@
       "hash": "n1f44f2a0c32",
       "firstSeen": "2026-10-28"
     },
-    "codeBasis": "assumed-current",
+    "codeBasis": "previous-code",
     "verifiedCodeSha256": "ddd1274f81a0a6daf244e563bfc05e2352bbf0f77c222590156b40414d47c7aa"
   },
   "config": null,
-  "updatedAt": "2026-10-29T21:52:12.282Z",
+  "updatedAt": "2026-10-29T21:59:06.687Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
