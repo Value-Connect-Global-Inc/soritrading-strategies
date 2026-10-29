@@ -3,16 +3,16 @@
   "name": "BTC BB+RSI Oversold Bounce 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 27512,
-    "return": -6.83,
-    "mdd": 14.22,
-    "trades": 34,
+    "backtestId": 27515,
+    "return": -5.23,
+    "mdd": 6.32,
+    "trades": 10,
     "vsBuyHold": "lose",
-    "benchRet": 184.83,
+    "benchRet": 104.02,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1603152000,
-    "tTo": 1698105600,
+    "tFrom": 1508112000,
+    "tTo": 1603065600,
     "approxNotes": [
       "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3359봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
@@ -23,7 +23,7 @@
       "sym": "BTC",
       "interval": "1d",
       "bars": 1100,
-      "end": 1698192000
+      "end": 1603152000
     },
     "engine": {
       "hash": "n1f44f2a0c32",

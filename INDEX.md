@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5744](strategies/5744/) | BTC BB+RSI Oversold Bounce 1D | -6.83% | +184.83% | +14.22% | 34 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
+|  | [5744](strategies/5744/) | BTC BB+RSI Oversold Bounce 1D | -5.23% | +104.02% | +6.32% | 10 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | — | [5743](strategies/5743/) | BTC Funding Contrarian 1D | -1.03% | — | +16.72% | 18 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5741](strategies/5741/) | REF Champion 5736 copy (dollar-gate A/B) | +102.96% | +104.02% | +31.05% | 12 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5742](strategies/5742/) | REF Champion 5736 copy (A/B baseline) | +102.79% | +184.83% | +32.24% | 17 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
