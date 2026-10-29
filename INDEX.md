@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5706](strategies/5706/) | SOL Bollinger Squeeze Breakout 4H | -16.71% | +54.47% | +18.85% | 12 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
+|  | [5706](strategies/5706/) | SOL Bollinger Squeeze Breakout 4H | -31.70% | +213.66% | +33.11% | 12 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | — | [5705](strategies/5705/) | Crypto Momentum Rotation 1D | -55.20% | — | +67.85% | 279 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5703](strategies/5703/) | ETH Chandelier Trend 4H | -97.28% | +118.41% | +97.49% | 830 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5702](strategies/5702/) | BTC VIX-Gated RSI2 Dip 1D | -29.05% | +45.44% | +34.41% | 370 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
