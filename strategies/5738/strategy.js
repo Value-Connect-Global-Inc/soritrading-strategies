@@ -30,6 +30,7 @@ function onUpdate(ctx) {
   if (bb == null || rsi == null || sma200 == null || sma20 == null) return null;
 
   const pos = ctx.position;
+  // our own entry (ctx.entryPx can be null in backtest); stored in ctx.state
   const entry = ctx.entryPx != null ? ctx.entryPx : (ctx.state && ctx.state.entryPx);
 
   ctx.watch([
@@ -44,10 +45,14 @@ function onUpdate(ctx) {
     return null;
   }
 
+  // flat: drop any stale entry marker
+  if (ctx.state && ctx.state.entryPx != null) ctx.state.entryPx = null;
+
   if (ctx.alloc && ctx.alloc.status !== 'ok') return null;
   if (rsi < 30 && price < bb.lower && price > sma200) {
     const qty = (0.99 * ctx.cash) / price * 0.99;
     if (qty <= 0) return null;
+    ctx.state.entryPx = price; // remember fill level for the hard stop
     return { side: 'buy', qty: qty };
   }
   return null;

@@ -3,7 +3,7 @@
   "name": "BTC Uptrend Dip-Buy Mean Reversion 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 27474,
+    "backtestId": 27477,
     "return": -55.02,
     "mdd": 57.95,
     "trades": 16,
@@ -30,9 +30,9 @@
       "firstSeen": "2026-10-28"
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "dd25b8ea1c35e631b939146fada274276e8564f9acd14e5984f0888c946b6331"
+    "verifiedCodeSha256": "73b9a3c5d946d33fdc032f9829fe75f4a1a9c8e99793d620028d15f2142f451e"
   },
   "config": null,
-  "updatedAt": "2026-10-29T21:29:38.733Z",
+  "updatedAt": "2026-10-29T21:33:34.056Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
