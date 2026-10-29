@@ -47,6 +47,9 @@ function onUpdate(ctx) {
     return null;
   }
 
+  // allocation engine must be healthy before opening new positions (reduce-only edge otherwise)
+  if (ctx.alloc && ctx.alloc.status !== 'ok') return null;
+
   if (prevClose > sma200) {
     // vol-target: 3% daily ATR = full size, scale down linearly as vol rises
     const atrPct = atr20 / price;
