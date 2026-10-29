@@ -29,7 +29,7 @@ function onUpdate(ctx) {
   const prevClose = closes.at(-2);
   if (prevClose == null) return null;
 
-  // channel over the 54 CLOSED bars BEFORE prevClose (exclude index -2 = prevClose itself)
+  // Donchian channels over CLOSED bars before prevClose (exclude index -2)
   let hi55 = -Infinity;
   for (let k = closes.length - 56; k < closes.length - 2; k++) {
     if (closes[k] > hi55) hi55 = closes[k];
@@ -37,6 +37,23 @@ function onUpdate(ctx) {
   let lo30 = Infinity;
   for (let k = closes.length - 31; k < closes.length - 2; k++) {
     if (closes[k] < lo30) lo30 = closes[k];
+  }
+
+  // Adaptive dollar regime: accumulate dxy history in ctx.state (survives restart),
+  // then compare the latest closed dxy to its own trailing average.
+  if (!ctx.state.dxyHist) ctx.state.dxyHist = [];
+  const dxy = ctx.data('dxy');
+  let dollarWeak = false;
+  if (dxy != null && Number.isFinite(dxy) && dxy > 0) {
+    ctx.state.dxyHist.push(dxy);
+    if (ctx.state.dxyHist.length > 120) ctx.state.dxyHist.shift();
+    const hist = ctx.state.dxyHist;
+    if (hist.length >= 40) {
+      let sum = 0;
+      for (let i = 0; i < hist.length - 1; i++) sum += hist[i]; // exclude today's fresh value
+      const avg = sum / (hist.length - 1);
+      dollarWeak = dxy < avg; // dollar below its own recent average = weak dollar
+    }
   }
 
   const pos = ctx.position;
@@ -57,7 +74,9 @@ function onUpdate(ctx) {
 
   if (prevClose > hi55) {
     const atrPct = atr20 / price;
-    const frac = Math.min(1, 0.03 / atrPct);
+    const volFrac = Math.min(1, 0.03 / atrPct);
+    const regimeFrac = dollarWeak ? 1.0 : 0.5; // strong-dollar regime -> half size
+    const frac = volFrac * regimeFrac;
     const qty = (0.99 * ctx.cash * frac) / price * 0.99;
     if (qty <= 0) return null;
     return { side: 'buy', qty: qty };
