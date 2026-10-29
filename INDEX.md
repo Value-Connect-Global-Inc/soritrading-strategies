@@ -4,8 +4,8 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 585 of 2485 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 410 of them right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 585 of 2486 right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 411 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 **Engine** is the fingerprint of the backtest engine that produced the figures, with the date it was first used on our side (not a release date). When the engine changes, published entries are not removed or rewritten — the figures stay tied to the engine shown. `—` means the backtest did not record an engine.
@@ -14,6 +14,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
 |  | [5741](strategies/5741/) | REF Champion 5736 copy (dollar-gate A/B) | +102.96% | +104.02% | +31.05% | 12 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
+| — | [5743](strategies/5743/) | BTC Funding Contrarian 1D | -1.03% | — | +16.72% | 18 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5742](strategies/5742/) | REF Champion 5736 copy (A/B baseline) | +102.79% | +184.83% | +32.24% | 17 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5740](strategies/5740/) | BTC Donchian 55/30 + Adaptive Dollar Gate 1D | +831.06% | +999.65% | +52.19% | 20 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5739](strategies/5739/) | BTC On-Chain Capitulation Bottom-Fish 1D | +162.37% | +330.96% | +35.44% | 26 | 2026-10-28 `n1f44f2a` | 2026-10-29 |

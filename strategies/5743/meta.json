@@ -1,0 +1,35 @@
+{
+  "id": 5743,
+  "name": "BTC Funding Contrarian 1D",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 27509,
+    "return": -1.03,
+    "mdd": 16.72,
+    "trades": 18,
+    "vsBuyHold": "unmeasured",
+    "gapPct": 0,
+    "tFrom": 1603152000,
+    "tTo": 1698105600,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 b3a9f6…) 1100봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 1100,
+      "end": 1698192000
+    },
+    "engine": {
+      "hash": "n1f44f2a0c32",
+      "firstSeen": "2026-10-28"
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "4d25158d3dd24fc40d9c2cc03dcfa9cb05416596455ef2ea9629c835e208fc78"
+  },
+  "config": null,
+  "updatedAt": "2026-10-29T22:06:49.461Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
