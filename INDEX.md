@@ -13,10 +13,10 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| ★ | [5710](strategies/5710/) | BTC Pure SMA200 Trend 1D | +134.01% | +38.19% | +32.94% | 39 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
+|  | [5708](strategies/5708/) | BTC Donchian 55/20 Breakout 1D | +23.18% | +476.33% | +9.05% | 34 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
+| ★ | [5710](strategies/5710/) | BTC Pure SMA200 Trend 1D | +49.36% | -39.65% | +39.25% | 29 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [3556](strategies/3556/) | BNB Trend-Follow EMA50/200 4H | +603.65% | +44003.53% | +36.31% | 195 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5709](strategies/5709/) | BTC OBV Trend Ride 1D | -16.94% | -14.95% | +25.97% | 30 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
-|  | [5708](strategies/5708/) | BTC Donchian 55/20 Breakout 1D | +23.18% | +476.33% | +9.05% | 34 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5707](strategies/5707/) | SOL Donchian 55/20 Breakout 4H | -39.94% | +54.47% | +42.34% | 128 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | ★ | [5706](strategies/5706/) | SOL Bollinger Squeeze Breakout 4H | +10.25% | -50.40% | +8.94% | 2 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | — | [5705](strategies/5705/) | Crypto Momentum Rotation 1D | -55.20% | — | +67.85% | 279 | 2026-10-28 `n1f44f2a` | 2026-10-29 |

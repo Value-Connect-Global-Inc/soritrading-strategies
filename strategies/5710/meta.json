@@ -3,25 +3,25 @@
   "name": "BTC Pure SMA200 Trend 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 27356,
-    "return": 134.01,
-    "mdd": 32.94,
-    "trades": 39,
+    "backtestId": 27358,
+    "return": 49.36,
+    "mdd": 39.25,
+    "trades": 29,
     "vsBuyHold": "win",
-    "benchRet": 38.19,
+    "benchRet": -39.65,
     "benchBasis": "price",
     "gapPct": 0,
     "tFrom": 1620432000,
     "tTo": 1793145600,
     "approxNotes": [
-      "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3359봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
+      "[데이터/출처] binance ETH 1d — 이번은 거래소에서 받은 봉입니다(3359봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "기간 종료 시 미청산 포지션 1종목 (총자산의 98.51%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 98.4%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
       "[데이터/출처] 내 저장소(에이전트 cd27de…) 2000봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
-      "sym": "BTC",
+      "sym": "ETH",
       "interval": "1d",
       "bars": 2000,
       "end": 1793232000
@@ -34,6 +34,6 @@
     "verifiedCodeSha256": "f94d2e4e101f2a125ebc6bf9c7ee86feaf824f8da2ffa04c9c01eb06fc8e2c88"
   },
   "config": null,
-  "updatedAt": "2026-10-29T14:11:29.208Z",
+  "updatedAt": "2026-10-29T14:14:38.200Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
