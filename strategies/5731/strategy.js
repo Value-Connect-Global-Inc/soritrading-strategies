@@ -1,58 +1,41 @@
 /*
  * @coinsori-strategy v1
- * name: BTC Close-Channel 55/30 Breakout + Vol-Target 1D
+ * name: DIAG closes length probe 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Donchian-style breakout (buy a 55-bar close-high break, exit
- * on a 30-bar close-low break) built from CLOSE prices with a manual loop instead
- * of Math.max(...slice), because spread syntax appears to throw in this sandbox
- * (every strategy using it silently produced 0 trades).
- * When it buys and sells: Buys when the previous close is the highest close of the
- * last 55 days, sized by vol-target. Sells when the previous close is the lowest
- * close of the last 30 days.
- * When it does NOT work: In a long sideways range it whipsaws across the channel.
- * It lags sharp V-recoveries and underperforms buy-and-hold in calm choppy years.
+ * Diagnostic only: logs ctx.closes.length and the SMA20 value so we can see the
+ * real array length in this environment.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
   const closes = ctx.closes;
+  const sma20 = ctx.sma(20, 1);
   const atr20 = ctx.atr(20, 1);
-  if (atr20 == null || closes.length < 60) return null;
+  if (sma20 == null || atr20 == null) return null;
+
+  if (ctx.i < 8) {
+    ctx.log('i=' + ctx.i + ' closesLen=' + (closes ? closes.length : 'null') +
+      ' at(-2)=' + (closes && closes.at ? closes.at(-2) : 'no-at') +
+      ' sma20=' + sma20);
+  }
+
   const prevClose = closes.at(-2);
   if (prevClose == null) return null;
 
-  // channel from CLOSED bars via manual loop (no spread operator)
-  let hi55 = -Infinity;
-  for (let k = closes.length - 56; k < closes.length - 1; k++) {
-    if (closes[k] > hi55) hi55 = closes[k];
-  }
-  let lo30 = Infinity;
-  for (let k = closes.length - 31; k < closes.length - 1; k++) {
-    if (closes[k] < lo30) lo30 = closes[k];
-  }
-
   const pos = ctx.position;
-
-  ctx.watch([
-    { side: 'buy', price: hi55, trigger: 'above', note: 'break 55d close high' },
-    { side: 'sell', price: lo30, trigger: 'below', note: 'break 30d close low' }
-  ]);
-
   if (pos > 0) {
-    if (prevClose < lo30) {
+    if (prevClose < sma20) {
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
     return null;
   }
-
   if (ctx.alloc && ctx.alloc.status !== 'ok') return null;
-
-  if (prevClose > hi55) {
+  if (prevClose > sma20) {
     const atrPct = atr20 / price;
     const frac = Math.min(1, 0.03 / atrPct);
     const qty = (0.99 * ctx.cash * frac) / price * 0.99;
