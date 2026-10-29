@@ -1,0 +1,38 @@
+{
+  "id": 5711,
+  "name": "BTC Golden-Cross Regime Trend 1D",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 27361,
+    "return": 217.56,
+    "mdd": 59.01,
+    "trades": 18,
+    "vsBuyHold": "win",
+    "benchRet": 209.7,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1534032000,
+    "tTo": 1663545600,
+    "approxNotes": [
+      "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3359봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 cd27de…) 1500봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 1500,
+      "end": 1663632000
+    },
+    "engine": {
+      "hash": "n1f44f2a0c32",
+      "firstSeen": "2026-10-28"
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "9e632008991aa48c8f065978b8e33e91fdb166c416092446b6cec81e21b210bf"
+  },
+  "config": null,
+  "updatedAt": "2026-10-29T14:27:01.111Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
