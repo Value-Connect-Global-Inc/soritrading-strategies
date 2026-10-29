@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5731](strategies/5731/) | BTC Donchian 55/30 Breakout + Vol-Target 1D | +813.96% | +1237.54% | +52.19% | 16 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
+|  | [5731](strategies/5731/) | BTC Donchian 55/30 Breakout + Vol-Target 1D | +162.37% | +330.96% | +35.44% | 26 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5729](strategies/5729/) | BTC SMA200 Trend + VIX Risk Gate 1D | +30.52% | +88.30% | +27.71% | 23 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5730](strategies/5730/) | BTC Funding Contrarian Futures 1D | +480.52% | +1237.54% | +48.66% | 15 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5728](strategies/5728/) | BTC SMA200 Trend + Dynamic Vol-Target Rebalance 1D | +577.24% | +808.56% | +48.72% | 9 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
