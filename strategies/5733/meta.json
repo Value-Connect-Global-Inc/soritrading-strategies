@@ -3,9 +3,9 @@
   "name": "BTC Close-Channel 55/30 Breakout + Vol-Target 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 27457,
-    "return": 109.83,
-    "mdd": 30.67,
+    "backtestId": 27458,
+    "return": 162.37,
+    "mdd": 35.44,
     "trades": 26,
     "vsBuyHold": "lose",
     "benchRet": 330.96,

@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5733](strategies/5733/) | BTC Close-Channel 55/30 Breakout + Vol-Target 1D | +109.83% | +330.96% | +30.67% | 26 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
+|  | [5733](strategies/5733/) | BTC Close-Channel 55/30 Breakout + Vol-Target 1D | +162.37% | +330.96% | +35.44% | 26 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5732](strategies/5732/) | REF Champion SMA200 VolTarget 1D | +479.94% | +1237.54% | +48.72% | 13 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5731](strategies/5731/) | BTC Donchian 55/30 Breakout + Vol-Target 1D | +162.37% | +330.96% | +35.44% | 26 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5729](strategies/5729/) | BTC SMA200 Trend + VIX Risk Gate 1D | +30.52% | +88.30% | +27.71% | 23 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
