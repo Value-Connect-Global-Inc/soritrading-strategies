@@ -4,8 +4,8 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 575 of 2450 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 408 of them right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 575 of 2451 right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 409 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 **Engine** is the fingerprint of the backtest engine that produced the figures, with the date it was first used on our side (not a release date). When the engine changes, published entries are not removed or rewritten — the figures stay tied to the engine shown. `—` means the backtest did not record an engine.
@@ -13,6 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+| — | [5705](strategies/5705/) | Crypto Momentum Rotation 1D | +137.59% | — | +70.26% | 321 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5703](strategies/5703/) | ETH Chandelier Trend 4H | -97.28% | +118.41% | +97.49% | 830 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5702](strategies/5702/) | BTC VIX-Gated RSI2 Dip 1D | -29.05% | +45.44% | +34.41% | 370 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5701](strategies/5701/) | BTC Dollar-Regime Trend 1D | -3.33% | +209.70% | +45.29% | 110 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
