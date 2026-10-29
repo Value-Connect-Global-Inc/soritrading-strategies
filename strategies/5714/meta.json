@@ -3,7 +3,7 @@
   "name": "BTC SMA200 Trend + Vol-Target Size 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 27371,
+    "backtestId": 27372,
     "return": 184.52,
     "mdd": 28.29,
     "trades": 39,
@@ -30,8 +30,8 @@
       "hash": "n1f44f2a0c32",
       "firstSeen": "2026-10-28"
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "0373ce73cd0bac52bedd618487c9708b58a759bbfdc96587b7dd2c2c5b7a85b6"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "40023b7b38bfd825ccf0602a0e4101d19e1300d95beff456ef79aa9f13e7f22c"
   },
   "config": null,
   "updatedAt": "2026-10-29T14:58:42.368Z",
