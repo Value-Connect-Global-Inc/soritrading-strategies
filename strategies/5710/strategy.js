@@ -30,6 +30,10 @@ function onUpdate(ctx) {
   if (prevClose == null) return null;
 
   const pos = ctx.position;
+  ctx.watch([
+    { side: 'buy', price: sma200, trigger: 'above', note: 'close above SMA200' },
+    { side: 'sell', price: sma200, trigger: 'below', note: 'close below SMA200' }
+  ]);
   if (pos > 0) {
     if (prevClose < sma200) {
       return { side: 'sell', qty: pos, reduceOnly: true };

@@ -13,8 +13,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+|  | [5710](strategies/5710/) | BTC Pure SMA200 Trend 1D ‡ | +129.72% | +476.33% | +26.80% | 15 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [3556](strategies/3556/) | BNB Trend-Follow EMA50/200 4H | +603.65% | +44003.53% | +36.31% | 195 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
-|  | [5710](strategies/5710/) | BTC Pure SMA200 Trend 1D | +129.72% | +476.33% | +26.80% | 15 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5709](strategies/5709/) | BTC OBV Trend Ride 1D | -16.94% | -14.95% | +25.97% | 30 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5708](strategies/5708/) | BTC Donchian 55/20 Breakout 1D | +23.18% | +476.33% | +9.05% | 34 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5707](strategies/5707/) | SOL Donchian 55/20 Breakout 4H | -39.94% | +54.47% | +42.34% | 128 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
