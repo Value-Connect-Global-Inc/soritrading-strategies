@@ -10,9 +10,9 @@
  * volatility itself. Markets alternate between quiet compression (Bollinger Bands
  * narrow) and violent expansion. Buying the breakout after a squeeze rides the
  * expansion leg, which in crypto tends to be sharp and directional.
- * When it buys and sells: It buys when the Bollinger Band width contracts to near
- * its tightest of the last 100 bars (a squeeze) and price then closes above the
- * highest close of that squeeze period (the breakout). It sells on a 2.5-ATR
+ * When it buys and sells: It buys when the Bollinger Band width is below its own
+ * 40-bar average (a squeeze — volatility compressed) and price then closes above
+ * the highest close of that squeeze period (the breakout). It sells on a 2.5-ATR
  * trailing stop below the highest close since entry, or a 3-ATR hard stop.
  * When it does NOT work: In a grinding sideways market the expansion after a
  * squeeze is weak and the breakout fails, churning small losses. In a slow
@@ -32,11 +32,13 @@ function onUpdate(ctx) {
   const st = ctx.state;
   if (st.hist == null) st.hist = [];
   st.hist.push(width);
-  if (st.hist.length > 100) st.hist.shift();
-  if (st.hist.length < 60) return null; // warm up the squeeze history
+  if (st.hist.length > 40) st.hist.shift();
+  if (st.hist.length < 40) return null; // warm up the width history
 
-  const tightest = Math.min.apply(null, st.hist);
-  const squeeze = width < tightest * 1.15; // within 15% of the tightest = compressed
+  let sum = 0;
+  for (let k = 0; k < st.hist.length; k++) sum += st.hist[k];
+  const avgWidth = sum / st.hist.length;
+  const squeeze = width < avgWidth * 0.95; // compressed below its own recent average
 
   const pos = ctx.position;
   if (pos > 0) {
