@@ -3,16 +3,16 @@
   "name": "SOL Donchian 55/20 Breakout 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 27340,
-    "return": -47.81,
-    "mdd": 61.05,
-    "trades": 106,
+    "backtestId": 27343,
+    "return": -39.94,
+    "mdd": 42.34,
+    "trades": 128,
     "vsBuyHold": "lose",
-    "benchRet": 213.66,
+    "benchRet": 54.47,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1663675200,
-    "tTo": 1706860800,
+    "tFrom": 1706875200,
+    "tTo": 1750060800,
     "approxNotes": [
       "[데이터/출처] binance SOL 4h — 이번은 거래소에서 받은 봉입니다(13619봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 13513봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
@@ -23,14 +23,14 @@
       "sym": "SOL",
       "interval": "4h",
       "bars": 3000,
-      "end": 1706875200
+      "end": 1750075200
     },
     "engine": {
       "hash": "n1f44f2a0c32",
       "firstSeen": "2026-10-28"
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "27e9e5d74ef0395c194b3387baf78faa73c0d2ae5c8010c8032ba989e11ecc1d"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "deb47484dc21ccec7b4196ad88a4621d28722a0e606082ecbfbcbe00835f4f31"
   },
   "config": null,
   "updatedAt": "2026-10-29T13:26:07.960Z",
