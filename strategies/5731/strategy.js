@@ -6,11 +6,10 @@
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Same Donchian breakout idea (buy a 55-bar high break, exit on
- * a 30-bar low break) but the channel is built from CLOSE prices instead of
- * high/low, because ctx.highs/ctx.lows turned out not to be populated in this
- * environment (any use silently produced 0 trades). Close-based channel is a
- * slightly smoother version of the same breakout concept.
+ * Why this strategy: Donchian-style breakout (buy a 55-bar close-high break, exit
+ * on a 30-bar close-low break) built from CLOSE prices with a manual loop instead
+ * of Math.max(...slice), because spread syntax appears to throw in this sandbox
+ * (every strategy using it silently produced 0 trades).
  * When it buys and sells: Buys when the previous close is the highest close of the
  * last 55 days, sized by vol-target. Sells when the previous close is the lowest
  * close of the last 30 days.
@@ -27,9 +26,15 @@ function onUpdate(ctx) {
   const prevClose = closes.at(-2);
   if (prevClose == null) return null;
 
-  // channel from CLOSED bars: max close of last 55 closed bars, min close of last 30
-  const hi55 = Math.max(...closes.slice(-56, -1));
-  const lo30 = Math.min(...closes.slice(-31, -1));
+  // channel from CLOSED bars via manual loop (no spread operator)
+  let hi55 = -Infinity;
+  for (let k = closes.length - 56; k < closes.length - 1; k++) {
+    if (closes[k] > hi55) hi55 = closes[k];
+  }
+  let lo30 = Infinity;
+  for (let k = closes.length - 31; k < closes.length - 1; k++) {
+    if (closes[k] < lo30) lo30 = closes[k];
+  }
 
   const pos = ctx.position;
 
