@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5714](strategies/5714/) | BTC SMA200 Trend + Vol-Target Size 1D | +158.04% | +1237.54% | +43.99% | 501 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
+|  | [5714](strategies/5714/) | BTC SMA200 Trend + Vol-Target Size 1D | +169.01% | +1237.54% | +43.01% | 62 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | ★ | [5713](strategies/5713/) | BTC SMA200 Trend + Donchian Trail 1D | +211.35% | +209.70% | +65.81% | 28 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5712](strategies/5712/) | BTC SMA200 Trend + Chandelier Stop 1D | -35.67% | +45.44% | +35.67% | 4 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | ★ | [5711](strategies/5711/) | BTC Golden-Cross Regime Trend 1D | +217.56% | +209.70% | +59.01% | 18 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
