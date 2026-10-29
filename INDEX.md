@@ -13,13 +13,13 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+|  | [5745](strategies/5745/) | BTC Donchian 55/30 + Disaster Stop 1D | +102.79% | +184.83% | +32.24% | 17 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5750](strategies/5750/) | BTC On-Chain Usage Trend 1D | -30.93% | +330.96% | +56.75% | 301 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | ★ | [5749](strategies/5749/) | BTC Donchian 55/30 + VIX Gate 1D | +321.64% | +268.48% | +32.98% | 11 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5748](strategies/5748/) | BTC Donchian 55/30 + Drawdown De-Risk 1D | -7.29% | +268.48% | +11.15% | 2 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5747](strategies/5747/) | DIAG data keys discover 1D | +804.61% | +1237.54% | +51.99% | 16 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5742](strategies/5742/) | REF Champion 5736 copy (A/B baseline) | +102.79% | +184.83% | +32.24% | 17 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5744](strategies/5744/) | BTC BB+RSI Oversold Bounce 1D | -5.23% | +104.02% | +6.32% | 10 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
-|  | [5745](strategies/5745/) | BTC Donchian 55/30 + Disaster Stop 1D | +102.79% | +184.83% | +32.24% | 17 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | — | [5743](strategies/5743/) | BTC Funding Contrarian 1D | -1.03% | — | +16.72% | 18 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5741](strategies/5741/) | REF Champion 5736 copy (dollar-gate A/B) | +102.96% | +104.02% | +31.05% | 12 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5740](strategies/5740/) | BTC Donchian 55/30 + Adaptive Dollar Gate 1D | +831.06% | +999.65% | +52.19% | 20 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
