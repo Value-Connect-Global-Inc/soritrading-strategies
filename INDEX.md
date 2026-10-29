@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| — | [5721](strategies/5721/) | Multi-Asset SMA200 Trend Basket 1D | +2662.42% | — | +62.04% | 48 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
+| — | [5721](strategies/5721/) | Multi-Asset SMA200 Trend Basket 1D ‡ | +2662.42% | — | +62.04% | 48 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5720](strategies/5720/) | BTC Dip-Buy Mean Reversion + Network Health 1D | +36.76% | +808.56% | +17.40% | 44 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | ★ | [5719](strategies/5719/) | BTC Dollar-Regime Filter 1D | -3.05% | -26.81% | +21.30% | 64 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5718](strategies/5718/) | BTC SMA200 Trend + On-chain Confirm 1D | +300.70% | +808.56% | +56.20% | 35 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
