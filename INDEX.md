@@ -13,8 +13,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5730](strategies/5730/) | BTC Funding Contrarian Futures 1D | +480.52% | +1237.54% | +48.66% | 15 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5729](strategies/5729/) | BTC SMA200 Trend + VIX Risk Gate 1D | +30.52% | +88.30% | +27.71% | 23 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
+|  | [5730](strategies/5730/) | BTC Funding Contrarian Futures 1D | +480.52% | +1237.54% | +48.66% | 15 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5728](strategies/5728/) | BTC SMA200 Trend + Dynamic Vol-Target Rebalance 1D | +577.24% | +808.56% | +48.72% | 9 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | ★ | [5727](strategies/5727/) | BTC Asym Trend SMA100/200 + Vol-Target 1D | +319.53% | +272.74% | +52.65% | 167 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5726](strategies/5726/) | BTC SMA200 Trend + ATR Stop + Cooldown 1D | +77.55% | +272.74% | +30.50% | 55 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
