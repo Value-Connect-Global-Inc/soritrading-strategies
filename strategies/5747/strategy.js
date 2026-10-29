@@ -61,10 +61,10 @@ function onUpdate(ctx) {
 
   if (prevClose > hi55) {
     const atrPct = atr20 / price;
-    const frac = Math.min(1, 0.03 / atrPct); // vol-target: 3% daily ATR = full budget for this coin
-    // per-symbol budget: prefer the platform allocation, else a 3-way cash split
-    let budget = 0.99 * ctx.cash * 0.9 / 3;
-    if (ctx.alloc && Number.isFinite(ctx.alloc.current)) budget = ctx.alloc.current;
+    const frac = Math.min(1, 0.03 / atrPct); // vol-target: 3% daily ATR = full position
+    // size off THIS symbol's available cash; the engine's multi-symbol cash
+    // accounting splits the pool and rejects orders that exceed available cash
+    const budget = 0.99 * ctx.cash;
     const qty = (0.99 * budget * frac) / price * 0.99;
     if (qty <= 0) return null;
     return { side: 'buy', qty: qty };
