@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 576 of 2452 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 576 of 2453 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 409 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,6 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+|  | [5707](strategies/5707/) | SOL Donchian 55/20 Breakout 4H | -47.81% | +213.66% | +61.05% | 106 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | ★ | [5706](strategies/5706/) | SOL Bollinger Squeeze Breakout 4H | +10.25% | -50.40% | +8.94% | 2 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | — | [5705](strategies/5705/) | Crypto Momentum Rotation 1D | -55.20% | — | +67.85% | 279 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5703](strategies/5703/) | ETH Chandelier Trend 4H | -97.28% | +118.41% | +97.49% | 830 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
