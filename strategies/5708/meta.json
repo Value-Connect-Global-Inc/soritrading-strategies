@@ -1,0 +1,38 @@
+{
+  "id": 5708,
+  "name": "BTC Donchian 55/20 Breakout 1D",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 27346,
+    "return": 23.18,
+    "mdd": 9.05,
+    "trades": 34,
+    "vsBuyHold": "lose",
+    "benchRet": 476.33,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1672272000,
+    "tTo": 1732665600,
+    "approxNotes": [
+      "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3359봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 cd27de…) 700봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 700,
+      "end": 1732752000
+    },
+    "engine": {
+      "hash": "n1f44f2a0c32",
+      "firstSeen": "2026-10-28"
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "dc552c1e2110139a5f57b603cd13e53855f06a1b3d6750772382225b4b904594"
+  },
+  "config": null,
+  "updatedAt": "2026-10-29T13:35:10.664Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
