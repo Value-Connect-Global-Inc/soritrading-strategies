@@ -1,0 +1,38 @@
+{
+  "id": 5706,
+  "name": "SOL Bollinger Squeeze Breakout 4H",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 27321,
+    "return": -1.76,
+    "mdd": 2.83,
+    "trades": 2,
+    "vsBuyHold": "win",
+    "benchRet": -32.63,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1750017600,
+    "tTo": 1793203200,
+    "approxNotes": [
+      "[데이터/출처] binance SOL 4h — 이번은 거래소에서 받은 봉입니다(13619봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 13513봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 cd27de…) 3000봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "4h",
+      "bars": 3000,
+      "end": 1793275200
+    },
+    "engine": {
+      "hash": "n1f44f2a0c32",
+      "firstSeen": "2026-10-28"
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "ac757dcaac70ee53df299eeada5e3d14b600ca8f7b5701a4d8496fa0a81e68f6"
+  },
+  "config": null,
+  "updatedAt": "2026-10-29T13:03:45.192Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
