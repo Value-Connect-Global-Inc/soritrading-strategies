@@ -1,0 +1,37 @@
+{
+  "id": 5703,
+  "name": "ETH Chandelier Trend 4H",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 27313,
+    "return": -97.28,
+    "mdd": 97.49,
+    "trades": 830,
+    "vsBuyHold": "lose",
+    "benchRet": 118.41,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1678060800,
+    "tTo": 1735646400,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 9c445f…) 4000봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h",
+      "bars": 4000,
+      "end": 1735660800
+    },
+    "engine": {
+      "hash": "n1f44f2a0c32",
+      "firstSeen": "2026-10-28"
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "c183c74815a8509369c05e84fa7616f69b0c35d466964765971be9f5ec6ce2a4"
+  },
+  "config": null,
+  "updatedAt": "2026-10-29T11:57:47.206Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
