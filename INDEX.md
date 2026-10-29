@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 576 of 2455 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 576 of 2456 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 409 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,6 +13,8 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+|  | [3556](strategies/3556/) | BNB Trend-Follow EMA50/200 4H | +603.65% | +44003.53% | +36.31% | 195 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
+|  | [5710](strategies/5710/) | BTC Pure SMA200 Trend 1D | +129.72% | +476.33% | +26.80% | 15 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5709](strategies/5709/) | BTC OBV Trend Ride 1D | -16.94% | -14.95% | +25.97% | 30 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5708](strategies/5708/) | BTC Donchian 55/20 Breakout 1D | +23.18% | +476.33% | +9.05% | 34 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5707](strategies/5707/) | SOL Donchian 55/20 Breakout 4H | -39.94% | +54.47% | +42.34% | 128 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
@@ -509,7 +511,6 @@ Every figure comes from the last verifying backtest at publish time. These are p
 |  | [3780](strategies/3780/) | BTC Fear-Greed Contrarian 1D v2 (trend-filtered) | -77.77% | +142.19% | +80.91% | 12 | — | 2026-10-13 |
 |  | [3779](strategies/3779/) | BTC Fear-Greed Contrarian 1D | +42.25% | +315.94% | +50.85% | 20 | — | 2026-10-13 |
 | ★ | [3778](strategies/3778/) | AI 전략 ‡ | -4.54% | -26.02% | +22.69% | 114 | — | 2026-10-13 |
-|  | [3556](strategies/3556/) | BNB Trend-Follow EMA50/200 4H | +602.65% | +43740.00% | +36.31% | 190 | — | 2026-10-13 |
 | ★ | [3777](strategies/3777/) | ETH NDX Risk-On Trend 4H | +7.49% | -26.02% | +27.13% | 114 | — | 2026-10-13 |
 |  | [3776](strategies/3776/) | SOL Dollar-Regime Trend 4H v3 | +36.69% | +64.40% | +21.33% | 116 | — | 2026-10-13 |
 |  | [3775](strategies/3775/) | AI 전략 ‡ | -19.19% | +17.48% | +35.25% | 128 | — | 2026-10-13 |
