@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 585 of 2472 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 584 of 2472 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 410 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| ★ | [5728](strategies/5728/) | BTC SMA200 Trend + Dynamic Vol-Target Rebalance 1D | +24.63% | -26.81% | +19.98% | 1425 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
+|  | [5728](strategies/5728/) | BTC SMA200 Trend + Dynamic Vol-Target Rebalance 1D | +154.24% | +808.56% | +47.13% | 2404 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | ★ | [5727](strategies/5727/) | BTC Asym Trend SMA100/200 + Vol-Target 1D | +319.53% | +272.74% | +52.65% | 167 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5726](strategies/5726/) | BTC SMA200 Trend + ATR Stop + Cooldown 1D | +77.55% | +272.74% | +30.50% | 55 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | ★ | [5725](strategies/5725/) | BTC SMA200 Trend + Vol-Target Size 1D (baseline copy) | +308.42% | +272.74% | +54.87% | 21 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
