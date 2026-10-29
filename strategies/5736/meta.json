@@ -3,10 +3,10 @@
   "name": "BTC Close-Channel 55/30 Breakout + Vol-Target 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 27469,
-    "return": 162.37,
-    "mdd": 35.44,
-    "trades": 26,
+    "backtestId": 27471,
+    "return": -40.79,
+    "mdd": 41.89,
+    "trades": 6,
     "vsBuyHold": "lose",
     "benchRet": 330.96,
     "benchBasis": "price",
@@ -16,6 +16,7 @@
     "approxNotes": [
       "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3359봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
       "[데이터/출처] 내 저장소(에이전트 cd27de…) 1500봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
@@ -30,9 +31,9 @@
       "firstSeen": "2026-10-28"
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "c04e733f9381ce16d2a6de7d76bc2378e412f6094540a5cd5e56f767f246ed36"
+    "verifiedCodeSha256": "bc4bad97707d4c2b9d30858cc5e7db2a761ab29f6dec6fb2d4e34edf8f11370f"
   },
   "config": null,
-  "updatedAt": "2026-10-29T21:20:48.086Z",
+  "updatedAt": "2026-10-29T21:27:14.495Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }

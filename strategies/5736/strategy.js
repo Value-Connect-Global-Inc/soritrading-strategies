@@ -1,61 +1,53 @@
 /*
  * @coinsori-strategy v1
- * name: BTC Close-Channel 55/30 Breakout + Vol-Target 1D
+ * name: BTC Fear&Greed Contrarian 1D
  * ex: binance
  * syms: BTC/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Donchian-style breakout (buy a 55-bar close-high break, exit
- * on a 30-bar close-low break). The channel is built from CLOSE prices over the 54
- * bars BEFORE the previous close, so the previous close can genuinely break it.
- * Sized by vol-target to cut drawdown vs full-capital Donchian.
- * When it buys and sells: Buys when the previous close is higher than every close
- * of the previous 54 days, sized by vol-target (3% daily ATR = full). Sells when
- * the previous close is lower than every close of the previous 29 days.
- * When it does NOT work: In a long sideways range it whipsaws across the channel.
- * It lags sharp V-recoveries and underperforms buy-and-hold in calm choppy years.
+ * Why this strategy: The Fear & Greed index measures crowd emotion. When it is
+ * extremely low the crowd is panicking — historically a good time to buy BTC if
+ * the long-term trend is still up. When it is very high the crowd is euphoric —
+ * a good time to take profits. This is a sentiment-contrarian family, the
+ * opposite of the price-breakout champion.
+ * When it buys and sells: Buys when the index drops below 25 AND price is above
+ * its 200-day average (an uptrend pullback, not a falling knife). Sells when the
+ * index rises above 60, or if price falls 15% below entry.
+ * When it does NOT work: In a prolonged bear market (2018, 2022) fear stays high
+ * for months and price keeps falling — the 200-day filter keeps us out, but if a
+ * bear starts while we are long the 15% stop is our only protection. It also sits
+ * out calm bull years when fear never gets extreme, missing the run entirely.
  */
 function onUpdate(ctx) {
+  const fg = ctx.data('fear_greed');
+  if (fg == null) return null; // unknown sentiment, do not trade
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
 
-  const closes = ctx.closes;
-  const atr20 = ctx.atr(20, 1);
-  if (atr20 == null || closes.length < 60) return null;
-  const prevClose = closes.at(-2);
-  if (prevClose == null) return null;
-
-  // channel over the 54 CLOSED bars BEFORE prevClose (exclude index -2 = prevClose itself)
-  let hi55 = -Infinity;
-  for (let k = closes.length - 56; k < closes.length - 2; k++) {
-    if (closes[k] > hi55) hi55 = closes[k];
-  }
-  let lo30 = Infinity;
-  for (let k = closes.length - 31; k < closes.length - 2; k++) {
-    if (closes[k] < lo30) lo30 = closes[k];
-  }
-
+  const sma200 = ctx.sma(200, 1);
   const pos = ctx.position;
+  const entry = ctx.entryPx;
 
+  // No fixed price level exists for a sentiment signal, so we declare the
+  // conditions we ACTUALLY used (the card shows them; watch() is display only).
+  const buyCond = { label: 'F&G', now: fg, op: '<', ref: 25, closed: true };
+  const trendCond = { label: 'price>SMA200', ok: sma200 != null && price > sma200 };
   ctx.watch([
-    { side: 'buy', price: hi55, trigger: 'above', note: 'break 55d close high' },
-    { side: 'sell', price: lo30, trigger: 'below', note: 'break 30d close low' }
+    { side: 'buy', note: 'extreme fear + uptrend', conds: [buyCond, trendCond] },
+    { side: 'sell', note: 'greed exit', conds: [{ label: 'F&G', now: fg, op: '>', ref: 60, closed: true }] },
+    { side: 'sell', note: '15% hard stop', conds: [{ label: 'price vs entry', ok: entry != null && price < entry * 0.85 }] }
   ]);
 
   if (pos > 0) {
-    if (prevClose < lo30) {
-      return { side: 'sell', qty: pos, reduceOnly: true };
-    }
+    if (fg > 60) return { side: 'sell', qty: pos, reduceOnly: true };
+    if (entry != null && price < entry * 0.85) return { side: 'sell', qty: pos, reduceOnly: true };
     return null;
   }
 
   if (ctx.alloc && ctx.alloc.status !== 'ok') return null;
-
-  if (prevClose > hi55) {
-    const atrPct = atr20 / price;
-    const frac = Math.min(1, 0.03 / atrPct);
-    const qty = (0.99 * ctx.cash * frac) / price * 0.99;
+  if (fg < 25 && sma200 != null && price > sma200) {
+    const qty = (0.99 * ctx.cash) / price * 0.99;
     if (qty <= 0) return null;
     return { side: 'buy', qty: qty };
   }
