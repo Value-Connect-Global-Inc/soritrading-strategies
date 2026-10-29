@@ -10,10 +10,8 @@
  * on a 30-bar close-low break). The channel is built from CLOSE prices over the 54
  * bars BEFORE the previous close, so the previous close can genuinely break it.
  * Sized by vol-target to cut drawdown vs full-capital Donchian (ledger exp 547).
- * This version uses a TIGHTER 2% daily-ATR target = full size, so high-volatility
- * regimes hold smaller positions than the 3% version.
  * When it buys and sells: Buys when the previous close is higher than every close
- * of the previous 54 days, sized by vol-target (2% daily ATR = full). Sells when
+ * of the previous 54 days, sized by vol-target (3% daily ATR = full). Sells when
  * the previous close is lower than every close of the previous 29 days.
  * When it does NOT work: In a long sideways range it whipsaws across the channel.
  * It lags sharp V-recoveries and underperforms buy-and-hold in calm choppy years.
@@ -56,7 +54,7 @@ function onUpdate(ctx) {
 
   if (prevClose > hi55) {
     const atrPct = atr20 / price;
-    const frac = Math.min(1, 0.02 / atrPct); // 2% target: tighter than 3% -> smaller positions in high vol
+    const frac = Math.min(1, 0.03 / atrPct);
     const qty = (0.99 * ctx.cash * frac) / price * 0.99;
     if (qty <= 0) return null;
     return { side: 'buy', qty: qty };
