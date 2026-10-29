@@ -1,0 +1,38 @@
+{
+  "id": 5701,
+  "name": "BTC Dollar-Regime Trend 1D",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 27299,
+    "return": -3.33,
+    "mdd": 45.29,
+    "trades": 110,
+    "vsBuyHold": "lose",
+    "benchRet": 209.7,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1534032000,
+    "tTo": 1663545600,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
+      "[데이터/출처] 내 저장소(에이전트 9c445f…) 1500봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 1500,
+      "end": 1663632000
+    },
+    "engine": {
+      "hash": "n1f44f2a0c32",
+      "firstSeen": "2026-10-28"
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "567ab35111a551af8f5f8e2a7e5dd6847c8c2eeae3530e1b24ca4a1178b3ff58"
+  },
+  "config": null,
+  "updatedAt": "2026-10-29T11:09:42.750Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
