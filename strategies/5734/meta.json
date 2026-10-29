@@ -3,7 +3,7 @@
   "name": "BTC Donchian 55/30 + SMA200 Trend Gate 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 27461,
+    "backtestId": 27464,
     "return": 617.23,
     "mdd": 32.93,
     "trades": 14,
