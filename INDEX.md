@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5718](strategies/5718/) | BTC SMA200 Trend + On-chain Confirm 1D ‡ | +459.84% | +1237.54% | +49.74% | 32 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
+|  | [5718](strategies/5718/) | BTC SMA200 Trend + On-chain Confirm 1D | +459.38% | +1237.54% | +48.72% | 15 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | ★ | [5716](strategies/5716/) | BTC On-chain Address Momentum 1D | +63.94% | +38.19% | +30.47% | 67 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5715](strategies/5715/) | BTC Fear&Greed Contrarian 1D | -27.90% | +38.19% | +32.62% | 8 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5714](strategies/5714/) | BTC SMA200 Trend + Vol-Target Size 1D | +169.01% | +1237.54% | +43.01% | 62 | 2026-10-28 `n1f44f2a` | 2026-10-29 |

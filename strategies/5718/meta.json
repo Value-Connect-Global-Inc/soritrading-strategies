@@ -3,10 +3,10 @@
   "name": "BTC SMA200 Trend + On-chain Confirm 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 27383,
-    "return": 459.84,
-    "mdd": 49.74,
-    "trades": 32,
+    "backtestId": 27384,
+    "return": 459.38,
+    "mdd": 48.72,
+    "trades": 15,
     "vsBuyHold": "lose",
     "benchRet": 1237.54,
     "benchBasis": "price",
@@ -16,7 +16,7 @@
     "approxNotes": [
       "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3359봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
-      "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 93.89%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
       "[데이터/출처] 내 저장소(에이전트 cd27de…) 1360봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
@@ -30,10 +30,10 @@
       "hash": "n1f44f2a0c32",
       "firstSeen": "2026-10-28"
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "cb2ef36fccd2545fa2682a56855e52ddb588ae0735a11529bfe0af2264f7b4d3"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "f7d43c91dadcfb32de2bb72b1089d840c096cbc40cf4bda6dacc7a8c7d8c401e"
   },
   "config": null,
-  "updatedAt": "2026-10-29T15:52:23.331Z",
+  "updatedAt": "2026-10-29T15:56:27.897Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
