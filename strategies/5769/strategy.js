@@ -1,72 +1,61 @@
 /*
  * @coinsori-strategy v1
- * name: Crypto Momentum Rotation CrashStop 4H
+ * name: BTC Funding Contrarian 4H
  * ex: binance
- * syms: BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT
+ * syms: BTC/USDT
  * interval: 4h
  * cash: 10000
  *
- * Why this strategy: In crypto, the strongest assets in a bull phase keep leading. Hold the top-2 momentum leaders. Improvement over 5768: add a tight crash stop — exit any held symbol when it closes 25% below its 20-bar highest close. This is tight enough to actually fire during a sharp market-wide drop (the earlier 60-bar/20% chandelier was too wide and never triggered because rank-rotation exited first), giving real crash protection on top of rank rotation.
- * When it buys and sells: Every bar, rank symbols by 30-bar momentum, keep only those above their 200-bar average. Hold the top-2 with ~47% cash each. Sell a symbol when it leaves the top-2, drops below its 200-bar average, or closes 25% below its 20-bar highest close (crash stop).
- * When it does NOT work: The tight 25%/20-bar stop gets shaken out of normal sharp pullbacks inside a continuing bull, missing the next leg up (more whipsaw). In a broad bear market no symbol is above its 200-bar average, so it stays flat.
+ * Why this strategy: Funding rate measures the cost of holding leveraged positions. When funding is extremely
+ * negative, shorts are paying longs heavily — the market is crowded short and a squeeze higher is likely.
+ * This is positioning data that price alone cannot show.
+ * When it buys and sells: Buy when funding is very negative (crowded short) while price is below its 50-bar
+ * average (still a dip). Sell when funding climbs back above zero, or on a 12% hard stop.
+ * When it does NOT work: In a persistent bear market, funding can stay negative for a long time while price
+ * keeps falling — the contrarian long gets caught. Funding prints are sparse (every 8h), so entries are rare.
  */
 function onUpdate(ctx) {
-  const momN = 30;
-  const smaN = 200;
-  const hiN = 20;
-  const crashPct = 0.25;
-  const topK = 2;
+  const price = ctx.price;
+  const pos = ctx.position;
+  const funding = ctx.funding;
+  const sma50 = ctx.sma(50, 1);
+  if (sma50 == null) return null;
 
-  function trend(m) {
-    if (m == null) return null;
-    const closes = m.closes;
-    if (closes == null || closes.length < smaN + 2) return null;
-    const px = closes.at(-1);
-    const prev = closes.at(-2);
-    const momRef = closes.at(-2 - momN);
-    if (momRef == null) return null;
-    let sum200 = 0, hi = -Infinity;
-    for (let k = 1; k <= smaN; k++) sum200 += closes.at(-1 - k);
-    for (let k = 0; k < hiN; k++) { const c = closes.at(-1 - k); if (c > hi) hi = c; }
-    const sma200 = sum200 / smaN;
-    if (px <= sma200) return null;
-    return { mom: prev / momRef - 1, px: px, hi: hi };
-  }
+  // funding is a number (rate per 8h). Guard null.
+  const f = (typeof funding === 'number') ? funding : null;
 
-  const entries = [{ sym: ctx.sym, m: ctx }];
-  const nRefs = (ctx.refs && ctx.refs.length) ? ctx.refs.length : 0;
-  for (let i = 0; i < nRefs; i++) {
-    const rm = ctx.ref(i);
-    const rs = (ctx.syms && ctx.syms[i + 1]) ? ctx.syms[i + 1] : ('ref' + i);
-    entries.push({ sym: rs, m: rm });
-  }
-
-  const ranked = [];
-  for (const e of entries) {
-    const r = trend(e.m);
-    if (r == null) continue;
-    ranked.push({ sym: e.sym, mom: r.mom, px: r.px, hi: r.hi });
-  }
-  ranked.sort((a, b) => b.mom - a.mom);
-  const targets = ranked.slice(0, topK);
-
-  for (const e of entries) {
-    const p = ctx.pos(e.sym);
-    if (p == null || p.position <= 0) continue;
-    const r = trend(e.m);
-    const inTop = targets.some(t => t.sym === e.sym);
-    const crashed = (r != null) && (r.px < r.hi * (1 - crashPct));
-    if (!inTop || r == null || crashed) {
-      return { side: 'sell', sym: e.sym, qty: p.position, reduceOnly: true };
+  if (pos > 0) {
+    const entryPx = ctx.entryPx;
+    const stop = (entryPx != null) ? entryPx * 0.88 : null; // 12% hard stop
+    ctx.watch([
+      { side: 'sell', price: 0, trigger: 'above', note: 'funding back above 0' },
+      { side: 'sell', price: stop, trigger: 'below', note: '12% hard stop' }
+    ]);
+    // Exit when funding turns positive (crowd back to neutral/long) or hard stop
+    if (f != null && f > 0) {
+      return { side: 'sell', qty: pos, reduceOnly: true };
     }
+    if (entryPx != null && price < entryPx * 0.88) {
+      return { side: 'sell', qty: pos, reduceOnly: true };
+    }
+    return null;
   }
 
-  const orders = [];
-  const perLeg = ctx.cash * 0.47;
-  for (const t of targets) {
-    const p = ctx.pos(t.sym);
-    if (p != null && p.position > 0) continue;
-    orders.push({ side: 'buy', sym: t.sym, qty: perLeg / t.px });
+  // Entry: extreme negative funding (crowded short) while price is below its 50-bar average (dip)
+  // -0.01% per 8h is a strong short-crowding signal for BTC; below SMA50 keeps us from buying tops.
+  if (f != null && f < -0.0001 && price < sma50) {
+    ctx.watch([
+      { side: 'buy', price: sma50, trigger: 'below', note: 'dip below SMA50', conds: [
+        { label: 'funding', now: f, op: '<', ref: -0.0001, closed: true }
+      ]}
+    ]);
+    return { side: 'buy', qty: ctx.cash / ctx.price * 0.9 };
   }
-  return orders.length ? orders : null;
+
+  ctx.watch([
+    { side: 'buy', price: sma50, trigger: 'below', note: 'dip + extreme short funding', conds: [
+      { label: 'funding', now: f, op: '<', ref: -0.0001, closed: true }
+    ]}
+  ]);
+  return null;
 }
