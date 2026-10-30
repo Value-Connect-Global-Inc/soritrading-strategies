@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| — | [5783](strategies/5783/) | MultiAsset OnChain-Mild MR 1D | +67.90% | — | +10.08% | 270 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
+| — | [5783](strategies/5783/) | MultiAsset OnChain-Mild MR 1D | +216.97% | — | +10.08% | 334 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5781](strategies/5781/) | MultiAsset OnChain-Gated MR 1D | +29.19% | — | +5.32% | 60 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5782](strategies/5782/) | MultiAsset MR Basket Baseline 1D | +67.90% | — | +10.08% | 270 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5780](strategies/5780/) | BTC Turtle TrendFilter 1D | +74.19% | +1273.65% | +36.27% | 20 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
