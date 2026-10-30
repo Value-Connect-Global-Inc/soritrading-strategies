@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| — | [5787](strategies/5787/) | MultiAsset Donchian Turtle 1D | +328.69% | — | +34.00% | 120 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
+| — | [5787](strategies/5787/) | MultiAsset Donchian Turtle 1D | +301.31% | — | +30.59% | 86 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5785](strategies/5785/) | MultiAsset MR RSI-Scaled Size 1D | +84.48% | — | +16.82% | 436 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5784](strategies/5784/) | MultiAsset MR Basket Baseline 1D (champion copy) | +140.89% | — | +13.64% | 548 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5783](strategies/5783/) | MultiAsset OnChain-Mild MR 1D | +47.43% | — | +16.75% | 133 | 2026-10-28 `n1f44f2a` | 2026-10-30 |

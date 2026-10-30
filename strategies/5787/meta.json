@@ -3,10 +3,10 @@
   "name": "MultiAsset Donchian Turtle 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 27769,
-    "return": 328.69,
-    "mdd": 34,
-    "trades": 120,
+    "backtestId": 27771,
+    "return": 301.31,
+    "mdd": 30.59,
+    "trades": 86,
     "vsBuyHold": "unmeasured",
     "gapPct": 0,
     "tFrom": 1514764800,
@@ -31,9 +31,9 @@
       "firstSeen": "2026-10-28"
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "799f1c4e3bf7fc3a1c88d6bf76b4a4621818a59cad5d2b162d52e8d0128f455d"
+    "verifiedCodeSha256": "83f67ac9b49d5e4dd77b6463e3ada9e74a0e4f42b608839da0f5cc215fc43936"
   },
   "config": null,
-  "updatedAt": "2026-10-30T08:30:10.224Z",
+  "updatedAt": "2026-10-30T08:36:11.459Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
