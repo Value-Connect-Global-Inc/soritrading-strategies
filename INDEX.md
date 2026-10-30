@@ -4,8 +4,8 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 589 of 2521 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 421 of them right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 589 of 2522 right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 422 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 **Engine** is the fingerprint of the backtest engine that produced the figures, with the date it was first used on our side (not a release date). When the engine changes, published entries are not removed or rewritten — the figures stay tied to the engine shown. `—` means the backtest did not record an engine.
@@ -13,8 +13,9 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| — | [5782](strategies/5782/) | MultiAsset MR Basket Baseline 1D | +67.90% | — | +10.08% | 270 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
+| — | [5783](strategies/5783/) | MultiAsset OnChain-Mild MR 1D | +25.65% | — | +11.71% | 134 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5781](strategies/5781/) | MultiAsset OnChain-Gated MR 1D | +29.19% | — | +5.32% | 60 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
+| — | [5782](strategies/5782/) | MultiAsset MR Basket Baseline 1D | +67.90% | — | +10.08% | 270 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5780](strategies/5780/) | BTC Turtle TrendFilter 1D | +74.19% | +1273.65% | +36.27% | 20 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5779](strategies/5779/) | BTC SlowEntry FastExit 1D | -89.91% | +1273.65% | +96.51% | 581 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5778](strategies/5778/) | BTC TrendRider VIX Shield 1D | +60.99% | +1273.65% | +74.73% | 41 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
