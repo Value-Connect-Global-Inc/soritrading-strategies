@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5773](strategies/5773/) | BTC FearGreed Contrarian 4H | +1.85% | +46.67% | +35.23% | 6 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
+|  | [5773](strategies/5773/) | BTC FearGreed Contrarian 4H | +5.87% | +46.67% | +26.51% | 48 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5772](strategies/5772/) | BTC VIX Panic Contrarian 4H | +263.16% | +509.31% | +46.48% | 7 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5771](strategies/5771/) | BTC VIX Regime Trend 4H | -54.44% | +46.67% | +59.80% | 228 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5770](strategies/5770/) | BTC Funding Contrarian 4H | +15.49% | — | +4.10% | 18 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
