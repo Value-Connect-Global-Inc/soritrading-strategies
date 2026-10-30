@@ -24,9 +24,12 @@ function onUpdate(ctx) {
   if (!Number.isFinite(price) || price <= 0) return null;
 
   // 30-bar momentum for every symbol, from closed bars only (no look-ahead).
+  // Guard every market read: a symbol may not have enough history yet (warm-up) or
+  // may be unavailable — skip the whole tick until all 8 have 32 closed bars.
   const mom = {};
   for (const s of ctx.syms) {
     const m = ctx.market(s);
+    if (m == null) return null;
     const closes = m.closes;
     if (!Array.isArray(closes) || closes.length < 32) return null;
     const c1 = closes.at(-2);   // last closed bar
@@ -60,9 +63,7 @@ function onUpdate(ctx) {
   }
 
   // Flat: wait for the next weekly rebalance to reconsider the ranking.
-  const t = ctx.times.at(-1);
-  const base = Number.isFinite(t) ? (t > 1e12 ? t / 1000 : t) : 0;
-  ctx.watch([{ side: 'buy', at: base + (7 - (ctx.i % 7)) * 86400, note: 'next weekly rebalance' }]);
+  ctx.watch([{ side: 'buy', at: ctx.times.at(-1) + (7 - (ctx.i % 7)) * 86400, note: 'next weekly rebalance' }]);
 
   if (isRebalance && inTop && mom[sym] > 0) {
     // Equal-weight target: about a quarter of free cash per position, 3 positions max.
