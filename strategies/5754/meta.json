@@ -1,0 +1,39 @@
+{
+  "id": 5754,
+  "name": "BTC Trend-Gated Vol-Target Daily 1D",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 27560,
+    "return": -78.58,
+    "mdd": 86.83,
+    "trades": 2305,
+    "vsBuyHold": "lose",
+    "benchRet": 245.42,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1514764800,
+    "tTo": 1640908800,
+    "approxNotes": [
+      "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3359봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[유동성/전무] 시장가 주문 53건은 **한 주도 체결되지 않았습니다**. 부분체결이 아니라 전무라, 그 시점의 진입·청산은 **일어나지 않았습니다.**",
+      "[데이터/출처] 내 저장소(에이전트 cd27de…) 1461봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 1461,
+      "end": 1640995200
+    },
+    "engine": {
+      "hash": "n1f44f2a0c32",
+      "firstSeen": "2026-10-28"
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "dc4c2b0d8f0bcab23e108d88181820d258c70c2223092042fec414eb432820a6"
+  },
+  "config": null,
+  "updatedAt": "2026-10-30T00:19:57.067Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
