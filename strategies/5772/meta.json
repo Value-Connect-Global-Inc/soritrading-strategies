@@ -3,7 +3,7 @@
   "name": "BTC VIX Panic Contrarian 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 27672,
+    "backtestId": 27673,
     "return": 30.26,
     "mdd": 3.55,
     "trades": 4,
@@ -34,6 +34,6 @@
     "verifiedCodeSha256": "deaa3c9aa90a9b1abcbe92f1ab351259fb85e0e9194a9402ef3298e2748be5d1"
   },
   "config": null,
-  "updatedAt": "2026-10-30T05:42:48.783Z",
+  "updatedAt": "2026-10-30T05:46:00.170Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
