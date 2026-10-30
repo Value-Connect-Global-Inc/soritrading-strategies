@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| ★ | [5755](strategies/5755/) | ETH Trend Strength-Scaled Size 4H | +25.75% | -59.23% | +44.92% | 47 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
+| ★ | [5755](strategies/5755/) | ETH Trend Strength-Scaled Size 4H ‡ | +25.75% | -59.23% | +44.92% | 47 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5754](strategies/5754/) | BTC Trend-Gated Vol-Target Daily 1D | -99.97% | -59.23% | +99.97% | 5202 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5753](strategies/5753/) | BTC Trend-Gated Vol-Target Deadband 1D | -93.46% | +83.66% | +93.53% | 617 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5752](strategies/5752/) | BTC Clean Trend-Gated Vol-Target 1D | -30.99% | +1273.65% | +96.12% | 1956 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
