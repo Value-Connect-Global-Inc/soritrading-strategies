@@ -1,83 +1,73 @@
 /*
  * @coinsori-strategy v1
- * name: MultiAsset MR Basket Cooldown 1D
+ * name: Crypto Momentum Rotation Basket 1D
  * ex: binance
- * syms: BTC/USDT, ETH/USDT, SOL/USDT, XRP/USDT, BNB/USDT
+ * syms: BTC/USDT, ETH/USDT, SOL/USDT, XRP/USDT, BNB/USDT, DOGE/USDT, ADA/USDT, LINK/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Validated 5-asset defensive mean-reversion basket with a re-entry
- * cooldown. After selling an asset, it waits 10 bars before buying that asset again, so it
- * does not catch the same falling knife repeatedly in a sustained decline. Entry and exit
- * logic otherwise identical to the champion.
- * When it does NOT work: In a broad coordinated crypto bear all rising-trend gates stay flat;
- * in a straight-line melt-up the half-exit caps the winner below buy-and-hold.
+ * Why this strategy: Cross-sectional momentum — crypto's strongest assets keep their
+ * momentum for weeks, so holding the top-3 by 30-day return and rebalancing weekly
+ * captures persistent winners while cutting losers. A different family (momentum vs
+ * mean reversion) that is still diversified across 8 majors, unlike single-asset
+ * systems that lost to buy-and-hold.
+ * When it buys and sells: On each weekly rebalance it holds the 3 assets with the
+ * highest positive 30-day return, equal weight. It sells an asset when it drops out of
+ * the top-3 or its 30-day return turns negative. A 50% disaster stop exits immediately.
+ * When it does NOT work: In a choppy range-bound market, winners reverse to losers
+ * within a week and it churns through fees. In a sharp V-reversal it can sell the
+ * bottom just before the recovery.
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
   const price = ctx.price;
   if (!Number.isFinite(price) || price <= 0) return null;
-  const bb = ctx.bb(20, 2.5, 1);
-  const rsi = ctx.rsi(14, 1);
-  const sma200 = ctx.sma(200, 1);
-  const sma200prev = ctx.sma(200, 2);
-  const ema20 = ctx.ema(20, 1);
-  const atr = ctx.atr(14, 1);
-  if (bb == null || rsi == null || sma200 == null || sma200prev == null || ema20 == null || atr == null || atr <= 0) return null;
-  const uptrend = sma200 > sma200prev;
-  const lowerBand = bb.lower;
-  const keltnerLow = ema20 - 2.5 * atr;
+
+  // 30-bar momentum for every symbol, from closed bars only (no look-ahead).
+  const mom = {};
+  for (const s of ctx.syms) {
+    const m = ctx.market(s);
+    const closes = m.closes;
+    if (!Array.isArray(closes) || closes.length < 32) return null;
+    const c1 = closes.at(-2);   // last closed bar
+    const c30 = closes.at(-31); // 30 bars before it
+    if (!Number.isFinite(c1) || !Number.isFinite(c30) || c30 <= 0) return null;
+    mom[s] = c1 / c30 - 1;
+  }
+
+  const sorted = Object.keys(mom).sort((a, b) => mom[b] - mom[a]);
+  const top3 = sorted.slice(0, 3);
+  const inTop = top3.includes(sym);
+  const isRebalance = ctx.i % 7 === 0; // weekly rebalance on shared bar index
+
   const pos = ctx.pos(sym);
+  const entry = ctx.entryPx;
+
   if (pos > 0) {
-    const peak = ctx.state.peak != null ? Math.max(ctx.state.peak, price) : price;
-    ctx.state.peak = peak;
-    const entry = ctx.entryPx;
-    const halfSold = ctx.state.halfSold === true;
-    const trailMult = halfSold ? 1.5 : 2.5;
-    const trailStop = peak - trailMult * atr;
-    const profitTarget = entry != null && entry > 0 ? entry + 1.5 * atr : null;
-    const watchList = [{ side: 'sell', price: trailStop, trigger: 'below', note: 'ATR trail stop' },
-                      { side: 'sell', price: ema20, trigger: 'above', note: 'EMA20 exit' }];
-    if (!halfSold && profitTarget != null) watchList.push({ side: 'sell', price: profitTarget, trigger: 'above', note: 'half profit target' });
-    ctx.watch(watchList);
-    if (!halfSold && profitTarget != null && price >= profitTarget) {
-      ctx.state.halfSold = true;
-      const halfQty = pos / 2;
-      if (halfQty > 0) return { side: 'sell', qty: halfQty, reduceOnly: true };
+    // Disaster cap only: a 50% drop below entry means the thesis broke, exit now and
+    // never wait for the next rebalance. Wide on purpose so winners keep running.
+    if (entry != null && Number.isFinite(entry) && entry > 0) {
+      ctx.watch([{ side: 'sell', price: entry * 0.5, trigger: 'below', note: '50% disaster stop' }]);
+      if (price < entry * 0.5) {
+        return { side: 'sell', qty: pos, reduceOnly: true };
+      }
     }
-    if (price < trailStop || price > ema20) {
-      ctx.state.peak = null;
-      ctx.state.halfSold = false;
-      ctx.state.cooldownUntil = ctx.i + 10; // do not re-buy this asset for 10 bars
+    // Hold-to-rebalance: exit only on the weekly rebalance when rank or sign flipped.
+    if (isRebalance && (!inTop || mom[sym] <= 0)) {
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
     return null;
   }
-  // Re-entry cooldown: skip this asset for 10 bars after a full exit, to avoid catching
-  // the same falling knife repeatedly in a sustained decline (robustness, not fitted).
-  if (ctx.state.cooldownUntil != null && ctx.i < ctx.state.cooldownUntil) return null;
-  if (uptrend) {
-    ctx.watch([{ side: 'buy', price: lowerBand, trigger: 'below', note: 'BB lower + RSI<30' },
-              { side: 'buy', price: keltnerLow, trigger: 'below', note: 'Keltner low + RSI<40' }]);
-  }
-  const bollingerFlush = price < lowerBand && rsi < 30;
-  const keltnerPullback = price < keltnerLow && rsi < 40;
-  if (bollingerFlush) {
-    const qty = (ctx.cash / price) * 0.20;
-    if (qty <= 0) return null;
-    ctx.state.peak = price;
-    ctx.state.halfSold = false;
-    return { side: 'buy', qty: qty };
-  }
-  if (keltnerPullback) {
-    const riskBudget = 0.025 * ctx.cash;
-    let qty = riskBudget / atr;
-    const maxQty = (ctx.cash / price) * 0.20;
-    qty = Math.min(qty, maxQty);
-    if (qty <= 0) return null;
-    ctx.state.peak = price;
-    ctx.state.halfSold = false;
-    return { side: 'buy', qty: qty };
+
+  // Flat: wait for the next weekly rebalance to reconsider the ranking.
+  const t = ctx.times.at(-1);
+  const base = Number.isFinite(t) ? (t > 1e12 ? t / 1000 : t) : 0;
+  ctx.watch([{ side: 'buy', at: base + (7 - (ctx.i % 7)) * 86400, note: 'next weekly rebalance' }]);
+
+  if (isRebalance && inTop && mom[sym] > 0) {
+    // Equal-weight target: about a quarter of free cash per position, 3 positions max.
+    const qty = (ctx.cash / price) * 0.25;
+    if (qty > 0) return { side: 'buy', qty: qty };
   }
   return null;
 }
