@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5751](strategies/5751/) | BTC Yield-Curve Regime Trend 1D | -30.03% | +427.47% | +53.30% | 290 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
+|  | [5751](strategies/5751/) | BTC Yield-Curve Regime Trend 1D | -30.03% | +427.47% | +53.30% | 290 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5745](strategies/5745/) | BTC Donchian 55/30 + Disaster Stop 1D | +102.79% | +184.83% | +32.24% | 17 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5750](strategies/5750/) | BTC On-Chain Usage Trend 1D | -30.93% | +330.96% | +56.75% | 301 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | ★ | [5749](strategies/5749/) | BTC Donchian 55/30 + VIX Gate 1D | +321.64% | +268.48% | +32.98% | 11 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
