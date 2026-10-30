@@ -1,14 +1,14 @@
 /*
  * @coinsori-strategy v1
- * name: BTC EMA Pullback Mean Reversion 4H
+ * name: BTC EMA Pullback MR ATR Stop 4H
  * ex: binance
  * syms: BTC/USDT
  * interval: 4h
  * cash: 10000
  *
- * Why this strategy: In an established uptrend, sharp pullbacks to a rising short-term average are temporary — buyers step in and price reverts to the mean. The ledger shows this family (price ≤ EMA20 + RSI<35, exit above EMA20) is positive on BTC 4h with low drawdown (2.8-6.5% MDD), unlike ETH where it failed.
- * When it buys and sells: Buy when price is at or below the 20-bar EMA, RSI(14) is oversold (< 35), and the 200-bar average is rising (bull regime gate — this is what keeps it out of bear markets). Sell when price climbs back above the 20-bar EMA, or on a 15% hard stop.
- * When it does NOT work: In a bear market the trend gate keeps it mostly flat (good), but a strong bull that never pulls back under the EMA20 will be missed. Sharp V-reversals down can hit the 15% stop before the EMA20 reversion plays out.
+ * Why this strategy: Improvement of 5760 (validated winner). In an uptrend, sharp pullbacks to a rising short-term average are temporary — price reverts to the mean. Change: replace the fixed 15% hard stop with an ATR-adaptive stop (3x ATR below entry) so the stop scales with volatility instead of being blind to it.
+ * When it buys and sells: Buy when price <= EMA20 with RSI(14)<35 and 200-bar average rising (bull gate). Sell when price reverts above EMA20, or on a 3xATR trailing stop below entry.
+ * When it does NOT work: In a bear market the trend gate stays flat (good); a strong bull that never dips under EMA20 is missed; sharp V-reversals can hit the stop before reversion plays out.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -17,17 +17,17 @@ function onUpdate(ctx) {
   const rsi = ctx.rsi(14, 1);
   const sma200 = ctx.sma(200, 1);
   const sma200prev = ctx.sma(200, 2);
-  if (ema20 == null || rsi == null || sma200 == null || sma200prev == null) return null;
+  const atr = ctx.atr(14, 1);
+  if (ema20 == null || rsi == null || sma200 == null || sma200prev == null || atr == null) return null;
 
-  // --- exits while holding ---
   if (pos > 0) {
     const entryPx = ctx.entryPx;
-    const stop = (entryPx != null) ? entryPx * 0.85 : null; // 15% hard stop
+    const stop = (entryPx != null) ? entryPx - 3 * atr : null; // 3x ATR below entry, volatility-adaptive
     ctx.watch([
       { side: 'sell', price: ema20, trigger: 'above', note: 'revert to EMA20' },
-      { side: 'sell', price: stop, trigger: 'below', note: '15% hard stop' }
+      { side: 'sell', price: stop, trigger: 'below', note: '3xATR stop' }
     ]);
-    if (entryPx != null && price < entryPx * 0.85) {
+    if (stop != null && price < stop) {
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
     if (price > ema20) {
@@ -36,8 +36,7 @@ function onUpdate(ctx) {
     return null;
   }
 
-  // --- entry: oversold pullback inside a rising long-term trend ---
-  const trendUp = sma200 > sma200prev; // 200-bar average must be rising
+  const trendUp = sma200 > sma200prev;
   ctx.watch([
     { side: 'buy', price: ema20, trigger: 'below', note: 'pullback to EMA20', conds: [
       { label: 'RSI(14)', now: rsi, op: '<', ref: 35, closed: true },
