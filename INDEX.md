@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| — | [5800](strategies/5800/) | MultiAsset MR Basket Cooldown 1D ‡ | +64.12% | — | +12.37% | 178 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
+| — | [5800](strategies/5800/) | MultiAsset MR Basket Cooldown 1D | +284.75% | — | +58.98% | 420 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5799](strategies/5799/) | MultiAsset MR Basket LetWinnersRun 1D | +130.98% | — | +17.79% | 366 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5798](strategies/5798/) | MultiAsset MR Basket VolSized 1D | +128.91% | — | +19.45% | 440 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5797](strategies/5797/) | MultiAsset VolTarget Long Basket 1D ‡ | +22.77% | — | +12.37% | 170 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
