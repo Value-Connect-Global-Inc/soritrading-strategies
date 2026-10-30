@@ -3,14 +3,14 @@
   "name": "BTC Funding Contrarian 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 27660,
-    "return": -2.53,
-    "mdd": 3.65,
-    "trades": 8,
+    "backtestId": 27662,
+    "return": 12.03,
+    "mdd": 7.54,
+    "trades": 68,
     "vsBuyHold": "unmeasured",
     "gapPct": 0,
-    "tFrom": 1649332800,
-    "tTo": 1721318400,
+    "tFrom": 1577332800,
+    "tTo": 1649318400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[데이터/출처] 내 저장소(에이전트 b3a9f6…) 5000봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
@@ -20,14 +20,14 @@
       "sym": "BTC",
       "interval": "4h",
       "bars": 5000,
-      "end": 1721332800
+      "end": 1649332800
     },
     "engine": {
       "hash": "n1f44f2a0c32",
       "firstSeen": "2026-10-28"
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "66141e86afd8d51fd1ffa763552d4bc0e10ef3b026f6f8d17a8e36d40cb0628f"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "1c83e01ba7424b422a05ac59ed006c6b71f72478c604adcb9004833f551956b6"
   },
   "config": null,
   "updatedAt": "2026-10-30T05:25:21.790Z",
