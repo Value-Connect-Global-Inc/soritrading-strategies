@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 587 of 2497 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 586 of 2497 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 411 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| ★ | [5755](strategies/5755/) | ETH Trend Strength-Scaled Size 4H | -11.64% | -13.59% | +44.18% | 68 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
+|  | [5755](strategies/5755/) | ETH Trend Strength-Scaled Size 4H | +5.64% | +113.71% | +44.98% | 116 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5754](strategies/5754/) | BTC Trend-Gated Vol-Target Daily 1D | -99.97% | -59.23% | +99.97% | 5202 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5753](strategies/5753/) | BTC Trend-Gated Vol-Target Deadband 1D | -93.46% | +83.66% | +93.53% | 617 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5752](strategies/5752/) | BTC Clean Trend-Gated Vol-Target 1D | -30.99% | +1273.65% | +96.12% | 1956 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
