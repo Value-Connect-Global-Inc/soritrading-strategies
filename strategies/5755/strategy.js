@@ -8,10 +8,11 @@
  *
  * Why: the slope-gated 200-SMA exit improved all three windows (2019-21 +741%,
  * 2021-23 +26%, 2023-25 +48%) but MDD hit 65% in the bull because it holds
- * through pullbacks until the SMA turns. Adding a wide 35% trailing stop from
- * the peak cuts only the deepest crashes, not normal pullbacks.
+ * through pullbacks until the SMA turns. Adding a wide 45% trailing stop from
+ * the peak cuts only the deepest crashes (May-2021 style), not the 30-40%
+ * bounces inside a bear market.
  * When it buys and sells: long on a close above the 200-SMA, sized by
- * risk/ATR. Sells on a close below the 200-SMA while it is falling, or 35%
+ * risk/ATR. Sells on a close below the 200-SMA while it is falling, or 45%
  * below the peak since entry, or a hard 20% stop below entry.
  * When it does NOT work: in a choppy flat market the slope gate filters
  * nothing and it whipsaws; at the very top of a bull the SMA is still rising,
@@ -29,12 +30,12 @@ function onUpdate(ctx) {
     let peak = ctx.state.peak;
     if (peak == null || price > peak) peak = price;
     ctx.state.peak = peak;
-    const trail = peak * 0.65; // 35% below peak
+    const trail = peak * 0.55; // 45% below peak
     const entryPx = ctx.entryPx;
     const stop = (entryPx != null) ? entryPx * 0.80 : null;
     ctx.watch([
       { side: 'sell', price: sma, trigger: 'below', note: 'close<200d avg & slope down' },
-      { side: 'sell', price: trail, trigger: 'below', note: '35% trailing stop' },
+      { side: 'sell', price: trail, trigger: 'below', note: '45% trailing stop' },
       { side: 'sell', price: stop, trigger: 'below', note: '20% hard stop' }
     ]);
     if (c1 < sma && sma < smaPrev) return { side: 'sell', qty: pos, reduceOnly: true };
