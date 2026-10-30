@@ -3,7 +3,7 @@
   "name": "ETH Trend Strength + Slope Exit + Wide Trail 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 27598,
+    "backtestId": 27599,
     "return": 51.4,
     "mdd": 55.99,
     "trades": 68,
