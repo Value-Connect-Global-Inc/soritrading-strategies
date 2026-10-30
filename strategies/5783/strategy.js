@@ -1,21 +1,21 @@
 /*
  * @coinsori-strategy v1
- * name: MultiAsset MR SlowExit 1D
+ * name: MultiAsset MR VIXGate 1D
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, XRP/USDT, BNB/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Same defensive mean-reversion basket as the validated champion, but on a
- * different axis — exit speed. The champion sells when price closes back above the fast 20-day
- * EMA, which can cut winners short during a strong recovery. This version keeps the position
- * until price closes above the slower 50-day EMA, letting a stronger bounce run further.
+ * Why this strategy: Same defensive mean-reversion basket as the validated champion, with one
+ * macro-regime gate on a new axis. When global equity volatility (VIX) is spiking, crypto
+ * mean-reversion dips tend to keep falling (risk-off contagion), so this version skips MR
+ * entries while VIX is elevated and stays in cash until the storm passes.
  * When it buys and sells: Buy an asset when RSI is flushed (BB lower + RSI<30, or Keltner low +
- * RSI<40) and its 200-day average is rising. Sell via ATR-trailing stop (2.5 ATR below peak) or
- * when price closes back above the 50-day EMA (slower than the champion's 20-day).
+ * RSI<40), its 200-day average is rising, AND the VIX is not spiking. Sell via ATR-trailing stop
+ * (2.5 ATR below peak) or when price closes back above the 20-day EMA.
  * When it does NOT work: In a broad coordinated crypto bear all rising-trend gates stay flat; a
- * single straight-line melt-up lags buy-and-hold; the slower exit gives back more profit on a
- * V-shaped dip-and-recover that stalls just below the 50-day EMA.
+ * single straight-line melt-up lags buy-and-hold; the VIX gate can be slow to reset after a
+ * crisis, missing the first strong dip of a recovery.
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
@@ -26,16 +26,16 @@ function onUpdate(ctx) {
   const rsi = ctx.rsi(14, 1);
   const sma200 = ctx.sma(200, 1);
   const sma200prev = ctx.sma(200, 2);
-  const ema50 = ctx.ema(50, 1);
+  const ema20 = ctx.ema(20, 1);
   const atr = ctx.atr(14, 1);
-  if (bb == null || rsi == null || sma200 == null || sma200prev == null || ema50 == null || atr == null || atr <= 0) return null;
+  if (bb == null || rsi == null || sma200 == null || sma200prev == null || ema20 == null || atr == null || atr <= 0) return null;
 
   const pos = ctx.pos(sym);
   if (pos > 0) {
     const peak = ctx.state.peak != null ? Math.max(ctx.state.peak, price) : price;
     ctx.state.peak = peak;
     const trailStop = peak - 2.5 * atr;
-    if (price < trailStop || price > ema50) {
+    if (price < trailStop || price > ema20) {
       ctx.state.peak = null;
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
@@ -45,8 +45,13 @@ function onUpdate(ctx) {
   const uptrend = sma200 > sma200prev;
   if (!uptrend) return null;
 
+  // VIX regime gate: skip MR entries while global vol is elevated. 25 = VIX above its
+  // long-run median, i.e. risk-off contagion is likely to drag crypto dips lower.
+  const vix = ctx.data("base_vix");
+  if (vix != null && vix > 25) return null;
+
   const lowerBand = bb.lower;
-  const keltnerLow = ema50 - 2.5 * atr;
+  const keltnerLow = ema20 - 2.5 * atr;
 
   const bollingerFlush = price < lowerBand && rsi < 30;
   const keltnerPullback = price < keltnerLow && rsi < 40;
