@@ -1,18 +1,19 @@
 /*
  * @coinsori-strategy v1
- * name: MultiAsset MR Basket ScaledExit 1D
+ * name: MultiAsset MR Basket ScaledExit+TightTrail 1D
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, XRP/USDT, BNB/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Same validated 5-asset defensive mean-reversion basket, but with a
- * scaled exit: bank half the position at a 1.5-ATR profit target to lock gains and recycle
- * cash into the next dip, and let the other half keep riding the ATR-trailing stop.
+ * Why this strategy: Same validated 5-asset defensive mean-reversion basket with a scaled
+ * exit, plus a tighter trail after the first target is banked. Once half the position is
+ * sold at +1.5 ATR, the stop moves to roughly breakeven (1.5 ATR below peak) so the
+ * remaining half cannot turn a winning trade into a loss.
  * When it buys and sells: Buys a dip on each asset when price closes below the lower
  * Bollinger (20,2.5) with RSI<30, or below the ATR-adaptive Keltner low with RSI<40, only
- * while the 200-day average is rising. Sells half at entry + 1.5*ATR, then the rest on the
- * ATR-trail (2.5 ATR below peak) or when price closes back above the 20-day EMA.
+ * while the 200-day average is rising. Sells half at entry + 1.5*ATR, then the rest on a
+ * tighter 1.5-ATR trail (breakeven after the half sale) or when price closes above the 20-day EMA.
  * When it does NOT work: In a broad coordinated crypto bear all rising-trend gates stay
  * flat; in a straight-line melt-up the half-exit caps the winner below buy-and-hold.
  */
@@ -37,9 +38,11 @@ function onUpdate(ctx) {
   if (pos > 0) {
     const peak = ctx.state.peak != null ? Math.max(ctx.state.peak, price) : price;
     ctx.state.peak = peak;
-    const trailStop = peak - 2.5 * atr;
     const entry = ctx.entryPx;
     const halfSold = ctx.state.halfSold === true;
+    // After banking half at +1.5 ATR, tighten the trail to 1.5 ATR so the rest exits near breakeven at worst.
+    const trailMult = halfSold ? 1.5 : 2.5;
+    const trailStop = peak - trailMult * atr;
     const profitTarget = entry != null && entry > 0 ? entry + 1.5 * atr : null;
 
     const watchList = [{ side: 'sell', price: trailStop, trigger: 'below', note: 'ATR trail stop' },
