@@ -11,8 +11,7 @@
  * This is positioning data that price alone cannot see.
  * When it buys and sells: Buy when funding is very negative (crowded short) while the longer trend is up
  * (200-bar average rising) and price is below its 50-bar average (a dip within the uptrend). Sell when funding
- * climbs back above zero, or when price falls 3×ATR(14) below the peak it reached since entry (a volatility-scaled
- * trailing stop that locks in squeeze gains without exiting on normal pullbacks), or on a 12% hard stop.
+ * climbs back above zero, or on a 12% hard stop.
  * When it does NOT work: In a persistent bear market the rising-trend gate keeps it out (good). But a bull that
  * never shows negative funding is missed, and a sharp V-reversal down can hit the stop before the squeeze plays out.
  */
@@ -30,26 +29,12 @@ function onUpdate(ctx) {
 
   if (pos > 0) {
     const entryPx = ctx.entryPx;
-    const atr = ctx.atr(14, 1);
-    // Track the highest price since entry so the trailing stop can lock in squeeze gains.
-    // On a fresh/restarted position the peak starts at the entry price, not the current price.
-    const prevPeak = (ctx.state && ctx.state.peak != null) ? ctx.state.peak : ((entryPx != null) ? entryPx : price);
-    const peak = Math.max(prevPeak, price);
-    ctx.state = Object.assign({}, ctx.state, { peak: peak });
-    // Trailing stop = 3×ATR below the peak. 3 ATR is wide enough to survive normal 4h pullbacks
-    // but tight enough to bank the gain if the squeeze stalls and reverses. ATR scales with volatility
-    // so the same rule behaves sensibly in both calm and choppy regimes.
-    const trailStop = (atr != null) ? peak - 3 * atr : null;
-    const hardStop = (entryPx != null) ? entryPx * 0.88 : null; // 12% disaster stop, unchanged
+    const stop = (entryPx != null) ? entryPx * 0.88 : null; // 12% hard stop
     ctx.watch([
       { side: 'sell', price: 0, trigger: 'above', note: 'funding back above 0' },
-      { side: 'sell', price: trailStop, trigger: 'below', note: '3xATR trailing stop' },
-      { side: 'sell', price: hardStop, trigger: 'below', note: '12% hard stop' }
+      { side: 'sell', price: stop, trigger: 'below', note: '12% hard stop' }
     ]);
     if (f != null && f > 0) {
-      return { side: 'sell', qty: pos, reduceOnly: true };
-    }
-    if (trailStop != null && price < trailStop) {
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
     if (entryPx != null && price < entryPx * 0.88) {
