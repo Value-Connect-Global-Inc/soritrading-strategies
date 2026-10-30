@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5754](strategies/5754/) | BTC Trend-Gated Vol-Target Daily 1D | -78.58% | +245.42% | +86.83% | 2305 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
+|  | [5754](strategies/5754/) | BTC Trend-Gated Vol-Target Daily 1D | -99.97% | -59.23% | +99.97% | 5202 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5753](strategies/5753/) | BTC Trend-Gated Vol-Target Deadband 1D | -93.46% | +83.66% | +93.53% | 617 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5752](strategies/5752/) | BTC Clean Trend-Gated Vol-Target 1D | -30.99% | +1273.65% | +96.12% | 1956 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5751](strategies/5751/) | BTC Yield-Curve Regime Trend 1D | -39.40% | +1147.75% | +54.25% | 202 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
