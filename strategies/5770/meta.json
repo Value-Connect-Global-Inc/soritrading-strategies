@@ -3,10 +3,10 @@
   "name": "BTC Funding Contrarian 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 27648,
-    "return": 12.78,
-    "mdd": 3.77,
-    "trades": 10,
+    "backtestId": 27650,
+    "return": 8.71,
+    "mdd": 1.68,
+    "trades": 6,
     "vsBuyHold": "unmeasured",
     "gapPct": 0,
     "tFrom": 1721289600,
@@ -27,9 +27,9 @@
       "firstSeen": "2026-10-28"
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "e6d0f6fa24945124d3a70c8145c592c7f390dba55137b1068dcd05e5dc0cff22"
+    "verifiedCodeSha256": "e3a6d1624b6aed28bba8e50912af60b11e51001335c0f5d94df97b5334b80f38"
   },
   "config": null,
-  "updatedAt": "2026-10-30T04:50:12.275Z",
+  "updatedAt": "2026-10-30T05:05:26.792Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
