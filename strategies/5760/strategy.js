@@ -21,12 +21,15 @@ function onUpdate(ctx) {
 
   // --- exits while holding ---
   if (pos > 0) {
-    // hard stop 15% below entry (mean reversion trades are short-lived; a tight stop caps the tail risk)
     const entryPx = ctx.entryPx;
+    const stop = (entryPx != null) ? entryPx * 0.85 : null; // 15% hard stop
+    ctx.watch([
+      { side: 'sell', price: ema20, trigger: 'above', note: 'revert to EMA20' },
+      { side: 'sell', price: stop, trigger: 'below', note: '15% hard stop' }
+    ]);
     if (entryPx != null && price < entryPx * 0.85) {
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
-    // exit when price reverts back above the 20-bar EMA
     if (price > ema20) {
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
@@ -35,6 +38,12 @@ function onUpdate(ctx) {
 
   // --- entry: oversold pullback inside a rising long-term trend ---
   const trendUp = sma200 > sma200prev; // 200-bar average must be rising
+  ctx.watch([
+    { side: 'buy', price: ema20, trigger: 'below', note: 'pullback to EMA20', conds: [
+      { label: 'RSI(14)', now: rsi, op: '<', ref: 35, closed: true },
+      { label: 'SMA200 rising', ok: trendUp }
+    ]}
+  ]);
   if (price <= ema20 && rsi < 35 && trendUp) {
     return { side: 'buy', qty: ctx.cash / ctx.price * 0.95 };
   }
