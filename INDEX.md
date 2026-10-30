@@ -4,8 +4,8 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 589 of 2535 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 432 of them right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 589 of 2536 right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 433 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 **Engine** is the fingerprint of the backtest engine that produced the figures, with the date it was first used on our side (not a release date). When the engine changes, published entries are not removed or rewritten — the figures stay tied to the engine shown. `—` means the backtest did not record an engine.
@@ -13,6 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+| — | [5799](strategies/5799/) | MultiAsset MR Basket LetWinnersRun 1D | +130.98% | — | +17.79% | 366 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5798](strategies/5798/) | MultiAsset MR Basket VolSized 1D | +128.91% | — | +19.45% | 440 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5797](strategies/5797/) | MultiAsset VolTarget Long Basket 1D ‡ | +22.77% | — | +12.37% | 170 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5796](strategies/5796/) | MultiAsset MR Basket + RatesGate 1D | +161.58% | — | +11.25% | 435 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
