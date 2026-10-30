@@ -3,24 +3,24 @@
   "name": "BTC Funding Contrarian 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 27650,
-    "return": 8.71,
-    "mdd": 1.68,
-    "trades": 6,
+    "backtestId": 27654,
+    "return": -18.45,
+    "mdd": 21.87,
+    "trades": 8,
     "vsBuyHold": "unmeasured",
     "gapPct": 0,
-    "tFrom": 1721289600,
-    "tTo": 1793275200,
+    "tFrom": 1577332800,
+    "tTo": 1649318400,
     "approxNotes": [
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[데이터/출처] 내 저장소(에이전트 b3a9f6…) 5000봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
-      "sym": "BTC",
+      "sym": "ETH",
       "interval": "4h",
       "bars": 5000,
-      "end": 1793332800
+      "end": 1649332800
     },
     "engine": {
       "hash": "n1f44f2a0c32",
