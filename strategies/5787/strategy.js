@@ -19,9 +19,23 @@ function onUpdate(ctx) {
   if (!Number.isFinite(price) || price <= 0) return null;
 
   const atr = ctx.atr(14, 1);
-  const hi55 = ctx.high(55, 1);   // highest high of last 55 closed bars = Donchian upper
-  const lo20 = ctx.low(20, 1);    // lowest low of last 20 closed bars = Donchian lower
-  if (atr == null || atr <= 0 || hi55 == null || lo20 == null) return null;
+  if (atr == null || atr <= 0) return null;
+  if (ctx.closes.length < 60 || ctx.highs.length < 60 || ctx.lows.length < 60) return null;
+
+  // Donchian 55 upper = highest high of the last 55 CLOSED bars (index -2 down to -56)
+  let hi55 = 0;
+  for (let i = 2; i <= 56; i++) {
+    const h = ctx.highs.at(-i);
+    if (h == null) return null;
+    if (h > hi55) hi55 = h;
+  }
+  // Donchian 20 lower = lowest low of the last 20 CLOSED bars
+  let lo20 = Infinity;
+  for (let i = 2; i <= 21; i++) {
+    const l = ctx.lows.at(-i);
+    if (l == null) return null;
+    if (l < lo20) lo20 = l;
+  }
 
   const pos = ctx.pos(ctx.sym);
   const entry = ctx.entryPx;
