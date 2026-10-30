@@ -1,18 +1,20 @@
 /*
  * @coinsori-strategy v1
- * name: BTC VIX Panic Contrarian 4H
+ * name: BTC VIX Panic + Trend Pullback 4H
  * ex: binance
  * syms: BTC/USDT
  * interval: 4h
  * cash: 10000
  *
- * Why this strategy: VIX spiking into extreme fear in equities marks panic that drags crypto down
- * too. When the long-term crypto trend is still up, that panic is a dip to buy, not the end of the
- * bull. VIX is macro data that price alone cannot see.
- * When it buys and sells: Buy when VIX is in panic (>28) while the 200-bar trend is rising and price
- * is below its 50-bar average (a dip). Sell when VIX falls back to calm (<22) or on a 12% hard stop.
+ * Why this strategy: A VIX spike into extreme fear drags crypto down even when the long-term trend is
+ * up — that panic is a dip to buy. But panic events are rare, so in calm regimes it sat idle. This
+ * version adds a normal trend-pullback entry so it participates in both panic dips and ordinary dips.
+ * VIX is macro data that price alone cannot see.
+ * When it buys and sells: Buy either (1) a VIX panic (>28) dip below the 50-bar average in a rising
+ * 200-bar uptrend, or (2) a normal dip below the 50-bar average in an uptrend when VIX is calm. Sell
+ * when VIX falls back to calm (<22) after a panic entry, or on a 12% hard stop for any entry.
  * When it does NOT work: In a bear market the rising-trend gate keeps it out (good). But a bull that
- * never produces a VIX panic is missed, and a genuine crash can hit the stop before the bounce.
+ * chops sideways without pullbacks is missed, and a genuine crash can hit the stop before the bounce.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -26,29 +28,48 @@ function onUpdate(ctx) {
   if (pos > 0) {
     const entryPx = ctx.entryPx;
     const stop = (entryPx != null) ? entryPx * 0.88 : null; // 12% hard stop
+    const wasPanic = ctx.state.wasPanic === 1;
     ctx.watch([
       { side: 'sell', price: 22, trigger: 'below', note: 'VIX calm exit' },
       { side: 'sell', price: stop, trigger: 'below', note: '12% stop' }
     ]);
-    // Exit when fear normalizes back to calm (VIX<22) — the panic dip has played out.
-    if (vix != null && vix < 22) return { side: 'sell', qty: pos, reduceOnly: true };
-    if (entryPx != null && price < entryPx * 0.88) return { side: 'sell', qty: pos, reduceOnly: true };
+    // Exit panic entries when fear normalizes (VIX<22). Normal entries just ride the stop.
+    if (wasPanic && vix != null && vix < 22) {
+      return { side: 'sell', qty: pos, reduceOnly: true };
+    }
+    if (entryPx != null && price < entryPx * 0.88) {
+      return { side: 'sell', qty: pos, reduceOnly: true };
+    }
     return null;
   }
 
-  // Entry: panic (VIX>28 — still firmly in fear territory, wider band than 30 to get enough samples)
-  // + uptrend (SMA200 rising) + price below SMA50 (dip). The trend gate keeps us from buying panics
-  // inside a bear — a falling knife there.
+  // Entry: uptrend (SMA200 rising). Then either a VIX panic (>28) dip, or a calm dip below SMA50.
   const trendUp = sma200 > sma200prev;
+  if (!trendUp) return null;
+
+  const panic = (vix != null && vix > 28);
+  const dip = price < sma50;
   ctx.watch([
     { side: 'buy', price: sma50, trigger: 'below', note: 'panic dip in uptrend', conds: [
       { label: 'VIX', now: vix, op: '>', ref: 28, closed: true },
       { label: 'SMA200 rising', ok: trendUp }
+    ]},
+    { side: 'buy', price: sma50, trigger: 'below', note: 'calm pullback in uptrend', conds: [
+      { label: 'VIX', now: vix, op: '<=', ref: 28, closed: true },
+      { label: 'SMA200 rising', ok: trendUp }
     ]}
   ]);
-  if (vix != null && vix > 28 && trendUp && price < sma50) {
-    return { side: 'buy', qty: ctx.cash / ctx.price * 0.9 };
-  }
 
+  if (dip) {
+    // Panic entry is the high-conviction core; calm entry adds participation in quiet regimes.
+    if (panic) {
+      ctx.state.wasPanic = 1;
+      return { side: 'buy', qty: ctx.cash / ctx.price * 0.9 };
+    }
+    if (vix != null && vix <= 28) {
+      ctx.state.wasPanic = 0;
+      return { side: 'buy', qty: ctx.cash / ctx.price * 0.9 };
+    }
+  }
   return null;
 }

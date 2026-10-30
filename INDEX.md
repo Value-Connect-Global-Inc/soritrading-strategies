@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 590 of 2511 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 589 of 2511 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 419 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| ★ | [5772](strategies/5772/) | BTC VIX Panic Contrarian 4H | +30.26% | +22.72% | +3.55% | 4 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
+|  | [5772](strategies/5772/) | BTC VIX Panic Contrarian 4H | +375.46% | +509.31% | +53.16% | 7 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5771](strategies/5771/) | BTC VIX Regime Trend 4H | -54.44% | +46.67% | +59.80% | 228 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5770](strategies/5770/) | BTC Funding Contrarian 4H | +15.49% | — | +4.10% | 18 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5769](strategies/5769/) | Crypto Momentum Rotation CrashStop 4H ‡ | -3.05% | — | +59.21% | 50 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
