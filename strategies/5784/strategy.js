@@ -9,9 +9,7 @@
  * Why this strategy: Same validated 5-asset defensive mean-reversion basket with a scaled
  * exit, plus a tighter trail after the first target is banked. Once half the position is
  * sold at +1.5 ATR, the stop moves to roughly breakeven (1.5 ATR below peak) so the
- * remaining half cannot turn a winning trade into a loss. The initial trail is 2.0 ATR
- * (tighter than the old 2.5) so the first exit also caps per-trade loss — trade stats
- * showed average loss was the main drag on returns.
+ * remaining half cannot turn a winning trade into a loss.
  * When it buys and sells: Buys a dip on each asset when price closes below the lower
  * Bollinger (20,2.5) with RSI<30, or below the ATR-adaptive Keltner low with RSI<40, only
  * while the 200-day average is rising. Sells half at entry + 1.5*ATR, then the rest on a
@@ -42,9 +40,8 @@ function onUpdate(ctx) {
     ctx.state.peak = peak;
     const entry = ctx.entryPx;
     const halfSold = ctx.state.halfSold === true;
-    // Initial trail 2.0 ATR caps first-exit loss (avg loss was the main drag); after
-    // banking half at +1.5 ATR, tighten to 1.5 ATR so the rest exits near breakeven.
-    const trailMult = halfSold ? 1.5 : 2.0;
+    // After banking half at +1.5 ATR, tighten the trail to 1.5 ATR so the rest exits near breakeven at worst.
+    const trailMult = halfSold ? 1.5 : 2.5;
     const trailStop = peak - trailMult * atr;
     const profitTarget = entry != null && entry > 0 ? entry + 1.5 * atr : null;
 
