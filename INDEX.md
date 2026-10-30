@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| — | [5793](strategies/5793/) | MultiAsset MR Basket ConstTrail 1D | +147.42% | — | +19.32% | 436 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
+| — | [5793](strategies/5793/) | MultiAsset MR Basket ConstTrail 1D ‡ | +147.42% | — | +19.32% | 436 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5792](strategies/5792/) | MultiAsset MR Basket Baseline 1D (champion copy) | +223.32% | — | +9.10% | 461 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5791](strategies/5791/) | BTC VIX Regime 1D | +84.87% | — | +19.86% | 396 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5790](strategies/5790/) | BTC Dollar Regime 1D | +1.06% | +1117.15% | +47.14% | 46 | 2026-10-28 `n1f44f2a` | 2026-10-30 |

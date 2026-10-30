@@ -1,21 +1,19 @@
 /*
  * @coinsori-strategy v1
- * name: MultiAsset MR Basket ConstTrail 1D
+ * name: MultiAsset MR Basket Baseline 1D (champion copy)
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, XRP/USDT, BNB/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Validated 5-asset defensive mean-reversion basket with a scaled exit,
- * but keeping ONE constant 2.5-ATR trail for the whole position instead of tightening to
- * 1.5 ATR after the half-sale. Cycle 34 showed tightening the trail hurts; this tests
- * whether removing the post-half-sale tightening entirely lets winners run further.
- * When it buys and sells: Buys a dip on each asset when price closes below the lower
- * Bollinger (20,2.5) with RSI<30, or below the ATR-adaptive Keltner low with RSI<40, only
- * while the 200-day average is rising. Sells half at entry + 1.5*ATR, then the rest on a
- * constant 2.5-ATR trail or when price closes above the 20-day EMA.
- * When it does NOT work: In a broad coordinated crypto bear all rising-trend gates stay
- * flat; in a straight-line melt-up the half-exit caps the winner below buy-and-hold.
+ * Why this strategy: Validated 5-asset defensive mean-reversion basket with a scaled exit.
+ * Buys a dip on each asset when price closes below the lower Bollinger (20,2.5) with RSI<30,
+ * or below the ATR-adaptive Keltner low with RSI<40, only while the 200-day average is rising.
+ * Sells half at entry + 1.5*ATR, then the rest on a trail that tightens to 1.5 ATR after the
+ * half-sale (so the remaining half cannot turn a winner into a loss) or when price closes
+ * above the 20-day EMA.
+ * When it does NOT work: In a broad coordinated crypto bear all rising-trend gates stay flat;
+ * in a straight-line melt-up the half-exit caps the winner below buy-and-hold.
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
@@ -40,7 +38,7 @@ function onUpdate(ctx) {
     ctx.state.peak = peak;
     const entry = ctx.entryPx;
     const halfSold = ctx.state.halfSold === true;
-    const trailMult = 2.5;   // constant trail — no tightening after the half-sale
+    const trailMult = halfSold ? 1.5 : 2.5;
     const trailStop = peak - trailMult * atr;
     const profitTarget = entry != null && entry > 0 ? entry + 1.5 * atr : null;
 
