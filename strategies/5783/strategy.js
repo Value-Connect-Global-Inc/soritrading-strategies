@@ -1,23 +1,21 @@
 /*
  * @coinsori-strategy v1
- * name: MultiAsset OnChain-Mild MR 1D
+ * name: MultiAsset MR Basket Baseline 1D
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, XRP/USDT, BNB/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: The strict on-chain gate (addresses strictly rising) cut return too much —
- * it sat out recoveries that began before addresses caught up. This version uses a MILD adoption
- * filter: it only blocks mean-reversion dips when Bitcoin's active addresses are near their
- * 90-day low, i.e. clear network decay. Normal dips in stable or growing adoption pass through,
- * keeping the champion's participation while filtering the worst on-chain deterioration.
+ * Why this strategy: The 5-asset defensive mean-reversion basket is the validated champion of this
+ * job: it buys oversold dips inside uptrends across BTC, ETH, SOL, XRP and BNB, sized to a share of
+ * equity, and exits with an ATR trail. On-chain adoption gates were tested this cycle and found
+ * unreliable, so this is the clean ungated version that held up on two disjoint windows.
  * When it buys and sells: On each asset, buy when price closes below the lower Bollinger (20,2.5)
  * with RSI<30, or below the ATR-adaptive Keltner low with RSI<40, only when the 200-day average is
- * rising AND BTC active addresses are above their 90-day low. Sell via an ATR-trailing stop (2.5
- * ATR below the peak) or when price closes back above the 20-day EMA.
+ * rising. Sell via an ATR-trailing stop (2.5 ATR below the peak) or when price closes back above
+ * the 20-day EMA.
  * When it does NOT work: In a broad coordinated crypto bear all rising-trend gates stay flat; a
- * single straight-line melt-up lags buy-and-hold of that asset. Network decay can lag a price
- * bottom, so the mild gate may still let a few falling-knife dips through.
+ * single straight-line melt-up lags buy-and-hold of that asset.
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
@@ -49,20 +47,6 @@ function onUpdate(ctx) {
   }
 
   if (!uptrend) return null;
-
-  // Mild adoption gate: block only when addresses are near their 90-day low (clear decay).
-  const addr30 = ctx.data('addr_sma30');
-  if (addr30 == null) return null;
-  const hist = ctx.state.addrHist || [];
-  if (hist.length === 0 || hist[hist.length - 1] !== addr30) {
-    hist.push(addr30);
-    if (hist.length > 91) hist.shift();
-  }
-  ctx.state.addrHist = hist;
-  if (hist.length < 90) return null;
-  const min90 = Math.min.apply(null, hist.slice(0, 90));
-  const nearLow = addr30 <= min90 * 1.02; // within 2% of the 90-day low = decay, block
-  if (nearLow) return null;
 
   const bollingerFlush = price < lowerBand && rsi < 30;
   const keltnerPullback = price < keltnerLow && rsi < 40;

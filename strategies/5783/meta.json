@@ -3,7 +3,7 @@
   "name": "MultiAsset OnChain-Mild MR 1D",
   "kind": "custom",
   "verified": {
-    "backtestId": 27717,
+    "backtestId": 27718,
     "return": 25.65,
     "mdd": 11.71,
     "trades": 134,
@@ -32,9 +32,9 @@
       "firstSeen": "2026-10-28"
     },
     "codeBasis": "assumed-current",
-    "verifiedCodeSha256": "aa1fc875669d2fa75c62abf40ef1b6dc25976af7ba432a431be864fd2f92269b"
+    "verifiedCodeSha256": "3a6335e997452975d6481a51e7c0c740bf7af0133a5ade526d48e09dff83f11e"
   },
   "config": null,
-  "updatedAt": "2026-10-30T06:44:05.872Z",
+  "updatedAt": "2026-10-30T06:46:53.089Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
