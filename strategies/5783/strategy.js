@@ -1,22 +1,21 @@
 /*
  * @coinsori-strategy v1
- * name: MultiAsset MR RiskParity FundingGate 1D
+ * name: MultiAsset MR SlowExit 1D
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, XRP/USDT, BNB/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Same defensive mean-reversion basket as the validated champion, with two
- * changes on new axes: (1) risk-parity sizing — each position is sized by dollar risk budget /
- * ATR instead of a fixed 20% of cash, so the most volatile coin no longer dominates the basket;
- * (2) a funding-crowding filter — skip a dip entry when funding is strongly positive, because in
- * a crowded-long leverage regime mean-reversion dips tend to keep falling.
+ * Why this strategy: Same defensive mean-reversion basket as the validated champion, but on a
+ * different axis — exit speed. The champion sells when price closes back above the fast 20-day
+ * EMA, which can cut winners short during a strong recovery. This version keeps the position
+ * until price closes above the slower 50-day EMA, letting a stronger bounce run further.
  * When it buys and sells: Buy an asset when RSI is flushed (BB lower + RSI<30, or Keltner low +
- * RSI<40) and its 200-day average is rising, sizing by risk budget / ATR. Sell via ATR-trailing
- * stop (2.5 ATR below peak) or when price closes back above the 20-day EMA.
+ * RSI<40) and its 200-day average is rising. Sell via ATR-trailing stop (2.5 ATR below peak) or
+ * when price closes back above the 50-day EMA (slower than the champion's 20-day).
  * When it does NOT work: In a broad coordinated crypto bear all rising-trend gates stay flat; a
- * single straight-line melt-up lags buy-and-hold of that asset; the funding filter can skip the
- * best dips of a leverage-fueled rally.
+ * single straight-line melt-up lags buy-and-hold; the slower exit gives back more profit on a
+ * V-shaped dip-and-recover that stalls just below the 50-day EMA.
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
@@ -27,16 +26,16 @@ function onUpdate(ctx) {
   const rsi = ctx.rsi(14, 1);
   const sma200 = ctx.sma(200, 1);
   const sma200prev = ctx.sma(200, 2);
-  const ema20 = ctx.ema(20, 1);
+  const ema50 = ctx.ema(50, 1);
   const atr = ctx.atr(14, 1);
-  if (bb == null || rsi == null || sma200 == null || sma200prev == null || ema20 == null || atr == null || atr <= 0) return null;
+  if (bb == null || rsi == null || sma200 == null || sma200prev == null || ema50 == null || atr == null || atr <= 0) return null;
 
   const pos = ctx.pos(sym);
   if (pos > 0) {
     const peak = ctx.state.peak != null ? Math.max(ctx.state.peak, price) : price;
     ctx.state.peak = peak;
     const trailStop = peak - 2.5 * atr;
-    if (price < trailStop || price > ema20) {
+    if (price < trailStop || price > ema50) {
       ctx.state.peak = null;
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
@@ -46,23 +45,22 @@ function onUpdate(ctx) {
   const uptrend = sma200 > sma200prev;
   if (!uptrend) return null;
 
-  // Funding crowding filter: skip entries when funding is strongly positive (crowded long).
-  // 0.0005 = 0.05% per 8h funding — above this the dip is likely a leverage flush, not a value dip.
-  const funding = ctx.funding;
-  if (funding != null && funding > 0.0005) return null;
-
   const lowerBand = bb.lower;
-  const keltnerLow = ema20 - 2.5 * atr;
+  const keltnerLow = ema50 - 2.5 * atr;
 
   const bollingerFlush = price < lowerBand && rsi < 30;
   const keltnerPullback = price < keltnerLow && rsi < 40;
 
-  if (bollingerFlush || keltnerPullback) {
-    // Risk-parity: same dollar risk budget per trade regardless of the coin's volatility.
-    // 0.02 = 2% of cash at risk per trade; a 1-ATR adverse move costs ~2% of the account.
-    const riskBudget = 0.02 * ctx.cash;
+  if (bollingerFlush) {
+    const qty = (ctx.cash / price) * 0.20;
+    if (qty <= 0) return null;
+    ctx.state.peak = price;
+    return { side: 'buy', qty: qty };
+  }
+  if (keltnerPullback) {
+    const riskBudget = 0.025 * ctx.cash;
     let qty = riskBudget / atr;
-    const maxQty = (ctx.cash / price) * 0.20; // never more than 20% of cash in one coin
+    const maxQty = (ctx.cash / price) * 0.20;
     qty = Math.min(qty, maxQty);
     if (qty <= 0) return null;
     ctx.state.peak = price;
