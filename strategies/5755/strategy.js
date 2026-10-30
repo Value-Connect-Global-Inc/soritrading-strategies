@@ -1,51 +1,47 @@
 /*
  * @coinsori-strategy v1
- * name: ETH Trend Strength + Trailing Stop 4H
+ * name: ETH Trend Strength + Slope Exit 4H
  * ex: binance
  * syms: ETH/USDT
  * interval: 4h
  * cash: 10000
  *
  * Why this strategy: the validated ETH 200-SMA trend ride with trend-strength
- * position sizing (risk more per trade when price is far above the trend line).
- * The proven version only exits on a close below the 200-SMA, so a fast crash
- * rides all the way down to the trend line (MDD ~49%) and pullbacks inside a
- * rising market give back most of the gain. This adds a trailing stop at 20%
- * below the highest price since entry, so profits are locked in and drawdowns
- * are cut, while the 200-SMA exit remains as the trend backstop.
- * When it buys and sells: long on a close above the 200-SMA (fresh cross), sized
- * by risk/ATR where risk grows with trend strength. Sells on a close below the
- * 200-SMA, OR immediately if price falls 20% below its peak since entry.
- * When it does NOT work: in sideways chop the cross whipsaws; a tight trailing
- * stop exits a strong trend on a normal pullback and the re-entry is worse.
+ * position sizing. The proven version exits on every close below the 200-SMA,
+ * so in a rising market a normal pullback throws the position out and the
+ * re-entry buys back higher — it captured only +7% of a +114% bull. This
+ * version only exits on a close below the 200-SMA when the 200-SMA itself is
+ * falling (trend broken, not a pullback), so it stays long through pullbacks
+ * inside an uptrend and still gets out when the trend truly turns.
+ * When it buys and sells: long on a close above a 200-SMA that was flat/falling,
+ * sized by risk/ATR where risk grows with trend strength. Sells on a close below
+ * the 200-SMA while the 200-SMA is falling; a hard 20% stop below entry guards
+ * against a crash that gaps through the trend line.
+ * When it does NOT work: in a choppy market where the 200-SMA is flat, price
+ * whipsaws around it and the slope gate does not filter anything; at the very
+ * top of a bull the 200-SMA is still rising, so it holds through the first leg
+ * of a crash and gives back more than the old version.
  */
 function onUpdate(ctx) {
   const sma = ctx.sma(200, 1);
   const smaP = ctx.sma(200, 2);
+  const smaPrev = ctx.sma(200, 50); // 200-SMA 50 bars ago, to read its slope
   const closePrev = ctx.closes[ctx.closes.length - 2];
   const closePrev2 = ctx.closes[ctx.closes.length - 3];
-  if (sma == null || smaP == null || closePrev == null || closePrev2 == null) return null;
+  if (sma == null || smaP == null || smaPrev == null || closePrev == null || closePrev2 == null) return null;
 
   const price = ctx.price;
   const pos = ctx.position;
 
   if (pos > 0) {
     const entryPx = ctx.entryPx;
-    // trailing peak since entry, kept in ctx.state so it survives a restart
-    let peak = ctx.state.peak;
-    if (peak == null || price > peak) peak = price;
-    ctx.state.peak = peak;
-    const trailPx = peak * 0.80; // 20% trailing stop below the peak since entry
     const stopPx = (entryPx != null) ? entryPx * 0.80 : null; // hard 20% stop below entry
     ctx.watch([
-      { side: 'sell', price: sma, trigger: 'below', note: 'close<200d avg' },
-      { side: 'sell', price: trailPx, trigger: 'below', note: '20% trailing stop' },
+      { side: 'sell', price: sma, trigger: 'below', note: 'close<200d avg & slope down' },
       { side: 'sell', price: stopPx, trigger: 'below', note: '20% hard stop' }
     ]);
-    if (closePrev < sma) {
-      return { side: 'sell', qty: pos, reduceOnly: true };
-    }
-    if (price <= trailPx) {
+    // exit only when the close is below the 200-SMA AND the 200-SMA is falling
+    if (closePrev < sma && sma < smaPrev) {
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
     if (stopPx != null && price <= stopPx) {
@@ -54,7 +50,6 @@ function onUpdate(ctx) {
     return null;
   }
 
-  ctx.state.peak = null; // flat: no peak to trail
   ctx.watch([{ side: 'buy', price: sma, trigger: 'above', note: 'cross above 200d avg' }]);
 
   if (closePrev2 <= smaP && closePrev > sma) {
