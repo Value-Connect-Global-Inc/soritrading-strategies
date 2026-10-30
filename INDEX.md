@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5780](strategies/5780/) | BTC Turtle TrendFilter 1D | +79.55% | +1273.65% | +36.27% | 18 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
+|  | [5780](strategies/5780/) | BTC Turtle TrendFilter 1D ‡ | +79.55% | +1273.65% | +36.27% | 18 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5779](strategies/5779/) | BTC SlowEntry FastExit 1D | -89.91% | +1273.65% | +96.51% | 581 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5778](strategies/5778/) | BTC TrendRider VIX Shield 1D | +60.99% | +1273.65% | +74.73% | 41 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5777](strategies/5777/) | BTC Turtle Donchian Breakout 1D | -29.67% | +38.19% | +38.79% | 144 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
