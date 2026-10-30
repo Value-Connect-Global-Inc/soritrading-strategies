@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 589 of 2501 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 590 of 2502 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 412 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,6 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+| ★ | [5760](strategies/5760/) | BTC EMA Pullback Mean Reversion 4H | +24.78% | +22.72% | +9.05% | 196 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5759](strategies/5759/) | ETH VIX Regime Trend 4H | -58.66% | +2478.24% | +91.99% | 228 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5758](strategies/5758/) | ETH Funding Contrarian 4H | -21.25% | — | +23.65% | 2 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | ★ | [5757](strategies/5757/) | ETH Trend Strength + Slope Exit + Wide Trail 4H | +51.40% | -33.84% | +55.99% | 68 | 2026-10-28 `n1f44f2a` | 2026-10-30 |

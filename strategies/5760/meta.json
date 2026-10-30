@@ -1,0 +1,38 @@
+{
+  "id": 5760,
+  "name": "BTC EMA Pullback Mean Reversion 4H",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 27611,
+    "return": 24.78,
+    "mdd": 9.05,
+    "trades": 196,
+    "vsBuyHold": "win",
+    "benchRet": 22.72,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1721318400,
+    "tTo": 1793304000,
+    "approxNotes": [
+      "[데이터/출처] binance BTC 4h — 이번은 거래소에서 받은 봉입니다(20143봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 20036봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 cd27de…) 5000봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "bars": 5000,
+      "end": 1793318400
+    },
+    "engine": {
+      "hash": "n1f44f2a0c32",
+      "firstSeen": "2026-10-28"
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "e5b6c8e378b7342a6a2bd2ff9624d061a8a266bf5760a2e14d6797df3dd5badd"
+  },
+  "config": null,
+  "updatedAt": "2026-10-30T02:38:10.349Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
