@@ -3,7 +3,7 @@
   "name": "BTC EMA Pullback Mean Reversion 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 27611,
+    "backtestId": 27612,
     "return": 24.78,
     "mdd": 9.05,
     "trades": 196,
@@ -29,8 +29,8 @@
       "hash": "n1f44f2a0c32",
       "firstSeen": "2026-10-28"
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "e5b6c8e378b7342a6a2bd2ff9624d061a8a266bf5760a2e14d6797df3dd5badd"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "72db7d752377ed63b81936f52a447d681892ca8ba1c4b0b162666298f201d2c6"
   },
   "config": null,
   "updatedAt": "2026-10-30T02:41:01.204Z",
