@@ -5,7 +5,7 @@ Nothing is filtered out by return — the ones that lost money are part of the r
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
 **★ marks a strategy that out-returned buy & hold over the same window** — 586 of 2493 right now.
-`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 412 of them right now.
+`—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 411 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
 **Engine** is the fingerprint of the backtest engine that produced the figures, with the date it was first used on our side (not a release date). When the engine changes, published entries are not removed or rewritten — the figures stay tied to the engine shown. `—` means the backtest did not record an engine.
@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| — | [5751](strategies/5751/) | BTC Yield-Curve Regime Trend 1D | -31.64% | — | +81.72% | 1818 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
+|  | [5751](strategies/5751/) | BTC Yield-Curve Regime Trend 1D | -39.40% | +1147.75% | +54.25% | 202 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5745](strategies/5745/) | BTC Donchian 55/30 + Disaster Stop 1D | +102.79% | +184.83% | +32.24% | 17 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 |  | [5750](strategies/5750/) | BTC On-Chain Usage Trend 1D | -30.93% | +330.96% | +56.75% | 301 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
 | ★ | [5749](strategies/5749/) | BTC Donchian 55/30 + VIX Gate 1D | +321.64% | +268.48% | +32.98% | 11 | 2026-10-28 `n1f44f2a` | 2026-10-29 |
