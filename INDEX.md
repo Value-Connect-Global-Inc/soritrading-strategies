@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 589 of 2514 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 589 of 2515 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 419 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,6 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+|  | [5776](strategies/5776/) | BTC VolTarget Trend Trail 4H | -52.03% | +509.31% | +54.01% | 421 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5775](strategies/5775/) | BTC DXY Liquidity Trend 4H | -16.39% | +22.72% | +20.05% | 34 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5774](strategies/5774/) | BTC OnChain Adoption Trend 4H | -38.94% | +509.31% | +78.99% | 157 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5773](strategies/5773/) | BTC FearGreed Contrarian 4H | +5.87% | +46.67% | +26.51% | 48 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
