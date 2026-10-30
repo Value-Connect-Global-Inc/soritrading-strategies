@@ -61,14 +61,13 @@ function onUpdate(ctx) {
   ]);
 
   if (dip) {
-    // Panic entry is the high-conviction core; calm entry adds participation in quiet regimes.
     if (panic) {
       ctx.state.wasPanic = 1;
-      return { side: 'buy', qty: ctx.cash / ctx.price * 0.9 };
+      return { side: 'buy', qty: ctx.cash / ctx.price * 0.9 }; // high conviction, full size
     }
     if (vix != null && vix <= 28) {
       ctx.state.wasPanic = 0;
-      return { side: 'buy', qty: ctx.cash / ctx.price * 0.9 };
+      return { side: 'buy', qty: ctx.cash / ctx.price * 0.5 }; // lower conviction, half size
     }
   }
   return null;
