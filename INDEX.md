@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5759](strategies/5759/) | ETH VIX Regime Trend 4H | -100.00% | +2478.24% | +100.00% | 3404 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
+|  | [5759](strategies/5759/) | ETH VIX Regime Trend 4H | -58.66% | +2478.24% | +91.99% | 228 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5758](strategies/5758/) | ETH Funding Contrarian 4H | -21.25% | — | +23.65% | 2 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | ★ | [5757](strategies/5757/) | ETH Trend Strength + Slope Exit + Wide Trail 4H | +51.40% | -33.84% | +55.99% | 68 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | ★ | [5755](strategies/5755/) | ETH Trend Strength-Scaled Size 4H ‡ | +63.05% | -32.56% | +55.95% | 44 | 2026-10-28 `n1f44f2a` | 2026-10-30 |

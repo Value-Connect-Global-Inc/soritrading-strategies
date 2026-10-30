@@ -1,22 +1,21 @@
 /*
  * @coinsori-strategy v1
- * name: ETH VIX Regime Trend 4H
+ * name: ETH VIX Donchian Trend 4H
  * ex: binance
  * syms: ETH/USDT
  * interval: 4h
  * cash: 10000
  *
- * Why this strategy: Crypto is a risk asset and tends to fall when US equity volatility (VIX) spikes. VIX is a regime filter that price alone cannot see — it tells us whether the market is in risk-on (calm VIX) or risk-off (panic VIX) mode.
- * When it buys and sells: Buy when VIX is calm (< 25) and ETH is above its 200-bar average (bull regime). Sell when VIX spikes above 30 (risk-off), when ETH falls below its 50-bar average (trend broke), or on a 25% trailing/hard stop.
- * When it does NOT work: VIX is a US-stock fear gauge with a 2-day lag — it is not a perfect crypto risk meter. In a slow grind-down where VIX stays moderate (< 30) but ETH keeps falling, the trend exit saves us but the trailing stop takes the loss. It also misses early bull markets where VIX is still elevated.
+ * Why this strategy: Crypto is a risk asset and tends to fall when US equity volatility (VIX) spikes. VIX is a regime filter price alone cannot see — it separates risk-on (calm VIX) from risk-off (panic VIX). A 55-bar Donchian breakout catches genuine up-moves, and the calm-VIX gate keeps us out of panic-driven whipsaws.
+ * When it buys and sells: Buy when VIX is calm (< 28) and price breaks above the highest high of the last 55 bars. Sell only on a 25% trailing stop or 25% hard stop (no tight trend exit that whipsaws).
+ * When it does NOT work: VIX is a US-stock fear gauge with a 2-day lag, not a perfect crypto risk meter. In a slow grind-down where VIX stays calm but ETH slowly falls, the trailing stop takes the loss. It also misses very early bull markets while VIX is still elevated.
  */
 function onUpdate(ctx) {
   const vix = ctx.data('base_vix');
   const price = ctx.price;
   const pos = ctx.position;
-  const sma200 = ctx.sma(200, 1);
-  const sma50 = ctx.sma(50, 1);
-  if (vix == null || sma200 == null || sma50 == null) return null;
+  const dc = ctx.donchian(55, 1);
+  if (vix == null || dc == null) return null;
 
   const st = ctx.state || {};
   const entryPx = ctx.entryPx;
@@ -31,7 +30,7 @@ function onUpdate(ctx) {
     if (entryPx != null && price < entryPx * 0.75) {
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
-    // trailing stop 25% below peak
+    // trailing stop 25% below the highest price since entry
     if (price < peak * 0.75) {
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
@@ -39,15 +38,12 @@ function onUpdate(ctx) {
     if (vix > 30) {
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
-    // trend broke: price below 50-bar average -> get out
-    if (price < sma50) {
-      return { side: 'sell', qty: pos, reduceOnly: true };
-    }
     return null;
   }
 
-  // --- entry: calm VIX + bull trend ---
-  if (vix < 25 && price > sma200) {
+  // --- entry: calm VIX + 55-bar Donchian breakout ---
+  // 28: VIX above ~28 signals real market stress; below it is normal risk-on
+  if (vix < 28 && price > dc.upper) {
     return { side: 'buy', qty: ctx.cash / ctx.price * 0.95 };
   }
 
