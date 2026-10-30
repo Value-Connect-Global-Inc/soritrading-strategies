@@ -1,14 +1,14 @@
 /*
  * @coinsori-strategy v1
- * name: BTC EMA Pullback MR ScaleOut 4H
+ * name: BTC EMA Pullback Mean Reversion 4H
  * ex: binance
  * syms: BTC/USDT
  * interval: 4h
  * cash: 10000
  *
- * Why this strategy: Improvement of 5760 (validated winner). In an uptrend, pullbacks to a rising short-term average are temporary — price reverts to the mean. Change: scale out half at the EMA20 reversion (lock the mean-reversion gain) and let the other half ride with a wider trailing stop so winners can run further.
- * When it buys and sells: Buy when price <= EMA20 with RSI(14)<35 and 200-bar average rising (bull gate). Sell half when price reverts above EMA20; trail the rest with a stop at 4xATR below the highest close since entry, or 15% hard stop.
- * When it does NOT work: In a bear market the trend gate stays flat (good); a strong bull that never dips under EMA20 is missed; sharp V-reversals can hit the stop before reversion plays out.
+ * Why this strategy: In an established uptrend, sharp pullbacks to a rising short-term average are temporary — buyers step in and price reverts to the mean. This family is positive on BTC 4h with low drawdown; the 200-bar rising average gate keeps it out of bear markets.
+ * When it buys and sells: Buy when price is at or below the 20-bar EMA, RSI(14) < 35, and the 200-bar average is rising (bull regime gate). Sell when price climbs back above the 20-bar EMA, or on a 15% hard stop.
+ * When it does NOT work: In a bear market the trend gate keeps it mostly flat (good), but a strong bull that never pulls back under the EMA20 will be missed. Sharp V-reversals down can hit the 15% stop before the EMA20 reversion plays out.
  */
 function onUpdate(ctx) {
   const price = ctx.price;
@@ -17,34 +17,20 @@ function onUpdate(ctx) {
   const rsi = ctx.rsi(14, 1);
   const sma200 = ctx.sma(200, 1);
   const sma200prev = ctx.sma(200, 2);
-  const atr = ctx.atr(14, 1);
-  if (ema20 == null || rsi == null || sma200 == null || sma200prev == null || atr == null) return null;
+  if (ema20 == null || rsi == null || sma200 == null || sma200prev == null) return null;
 
   if (pos > 0) {
     const entryPx = ctx.entryPx;
-    // track highest close since entry for the trailing portion
-    const state = ctx.state;
-    const hi = (state.hi != null && state.hi > price) ? state.hi : price;
-    ctx.state = { ...state, hi: hi };
-    const trail = (atr != null) ? hi - 4 * atr : null; // 4xATR trailing stop below highest close
-    const hard = (entryPx != null) ? entryPx * 0.85 : null; // 15% hard stop on the whole position
+    const stop = (entryPx != null) ? entryPx * 0.85 : null; // 15% hard stop
     ctx.watch([
-      { side: 'sell', price: ema20, trigger: 'above', note: 'revert to EMA20 (sell half)' },
-      { side: 'sell', price: trail, trigger: 'below', note: '4xATR trail' },
-      { side: 'sell', price: hard, trigger: 'below', note: '15% hard stop' }
+      { side: 'sell', price: ema20, trigger: 'above', note: 'revert to EMA20' },
+      { side: 'sell', price: stop, trigger: 'below', note: '15% hard stop' }
     ]);
-    // hard stop always exits everything
-    if (hard != null && price < hard) {
+    if (entryPx != null && price < entryPx * 0.85) {
       return { side: 'sell', qty: pos, reduceOnly: true };
     }
-    // trailing stop exits everything too
-    if (trail != null && price < trail) {
-      return { side: 'sell', qty: pos, reduceOnly: true };
-    }
-    // mean reversion: sell half at EMA20, keep the rest for the trail
     if (price > ema20) {
-      const half = pos * 0.5;
-      return { side: 'sell', qty: half, reduceOnly: true };
+      return { side: 'sell', qty: pos, reduceOnly: true };
     }
     return null;
   }
@@ -57,7 +43,6 @@ function onUpdate(ctx) {
     ]}
   ]);
   if (price <= ema20 && rsi < 35 && trendUp) {
-    ctx.state = {}; // reset trail tracker on new entry
     return { side: 'buy', qty: ctx.cash / ctx.price * 0.95 };
   }
 
