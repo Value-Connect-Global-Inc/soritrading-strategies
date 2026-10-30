@@ -3,9 +3,9 @@
   "name": "ETH Trend Strength-Scaled Size 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 27588,
-    "return": 11.1,
-    "mdd": 47.35,
+    "backtestId": 27591,
+    "return": 25.75,
+    "mdd": 44.92,
     "trades": 47,
     "vsBuyHold": "win",
     "benchRet": -59.23,
