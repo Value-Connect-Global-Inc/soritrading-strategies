@@ -3,35 +3,35 @@
   "name": "MultiAsset MR Basket Baseline 1D (champion copy)",
   "kind": "custom",
   "verified": {
-    "backtestId": 27741,
-    "return": 35.65,
-    "mdd": 16.75,
-    "trades": 110,
+    "backtestId": 27742,
+    "return": 379.47,
+    "mdd": 13.64,
+    "trades": 820,
     "vsBuyHold": "unmeasured",
     "gapPct": 0,
-    "tFrom": 1502928000,
-    "tTo": 1620345600,
+    "tFrom": 1620432000,
+    "tTo": 1792972800,
     "approxNotes": [
       "[데이터/출처] binance BTC 1d — 이번은 거래소에서 받은 봉입니다(3359봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
       "[데이터/출처] binance ETH 1d — 이번은 거래소에서 받은 봉입니다(3359봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 3343봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
       "[데이터/출처] binance SOL 1d — 이번은 거래소에서 받은 봉입니다(2269봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 2253봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
-      "[데이터/출처] 내 저장소(에이전트 cd27de…) 5369봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다",
+      "[데이터/출처] 내 저장소(에이전트 cd27de…) 9990봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다",
       "[생존 편향] 이 유니버스는 **지금 거래되는 종목**만입니다. 구간 중(또는 그 전에) 상장폐지된 종목은 **처음부터 들어 있지 않습니다** — 망한 종목이 빠져 있어 수익률이 **실제보다 좋게** 나옵니다. 스캐너·랭킹 전략일수록 그 차이가 큽니다."
     ],
     "spec": {
       "ex": "binance",
       "sym": "BTC",
       "interval": "1d",
-      "bars": 1360,
-      "end": 1620432000,
+      "bars": 1998,
+      "end": 1793059200,
       "syms": 5
     },
     "engine": {
       "hash": "n1f44f2a0c32",
       "firstSeen": "2026-10-28"
     },
-    "codeBasis": "previous-code",
-    "verifiedCodeSha256": "e291590550250a981eaf3bea0af1205bde1f55c8b7bb734060def5714350a028"
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "e69df8c24cba95c5f7c672a70c606bb851b8634a54b4c295cf9d26ecd9e918e5"
   },
   "config": null,
   "updatedAt": "2026-10-30T07:39:13.193Z",
