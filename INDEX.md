@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-|  | [5791](strategies/5791/) | BTC VIX Regime 1D | +13.77% | +83.66% | +14.65% | 50 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
+|  | [5791](strategies/5791/) | BTC VIX Regime 1D ‡ | +13.77% | +83.66% | +14.65% | 50 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5790](strategies/5790/) | BTC Dollar Regime 1D | +1.06% | +1117.15% | +47.14% | 46 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5789](strategies/5789/) | BTC FearGreed Contrarian 1D | -10.33% | +1117.15% | +11.40% | 9 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5787](strategies/5787/) | MultiAsset Donchian Turtle 1D | +301.31% | — | +30.59% | 86 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
