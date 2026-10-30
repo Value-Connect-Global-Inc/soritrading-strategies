@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| — | [5796](strategies/5796/) | MultiAsset MR Basket + RatesGate 1D | +11.29% | — | +24.38% | 285 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
+| — | [5796](strategies/5796/) | MultiAsset MR Basket + RatesGate 1D | +161.58% | — | +11.25% | 435 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5795](strategies/5795/) | MultiAsset MR Basket Champion 1D | +65.03% | — | +21.23% | 400 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5792](strategies/5792/) | MultiAsset MR Basket Baseline 1D (champion copy) | +223.32% | — | +9.10% | 461 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 |  | [5794](strategies/5794/) | BTC OnChain Adoption 1D | -7.06% | +1117.15% | +48.14% | 72 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
