@@ -1,0 +1,35 @@
+{
+  "id": 5758,
+  "name": "ETH Funding Contrarian 4H",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 27602,
+    "return": -21.25,
+    "mdd": 23.65,
+    "trades": 2,
+    "vsBuyHold": "unmeasured",
+    "gapPct": 0,
+    "tFrom": 1649318400,
+    "tTo": 1721304000,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 b3a9f6…) 5000봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h",
+      "bars": 5000,
+      "end": 1721318400
+    },
+    "engine": {
+      "hash": "n1f44f2a0c32",
+      "firstSeen": "2026-10-28"
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "a11a0d63fdf79171832a1d393a12ca2f306236707472a603071f8adf724bfd00"
+  },
+  "config": null,
+  "updatedAt": "2026-10-30T02:17:02.436Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
