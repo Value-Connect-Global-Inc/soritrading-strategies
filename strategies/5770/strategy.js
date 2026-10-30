@@ -44,15 +44,16 @@ function onUpdate(ctx) {
   }
 
   // Entry: extreme negative funding (crowded short) + price below SMA50 (dip) + SMA200 rising (uptrend gate).
+  // Threshold -0.0005% per 8h = clear short-crowding, common enough to trade but rare enough to be meaningful.
   // The trend gate keeps us out of bear markets where negative funding is a falling knife, not a squeeze setup.
   const trendUp = sma200 > sma200prev;
   ctx.watch([
     { side: 'buy', price: sma50, trigger: 'below', note: 'dip + extreme short funding', conds: [
-      { label: 'funding', now: f, op: '<', ref: -0.0001, closed: true },
+      { label: 'funding', now: f, op: '<', ref: -0.00005, closed: true },
       { label: 'SMA200 rising', ok: trendUp }
     ]}
   ]);
-  if (f != null && f < -0.0001 && price < sma50 && trendUp) {
+  if (f != null && f < -0.00005 && price < sma50 && trendUp) {
     return { side: 'buy', qty: ctx.cash / ctx.price * 0.9 };
   }
 

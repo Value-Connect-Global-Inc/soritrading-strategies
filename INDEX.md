@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| — | [5770](strategies/5770/) | BTC Funding Contrarian 4H | -18.45% | — | +21.87% | 8 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
+| — | [5770](strategies/5770/) | BTC Funding Contrarian 4H ‡ | -18.45% | — | +21.87% | 8 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5769](strategies/5769/) | Crypto Momentum Rotation CrashStop 4H ‡ | -3.05% | — | +59.21% | 50 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5768](strategies/5768/) | Crypto Momentum Rotation FastExit 4H | +102.65% | — | +50.15% | 53 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5767](strategies/5767/) | Crypto Momentum Rotation Top2 4H | +30.65% | — | +59.62% | 50 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
