@@ -1,20 +1,20 @@
 /*
  * @coinsori-strategy v1
- * name: MultiAsset MR Basket Baseline 1D
+ * name: MultiAsset MR Basket ScaledExit 1D
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, XRP/USDT, BNB/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Baseline copy of the validated 5-asset defensive mean-reversion basket
- * (ungated). Used as the control to measure whether the on-chain adoption gate in the gated
- * version adds value. Same recipe, no adoption filter.
- * When it buys and sells: On each asset, buy when price closes below the lower Bollinger (20,2.5)
- * with RSI<30, or below the ATR-adaptive Keltner low with RSI<40, only when the 200-day average is
- * rising. Sell via an ATR-trailing stop (2.5 ATR below the peak) or when price closes back above
- * the 20-day EMA.
- * When it does NOT work: In a broad coordinated crypto bear all rising-trend gates stay flat; a
- * single straight-line melt-up lags buy-and-hold of that asset.
+ * Why this strategy: Same validated 5-asset defensive mean-reversion basket, but with a
+ * scaled exit: bank half the position at a 1.5-ATR profit target to lock gains and recycle
+ * cash into the next dip, and let the other half keep riding the ATR-trailing stop.
+ * When it buys and sells: Buys a dip on each asset when price closes below the lower
+ * Bollinger (20,2.5) with RSI<30, or below the ATR-adaptive Keltner low with RSI<40, only
+ * while the 200-day average is rising. Sells half at entry + 1.5*ATR, then the rest on the
+ * ATR-trail (2.5 ATR below peak) or when price closes back above the 20-day EMA.
+ * When it does NOT work: In a broad coordinated crypto bear all rising-trend gates stay
+ * flat; in a straight-line melt-up the half-exit caps the winner below buy-and-hold.
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
@@ -38,14 +38,36 @@ function onUpdate(ctx) {
     const peak = ctx.state.peak != null ? Math.max(ctx.state.peak, price) : price;
     ctx.state.peak = peak;
     const trailStop = peak - 2.5 * atr;
+    const entry = ctx.entryPx;
+    const halfSold = ctx.state.halfSold === true;
+    const profitTarget = entry != null && entry > 0 ? entry + 1.5 * atr : null;
+
+    const watchList = [{ side: 'sell', price: trailStop, trigger: 'below', note: 'ATR trail stop' },
+                      { side: 'sell', price: ema20, trigger: 'above', note: 'EMA20 exit' }];
+    if (!halfSold && profitTarget != null) {
+      watchList.push({ side: 'sell', price: profitTarget, trigger: 'above', note: 'half profit target' });
+    }
+    ctx.watch(watchList);
+
+    // Partial profit: bank half when up 1.5 ATR from entry (a solid MR recovery), keep the rest on the trail.
+    if (!halfSold && profitTarget != null && price >= profitTarget) {
+      ctx.state.halfSold = true;
+      const halfQty = pos / 2;
+      if (halfQty > 0) return { side: 'sell', qty: halfQty, reduceOnly: true };
+    }
+
     if (price < trailStop || price > ema20) {
       ctx.state.peak = null;
-      return { side: 'sell', qty: pos };
+      ctx.state.halfSold = false;
+      return { side: 'sell', qty: pos, reduceOnly: true };
     }
     return null;
   }
 
-  if (!uptrend) return null;
+  if (uptrend) {
+    ctx.watch([{ side: 'buy', price: lowerBand, trigger: 'below', note: 'BB lower + RSI<30' },
+              { side: 'buy', price: keltnerLow, trigger: 'below', note: 'Keltner low + RSI<40' }]);
+  }
 
   const bollingerFlush = price < lowerBand && rsi < 30;
   const keltnerPullback = price < keltnerLow && rsi < 40;
@@ -54,6 +76,7 @@ function onUpdate(ctx) {
     const qty = (ctx.cash / price) * 0.20;
     if (qty <= 0) return null;
     ctx.state.peak = price;
+    ctx.state.halfSold = false;
     return { side: 'buy', qty: qty };
   }
   if (keltnerPullback) {
@@ -63,6 +86,7 @@ function onUpdate(ctx) {
     qty = Math.min(qty, maxQty);
     if (qty <= 0) return null;
     ctx.state.peak = price;
+    ctx.state.halfSold = false;
     return { side: 'buy', qty: qty };
   }
   return null;
