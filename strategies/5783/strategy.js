@@ -1,21 +1,22 @@
 /*
  * @coinsori-strategy v1
- * name: MultiAsset MR Basket Baseline 1D
+ * name: MultiAsset MR RiskParity FundingGate 1D
  * ex: binance
  * syms: BTC/USDT, ETH/USDT, SOL/USDT, XRP/USDT, BNB/USDT
  * interval: 1d
  * cash: 10000
  *
- * Why this strategy: The 5-asset defensive mean-reversion basket is the validated champion of this
- * job: it buys oversold dips inside uptrends across BTC, ETH, SOL, XRP and BNB, sized to a share of
- * equity, and exits with an ATR trail. On-chain adoption gates were tested this cycle and found
- * unreliable, so this is the clean ungated version that held up on two disjoint windows.
- * When it buys and sells: On each asset, buy when price closes below the lower Bollinger (20,2.5)
- * with RSI<30, or below the ATR-adaptive Keltner low with RSI<40, only when the 200-day average is
- * rising. Sell via an ATR-trailing stop (2.5 ATR below the peak) or when price closes back above
- * the 20-day EMA.
+ * Why this strategy: Same defensive mean-reversion basket as the validated champion, with two
+ * changes on new axes: (1) risk-parity sizing — each position is sized by dollar risk budget /
+ * ATR instead of a fixed 20% of cash, so the most volatile coin no longer dominates the basket;
+ * (2) a funding-crowding filter — skip a dip entry when funding is strongly positive, because in
+ * a crowded-long leverage regime mean-reversion dips tend to keep falling.
+ * When it buys and sells: Buy an asset when RSI is flushed (BB lower + RSI<30, or Keltner low +
+ * RSI<40) and its 200-day average is rising, sizing by risk budget / ATR. Sell via ATR-trailing
+ * stop (2.5 ATR below peak) or when price closes back above the 20-day EMA.
  * When it does NOT work: In a broad coordinated crypto bear all rising-trend gates stay flat; a
- * single straight-line melt-up lags buy-and-hold of that asset.
+ * single straight-line melt-up lags buy-and-hold of that asset; the funding filter can skip the
+ * best dips of a leverage-fueled rally.
  */
 function onUpdate(ctx) {
   const sym = ctx.sym;
@@ -30,10 +31,6 @@ function onUpdate(ctx) {
   const atr = ctx.atr(14, 1);
   if (bb == null || rsi == null || sma200 == null || sma200prev == null || ema20 == null || atr == null || atr <= 0) return null;
 
-  const uptrend = sma200 > sma200prev;
-  const lowerBand = bb.lower;
-  const keltnerLow = ema20 - 2.5 * atr;
-
   const pos = ctx.pos(sym);
   if (pos > 0) {
     const peak = ctx.state.peak != null ? Math.max(ctx.state.peak, price) : price;
@@ -41,26 +38,31 @@ function onUpdate(ctx) {
     const trailStop = peak - 2.5 * atr;
     if (price < trailStop || price > ema20) {
       ctx.state.peak = null;
-      return { side: 'sell', qty: pos };
+      return { side: 'sell', qty: pos, reduceOnly: true };
     }
     return null;
   }
 
+  const uptrend = sma200 > sma200prev;
   if (!uptrend) return null;
+
+  // Funding crowding filter: skip entries when funding is strongly positive (crowded long).
+  // 0.0005 = 0.05% per 8h funding — above this the dip is likely a leverage flush, not a value dip.
+  const funding = ctx.funding;
+  if (funding != null && funding > 0.0005) return null;
+
+  const lowerBand = bb.lower;
+  const keltnerLow = ema20 - 2.5 * atr;
 
   const bollingerFlush = price < lowerBand && rsi < 30;
   const keltnerPullback = price < keltnerLow && rsi < 40;
 
-  if (bollingerFlush) {
-    const qty = (ctx.cash / price) * 0.20;
-    if (qty <= 0) return null;
-    ctx.state.peak = price;
-    return { side: 'buy', qty: qty };
-  }
-  if (keltnerPullback) {
-    const riskBudget = 0.025 * ctx.cash;
+  if (bollingerFlush || keltnerPullback) {
+    // Risk-parity: same dollar risk budget per trade regardless of the coin's volatility.
+    // 0.02 = 2% of cash at risk per trade; a 1-ATR adverse move costs ~2% of the account.
+    const riskBudget = 0.02 * ctx.cash;
     let qty = riskBudget / atr;
-    const maxQty = (ctx.cash / price) * 0.20;
+    const maxQty = (ctx.cash / price) * 0.20; // never more than 20% of cash in one coin
     qty = Math.min(qty, maxQty);
     if (qty <= 0) return null;
     ctx.state.peak = price;
