@@ -2552,3 +2552,82 @@ Every figure comes from the last verifying backtest at publish time. These are p
 | — | [383](strategies/383/) | RSI 기반 매매 전략 | +16.15% | — | +16.71% | 27 | — | 2026-09-09 |
 | — | [382](strategies/382/) | RSI와 SMA 기반 전략 | -19.02% | — | +23.82% | 4 | — | 2026-09-09 |
 | — | [381](strategies/381/) | 이동평균교차전략 | -21.82% | — | +36.09% | 70 | — | 2026-09-08 |
+
+## Auto-development runs
+
+Each finished auto-development job has a ledger in `runs/` listing **every** strategy it tried — failures included — with per-window figures and the promotion verdict.
+Verified drafts that were not promoted keep their code in `candidates/` — 0 right now.
+
+| Run | Model | Finished | Tried | Verified | Promoted | Candidates |
+|---:|---|---|---:|---:|---:|---:|
+| [78](runs/78.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-11-07 | 0 | 0 | 0 | 0 |
+| [73](runs/73.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-10-30 | 116 | 102 | 0 | 0 |
+| [72](runs/72.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-10-27 | 128 | 102 | 0 | 0 |
+| [71](runs/71.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-10-26 | 250 | 0 | 0 | 0 |
+| [70](runs/70.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-10-18 | 521 | 334 | 0 | 0 |
+| [69](runs/69.md) | gemini / gemini-3.5-flash-lite | 2026-10-11 | 91 | 84 | 0 | 0 |
+| [67](runs/67.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-10-14 | 326 | 273 | 0 | 0 |
+| [66](runs/66.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-10-10 | 28 | 23 | 0 | 0 |
+| [65](runs/65.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-10-09 | 1 | 0 | 0 | 0 |
+| [64](runs/64.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-10-09 | 89 | 74 | 0 | 0 |
+| [63](runs/63.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-10-07 | 1 | 1 | 0 | 0 |
+| [62](runs/62.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-10-05 | 10 | 10 | 0 | 0 |
+| [61](runs/61.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-10-05 | 0 | 0 | 0 | 0 |
+| [60](runs/60.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-10-04 | 3 | 3 | 0 | 0 |
+| [59](runs/59.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-10-04 | 3 | 3 | 0 | 0 |
+| [58](runs/58.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-10-03 | 10 | 9 | 0 | 0 |
+| [57](runs/57.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-10-02 | 1 | 1 | 0 | 0 |
+| [56](runs/56.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-10-02 | 7 | 7 | 0 | 0 |
+| [55](runs/55.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-09-30 | 0 | 0 | 0 | 0 |
+| [54](runs/54.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-09-30 | 98 | 87 | 0 | 0 |
+| [53](runs/53.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-09-28 | 19 | 17 | 0 | 0 |
+| [52](runs/52.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-09-28 | 28 | 25 | 0 | 0 |
+| [51](runs/51.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-09-27 | 486 | 426 | 0 | 0 |
+| [50](runs/50.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-09-24 | 72 | 65 | 0 | 0 |
+| [49](runs/49.md) | gonka / zai-org/GLM-5.3-Flash | 2026-09-22 | 1 | 1 | 0 | 0 |
+| [48](runs/48.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-09-22 | 1 | 1 | 0 | 0 |
+| [47](runs/47.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-09-22 | 37 | 31 | 0 | 0 |
+| [46](runs/46.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-09-21 | 5 | 3 | 0 | 0 |
+| [45](runs/45.md) | gonka / zai-org/GLM-5.3-Flash | 2026-09-21 | 3 | 3 | 0 | 0 |
+| [44](runs/44.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-09-20 | 156 | 136 | 0 | 0 |
+| [43](runs/43.md) | gonka / MiniMaxAI/MiniMax-M2.7 | 2026-09-20 | 501 | 243 | 0 | 0 |
+| [42](runs/42.md) | gonka / MiniMaxAI/MiniMax-M2.7 | 2026-09-19 | 454 | 220 | 0 | 0 |
+| [41](runs/41.md) | gonka / MiniMaxAI/MiniMax-M2.7 | 2026-09-18 | 15 | 12 | 0 | 0 |
+| [40](runs/40.md) | gonka / MiniMaxAI/MiniMax-M2.7 | 2026-09-18 | 1 | 0 | 0 | 0 |
+| [39](runs/39.md) | gonka / MiniMaxAI/MiniMax-M2.7 | 2026-09-18 | 2 | 1 | 0 | 0 |
+| [38](runs/38.md) | gonka / MiniMaxAI/MiniMax-M2.7 | 2026-09-18 | 53 | 37 | 0 | 0 |
+| [37](runs/37.md) | gonka / MiniMaxAI/MiniMax-M2.7 | 2026-09-18 | 22 | 18 | 0 | 0 |
+| [36](runs/36.md) | gonka / MiniMaxAI/MiniMax-M2.7 | 2026-09-17 | 31 | 15 | 0 | 0 |
+| [35](runs/35.md) | gonka / MiniMaxAI/MiniMax-M2.7 | 2026-09-17 | 13 | 9 | 0 | 0 |
+| [34](runs/34.md) | gonka / MiniMaxAI/MiniMax-M2.7 | 2026-09-17 | 2 | 1 | 0 | 0 |
+| [33](runs/33.md) | local / qwen3-coder:30b | 2026-09-16 | 21 | 4 | 0 | 0 |
+| [32](runs/32.md) | local / qwen3-coder:30b | 2026-09-16 | 15 | 12 | 0 | 0 |
+| [31](runs/31.md) | local / qwen3-coder:30b | 2026-09-16 | 151 | 112 | 0 | 0 |
+| [30](runs/30.md) | local / qwen3-coder:30b | 2026-09-11 | 313 | 189 | 0 | 0 |
+| [29](runs/29.md) | local / qwen3-coder:30b | 2026-09-10 | 7 | 6 | 0 | 0 |
+| [28](runs/28.md) | local / qwen3-coder:30b | 2026-09-10 | 1 | 1 | 0 | 0 |
+| [27](runs/27.md) | local / qwen3-coder:30b | 2026-09-10 | 1 | 1 | 0 | 0 |
+| [26](runs/26.md) | local / qwen3-coder:30b | 2026-09-09 | 1 | 1 | 0 | 0 |
+| [25](runs/25.md) | local / qwen3-coder:30b | 2026-09-09 | 1 | 1 | 0 | 0 |
+| [24](runs/24.md) | local / qwen2.5:72b | 2026-09-09 | 0 | 0 | 0 | 0 |
+| [23](runs/23.md) | local / qwen2.5:72b | 2026-09-09 | 0 | 0 | 0 | 0 |
+| [22](runs/22.md) | local / qwen3-coder:30b | 2026-09-09 | 10 | 10 | 0 | 0 |
+| [21](runs/21.md) | local / qwen3-coder:30b | 2026-09-09 | 1 | 0 | 0 | 0 |
+| [20](runs/20.md) | local / qwen3-coder:30b | 2026-09-09 | 1 | 1 | 0 | 0 |
+| [19](runs/19.md) | local / qwen3-coder:30b | 2026-09-09 | 1 | 1 | 0 | 0 |
+| [18](runs/18.md) | local / qwen3-coder:30b | 2026-09-09 | 1 | 1 | 0 | 0 |
+| [17](runs/17.md) | local / qwen3-coder:30b | 2026-09-09 | 1 | 0 | 0 | 0 |
+| [16](runs/16.md) | local / qwen3-coder:30b | 2026-09-09 | 1 | 1 | 0 | 0 |
+| [15](runs/15.md) | local / qwen3-coder:30b | 2026-09-09 | 1 | 1 | 0 | 0 |
+| [14](runs/14.md) | local / qwen3-coder:30b | 2026-09-08 | 1 | 1 | 0 | 0 |
+| [13](runs/13.md) | local / qwen3-coder:30b | 2026-09-08 | 1 | 0 | 0 | 0 |
+| [12](runs/12.md) | local / qwen3-coder:30b | 2026-09-08 | 1 | 0 | 0 | 0 |
+| [11](runs/11.md) | local / qwen3-coder:30b | 2026-09-08 | 1 | 0 | 0 | 0 |
+| [10](runs/10.md) | local / qwen3-coder:30b | 2026-09-08 | 1 | 0 | 0 | 0 |
+| [9](runs/9.md) | local / qwen3-coder:30b | 2026-09-08 | 1 | 0 | 0 | 0 |
+| [8](runs/8.md) | local / qwen3-coder:30b | 2026-09-08 | 1 | 0 | 0 | 0 |
+| [7](runs/7.md) | local / qwen3-coder:30b | 2026-09-08 | 1 | 0 | 0 | 0 |
+| [6](runs/6.md) | anthropic / claude-sonnet-5 | 2026-08-24 | 1 | 0 | 0 | 0 |
+| [5](runs/5.md) | anthropic / claude-sonnet-5 | 2026-08-24 | 0 | 0 | 0 | 0 |
+| [4](runs/4.md) | anthropic / claude-sonnet-5 | 2026-08-24 | 1 | 0 | 0 | 0 |
+| [3](runs/3.md) | anthropic | 2026-08-23 | 0 | 0 | 0 | 0 |
