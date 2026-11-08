@@ -2561,6 +2561,7 @@ Verified drafts that were not promoted keep their code in `candidates/` — 0 ri
 | Run | Model | Finished | Tried | Verified | Promoted | Candidates |
 |---:|---|---|---:|---:|---:|---:|
 | [78](runs/78.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-11-07 | 0 | 0 | 0 | 0 |
+| [76](runs/76.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-11-08 | 153 | 0 | 0 | 0 |
 | [73](runs/73.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-10-30 | 116 | 102 | 0 | 0 |
 | [72](runs/72.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-10-27 | 128 | 102 | 0 | 0 |
 | [71](runs/71.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-10-26 | 250 | 0 | 0 | 0 |
