@@ -1,0 +1,39 @@
+{
+  "id": 6142,
+  "name": "BTC Vol-Targeted Trend Ride 4H",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 29719,
+    "return": 317,
+    "mdd": 29.52,
+    "trades": 27,
+    "vsBuyHold": "lose",
+    "benchRet": 450.64,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1578096000,
+    "tTo": 1650139200,
+    "approxNotes": [
+      "[데이터/출처] binance BTC 4h — 이번은 거래소에서 받은 봉입니다(20208봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 20206봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "기간 종료 시 미청산 포지션 1종목 (총자산의 75.03%) — 이 수익률은 **평가액**을 포함합니다. 퇴출 수수료·거래세를 안 냈고, 마지막 봉 가격에 실제로 팔 수 있다는 보장도 없습니다(얇은 호가·상장폐지). exec.endLiquidate 로 마지막 봉 청산을 켤 수 있습니다",
+      "[데이터/출처] 내 저장소(에이전트 cd27de…) 5003봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "bars": 5004,
+      "end": 1650153600
+    },
+    "engine": {
+      "hash": "n1a0d7e10e68",
+      "firstSeen": "2026-11-04"
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "3dd8c382f5c4b586b60095302e2b52d116a4c636b617a0f8c8413741a13fdea0"
+  },
+  "config": null,
+  "updatedAt": "2026-11-08T22:56:15.551Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

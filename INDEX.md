@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 591 of 2541 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 591 of 2542 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 436 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,6 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+|  | [6142](strategies/6142/) | BTC Vol-Targeted Trend Ride 4H | +317.00% | +450.64% | +29.52% | 27 | 2026-11-04 `n1a0d7e1` | 2026-11-08 |
 | ★ | [6134](strategies/6134/) | BTC SMA200 Trend Ride 4H | +44.84% | +12.14% | +36.30% | 78 | 2026-11-04 `n1a0d7e1` | 2026-11-08 |
 | ★ | [6130](strategies/6130/) | ETH Dip-Timed Trend 4H | +61.99% | -31.15% | +48.01% | 118 | 2026-11-04 `n1a0d7e1` | 2026-11-08 |
 | — | [5802](strategies/5802/) | Funding-Contrarian Basket 4H | -3.28% | — | +24.71% | 195 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
