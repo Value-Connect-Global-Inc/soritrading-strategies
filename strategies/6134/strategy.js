@@ -1,55 +1,55 @@
 /*
  * @coinsori-strategy v1
- * name: SOL Donchian Breakout Trend 4H
+ * name: BTC SMA200 Trend Ride 4H
  * ex: binance
- * syms: SOL/USDT
+ * syms: BTC/USDT
  * interval: 4h
  * cash: 10000
  *
- * Why this strategy: SOL trends hard in both directions on 4h. A Donchian breakout enters when price closes above the highest high of the last 50 bars and exits when it closes below the lowest low of the last 20 bars — a classic turtle-style trend follower that rides strong moves and steps aside in crashes.
- * When it buys and sells: Buys on a close above the 50-bar high; sells on a close below the 20-bar low. Position sized by ATR so bigger moves risk the same dollars.
- * When it does NOT work: In long sideways chop it whipsaws and pays fees on false breakouts; in a mild uptrend that never makes new highs it never enters and misses the move.
+ * Why this strategy: Bitcoin's 4h price trends for extended periods once it is clearly above its slow 200-bar average. Two proven defensive/scaling mechanisms from the ETH 4h family are combined: (1) trend-strength sizing — risk scales with distance above the SMA, so strong trends deploy more capital; (2) a slope-gated exit — we only sell below the SMA when the SMA itself is falling, so we stay in during strong rallies that briefly dip under the line (the classic way a plain trend ride misses a parabolic up-move).
+ * When it buys and sells: Long on a close above the 200-SMA, sized by risk/ATR where risk grows with distance above the SMA. Sells on a close below the SMA only when the SMA is falling.
+ * When it does NOT work: In long sideways chop it whipsaws; in a parabolic mania it still cannot fully keep up with buy-and-hold; the slope gate delays exits, so a sharp top that catches the SMA still rising gives back more than a plain cross exit.
  */
 
 function onUpdate(ctx) {
+  const sma = ctx.sma(200, 1);
+  const smaP = ctx.sma(200, 2);
+  const sma5 = ctx.sma(200, 5);
   const closePrev = ctx.closes.at(-2);
+  const closePrev2 = ctx.closes.at(-3);
   const pos = ctx.position || 0;
 
-  // need enough closed bars: 50 for entry high, 20 for exit low
-  if (ctx.closes.length < 60 || closePrev == null) {
+  if (sma == null || smaP == null || sma5 == null || closePrev == null || closePrev2 == null) {
     ctx.watch([]);
     return null;
   }
 
-  // Donchian over CLOSED bars only (ago>=1 semantics): N bars ending at the previous closed bar
-  const ENTRY_N = 50, EXIT_N = 20;
-  const hh = Math.max(...ctx.highs.slice(-ENTRY_N - 1, -1));
-  const ll = Math.min(...ctx.lows.slice(-EXIT_N - 1, -1));
-  const atr = ctx.atr(14, 1);
-  if (atr == null || atr <= 0) {
-    ctx.watch([]);
-    return null;
-  }
+  // SMA is "falling" when the 200-SMA 1 bar ago is below its 5-bar-ago value
+  const smaFalling = sma < sma5;
 
   ctx.watch([
-    { side:'buy', price: hh, trigger:'above', note:'Donchian 50 breakout', conds:[ { label:'Prev close > 50-bar high', now:closePrev, op:'>', ref:hh, closed:true } ] },
-    { side:'sell', price: ll, trigger:'below', note:'Donchian 20 exit', conds:[ { label:'Prev close < 20-bar low', now:closePrev, op:'<', ref:ll, closed:true } ] }
+    { side:'buy', price: sma, trigger:'above', note:'SMA200 cross up, sized by strength', conds:[ { label:'Prev close > SMA', now:closePrev, op:'>', ref:sma, closed:true }, { label:'Prev2 close <= SMA', now:closePrev2, op:'<=', ref:smaP, closed:true } ] },
+    { side:'sell', price: sma, trigger:'below', note:'SMA200 cross down + SMA falling', conds:[ { label:'Prev close < SMA', now:closePrev, op:'<', ref:sma, closed:true }, { label:'SMA falling', ok:smaFalling } ] }
   ]);
 
   if (pos <= 0) {
-    if (closePrev > hh) {
-      // risk $500 per trade: qty = risk / ATR, capped at ~full cash so extreme vol de-risks but normal vol is fully invested
-      const risk = 500;
-      const qty = risk / atr;
+    if (closePrev2 <= smaP && closePrev > sma) {
+      const atr = ctx.atr(14, 1);
+      if (atr == null || atr <= 0) return { side: 'buy', qty: (ctx.cash / ctx.price) * 0.98 };
+      // trend strength = how far price is above the 200-SMA, in %
+      const distPct = (closePrev - sma) / sma;
+      // risk scales from $300 (weak) up to $1500 (strong), linear in distance
+      const risk = 300 + Math.min(Math.max(distPct * 20000, 0), 1200);
+      const riskQty = risk / atr;
       const maxQty = (ctx.cash / ctx.price) * 0.98;
-      return { side:'buy', qty: Math.min(qty, maxQty) };
+      return { side: 'buy', qty: Math.min(riskQty, maxQty) };
     }
     return null;
   }
 
   if (pos > 0) {
-    if (closePrev < ll) {
-      return { side:'sell', qty: Math.abs(pos), reduceOnly: true };
+    if (closePrev < sma && smaFalling) {
+      return { side: 'sell', qty: Math.abs(pos), reduceOnly: true };
     }
     return null;
   }

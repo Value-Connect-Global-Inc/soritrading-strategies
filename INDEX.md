@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| ★ | [6134](strategies/6134/) | BTC SMA200 Trend Ride 4H ‡ | +44.84% | +12.14% | +36.30% | 78 | 2026-11-04 `n1a0d7e1` | 2026-11-08 |
+| ★ | [6134](strategies/6134/) | BTC SMA200 Trend Ride 4H | +44.84% | +12.14% | +36.30% | 78 | 2026-11-04 `n1a0d7e1` | 2026-11-08 |
 | ★ | [6130](strategies/6130/) | ETH Dip-Timed Trend 4H | +61.99% | -31.15% | +48.01% | 118 | 2026-11-04 `n1a0d7e1` | 2026-11-08 |
 | — | [5802](strategies/5802/) | Funding-Contrarian Basket 4H | -3.28% | — | +24.71% | 195 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
 | — | [5803](strategies/5803/) | MultiAsset MR Basket 4H | +201.42% | — | +7.36% | 2736 | 2026-10-28 `n1f44f2a` | 2026-10-30 |
