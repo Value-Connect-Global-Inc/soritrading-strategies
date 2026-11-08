@@ -1,0 +1,38 @@
+{
+  "id": 6134,
+  "name": "BTC SMA200 Trend Ride 4H",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 29618,
+    "return": 44.84,
+    "mdd": 36.3,
+    "trades": 78,
+    "vsBuyHold": "win",
+    "benchRet": 12.14,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1722153600,
+    "tTo": 1794139200,
+    "approxNotes": [
+      "[데이터/출처] binance BTC 4h — 이번은 거래소에서 받은 봉입니다(20208봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 20206봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 cd27de…) 5000봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "bars": 5000,
+      "end": 1794153600
+    },
+    "engine": {
+      "hash": "n1a0d7e10e68",
+      "firstSeen": "2026-11-04"
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "78f7f0f8aeea70086c2058ae4d2856a93c21739344e085d3fbb7d26ebbbe96a7"
+  },
+  "config": null,
+  "updatedAt": "2026-11-08T19:48:26.187Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
