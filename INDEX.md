@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 597 of 2548 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 598 of 2549 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 436 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,6 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+| ★ | [6314](strategies/6314/) | BTC EMA Regime Timer 4H | +28.58% | +13.41% | +37.64% | 20 | 2026-11-11 `n122f2d5` | 2026-11-12 |
 | ★ | [6310](strategies/6310/) | BTC Trend Regime Filter 4H | +37.08% | +13.41% | +38.10% | 54 | 2026-11-11 `n122f2d5` | 2026-11-12 |
 | ★ | [6281](strategies/6281/) | ETH Fear-Greed Contrarian 4H | +18.83% | -51.22% | +30.59% | 16 | 2026-11-11 `n122f2d5` | 2026-11-11 |
 | ★ | [6277](strategies/6277/) | ETH BTC-Regime Trend 4H | +94.04% | -37.54% | +49.89% | 66 | 2026-11-11 `n122f2d5` | 2026-11-11 |
