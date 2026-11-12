@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| ★ | [6338](strategies/6338/) | BTC ATR-Calm Trend Rider 4H | +23.85% | +13.96% | +38.65% | 48 | 2026-11-11 `n122f2d5` | 2026-11-12 |
+| ★ | [6338](strategies/6338/) | BTC ATR-Calm Trend Rider 4H | +63.15% | -36.99% | +33.90% | 36 | 2026-11-11 `n122f2d5` | 2026-11-12 |
 | ★ | [6334](strategies/6334/) | BTC SMA300 Regime Filter 4H | -4.32% | -51.85% | +55.90% | 60 | 2026-11-11 `n122f2d5` | 2026-11-12 |
 | ★ | [6314](strategies/6314/) | BTC EMA Regime Timer 4H | +28.58% | +13.41% | +37.64% | 20 | 2026-11-11 `n122f2d5` | 2026-11-12 |
 | ★ | [6310](strategies/6310/) | BTC Trend Regime Filter 4H | +37.08% | +13.41% | +38.10% | 54 | 2026-11-11 `n122f2d5` | 2026-11-12 |
