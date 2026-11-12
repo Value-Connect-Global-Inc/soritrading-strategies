@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| ★ | [6334](strategies/6334/) | BTC SMA300 Regime Filter 4H | +37.48% | +13.96% | +36.83% | 44 | 2026-11-11 `n122f2d5` | 2026-11-12 |
+| ★ | [6334](strategies/6334/) | BTC SMA300 Regime Filter 4H | -4.32% | -51.85% | +55.90% | 60 | 2026-11-11 `n122f2d5` | 2026-11-12 |
 | ★ | [6314](strategies/6314/) | BTC EMA Regime Timer 4H | +28.58% | +13.41% | +37.64% | 20 | 2026-11-11 `n122f2d5` | 2026-11-12 |
 | ★ | [6310](strategies/6310/) | BTC Trend Regime Filter 4H | +37.08% | +13.41% | +38.10% | 54 | 2026-11-11 `n122f2d5` | 2026-11-12 |
 | ★ | [6281](strategies/6281/) | ETH Fear-Greed Contrarian 4H | +18.83% | -51.22% | +30.59% | 16 | 2026-11-11 `n122f2d5` | 2026-11-11 |

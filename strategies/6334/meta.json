@@ -3,24 +3,24 @@
   "name": "BTC SMA300 Regime Filter 4H",
   "kind": "custom",
   "verified": {
-    "backtestId": 31140,
-    "return": 37.48,
-    "mdd": 36.83,
-    "trades": 44,
+    "backtestId": 31143,
+    "return": -4.32,
+    "mdd": 55.9,
+    "trades": 60,
     "vsBuyHold": "win",
-    "benchRet": 13.96,
+    "benchRet": -51.85,
     "benchBasis": "price",
     "gapPct": 0,
-    "tFrom": 1722513600,
-    "tTo": 1794499200,
+    "tFrom": 1722499200,
+    "tTo": 1794484800,
     "approxNotes": [
-      "[데이터/출처] binance BTC 4h — 이번은 거래소에서 받은 봉입니다(20233봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 20223봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
+      "[데이터/출처] binance SOL 4h — 이번은 거래소에서 받은 봉입니다(13708봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 13513봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
       "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
       "[데이터/출처] 내 저장소(에이전트 cd27de…) 5000봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
     ],
     "spec": {
       "ex": "binance",
-      "sym": "BTC",
+      "sym": "SOL",
       "interval": "4h",
       "bars": 5000,
       "end": 1794513600
@@ -33,6 +33,6 @@
     "verifiedCodeSha256": "76e78577c3d835c1666ddead6ad6452fe30617b6b64ccf794a213537e08fe4e5"
   },
   "config": null,
-  "updatedAt": "2026-11-12T22:22:48.860Z",
+  "updatedAt": "2026-11-12T22:26:36.393Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
