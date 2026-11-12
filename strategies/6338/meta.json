@@ -1,0 +1,38 @@
+{
+  "id": 6338,
+  "name": "BTC ATR-Calm Trend Rider 4H",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 31153,
+    "return": 23.85,
+    "mdd": 38.65,
+    "trades": 48,
+    "vsBuyHold": "win",
+    "benchRet": 13.96,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1722513600,
+    "tTo": 1794499200,
+    "approxNotes": [
+      "[데이터/출처] binance BTC 4h — 이번은 거래소에서 받은 봉입니다(20233봉). 같은 시리즈의 예전 파생봉(1분봉에서 만든 것, 20223봉)도 저장소에 남아 있어, 그걸로 돈 과거 잡과는 숫자가 다를 수 있습니다",
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 cd27de…) 5000봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "bars": 5000,
+      "end": 1794513600
+    },
+    "engine": {
+      "hash": "n122f2d5679f",
+      "firstSeen": "2026-11-11"
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "1cc6a23bd81c7d53e6327dec4e8f444e3fef64e8db64e0dc6c1fc97751eeae58"
+  },
+  "config": null,
+  "updatedAt": "2026-11-12T23:40:47.829Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
