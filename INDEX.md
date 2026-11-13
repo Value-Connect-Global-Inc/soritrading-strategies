@@ -13,7 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
-| ★ | [6388](strategies/6388/) | BTC 4h Chandelier Trailing Stop | +41.81% | +8.03% | +17.28% | 98 | 2026-11-11 `n122f2d5` | 2026-11-13 |
+| ★ | [6388](strategies/6388/) | BTC 4h Chandelier Trailing Stop | +69.08% | +59.61% | +25.21% | 88 | 2026-11-11 `n122f2d5` | 2026-11-13 |
 | ★ | [6338](strategies/6338/) | BTC ATR-Calm Trend Rider 4H | +63.15% | -36.99% | +33.90% | 36 | 2026-11-11 `n122f2d5` | 2026-11-12 |
 | ★ | [6334](strategies/6334/) | BTC SMA300 Regime Filter 4H | -4.32% | -51.85% | +55.90% | 60 | 2026-11-11 `n122f2d5` | 2026-11-12 |
 | ★ | [6314](strategies/6314/) | BTC EMA Regime Timer 4H | +28.58% | +13.41% | +37.64% | 20 | 2026-11-11 `n122f2d5` | 2026-11-12 |
