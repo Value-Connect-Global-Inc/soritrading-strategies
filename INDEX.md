@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 600 of 2551 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 601 of 2552 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 436 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -13,6 +13,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---|---|
+| ★ | [6388](strategies/6388/) | BTC 4h Chandelier Trailing Stop | +41.81% | +8.03% | +17.28% | 98 | 2026-11-11 `n122f2d5` | 2026-11-13 |
 | ★ | [6338](strategies/6338/) | BTC ATR-Calm Trend Rider 4H | +63.15% | -36.99% | +33.90% | 36 | 2026-11-11 `n122f2d5` | 2026-11-12 |
 | ★ | [6334](strategies/6334/) | BTC SMA300 Regime Filter 4H | -4.32% | -51.85% | +55.90% | 60 | 2026-11-11 `n122f2d5` | 2026-11-12 |
 | ★ | [6314](strategies/6314/) | BTC EMA Regime Timer 4H | +28.58% | +13.41% | +37.64% | 20 | 2026-11-11 `n122f2d5` | 2026-11-12 |
