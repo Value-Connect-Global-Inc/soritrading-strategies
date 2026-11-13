@@ -1,0 +1,39 @@
+{
+  "id": 6208,
+  "name": "Alt Momentum Rotation Top1 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Cross-sectional momentum rotation. Instead of betting on one symbol it ranks five liquid alts by their recent return and holds only the strongest. This is a different return source…",
+  "codeSha256": "b812b3874654e843966ed3c0cfb7b045a67b618905859e8eebcbb00b9f4b9d1e",
+  "codeFromBacktest": 30214,
+  "verified": {
+    "backtestId": 30214,
+    "return": 23.54,
+    "mdd": 81.8,
+    "trades": 984,
+    "tFrom": 1578312000,
+    "tTo": 1650312000,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "syms": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "BNB",
+        "XRP"
+      ],
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ①(unknown) ②(2/3) ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

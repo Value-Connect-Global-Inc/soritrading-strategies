@@ -1,0 +1,33 @@
+{
+  "id": 6245,
+  "name": "ETH Pure Trend EMA50/200 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Baseline trend-following on ETH with no macro gate. Tests whether the NDX entry gate adds or subtracts value on a higher-beta asset whose rallies are often crypto-specific. Buy on…",
+  "codeSha256": "f9e3ab6f18f6d253cba06096a24b4ce715f700da16c61c187a75916fa54c5945",
+  "codeFromBacktest": 30559,
+  "verified": {
+    "backtestId": 30559,
+    "return": 498.42,
+    "mdd": 47.01,
+    "trades": 46,
+    "benchRet": 2019.52,
+    "tFrom": 1578355200,
+    "tTo": 1650355200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

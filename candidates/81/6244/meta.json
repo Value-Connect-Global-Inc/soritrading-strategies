@@ -1,0 +1,33 @@
+{
+  "id": 6244,
+  "name": "ETH Trend + NDX Gate 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Trend-following on ETH with an equity-regime ENTRY gate. ETH is a higher-beta crypto that has tracked US equities (NASDAQ-100) closely since ~2020 — risk-on for stocks usually mean…",
+  "codeSha256": "72431766b79281e891687862ed80cb047d7c538d2d83abb3f85316ef6984f29e",
+  "codeFromBacktest": 30556,
+  "verified": {
+    "backtestId": 30556,
+    "return": 67.33,
+    "mdd": 34.84,
+    "trades": 60,
+    "benchRet": 5.22,
+    "tFrom": 1650369600,
+    "tTo": 1722355200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

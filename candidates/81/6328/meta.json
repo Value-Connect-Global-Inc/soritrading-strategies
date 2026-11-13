@@ -1,0 +1,34 @@
+{
+  "id": 6328,
+  "name": "BTC SMA200 Regime Filter 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC's biggest gains happen in long uninterrupted uptrends above its 200-bar average, while its worst losses happen after price falls below that average. Riding the uptrend fully an…",
+  "codeSha256": "08fb9b98c48d6c33b1fbf4b7b73cef9df0ffc42ee41a1078af4e93bf3078e55d",
+  "codeFromBacktest": 31112,
+  "verified": {
+    "backtestId": 31112,
+    "return": 319.97,
+    "mdd": 43.97,
+    "trades": 60,
+    "benchRet": 423.57,
+    "tFrom": 1578499200,
+    "tTo": 1650499200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

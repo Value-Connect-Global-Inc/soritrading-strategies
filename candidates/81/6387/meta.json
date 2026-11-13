@@ -1,0 +1,34 @@
+{
+  "id": 6387,
+  "name": "BTC 4H Trend Regime Pullback",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: In a confirmed uptrend (price above the 200-bar average and the fast 50-bar average above the slow one), dips back to the 20-bar average usually resume the trend, giving a good ris…",
+  "codeSha256": "8c79029ab2c62806b45edc284d918ea977e708d394dadc8e1d39499e97b6d0e7",
+  "codeFromBacktest": 31339,
+  "verified": {
+    "backtestId": 31339,
+    "return": -17.71,
+    "mdd": 28.46,
+    "trades": 270,
+    "benchRet": 8.03,
+    "tFrom": 1722571200,
+    "tTo": 1794556800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

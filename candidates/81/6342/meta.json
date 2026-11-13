@@ -1,0 +1,34 @@
+{
+  "id": 6342,
+  "name": "BTC Rates-Regime Trend 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Long-term Treasury yields are a risk-on/off switch for crypto, but a hard gate misses bull markets that run with rising yields. So we keep riding BTC's trend and instead SCALE the…",
+  "codeSha256": "a4b14051fdbd16fec570a6b5b275e5cded4863b390bf555fcbff407ba2409253",
+  "codeFromBacktest": 31170,
+  "verified": {
+    "backtestId": 31170,
+    "return": 95.2,
+    "mdd": 41.53,
+    "trades": 148,
+    "benchRet": 419.56,
+    "tFrom": 1578513600,
+    "tTo": 1650513600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

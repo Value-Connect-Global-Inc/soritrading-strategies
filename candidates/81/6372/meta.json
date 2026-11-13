@@ -1,0 +1,33 @@
+{
+  "id": 6372,
+  "name": "BTC 4h SMA200 Trend Long-Flat",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC alternates between long 4h trends and sharp bear markets. Stay long while price holds above its 200-bar average, go to cash when it falls below — rides the up-trends and steps…",
+  "codeSha256": "a3784ecb79d62d2fcd5e90a4363a4590e259b3ec376ae60cd564c978cfd97364",
+  "codeFromBacktest": 31306,
+  "verified": {
+    "backtestId": 31306,
+    "return": -93.81,
+    "mdd": 94.96,
+    "trades": 408,
+    "benchRet": 430.01,
+    "tFrom": 1578542400,
+    "tTo": 1650542400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

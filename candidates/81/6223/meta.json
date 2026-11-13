@@ -1,0 +1,33 @@
+{
+  "id": 6223,
+  "name": "BTC BB Mean-Reversion Trend-Gated 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: in a confirmed uptrend (price above the 200-bar SMA ~ 33 days), sharp dips to the lower Bollinger band usually snap back to the middle band. Buying dips in the direction of the tre…",
+  "codeSha256": "581f3bd789b5efe03be10189ef13263013aaaf00d4f05ffb5c8b53aa84ab6802",
+  "codeFromBacktest": 30361,
+  "verified": {
+    "backtestId": 30361,
+    "return": -27.04,
+    "mdd": 33.33,
+    "trades": 78,
+    "benchRet": 10.96,
+    "tFrom": 1722340800,
+    "tTo": 1794326400,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

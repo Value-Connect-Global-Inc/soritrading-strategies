@@ -1,0 +1,34 @@
+{
+  "id": 6362,
+  "name": "BTC Regime Filter Trend Rider 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Rides BTC's uptrend while volatility is calm and steps out when volatility explodes. Buys when price is above a 300-bar SMA and ATR is below 1.2x its 60-bar median; sells only when ATR rises above 2.…",
+  "codeSha256": "1d7717452c0036f1d7cd0acf8e80cff3bbc75fe0c1b6f113a1cad4d75ad509ab",
+  "codeFromBacktest": 31272,
+  "verified": {
+    "backtestId": 31272,
+    "return": 23.12,
+    "mdd": 45.72,
+    "trades": 22,
+    "benchRet": 5.53,
+    "tFrom": 1722542400,
+    "tTo": 1794528000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

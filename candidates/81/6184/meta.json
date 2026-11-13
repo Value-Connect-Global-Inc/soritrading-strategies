@@ -1,0 +1,33 @@
+{
+  "id": 6184,
+  "name": "SOL 4H Long/Short EMA50/200 Trend (usdm)",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: On a perpetual we can hold both directions, so a slow trend filter can ride SOL's melt-ups long AND make money shorting its crashes — a source of return that buy-and-hold does not…",
+  "codeSha256": "23fc70dc3873678ec50dbb08ad906831b68fccea59521d4eb6a749c872ed8db6",
+  "codeFromBacktest": 30030,
+  "verified": {
+    "backtestId": 30030,
+    "return": 37.5,
+    "mdd": 39.73,
+    "trades": 139,
+    "tFrom": 1679040000,
+    "tTo": 1736625600,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(1/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

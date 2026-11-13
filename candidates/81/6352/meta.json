@@ -1,0 +1,34 @@
+{
+  "id": 6352,
+  "name": "BTC On-Chain Sized Trend Rider 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin's network usage (daily unique active addresses) confirms whether a rally is real. Instead of a hard on/off gate (which blocked re-entry and missed the 2020-22 bull), this s…",
+  "codeSha256": "168a9ac7ac8bf15d3deed6c33c50a55c1eda4d8598230a2eb23dbd78551bae4e",
+  "codeFromBacktest": 31230,
+  "verified": {
+    "backtestId": 31230,
+    "return": -98.01,
+    "mdd": 98.07,
+    "trades": 2122,
+    "benchRet": 13.96,
+    "tFrom": 1722513600,
+    "tTo": 1794499200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

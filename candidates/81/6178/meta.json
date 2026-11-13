@@ -1,0 +1,33 @@
+{
+  "id": 6178,
+  "name": "BTC 4H VIX-Calm Momentum",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends most reliably when there is no equity-market panic. Buying a fresh 20-bar-high breakout only when the VIX is calm keeps exposure high in calm uptrends and avoids buying…",
+  "codeSha256": "77457688dd73fad5a252f5d935d3f5d6fb79a9ff71dc4fc3e7bb6155a569bb31",
+  "codeFromBacktest": 30002,
+  "verified": {
+    "backtestId": 30002,
+    "return": -55.62,
+    "mdd": 78.94,
+    "trades": 122,
+    "benchRet": 443.91,
+    "tFrom": 1578211200,
+    "tTo": 1650211200,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

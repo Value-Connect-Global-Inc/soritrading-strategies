@@ -1,0 +1,33 @@
+{
+  "id": 6172,
+  "name": "BTC 4H Dual-EMA50/200 Futures",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends in both directions on the 4h chart. A slow EMA50/200 cross on the perpetual captures the full bull AND bear legs with only a handful of trades, so fees and whipsaws cann…",
+  "codeSha256": "f1ed1ff838d3198db952f52eae0331d11b9a090435140530782db1acae2985ce",
+  "codeFromBacktest": 29978,
+  "verified": {
+    "backtestId": 29978,
+    "return": 127.01,
+    "mdd": 35.86,
+    "trades": 135,
+    "tFrom": 1722211200,
+    "tTo": 1794196800,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

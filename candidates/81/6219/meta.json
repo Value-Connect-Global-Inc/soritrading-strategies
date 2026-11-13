@@ -1,0 +1,34 @@
+{
+  "id": 6219,
+  "name": "BTC Macro-Regime Trend 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: a surging US dollar is a drag on Bitcoin; when the dollar is calm or falling, BTC trends can be ridden. This layers a slow macro filter on top of a 4h trend. When it buys and sells…",
+  "codeSha256": "a95e5d57fbbbaa4af84eb7755de45ad83578602326a837bd5aa4c5835156c5b2",
+  "codeFromBacktest": 30317,
+  "verified": {
+    "backtestId": 30317,
+    "return": -99.84,
+    "mdd": 99.85,
+    "trades": 1751,
+    "benchRet": 63.64,
+    "tFrom": 1650340800,
+    "tTo": 1722326400,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

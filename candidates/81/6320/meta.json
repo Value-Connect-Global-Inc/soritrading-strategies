@@ -1,0 +1,33 @@
+{
+  "id": 6320,
+  "name": "BTC VIX-Regime Long/Short 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why: BTC trends persist in both directions on 4h, and the worst losses cluster in risk-off episodes when the VIX spikes far above its own recent mean. A long-only version of this idea failed to beat…",
+  "codeSha256": "90aff81ea1fff3a92686f511c500c702aaa0fd875753fc8df7e331dce479a667",
+  "codeFromBacktest": 31032,
+  "verified": {
+    "backtestId": 31032,
+    "return": -38.2,
+    "mdd": 59.6,
+    "trades": 357,
+    "tFrom": 1722499200,
+    "tTo": 1794484800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

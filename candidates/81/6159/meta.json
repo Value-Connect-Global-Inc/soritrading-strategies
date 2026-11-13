@@ -1,0 +1,33 @@
+{
+  "id": 6159,
+  "name": "BTC Long-Short Trend 4H (perp)",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin trends for months in both directions. A slow trend filter is long in uptrends and SHORT in downtrends, so it can make money in a bear market where a long-only strategy (or…",
+  "codeSha256": "d4af57aa9cd550dd97074965e1fc73e7ba03fa55f49a740abdf8bceaa07b8d2d",
+  "codeFromBacktest": 29847,
+  "verified": {
+    "backtestId": 29847,
+    "return": -6.46,
+    "mdd": 32.16,
+    "trades": 167,
+    "tFrom": 1650196800,
+    "tTo": 1722182400,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

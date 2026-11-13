@@ -1,0 +1,33 @@
+{
+  "id": 6368,
+  "name": "BTC RSI Mean-Reversion with Trailing Stop 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC on 4h often mean-reverts when RSI is deeply oversold — sharp dips get bought back. We enter on extreme oversold and exit on a trailing stop to let winners run while cutting los…",
+  "codeSha256": "9feac77634f765ebabd24d9a48aa195683282b36e030019659672e06e7e33b82",
+  "codeFromBacktest": 31291,
+  "verified": {
+    "backtestId": 31291,
+    "return": -99.94,
+    "mdd": 99.94,
+    "trades": 2462,
+    "benchRet": 58.55,
+    "tFrom": 1650556800,
+    "tTo": 1722542400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

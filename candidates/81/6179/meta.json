@@ -1,0 +1,33 @@
+{
+  "id": 6179,
+  "name": "BTC 4H Wide-Channel Trend",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC's uptrends are long but choppy. A wide 100-bar-high entry / 200-bar-low exit stays invested through normal pullbacks and only steps out when a major (about a month-long) trend…",
+  "codeSha256": "b5990626bf46340ce7af982122fa2f20977a313a372973c33cb2eb242a374f51",
+  "codeFromBacktest": 30008,
+  "verified": {
+    "backtestId": 30008,
+    "return": 21.52,
+    "mdd": 46.9,
+    "trades": 18,
+    "benchRet": 6.97,
+    "tFrom": 1722225600,
+    "tTo": 1794211200,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

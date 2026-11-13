@@ -1,0 +1,33 @@
+{
+  "id": 6140,
+  "name": "BTC Funding Contrarian Squeeze 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: On BTC perpetuals, negative funding means the crowd is short and paying longs to hold. When that happens while the 100-SMA trend is still up, it is a short-squeeze setup: crowded s…",
+  "codeSha256": "e6d4cd2e7412bbe37e0977b69ad74c9b4dda96de7216cd91d673405a3674a1ae",
+  "codeFromBacktest": 29658,
+  "verified": {
+    "backtestId": 29658,
+    "return": 19.21,
+    "mdd": 17.79,
+    "trades": 106,
+    "tFrom": 1578168000,
+    "tTo": 1650153600,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

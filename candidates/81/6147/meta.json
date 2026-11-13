@@ -1,0 +1,34 @@
+{
+  "id": 6147,
+  "name": "BTC Chandelier Trend Ride 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends strongly, but a plain trend ride that exits on a slow 200-bar crossover rides crashes all the way down before confirming the turn. A trailing ATR stop (\"chandelier\") loc…",
+  "codeSha256": "b2505c1a52b0ec420de7663c53d28e629b390703da5a6dc547a17944c238bcae",
+  "codeFromBacktest": 29750,
+  "verified": {
+    "backtestId": 29750,
+    "return": 51.54,
+    "mdd": 20.51,
+    "trades": 38,
+    "benchRet": 12.25,
+    "tFrom": 1722168000,
+    "tTo": 1794153600,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6186,
+  "name": "SOL 4H Buy-the-Dip Mean Reversion (uptrend only)",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: In a confirmed uptrend, sharp dips are usually bought back quickly. Buying those deep dips gives better entry prices than a plain trend filter (which buys after the recovery is con…",
+  "codeSha256": "391ddca6f851e427fdc863755a9c3bd10f598d7a43bdca2bc9f5c40abe991656",
+  "codeFromBacktest": 30042,
+  "verified": {
+    "backtestId": 30042,
+    "return": 45.23,
+    "mdd": 54.66,
+    "trades": 56,
+    "benchRet": -51.02,
+    "tFrom": 1621440000,
+    "tTo": 1679025600,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

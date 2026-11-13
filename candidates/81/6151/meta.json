@@ -1,0 +1,34 @@
+{
+  "id": 6151,
+  "name": "ETH Chandelier Trend Ride 4H (K12)",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: ETH trends strongly like BTC, and a trailing ATR stop (\"chandelier\") locks in gains as the high advances and cuts losers early. This is the same validated logic as the BTC K12 vers…",
+  "codeSha256": "1cae6b8be20d5a3c0f352b0679331533d221a9a771ddab9410be2defe0ad1deb",
+  "codeFromBacktest": 29767,
+  "verified": {
+    "backtestId": 29767,
+    "return": 114.05,
+    "mdd": 33.91,
+    "trades": 26,
+    "benchRet": -34.98,
+    "tFrom": 1722182400,
+    "tTo": 1794168000,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

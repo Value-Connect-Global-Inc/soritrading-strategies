@@ -1,0 +1,34 @@
+{
+  "id": 6115,
+  "name": "BTC 4H Trend + USD-Regime Filter",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC is priced in US dollars, so an extreme dollar spike (Fed broad index more than ~1.5 std dev above its 1-year mean, e.g. the COVID crash and the 2022 bear) historically drags cr…",
+  "codeSha256": "b0afdd57bdaa0b839ca89344b89b29191f0b099bc152bdfd413130f9c971e4ea",
+  "codeFromBacktest": 29469,
+  "verified": {
+    "backtestId": 29469,
+    "return": 197.77,
+    "mdd": 50.07,
+    "trades": 50,
+    "benchRet": 448.09,
+    "tFrom": 1578124800,
+    "tTo": 1650124800,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

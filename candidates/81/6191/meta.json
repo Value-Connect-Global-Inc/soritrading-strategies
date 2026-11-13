@@ -1,0 +1,34 @@
+{
+  "id": 6191,
+  "name": "BTC 4H Buy-the-Dip Mean Reversion (uptrend only)",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: In a confirmed uptrend, sharp dips are usually bought back quickly. Buying those deep dips gives better entry prices than a trend filter (which buys after the recovery is confirmed…",
+  "codeSha256": "7b8e93fdc67ed38751d91a2d0eae4403379b8acb614ac538bd0e98580ec5236b",
+  "codeFromBacktest": 30113,
+  "verified": {
+    "backtestId": 30113,
+    "return": -19.18,
+    "mdd": 33.22,
+    "trades": 183,
+    "benchRet": 64.17,
+    "tFrom": 1650297600,
+    "tTo": 1722283200,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6165,
+  "name": "Macro Risk Filter BTC 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Regime filter with a macro tripwire: we hold BTC while it is above its 300-bar average (long-term uptrend) AND the VIX is not in panic mode (below 30). We step aside when the trend breaks or when the…",
+  "codeSha256": "8200f9af12a2d0d240ef07135cdeae855a572876c8c329149cfa9bd400fa3bd9",
+  "codeFromBacktest": 29899,
+  "verified": {
+    "backtestId": 29899,
+    "return": 39.78,
+    "mdd": 29.7,
+    "trades": 100,
+    "benchRet": 9.67,
+    "tFrom": 1722196800,
+    "tTo": 1794182400,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

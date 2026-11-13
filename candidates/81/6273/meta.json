@@ -1,0 +1,33 @@
+{
+  "id": 6273,
+  "name": "FearGreed Contrarian Trend 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: the Crypto Fear & Greed Index (0-100, daily) is a crowd sentiment thermometer. When it is far below its own recent average (panic), the crowd has capitulated — in a bull trend that…",
+  "codeSha256": "101ddf3fa9acb4d90b3c3f5fc53ad6939e63f9c460f50ffac44bbc6216621d26",
+  "codeFromBacktest": 30707,
+  "verified": {
+    "backtestId": 30707,
+    "return": -14.08,
+    "mdd": 14.76,
+    "trades": 22,
+    "tFrom": 1736784000,
+    "tTo": 1794369600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(1/3) ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

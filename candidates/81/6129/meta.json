@@ -1,0 +1,33 @@
+{
+  "id": 6129,
+  "name": "BTC Perp Funding Contrarian 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Perpetual funding is a sentiment gauge — very positive funding means a crowded long that tends to unwind, very negative funding means a crowded short that tends to squeeze. We fade…",
+  "codeSha256": "30ec704ba24a88fab55276c0fcdece72388f6dc293832b62be9f8b05e1ec2c3d",
+  "codeFromBacktest": 29581,
+  "verified": {
+    "backtestId": 29581,
+    "return": -31.4,
+    "mdd": 31.4,
+    "trades": 28,
+    "tFrom": 1578153600,
+    "tTo": 1650139200,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ①(fail) ②(1/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

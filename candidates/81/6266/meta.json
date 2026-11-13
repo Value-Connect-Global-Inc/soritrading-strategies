@@ -1,0 +1,33 @@
+{
+  "id": 6266,
+  "name": "BTC Volume-Confirmed Trend 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: in an uptrend, sharp pullbacks on above-average volume are often capitulation — the weak hands sell out and the trend resumes. We buy those dips and then ride the trend with a trai…",
+  "codeSha256": "13db40eedf8d5a25a7f2aef5bfaff6f6c37342ad4fb80eb51b80fedbcba58c7b",
+  "codeFromBacktest": 30640,
+  "verified": {
+    "backtestId": 30640,
+    "return": -5.4,
+    "mdd": 21.3,
+    "trades": 70,
+    "benchRet": 59.81,
+    "tFrom": 1650384000,
+    "tTo": 1722369600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6206,
+  "name": "BTC 4H Trend + OnChain Usage Gate",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: A different information source than macro rates/vol or funding — on-chain fundamentals. Bitcoin's daily unique active addresses (main.addr) measure real network usage. Rallies back…",
+  "codeSha256": "c400f17bd6cc6cc3840ff42e222b91ba37b668a51dc2dc9fadbd32a767e31f79",
+  "codeFromBacktest": 30203,
+  "verified": {
+    "backtestId": 30203,
+    "return": 39.17,
+    "mdd": 27.67,
+    "trades": 93,
+    "benchRet": 64.53,
+    "tFrom": 1650326400,
+    "tTo": 1722312000,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

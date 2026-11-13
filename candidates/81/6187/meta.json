@@ -1,0 +1,33 @@
+{
+  "id": 6187,
+  "name": "SOL 4H Trend with Chandelier Trail",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: A slow EMA50/200 + SMA200 trend filter captures most of a bull run but rides the big within-trend pullbacks all the way down (its drawdown matches buy-and-hold). Replacing the slow…",
+  "codeSha256": "6b7a7f4854046f0815196b95f8e65457f62b73fcce87a9a7acd8fcc53c5d07a8",
+  "codeFromBacktest": 30044,
+  "verified": {
+    "backtestId": 30044,
+    "return": 227.26,
+    "mdd": 52.89,
+    "trades": 128,
+    "benchRet": 809.53,
+    "tFrom": 1679040000,
+    "tTo": 1736625600,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

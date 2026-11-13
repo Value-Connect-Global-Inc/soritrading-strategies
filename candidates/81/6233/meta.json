@@ -1,0 +1,33 @@
+{
+  "id": 6233,
+  "name": "BTC Slow Trend VIX-Scaled 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: a slow EMA50/200 trend core has been the most rugged idea in this account's history (it survives both bull and bear). We add a risk knob from real market-fear data: the CBOE VIX. W…",
+  "codeSha256": "fe0118e2dd02caba8ba7fc5637a2e6f7b7a16cee6a41d191d133752f516f5b94",
+  "codeFromBacktest": 30471,
+  "verified": {
+    "backtestId": 30471,
+    "return": 2.24,
+    "mdd": 33.56,
+    "trades": 16,
+    "tFrom": 1621569600,
+    "tTo": 1664755200,
+    "gapPct": 0,
+    "engineHash": "n1b6f92dea9f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

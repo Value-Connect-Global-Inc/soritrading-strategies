@@ -1,0 +1,33 @@
+{
+  "id": 6254,
+  "name": "BTC Trend + NDX Gate 1H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Trend-following on BTC with an equity-regime ENTRY gate. Crypto has tracked US equities (NASDAQ-100) closely since ~2020 — risk-on for stocks usually means risk-on for crypto. This…",
+  "codeSha256": "6e1fbb241f3abab618588fd19a2dc0be909c46c4a50f5fb70bf44435ceee34a5",
+  "codeFromBacktest": 30593,
+  "verified": {
+    "backtestId": 30593,
+    "return": 288.29,
+    "mdd": 30,
+    "trades": 46,
+    "benchRet": 425.74,
+    "tFrom": 1578369600,
+    "tTo": 1650369600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

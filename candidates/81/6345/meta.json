@@ -1,0 +1,34 @@
+{
+  "id": 6345,
+  "name": "XRP ATR-Calm Trend Rider 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Same mechanism that beat buy-and-hold on BTC 4h: ride the long trend (price above its 300-bar average) but enter only when volatility is calm and exit early when volatility explode…",
+  "codeSha256": "57779d19bc7daed9855d4a41bcb99b2ea6d738e40c736ea3e372aea74102c8b2",
+  "codeFromBacktest": 31181,
+  "verified": {
+    "backtestId": 31181,
+    "return": 96.27,
+    "mdd": 68.51,
+    "trades": 108,
+    "benchRet": 78.79,
+    "tFrom": 1722528000,
+    "tTo": 1794513600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "XRP",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

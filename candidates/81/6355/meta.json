@@ -1,0 +1,34 @@
+{
+  "id": 6355,
+  "name": "ETH ATR-Calm Trend Rider 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: The ATR-calm trend mechanism is the one edge that held up on BTC 4h: ride a slow uptrend but enter only when volatility is calm and exit early when it explodes. It generalizes to E…",
+  "codeSha256": "a6b77ceb938fdf8c1165667f534d6aaa568abe1a2e84d904d6f97327930365f7",
+  "codeFromBacktest": 31246,
+  "verified": {
+    "backtestId": 31246,
+    "return": 81.39,
+    "mdd": 33.9,
+    "trades": 34,
+    "benchRet": -35.51,
+    "tFrom": 1722528000,
+    "tTo": 1794513600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

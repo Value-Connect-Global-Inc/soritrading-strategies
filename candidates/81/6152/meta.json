@@ -1,0 +1,34 @@
+{
+  "id": 6152,
+  "name": "SOL Chandelier Trend Ride 4H (K12)",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: SOL trends strongly like BTC/ETH, and a trailing ATR stop (\"chandelier\") locks in gains as the high advances and cuts losers early. This is the same validated logic as the BTC and…",
+  "codeSha256": "0fad099b4eeb35e1f73a98f1f3b5c9febf5ce52afed4408a140dfc845c5018b5",
+  "codeFromBacktest": 29770,
+  "verified": {
+    "backtestId": 29770,
+    "return": 767.53,
+    "mdd": 46,
+    "trades": 33,
+    "benchRet": 3386.52,
+    "tFrom": 1597118400,
+    "tTo": 1650168000,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

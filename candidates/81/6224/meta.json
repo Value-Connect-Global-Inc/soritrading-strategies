@@ -1,0 +1,33 @@
+{
+  "id": 6224,
+  "name": "BTC Regime Filter 33D 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC spends most of its time trending. A slow 33-day (200-bar) SMA separates bull regimes (price above) from bear regimes (price below). Being LONG while above and FLAT while below…",
+  "codeSha256": "dd4bf7ca527e9941053341422eb7252ce9986e85935b6da6ae89ae881ff92f22",
+  "codeFromBacktest": 30364,
+  "verified": {
+    "backtestId": 30364,
+    "return": 14.95,
+    "mdd": 42.02,
+    "trades": 134,
+    "benchRet": 10.96,
+    "tFrom": 1722340800,
+    "tTo": 1794326400,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

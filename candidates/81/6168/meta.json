@@ -1,0 +1,33 @@
+{
+  "id": 6168,
+  "name": "VIX Panic Dip-Buy BTC 1D",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: when VIX spikes far above its own 90-day average, markets are in panic and crypto is usually oversold; buying that panic and selling once VIX calms down has historically caught the…",
+  "codeSha256": "8e560b8c019c74eb1b88fd7354a690c984e178685f32003f0db59a3214354be3",
+  "codeFromBacktest": 29953,
+  "verified": {
+    "backtestId": 29953,
+    "return": -55.73,
+    "mdd": 75.11,
+    "trades": 32,
+    "benchRet": 556.7,
+    "tFrom": 1534982400,
+    "tTo": 1621296000,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

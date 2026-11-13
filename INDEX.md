@@ -2569,10 +2569,11 @@ Every figure comes from the last verifying backtest at publish time. These are p
 ## Auto-development runs
 
 Each finished auto-development job has a ledger in `runs/` listing **every** strategy it tried — failures included — with per-window figures and the promotion verdict.
-Verified drafts that were not promoted keep their code in `candidates/` — 0 right now.
+Verified drafts that were not promoted keep their code in `candidates/` — 203 right now.
 
 | Run | Model | Finished | Tried | Verified | Promoted | Candidates |
 |---:|---|---|---:|---:|---:|---:|
+| [81](runs/81.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-11-13 | 255 | 224 | 13 | 203 |
 | [80](runs/80.md) | anthropic / claude-sonnet-5 | 2026-11-08 | 1 | 0 | 0 | 0 |
 | [78](runs/78.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-11-07 | 0 | 0 | 0 | 0 |
 | [76](runs/76.md) | gonka / deepseek-ai/DeepSeek-V4-Flash-0731 | 2026-11-08 | 153 | 0 | 0 | 0 |

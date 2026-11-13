@@ -1,0 +1,39 @@
+{
+  "id": 6357,
+  "name": "BTC Vol-Targeted Trend Rider 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Trend-following on BTC 4h works, but its drawdowns come from riding big moves at full size into a volatility explosion. Instead of filtering entries with a gate (which misses ralli…",
+  "codeSha256": "a80039b65884d458286011e8f2337b2741176a736b74cce6596788f265855cdc",
+  "codeFromBacktest": 31253,
+  "verified": {
+    "backtestId": 31253,
+    "return": 10.28,
+    "mdd": 43.09,
+    "trades": 154,
+    "tFrom": 1722528000,
+    "tTo": 1794528000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "syms": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "BNB"
+      ],
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

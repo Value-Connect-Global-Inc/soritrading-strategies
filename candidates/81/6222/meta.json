@@ -1,0 +1,33 @@
+{
+  "id": 6222,
+  "name": "BTC 200-Day Regime 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: trend following with an asymmetric speed — slow to enter, fast to exit. The 50d MA confirms the bull regime before buying (5% band avoids small whipsaws), but exits on the fast 20d…",
+  "codeSha256": "36e2e1fd249a0592118f65a82cca0d5c47d7e41c539bd315d60fa867ce773bb5",
+  "codeFromBacktest": 30356,
+  "verified": {
+    "backtestId": 30356,
+    "return": -99.97,
+    "mdd": 99.97,
+    "trades": 989,
+    "benchRet": 110.28,
+    "tFrom": 1506139200,
+    "tTo": 1578340800,
+    "gapPct": 0.3,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

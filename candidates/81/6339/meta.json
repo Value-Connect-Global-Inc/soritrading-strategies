@@ -1,0 +1,34 @@
+{
+  "id": 6339,
+  "name": "ETH Calm-Pullback Mean Reversion 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: In an uptrend, ETH pullbacks tend to revert UP when volatility is normal, but cascade when volatility is high. This strategy buys short-term oversold pullbacks inside a 200-bar upt…",
+  "codeSha256": "a09a6cad20f4faea8d72a7d28663bea5603b8c682187363e9a7d1c65b4b8f867",
+  "codeFromBacktest": 31159,
+  "verified": {
+    "backtestId": 31159,
+    "return": -39.09,
+    "mdd": 39.88,
+    "trades": 476,
+    "benchRet": 2.83,
+    "tFrom": 1650513600,
+    "tTo": 1722499200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

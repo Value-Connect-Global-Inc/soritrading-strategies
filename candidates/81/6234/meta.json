@@ -1,0 +1,34 @@
+{
+  "id": 6234,
+  "name": "BTC Slow Trend VIX-Scaled SPOT 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: a slow EMA50/200 trend core steps aside in downtrends (so a crash hurts far less than holding), and a real-fear knob from the CBOE VIX trims position size when fear is unusually hi…",
+  "codeSha256": "a7ed6db5ebeb6ff3631464728e61bb555d4cb830be7066a289bd64e38326611f",
+  "codeFromBacktest": 30475,
+  "verified": {
+    "backtestId": 30475,
+    "return": -3.08,
+    "mdd": 10.15,
+    "trades": 12,
+    "benchRet": 172.65,
+    "tFrom": 1664769600,
+    "tTo": 1707955200,
+    "gapPct": 0,
+    "engineHash": "n1b6f92dea9f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

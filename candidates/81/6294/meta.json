@@ -1,0 +1,33 @@
+{
+  "id": 6294,
+  "name": "BTC Funding Sentiment Reversal 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Perpetual funding rates reveal how crowded a trade is. Deeply negative funding means shorts are overcrowded and a short-squeeze (price bounce) is likely; deeply positive funding me…",
+  "codeSha256": "6d10ed3b5fa6e95857d92efe4cd4f74d37b4efeb37548540bbe8789f78d4f78a",
+  "codeFromBacktest": 30869,
+  "verified": {
+    "backtestId": 30869,
+    "return": -13.5,
+    "mdd": 22.96,
+    "trades": 216,
+    "tFrom": 1650441600,
+    "tTo": 1722427200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

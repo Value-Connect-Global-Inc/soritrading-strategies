@@ -1,0 +1,33 @@
+{
+  "id": 6131,
+  "name": "BTC On-Chain Demand Trend 1D",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin's daily unique active addresses measure real network usage. When usage is clearly contracting (well below its 30-day average), rallies are not backed by real demand and ten…",
+  "codeSha256": "a0db300a24eab00240c2600954bb82f959df2cd0b36422a639f462604f3f2634",
+  "codeFromBacktest": 29603,
+  "verified": {
+    "backtestId": 29603,
+    "return": -1.96,
+    "mdd": 25.03,
+    "trades": 26,
+    "benchRet": 51.99,
+    "tFrom": 1707696000,
+    "tTo": 1794009600,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

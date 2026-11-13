@@ -1,0 +1,33 @@
+{
+  "id": 6249,
+  "name": "BTC Ride the 200 Pure 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Diagnostic — isolate whether the NDX gate or the ride-the-200 design is what hurt W1 on the gated version. Stay long while price holds above EMA200, exit on a close below it or a 5…",
+  "codeSha256": "b4388819f9c2b5c920a064d59e86c5b22ecc530632820fc5fa1a0c89fbf41a04",
+  "codeFromBacktest": 30568,
+  "verified": {
+    "backtestId": 30568,
+    "return": 101.41,
+    "mdd": 23.28,
+    "trades": 143,
+    "benchRet": 59.81,
+    "tFrom": 1650384000,
+    "tTo": 1722369600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

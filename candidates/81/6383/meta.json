@@ -1,0 +1,34 @@
+{
+  "id": 6383,
+  "name": "BTC Trend Dip 1H VIX Guard",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: In a confirmed uptrend (fast EMA above slow EMA) short dips tend to get bought back up; a VIX risk-off guard keeps the strategy out of panic sell-offs. When it buys and sells: buys…",
+  "codeSha256": "4ab73e92f8f937a1f3de213303ae27980cbcf2beedba7496422d24a9c15fb49b",
+  "codeFromBacktest": 31332,
+  "verified": {
+    "backtestId": 31332,
+    "return": -36.21,
+    "mdd": 38.5,
+    "trades": 130,
+    "benchRet": -33.04,
+    "tFrom": 1758571200,
+    "tTo": 1776567600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

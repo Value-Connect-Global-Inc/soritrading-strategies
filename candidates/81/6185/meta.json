@@ -1,0 +1,33 @@
+{
+  "id": 6185,
+  "name": "SOL 4H Trend with Vol-Targeted Sizing",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: The plain EMA50/200 + SMA200 trend filter already beat buy-and-hold in the 2022 bear (made money while holding lost 51%), but its drawdown was still ~80% because it was fully inves…",
+  "codeSha256": "2623e7bc778766bf44cc7d5e7e247331ea73c7d27e4c0d5341671f635f6941b4",
+  "codeFromBacktest": 30038,
+  "verified": {
+    "backtestId": 30038,
+    "return": 20.96,
+    "mdd": 41.62,
+    "trades": 53,
+    "benchRet": -33.77,
+    "tFrom": 1621440000,
+    "tTo": 1679025600,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

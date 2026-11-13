@@ -1,0 +1,34 @@
+{
+  "id": 6229,
+  "name": "BTC Trend Core Plain (A/B) 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC's gains and losses cluster around its long-term average. Being invested only when price is above a RISING 100-day SMA keeps us in during bull phases and steps aside in bear pha…",
+  "codeSha256": "42779901a7eeb0eb1869f35783ea8e6906b244b4654db7fe38e7b44bbac576c0",
+  "codeFromBacktest": 30446,
+  "verified": {
+    "backtestId": 30446,
+    "return": 969.91,
+    "mdd": 41.75,
+    "trades": 8,
+    "benchRet": 501.85,
+    "tFrom": 1535155200,
+    "tTo": 1621468800,
+    "gapPct": 0,
+    "engineHash": "n1b6f92dea9f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(1/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

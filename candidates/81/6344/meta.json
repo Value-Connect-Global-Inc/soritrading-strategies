@@ -1,0 +1,34 @@
+{
+  "id": 6344,
+  "name": "BTC EMA-Pullback Reversion 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: In an uptrend, price pulls back to its 20-bar average and then resumes. We buy the oversold pullback (RSI below 35) only while the 200-bar trend is still up, and sell when price re…",
+  "codeSha256": "c285a09edc6a2ce15a776aaf7d014640825775c7ef2fb97aa64e0bbbfaeb9427",
+  "codeFromBacktest": 31178,
+  "verified": {
+    "backtestId": 31178,
+    "return": -19.42,
+    "mdd": 32.47,
+    "trades": 118,
+    "benchRet": 419.56,
+    "tFrom": 1578513600,
+    "tTo": 1650513600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

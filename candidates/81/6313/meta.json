@@ -1,0 +1,34 @@
+{
+  "id": 6313,
+  "name": "BTC Donchian Breakout 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC makes long, strong trends on the 4h chart. Buying a break above the highest high of the last 55 bars catches the start of those trends, and a 20-bar trailing exit keeps us ridi…",
+  "codeSha256": "325151609daeb3b7e6c338152631d847443e0b72da6e87afdf3d2d20e26b204a",
+  "codeFromBacktest": 30996,
+  "verified": {
+    "backtestId": 30996,
+    "return": -2.92,
+    "mdd": 22.58,
+    "trades": 96,
+    "benchRet": 13.41,
+    "tFrom": 1722484800,
+    "tTo": 1794470400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

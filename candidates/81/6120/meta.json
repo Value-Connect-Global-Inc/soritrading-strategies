@@ -1,0 +1,34 @@
+{
+  "id": 6120,
+  "name": "BTC 1D Donchian SMA200 Regime",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC's biggest gains come from sustained multi-week trends. A close above the 55-day high starts most of them. The 200-day average filter keeps the strategy out of bear markets: it…",
+  "codeSha256": "2c87b38afa1d9cf8e65a4eebf6e730ca402975aef495d74c2eee933149fa2ff3",
+  "codeFromBacktest": 29491,
+  "verified": {
+    "backtestId": 29491,
+    "return": 34.33,
+    "mdd": 28.94,
+    "trades": 12,
+    "benchRet": 51.99,
+    "tFrom": 1707696000,
+    "tTo": 1794009600,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

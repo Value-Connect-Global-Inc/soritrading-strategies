@@ -1,0 +1,34 @@
+{
+  "id": 6378,
+  "name": "ETH ATR-Calm Trend Ride 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: ETH uptrends that start from a calm (low-volatility) period persist, but in a crypto bear market ETH produces calm bear-market rallies that look like trend starts and then fail. Ga…",
+  "codeSha256": "9524a3e9d10d3417993848722d79fa00b0a69847f1cf0831bd3fee2b5124b121",
+  "codeFromBacktest": 31326,
+  "verified": {
+    "backtestId": 31326,
+    "return": 721.38,
+    "mdd": 39.33,
+    "trades": 92,
+    "benchRet": 2118.83,
+    "tFrom": 1578542400,
+    "tTo": 1650542400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

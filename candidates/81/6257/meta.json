@@ -1,0 +1,33 @@
+{
+  "id": 6257,
+  "name": "BTC Dual-Side Trend Perp 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends in both directions — big bull runs AND sharp crashes. A long-only trend strategy sits out the crashes; this one also SHORTS them. But it does not short blindly into an e…",
+  "codeSha256": "e15ba2c1253619612e83ba55d1a92aae95ad09b37f5a29c072264514c08cb94e",
+  "codeFromBacktest": 30604,
+  "verified": {
+    "backtestId": 30604,
+    "return": 194.71,
+    "mdd": 31.14,
+    "trades": 50,
+    "tFrom": 1650384000,
+    "tTo": 1722369600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

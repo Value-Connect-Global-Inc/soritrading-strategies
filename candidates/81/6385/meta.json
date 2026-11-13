@@ -1,0 +1,34 @@
+{
+  "id": 6385,
+  "name": "BTC Donchian Breakout 1H Trend",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: after a quiet consolidation, a breakout above the 20-bar high, confirmed by a rising 1h trend, tends to start a move that lasts several hours; the strategy rides it and steps aside…",
+  "codeSha256": "ed7432a8818eaa472a5ba8bb2a22db5c9110ece3f248225a9e565ea062380db5",
+  "codeFromBacktest": 31336,
+  "verified": {
+    "backtestId": 31336,
+    "return": -42.11,
+    "mdd": 45.74,
+    "trades": 82,
+    "benchRet": -33.04,
+    "tFrom": 1758571200,
+    "tTo": 1776567600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

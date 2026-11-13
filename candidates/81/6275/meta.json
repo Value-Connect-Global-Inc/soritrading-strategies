@@ -1,0 +1,33 @@
+{
+  "id": 6275,
+  "name": "BB Mean Reversion 1H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: in ranging markets, price snaps back to the mean after over-extended moves. A close far below the lower Bollinger band with a low RSI marks a short-term oversold bounce; a close fa…",
+  "codeSha256": "5c5b9d1dbc13c22e1dbf20280299e6e7ef420be71194a55469898b440ca0efa6",
+  "codeFromBacktest": 30713,
+  "verified": {
+    "backtestId": 30713,
+    "return": -13,
+    "mdd": 22.59,
+    "trades": 88,
+    "tFrom": 1772809200,
+    "tTo": 1783605600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

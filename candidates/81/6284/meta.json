@@ -1,0 +1,33 @@
+{
+  "id": 6284,
+  "name": "ETH Panic-Entry Trend-Exit 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: The Crypto Fear & Greed Index marks panic-selling lows (index <= 25) that are historically good entry points when they happen inside an uptrend. The exit is managed by TREND and by…",
+  "codeSha256": "80e7012a5a1f9d0a448d290b14312688d588cfa0c18fb463a4512df3af653906",
+  "codeFromBacktest": 30808,
+  "verified": {
+    "backtestId": 30808,
+    "return": 102.54,
+    "mdd": 28.57,
+    "trades": 46,
+    "benchRet": 7.54,
+    "tFrom": 1650427200,
+    "tTo": 1722412800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

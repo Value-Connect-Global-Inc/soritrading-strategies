@@ -1,0 +1,33 @@
+{
+  "id": 6145,
+  "name": "BTC EMA-Pullback Mean Reversion 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: In a confirmed uptrend, sharp pullbacks to the 20-EMA with an oversold RSI tend to revert back up. This is a mean-reversion entry — the opposite mechanism of the breakout-trend str…",
+  "codeSha256": "5d13cf3a719b2a9bcb4f1e8c8931c8e7b1a545dae05ddbc9c59ec92a87fc4711",
+  "codeFromBacktest": 29728,
+  "verified": {
+    "backtestId": 29728,
+    "return": -36.52,
+    "mdd": 45.87,
+    "trades": 416,
+    "benchRet": 12.14,
+    "tFrom": 1722153600,
+    "tTo": 1794139200,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

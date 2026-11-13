@@ -1,0 +1,33 @@
+{
+  "id": 6203,
+  "name": "BTC 4H Funding Sentiment Gate Trend",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: The funding rate is a direct reading of leveraged positioning — strongly positive funding means crowded longs are paying shorts (squeeze risk), negative funding means crowded short…",
+  "codeSha256": "c8212e56398cfb05ef30a9f08f2da364244429890e48f8a5c29e5e4d789fd17f",
+  "codeFromBacktest": 30193,
+  "verified": {
+    "backtestId": 30193,
+    "return": 25.76,
+    "mdd": 25.29,
+    "trades": 82,
+    "tFrom": 1722326400,
+    "tTo": 1794312000,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

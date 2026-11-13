@@ -1,0 +1,34 @@
+{
+  "id": 6157,
+  "name": "BTC On-Chain Regime Trend 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin trends for months, but rallies backed by expanding on-chain usage (daily active addresses) are more durable than speculative pumps. Gating the trend by network usage keeps…",
+  "codeSha256": "60b1b8a7abcd362f51d069f3bf2cb5eb56d97588300d6a334608e5a40e84aab6",
+  "codeFromBacktest": 29843,
+  "verified": {
+    "backtestId": 29843,
+    "return": 120.55,
+    "mdd": 50.81,
+    "trades": 142,
+    "benchRet": 441.26,
+    "tFrom": 1578182400,
+    "tTo": 1650182400,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6243,
+  "name": "BTC Z-Score Mean Reversion 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Prices revert to their own mean after sharp moves. A very negative z-score (price far below its recent average) marks an oversold snap that often bounces. This is a mean-reversion…",
+  "codeSha256": "ef93b47ac0280b04874274bca27930233e572ba6aeac3c195117a82d2528bc5f",
+  "codeFromBacktest": 30551,
+  "verified": {
+    "backtestId": 30551,
+    "return": 7.81,
+    "mdd": 5.09,
+    "trades": 6,
+    "benchRet": 415.36,
+    "tFrom": 1578355200,
+    "tTo": 1650355200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(0/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6209,
+  "name": "BTC 4H Vol-Sized Trend Core",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: The plain EMA50/200 trend core is the confirmed control that every external-data gate (funding, on-chain) failed to beat. This replaces the gate idea with a different lever: positi…",
+  "codeSha256": "104136ff506f3219917eccd1017491612ccfda6406ac507a92fb0d747f55c181",
+  "codeFromBacktest": 30217,
+  "verified": {
+    "backtestId": 30217,
+    "return": 141.09,
+    "mdd": 24.62,
+    "trades": 51,
+    "benchRet": 64.53,
+    "tFrom": 1650326400,
+    "tTo": 1722312000,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

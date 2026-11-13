@@ -1,0 +1,33 @@
+{
+  "id": 6199,
+  "name": "ETH 4H Trend + VIX Z-Score Gate",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: A slow 4h trend ride on ETH with a macro fear-gauge overlay. The US equity VIX measures global risk appetite; when it spikes far above its own recent history, crypto tends to sell…",
+  "codeSha256": "1f0b6f9ae44593c7fe10c02dd120f85fb7990100413e9fd24791c849052198d1",
+  "codeFromBacktest": 30178,
+  "verified": {
+    "backtestId": 30178,
+    "return": 139.08,
+    "mdd": 39.63,
+    "trades": 52,
+    "benchRet": -36.28,
+    "tFrom": 1722297600,
+    "tTo": 1794283200,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

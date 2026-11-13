@@ -1,0 +1,33 @@
+{
+  "id": 6207,
+  "name": "BTC 4H Trend Core Hard Stop",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: The simplest robust trend-follower. In this cycle the funding gate and the on-chain usage gate BOTH lost to this plain core — no external data beats it, which means it works anywhe…",
+  "codeSha256": "c6200eeab75b87e1cf18892fdb8bc7be0be982bb05da2f71cc0bcb93dc9d4068",
+  "codeFromBacktest": 30211,
+  "verified": {
+    "backtestId": 30211,
+    "return": 256.24,
+    "mdd": 35.42,
+    "trades": 58,
+    "benchRet": 442.57,
+    "tFrom": 1578312000,
+    "tTo": 1650312000,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

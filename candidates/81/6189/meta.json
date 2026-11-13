@@ -1,0 +1,34 @@
+{
+  "id": 6189,
+  "name": "BTC 1H Trend-Ride 8% Trail (low-drawdown)",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: A very slow 200h/600h EMA trend filter rides Bitcoin's major up-trends with few signals, and a crash acceleration stop cuts violent drops. Two risk controls keep the whipsaw bleed…",
+  "codeSha256": "7780236939b9f9eed77e2ba3826f682dad1142c3e3d84374b64a76f5c00f2421",
+  "codeFromBacktest": 30107,
+  "verified": {
+    "backtestId": 30107,
+    "return": -10.73,
+    "mdd": 25.18,
+    "trades": 41,
+    "benchRet": -2.97,
+    "tFrom": 1736704800,
+    "tTo": 1765501200,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

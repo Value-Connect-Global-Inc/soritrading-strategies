@@ -1,0 +1,33 @@
+{
+  "id": 6200,
+  "name": "SOL 4H Trend + VIX Z-Score Gate",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Same macro fear-gate trend ride that validated on BTC and ETH 4H, applied UNCHANGED to SOL, the highest-beta major alt. VIX spiking far above its own recent history marks global ri…",
+  "codeSha256": "ea50487906dff5d42827a7f513173cb5d69cfe9c81edfc6c0c4eca02a50919e6",
+  "codeFromBacktest": 30182,
+  "verified": {
+    "backtestId": 30182,
+    "return": -14.56,
+    "mdd": 42.66,
+    "trades": 60,
+    "benchRet": -48.26,
+    "tFrom": 1729497600,
+    "tTo": 1794283200,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

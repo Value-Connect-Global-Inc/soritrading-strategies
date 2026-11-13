@@ -1,0 +1,33 @@
+{
+  "id": 6171,
+  "name": "BTC 4H Dual-Short Turtle",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends in both directions on the 4h chart; a long-only system misses the short side of every bear leg. Trading the perpetual with a regime filter that goes short below the 200-…",
+  "codeSha256": "e84324670d2bb7cd20ac9fc454ad4cccb8efb2b0e9e6a8c1621ba5de319badd9",
+  "codeFromBacktest": 29974,
+  "verified": {
+    "backtestId": 29974,
+    "return": -71.98,
+    "mdd": 74.63,
+    "trades": 161,
+    "tFrom": 1722211200,
+    "tTo": 1794196800,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6259,
+  "name": "BTC Trend + NDX Gate + VIX Sizing 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: The proven BTC EMA50/200 + NDX-gate trend, with one addition: position size is scaled DOWN when market volatility (VIX) is in its upper percentiles. In a panic regime the same tren…",
+  "codeSha256": "052a5dee05e1d97b12a8923684fbf2687f798dc7b99c260410845326354491e3",
+  "codeFromBacktest": 30609,
+  "verified": {
+    "backtestId": 30609,
+    "return": 110.36,
+    "mdd": 22.02,
+    "trades": 46,
+    "benchRet": 425.74,
+    "tFrom": 1578369600,
+    "tTo": 1650369600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

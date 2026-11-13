@@ -1,0 +1,33 @@
+{
+  "id": 6231,
+  "name": "BTC Funding Crowd Contrarian 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: perpetual funding rates reveal how crowded each side is — extreme positive funding means too many leveraged longs (a contrarian sell), extreme negative means too many shorts (a con…",
+  "codeSha256": "4645921a4c49059f4921d31d28052b930c079f54186a591550d876739aab04ea",
+  "codeFromBacktest": 30459,
+  "verified": {
+    "backtestId": 30459,
+    "return": -48.34,
+    "mdd": 51.01,
+    "trades": 165,
+    "tFrom": 1578369600,
+    "tTo": 1621555200,
+    "gapPct": 0,
+    "engineHash": "n1b6f92dea9f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

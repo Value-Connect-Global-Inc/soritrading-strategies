@@ -1,0 +1,33 @@
+{
+  "id": 6295,
+  "name": "BTC VIX-Regime Trend 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin is a risk asset: when the VIX (US stock-market fear gauge) spikes, risk appetite collapses and crypto usually falls with it; when the VIX is calm, risk-on flows support cry…",
+  "codeSha256": "2ce8964ff96aa25dc96de4a3e2607f551bc633f7a97d6a67ddc3eb858fb2b6ae",
+  "codeFromBacktest": 30872,
+  "verified": {
+    "backtestId": 30872,
+    "return": 84.65,
+    "mdd": 25.21,
+    "trades": 78,
+    "benchRet": 57.71,
+    "tFrom": 1650441600,
+    "tTo": 1722427200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

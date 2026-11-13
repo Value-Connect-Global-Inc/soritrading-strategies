@@ -1,0 +1,34 @@
+{
+  "id": 6139,
+  "name": "ETH Trend-Filtered Mean Reversion 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: In an uptrend, sharp 4h pullbacks to the lower Bollinger band tend to revert to the middle band. We only buy dips when the longer trend is still up (price above the 100-SMA), so we…",
+  "codeSha256": "3566decea816df0998561c34d7cbcd858337bf636996a2fbfd3c25cc37aaa4be",
+  "codeFromBacktest": 29655,
+  "verified": {
+    "backtestId": 29655,
+    "return": -50.72,
+    "mdd": 51.96,
+    "trades": 40,
+    "benchRet": -52.24,
+    "tFrom": 1505952000,
+    "tTo": 1578153600,
+    "gapPct": 0.3,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

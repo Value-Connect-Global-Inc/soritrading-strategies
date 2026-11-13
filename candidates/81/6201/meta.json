@@ -1,0 +1,33 @@
+{
+  "id": 6201,
+  "name": "BTC 4H Trend + USD Strength Gate",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: The VIX z-score gate validated on BTC/ETH/SOL 4H proved that a macro risk-off signal can protect a slow crypto trend. This tests whether the SAME gate shape works with a DIFFERENT…",
+  "codeSha256": "72d91561464efc7a5424a4de9e122bf4bb0eac3f29718cb5c9df9152033af9fe",
+  "codeFromBacktest": 30186,
+  "verified": {
+    "backtestId": 30186,
+    "return": 64.93,
+    "mdd": 23.58,
+    "trades": 58,
+    "benchRet": 11.15,
+    "tFrom": 1722312000,
+    "tTo": 1794297600,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6181,
+  "name": "BTC 4H Dual-Channel Trend USDM",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC's biggest returns come from long trends, and its worst losses come from sudden volatility explosions (crashes). This strategy rides the trend but sizes its bet by how wild the…",
+  "codeSha256": "581d4e2bdd564d681f8a6a17612ab4a7de99f714fc0c1c4abb345130a47c6b58",
+  "codeFromBacktest": 30023,
+  "verified": {
+    "backtestId": 30023,
+    "return": -9.13,
+    "mdd": 22.69,
+    "trades": 12,
+    "tFrom": 1567958400,
+    "tTo": 1578211200,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

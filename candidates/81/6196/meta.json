@@ -1,0 +1,33 @@
+{
+  "id": 6196,
+  "name": "ETH Dual-Direction Trend 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Trend-following that trades BOTH directions on BTC perpetuals: it buys in uptrends and shorts in downtrends, so it can make money in falling markets where long-only strategies lose. Uses the EMA50/EM…",
+  "codeSha256": "12f12fdc6b2238d2ef1434e1170fe3e35c16bbc332f6b68206daecb25e3dd44d",
+  "codeFromBacktest": 30158,
+  "verified": {
+    "backtestId": 30158,
+    "return": -41.72,
+    "mdd": 50.07,
+    "trades": 97,
+    "tFrom": 1650312000,
+    "tTo": 1722297600,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

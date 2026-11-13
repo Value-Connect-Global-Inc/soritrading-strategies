@@ -1,0 +1,33 @@
+{
+  "id": 6197,
+  "name": "BTC 4H VIX Panic Gate Trend",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: A slow 4h trend ride on BTC with a macro fear-gauge overlay. The US equity VIX measures global risk appetite; when it spikes far above its own recent history, crypto tends to sell…",
+  "codeSha256": "a8851f90ea0d86162b875c11fa10575c19f7b02787264047c0c5ec3e86ab4095",
+  "codeFromBacktest": 30171,
+  "verified": {
+    "backtestId": 30171,
+    "return": 32.38,
+    "mdd": 23.03,
+    "trades": 58,
+    "benchRet": 11.15,
+    "tFrom": 1722312000,
+    "tTo": 1794297600,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

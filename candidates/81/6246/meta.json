@@ -1,0 +1,33 @@
+{
+  "id": 6246,
+  "name": "ETH Ride the 200 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: A single long-term regime filter — stay long while price holds above its EMA200, exit when it breaks below. Unlike an EMA50/200 crossover it does NOT exit on every pullback, so it…",
+  "codeSha256": "473a4873b17d8c93dc41df69dd505b0f9d2c3efad915879d82136fa5737ae97d",
+  "codeFromBacktest": 30561,
+  "verified": {
+    "backtestId": 30561,
+    "return": 858.89,
+    "mdd": 49.7,
+    "trades": 132,
+    "benchRet": 2019.52,
+    "tFrom": 1578355200,
+    "tTo": 1650355200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft (not judged)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

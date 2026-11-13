@@ -1,0 +1,33 @@
+{
+  "id": 6272,
+  "name": "Funding Squeeze Trend 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: perpetual funding rate is a direct read on crowd positioning. When funding is far below its own recent average (shorts paying longs), the crowd is crowded short — in an uptrend tha…",
+  "codeSha256": "41041cc782bad1c43e572144c2d453fd661fd41f53d4c042495027dd463d29fd",
+  "codeFromBacktest": 30704,
+  "verified": {
+    "backtestId": 30704,
+    "return": -6.47,
+    "mdd": 10.12,
+    "trades": 64,
+    "tFrom": 1736784000,
+    "tTo": 1794369600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,34 @@
+{
+  "id": 6269,
+  "name": "SMA200 Regime 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Crypto trends are long and persistent, so being long only while price is clearly above its long-term average captures most of the upside and steps aside during major downtrends. Wh…",
+  "codeSha256": "942b4c176b58075a1991c5c2f74c3ff0b2d3d8e3481c44e0b1074bea1d075bd3",
+  "codeFromBacktest": 30675,
+  "verified": {
+    "backtestId": 30675,
+    "return": 24.43,
+    "mdd": 39,
+    "trades": 54,
+    "benchRet": 11.73,
+    "tFrom": 1722398400,
+    "tTo": 1794384000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

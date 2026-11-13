@@ -1,0 +1,33 @@
+{
+  "id": 6321,
+  "name": "BTC Z-Score Mean Reversion 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: after sharp short-term drops BTC often snaps back to its recent average, so buying deep oversold dips and selling back to the mean captures that bounce. When it buys and sells: buy…",
+  "codeSha256": "04d7b8f1eb86b42ff7177aac5824cce5d885e8f4996ae27f84923049d207dd88",
+  "codeFromBacktest": 31041,
+  "verified": {
+    "backtestId": 31041,
+    "return": 1.45,
+    "mdd": 1.42,
+    "trades": 4,
+    "benchRet": 54.29,
+    "tFrom": 1650499200,
+    "tTo": 1722484800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(0/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

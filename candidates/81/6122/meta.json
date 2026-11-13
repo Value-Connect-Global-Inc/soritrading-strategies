@@ -1,0 +1,33 @@
+{
+  "id": 6122,
+  "name": "BTC 1D On-Chain Usage Regime",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin rallies backed by growing network usage (rising number of unique active addresses) tend to be real and sustainable, while rallies without usage growth are speculative and f…",
+  "codeSha256": "4cfbb81a8e387264bdeec88b308631368b92664101d6ee49c793cbd31f4a9f32",
+  "codeFromBacktest": 29507,
+  "verified": {
+    "backtestId": 29507,
+    "return": 51.32,
+    "mdd": 16.69,
+    "trades": 16,
+    "benchRet": 51.99,
+    "tFrom": 1707696000,
+    "tTo": 1794009600,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

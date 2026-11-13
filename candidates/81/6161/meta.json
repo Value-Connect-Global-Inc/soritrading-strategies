@@ -1,0 +1,33 @@
+{
+  "id": 6161,
+  "name": "ETH Donchian 55/30 + SMA200 Regime 1D",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: A daily close breaking above the 55-day high usually starts a sustained trend. Instead of a tight stop that gets whipsawed by crypto's violent pullbacks, we hold the whole uptrend…",
+  "codeSha256": "9268f27b2cff2e700b4fd2f652ace7ef2fd1ff2669d0faa1f1f431538be2d7b2",
+  "codeFromBacktest": 29862,
+  "verified": {
+    "backtestId": 29862,
+    "return": 377.62,
+    "mdd": 56.89,
+    "trades": 6,
+    "benchRet": 562.79,
+    "tFrom": 1586822400,
+    "tTo": 1655856000,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ②(0/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

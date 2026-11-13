@@ -1,0 +1,34 @@
+{
+  "id": 6194,
+  "name": "BTC 4H VIX-Regime Trend Gate",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: A slow trend filter on a high-beta asset rides crypto's strongest rallies and steps aside in the crashes. The EMA50>EMA200 + close-above-SMA200 condition is the confirmed-uptrend g…",
+  "codeSha256": "4d4a8d402a74abfe1be394929efe6468f4c563158a9378536a9286c9b0d5db67",
+  "codeFromBacktest": 30128,
+  "verified": {
+    "backtestId": 30128,
+    "return": 83.8,
+    "mdd": 72.38,
+    "trades": 41,
+    "benchRet": 113.65,
+    "tFrom": 1506081600,
+    "tTo": 1578283200,
+    "gapPct": 0.3,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,34 @@
+{
+  "id": 6337,
+  "name": "BTC Dollar-Headwind Trend 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: A surging US dollar tightens global liquidity and has historically been a headwind for crypto. This strategy rides BTC's 200-bar uptrend but steps out early when the dollar rises w…",
+  "codeSha256": "3f4f748f4cba138147540305b040191980e730c9bd2b3da18027e6f6e421d361",
+  "codeFromBacktest": 31149,
+  "verified": {
+    "backtestId": 31149,
+    "return": 24.21,
+    "mdd": 54.33,
+    "trades": 194,
+    "benchRet": 423.57,
+    "tFrom": 1578499200,
+    "tTo": 1650499200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

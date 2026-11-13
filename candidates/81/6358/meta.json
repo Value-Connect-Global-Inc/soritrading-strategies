@@ -1,0 +1,39 @@
+{
+  "id": 6358,
+  "name": "Top-2 Fast Rotation 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: In crypto, relative strength persists for weeks — the strongest assets keep leading while the weakest keep lagging. Instead of betting on one symbol, this strategy holds only the 2…",
+  "codeSha256": "1dc8965a992609b67d6579591014eb7c001dfa5f7a19d64fdbaf69c95d21cdf7",
+  "codeFromBacktest": 31256,
+  "verified": {
+    "backtestId": 31256,
+    "return": 9.21,
+    "mdd": 53.45,
+    "trades": 40,
+    "tFrom": 1722528000,
+    "tTo": 1794528000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "syms": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "BNB"
+      ],
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

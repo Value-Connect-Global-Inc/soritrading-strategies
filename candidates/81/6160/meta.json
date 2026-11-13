@@ -1,0 +1,33 @@
+{
+  "id": 6160,
+  "name": "BTC Fear-Greed Contrarian 1D",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin sentiment swings to extremes — panic (deep fear) and mania (extreme greed). Buying the panic while the long-term uptrend is intact and selling into euphoria captures the bu…",
+  "codeSha256": "2754a4c8a8b4f2dd8bdf49824668810133126b6a05b647610cea1474ea371336",
+  "codeFromBacktest": 29850,
+  "verified": {
+    "backtestId": 29850,
+    "return": -9.76,
+    "mdd": 31.77,
+    "trades": 7,
+    "benchRet": 556.7,
+    "tFrom": 1534982400,
+    "tTo": 1621296000,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ②(0/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

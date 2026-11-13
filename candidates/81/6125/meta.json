@@ -1,0 +1,33 @@
+{
+  "id": 6125,
+  "name": "ETH Trend Regime 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: In strong trends an asset keeps making progress above its long moving average; stepping aside when that trend breaks avoids the deep drawdowns that buy-and-hold suffers while still…",
+  "codeSha256": "d7b8c92dc0b840888466b310cc3fd6319f1acc51900374cc7b0942dc48b9e628",
+  "codeFromBacktest": 29536,
+  "verified": {
+    "backtestId": 29536,
+    "return": -11.79,
+    "mdd": 55.54,
+    "trades": 198,
+    "benchRet": 6.55,
+    "tFrom": 1650153600,
+    "tTo": 1722139200,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,34 @@
+{
+  "id": 6373,
+  "name": "BTC 200D Trend Long-Flat 1D",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC spends most of its time in long bull trends lasting months, punctuated by deep bear markets. On daily data a 200-day moving average is a real ~8-month trend line: stay fully in…",
+  "codeSha256": "892b081dcb85460231540bc3238d9248012d7246308b17ed64a63da285f2fe77",
+  "codeFromBacktest": 31309,
+  "verified": {
+    "backtestId": 31309,
+    "return": -59,
+    "mdd": 76.46,
+    "trades": 97,
+    "benchRet": 263.93,
+    "tFrom": 1664841600,
+    "tTo": 1794355200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

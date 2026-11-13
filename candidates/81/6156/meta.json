@@ -1,0 +1,34 @@
+{
+  "id": 6156,
+  "name": "BTC Macro-Protected Trend 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin trends for months at a time, and a slow trend ride captures most of those moves while stepping aside in downtrends. A hard stop backs up the trend exit so a sudden gap cann…",
+  "codeSha256": "c4eedfc3d10db7d6d8aeb682f52cd430ae87b5907f5b02a6979f55d5e6b1031d",
+  "codeFromBacktest": 29839,
+  "verified": {
+    "backtestId": 29839,
+    "return": 220.31,
+    "mdd": 46.63,
+    "trades": 82,
+    "benchRet": 441.26,
+    "tFrom": 1578182400,
+    "tTo": 1650182400,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

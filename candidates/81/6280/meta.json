@@ -1,0 +1,34 @@
+{
+  "id": 6280,
+  "name": "ETH Mean-Reversion Dip 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: In a healthy uptrend Ethereum still pulls back hard and fast, and those over-extended dips (price below the lower Bollinger band with RSI deeply oversold) tend to snap back toward…",
+  "codeSha256": "0ce6751f729ec4572dc93af1a94e9303870258bb636b31761d15c2e1ffca08a2",
+  "codeFromBacktest": 30770,
+  "verified": {
+    "backtestId": 30770,
+    "return": 3.64,
+    "mdd": 14.93,
+    "trades": 36,
+    "benchRet": -37.54,
+    "tFrom": 1722412800,
+    "tTo": 1794398400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,34 @@
+{
+  "id": 6121,
+  "name": "BTC 4H Donchian SMA200 Regime",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends in multi-week swings; a close above the 20-day high usually starts one. The 200-bar (33-day) average filter keeps it out of bear markets: it only buys breakouts while pr…",
+  "codeSha256": "516679aa835169c6ed662ea41fa335f79ee79b095c6a8ae743d07628ec78a08b",
+  "codeFromBacktest": 29495,
+  "verified": {
+    "backtestId": 29495,
+    "return": 83.34,
+    "mdd": 63.89,
+    "trades": 38,
+    "benchRet": 85.13,
+    "tFrom": 1505923200,
+    "tTo": 1578124800,
+    "gapPct": 0.3,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

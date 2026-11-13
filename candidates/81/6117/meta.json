@@ -1,0 +1,34 @@
+{
+  "id": 6117,
+  "name": "ETH Donchian Trend 4H (no VIX)",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: ETH trends in long swings that last weeks; a close above the 20-day high usually starts a sustained move. Turtle-style channels sized for 4h bars, no macro filter — the baseline va…",
+  "codeSha256": "71264fb657d6523d94168572e778a1a39e047c566f1357c8b1a2bee857a10086",
+  "codeFromBacktest": 29473,
+  "verified": {
+    "backtestId": 29473,
+    "return": 404.96,
+    "mdd": 47.33,
+    "trades": 102,
+    "benchRet": 2160.89,
+    "tFrom": 1578124800,
+    "tTo": 1650124800,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

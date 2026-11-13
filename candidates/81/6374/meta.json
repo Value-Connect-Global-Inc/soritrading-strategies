@@ -1,0 +1,33 @@
+{
+  "id": 6374,
+  "name": "BTC Funding Contrarian 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: In perpetual futures the funding rate shows which side the crowd is on. Deeply negative funding means shorts are paying longs (crowded short) and a squeeze upward is likely; deeply…",
+  "codeSha256": "79ae05f55dbb9819c81bd1df83ca262783377d1453ae0c2f70bcf709d1a46e8f",
+  "codeFromBacktest": 31312,
+  "verified": {
+    "backtestId": 31312,
+    "return": -42.78,
+    "mdd": 43.76,
+    "trades": 16,
+    "tFrom": 1679356800,
+    "tTo": 1736942400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

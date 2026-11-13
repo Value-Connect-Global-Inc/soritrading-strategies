@@ -1,0 +1,34 @@
+{
+  "id": 6391,
+  "name": "BTC 4H Trend Core VIX Risk-Size",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: A 4-hour trend core (fast EMA above slow EMA) captures the bulk of crypto up-trends. The broad US dollar index measured as a z-score against its own recent average tells us when th…",
+  "codeSha256": "c056948b3603ee80e6653c0c65541b971377b7bb29c81315117470e79fee0de2",
+  "codeFromBacktest": 31379,
+  "verified": {
+    "backtestId": 31379,
+    "return": 41.13,
+    "mdd": 21.41,
+    "trades": 57,
+    "benchRet": 59.61,
+    "tFrom": 1650571200,
+    "tTo": 1722556800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

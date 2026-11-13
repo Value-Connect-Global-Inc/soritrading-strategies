@@ -1,0 +1,33 @@
+{
+  "id": 6262,
+  "name": "BTC Z-Score Mean Reversion 1D",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Mean reversion — crypto overreacts to news, so sharp deviations from a slow-moving average tend to snap back. This buys BTC when its price is stretched far below its own 200-day av…",
+  "codeSha256": "7749b4c10eb232458d98fe25bcad10a579f965e775d73bd0c183cfee01ad5d06",
+  "codeFromBacktest": 30617,
+  "verified": {
+    "backtestId": 30617,
+    "return": 15.25,
+    "mdd": 43.12,
+    "trades": 10,
+    "benchRet": 845.76,
+    "tFrom": 1502928000,
+    "tTo": 1621468800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ②(1/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

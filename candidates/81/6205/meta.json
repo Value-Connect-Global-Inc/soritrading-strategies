@@ -1,0 +1,33 @@
+{
+  "id": 6205,
+  "name": "BTC 4H Contrarian Funding Trend",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: The funding-z gate (block high funding) failed against its no-gate baseline, so this is the OTHER funding shape: contrarian. When funding is unusually NEGATIVE, shorts are crowded…",
+  "codeSha256": "66717ee4dfd85b586323efbd30c1201d625316378c5ba5b0ce9a434e243cc4fd",
+  "codeFromBacktest": 30200,
+  "verified": {
+    "backtestId": 30200,
+    "return": 8.62,
+    "mdd": 22.37,
+    "trades": 20,
+    "tFrom": 1722326400,
+    "tTo": 1794312000,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,40 @@
+{
+  "id": 6218,
+  "name": "Crypto Momentum Rotation 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: medium-term crypto momentum (the 33-day winner keeps winning for weeks); rotating into the strongest coin and out of the weakest captures the trend without betting on any single co…",
+  "codeSha256": "de3998a1f9781284956d59edd026bbe1ce907b3091593a225e39fc2c977d77d5",
+  "codeFromBacktest": 30313,
+  "verified": {
+    "backtestId": 30313,
+    "return": -99.74,
+    "mdd": 99.8,
+    "trades": 1312,
+    "tFrom": 1650340800,
+    "tTo": 1722326400,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "syms": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "BNB",
+        "XRP"
+      ],
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,34 @@
+{
+  "id": 6389,
+  "name": "BTC 1D Fear-Greed Contrarian Dip",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: The Fear & Greed index measures crowd sentiment. In crypto, extreme fear (panic selling) inside a still-intact uptrend has historically marked good long entries, and extreme greed…",
+  "codeSha256": "68a562078de6c594978dbedc9388d0ffea8483ce8ce80b99a867c7796cfe929d",
+  "codeFromBacktest": 31358,
+  "verified": {
+    "backtestId": 31358,
+    "return": -55.46,
+    "mdd": 57.9,
+    "trades": 10,
+    "benchRet": 442.07,
+    "tFrom": 1535328000,
+    "tTo": 1621641600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(1/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

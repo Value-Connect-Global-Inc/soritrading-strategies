@@ -1,0 +1,33 @@
+{
+  "id": 6340,
+  "name": "SOL ATR-Calm Trend Rider 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: SOL 4h trend-following works, but its drawdowns come from entering right before a volatility explosion and then getting whipsawed. This strategy rides the same 300-bar uptrend as a…",
+  "codeSha256": "2f72769655103f1d8ac8a50b8f0ae2df0601cd9e7f990bdba7a4dd98c7c317f3",
+  "codeFromBacktest": 31165,
+  "verified": {
+    "backtestId": 31165,
+    "return": 15.85,
+    "mdd": 50.61,
+    "trades": 56,
+    "benchRet": -51.85,
+    "tFrom": 1722499200,
+    "tTo": 1794484800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6212,
+  "name": "BTC SMA200 Trend 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC spends most of a bull market above its 200-bar average and most of a bear below it, so closing price vs SMA200 is a simple regime switch. A wide ATR trailing stop rides the tre…",
+  "codeSha256": "94081ed59d321f1f5f0c0ad5b77b1227d472e2de559c663c2c96189dbb768227",
+  "codeFromBacktest": 30243,
+  "verified": {
+    "backtestId": 30243,
+    "return": -19.21,
+    "mdd": 52.57,
+    "trades": 262,
+    "benchRet": 11.15,
+    "tFrom": 1722312000,
+    "tTo": 1794297600,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

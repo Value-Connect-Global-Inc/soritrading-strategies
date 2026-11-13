@@ -1,0 +1,33 @@
+{
+  "id": 6127,
+  "name": "ETH Dip-Timed Trend 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Perpetual funding is a sentiment gauge — very positive funding means a crowded long that tends to unwind, very negative funding means a crowded short that tends to squeeze. We fade…",
+  "codeSha256": "fab810f6cd8b6db36881a70d086d65108d6dfaf419906f496de807cb2abf7ecf",
+  "codeFromBacktest": 29577,
+  "verified": {
+    "backtestId": 29577,
+    "return": 74.89,
+    "mdd": 29.45,
+    "trades": 68,
+    "benchRet": -35.96,
+    "tFrom": 1719792000,
+    "tTo": 1794081600,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

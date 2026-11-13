@@ -1,0 +1,33 @@
+{
+  "id": 6192,
+  "name": "BTC Perp Funding Contrarian (usdm)",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Perpetual funding is a direct measure of crowd positioning. When funding is very negative, shorts are paying longs to hold — a crowded short that usually gets squeezed higher. When…",
+  "codeSha256": "2bf00e60903cf1bd7138622e80a427d4831ca9360f53b9f1fa09b5fd908eda8e",
+  "codeFromBacktest": 30116,
+  "verified": {
+    "backtestId": 30116,
+    "return": -8.21,
+    "mdd": 59.15,
+    "trades": 136,
+    "tFrom": 1578297600,
+    "tTo": 1650283200,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

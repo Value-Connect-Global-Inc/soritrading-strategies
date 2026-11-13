@@ -1,0 +1,33 @@
+{
+  "id": 6282,
+  "name": "ETH VIX-Z Regime Filter 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Crypto is a high-beta risk asset — when stock-market fear (the VIX index) is calm, risk assets tend to trend up; when fear spikes, they get sold. This strategy uses the VIX as a ri…",
+  "codeSha256": "f5f6eedce863c1dc996a9ff08f3eff32317943fd49eef48403561218dc4d1837",
+  "codeFromBacktest": 30786,
+  "verified": {
+    "backtestId": 30786,
+    "return": -99.58,
+    "mdd": 99.65,
+    "trades": 714,
+    "benchRet": 7.31,
+    "tFrom": 1650412800,
+    "tTo": 1722398400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

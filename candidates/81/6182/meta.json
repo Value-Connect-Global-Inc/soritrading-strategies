@@ -1,0 +1,33 @@
+{
+  "id": 6182,
+  "name": "ETH 4H Trend Pullback ATR Stop",
+  "job": 81,
+  "stage": "draft",
+  "idea": "ETH trends strongly on 4h. We buy pullbacks (price dips below the 20-EMA) only while the 50-EMA is above the 200-EMA, and we trail an ATR stop so profits are locked and the worst chop is cut. Long-on…",
+  "codeSha256": "18bd5c62f26a73cb417033e062729d1a3ca7170091d259385729939873a06588",
+  "codeFromBacktest": 30026,
+  "verified": {
+    "backtestId": 30026,
+    "return": 127.33,
+    "mdd": 12.86,
+    "trades": 125,
+    "benchRet": 2159.63,
+    "tFrom": 1578211200,
+    "tTo": 1650211200,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

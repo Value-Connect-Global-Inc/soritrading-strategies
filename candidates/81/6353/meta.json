@@ -1,0 +1,39 @@
+{
+  "id": 6353,
+  "name": "Top-2 Momentum Rotation 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: In crypto, relative strength persists for weeks — the strongest assets keep leading while the weakest keep lagging. Instead of betting on one symbol (long-only misses the point of…",
+  "codeSha256": "ab6486a96202d4764001226a3790e3086a981904659054bc19f1d72e76db7a31",
+  "codeFromBacktest": 31236,
+  "verified": {
+    "backtestId": 31236,
+    "return": 168.66,
+    "mdd": 34.42,
+    "trades": 32,
+    "tFrom": 1650528000,
+    "tTo": 1722513600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "syms": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "BNB"
+      ],
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

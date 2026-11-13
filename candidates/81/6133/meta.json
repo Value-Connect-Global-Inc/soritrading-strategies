@@ -1,0 +1,33 @@
+{
+  "id": 6133,
+  "name": "BTC VIX-Gated Trend Ride 1D",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: crypto corrections usually coincide with equity-volatility spikes (VIX jumps). A plain trend ride re-enters during those spikes and gets whipsawed. Gating entries with a VIX z-scor…",
+  "codeSha256": "4f76dbfe7ae21db7f1f4809ef212f3b3142d1e83f71dd173aa9626cb54c26e0b",
+  "codeFromBacktest": 29609,
+  "verified": {
+    "backtestId": 29609,
+    "return": -8.63,
+    "mdd": 25.03,
+    "trades": 32,
+    "benchRet": 51.99,
+    "tFrom": 1707696000,
+    "tTo": 1794009600,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

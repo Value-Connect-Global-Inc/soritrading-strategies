@@ -1,0 +1,33 @@
+{
+  "id": 6136,
+  "name": "SOL SMA200 Trend Ride 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: SOL's 4h price trends for extended periods once it is clearly above its slow 200-bar average — the same family validated and kept on BTC and ETH 4h. Trend-strength sizing (risk sca…",
+  "codeSha256": "953c83c0907f8109fb22191ef0155c00da08b6e472a29e04d132b5fc568e6ec3",
+  "codeFromBacktest": 29642,
+  "verified": {
+    "backtestId": 29642,
+    "return": 138.52,
+    "mdd": 64.08,
+    "trades": 123,
+    "benchRet": 81.82,
+    "tFrom": 1650168000,
+    "tTo": 1722153600,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

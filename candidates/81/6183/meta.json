@@ -1,0 +1,33 @@
+{
+  "id": 6183,
+  "name": "SOL 4H EMA50/200 Trend + SMA200 Crash Filter",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: The plain EMA50/200 trend already beat buy-and-hold on BTC 4h in every tested window. SOL is a higher-beta asset, so a trend filter on it should ride crypto's strongest rallies and…",
+  "codeSha256": "b5ce0ed53ae2beee2e877ad824ed29f7edbdc68d9ba361d0d3a43a03cbc92823",
+  "codeFromBacktest": 30029,
+  "verified": {
+    "backtestId": 30029,
+    "return": 473.27,
+    "mdd": 43.86,
+    "trades": 68,
+    "benchRet": 809.53,
+    "tFrom": 1679040000,
+    "tTo": 1736625600,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6292,
+  "name": "BTC Funding Contrarian 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Crypto rallies when the US dollar is weak (global liquidity expands) and crashes when the dollar strengthens sharply (liquidity tightens). This strategy not only rides BTC's uptren…",
+  "codeSha256": "31b9206078cd0b563a169a3ad7d7355e4dcd3d1da29b7009a46776bd85f86015",
+  "codeFromBacktest": 30860,
+  "verified": {
+    "backtestId": 30860,
+    "return": -99.94,
+    "mdd": 99.95,
+    "trades": 2970,
+    "tFrom": 1650427200,
+    "tTo": 1722412800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,34 @@
+{
+  "id": 6175,
+  "name": "BTC 4H SMA200 Regime Filter",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends strongly; while price stays above its 200-period (about 33 days on 4H) moving average the trend is up, and being long only then keeps most of the upside while stepping a…",
+  "codeSha256": "0b96d257ea9c958b152be31a45f42f3b1aa326b72f102a9fe9ada6975f52be77",
+  "codeFromBacktest": 29991,
+  "verified": {
+    "backtestId": 29991,
+    "return": 141.75,
+    "mdd": 53.76,
+    "trades": 148,
+    "benchRet": 443.91,
+    "tFrom": 1578211200,
+    "tTo": 1650211200,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

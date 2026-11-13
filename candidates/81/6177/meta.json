@@ -1,0 +1,33 @@
+{
+  "id": 6177,
+  "name": "BTC 4H Donchian Turtle Breakout",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: trends on BTC persist once they start. A breakout above the highest high of the last 55 bars is the signal that a new up-leg is underway, and holding it until price breaks below th…",
+  "codeSha256": "a89ef88f751a83fd8d5f2f7f37a1304da74cb496b8fca3c464781df96b2edf88",
+  "codeFromBacktest": 29999,
+  "verified": {
+    "backtestId": 29999,
+    "return": -52.18,
+    "mdd": 58.13,
+    "trades": 89,
+    "benchRet": 74.78,
+    "tFrom": 1650225600,
+    "tTo": 1722211200,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

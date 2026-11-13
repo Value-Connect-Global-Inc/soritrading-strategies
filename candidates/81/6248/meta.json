@@ -1,0 +1,33 @@
+{
+  "id": 6248,
+  "name": "BTC Ride the 200 + NDX Gate 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: A single long-term regime filter — stay long while price holds above its EMA200, exit when it breaks below. Unlike an EMA50/200 crossover it does NOT exit on every pullback, so it…",
+  "codeSha256": "b6e0cb813e57634cc8e749260f798a6aa200b4e6010801fc26f8e3a3dfdea09b",
+  "codeFromBacktest": 30566,
+  "verified": {
+    "backtestId": 30566,
+    "return": 144.34,
+    "mdd": 20.72,
+    "trades": 91,
+    "benchRet": 59.08,
+    "tFrom": 1650369600,
+    "tTo": 1722355200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

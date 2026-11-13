@@ -1,0 +1,33 @@
+{
+  "id": 6264,
+  "name": "BTC Trend + OI Confirmation 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Trend-following on BTC with an open-interest confirmation gate. A rally backed by RISING open interest means new longs are entering — the move is real and tends to continue. A rall…",
+  "codeSha256": "90cf336062129606c6f30291a60ba4321f51156a91a4d65c526e668cd58edc46",
+  "codeFromBacktest": 30628,
+  "verified": {
+    "backtestId": 30628,
+    "return": 86.39,
+    "mdd": 23.9,
+    "trades": 66,
+    "benchRet": 11.46,
+    "tFrom": 1722369600,
+    "tTo": 1794355200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ①(fail) ②(0/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

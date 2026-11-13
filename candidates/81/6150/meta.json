@@ -1,0 +1,33 @@
+{
+  "id": 6150,
+  "name": "BTC Perp Funding-Contrarian 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: On perpetual futures the funding rate is a positioning gauge. When funding is extremely positive, longs are paying a lot to stay long — a crowded long that often flushes; when it i…",
+  "codeSha256": "4e70ecc7e63a0c1645bbc688b514ba12b1e82f0b9519ef9878696323797f6dc0",
+  "codeFromBacktest": 29763,
+  "verified": {
+    "backtestId": 29763,
+    "return": -17.53,
+    "mdd": 30.29,
+    "trades": 236,
+    "tFrom": 1650182400,
+    "tTo": 1722168000,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

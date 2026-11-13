@@ -1,0 +1,34 @@
+{
+  "id": 6225,
+  "name": "BTC Regime + Trail 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC spends most of its time trending. A slow 33-day (200-bar) SMA separates bull regimes (price above) from bear regimes (price below). We ride the bull with a trailing stop whose…",
+  "codeSha256": "c73b91b309c138eeba34b601153adb5f845a5ab635a392f17e20a6ba61017864",
+  "codeFromBacktest": 30423,
+  "verified": {
+    "backtestId": 30423,
+    "return": 56.2,
+    "mdd": 28.89,
+    "trades": 25,
+    "benchRet": 62.74,
+    "tFrom": 1650355200,
+    "tTo": 1722340800,
+    "gapPct": 0,
+    "engineHash": "n1b6f92dea9f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

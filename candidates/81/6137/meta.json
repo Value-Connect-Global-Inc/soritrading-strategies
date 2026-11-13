@@ -1,0 +1,33 @@
+{
+  "id": 6137,
+  "name": "BNB SMA200 Trend Ride 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BNB's 4h price trends for extended periods once it is clearly above its slow 200-bar average — the same family validated and kept on BTC and ETH 4h. Trend-strength sizing (risk sca…",
+  "codeSha256": "f162d3d6ed93b55b8da3f918598dc1a169e7907b9b4ee2a52d51da141f453236",
+  "codeFromBacktest": 29645,
+  "verified": {
+    "backtestId": 29645,
+    "return": 1075.22,
+    "mdd": 40.41,
+    "trades": 71,
+    "benchRet": 2923.42,
+    "tFrom": 1578153600,
+    "tTo": 1650153600,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "BNB",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

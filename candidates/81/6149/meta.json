@@ -1,0 +1,33 @@
+{
+  "id": 6149,
+  "name": "ETH Perp Funding-Trend 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: On perpetual futures the funding rate shows which side is crowded. When funding is far above its own recent norm, longs are paying to stay long (a crowded long that tends to flush)…",
+  "codeSha256": "02f08eef22bce262b2e17a4e0ba700d9763dc4f36689c991670ea8422987c0f9",
+  "codeFromBacktest": 29760,
+  "verified": {
+    "backtestId": 29760,
+    "return": 1.65,
+    "mdd": 29.76,
+    "trades": 429,
+    "tFrom": 1650182400,
+    "tTo": 1722168000,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,34 @@
+{
+  "id": 6323,
+  "name": "BTC Fear-Greed Dip Buy 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: crowded fear marks short-term bottoms in crypto. When the Fear & Greed index drops far below its own recent average AND price makes a fresh 20-bar low, the crowd is selling into a…",
+  "codeSha256": "390897882197167986de9cd8294d863b4c98e8d48d0f419e074a7cb03c6b8f54",
+  "codeFromBacktest": 31055,
+  "verified": {
+    "backtestId": 31055,
+    "return": -22.97,
+    "mdd": 29.55,
+    "trades": 96,
+    "benchRet": 397.93,
+    "tFrom": 1578484800,
+    "tTo": 1650484800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

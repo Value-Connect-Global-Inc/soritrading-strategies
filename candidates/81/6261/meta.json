@@ -1,0 +1,33 @@
+{
+  "id": 6261,
+  "name": "BTC Funding Contrarian 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Perpetual funding is a crowd-positioning meter. When funding is strongly negative, shorts pay longs — the crowd is short and a squeeze is likely; when strongly positive, the crowd…",
+  "codeSha256": "eff768f1da0fe46cc5a959a0dd34a43a979fc62a9838a5abddb984523d910c3b",
+  "codeFromBacktest": 30615,
+  "verified": {
+    "backtestId": 30615,
+    "return": -25.03,
+    "mdd": 60.88,
+    "trades": 194,
+    "tFrom": 1578384000,
+    "tTo": 1650369600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

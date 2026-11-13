@@ -1,0 +1,34 @@
+{
+  "id": 6213,
+  "name": "BTC 4H Uptrend Dip-Buy",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: In a long-term uptrend, sharp short-term drops (RSI oversold) tend to revert and the trend resumes, so buying those dips captures the bull run at better prices. When it buys and se…",
+  "codeSha256": "259886f89a21f193e5a5ad8db61bbecfdaa2e9ed03365ac975455a81177d0a51",
+  "codeFromBacktest": 30251,
+  "verified": {
+    "backtestId": 30251,
+    "return": 13.74,
+    "mdd": 24.13,
+    "trades": 31,
+    "benchRet": 63.64,
+    "tFrom": 1650340800,
+    "tTo": 1722326400,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

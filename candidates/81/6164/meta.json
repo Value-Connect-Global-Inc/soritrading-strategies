@@ -1,0 +1,39 @@
+{
+  "id": 6164,
+  "name": "Oversold Bounce Rotation 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Mean-reversion rotation: every day we look at the same basket of large-cap coins and buy the single one that has pulled back the most below its 20-bar average, but only if that coin is still in a lon…",
+  "codeSha256": "18e93d3c82a742ae42f9cd48d14807a111a0ff548942af09406238c0cdcc2490",
+  "codeFromBacktest": 29891,
+  "verified": {
+    "backtestId": 29891,
+    "return": -90.49,
+    "mdd": 93.93,
+    "trades": 209,
+    "tFrom": 1578182400,
+    "tTo": 1650182400,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "syms": [
+        "BTC",
+        "ETH",
+        "BNB",
+        "XRP",
+        "DOGE"
+      ],
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

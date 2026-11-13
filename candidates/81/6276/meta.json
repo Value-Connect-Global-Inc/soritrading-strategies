@@ -1,0 +1,34 @@
+{
+  "id": 6276,
+  "name": "ETH Regime Trend 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Ethereum is a higher-beta version of Bitcoin — deeper drawdowns but sharper trends. A VIX regime gate keeps the long side out of US-equity risk-off episodes; a strong-trend overrid…",
+  "codeSha256": "608ec7215636629e4b4f783df5c2f07a34785df874c3f02b6309963aa8d7561d",
+  "codeFromBacktest": 30722,
+  "verified": {
+    "backtestId": 30722,
+    "return": 18.37,
+    "mdd": 29,
+    "trades": 85,
+    "benchRet": -24.46,
+    "tFrom": 1621612800,
+    "tTo": 1679198400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

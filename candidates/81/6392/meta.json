@@ -1,0 +1,33 @@
+{
+  "id": 6392,
+  "name": "BTC Funding Contrarian Perp 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Funding rates on perpetual futures tell us which side is crowded. When funding is far above its own recent average, longs are paying a lot to stay long — the crowd is over-bullish,…",
+  "codeSha256": "07f2f39374684d838ed0fcf3a833282563e874471df02d121eb1fb99896d6128",
+  "codeFromBacktest": 31382,
+  "verified": {
+    "backtestId": 31382,
+    "return": -64.65,
+    "mdd": 66.87,
+    "trades": 1197,
+    "tFrom": 1722556800,
+    "tTo": 1794542400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

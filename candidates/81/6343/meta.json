@@ -1,0 +1,33 @@
+{
+  "id": 6343,
+  "name": "BTC Long-Short Trend 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Trend-following on BTC perpetuals in BOTH directions, but only entering when volatility is calm. Volatility explosions usually come right before a trend breaks, so re-entering into…",
+  "codeSha256": "ecd709578d2e911cac57b2ea42e6add77bab1f1a5df9155c2d76256951dd34bb",
+  "codeFromBacktest": 31176,
+  "verified": {
+    "backtestId": 31176,
+    "return": -33.48,
+    "mdd": 60.11,
+    "trades": 177,
+    "tFrom": 1722528000,
+    "tTo": 1794513600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

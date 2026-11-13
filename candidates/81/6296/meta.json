@@ -1,0 +1,33 @@
+{
+  "id": 6296,
+  "name": "BTC Dollar-Regime Dual 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Crypto rallies when the US dollar is weak (global liquidity expands) and falls when the dollar strengthens sharply (liquidity tightens). Unlike a long-only strategy, this one trade…",
+  "codeSha256": "bc89f9eb2f7a6af170d595b4453f4b744c54a895ab9b517b4b625fb489a16a9d",
+  "codeFromBacktest": 30878,
+  "verified": {
+    "backtestId": 30878,
+    "return": 26.31,
+    "mdd": 27.2,
+    "trades": 129,
+    "tFrom": 1722441600,
+    "tTo": 1794427200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

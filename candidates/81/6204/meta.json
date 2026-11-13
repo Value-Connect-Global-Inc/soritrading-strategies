@@ -1,0 +1,33 @@
+{
+  "id": 6204,
+  "name": "BTC 4H Trend Core NoGate Baseline",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Baseline control for the funding-gate experiment. Identical EMA50/200 trend core as the funding-gated version but WITHOUT any funding condition, so any difference in results isolat…",
+  "codeSha256": "b7218111c5c3e24c3e0ec3d6274844c0e50306c38f83b7724e9e9c717bd34ee3",
+  "codeFromBacktest": 30197,
+  "verified": {
+    "backtestId": 30197,
+    "return": 132.19,
+    "mdd": 27.91,
+    "trades": 51,
+    "tFrom": 1650326400,
+    "tTo": 1722312000,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

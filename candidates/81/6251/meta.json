@@ -1,0 +1,33 @@
+{
+  "id": 6251,
+  "name": "BTC Fast Trend + NDX Gate 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: A FASTER trend core (EMA20/50 crossover) with the proven NDX entry gate. A faster crossover re-enters sooner after pullbacks, so it can capture more of a long bull run than the slo…",
+  "codeSha256": "e4e6072eeaf5e8693a453d1ea6fb0f37d7eac6a4f6f308569d520d1a0a935b15",
+  "codeFromBacktest": 30572,
+  "verified": {
+    "backtestId": 30572,
+    "return": 27.04,
+    "mdd": 34.87,
+    "trades": 128,
+    "benchRet": 59.81,
+    "tFrom": 1650384000,
+    "tTo": 1722369600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

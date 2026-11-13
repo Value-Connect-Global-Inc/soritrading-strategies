@@ -1,0 +1,34 @@
+{
+  "id": 6283,
+  "name": "BTC VIX-Regime Trend 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Crypto crashes almost always arrive together with a spike in equity volatility (VIX). This strategy uses the VIX as a risk-on/off gauge measured as a z-score against its own recent…",
+  "codeSha256": "5ff302afe4984d24a59e29df42292dc8bad05287f1a59244cb1f4ad215734365",
+  "codeFromBacktest": 30789,
+  "verified": {
+    "backtestId": 30789,
+    "return": 5.98,
+    "mdd": 44.75,
+    "trades": 198,
+    "benchRet": 434.39,
+    "tFrom": 1578398400,
+    "tTo": 1650398400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

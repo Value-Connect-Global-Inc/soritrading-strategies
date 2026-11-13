@@ -1,0 +1,33 @@
+{
+  "id": 6263,
+  "name": "BTC Trend + Dollar Gate 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Same trend core as the champion (EMA50/200 crossover + 3x ATR stop) but gated by US DOLLAR strength instead of equities. Crypto is a dollar-liquidity asset: when the broad US dolla…",
+  "codeSha256": "3304eed0f5b80bd21ac909ea93233a4d9c97e53af4dfc756781014ea72261e83",
+  "codeFromBacktest": 30621,
+  "verified": {
+    "backtestId": 30621,
+    "return": 101.29,
+    "mdd": 19.35,
+    "trades": 29,
+    "benchRet": 59.81,
+    "tFrom": 1650384000,
+    "tTo": 1722369600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

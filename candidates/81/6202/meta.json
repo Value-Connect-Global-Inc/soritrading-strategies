@@ -1,0 +1,33 @@
+{
+  "id": 6202,
+  "name": "SOL 4H Trend + USD Strength Gate",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: The USD-strength macro gate (broad US Dollar index z-score) validated on BTC 4H, applied UNCHANGED to SOL, the highest-beta major alt. A strong dollar drains global liquidity and i…",
+  "codeSha256": "d0947691519a5a122e51f6059f1e390294eeba565d8e962b91e74a562e0657bf",
+  "codeFromBacktest": 30190,
+  "verified": {
+    "backtestId": 30190,
+    "return": -6.27,
+    "mdd": 43.45,
+    "trades": 66,
+    "benchRet": -50.96,
+    "tFrom": 1729526400,
+    "tTo": 1794312000,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

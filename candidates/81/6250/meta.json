@@ -1,0 +1,33 @@
+{
+  "id": 6250,
+  "name": "BTC Trend + Dollar Gate 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Trend-following on BTC with a US Dollar regime ENTRY gate. A sharply strengthening dollar (z-score > +1.5 vs its own 90-day mean) marks risk-off that usually drags crypto down; a w…",
+  "codeSha256": "8a64ab2a303887640cda53db56f8f337f3164cada65c4d92972f90b2037a1794",
+  "codeFromBacktest": 30570,
+  "verified": {
+    "backtestId": 30570,
+    "return": 53.03,
+    "mdd": 32.3,
+    "trades": 46,
+    "benchRet": 425.74,
+    "tFrom": 1578369600,
+    "tTo": 1650369600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

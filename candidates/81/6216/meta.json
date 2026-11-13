@@ -1,0 +1,33 @@
+{
+  "id": 6216,
+  "name": "BTC Fear-Greed Contrarian 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why: The Fear & Greed index (0=extreme fear, 100=extreme greed) measures crowd emotion. Crowds are usually wrong at the extremes, so buying when everyone is terrified and selling when everyone is eup…",
+  "codeSha256": "d015c40a372f413ffd921baf0f45fb46e1ba1a0b9274511fa4002363a2d20c8e",
+  "codeFromBacktest": 30297,
+  "verified": {
+    "backtestId": 30297,
+    "return": -25.87,
+    "mdd": 50.96,
+    "trades": 25,
+    "benchRet": 26.06,
+    "tFrom": 1527811200,
+    "tTo": 1590955200,
+    "gapPct": 0.2,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6169,
+  "name": "Yield-Curve Regime Gate BTC 1D",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: the 10y-2y US Treasury yield curve inverts before risk-off periods and stays positive through bull years. It was positive 100% of 2020/2021/2025 (BTC bull years) and inverted most…",
+  "codeSha256": "0144072fc8d953c5213f2c46dab6b9c0182bd65da6696e3b31ff0081b0e54c94",
+  "codeFromBacktest": 29956,
+  "verified": {
+    "backtestId": 29956,
+    "return": 2.43,
+    "mdd": 15.23,
+    "trades": 12,
+    "benchRet": 36.05,
+    "tFrom": 1621382400,
+    "tTo": 1707696000,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ②(1/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

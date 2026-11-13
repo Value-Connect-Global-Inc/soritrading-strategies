@@ -1,0 +1,34 @@
+{
+  "id": 6162,
+  "name": "Volume-Confirmed Breakout 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Trend-following breakout on 4h BTC. We only enter when the breakout is confirmed by above-average volume (fresh money, not a quiet drift), so weak breakouts that reverse are skipped. We buy when the…",
+  "codeSha256": "08be80844aec0c7ecad9b8290f9288e329f20b7f63d12156117128fb0e7421d5",
+  "codeFromBacktest": 29884,
+  "verified": {
+    "backtestId": 29884,
+    "return": 83.25,
+    "mdd": 36.23,
+    "trades": 65,
+    "benchRet": 68.41,
+    "tFrom": 1650196800,
+    "tTo": 1722182400,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6141,
+  "name": "BTC Macro-Regime Trend Ride 1D",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: A surging US dollar is only a crypto risk-off signal when the trend is already turning down (2022, 2025) — in 2021 the dollar rose while BTC trended up hard. This strategy rides th…",
+  "codeSha256": "ea1adfd46b5e2ffdb573a30e2be1be937fd3522e926f90b89d2914a689f0b30e",
+  "codeFromBacktest": 29667,
+  "verified": {
+    "backtestId": 29667,
+    "return": -20.92,
+    "mdd": 49.09,
+    "trades": 25,
+    "benchRet": 156.02,
+    "tFrom": 1604016000,
+    "tTo": 1698969600,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

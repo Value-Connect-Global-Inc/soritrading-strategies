@@ -1,0 +1,33 @@
+{
+  "id": 6138,
+  "name": "XRP SMA200 Trend Ride 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: XRP's 4h price trends for extended periods once it is clearly above its slow 200-bar average — the same family validated and kept on BTC and ETH 4h. Trend-strength sizing (risk sca…",
+  "codeSha256": "6a5ecfb1f33f178efe182626016d57535abf50a492a3836bc1047fe29150da2a",
+  "codeFromBacktest": 29651,
+  "verified": {
+    "backtestId": 29651,
+    "return": -47.1,
+    "mdd": 47.97,
+    "trades": 34,
+    "benchRet": -22.56,
+    "tFrom": 1650168000,
+    "tTo": 1722153600,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "XRP",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

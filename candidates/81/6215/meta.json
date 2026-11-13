@@ -1,0 +1,33 @@
+{
+  "id": 6215,
+  "name": "BTC Funding-Contrarian Both-Sides 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why: Perpetual funding is crowd positioning. When funding is far below its own recent average, shorts are crowded and paying longs — a squeeze usually follows. When it is far above, longs are crowded…",
+  "codeSha256": "11a78d9ca7c705dddb6c8ccc84babf9697ffae6906d0dfda5146f7f6d5c5df12",
+  "codeFromBacktest": 30291,
+  "verified": {
+    "backtestId": 30291,
+    "return": 8.23,
+    "mdd": 1.32,
+    "trades": 6,
+    "tFrom": 1578340800,
+    "tTo": 1650326400,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(1/3) ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

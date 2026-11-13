@@ -1,0 +1,33 @@
+{
+  "id": 6274,
+  "name": "OnChain Adoption Trend 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin's network usage — the daily count of unique active addresses — is a fundamental adoption signal that tends to lead or confirm price trends. When usage is expanding (address…",
+  "codeSha256": "444d639ba818d332e409d541aae29ea8067660e5f62e23485b887743ab1e1c39",
+  "codeFromBacktest": 30710,
+  "verified": {
+    "backtestId": 30710,
+    "return": -19.66,
+    "mdd": 23.26,
+    "trades": 136,
+    "tFrom": 1736784000,
+    "tTo": 1794369600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6188,
+  "name": "SOL 4H Trend Fresh-Entry (no whipsaw re-entry)",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: A slow trend filter on a high-beta asset rides crypto's strongest rallies and steps aside in the crashes. The EMA50>EMA200 + close-above-SMA200 condition is the confirmed-uptrend g…",
+  "codeSha256": "8fb66e807e31dfefbffa43831c443ebfe824d60ed4cc24a009a776003819369e",
+  "codeFromBacktest": 30064,
+  "verified": {
+    "backtestId": 30064,
+    "return": -0.75,
+    "mdd": 52.49,
+    "trades": 78,
+    "benchRet": -53.05,
+    "tFrom": 1736640000,
+    "tTo": 1794225600,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(1/3)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

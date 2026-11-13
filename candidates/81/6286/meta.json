@@ -1,0 +1,33 @@
+{
+  "id": 6286,
+  "name": "BTC Dollar-Regime Trend 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Crypto rallies when the US dollar is weak (global liquidity expands) and tends to crash when the dollar strengthens sharply (liquidity tightens). This strategy follows BTC's trend…",
+  "codeSha256": "d5186a5794e1520f2fcbab84f3c4b760e42bec1dc4b3476a467af7bd4a214342",
+  "codeFromBacktest": 30832,
+  "verified": {
+    "backtestId": 30832,
+    "return": 20.72,
+    "mdd": 24.05,
+    "trades": 58,
+    "benchRet": 12.07,
+    "tFrom": 1722427200,
+    "tTo": 1794412800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

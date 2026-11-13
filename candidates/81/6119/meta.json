@@ -1,0 +1,33 @@
+{
+  "id": 6119,
+  "name": "BTC 4H Z-Score Mean Reversion",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC overshoots its short-term average in both directions — panic dips below 2 stdevs and euphoric rips above 2 stdevs both tend to snap back. Trading both sides captures mean rever…",
+  "codeSha256": "261ae6f6d6f0d216408d77e0bb184dfcb780771cf3e4d7b2f2e4d832c82f8027",
+  "codeFromBacktest": 29487,
+  "verified": {
+    "backtestId": 29487,
+    "return": -99.57,
+    "mdd": 99.58,
+    "trades": 239,
+    "tFrom": 1578139200,
+    "tTo": 1650124800,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

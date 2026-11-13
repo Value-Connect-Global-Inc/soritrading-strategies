@@ -1,0 +1,33 @@
+{
+  "id": 6195,
+  "name": "Volume-Confirmed Donchian Breakout BTC 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Trend + volume confirmation (long-only). In an uptrend (EMA50>EMA200) it buys when a bar closes above EMA50 on a volume spike (1.5x the 20-bar average), betting that heavy volume confirms real buying…",
+  "codeSha256": "159612202e04c98f01359e8a43683804aa5912590ce83756c3604e04f4537b97",
+  "codeFromBacktest": 30149,
+  "verified": {
+    "backtestId": 30149,
+    "return": 21.03,
+    "mdd": 34.9,
+    "trades": 68,
+    "benchRet": 11.15,
+    "tFrom": 1722312000,
+    "tTo": 1794297600,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

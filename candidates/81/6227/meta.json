@@ -1,0 +1,34 @@
+{
+  "id": 6227,
+  "name": "BTC Regime Trail +EMA50Exit 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: the SMA50>SMA200 entry gate blocks bear-market re-entries, and a fast EMA50 exit cuts the give-back at regime tops: when price closes below its 8-day EMA we leave instead of waitin…",
+  "codeSha256": "ee6850cbc73bdb4b25f1988b50a7807dbcab388a925dfe5a2692eb555aade661",
+  "codeFromBacktest": 30428,
+  "verified": {
+    "backtestId": 30428,
+    "return": -98.75,
+    "mdd": 98.78,
+    "trades": 1933,
+    "benchRet": 62.74,
+    "tFrom": 1650355200,
+    "tTo": 1722340800,
+    "gapPct": 0,
+    "engineHash": "n1b6f92dea9f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

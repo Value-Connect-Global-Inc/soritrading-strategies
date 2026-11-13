@@ -1,0 +1,34 @@
+{
+  "id": 6322,
+  "name": "BTC Chandelier Trend 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends in long bursts; a close above a 20-bar high while the market is already above its 200-bar average usually continues, and a trailing stop rides the trend while cutting lo…",
+  "codeSha256": "8b96f4049469fb8efb55e13d8e97b19beffa9b17664466a7f7178bda3a0f546c",
+  "codeFromBacktest": 31052,
+  "verified": {
+    "backtestId": 31052,
+    "return": 60.09,
+    "mdd": 18.96,
+    "trades": 144,
+    "benchRet": 54.29,
+    "tFrom": 1650499200,
+    "tTo": 1722484800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

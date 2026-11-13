@@ -1,0 +1,33 @@
+{
+  "id": 6252,
+  "name": "BTC Ride100 + NDX Gate 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Middle ground between the slow EMA50/200 crossover and the ride-the-200. Hold long while price is above EMA100 (does NOT exit on minor pullbacks, so it captures more of a bull than…",
+  "codeSha256": "5451af202cffa5bd042920b9f7fc368be94766091683e17002f80771936a7531",
+  "codeFromBacktest": 30574,
+  "verified": {
+    "backtestId": 30574,
+    "return": 55.34,
+    "mdd": 64.93,
+    "trades": 224,
+    "benchRet": 425.74,
+    "tFrom": 1578369600,
+    "tTo": 1650369600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

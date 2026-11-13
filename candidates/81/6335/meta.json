@@ -1,0 +1,34 @@
+{
+  "id": 6335,
+  "name": "ETH SMA300 Regime Filter 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: ETH's biggest gains happen in long uninterrupted uptrends above its 300-bar average, while its worst losses happen after price falls below that average. Riding the uptrend fully an…",
+  "codeSha256": "7c9d63572f25d86554dc44b5d7344f7effba6610f0dda6975cc331a9cbbc577b",
+  "codeFromBacktest": 31146,
+  "verified": {
+    "backtestId": 31146,
+    "return": 56.69,
+    "mdd": 37.8,
+    "trades": 34,
+    "benchRet": 2.83,
+    "tFrom": 1650513600,
+    "tTo": 1722499200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

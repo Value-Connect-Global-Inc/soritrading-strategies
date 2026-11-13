@@ -1,0 +1,34 @@
+{
+  "id": 6367,
+  "name": "BTC Regime Trend Filter 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Crypto trends persist — a coin above its long trend line tends to keep rising and below it tends to keep falling. We ride the up-trends and step aside in down-trends instead of hol…",
+  "codeSha256": "fdfa86bb864c1081a70bba6567451e5b3c6ac1f9817d26a6f7cec47418c84fa4",
+  "codeFromBacktest": 31288,
+  "verified": {
+    "backtestId": 31288,
+    "return": -99.99,
+    "mdd": 99.99,
+    "trades": 2567,
+    "benchRet": 430.01,
+    "tFrom": 1578542400,
+    "tTo": 1650542400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

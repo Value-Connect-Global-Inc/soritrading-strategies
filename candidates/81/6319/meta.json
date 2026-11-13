@@ -1,0 +1,34 @@
+{
+  "id": 6319,
+  "name": "BTC VIX-Regime Trend 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why: crypto trends persist, but the worst drawdowns cluster in risk-off episodes when the VIX spikes well above its own recent mean. We ride the 4h trend while the VIX is calm, and refuse to open new…",
+  "codeSha256": "cd7a315a381087ba0d73f162e5d3ba1626a3835555d2799eb0f891bca12ff46b",
+  "codeFromBacktest": 31026,
+  "verified": {
+    "backtestId": 31026,
+    "return": -0.16,
+    "mdd": 44.65,
+    "trades": 172,
+    "benchRet": 13.41,
+    "tFrom": 1722484800,
+    "tTo": 1794470400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,34 @@
+{
+  "id": 6351,
+  "name": "BTC On-Chain Trend Rider 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin's network usage (daily unique active addresses) tends to expand during real rallies and contract before breakdowns. This rides a proven 300-bar uptrend with a volatility-ca…",
+  "codeSha256": "d33ef04df50593c87b2c623bb62c4a9a569c59fd9ab44b58c7d931a3357793a4",
+  "codeFromBacktest": 31227,
+  "verified": {
+    "backtestId": 31227,
+    "return": -7.94,
+    "mdd": 36.88,
+    "trades": 111,
+    "benchRet": 48.22,
+    "tFrom": 1650528000,
+    "tTo": 1722513600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

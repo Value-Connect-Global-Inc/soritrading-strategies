@@ -1,0 +1,34 @@
+{
+  "id": 6365,
+  "name": "ETH 1h EMA-trend pullback ATR stop",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: In a clear uptrend (price above a rising 200-period EMA) pullbacks to weakness (RSI oversold) tend to resume, so buying the dip with a hard ATR stop cuts losers fast and lets winne…",
+  "codeSha256": "d06577426792c904bd62061289f41d380490cc032abcba8f6d93c924fa80a4c7",
+  "codeFromBacktest": 31282,
+  "verified": {
+    "backtestId": 31282,
+    "return": -30.24,
+    "mdd": 32.98,
+    "trades": 145,
+    "benchRet": -43.6,
+    "tFrom": 1758560400,
+    "tTo": 1776556800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "1h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

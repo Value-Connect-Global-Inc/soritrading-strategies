@@ -1,0 +1,33 @@
+{
+  "id": 6176,
+  "name": "BTC 4H VIX Panic Mean Reversion",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: the edge depends on the regime. In an uptrend the edge is simply holding. In a downtrend the edge is buying the panic dip when the VIX index spikes far above its own recent range a…",
+  "codeSha256": "1be7d67c8b8d1f152f2ef87e8fa209426dda0c349ff27c633028a44b7957762d",
+  "codeFromBacktest": 29996,
+  "verified": {
+    "backtestId": 29996,
+    "return": -89.33,
+    "mdd": 92.71,
+    "trades": 448,
+    "benchRet": 443.91,
+    "tFrom": 1578211200,
+    "tTo": 1650211200,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

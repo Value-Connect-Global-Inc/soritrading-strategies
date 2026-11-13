@@ -1,0 +1,33 @@
+{
+  "id": 6293,
+  "name": "ETH Funding Sentiment Reversal 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Crypto rallies when the US dollar is weak (global liquidity expands) and tends to crash when the dollar strengthens sharply (liquidity tightens). This strategy follows BTC's trend…",
+  "codeSha256": "a22450832e8b6c6923a18dfb3c3ed7c707ee2b4e8a93c50f1667593b2ca9c7ce",
+  "codeFromBacktest": 30866,
+  "verified": {
+    "backtestId": 30866,
+    "return": 61.39,
+    "mdd": 51.8,
+    "trades": 68,
+    "benchRet": 412.61,
+    "tFrom": 1578412800,
+    "tTo": 1650412800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

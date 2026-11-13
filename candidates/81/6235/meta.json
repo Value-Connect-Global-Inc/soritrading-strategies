@@ -1,0 +1,33 @@
+{
+  "id": 6235,
+  "name": "BTC Chandelier Trend SPOT 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: crypto trends persist once they start, and the previous slow EMA50/200 cross missed most of the strong bull runs because it exited on every pullback. This version enters fast (a qu…",
+  "codeSha256": "7df7637af7b1ff6320ef32cb085e30c72ec477714488662777f04967898bca2d",
+  "codeFromBacktest": 30479,
+  "verified": {
+    "backtestId": 30479,
+    "return": -62.59,
+    "mdd": 63.96,
+    "trades": 228,
+    "benchRet": -53.24,
+    "tFrom": 1622505600,
+    "tTo": 1669838400,
+    "gapPct": 0,
+    "engineHash": "n1b6f92dea9f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

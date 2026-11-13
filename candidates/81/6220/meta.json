@@ -1,0 +1,34 @@
+{
+  "id": 6220,
+  "name": "BTC Trend Ride 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: diagnostic build to find why a slow trend strategy churns ~800 round trips. When it buys and sells: long when price > EMA100; exits on price < EMA200 or 20% trailing stop. When it…",
+  "codeSha256": "db0b463a627812c479ae62e0b88ef3c7a583a62d27a9e201fb3b83418278b651",
+  "codeFromBacktest": 30320,
+  "verified": {
+    "backtestId": 30320,
+    "return": -71.96,
+    "mdd": 73.66,
+    "trades": 245,
+    "benchRet": 28.53,
+    "tFrom": 1707940800,
+    "tTo": 1722326400,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(1/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

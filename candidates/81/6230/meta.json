@@ -1,0 +1,33 @@
+{
+  "id": 6230,
+  "name": "BTC Book Imbalance Momentum 1M",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: short-term momentum (price crossing above a 20-bar EMA) is only trusted when the intraday trend (200-bar EMA) is also up, so it stops buying into falling markets where the earlier…",
+  "codeSha256": "e2a556c097b1459ac654571c33cbe12faca114b39b319a3e1652848b815525cf",
+  "codeFromBacktest": 30455,
+  "verified": {
+    "backtestId": 30455,
+    "return": -2.07,
+    "mdd": 3.09,
+    "trades": 13,
+    "benchRet": 0.94,
+    "tFrom": 1792933020,
+    "tTo": 1793293020,
+    "gapPct": 0,
+    "engineHash": "n1b6f92dea9f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1m"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

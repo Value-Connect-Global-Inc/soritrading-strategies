@@ -1,0 +1,34 @@
+{
+  "id": 6324,
+  "name": "BTC Trend Regime Ride 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC spends most of its time in long uptrends interrupted by sharp crashes. A slow trend filter that stays fully invested while the medium trend is up and steps aside when it breaks…",
+  "codeSha256": "98713cf29489bd6d0591c203fd445d176e2cf6acc8e1ae694d06986e68a5f95e",
+  "codeFromBacktest": 31110,
+  "verified": {
+    "backtestId": 31110,
+    "return": 98.4,
+    "mdd": 29.09,
+    "trades": 80,
+    "benchRet": 54.52,
+    "tFrom": 1650513600,
+    "tTo": 1722499200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

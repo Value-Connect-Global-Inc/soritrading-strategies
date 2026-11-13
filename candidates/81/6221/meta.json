@@ -1,0 +1,33 @@
+{
+  "id": 6221,
+  "name": "BTC Turtle Breakout 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: classic turtle trend-following on BTC 4h. BTC trends last weeks; an 18-DAY breakout entry rides them while the 20-DAY channel exit steps aside in crashes. When it buys and sells: b…",
+  "codeSha256": "5ecfbe4ba6c37611a5eff93c53e798d57c2f5444821349da2ca59712e3a25749",
+  "codeFromBacktest": 30327,
+  "verified": {
+    "backtestId": 30327,
+    "return": -19.63,
+    "mdd": 58.14,
+    "trades": 37,
+    "benchRet": 63.64,
+    "tFrom": 1650340800,
+    "tTo": 1722326400,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

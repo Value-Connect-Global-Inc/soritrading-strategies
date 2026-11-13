@@ -1,0 +1,34 @@
+{
+  "id": 6330,
+  "name": "BTC SMA200 Regime + Crash Stop 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC's biggest gains happen in long uninterrupted uptrends above its 200-bar average, while its worst losses happen in sudden crashes. Riding the uptrend fully, stepping aside below…",
+  "codeSha256": "83fa154b1e7655907d99d322eb76c3ef55fdeb2d0c73ce29d0c5863b1cf48afe",
+  "codeFromBacktest": 31116,
+  "verified": {
+    "backtestId": 31116,
+    "return": 114.22,
+    "mdd": 26.94,
+    "trades": 53,
+    "benchRet": 54.52,
+    "tFrom": 1650513600,
+    "tTo": 1722499200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

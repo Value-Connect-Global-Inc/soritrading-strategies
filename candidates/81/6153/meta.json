@@ -1,0 +1,33 @@
+{
+  "id": 6153,
+  "name": "BTC Macro+Trend Regime Filter 1D",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin's worst losses come in sustained downtrends and its biggest gains in long uptrends. A 150-day average separates the two: hold while the close is above it, step aside when t…",
+  "codeSha256": "cb87b13879611f1278e384fe00296042109d0d70984405f51264917861ca3f08",
+  "codeFromBacktest": 29797,
+  "verified": {
+    "backtestId": 29797,
+    "return": 674.97,
+    "mdd": 42.82,
+    "trades": 10,
+    "benchRet": 556.7,
+    "tFrom": 1534982400,
+    "tTo": 1621296000,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

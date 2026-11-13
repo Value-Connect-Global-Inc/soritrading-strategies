@@ -1,0 +1,33 @@
+{
+  "id": 6258,
+  "name": "SOL Trend + NDX Gate 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: The proven BTC EMA50/200 + NDX-gate framework ported to SOL, a higher-beta asset that rises more in crypto bull markets. The NDX entry gate (no fresh long when NASDAQ is more than…",
+  "codeSha256": "3f132d1bfac6a403261bf2d0c2ad54b127bff54eb8d2f712e0814fd880489603",
+  "codeFromBacktest": 30607,
+  "verified": {
+    "backtestId": 30607,
+    "return": 3.72,
+    "mdd": 46.01,
+    "trades": 48,
+    "benchRet": -53.06,
+    "tFrom": 1736784000,
+    "tTo": 1794369600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

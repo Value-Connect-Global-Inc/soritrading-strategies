@@ -1,0 +1,33 @@
+{
+  "id": 6170,
+  "name": "Macro-Gated BTC 4H Trend",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends strongly on the 4h chart, but the 2022-2023 bear years were signposted by an inverted US Treasury yield curve. Gating a selective Donchian breakout (turtle) system with…",
+  "codeSha256": "79673e399aaca47411427f9eeb0ff5722a9f32f3f816c0e1082e4835e44b6eaa",
+  "codeFromBacktest": 29971,
+  "verified": {
+    "backtestId": 29971,
+    "return": -39.18,
+    "mdd": 61.38,
+    "trades": 82,
+    "benchRet": 443.91,
+    "tFrom": 1578211200,
+    "tTo": 1650211200,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

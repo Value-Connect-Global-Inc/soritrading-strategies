@@ -1,0 +1,33 @@
+{
+  "id": 6135,
+  "name": "SOL Donchian Breakout Trend 4H",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why this strategy: Strong-trending assets on 4h reward breakout following. A Donchian breakout enters when price closes above the highest high of the last 50 bars and exits when it closes below the l…",
+  "codeSha256": "8fdca997106764aba4d8fdf753eb9c097c2b096aff3f0fd5168f0519ccc2108f",
+  "codeFromBacktest": 29639,
+  "verified": {
+    "backtestId": 29639,
+    "return": 457.04,
+    "mdd": 52.76,
+    "trades": 68,
+    "benchRet": 2923.42,
+    "tFrom": 1578153600,
+    "tTo": 1650153600,
+    "gapPct": 0,
+    "engineHash": "n1a0d7e10e68",
+    "spec": {
+      "ex": "binance",
+      "sym": "BNB",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

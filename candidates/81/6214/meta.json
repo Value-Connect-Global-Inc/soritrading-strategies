@@ -1,0 +1,34 @@
+{
+  "id": 6214,
+  "name": "BTC 4H Regime Filter Ride",
+  "job": 81,
+  "stage": "draft",
+  "idea": "Why: BTC is a global risk asset - when the NASDAQ-100 is above its long-term average risk appetite is healthy and BTC trends up; when NDX is below it, BTC usually slides too. A 2% hysteresis band sto…",
+  "codeSha256": "69c91329d0baf221ef2a9dc849a7c2c2b740cb0e277b058ec1a8273db1807f0d",
+  "codeFromBacktest": 30288,
+  "verified": {
+    "backtestId": 30288,
+    "return": 183.51,
+    "mdd": 49.73,
+    "trades": 28,
+    "benchRet": 439.71,
+    "tFrom": 1578326400,
+    "tTo": 1650326400,
+    "gapPct": 0,
+    "engineHash": "n1dd5fb576b0",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
