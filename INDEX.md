@@ -15,7 +15,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | B&H MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---:|---|---|
-| ★ | [6405](strategies/6405/) | BTC Donchian Trend 4H | +51.82% | +9.92% | +32.38% | — | 40 | 2026-11-11 `n122f2d5` | 2026-11-15 |
+| ★ | [6405](strategies/6405/) | BTC Donchian Trend 4H ‡ | +51.82% | +9.92% | +32.38% | — | 40 | 2026-11-11 `n122f2d5` | 2026-11-15 |
 | ★ | [6388](strategies/6388/) | BTC 4h Chandelier Trailing Stop | +69.08% | +59.61% | +25.21% | — | 88 | 2026-11-11 `n122f2d5` | 2026-11-13 |
 | ★ | [6338](strategies/6338/) | BTC ATR-Calm Trend Rider 4H | +63.15% | -36.99% | +33.90% | — | 36 | 2026-11-11 `n122f2d5` | 2026-11-12 |
 | ★ | [6334](strategies/6334/) | BTC SMA300 Regime Filter 4H | -4.32% | -51.85% | +55.90% | — | 60 | 2026-11-11 `n122f2d5` | 2026-11-12 |

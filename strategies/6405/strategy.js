@@ -1,67 +1,65 @@
 /*
  * @coinsori-strategy v1
- * name: BTC Donchian Trend 4H
+ * name: BTC Fear&Greed Contrarian 1D
  * ex: binance
  * syms: BTC/USDT
- * interval: 4h
+ * interval: 1d
  * cash: 10000
  *
- * Why this strategy: Classic turtle trend following — a break above the 20-bar high in a
- * strengthening uptrend (200-bar average rising) starts a trend, and a wide 55-bar Donchian
- * low exit (fast entry / slow exit) lets winners run through normal pullbacks instead of
- * being stopped out early.
- * When it buys and sells: buys when the last closed bar closes above the 20-bar Donchian high
- * while the 200-bar SMA is rising; sells when a closed bar closes below the 55-bar Donchian low.
- * When it does NOT work: long, choppy sideways markets where breakout fakes stop out
- * repeatedly, and any sustained bear market (it only buys in an uptrend).
+ * Why this strategy: The Crypto Fear & Greed index measures crowd sentiment. Historically, extreme
+ * fear (index < 25) inside an uptrend marks a panic dip that tends to recover, while extreme greed
+ * marks overheated tops. We bet on that mean reversion of sentiment.
+ * When it buys and sells: Buy when the index is in extreme fear AND price is still above its 200-day
+ * average (we only catch dips inside an uptrend, never a bear-market knife). Sell when fear subsides
+ * (index back above 55), when the 50-day trend breaks, or on a hard 3xATR stop.
+ * When it does NOT work: In a sustained bear market price stays below the 200-day average so we never
+ * buy (that is the filter working). In a long one-way bull with no fear dips we are mostly in cash and
+ * underperform buy-and-hold. Frequent small whipsaws near the fear/greed boundary pay fees.
  */
 function onUpdate(ctx) {
-  const price = ctx.price;
-  const cash = ctx.cash;
-  const pos = ctx.position;
+  const fg = ctx.data("fear_greed");
+  if (fg == null) return null;
 
   const sma200 = ctx.sma(200, 1);
-  const sma200Prev = ctx.sma(200, 2);
-  if (sma200 == null || sma200Prev == null) {
-    ctx.watch([]);
-    return null;
-  }
+  const sma50 = ctx.sma(50, 1);
+  const atr = ctx.atr(14, 1);
+  if (sma200 == null || sma50 == null || atr == null) return null;
 
-  const dcHigh20 = donchianHigh(ctx, 20, 2);
-  const dcLow55 = donchianLow(ctx, 55, 2);
-  const prevClose = ctx.closes.at(-2);
-  // Regime filter: only buy while the long average itself is rising (strengthening trend).
-  const trendUp = sma200 > sma200Prev;
+  const price = ctx.price;
+  const inPos = ctx.position > 0;
 
-  if (pos <= 0) {
-    ctx.watch([{ side: 'buy', price: dcHigh20, trigger: 'above', note: 'DC20 breakout', conds: [{ label: 'SMA200 rising', ok: trendUp }] }]);
-    if (prevClose > dcHigh20 && trendUp) {
-      const qty = cash / price * 0.98;
-      return { side: 'buy', qty };
+  // Hard stop: 3x ATR below entry, protects the account from a single bad dip.
+  const stopPx = ctx.entryPx != null ? ctx.entryPx - 3 * atr : null;
+
+  if (inPos) {
+    // Exit when fear subsides (index > 55 = neutral/greed), trend breaks, or stop hit.
+    const exit = fg > 55 || price < sma50 || (stopPx != null && price <= stopPx);
+    if (exit) {
+      ctx.watch([
+        { side: 'sell', price: stopPx != null ? stopPx : price, trigger: 'below', note: '3xATR stop' },
+        { side: 'sell', price: sma50, trigger: 'below', note: 'trend break' }
+      ]);
+      return { side: 'sell', qty: ctx.position, reduceOnly: true };
     }
+    ctx.watch([
+      { side: 'sell', price: stopPx != null ? stopPx : price, trigger: 'below', note: '3xATR stop' },
+      { side: 'sell', price: sma50, trigger: 'below', note: 'trend break' }
+    ]);
     return null;
   }
 
-  // Wide 55-bar exit = ~9 days, keeps the trend alive through normal pullbacks.
-  ctx.watch([{ side: 'sell', price: dcLow55, trigger: 'below', note: 'DC55 exit' }]);
-
-  if (prevClose < dcLow55) {
-    return { side: 'sell', qty: pos, reduceOnly: true };
+  // Entry: extreme fear (index < 25, the published "extreme fear" band) inside an uptrend.
+  const buy = fg < 25 && price > sma200;
+  if (buy) {
+    ctx.watch([
+      { side: 'buy', price: sma200, trigger: 'above', note: 'price above SMA200' }
+    ]);
+    return { side: 'buy', qty: ctx.cash / ctx.price * 0.99 };
   }
-  return null;
-}
 
-function donchianHigh(ctx, n, ago) {
-  const highs = ctx.highs;
-  const end = highs.length - 1 - ago;
-  let m = -Infinity;
-  for (let i = end - n + 1; i <= end; i++) m = Math.max(m, highs[i]);
-  return m;
-}
-function donchianLow(ctx, n, ago) {
-  const lows = ctx.lows;
-  const end = lows.length - 1 - ago;
-  let m = Infinity;
-  for (let i = end - n + 1; i <= end; i++) m = Math.min(m, lows[i]);
-  return m;
+  ctx.watch([
+    { side: 'buy', price: sma200, trigger: 'above', note: 'price above SMA200' },
+    { side: 'buy', price: sma200, trigger: 'below', note: 'fear dip' }
+  ]);
+  return null;
 }

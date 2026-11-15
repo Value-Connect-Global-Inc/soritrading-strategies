@@ -29,10 +29,10 @@
       "hash": "n122f2d5679f",
       "firstSeen": "2026-11-11"
     },
-    "codeBasis": "assumed-current",
+    "codeBasis": "previous-code",
     "verifiedCodeSha256": "87570b63f93a558c62435175695834be03b46f844d2621446dd6efb5b9e5ca95"
   },
   "config": null,
-  "updatedAt": "2026-11-15T23:09:55.774Z",
+  "updatedAt": "2026-11-15T23:20:33.051Z",
   "publishedBy": "scripts/publish-strategies.mjs"
 }
