@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 606 of 2557 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 607 of 2558 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 436 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -15,6 +15,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | B&H MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---:|---|---|
+| ★ | [6517](strategies/6517/) | BTC Trend VolTarget 4H | +47.36% | +21.34% | +27.77% | — | 24 | 2026-11-11 `n122f2d5` | 2026-11-18 |
 | ★ | [6486](strategies/6486/) | BTC VIX Regime Trend 1D | +36.31% | +25.14% | +25.07% | — | 46 | 2026-11-11 `n122f2d5` | 2026-11-17 |
 | ★ | [6456](strategies/6456/) | BTC Trend + VIX Regime Gate 4H | +45.94% | +20.43% | +21.87% | — | 42 | 2026-11-11 `n122f2d5` | 2026-11-17 |
 | ★ | [6423](strategies/6423/) | BTC Trend + Yield-Curve Regime 4H | +36.32% | +11.95% | +27.02% | — | 24 | 2026-11-11 `n122f2d5` | 2026-11-16 |

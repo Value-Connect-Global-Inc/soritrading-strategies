@@ -1,0 +1,37 @@
+{
+  "id": 6517,
+  "name": "BTC Trend VolTarget 4H",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 32302,
+    "return": 47.36,
+    "mdd": 27.77,
+    "trades": 24,
+    "vsBuyHold": "win",
+    "benchRet": 21.34,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1722470400,
+    "tTo": 1793476800,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 1b5563…) 4932봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "bars": 4932,
+      "end": 1793491200
+    },
+    "engine": {
+      "hash": "n122f2d5679f",
+      "firstSeen": "2026-11-11"
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "69af3e1905e7e16b469121508c328f6c40dd866b753f06158f14524427d1131b"
+  },
+  "config": null,
+  "updatedAt": "2026-11-18T04:02:58.029Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
