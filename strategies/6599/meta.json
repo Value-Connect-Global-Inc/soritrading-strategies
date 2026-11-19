@@ -1,0 +1,37 @@
+{
+  "id": 6599,
+  "name": "TEMP-compare 6594 champion",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 32803,
+    "return": 15.93,
+    "mdd": 13.31,
+    "trades": 28,
+    "vsBuyHold": "win",
+    "benchRet": -10.62,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1770595200,
+    "tTo": 1795060800,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 b3a9f6…) 1700봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "bars": 1700,
+      "end": 1795075200
+    },
+    "engine": {
+      "hash": "n122f2d5679f",
+      "firstSeen": "2026-11-11"
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "3df6174b4e670a62fa962bdf184dbde93638da8be13a685316a17370adccb19f"
+  },
+  "config": null,
+  "updatedAt": "2026-11-19T08:25:46.387Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
