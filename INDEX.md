@@ -4,7 +4,7 @@ Every strategy whose backtest **finished and actually traded** is published here
 Nothing is filtered out by return — the ones that lost money are part of the record.
 Entries stay after a strategy is removed from our own workspace — this is a log, and deleting the record would leave only the survivors.
 
-**★ marks a strategy that out-returned buy & hold over the same window** — 611 of 2562 right now.
+**★ marks a strategy that out-returned buy & hold over the same window** — 612 of 2563 right now.
 `—` means the comparison **could not be made**: the engine does not compute a benchmark for multi-symbol, futures, or multi-leg runs. That is *unknown*, not *lost*, and it is 436 of them right now.
 
 Every figure comes from the last verifying backtest at publish time. These are past results over historical data. Nothing here is promised or assured about the future, and none of it is investment advice.
@@ -15,6 +15,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | B&H MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---:|---|---|
+| ★ | [6620](strategies/6620/) | BTC 4h Funding Contrarian | +47.42% | +11.81% | +24.51% | — | 52 | 2026-11-11 `n122f2d5` | 2026-11-19 |
 | ★ | [6611](strategies/6611/) | BTC 4h NDX Risk-On Trend | +52.12% | +46.58% | +24.51% | — | 49 | 2026-11-11 `n122f2d5` | 2026-11-19 |
 | ★ | [6599](strategies/6599/) | TEMP-compare 6594 champion | +15.93% | -10.62% | +13.31% | — | 28 | 2026-11-11 `n122f2d5` | 2026-11-19 |
 | ★ | [6572](strategies/6572/) | ETH Yield-Curve Regime Trend 4H | +131.47% | -27.22% | +39.77% | — | 30 | 2026-11-11 `n122f2d5` | 2026-11-19 |
