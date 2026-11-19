@@ -1,0 +1,38 @@
+{
+  "id": 6661,
+  "name": "BTC 1D NDX Risk-On Regime (spot)",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 33211,
+    "return": 35.49,
+    "mdd": 29.1,
+    "trades": 58,
+    "vsBuyHold": "win",
+    "benchRet": 24.29,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1708646400,
+    "tTo": 1794960000,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[PIT] ctx.data 는 행의 시각(ts) 기준으로 골랐습니다 — 그 행이 DB 에 실제로 들어온 시각은 보지 않으므로, 늦게 적재되거나 나중에 고쳐진 값이 있으면 미래 정보가 섞였을 수 있습니다(event-only)",
+      "[데이터/출처] 내 저장소(에이전트 1b5563…) 1000봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "bars": 1000,
+      "end": 1795046400
+    },
+    "engine": {
+      "hash": "n122f2d5679f",
+      "firstSeen": "2026-11-11"
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "d50fc673a153a7095f0228fa29632674412acea629434ddb4a952de2e3bf7017"
+  },
+  "config": null,
+  "updatedAt": "2026-11-19T22:14:59.209Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
