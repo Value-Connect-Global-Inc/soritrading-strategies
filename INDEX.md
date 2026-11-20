@@ -15,7 +15,7 @@ Every figure comes from the last verifying backtest at publish time. These are p
 
 | | ID | Name | Return | Buy & hold | MDD | B&H MDD | Trades | Engine | Updated |
 |:-:|---:|---|---:|---:|---:|---:|---:|---|---|
-| ★ | [6680](strategies/6680/) | Alt Crash Dodge ETH 1D v2 (confirmed trend) | +38.49% | -9.92% | +33.00% | — | 58 | 2026-11-11 `n122f2d5` | 2026-11-20 |
+| ★ | [6680](strategies/6680/) | Alt Crash Dodge ETH 1D v2 (confirmed trend) ‡ | +38.49% | -9.92% | +33.00% | — | 58 | 2026-11-11 `n122f2d5` | 2026-11-20 |
 | ★ | [6678](strategies/6678/) | Long-By-Default Crash Dodge 1D | +36.98% | +20.20% | +27.54% | — | 58 | 2026-11-11 `n122f2d5` | 2026-11-20 |
 | ★ | [6668](strategies/6668/) | ETH 1D FearGreed Regime Gate (spot) | +47.71% | -42.67% | +43.75% | — | 52 | 2026-11-11 `n122f2d5` | 2026-11-19 |
 | ★ | [6667](strategies/6667/) | BTC 1D FearGreed Regime Gate (spot) | +31.17% | +19.10% | +33.00% | — | 62 | 2026-11-11 `n122f2d5` | 2026-11-19 |
