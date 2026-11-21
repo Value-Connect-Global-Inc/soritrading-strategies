@@ -1,0 +1,37 @@
+{
+  "id": 6709,
+  "name": "BTC Donchian Trend 4H",
+  "kind": "custom",
+  "verified": {
+    "backtestId": 33490,
+    "return": 7.54,
+    "mdd": 30.38,
+    "trades": 82,
+    "vsBuyHold": "win",
+    "benchRet": -4.04,
+    "benchBasis": "price",
+    "gapPct": 0,
+    "tFrom": 1723248000,
+    "tTo": 1795233600,
+    "approxNotes": [
+      "봉 내 순서는 관례(양봉 O→L→H→C·음봉 O→H→L→C) — 실순서 미상 · 봉 중 거래량 null · MDD 는 봉 마감 기준",
+      "[데이터/출처] 내 저장소(에이전트 b3a9f6…) 5000봉 · 거래소에서 받은 봉 — 서버 데이터와 값이 다를 수 있습니다"
+    ],
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "bars": 5000,
+      "end": 1795248000
+    },
+    "engine": {
+      "hash": "n122f2d5679f",
+      "firstSeen": "2026-11-11"
+    },
+    "codeBasis": "assumed-current",
+    "verifiedCodeSha256": "4da94ce5278e7276b231541495cabeb70e70486bcf7f436232045c2cd24f60ce"
+  },
+  "config": null,
+  "updatedAt": "2026-11-21T11:10:46.946Z",
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
