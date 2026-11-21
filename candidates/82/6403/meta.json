@@ -1,0 +1,34 @@
+{
+  "id": 6403,
+  "name": "BTC 1D Regime-Gated Dip Buyer",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: In a confirmed long-term uptrend, sharp fear-driven dips tend to revert and recover. We buy those dips and then ride the recovery until the trend itself breaks, with a trailing sto…",
+  "codeSha256": "c6036b1393524b3aeaca7b79a82fc582b8a836222bd2ae1915a8493aa1cab930",
+  "codeFromBacktest": 31419,
+  "verified": {
+    "backtestId": 31419,
+    "return": -4.68,
+    "mdd": 27.6,
+    "trades": 236,
+    "benchRet": 228.47,
+    "tFrom": 1665100800,
+    "tTo": 1794614400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

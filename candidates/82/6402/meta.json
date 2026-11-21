@@ -1,0 +1,33 @@
+{
+  "id": 6402,
+  "name": "BTC Donchian Turtle Long/Short 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why: BTC trends hard; a long-only regime filter rides up-legs and steps aside in down-legs, aiming for buy-and-hold-like return with a much smaller drawdown (no shorts on spot, so it can never be run…",
+  "codeSha256": "bbb5d42f07932c735779cfd64b787b1750df819848a83a9df04a6ef43db7dcec",
+  "codeFromBacktest": 31412,
+  "verified": {
+    "backtestId": 31412,
+    "return": -98.94,
+    "mdd": 98.96,
+    "trades": 1066,
+    "benchRet": 8.24,
+    "tFrom": 1722744000,
+    "tTo": 1794729600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

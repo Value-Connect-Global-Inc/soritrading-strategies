@@ -1,0 +1,34 @@
+{
+  "id": 6421,
+  "name": "BTC Trend + VIX Risk-Off 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends for months but crashes violently when risk appetite evaporates. The CBOE VIX measures stock-market fear; when it spikes (risk-off), crypto usually sells off too, even if…",
+  "codeSha256": "6fdec17f347aea7ae1a0fee074ed178085fa81fe3fca65debd4ff0b1d2954ba1",
+  "codeFromBacktest": 31546,
+  "verified": {
+    "backtestId": 31546,
+    "return": -69.46,
+    "mdd": 71.25,
+    "trades": 76,
+    "benchRet": 47.92,
+    "tFrom": 1704067200,
+    "tTo": 1794700800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

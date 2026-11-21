@@ -1,0 +1,33 @@
+{
+  "id": 6454,
+  "name": "BTC EMA200 Trend Ride 4h",
+  "job": 82,
+  "stage": "draft",
+  "idea": "BTC 4h trend following with a slow EMA200: go long when price is clearly above a rising EMA200, go short when clearly below a falling EMA200. Exit only when the trend flips. The entry requires price…",
+  "codeSha256": "d8033eee11369122caa7d9dc1c9a32529f35052dc3b9ca369e9063d255a6a034",
+  "codeFromBacktest": 31852,
+  "verified": {
+    "backtestId": 31852,
+    "return": 8.87,
+    "mdd": 38.98,
+    "trades": 137,
+    "tFrom": 1722873600,
+    "tTo": 1794859200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

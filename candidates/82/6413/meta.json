@@ -1,0 +1,33 @@
+{
+  "id": 6413,
+  "name": "BTC On-Chain Address Momentum 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends follow network usage. When the number of daily unique active addresses is growing (above its own 30-day average), the network is expanding and price tends to follow; whe…",
+  "codeSha256": "880bacd70a5dd49c080931197f77dc00a965687bab2637c333b46740ed499aa3",
+  "codeFromBacktest": 31509,
+  "verified": {
+    "backtestId": 31509,
+    "return": -20.45,
+    "mdd": 30.6,
+    "trades": 150,
+    "tFrom": 1737187200,
+    "tTo": 1794772800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

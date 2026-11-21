@@ -1,0 +1,33 @@
+{
+  "id": 6483,
+  "name": "BTC Trend Gated by VIX Regime 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Macro risk regime, not price momentum: BTC trades like a risk asset, so when equity volatility (VIX) is far above its own recent normal, risk-off is on and BTC tends to fall. We ride the BTC uptrend…",
+  "codeSha256": "d092807a7489f0813349c9ded30687445d81ca9c0ad0ec038efc4abf96b778e7",
+  "codeFromBacktest": 32075,
+  "verified": {
+    "backtestId": 32075,
+    "return": -14.94,
+    "mdd": 31.62,
+    "trades": 262,
+    "tFrom": 1650916800,
+    "tTo": 1722902400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

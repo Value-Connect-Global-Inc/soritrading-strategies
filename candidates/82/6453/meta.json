@@ -1,0 +1,33 @@
+{
+  "id": 6453,
+  "name": "BTC Trend + Dollar Regime 4h",
+  "job": 82,
+  "stage": "draft",
+  "idea": "BTC 4h trend following gated by the US dollar regime: a rising dollar is a headwind for risk assets, a falling dollar a tailwind. Go long when the trend is up and the dollar is not strong; go short w…",
+  "codeSha256": "07c34e59852a02e4a8950cbbb9bcd1e1837383b18ef766f513c229d64186ed00",
+  "codeFromBacktest": 31845,
+  "verified": {
+    "backtestId": 31845,
+    "return": -87.52,
+    "mdd": 92.97,
+    "trades": 313,
+    "tFrom": 1578873600,
+    "tTo": 1650859200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

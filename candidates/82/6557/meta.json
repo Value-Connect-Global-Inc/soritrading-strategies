@@ -1,0 +1,34 @@
+{
+  "id": 6557,
+  "name": "Multi-Asset Trend Basket 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Crypto alts trend together but with different strength. Holding a basket of the biggest coins and only being long each one while it is in a clear uptrend (price above a RISING 200-…",
+  "codeSha256": "f27d09b9b6c836ecf5e6d23b5c870d710c6fe4faa7b46850774f4c38c607c6c5",
+  "codeFromBacktest": 32522,
+  "verified": {
+    "backtestId": 32522,
+    "return": 49.66,
+    "mdd": 17.47,
+    "trades": 28,
+    "benchRet": 90.02,
+    "tFrom": 1723017600,
+    "tTo": 1795003200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "XRP",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

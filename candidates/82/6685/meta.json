@@ -1,0 +1,34 @@
+{
+  "id": 6685,
+  "name": "BTC Donchian Breakout ATR Trail 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Crypto trends on 4h charts tend to persist once a Donchian channel breaks, and a chandelier ATR stop rides the trend while cutting losers fast. When it buys and sells: Goes long wh…",
+  "codeSha256": "f040b57869dc57489b11d582689a98ba0bbc189226247660cb741e74a975aa76",
+  "codeFromBacktest": 33333,
+  "verified": {
+    "backtestId": 33333,
+    "return": 41.24,
+    "mdd": 42.41,
+    "trades": 125,
+    "benchRet": 54.28,
+    "tFrom": 1651161600,
+    "tTo": 1723147200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6448,
+  "name": "BTC On-Chain Adoption Cycle 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin's daily unique active addresses measure real network usage, which expands through bull cycles and contracts through bear markets. It is used here as a STICKY ENTRY FILTER o…",
+  "codeSha256": "24c04b978245a47c94b2153c57e51d6d099809de229ed968dc188a8902861299",
+  "codeFromBacktest": 31775,
+  "verified": {
+    "backtestId": 31775,
+    "return": 42.54,
+    "mdd": 18.75,
+    "trades": 3,
+    "benchRet": -11.4,
+    "tFrom": 1640995200,
+    "tTo": 1703980800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ②(1/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

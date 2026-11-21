@@ -1,0 +1,34 @@
+{
+  "id": 6559,
+  "name": "BTC Spot Regime Rider 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC moves in long multi-month trends. A slow 200-bar (about 33 days) SMA separates bull regimes from bear regimes. This spot version only goes long above the SMA and steps fully to…",
+  "codeSha256": "02d37a75ff2719226d2f2cd5c400202fdad8083b5a08a88b793342c3eb3e4c4e",
+  "codeFromBacktest": 32553,
+  "verified": {
+    "backtestId": 32553,
+    "return": 27.97,
+    "mdd": 34.63,
+    "trades": 40,
+    "benchRet": 10.81,
+    "tFrom": 1723017600,
+    "tTo": 1795003200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

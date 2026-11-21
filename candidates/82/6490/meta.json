@@ -1,0 +1,33 @@
+{
+  "id": 6490,
+  "name": "BTC NDX-Z Regime Trend 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: In crypto perpetuals, extreme negative funding means the crowd is heavily short. When shorts are crowded and price is in a confirmed uptrend, forced buybacks (a short squeeze) tend…",
+  "codeSha256": "6f573365610a66dc7c0988f7a59e75de97b55a8f62b029632c5d1205a4f62738",
+  "codeFromBacktest": 32121,
+  "verified": {
+    "backtestId": 32121,
+    "return": -7.06,
+    "mdd": 12.09,
+    "trades": 36,
+    "tFrom": 1722916800,
+    "tTo": 1794902400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

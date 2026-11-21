@@ -1,0 +1,34 @@
+{
+  "id": 6677,
+  "name": "Volatility Pullback Reversion 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: In an uptrend, prices pull back to their short-term mean before continuing. Buying a deep pullback (price 1.5 standard deviations below its 20-bar average) and selling the bounce b…",
+  "codeSha256": "e41332c42208b6d4f3bd6c43e34ae64a27bd3f071c4349276b8b239c6b3e7218",
+  "codeFromBacktest": 33286,
+  "verified": {
+    "backtestId": 33286,
+    "return": -20.86,
+    "mdd": 21.58,
+    "trades": 108,
+    "benchRet": 49.77,
+    "tFrom": 1651132800,
+    "tTo": 1723118400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

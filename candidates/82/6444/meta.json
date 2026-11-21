@@ -1,0 +1,33 @@
+{
+  "id": 6444,
+  "name": "BTC Vol-Confirmed Trend 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: In strong uptrends, a pullback that closes back above the 50-bar average on unusually high volume and expanding volatility tends to continue higher. When it buys and sells: Buys wh…",
+  "codeSha256": "b352948d90c74e3f250a33c9aa10e6d517bd4db699f8d42c60a7ecdca8135ab2",
+  "codeFromBacktest": 31712,
+  "verified": {
+    "backtestId": 31712,
+    "return": 1.94,
+    "mdd": 1.87,
+    "trades": 28,
+    "benchRet": 383.89,
+    "tFrom": 1578830400,
+    "tTo": 1650830400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

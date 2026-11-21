@@ -1,0 +1,34 @@
+{
+  "id": 6513,
+  "name": "BTC Trend YieldGate 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin trends for weeks on the 4h chart, but its volatility swings a lot. This sizes each position so the RISK is constant (smaller in high-volatility weeks) and only holds in con…",
+  "codeSha256": "19b7970b70ec6f88ea189c73a0990a7595d2d1f8ffb278187c007299c46cffc7",
+  "codeFromBacktest": 32280,
+  "verified": {
+    "backtestId": 32280,
+    "return": 36.32,
+    "mdd": 27.02,
+    "trades": 24,
+    "benchRet": 14.41,
+    "tFrom": 1722960000,
+    "tTo": 1794945600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

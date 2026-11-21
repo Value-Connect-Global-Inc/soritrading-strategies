@@ -1,0 +1,34 @@
+{
+  "id": 6674,
+  "name": "VIX Regime Trend Filter 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin trends hard in risk-on phases but crashes violently when volatility spikes. A chandelier trailing stop (highest high since entry minus 3xATR) rides long trends without step…",
+  "codeSha256": "c8b2310a473dc57792106628f3aeff97a7401e84b13b9baeb3e60c731f2f7071",
+  "codeFromBacktest": 33277,
+  "verified": {
+    "backtestId": 33277,
+    "return": -94.9,
+    "mdd": 95.1,
+    "trades": 396,
+    "benchRet": 346.47,
+    "tFrom": 1579118400,
+    "tTo": 1651118400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6516,
+  "name": "BTC FearGreed Sentiment MeanRev 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: The crypto Fear & Greed index swings to extremes — deep fear after sell-offs and euphoric greed after rallies. In a longer-term uptrend, a spike to extreme fear is usually a tempor…",
+  "codeSha256": "82c546ee8e8d1c93e89227a8781bca5b1f1acf44ddf42a27d10299d459edcd04",
+  "codeFromBacktest": 32298,
+  "verified": {
+    "backtestId": 32298,
+    "return": 7.54,
+    "mdd": 5.23,
+    "trades": 1,
+    "benchRet": 39.64,
+    "tFrom": 1648771200,
+    "tTo": 1722384000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

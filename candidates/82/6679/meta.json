@@ -1,0 +1,33 @@
+{
+  "id": 6679,
+  "name": "Alt Crash Dodge ETH 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: The same crash-dodge rule that worked on BTC — stay long like holding, but step aside into cash when the daily close falls below the 50-day average (~2.5 months). ETH is higher-bet…",
+  "codeSha256": "07492c5833a6eb5c37cee5d5b25d1d6ba87e066b78f3e8b3486a8921ae5a7754",
+  "codeFromBacktest": 33294,
+  "verified": {
+    "backtestId": 33294,
+    "return": 505.35,
+    "mdd": 57.77,
+    "trades": 89,
+    "benchRet": 818.02,
+    "tFrom": 1502928000,
+    "tTo": 1619740800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

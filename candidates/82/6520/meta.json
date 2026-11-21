@@ -1,0 +1,34 @@
+{
+  "id": 6520,
+  "name": "ETH Trend Vol-Target 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: The 4h trend + constant-risk recipe that held up on BTC is tested here on ETH — a different asset with higher volatility and more mean-reversion. If the same simple trend rule with…",
+  "codeSha256": "c00c84b1b8711355f87d72aa74878485317f735f31a5dc939d26f5470dba770b",
+  "codeFromBacktest": 32313,
+  "verified": {
+    "backtestId": 32313,
+    "return": 59.99,
+    "mdd": 34.46,
+    "trades": 22,
+    "benchRet": -26.66,
+    "tFrom": 1722974400,
+    "tTo": 1794960000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

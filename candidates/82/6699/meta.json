@@ -1,0 +1,33 @@
+{
+  "id": 6699,
+  "name": "ETH Trend-Follow EMA50/200 4H with ATR trailing stop",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: ETH trends persist over 4h bars; a slow EMA50/200 crossover catches sustained moves while an ATR-based trailing stop locks in gains and cuts losses fast. When it buys and sells: bu…",
+  "codeSha256": "70e50975cd4e834d53a052a63170501876ee5122c8e9723376c0c34bb9d90ddd",
+  "codeFromBacktest": 33432,
+  "verified": {
+    "backtestId": 33432,
+    "return": 17.11,
+    "mdd": 28.43,
+    "trades": 66,
+    "benchRet": -8.75,
+    "tFrom": 1651190400,
+    "tTo": 1723176000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

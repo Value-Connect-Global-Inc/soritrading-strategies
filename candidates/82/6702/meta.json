@@ -1,0 +1,34 @@
+{
+  "id": 6702,
+  "name": "ETH Book Imbalance 1m",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: on a liquid pair, when the order book shows much more resting size on the bid than the ask near the mid, price often gets pushed up as that bid side is worked. This tries to ride t…",
+  "codeSha256": "95c2de4044726b2e96da939bbf1d5e5fca10853d014594e41c7e4d009e8af024",
+  "codeFromBacktest": 33440,
+  "verified": {
+    "backtestId": 33440,
+    "return": -5.98,
+    "mdd": 6.06,
+    "trades": 4,
+    "benchRet": -7.09,
+    "tFrom": 1794303300,
+    "tTo": 1794603240,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "1m",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(0/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6575,
+  "name": "BTC Nasdaq Risk-On Regime 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin increasingly trades as a high-beta risk asset — it rallies when global equity risk appetite (NASDAQ-100) is strong and breaks down when equity investors turn risk-off. Inst…",
+  "codeSha256": "dfdd1648f5550e336ed14b57dfbbde232e3ea3ad7d79add5cdc78f682fa0c920",
+  "codeFromBacktest": 32647,
+  "verified": {
+    "backtestId": 32647,
+    "return": 80.07,
+    "mdd": 31.67,
+    "trades": 143,
+    "benchRet": 82.25,
+    "tFrom": 1622246400,
+    "tTo": 1794960000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

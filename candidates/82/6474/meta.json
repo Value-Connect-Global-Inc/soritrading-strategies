@@ -1,0 +1,33 @@
+{
+  "id": 6474,
+  "name": "ETH Trend Long/Short EMA50 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: the exact BTC EMA50/200 long/short core that already validated on BTC 4h (three disjoint windows). ETH trends are similar in character to BTC, so this tests whether the edge is a g…",
+  "codeSha256": "78d1e5d5a21b910aa9209d0288eec61969795689cb717732a3790da7dddee5cb",
+  "codeFromBacktest": 32028,
+  "verified": {
+    "backtestId": 32028,
+    "return": 111.58,
+    "mdd": 21.12,
+    "trades": 123,
+    "tFrom": 1722902400,
+    "tTo": 1794888000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

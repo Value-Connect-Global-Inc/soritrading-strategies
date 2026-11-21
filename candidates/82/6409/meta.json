@@ -1,0 +1,33 @@
+{
+  "id": 6409,
+  "name": "BTC Donchian Long/Short 4H USDM",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends hard in BOTH directions. A long/short turtle rides up-legs long and down-legs short, so it makes money in bear markets too — a return source buy-and-hold does not have.…",
+  "codeSha256": "f0aabac64efe6a14fc614a7f6fcfcfd0ff6515302f0be2f4701bc095d652bb8a",
+  "codeFromBacktest": 31477,
+  "verified": {
+    "backtestId": 31477,
+    "return": -26.35,
+    "mdd": 40.82,
+    "trades": 107,
+    "tFrom": 1722787200,
+    "tTo": 1794772800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

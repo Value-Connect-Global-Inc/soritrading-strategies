@@ -1,0 +1,33 @@
+{
+  "id": 6437,
+  "name": "BTC FearGreed Contrarian 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: crypto is driven heavily by crowd emotion. When the Fear & Greed index is at extreme fear, the crowd is panicking and prices are often oversold; when it is at extreme greed, the cr…",
+  "codeSha256": "3c15994bce02cd8ae9f16a61d7de8f4a04043e467731dca703c753c216a98577",
+  "codeFromBacktest": 31639,
+  "verified": {
+    "backtestId": 31639,
+    "return": 30.35,
+    "mdd": 18.23,
+    "trades": 2,
+    "benchRet": -4.39,
+    "tFrom": 1717027200,
+    "tTo": 1794700800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ②(0/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

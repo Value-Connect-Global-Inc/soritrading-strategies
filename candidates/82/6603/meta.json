@@ -1,0 +1,34 @@
+{
+  "id": 6603,
+  "name": "BTC 4h Trend Ride + Greed Filter + Stop Cooldown",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: The proven trend ride (EMA50>EMA200, F&G<85 euphoria filter, ATR de-risk, -20% hard stop) works, but its worst drawdowns come from a repeated \"stop out -> re-enter -> stop out agai…",
+  "codeSha256": "7966d4e6387e6386405e2479e0fd1c42a9ebaae1fcecbd289fa5d68a2e31c464",
+  "codeFromBacktest": 32831,
+  "verified": {
+    "backtestId": 32831,
+    "return": 108.4,
+    "mdd": 33.61,
+    "trades": 51,
+    "benchRet": 41.89,
+    "tFrom": 1651075200,
+    "tTo": 1723060800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

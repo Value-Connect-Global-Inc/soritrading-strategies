@@ -1,0 +1,33 @@
+{
+  "id": 6505,
+  "name": "BTC VIX Regime Gate 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: The VIX measures equity-market stress, and Bitcoin tends to fall hardest when volatility spikes. Holding BTC only while volatility is calm avoids the worst crash drawdowns while st…",
+  "codeSha256": "2eb4a33262958c9f2355a0f9f90f54768bf77c0c141d08acc890fedb7a04e918",
+  "codeFromBacktest": 32191,
+  "verified": {
+    "backtestId": 32191,
+    "return": 99.96,
+    "mdd": 52.09,
+    "trades": 33,
+    "benchRet": 308.61,
+    "tFrom": 1587513600,
+    "tTo": 1691107200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

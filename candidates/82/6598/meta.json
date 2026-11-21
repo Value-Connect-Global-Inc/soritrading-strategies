@@ -1,0 +1,34 @@
+{
+  "id": 6598,
+  "name": "BTC 4h On-Chain Demand Trend Ride",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Price trends are only real when backed by network usage. Bitcoin's daily active addresses are an on-chain demand signal that often rolls over before price does, so exiting a trend…",
+  "codeSha256": "67238ea4c021914957aec10d1d37402ed186898aac2ce650814de3548b956e08",
+  "codeFromBacktest": 32799,
+  "verified": {
+    "backtestId": 32799,
+    "return": 2.25,
+    "mdd": 15.45,
+    "trades": 36,
+    "benchRet": -10.13,
+    "tFrom": 1770580800,
+    "tTo": 1795046400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

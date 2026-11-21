@@ -1,0 +1,34 @@
+{
+  "id": 6398,
+  "name": "BTC 4H Macro-Gated Mean Reversion",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why: BTC is a risk asset — it falls when financial conditions tighten (dollar strengthens) or when volatility spikes. Buying deep pullbacks only while the macro regime is calm (VIX not elevated, doll…",
+  "codeSha256": "c3b73b5ddd9ee26c35446019475fcabdee7c79b6b505e69293746c1596954b7b",
+  "codeFromBacktest": 31399,
+  "verified": {
+    "backtestId": 31399,
+    "return": -21.38,
+    "mdd": 27.88,
+    "trades": 42,
+    "benchRet": 386.95,
+    "tFrom": 1578744000,
+    "tTo": 1650744000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

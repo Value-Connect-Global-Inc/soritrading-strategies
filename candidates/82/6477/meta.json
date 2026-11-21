@@ -1,0 +1,34 @@
+{
+  "id": 6477,
+  "name": "BTC Dip-Buy Mean Reversion 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Different family from the trend favorite: instead of riding trends it buys sharp pullbacks inside an established uptrend and sells the bounce back to the mean. When it buys and sells: BUY when price…",
+  "codeSha256": "962634faca5f54d2297ea885dda6e94c87d863032713a26a217c4c40a02608a0",
+  "codeFromBacktest": 32054,
+  "verified": {
+    "backtestId": 32054,
+    "return": 13.38,
+    "mdd": 13.98,
+    "trades": 66,
+    "benchRet": 398.15,
+    "tFrom": 1578902400,
+    "tTo": 1650902400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

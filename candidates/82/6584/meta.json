@@ -1,0 +1,34 @@
+{
+  "id": 6584,
+  "name": "ETH VIX-Regime Long Trend 4h",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Long-only trend following on Ethereum with a macro risk gate. Why: when VIX is calm (risk-on) and price is above a rising long-term average, crypto uptrends are strongest; elevated VIX marks the risk…",
+  "codeSha256": "7b9b031edea41d2ddb85ba09b68d5a952bd3be12c01f52ec44b1fac01ae2ff52",
+  "codeFromBacktest": 32707,
+  "verified": {
+    "backtestId": 32707,
+    "return": -52.78,
+    "mdd": 84.71,
+    "trades": 170,
+    "benchRet": 1673.73,
+    "tFrom": 1579046400,
+    "tTo": 1651046400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

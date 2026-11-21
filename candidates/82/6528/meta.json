@@ -1,0 +1,33 @@
+{
+  "id": 6528,
+  "name": "BTC Macro Risk-On 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Crypto is a high-beta risk asset. When equity-market volatility is calm (VIX below its own 90-day average) and the US equity market is in an uptrend (NASDAQ-100 above its 200-day a…",
+  "codeSha256": "a2dbc91b336ca89da9453261f2b762661bff022198ad95962e029f0a7402776c",
+  "codeFromBacktest": 32352,
+  "verified": {
+    "backtestId": 32352,
+    "return": -9.83,
+    "mdd": 45.74,
+    "trades": 134,
+    "benchRet": 82.69,
+    "tFrom": 1699920000,
+    "tTo": 1794873600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

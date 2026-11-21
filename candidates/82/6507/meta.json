@@ -1,0 +1,34 @@
+{
+  "id": 6507,
+  "name": "BTC Fear&Greed Contrarian 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin trends strongly upward in bull phases. Being long only during clear uptrends and stepping aside in downtrends captures most of the upside with a much smaller drawdown than…",
+  "codeSha256": "d609aa10747ae01e89d0fed57841546d5371c11318fc24d9205aefd93bf11c09",
+  "codeFromBacktest": 32254,
+  "verified": {
+    "backtestId": 32254,
+    "return": 15.08,
+    "mdd": 22.05,
+    "trades": 20,
+    "benchRet": -3.23,
+    "tFrom": 1712880000,
+    "tTo": 1794873600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

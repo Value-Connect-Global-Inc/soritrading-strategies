@@ -1,0 +1,33 @@
+{
+  "id": 6583,
+  "name": "Funding Contrarian 4h",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why: when perpetual funding is extremely negative (shorts paying longs) inside a long-term uptrend, the crowd is short the wrong side of the trend and those shorts tend to get squeezed. Mirror on the…",
+  "codeSha256": "86f968cb11b9e101cd778fa97c504da7f1c884db8a6fad2dc19c7a7ede059119",
+  "codeFromBacktest": 32705,
+  "verified": {
+    "backtestId": 32705,
+    "return": -10.96,
+    "mdd": 16.96,
+    "trades": 184,
+    "tFrom": 1579060800,
+    "tTo": 1651046400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6660,
+  "name": "SOL 4H Funding-Contrarian Trend (usdm)",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Perpetual funding is a direct price on how crowded the leveraged crowd is. When shorts pay heavily (funding far below its own recent mean) a bounce is likely; we buy those dips onl…",
+  "codeSha256": "d291c03cdf9c93150894d50da76f4d4e5a32e93665fa5cbd6bb704dbb6fc1e2c",
+  "codeFromBacktest": 33207,
+  "verified": {
+    "backtestId": 33207,
+    "return": -38.46,
+    "mdd": 47.89,
+    "trades": 178,
+    "tFrom": 1730318400,
+    "tTo": 1795104000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "SOL",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

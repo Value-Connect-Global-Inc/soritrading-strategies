@@ -1,0 +1,33 @@
+{
+  "id": 6689,
+  "name": "BTC Funding Contrarian 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Uses the perpetual funding rate as a crowd-positioning gauge. When funding is far below its recent average (shorts pay longs heavily = crowded shorts) while the trend is up, it buys the squeeze; it e…",
+  "codeSha256": "98d26d661e9aa4996f6e0e1738cafce9871ce7562cd11d5e01ccb07eb3b11f77",
+  "codeFromBacktest": 33359,
+  "verified": {
+    "backtestId": 33359,
+    "return": -5.9,
+    "mdd": 29.62,
+    "trades": 116,
+    "tFrom": 1579161600,
+    "tTo": 1651147200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

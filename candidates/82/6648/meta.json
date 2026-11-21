@@ -1,0 +1,34 @@
+{
+  "id": 6648,
+  "name": "BTC On-Chain Capitulation Contrarian 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: When Bitcoin's daily active addresses collapse well below their recent average, network usage is drying up — historically a moment of maximum despair near a bottom. This contrarian…",
+  "codeSha256": "add6e4b053e67d47339d0d6961df41a22fe7b1037e7bb04537595dfa2db7d10a",
+  "codeFromBacktest": 33028,
+  "verified": {
+    "backtestId": 33028,
+    "return": -31.19,
+    "mdd": 54.02,
+    "trades": 31,
+    "benchRet": 732.27,
+    "tFrom": 1502928000,
+    "tTo": 1622160000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(1/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

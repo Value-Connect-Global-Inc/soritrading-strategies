@@ -1,0 +1,33 @@
+{
+  "id": 6635,
+  "name": "BTC 4h Funding Panic Contrarian",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: When the funding rate turns deeply negative, short sellers are crowded and paying longs — a short squeeze is likely. Funding is positioning/sentiment data, a different family from…",
+  "codeSha256": "5309f6bc893d99efb76bcfcfecd4706d31dc1671602c669ead652608f3693d20",
+  "codeFromBacktest": 32972,
+  "verified": {
+    "backtestId": 32972,
+    "return": -5.89,
+    "mdd": 30.31,
+    "trades": 90,
+    "tFrom": 1651089600,
+    "tTo": 1723075200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

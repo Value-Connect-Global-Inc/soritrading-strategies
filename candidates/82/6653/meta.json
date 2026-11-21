@@ -1,0 +1,33 @@
+{
+  "id": 6653,
+  "name": "ALT 1D Asymmetric Regime Filter (champion recipe)",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: The exact recipe that auto-promoted on XRP daily — slow 50-day entry (few whipsaws) and fast 20-day exit (cut crashes quickly) — as a generalization test on other high-trending alt…",
+  "codeSha256": "25c2dd5e5d8195c6faf001f2a3100a0ae41f5cacf7365f08349b5fff51f99bf3",
+  "codeFromBacktest": 33119,
+  "verified": {
+    "backtestId": 33119,
+    "return": -30.57,
+    "mdd": 40.03,
+    "trades": 90,
+    "benchRet": 55.18,
+    "tFrom": 1708646400,
+    "tTo": 1794960000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BNB",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

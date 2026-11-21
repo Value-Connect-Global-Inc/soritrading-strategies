@@ -1,0 +1,34 @@
+{
+  "id": 6670,
+  "name": "BTC 1D OnChain Addr Regime Gate (spot)",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: The regime-gate shell (EMA50 trend + capped trailing stop) validated on BTC/ETH 1d with two sentiment gates (NDX equity, Fear & Greed). This swaps the gate for a THIRD, completely…",
+  "codeSha256": "e553df74fa5818f0ef3aadc4f5285a7de611244639a81b0dc9b5c4a34ec40ad6",
+  "codeFromBacktest": 33252,
+  "verified": {
+    "backtestId": 33252,
+    "return": 61.84,
+    "mdd": 59.85,
+    "trades": 75,
+    "benchRet": 120.23,
+    "tFrom": 1509926400,
+    "tTo": 1604880000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

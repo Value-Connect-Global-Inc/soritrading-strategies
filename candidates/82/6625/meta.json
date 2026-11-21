@@ -1,0 +1,33 @@
+{
+  "id": 6625,
+  "name": "ETH 4h NDX Risk-On Trend",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Ethereum rallies when US equity risk appetite is on — the NASDAQ-100 above its own recent mean — while the price trend is up. This is the same proven edge as the BTC champion appli…",
+  "codeSha256": "280d3537e5ee44276ef3295d4e41d34f2dfc9c1c8f3d67c1b43c60c414b48418",
+  "codeFromBacktest": 32942,
+  "verified": {
+    "backtestId": 32942,
+    "return": 93.94,
+    "mdd": 50.51,
+    "trades": 46,
+    "benchRet": -25.76,
+    "tFrom": 1723075200,
+    "tTo": 1795060800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

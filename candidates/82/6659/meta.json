@@ -1,0 +1,33 @@
+{
+  "id": 6659,
+  "name": "SOL 1D Long/Short Regime Filter (usdm)",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: The long-only 50-day regime filter on SOL daily is defensive but sits flat through bear markets. Adding a short leg lets the same slow trend filter earn in falling markets too. The…",
+  "codeSha256": "d721eb6e246cee504d3db63d963057b9661c58d9ee903537925c37baf6883509",
+  "codeFromBacktest": 33193,
+  "verified": {
+    "backtestId": 33193,
+    "return": 14.65,
+    "mdd": 41.03,
+    "trades": 26,
+    "tFrom": 1735689600,
+    "tTo": 1794960000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "1d",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

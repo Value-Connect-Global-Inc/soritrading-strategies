@@ -1,0 +1,33 @@
+{
+  "id": 6449,
+  "name": "BTC NDX Risk-On Gate 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin behaves like a high-beta risk asset: it rallies when global risk appetite is strong and crashes when risk is off. The NASDAQ-100 index (base_ndx) is a clean, independent me…",
+  "codeSha256": "f911ccc9d35b585036880aabe70774bfa9880fc2f92a5c05ae026ccd2a7d1fb3",
+  "codeFromBacktest": 31777,
+  "verified": {
+    "backtestId": 31777,
+    "return": 27.33,
+    "mdd": 63.98,
+    "trades": 46,
+    "benchRet": 1117.15,
+    "tFrom": 1546300800,
+    "tTo": 1640908800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

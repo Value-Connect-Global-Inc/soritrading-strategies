@@ -1,0 +1,33 @@
+{
+  "id": 6527,
+  "name": "ETH Funding Contrarian 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin on-chain activity (daily unique active addresses) is a proxy for real crypto usage. When network usage is growing relative to its 30-day average, the market regime is healt…",
+  "codeSha256": "62efd52f44a0603f1fbb35e99142e604b9f0227249489a0ea3a0642970111245",
+  "codeFromBacktest": 32349,
+  "verified": {
+    "backtestId": 32349,
+    "return": -6.88,
+    "mdd": 18.64,
+    "trades": 420,
+    "tFrom": 1578974400,
+    "tTo": 1650960000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

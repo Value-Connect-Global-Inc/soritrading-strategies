@@ -1,0 +1,33 @@
+{
+  "id": 6639,
+  "name": "BTC 100D Regime Filter 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin spends long stretches above or below its long-term moving average. Being long only while price is above the 100-day average AND that average is still rising keeps you in bu…",
+  "codeSha256": "ade6cffd76bef90c4b9bd622c1ab702f52654942eba546039bb07a9e11dd1196",
+  "codeFromBacktest": 32993,
+  "verified": {
+    "backtestId": 32993,
+    "return": 276.39,
+    "mdd": 38.17,
+    "trades": 44,
+    "benchRet": 345.11,
+    "tFrom": 1579075200,
+    "tTo": 1651075200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

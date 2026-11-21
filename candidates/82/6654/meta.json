@@ -1,0 +1,33 @@
+{
+  "id": 6654,
+  "name": "BTC 1D Fear-Greed Contrarian Trend-Guard",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin trades as an anti-dollar risk asset — when the US dollar strengthens, crypto tends to fall; when the dollar weakens, crypto tends to rise. This strategy only holds BTC when…",
+  "codeSha256": "a7c15ea0328a04a59e9a0092ac7bb3ae4e622227877cb502721a673c3d0b36e9",
+  "codeFromBacktest": 33125,
+  "verified": {
+    "backtestId": 33125,
+    "return": -62.72,
+    "mdd": 79.27,
+    "trades": 307,
+    "benchRet": 48.21,
+    "tFrom": 1622246400,
+    "tTo": 1708560000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

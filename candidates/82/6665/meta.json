@@ -1,0 +1,33 @@
+{
+  "id": 6665,
+  "name": "BNB 1D NDX Risk-On Regime (spot)",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Generalization test #2 of the NASDAQ risk-on gate that validated on BTC (6661) and ETH (6663) but failed on high-beta SOL (6664). BNB is a large-cap alt like BTC/ETH, so this maps…",
+  "codeSha256": "397c00293d2a6f346bf5e34105ab8f2b7923a381259379b5dd846e8ab80f82c7",
+  "codeFromBacktest": 33227,
+  "verified": {
+    "backtestId": 33227,
+    "return": 29.82,
+    "mdd": 47.4,
+    "trades": 67,
+    "benchRet": 25.43,
+    "tFrom": 1622246400,
+    "tTo": 1708560000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BNB",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

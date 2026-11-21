@@ -1,0 +1,34 @@
+{
+  "id": 6470,
+  "name": "BTC Pullback-to-EMA50 Trend 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC 4h trends are long and persistent, and the proven slow EMA50/200 regime core holds up while fast cores whipsaw. It buys the pullback to the 50-EMA inside a confirmed 200-EMA up…",
+  "codeSha256": "b7ee9ea128c0d7cef4f67674d9d4a72a52f3d90abf96af09737be698490cc0da",
+  "codeFromBacktest": 31996,
+  "verified": {
+    "backtestId": 31996,
+    "return": 114.92,
+    "mdd": 14.6,
+    "trades": 102,
+    "benchRet": 382.67,
+    "tFrom": 1578888000,
+    "tTo": 1650888000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

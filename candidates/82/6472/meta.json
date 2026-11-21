@@ -1,0 +1,33 @@
+{
+  "id": 6472,
+  "name": "BTC Trend Long/Short EMA50 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC 4h trends are long and persistent, and the slow EMA50/200 regime core proved it does not whipsaw (unlike fast cores). Going BOTH directions lets it profit in the 2022-style bea…",
+  "codeSha256": "088d35775288e5ee5f611feb2205866c9392a6c68fcb9a427235df60fe37fa00",
+  "codeFromBacktest": 32024,
+  "verified": {
+    "backtestId": 32024,
+    "return": 70.99,
+    "mdd": 21.59,
+    "trades": 135,
+    "tFrom": 1722902400,
+    "tTo": 1794888000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6399,
+  "name": "BTC Donchian Turtle Long/Short 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends hard in both directions; a turtle-style breakout system rides up-legs long and down-legs short instead of only buying dips. Shorting gives it a return source buy-and-hol…",
+  "codeSha256": "909b5c8675cd8d6c3ad11f1db91c3ab3944305741859f4a4ac087cdd4f3c69ed",
+  "codeFromBacktest": 31405,
+  "verified": {
+    "backtestId": 31405,
+    "return": -30.13,
+    "mdd": 81.9,
+    "trades": 42,
+    "tFrom": 1578758400,
+    "tTo": 1650744000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

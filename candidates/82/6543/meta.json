@@ -1,0 +1,33 @@
+{
+  "id": 6543,
+  "name": "BTC Long-Short Trend 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends persist for weeks. A trend-following strategy on a perpetual can go BOTH ways — long when the trend is up, short when it is down — so it keeps making money in falling ma…",
+  "codeSha256": "0969000fe8720f4df466c4dfc892a10e8b800a59d0f33bbe2e0209ab51ad7c8c",
+  "codeFromBacktest": 32439,
+  "verified": {
+    "backtestId": 32439,
+    "return": -19.6,
+    "mdd": 43.49,
+    "trades": 17,
+    "tFrom": 1567958400,
+    "tTo": 1578988800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

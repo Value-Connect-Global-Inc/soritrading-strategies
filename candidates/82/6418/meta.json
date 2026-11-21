@@ -1,0 +1,33 @@
+{
+  "id": 6418,
+  "name": "BTC Donchian Turtle 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends hard and a slow turtle rides the whole leg. Entry on a 20-day (120-bar) high breakout, exit on a 55-day (330-bar) low — slow enough to survive every normal pullback insi…",
+  "codeSha256": "5ac3822be9c669922d9b807ac658491186a8d992ba7b7d7279876fff3c8439b2",
+  "codeFromBacktest": 31534,
+  "verified": {
+    "backtestId": 31534,
+    "return": 348,
+    "mdd": 53.68,
+    "trades": 9,
+    "benchRet": 395.65,
+    "tFrom": 1578772800,
+    "tTo": 1650772800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(1/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

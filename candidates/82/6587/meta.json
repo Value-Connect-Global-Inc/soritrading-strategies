@@ -1,0 +1,34 @@
+{
+  "id": 6587,
+  "name": "BTC 4H Dip MR Regime BB",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Mean reversion in an uptrend: buy short-term dips and sell the bounce. Buys when price dips below the lower Bollinger band with RSI below 45 while price is above the 200-bar average; sells when price…",
+  "codeSha256": "0c48add66d6ebe6e8018aedc7521fec9d769e1552998febd6d9b70fa38234e46",
+  "codeFromBacktest": 32723,
+  "verified": {
+    "backtestId": 32723,
+    "return": -2.27,
+    "mdd": 25.2,
+    "trades": 138,
+    "benchRet": 14.64,
+    "tFrom": 1723060800,
+    "tTo": 1795046400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

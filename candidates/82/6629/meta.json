@@ -1,0 +1,33 @@
+{
+  "id": 6629,
+  "name": "ETH 4h Yield-Curve Regime Trend",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Ethereum rallies when the US yield curve is healthy — the 10Y-2Y spread above its own recent mean — which historically marks a supportive macro regime for risk assets. This tests w…",
+  "codeSha256": "d64d44b9295cc74bb5549a49501d2d4ceab41c96a597686d91fb990e1eedbd83",
+  "codeFromBacktest": 32953,
+  "verified": {
+    "backtestId": 32953,
+    "return": 61.99,
+    "mdd": 51.86,
+    "trades": 36,
+    "benchRet": -25.76,
+    "tFrom": 1723075200,
+    "tTo": 1795060800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,34 @@
+{
+  "id": 6619,
+  "name": "BTC 4h NDX Long-Short",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin trades with global risk appetite AND can be shorted on perpetuals. When the NASDAQ-100 is above its own recent mean (risk-on) and BTC is trending up, we go long; when NDX i…",
+  "codeSha256": "5663889a7005549207c4f30bd16cdd5cf0e23f673c2dac6edee9d48e34256d54",
+  "codeFromBacktest": 32894,
+  "verified": {
+    "backtestId": 32894,
+    "return": 19.95,
+    "mdd": 53.03,
+    "trades": 60,
+    "benchRet": -25.76,
+    "tFrom": 1723075200,
+    "tTo": 1795060800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

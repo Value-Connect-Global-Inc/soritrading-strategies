@@ -1,0 +1,33 @@
+{
+  "id": 6596,
+  "name": "BTC 4h Long-Short EMA Trend (usdm)",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Long-only trend strategies give back gains in bear markets because they can only sit out. This version uses perpetual futures to make money in BOTH directions. The EMA50/EMA200 cro…",
+  "codeSha256": "d2a4cf2d94993eda6ea7f9058b84082b6ae28cde4790b7d4946d119ab03da4a6",
+  "codeFromBacktest": 32794,
+  "verified": {
+    "backtestId": 32794,
+    "return": 124.39,
+    "mdd": 63.33,
+    "trades": 83,
+    "tFrom": 1577836800,
+    "tTo": 1651348800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

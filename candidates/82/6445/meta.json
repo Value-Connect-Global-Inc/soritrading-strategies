@@ -1,0 +1,33 @@
+{
+  "id": 6445,
+  "name": "BTC Order Book Imbalance 5m",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC alternates between long trending regimes; the 200-bar SMA separates them. We stay long only while price is clearly above it, so we ride up-trends and step aside in down-trends.…",
+  "codeSha256": "84ded6c77a24cda714f4eca8b237a64dbeda66156e66012fc615e98b36c99f9d",
+  "codeFromBacktest": 31769,
+  "verified": {
+    "backtestId": 31769,
+    "return": 26.29,
+    "mdd": 24.97,
+    "trades": 50,
+    "benchRet": 19.78,
+    "tFrom": 1722859200,
+    "tTo": 1794844800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,34 @@
+{
+  "id": 6553,
+  "name": "BTC Long-Short Trend 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin's on-chain activity (daily unique active addresses) is a slow, crypto-native regime signal. Instead of an on/off gate, scale position size continuously with adoption: more…",
+  "codeSha256": "597986fd8fcd1337eddc4c0dcbeaae69f57eb64222f95dce07c377bf1611ac04",
+  "codeFromBacktest": 32481,
+  "verified": {
+    "backtestId": 32481,
+    "return": -19.62,
+    "mdd": 29.57,
+    "trades": 154,
+    "benchRet": 26.63,
+    "tFrom": 1708560000,
+    "tTo": 1794873600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

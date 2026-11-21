@@ -1,0 +1,34 @@
+{
+  "id": 6692,
+  "name": "BTC Regime Long Crash-Dodge 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends for months at a time; the worst losses come from staying long through bear markets. A slow 200-bar average separates uptrends from downtrends, so the position is held th…",
+  "codeSha256": "7089d580638cc30677f55e11847c05196d4546f80f274e1ffbbc58e140b67373",
+  "codeFromBacktest": 33372,
+  "verified": {
+    "backtestId": 33372,
+    "return": 77.5,
+    "mdd": 37.26,
+    "trades": 44,
+    "benchRet": 54.39,
+    "tFrom": 1651176000,
+    "tTo": 1723161600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

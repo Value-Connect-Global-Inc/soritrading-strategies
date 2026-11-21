@@ -1,0 +1,33 @@
+{
+  "id": 6475,
+  "name": "SOL Trend Long/Short EMA50 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: the exact EMA50/200 long/short core that already validated on BTC and ETH 4h. SOL is a higher-beta alt, so this tests whether the edge is a broad crypto trend effect or limited to…",
+  "codeSha256": "9ebf9211f25f9c4b3e0e164612fb0d2d7484bf60aac6ee68b58ff607c8410280",
+  "codeFromBacktest": 32032,
+  "verified": {
+    "backtestId": 32032,
+    "return": 70.11,
+    "mdd": 27.15,
+    "trades": 133,
+    "tFrom": 1722902400,
+    "tTo": 1794888000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "SOL",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

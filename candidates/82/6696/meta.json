@@ -1,0 +1,34 @@
+{
+  "id": 6696,
+  "name": "BTC Slow Regime Rider 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC spends long stretches above its 200-bar average, and pullbacks inside that stretch are usually temporary. This strategy stays long while price is above the slow average and pro…",
+  "codeSha256": "d77fe2e53c383367e9454c1356e84a35a25112f8afca0ac1c60257855dfc1c7d",
+  "codeFromBacktest": 33423,
+  "verified": {
+    "backtestId": 33423,
+    "return": -72.1,
+    "mdd": 77.47,
+    "trades": 386,
+    "benchRet": -1.95,
+    "tFrom": 1723190400,
+    "tTo": 1795176000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

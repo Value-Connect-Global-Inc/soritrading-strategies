@@ -1,0 +1,34 @@
+{
+  "id": 6641,
+  "name": "BTC 4H Z-Score Dip Revert Trend-Gated",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: A dip in a rising market is a better entry price than waiting for the trend to confirm. This strategy buys when price is far below its own short-term average (a pullback) while the…",
+  "codeSha256": "ca22c27dd5a702859ef236bcda154e785da9e46cd15fcb376dbd7167d9ad6516",
+  "codeFromBacktest": 33003,
+  "verified": {
+    "backtestId": 33003,
+    "return": 30.97,
+    "mdd": 18.08,
+    "trades": 26,
+    "benchRet": 45.37,
+    "tFrom": 1651104000,
+    "tTo": 1723089600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

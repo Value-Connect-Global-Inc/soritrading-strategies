@@ -1,0 +1,33 @@
+{
+  "id": 6708,
+  "name": "ETH VIX-Regime Trend 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Crypto is a global risk asset: when equity-market fear (the VIX index) is low, money flows into risky assets including ETH; when fear spikes, everything sells off together. This st…",
+  "codeSha256": "5637ebf177a22736b29d003e4471c12af3f19d16045db5affd31f9c95e245400",
+  "codeFromBacktest": 33480,
+  "verified": {
+    "backtestId": 33480,
+    "return": 825.85,
+    "mdd": 36.68,
+    "trades": 32,
+    "benchRet": 1681.77,
+    "tFrom": 1579204800,
+    "tTo": 1651204800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6695,
+  "name": "BTC Vol-Target Trend Rider 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC spends long stretches above or below its 200-bar average. This strategy is long only while price is above that line and steps aside when it breaks below — it captures most of b…",
+  "codeSha256": "0f50bac3177d7d4de5405236f56479892f461b559f5eb32e44d3f7f6cd71441e",
+  "codeFromBacktest": 33406,
+  "verified": {
+    "backtestId": 33406,
+    "return": 2.21,
+    "mdd": 43.63,
+    "trades": 166,
+    "benchRet": 1.55,
+    "tFrom": 1723176000,
+    "tTo": 1795161600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

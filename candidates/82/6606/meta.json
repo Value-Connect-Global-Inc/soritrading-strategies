@@ -1,0 +1,34 @@
+{
+  "id": 6606,
+  "name": "ETH 4h BTC-Demand Trend",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin active addresses are a market-wide crypto demand proxy — when BTC network usage expands, capital is flowing into crypto as a whole, and altcoins like ETH ride the same flow…",
+  "codeSha256": "90502001f7a13b8a2442efeb664c7d621b9db6b7b0902349be460bce993d1087",
+  "codeFromBacktest": 32839,
+  "verified": {
+    "backtestId": 32839,
+    "return": -2.31,
+    "mdd": 45,
+    "trades": 51,
+    "benchRet": -17.87,
+    "tFrom": 1651075200,
+    "tTo": 1723060800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

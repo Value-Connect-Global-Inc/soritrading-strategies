@@ -1,0 +1,33 @@
+{
+  "id": 6656,
+  "name": "BTC 1D VIX-Gated Asymmetric Trend",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: The asymmetric regime filter validated on XRP daily, applied to volatile alts. A fixed 20-day exit whipsaws a volatile alt's normal bull pullbacks, so the exit is volatility-scaled…",
+  "codeSha256": "a3d6d441880a92a10f562e74ab57c54a9ce5890ef9652e7d0c1a29d6d041ef50",
+  "codeFromBacktest": 33150,
+  "verified": {
+    "backtestId": 33150,
+    "return": 479.18,
+    "mdd": 50.17,
+    "trades": 14,
+    "benchRet": 460.08,
+    "tFrom": 1691366400,
+    "tTo": 1743120000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

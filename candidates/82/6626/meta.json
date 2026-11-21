@@ -1,0 +1,33 @@
+{
+  "id": 6626,
+  "name": "SOL 4h NDX Risk-On Trend",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Solana rallies when US equity risk appetite is on — the NASDAQ-100 above its own recent mean — while the price trend is up. This tests whether the proven BTC/ETH risk-on trend edge…",
+  "codeSha256": "a8d75c216848bdd83862369edde0cb5c5295f753e27fe741c011b9ce924a9e75",
+  "codeFromBacktest": 32945,
+  "verified": {
+    "backtestId": 32945,
+    "return": -17.69,
+    "mdd": 63.08,
+    "trades": 58,
+    "benchRet": -51.05,
+    "tFrom": 1723075200,
+    "tTo": 1795060800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,34 @@
+{
+  "id": 6590,
+  "name": "BTC 4h Sentiment-Gated Trend Ride",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: A pure price trend filter stays long at the very bottom of a crash because moving averages lag. The Fear&Greed sentiment index turns to extreme fear at exactly those capitulation m…",
+  "codeSha256": "59e5fde365f9ed01fab856cc0ed1d314bf1022f8dc8e76afc4ab69a88c522711",
+  "codeFromBacktest": 32749,
+  "verified": {
+    "backtestId": 32749,
+    "return": 315.7,
+    "mdd": 46.26,
+    "trades": 52,
+    "benchRet": 347.05,
+    "tFrom": 1579046400,
+    "tTo": 1651046400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

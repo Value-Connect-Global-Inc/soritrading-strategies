@@ -1,0 +1,34 @@
+{
+  "id": 6439,
+  "name": "BTC Trend Regime EMA200 Pullback 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why: BTC spends long periods trending; the 200-bar EMA marks the regime. We only buy when the trend is up, so we ride uptrends and sit out downtrends. When it buys: price is above the 200 EMA (uptren…",
+  "codeSha256": "ef6fbb3b0bc27cc8d4e3c17c2eec767394379a7afc16677dda9a56f61839a26b",
+  "codeFromBacktest": 31646,
+  "verified": {
+    "backtestId": 31646,
+    "return": -55.52,
+    "mdd": 63.08,
+    "trades": 90,
+    "benchRet": 389.32,
+    "tFrom": 1578816000,
+    "tTo": 1650816000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,34 @@
+{
+  "id": 6539,
+  "name": "BTC Contrarian Fear-Greed 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: crypto markets are driven by emotion, and extremes of fear mark short-term capitulation bottoms while extremes of greed mark short-term tops. This strategy is contrarian: it buys w…",
+  "codeSha256": "a4b00c0c874f7d263160e763ff2226da813691ad38faaa58f5e9c824c54e2ee4",
+  "codeFromBacktest": 32408,
+  "verified": {
+    "backtestId": 32408,
+    "return": -80.98,
+    "mdd": 84.02,
+    "trades": 54,
+    "benchRet": 348.82,
+    "tFrom": 1578988800,
+    "tTo": 1650988800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,34 @@
+{
+  "id": 6562,
+  "name": "BTC VIX-Regime Trend 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC's long up-trends tend to happen when markets are calm (low volatility), and break down when a risk-off spike in volatility hits. VIX is a daily measure of stock-market fear tha…",
+  "codeSha256": "4ef3374da3a0c0d6bc4bfd9cb0d912e540ac36fea691a7c380fffd7f986f1713",
+  "codeFromBacktest": 32589,
+  "verified": {
+    "backtestId": 32589,
+    "return": 16.83,
+    "mdd": 40.32,
+    "trades": 40,
+    "benchRet": 11.86,
+    "tFrom": 1723032000,
+    "tTo": 1795017600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

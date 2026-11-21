@@ -1,0 +1,33 @@
+{
+  "id": 6637,
+  "name": "ETH 100D Regime Filter 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: crypto spends long stretches above or below its long-term moving average. Being long only while price is above the 100-day average keeps you in bull markets and out of the worst of…",
+  "codeSha256": "7340aadc382436bcc18e4da1396998f4b58f6629696646b90ab05ac4d8f958c6",
+  "codeFromBacktest": 32981,
+  "verified": {
+    "backtestId": 32981,
+    "return": -29.96,
+    "mdd": 46.14,
+    "trades": 58,
+    "benchRet": -15.87,
+    "tFrom": 1651089600,
+    "tTo": 1723075200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

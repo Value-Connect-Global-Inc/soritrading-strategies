@@ -1,0 +1,34 @@
+{
+  "id": 6460,
+  "name": "BTC Donchian Trend + VIX Regime 4h",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Trend-following on BTC 4h with a macro crisis gate. The VIX (daily, 2d lag) only steps in during genuine risk-off spikes (VIX > 35), when breakout signals are unreliable; in normal…",
+  "codeSha256": "56f6482266024633764ea69dd0148383ea7406e155ee44d65641cc1469761792",
+  "codeFromBacktest": 31910,
+  "verified": {
+    "backtestId": 31910,
+    "return": 26.14,
+    "mdd": 50.39,
+    "trades": 40,
+    "benchRet": 295.96,
+    "tFrom": 1564459200,
+    "tTo": 1622073600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

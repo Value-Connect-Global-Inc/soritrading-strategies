@@ -1,0 +1,34 @@
+{
+  "id": 6429,
+  "name": "BTC 1H Volatility-Range Mean Reversion",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin on 1h often reverts to its short mean after sharp moves, and a volatility regime filter keeps us out of choppy/quiet sideways. When it buys and sells: buy when price drops…",
+  "codeSha256": "4fe0943e12f4a5fbfd9008d1edcf19c45f90a5a64eabb09b626b29de80e68ecc",
+  "codeFromBacktest": 31598,
+  "verified": {
+    "backtestId": 31598,
+    "return": -44.08,
+    "mdd": 45.06,
+    "trades": 218,
+    "benchRet": -31.2,
+    "tFrom": 1758816000,
+    "tTo": 1776812400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

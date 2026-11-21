@@ -1,0 +1,33 @@
+{
+  "id": 6462,
+  "name": "BTC Volume-Confirmed Donchian Breakout 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Breakouts that arrive with well above-average volume are more often the start of a real trend than low-volume noise, so a volume filter removes most fake breakouts. When it buys an…",
+  "codeSha256": "b40f95b0a02260e21a15403a917c24eba3ce2259488ff6fc8cd7e7b902139d33",
+  "codeFromBacktest": 31943,
+  "verified": {
+    "backtestId": 31943,
+    "return": 8.46,
+    "mdd": 29.17,
+    "trades": 74,
+    "benchRet": 20.43,
+    "tFrom": 1722888000,
+    "tTo": 1794873600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

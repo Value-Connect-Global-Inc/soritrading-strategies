@@ -1,0 +1,34 @@
+{
+  "id": 6544,
+  "name": "BTC VIX Risk-Regime 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC is a risk asset — when the VIX spikes, crypto sells off. Using the VIX as an external risk switch (calm = stay long, stressed = step aside) should dodge the crash weeks while k…",
+  "codeSha256": "97ad0c04aed108fb724d4e819fd36772c1f0fb3e5b6c831bf0b1122d54bec0eb",
+  "codeFromBacktest": 32443,
+  "verified": {
+    "backtestId": 32443,
+    "return": -37.42,
+    "mdd": 52.94,
+    "trades": 68,
+    "benchRet": 348.82,
+    "tFrom": 1578988800,
+    "tTo": 1650988800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

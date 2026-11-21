@@ -1,0 +1,34 @@
+{
+  "id": 6594,
+  "name": "BTC 4h Give-Back Protected Trend Ride v5",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: A trend filter rides big uptrends but takes deep drawdowns in fast crashes that moving averages lag. It combines two protections: (1) when volatility spikes AND the trend turns dow…",
+  "codeSha256": "0971c2532e17a60d1aced4b8b66b5e8ccddab2c0259b1fbc63a5153b23ff1ac6",
+  "codeFromBacktest": 32786,
+  "verified": {
+    "backtestId": 32786,
+    "return": 363.51,
+    "mdd": 45.32,
+    "trades": 52,
+    "benchRet": 420.84,
+    "tFrom": 1577836800,
+    "tTo": 1651348800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

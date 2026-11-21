@@ -1,0 +1,34 @@
+{
+  "id": 6476,
+  "name": "BTC Trend Regime SPOT EMA50/200 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Long-only version of the EMA50/200 trend core that validated on BTC/ETH/SOL 4h futures. On SPOT it holds BTC through up-trends and steps aside in down-trends, so it can be compared against buy-and-ho…",
+  "codeSha256": "68ec793a2b381f0b872933e49f21bcbc421b3b79f9658b71f708c5c5bf21bec0",
+  "codeFromBacktest": 32048,
+  "verified": {
+    "backtestId": 32048,
+    "return": 46.39,
+    "mdd": 23.48,
+    "trades": 78,
+    "benchRet": 16.3,
+    "tFrom": 1722902400,
+    "tTo": 1794888000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

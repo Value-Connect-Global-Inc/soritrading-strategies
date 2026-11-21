@@ -1,0 +1,33 @@
+{
+  "id": 6419,
+  "name": "BTC EMA200 Regime Long 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC spends long stretches in strong up-trends and long stretches in bear markets. A 200-bar (33-day) EMA on 4h separates the two: hold BTC while price is above it and capture most…",
+  "codeSha256": "119eb4cee7af817e03f301493788e36dc937a8c452fbfa463e22569d91ba7316",
+  "codeFromBacktest": 31537,
+  "verified": {
+    "backtestId": 31537,
+    "return": -98.54,
+    "mdd": 98.55,
+    "trades": 550,
+    "benchRet": 395.65,
+    "tFrom": 1578772800,
+    "tTo": 1650772800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

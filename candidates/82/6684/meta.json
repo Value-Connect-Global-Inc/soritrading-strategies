@@ -1,0 +1,34 @@
+{
+  "id": 6684,
+  "name": "FearGreed Recovery BTC 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Bet: the Crypto Fear & Greed Index mean-reverts — extreme fear marks short-term capitulation and prices tend to recover once the panic starts lifting, but only inside a longer uptrend. Buy when the i…",
+  "codeSha256": "ee77f4f0155626fa476931376a0d72793e62a813a08ae87cff58f62077c38444",
+  "codeFromBacktest": 33327,
+  "verified": {
+    "backtestId": 33327,
+    "return": 3.89,
+    "mdd": 14.93,
+    "trades": 4,
+    "benchRet": 359.25,
+    "tFrom": 1579132800,
+    "tTo": 1651132800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

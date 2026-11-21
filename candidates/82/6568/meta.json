@@ -1,0 +1,33 @@
+{
+  "id": 6568,
+  "name": "ETH VIX Regime Long-Short 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: ETH's biggest moves are regime-driven: calm VIX lets long up-trends run, panic VIX triggers risk-off crashes. The verified long-only version rode the calm up-trends but sat in cash…",
+  "codeSha256": "095d1224e736c3237a9bdcda9b0a9af906a0b519b6063927a42efea2c211f195",
+  "codeFromBacktest": 32606,
+  "verified": {
+    "backtestId": 32606,
+    "return": 1.3,
+    "mdd": 50.63,
+    "trades": 47,
+    "tFrom": 1651032000,
+    "tTo": 1723017600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6536,
+  "name": "BTC Vol-Targeted Trend 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin trends for long stretches, and its volatility clusters — calm periods alternate with violent moves. This strategy rides the trend (hold long while price is above its 33-day…",
+  "codeSha256": "b185349c0e13ec3202c3197645262f104b3789b1e2590393c16cf4552c16ed9e",
+  "codeFromBacktest": 32392,
+  "verified": {
+    "backtestId": 32392,
+    "return": 18.16,
+    "mdd": 37.75,
+    "trades": 134,
+    "benchRet": 14.11,
+    "tFrom": 1722988800,
+    "tTo": 1794974400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

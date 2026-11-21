@@ -1,0 +1,33 @@
+{
+  "id": 6582,
+  "name": "BTC 1H Trend Pullback Long-Short",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: On 1h BTC perpetuals a fast EMA crossing a slow EMA marks the start of a trend, and riding it with a trailing stop captures the move both up and down. When it buys and sells: Goes…",
+  "codeSha256": "254d9f470393eb8c8ad96452d904be061942a7ce3ce149fe0a1f7aca5cb94962",
+  "codeFromBacktest": 32702,
+  "verified": {
+    "backtestId": 32702,
+    "return": -18.56,
+    "mdd": 22.25,
+    "trades": 84,
+    "tFrom": 1759060800,
+    "tTo": 1777057200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "1h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

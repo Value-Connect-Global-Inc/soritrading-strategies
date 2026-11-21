@@ -1,0 +1,34 @@
+{
+  "id": 6459,
+  "name": "BTC Fear&Greed Contrarian 1d",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Extreme crowd sentiment (Crypto Fear & Greed index) is a contrarian signal — extreme fear marks bottoms, extreme greed marks tops. When it buys and sells: buys when the index is de…",
+  "codeSha256": "58ad7692f03c1e577eb257d7a17e4a2b062f5a87e726cef74ff878e7ea73b3f6",
+  "codeFromBacktest": 31896,
+  "verified": {
+    "backtestId": 31896,
+    "return": -27.63,
+    "mdd": 37.86,
+    "trades": 2,
+    "benchRet": -23.16,
+    "tFrom": 1518393600,
+    "tTo": 1587427200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(0/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

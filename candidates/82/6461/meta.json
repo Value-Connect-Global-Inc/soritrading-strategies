@@ -1,0 +1,34 @@
+{
+  "id": 6461,
+  "name": "BTC Dual-Direction EMA Trend 4h USDM",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: A long-only trend strategy that holds BTC while the trend is up and steps aside (flat) while it is down. Being flat in falling markets gives a much smaller drawdown than buy-and-ho…",
+  "codeSha256": "b470241f4beb3cc0e244a2da06ce16a43b5814320c9849cd702bee60cbf91ceb",
+  "codeFromBacktest": 31936,
+  "verified": {
+    "backtestId": 31936,
+    "return": 72.93,
+    "mdd": 27.79,
+    "trades": 66,
+    "benchRet": 20.43,
+    "tFrom": 1722888000,
+    "tTo": 1794873600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,34 @@
+{
+  "id": 6464,
+  "name": "BTC Macro Regime NDX Risk-On 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trades as a high-beta risk asset, so its up-trends are far more reliable when broad equity risk appetite (NASDAQ-100) is also rising, and its drawdowns usually start when risk…",
+  "codeSha256": "64df9be3fa9b788c2c8f76b35bd54a4537013083d2ea8e2bf6771d08d5c2e9b1",
+  "codeFromBacktest": 31966,
+  "verified": {
+    "backtestId": 31966,
+    "return": 23.15,
+    "mdd": 35.8,
+    "trades": 128,
+    "benchRet": 16.3,
+    "tFrom": 1722902400,
+    "tTo": 1794888000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

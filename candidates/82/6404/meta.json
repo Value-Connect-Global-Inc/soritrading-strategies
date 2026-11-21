@@ -1,0 +1,34 @@
+{
+  "id": 6404,
+  "name": "ETH Trend Regime Filter 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: a long trend regime filter. In crypto most of the return comes in sustained up-trends and most of the damage in sustained down-trends, so staying invested while the medium-term tre…",
+  "codeSha256": "c8dafef3a1a8bc82e9d80fa5be4bc377f435b801c588f656ba637dc9aa60330d",
+  "codeFromBacktest": 31431,
+  "verified": {
+    "backtestId": 31431,
+    "return": 98.52,
+    "mdd": 40.02,
+    "trades": 24,
+    "benchRet": -35.47,
+    "tFrom": 1722772800,
+    "tTo": 1794758400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

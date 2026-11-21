@@ -1,0 +1,33 @@
+{
+  "id": 6707,
+  "name": "ETH VIX-Regime Trend 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Crypto is priced in dollars and historically tends to fall when the US dollar strengthens (risk-off) and rise when the dollar is weak. This strategy uses the Fed's broad dollar ind…",
+  "codeSha256": "c24ec94d31c0bc1265ade29814bb9dabfcd760e90131ba0423b16ae169cce4d7",
+  "codeFromBacktest": 33471,
+  "verified": {
+    "backtestId": 33471,
+    "return": 276.83,
+    "mdd": 29.32,
+    "trades": 58,
+    "benchRet": 1688.96,
+    "tFrom": 1579190400,
+    "tTo": 1651190400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

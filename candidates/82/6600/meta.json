@@ -1,0 +1,34 @@
+{
+  "id": 6600,
+  "name": "BTC 4h Fear & Greed Contrarian Dip Rider",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Trend riding captures bull moves, but buying at the very top of a euphoric spike (Fear & Greed >= 85) tends to be near a local top. Filtering only those entries keeps most of the u…",
+  "codeSha256": "d2b2c0c1c95a62ceb77971a8eb054991cc5587fd1f985b85eedf6ca75e27194e",
+  "codeFromBacktest": 32822,
+  "verified": {
+    "backtestId": 32822,
+    "return": 76.02,
+    "mdd": 28.77,
+    "trades": 66,
+    "benchRet": 14.64,
+    "tFrom": 1723060800,
+    "tTo": 1795046400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

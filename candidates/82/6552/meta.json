@@ -1,0 +1,34 @@
+{
+  "id": 6552,
+  "name": "BTC Dollar-Weakness Regime 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: The US dollar index is a slow macro driver of risk assets. A weakening dollar (falling below its own 90-day mean) historically supports crypto; a strengthening dollar pressures it.…",
+  "codeSha256": "3e4580622b05858c02bd9d6d427d94daf79a6e31d0186d6faa353dcbbe608cb0",
+  "codeFromBacktest": 32475,
+  "verified": {
+    "backtestId": 32475,
+    "return": 162.67,
+    "mdd": 40.67,
+    "trades": 62,
+    "benchRet": 435.14,
+    "tFrom": 1535760000,
+    "tTo": 1622073600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

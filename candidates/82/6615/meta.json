@@ -1,0 +1,34 @@
+{
+  "id": 6615,
+  "name": "BTC 4h USD-Weakness Trend",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin is priced in dollars and behaves as an anti-dollar asset. When the US dollar is WEAK (below its own recent average), global liquidity is loose and BTC uptrends tend to exte…",
+  "codeSha256": "1d8728d1a2634375bd1eaef8590c52f089081d5d15e6342ae93eaf6410d07ca9",
+  "codeFromBacktest": 32879,
+  "verified": {
+    "backtestId": 32879,
+    "return": 169.73,
+    "mdd": 49.54,
+    "trades": 44,
+    "benchRet": 352.13,
+    "tFrom": 1579060800,
+    "tTo": 1651060800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

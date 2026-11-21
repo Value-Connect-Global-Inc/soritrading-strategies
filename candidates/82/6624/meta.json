@@ -1,0 +1,33 @@
+{
+  "id": 6624,
+  "name": "BTC 4h Funding Capitulation",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: When funding turns deeply negative on the perpetual, shorts are crowded and every long earns funding — and a price capitulation (down 15% from the 20-day high) is when the crowd is…",
+  "codeSha256": "4de76aff9e2ddf2c26b8d7fd3f14edc1e79e2edbcd97664b9b644713078f77f9",
+  "codeFromBacktest": 32939,
+  "verified": {
+    "backtestId": 32939,
+    "return": 4.02,
+    "mdd": 4.37,
+    "trades": 4,
+    "tFrom": 1622289600,
+    "tTo": 1679875200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(0/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

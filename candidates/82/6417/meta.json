@@ -1,0 +1,33 @@
+{
+  "id": 6417,
+  "name": "BTC Daily EMA Long/Short 1D USDM",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends for months at a time. The 200-day average is a slow, reliable gauge of whether the market is in an uptrend (price above it) or a downtrend (price below it). This strateg…",
+  "codeSha256": "b74028403d038fcf94c41c48c48b4cae8da96c54c569ed936e3edfcf8be1aeed",
+  "codeFromBacktest": 31527,
+  "verified": {
+    "backtestId": 31527,
+    "return": 131.79,
+    "mdd": 51.74,
+    "trades": 7,
+    "benchRet": 118.97,
+    "tFrom": 1509667200,
+    "tTo": 1604620800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ②(1/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

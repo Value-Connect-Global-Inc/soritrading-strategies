@@ -1,0 +1,33 @@
+{
+  "id": 6634,
+  "name": "BTC 4h VIX-Regime Trend + Fear Exit",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: The auto-promoted VIX-Regime Trend only GATES entries with the VIX (calm = risk-on) and exits only on trend break / hard stop. This variant also EXITS when the VIX spikes above its…",
+  "codeSha256": "b410e4edd00808050bb00887f1882541b78a8d320d4e584d0a171466bbbe8a8c",
+  "codeFromBacktest": 32969,
+  "verified": {
+    "backtestId": 32969,
+    "return": 161.88,
+    "mdd": 34.86,
+    "trades": 60,
+    "benchRet": 345.11,
+    "tFrom": 1579075200,
+    "tTo": 1651075200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

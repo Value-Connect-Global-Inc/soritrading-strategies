@@ -1,0 +1,33 @@
+{
+  "id": 6633,
+  "name": "ETH 4h VIX-Regime Trend",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Ethereum rallies when markets are calm and gets hit when fear spikes. The VIX (CBOE volatility index) below its own recent mean marks a calm, risk-on regime. This tests whether the…",
+  "codeSha256": "7047964cee77fb519c8879827ad385b520de744bc3b74259c7bed95401602ebf",
+  "codeFromBacktest": 32966,
+  "verified": {
+    "backtestId": 32966,
+    "return": 131.18,
+    "mdd": 34.17,
+    "trades": 44,
+    "benchRet": -25.13,
+    "tFrom": 1723089600,
+    "tTo": 1795075200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

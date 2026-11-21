@@ -1,0 +1,33 @@
+{
+  "id": 6480,
+  "name": "BTC On-Chain Adoption Trend 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "On-chain fundamentals, not price momentum: buy BTC when the network is actually being used more (daily active addresses above their 30-day average, i.e. adoption expanding) AND price is above its 200…",
+  "codeSha256": "d3c3599120e89ed12a85a8d4a3773f568087f579b3476d1be9de25a0ead9ad8d",
+  "codeFromBacktest": 32066,
+  "verified": {
+    "backtestId": 32066,
+    "return": 8.54,
+    "mdd": 21.6,
+    "trades": 96,
+    "tFrom": 1722902400,
+    "tTo": 1794888000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(1/3) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

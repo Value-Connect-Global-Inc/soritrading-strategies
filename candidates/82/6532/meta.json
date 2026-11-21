@@ -1,0 +1,34 @@
+{
+  "id": 6532,
+  "name": "BTC Trend Regime 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin's price spends long stretches trending either up or down. A single clean trend filter — hold long while price is above its long-term (200-bar) average, step to cash when it…",
+  "codeSha256": "d0f1846821a882cc84c3501d70ada63a89bd2fbab07c56764d7681d39b14a96c",
+  "codeFromBacktest": 32381,
+  "verified": {
+    "backtestId": 32381,
+    "return": 14.92,
+    "mdd": 41.05,
+    "trades": 134,
+    "benchRet": 14.11,
+    "tFrom": 1722988800,
+    "tTo": 1794974400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

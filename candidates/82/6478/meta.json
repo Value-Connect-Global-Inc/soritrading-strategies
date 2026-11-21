@@ -1,0 +1,33 @@
+{
+  "id": 6478,
+  "name": "BTC Two-Sided Mean Reversion 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Mean reversion in BOTH directions on BTC perpetuals. The long-only spot version sat in cash and missed the bull; adding the short side lets it also profit from overextended rallies in downtrends. Whe…",
+  "codeSha256": "78a68ce7601be4fc3a25b83177f0bc4f61c3dbf0da65e34972e82a91730c7bc9",
+  "codeFromBacktest": 32057,
+  "verified": {
+    "backtestId": 32057,
+    "return": -15.24,
+    "mdd": 17.1,
+    "trades": 98,
+    "tFrom": 1578916800,
+    "tTo": 1650902400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

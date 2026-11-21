@@ -1,0 +1,33 @@
+{
+  "id": 6666,
+  "name": "SOL 1D FearGreed Regime Gate (spot)",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: The NASDAQ risk-on gate that validated on BTC/ETH failed on SOL because it filters out crypto-only rallies (equities flat while SOL pumps). This strategy replaces the equity gate w…",
+  "codeSha256": "f2e2270884f6d6ff0e875cdb9705977c94687fc3cc8cef11c5b8f05178af20ad",
+  "codeFromBacktest": 33230,
+  "verified": {
+    "backtestId": 33230,
+    "return": -22.02,
+    "mdd": 57.63,
+    "trades": 54,
+    "benchRet": -45.71,
+    "tFrom": 1725926400,
+    "tTo": 1794960000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

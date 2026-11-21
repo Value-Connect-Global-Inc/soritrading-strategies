@@ -1,0 +1,34 @@
+{
+  "id": 6556,
+  "name": "BTC SMA200 Regime Rider 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC moves in long multi-month trends. A slow 200-bar (about 33 days) moving average separates bull regimes from bear regimes without the churn of fast signals. Staying long the who…",
+  "codeSha256": "417972287972f0630e4e071750deed5a871091f676846b439c7671f48a4c4272",
+  "codeFromBacktest": 32502,
+  "verified": {
+    "backtestId": 32502,
+    "return": 30.35,
+    "mdd": 36.43,
+    "trades": 34,
+    "benchRet": 10.81,
+    "tFrom": 1723017600,
+    "tTo": 1795003200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,34 @@
+{
+  "id": 6534,
+  "name": "BTC Mean Reversion 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: after a sharp, fast drop Bitcoin tends to bounce back toward its recent average — mean reversion. This is the opposite of trend following: it buys fear and sells recovery, so it pr…",
+  "codeSha256": "7a155c6b98db3e2793f0828c21c6eae2a92953a278c59df4a57ac339576c2ec3",
+  "codeFromBacktest": 32385,
+  "verified": {
+    "backtestId": 32385,
+    "return": -34.65,
+    "mdd": 59.4,
+    "trades": 15,
+    "benchRet": 435.14,
+    "tFrom": 1535760000,
+    "tTo": 1622073600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

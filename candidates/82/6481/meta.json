@@ -1,0 +1,33 @@
+{
+  "id": 6481,
+  "name": "BTC Funding Contrarian 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Positioning sentiment, not price momentum: on perpetuals, funding is the price longs pay shorts every 8h. When funding is far above its own recent normal, the market is crowded long and a pullback is…",
+  "codeSha256": "93734497295cdb85a2d9300daf2eded78f6f77524c0b2e6b79b0151297369fc3",
+  "codeFromBacktest": 32069,
+  "verified": {
+    "backtestId": 32069,
+    "return": -50.02,
+    "mdd": 52.51,
+    "trades": 690,
+    "tFrom": 1722916800,
+    "tTo": 1794902400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

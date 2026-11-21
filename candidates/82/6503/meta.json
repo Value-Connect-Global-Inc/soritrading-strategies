@@ -1,0 +1,34 @@
+{
+  "id": 6503,
+  "name": "BTC Mean Reversion RSI 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: In a ranging market Bitcoin mean-reverts: sharp drops below a short-term band tend to bounce back to the average. This strategy buys oversold bounces and sells overbought tops, the…",
+  "codeSha256": "149dfb0c2d7e23e9cb5903b0de30c4686401b9b438dd56c2ce96155ee409f0f8",
+  "codeFromBacktest": 32179,
+  "verified": {
+    "backtestId": 32179,
+    "return": -5.57,
+    "mdd": 41.13,
+    "trades": 124,
+    "benchRet": 399.71,
+    "tFrom": 1578931200,
+    "tTo": 1650931200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

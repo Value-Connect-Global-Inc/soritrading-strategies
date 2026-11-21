@@ -1,0 +1,33 @@
+{
+  "id": 6662,
+  "name": "BTC 1D USD Regime Long/Short (usdm)",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin trades like a risk asset against the dollar — when the broad US dollar strengthens, BTC tends to fall; when it weakens, BTC tends to rise. We use the Fed broad dollar index…",
+  "codeSha256": "06c95f73e1d577e23a31633dc5a103a4c9051b4438f5f18c1276354173160bd1",
+  "codeFromBacktest": 33217,
+  "verified": {
+    "backtestId": 33217,
+    "return": 64.61,
+    "mdd": 32.83,
+    "trades": 75,
+    "tFrom": 1725926400,
+    "tTo": 1794960000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

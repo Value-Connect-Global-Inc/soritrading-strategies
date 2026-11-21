@@ -1,0 +1,34 @@
+{
+  "id": 6433,
+  "name": "BTC 4H Donchian Breakout Hard Stop",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: 4h trend-following is the only family that has held up in this job (a 5-asset 4h basket validated). This tests whether the edge survives on BTC alone with a disciplined hard stop t…",
+  "codeSha256": "6931ddc055751ca64d343d4e64612a7dd2d1c96a7f2abb234aa868efe46074d1",
+  "codeFromBacktest": 31613,
+  "verified": {
+    "backtestId": 31613,
+    "return": -96.04,
+    "mdd": 96.04,
+    "trades": 368,
+    "benchRet": 20.61,
+    "tFrom": 1722816000,
+    "tTo": 1794801600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

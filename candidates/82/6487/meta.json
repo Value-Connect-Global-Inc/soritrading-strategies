@@ -1,0 +1,34 @@
+{
+  "id": 6487,
+  "name": "ETH Panic Dip Mean-Reversion 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Sharp crashes in crypto are followed by sharp bounces — prices stretched far below the average tend to snap back. On a 4h clock there are many more panic dips than on daily, so the…",
+  "codeSha256": "3a21b5594a1b50cca9488874ea0dc56a5f935460890cd1cb82f97cf6610653d7",
+  "codeFromBacktest": 32102,
+  "verified": {
+    "backtestId": 32102,
+    "return": -51.2,
+    "mdd": 56.05,
+    "trades": 54,
+    "benchRet": -17.12,
+    "tFrom": 1650916800,
+    "tTo": 1722902400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6397,
+  "name": "BTC 1h Trend Rider with ATR Stop",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why: BTC is a risk asset — it falls when financial conditions tighten (dollar strengthens) or when volatility spikes. Buying deep pullbacks only while the macro regime is calm (VIX not elevated, doll…",
+  "codeSha256": "28109f3c07b6a6e244640081b9f5fc60e46d65e6c1173c00fde31bee8c37dcc3",
+  "codeFromBacktest": 31396,
+  "verified": {
+    "backtestId": 31396,
+    "return": -40.74,
+    "mdd": 42.73,
+    "trades": 240,
+    "benchRet": -15.37,
+    "tFrom": 1776758400,
+    "tTo": 1794754800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1h"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

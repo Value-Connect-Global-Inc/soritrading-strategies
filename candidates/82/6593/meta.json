@@ -1,0 +1,34 @@
+{
+  "id": 6593,
+  "name": "BTC 4h Vol De-Risk Trend Ride v2",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: A trend filter rides big uptrends but is late to exit in slow grind-downs that have normal volatility (an ATR spike only catches fast crashes). Instead it protects a fraction of ea…",
+  "codeSha256": "605f6099f46ad237b727acff36ce4db5982294fbf24656b4a716234c6d75e0cf",
+  "codeFromBacktest": 32777,
+  "verified": {
+    "backtestId": 32777,
+    "return": 89.57,
+    "mdd": 35.85,
+    "trades": 57,
+    "benchRet": 40.39,
+    "tFrom": 1651060800,
+    "tTo": 1723046400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

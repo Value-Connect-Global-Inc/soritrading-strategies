@@ -1,0 +1,33 @@
+{
+  "id": 6523,
+  "name": "ETH Trend Long/Short 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: The ETH 4h trend rule that already halved drawdown vs buy-and-hold in every window (spot version) is extended to trade BOTH directions on perpetual futures. In the 2022-24 and 2024…",
+  "codeSha256": "f349e80f8d4b028cb06ed6fc5bd83e8dbbe8b880abe54f11b1bc141bac3a9ef5",
+  "codeFromBacktest": 32327,
+  "verified": {
+    "backtestId": 32327,
+    "return": 264.37,
+    "mdd": 44.67,
+    "trades": 34,
+    "tFrom": 1578974400,
+    "tTo": 1650960000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

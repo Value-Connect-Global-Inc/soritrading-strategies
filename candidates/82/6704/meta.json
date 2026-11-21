@@ -1,0 +1,34 @@
+{
+  "id": 6704,
+  "name": "ETH USD-Regime Trend 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Crypto is priced in dollars and historically tends to fall when the US dollar strengthens (risk-off) and rise when the dollar is weak. This strategy uses the Fed's broad dollar ind…",
+  "codeSha256": "a98a64eacc80f6d14886948d163ddafcda318a02e59d1865ce8e99cd82838763",
+  "codeFromBacktest": 33458,
+  "verified": {
+    "backtestId": 33458,
+    "return": -30.78,
+    "mdd": 45.69,
+    "trades": 52,
+    "benchRet": -9.94,
+    "tFrom": 1651204800,
+    "tTo": 1723190400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

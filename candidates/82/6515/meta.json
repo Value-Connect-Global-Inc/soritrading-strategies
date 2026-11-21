@@ -1,0 +1,39 @@
+{
+  "id": 6515,
+  "name": "Multi-Asset Trend Basket VolTarget 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Crypto coins trend for weeks on the 4h chart, but any single coin can stall. Instead of betting on one symbol, this runs the same trend recipe on five coins at once — each coin ind…",
+  "codeSha256": "843a72bb32aba814156abb176a130eb3cff951718ede9c986b17da28effb55e8",
+  "codeFromBacktest": 32295,
+  "verified": {
+    "backtestId": 32295,
+    "return": 46.6,
+    "mdd": 26.41,
+    "trades": 104,
+    "tFrom": 1722470400,
+    "tTo": 1793476800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "syms": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "BNB",
+        "XRP"
+      ],
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

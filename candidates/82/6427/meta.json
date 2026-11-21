@@ -1,0 +1,34 @@
+{
+  "id": 6427,
+  "name": "BTC Trend + Yield-Curve Regime 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends for weeks on the 4h chart, but the size of those trends is set by the macro risk mood. When the US yield curve is deeply inverted (10Y minus 2Y very negative), risk asse…",
+  "codeSha256": "017d6246d53fb323b523b322d50fe0aa162903ac7e60ddd6c4d5a9f29c6a0187",
+  "codeFromBacktest": 31572,
+  "verified": {
+    "backtestId": 31572,
+    "return": -33.21,
+    "mdd": 55.76,
+    "trades": 261,
+    "benchRet": 266.1,
+    "tFrom": 1679601600,
+    "tTo": 1737187200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

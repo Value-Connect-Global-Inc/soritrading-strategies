@@ -1,0 +1,33 @@
+{
+  "id": 6435,
+  "name": "5-Asset 4H Buy-Dip Uptrend",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: long-only regime filters lose to buy-and-hold because they sit in cash during part of a bull run. Going SHORT in falling regimes captures the down-move too, so the strategy can bea…",
+  "codeSha256": "53ff99f13e19177cbbac2e96bce802f8bcc9c79d10b65483179b9a5b438ffde0",
+  "codeFromBacktest": 31634,
+  "verified": {
+    "backtestId": 31634,
+    "return": -46.3,
+    "mdd": 52.83,
+    "trades": 139,
+    "tFrom": 1722816000,
+    "tTo": 1794801600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

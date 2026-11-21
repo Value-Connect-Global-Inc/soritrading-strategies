@@ -1,0 +1,34 @@
+{
+  "id": 6554,
+  "name": "BTC 4H Momentum Chandelier TimeExit",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Bet on sustained 4h uptrends in BTC: enter only on a clean 55-bar breakout in an uptrend (fewer, higher-quality entries than fast momentum signals), then ride the move with a wide trailing stop that…",
+  "codeSha256": "a89149daa3faec073900cfd64d7f87dc6103ef64ab038452b4fa1956ce614f0e",
+  "codeFromBacktest": 32491,
+  "verified": {
+    "backtestId": 32491,
+    "return": -4.04,
+    "mdd": 33.7,
+    "trades": 74,
+    "benchRet": 10.81,
+    "tFrom": 1723017600,
+    "tTo": 1795003200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

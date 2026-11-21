@@ -1,0 +1,33 @@
+{
+  "id": 6558,
+  "name": "BTC Long-Short Regime Rider 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC moves in long multi-month trends, both up and down. A slow 200-bar (about 33 days) SMA separates bull regimes from bear regimes. Going LONG above it and SHORT below it lets the…",
+  "codeSha256": "f671b2bb0a81667eca85040107fa28962a02aef641386cb3e6138e3f33e44e4f",
+  "codeFromBacktest": 32525,
+  "verified": {
+    "backtestId": 32525,
+    "return": 68.76,
+    "mdd": 50.47,
+    "trades": 69,
+    "tFrom": 1651017600,
+    "tTo": 1723003200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

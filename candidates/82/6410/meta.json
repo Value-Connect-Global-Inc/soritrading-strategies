@@ -1,0 +1,34 @@
+{
+  "id": 6410,
+  "name": "BTC Slow Turtle 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends hard and a slow turtle rides the whole leg. The entry is a 20-day high breakout and the exit is a 33-day low — slow enough to survive the normal pullbacks inside a bull…",
+  "codeSha256": "4822b2ac978ec0c6387580c243859ff36138b29f544c1362bdd18dba50f380aa",
+  "codeFromBacktest": 31481,
+  "verified": {
+    "backtestId": 31481,
+    "return": 39.65,
+    "mdd": 38.98,
+    "trades": 16,
+    "benchRet": 10.28,
+    "tFrom": 1722787200,
+    "tTo": 1794772800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,34 @@
+{
+  "id": 6432,
+  "name": "BTC 4H VIX-Regime Trend",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends are regime-dependent — equities fear (VIX) drives crypto risk-off. When VIX is calm (below its own mean) an uptrend is more likely to continue; when VIX spikes, BTC tend…",
+  "codeSha256": "7fd56216d52cf699e25f4283a0b82fd3531ea1bc462aa4f432e27767234cdf75",
+  "codeFromBacktest": 31607,
+  "verified": {
+    "backtestId": 31607,
+    "return": -98.2,
+    "mdd": 98.26,
+    "trades": 676,
+    "benchRet": 46.49,
+    "tFrom": 1650816000,
+    "tTo": 1722801600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

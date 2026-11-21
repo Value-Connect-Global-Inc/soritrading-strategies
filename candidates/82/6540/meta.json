@@ -1,0 +1,34 @@
+{
+  "id": 6540,
+  "name": "BTC Regime-Filter Trend 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends persist for weeks at a time, and the biggest losses come from staying long through a downtrend. A slow trend filter that steps aside when the medium trend turns down sho…",
+  "codeSha256": "d2b6ef1c0971c632fce28ed5981e67d31af7e3fc3db94ec4953aca20e66817b0",
+  "codeFromBacktest": 32415,
+  "verified": {
+    "backtestId": 32415,
+    "return": 45.83,
+    "mdd": 34.25,
+    "trades": 66,
+    "benchRet": 12.84,
+    "tFrom": 1723003200,
+    "tTo": 1794988800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

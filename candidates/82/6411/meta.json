@@ -1,0 +1,33 @@
+{
+  "id": 6411,
+  "name": "BTC Slow Turtle Long/Short 4H USDM",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends hard in BOTH directions and a slow turtle rides the whole leg. The entry is a 20-day breakout and the exit is a 33-day channel — slow enough to survive normal pullbacks.…",
+  "codeSha256": "973fd982268d46337e578362754cc2da30d24b96259864ec8afeb0eeb34b8205",
+  "codeFromBacktest": 31485,
+  "verified": {
+    "backtestId": 31485,
+    "return": 8.24,
+    "mdd": 39.77,
+    "trades": 31,
+    "tFrom": 1722787200,
+    "tTo": 1794772800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

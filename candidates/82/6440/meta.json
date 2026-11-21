@@ -1,0 +1,33 @@
+{
+  "id": 6440,
+  "name": "BTC Trend Regime SMA200 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why: BTC alternates between long trending regimes; the 200-bar SMA separates them. We stay long only while price is clearly above it, so we ride up-trends and step aside entirely in down-trends. Requ…",
+  "codeSha256": "b65fb19164484f4b009464fead27fd2109dea38e6fc2fc9774bf9fd7036621f4",
+  "codeFromBacktest": 31684,
+  "verified": {
+    "backtestId": 31684,
+    "return": 45.79,
+    "mdd": 29.08,
+    "trades": 40,
+    "benchRet": 22.35,
+    "tFrom": 1722830400,
+    "tTo": 1794816000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

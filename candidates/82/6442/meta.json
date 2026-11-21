@@ -1,0 +1,33 @@
+{
+  "id": 6442,
+  "name": "BTC Trend Long-Short SMA200 4H USDM",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: On BTC perpetual futures, strong trends persist — riding them in BOTH directions (long in up-trends, short in down-trends) lets falling markets earn instead of sitting flat, which…",
+  "codeSha256": "a8af9f1137e88adaa4256bd0c321e56b37cc62f08b6c0341ac08e1240fdf4fd2",
+  "codeFromBacktest": 31691,
+  "verified": {
+    "backtestId": 31691,
+    "return": -14.59,
+    "mdd": 50.01,
+    "trades": 149,
+    "tFrom": 1722830400,
+    "tTo": 1794816000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6650,
+  "name": "XRP 1D Uptrend Dip-Buy",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: In a bull market, pullbacks are usually buying opportunities, not the start of a crash. This strategy buys weakness (close below the 20-day average with RSI below 45) while price i…",
+  "codeSha256": "cbea852f203ee2b05b17e5c5b4e4aaf7c49973a5c71b59772a590731c04c0069",
+  "codeFromBacktest": 33064,
+  "verified": {
+    "backtestId": 33064,
+    "return": -4.19,
+    "mdd": 31.09,
+    "trades": 34,
+    "benchRet": -37.22,
+    "tFrom": 1639526400,
+    "tTo": 1717200000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "XRP",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

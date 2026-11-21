@@ -1,0 +1,40 @@
+{
+  "id": 6428,
+  "name": "Top-1 Momentum Rotation 5-Asset 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: crypto coins trend for weeks on the 4h chart but each coin has its own trend timing — BTC and the alts do not always move together. Running the same simple trend rule on five coins…",
+  "codeSha256": "4b68f0de5b0fcca257328415791a2cc1b848d6aa21f3d977faf028e3650a0106",
+  "codeFromBacktest": 31595,
+  "verified": {
+    "backtestId": 31595,
+    "return": 68.11,
+    "mdd": 35.59,
+    "trades": 113,
+    "tFrom": 1650801600,
+    "tTo": 1722787200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "syms": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "BNB",
+        "XRP"
+      ],
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

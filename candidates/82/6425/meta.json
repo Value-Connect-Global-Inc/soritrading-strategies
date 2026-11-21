@@ -1,0 +1,33 @@
+{
+  "id": 6425,
+  "name": "BTC Funding Crowding Long/Short 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: the funding rate shows how crowded one side of the perpetual market is. Extremely positive funding = longs pay shorts (crowded longs, squeeze risk down); extremely negative = short…",
+  "codeSha256": "cf7b4f6f9e7c6c7e83502a05c58aa121558028d9112e9246de43d9ab58e52e0b",
+  "codeFromBacktest": 31563,
+  "verified": {
+    "backtestId": 31563,
+    "return": -27.14,
+    "mdd": 30.21,
+    "trades": 300,
+    "tFrom": 1737201600,
+    "tTo": 1794787200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

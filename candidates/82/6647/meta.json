@@ -1,0 +1,34 @@
+{
+  "id": 6647,
+  "name": "BTC NDX Risk-On Trend 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin and the NASDAQ-100 are both risk assets, so a risk-off turn in equities (NDX below its own long average) usually arrives with crypto weakness too. This strategy keeps the p…",
+  "codeSha256": "834d8ca3d50da225e138ff07f12c896903b57669c06c8eed118b88a14218379f",
+  "codeFromBacktest": 33025,
+  "verified": {
+    "backtestId": 33025,
+    "return": -8.95,
+    "mdd": 28.22,
+    "trades": 60,
+    "benchRet": 10.09,
+    "tFrom": 1723104000,
+    "tTo": 1795089600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

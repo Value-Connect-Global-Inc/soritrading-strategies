@@ -1,0 +1,38 @@
+{
+  "id": 6512,
+  "name": "Crypto Slow Rotation 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: In crypto the strongest asset in a cycle keeps leading for weeks. This ranks BTC, ETH and SOL by SLOW momentum (over ~16 days) and holds the leader, rotating only rarely. Slow mome…",
+  "codeSha256": "9de869365a599fbcd65ff024a0cd83f1381aa3942d0f8be1de0d47f7f0aff894",
+  "codeFromBacktest": 32273,
+  "verified": {
+    "backtestId": 32273,
+    "return": 304.45,
+    "mdd": 64.29,
+    "trades": 19,
+    "tFrom": 1578945600,
+    "tTo": 1650945600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "syms": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ],
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ①(unknown) ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6706,
+  "name": "ETH Funding Contrarian 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Crypto is priced in dollars and historically falls when the US dollar strengthens (risk-off) and rises when the dollar is weak. This strategy uses the Fed's broad dollar index as a…",
+  "codeSha256": "c9583f49b28aae2ca986bb5c05f6718848e6045643ca496b229c11ba0b14c64e",
+  "codeFromBacktest": 33468,
+  "verified": {
+    "backtestId": 33468,
+    "return": 28.17,
+    "mdd": 37.37,
+    "trades": 99,
+    "tFrom": 1723204800,
+    "tTo": 1795190400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

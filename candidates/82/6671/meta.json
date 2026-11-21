@@ -1,0 +1,33 @@
+{
+  "id": 6671,
+  "name": "BTC 4H Funding Crowd Contrarian (usdm)",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Perpetual funding is a direct measure of crowd positioning. When funding is extremely positive, longs are crowded and over-leveraged (a pullback is likely); when extremely negative…",
+  "codeSha256": "3c67e4890690a30761a56cee245c5ec7cd1e799152e698f48b35e305fd39f922",
+  "codeFromBacktest": 33255,
+  "verified": {
+    "backtestId": 33255,
+    "return": -46.75,
+    "mdd": 50.3,
+    "trades": 543,
+    "tFrom": 1723118400,
+    "tTo": 1795104000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

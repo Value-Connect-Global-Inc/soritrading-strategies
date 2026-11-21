@@ -1,0 +1,34 @@
+{
+  "id": 6438,
+  "name": "BTC On-Chain Regime Trend 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: When daily active Bitcoin addresses grow vs their own 30-day average AND price is above its 100-day average, the network is in a healthy uptrend. When it buys and sells: holds BTC…",
+  "codeSha256": "a468a9b60135a46a8698276169f8da2671d4c4daa2c83b3da0ef12418810304f",
+  "codeFromBacktest": 31643,
+  "verified": {
+    "backtestId": 31643,
+    "return": -34.48,
+    "mdd": 36.35,
+    "trades": 188,
+    "benchRet": 25.05,
+    "tFrom": 1708387200,
+    "tTo": 1794700800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

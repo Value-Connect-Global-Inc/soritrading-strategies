@@ -1,0 +1,33 @@
+{
+  "id": 6608,
+  "name": "BTC 4h Funding Contrarian",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: On Bitcoin perpetual futures the funding rate is the price longs pay shorts every 8h. Extremely NEGATIVE funding means shorts are crowded and paying to stay short — that crowded po…",
+  "codeSha256": "28b17251aa57d4c8397056543db12b9bd718a906f6bd9dfecbe2d4d9c332117e",
+  "codeFromBacktest": 32854,
+  "verified": {
+    "backtestId": 32854,
+    "return": 1.22,
+    "mdd": 27.1,
+    "trades": 24,
+    "tFrom": 1723075200,
+    "tTo": 1795060800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

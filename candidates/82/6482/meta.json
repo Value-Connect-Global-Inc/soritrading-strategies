@@ -1,0 +1,33 @@
+{
+  "id": 6482,
+  "name": "BTC Trend + Funding De-Risk 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Price trend with a positioning guard: on perpetuals, funding is the price longs pay shorts every 8h. When funding is extremely high the market is crowded long and a blow-off top is near; we refuse to…",
+  "codeSha256": "cac1327cf1637f5d52d60a79bae2972b8814989398fa47c6f3f43820df7b8708",
+  "codeFromBacktest": 32072,
+  "verified": {
+    "backtestId": 32072,
+    "return": 8.97,
+    "mdd": 26.24,
+    "trades": 282,
+    "tFrom": 1650916800,
+    "tTo": 1722902400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

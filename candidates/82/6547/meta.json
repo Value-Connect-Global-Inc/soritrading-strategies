@@ -1,0 +1,34 @@
+{
+  "id": 6547,
+  "name": "DIAG ctx.market shape probe",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why: BTC is a risk asset — when equity vol (VIX) spikes, crypto sells off. Using the VIX as an external risk switch should dodge crash weeks while keeping most of the uptrend. When it buys/sells: buy…",
+  "codeSha256": "c793c073a53639d9adb2bc95133804a770962c888c6cf276bd721143c51edbf0",
+  "codeFromBacktest": 32456,
+  "verified": {
+    "backtestId": 32456,
+    "return": -37.42,
+    "mdd": 52.94,
+    "trades": 68,
+    "benchRet": 348.82,
+    "tFrom": 1578988800,
+    "tTo": 1650988800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

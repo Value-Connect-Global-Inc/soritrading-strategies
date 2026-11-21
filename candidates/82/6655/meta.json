@@ -1,0 +1,33 @@
+{
+  "id": 6655,
+  "name": "SOL 1D Asymmetric Regime Filter (ATR exit)",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: The asymmetric regime filter validated on XRP daily applied to volatile alts. A fixed 20-day exit whipsaws a volatile alt's normal bull pullbacks, so the exit is instead a volatili…",
+  "codeSha256": "6fb09b9f8f2b0ed6a433ce13465f085e27d37899163451ef19f6d7b349d98efe",
+  "codeFromBacktest": 33136,
+  "verified": {
+    "backtestId": 33136,
+    "return": 0.13,
+    "mdd": 49.93,
+    "trades": 24,
+    "benchRet": -57.89,
+    "tFrom": 1730246400,
+    "tTo": 1794960000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

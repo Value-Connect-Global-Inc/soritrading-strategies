@@ -1,0 +1,34 @@
+{
+  "id": 6643,
+  "name": "BTC On-Chain Usage Regime 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin's daily active addresses measure real network usage, an information source that is independent of price. Usage expands through bull markets and collapses in bears, so it ca…",
+  "codeSha256": "f3cd69cf83c9b90a986d21d720711b297ce87af44b2db6952aa8f9e9ba31ca00",
+  "codeFromBacktest": 33009,
+  "verified": {
+    "backtestId": 33009,
+    "return": -91.76,
+    "mdd": 94.59,
+    "trades": 707,
+    "benchRet": 82.11,
+    "tFrom": 1622160000,
+    "tTo": 1794873600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(1/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

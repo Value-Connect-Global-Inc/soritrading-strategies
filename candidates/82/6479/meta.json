@@ -1,0 +1,33 @@
+{
+  "id": 6479,
+  "name": "BTC Fear&Greed Contrarian 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Contrarian sentiment timing on BTC perpetuals using the Crypto Fear & Greed Index (0=extreme fear, 100=extreme greed). Crowd extremes tend to mark short-term turning points. When it buys and sells: L…",
+  "codeSha256": "e0e48f727ad77325db9e8ef6fbcd64fa5190e9c6f6791e3cea883eb760d1296d",
+  "codeFromBacktest": 32060,
+  "verified": {
+    "backtestId": 32060,
+    "return": -1.47,
+    "mdd": 1.47,
+    "trades": 4,
+    "tFrom": 1650916800,
+    "tTo": 1722902400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

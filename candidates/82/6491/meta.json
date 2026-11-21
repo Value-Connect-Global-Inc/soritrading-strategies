@@ -1,0 +1,34 @@
+{
+  "id": 6491,
+  "name": "BTC Slow Regime Filter 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin alternates between long trends and sharp reversals. A slow regime filter holds through up-trends and steps aside in down-trends; a wide trailing stop caps crash drawdown; a…",
+  "codeSha256": "f7d26423835736c62a64a2a26c35abdd1f6601cdb3a73f463b02e5a33a63a77c",
+  "codeFromBacktest": 32176,
+  "verified": {
+    "backtestId": 32176,
+    "return": 80.74,
+    "mdd": 28.61,
+    "trades": 46,
+    "benchRet": 13.03,
+    "tFrom": 1722945600,
+    "tTo": 1794931200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,34 @@
+{
+  "id": 6697,
+  "name": "ETH ATR-Sized VIX-Gated Trend 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: ETH trends hard in bull markets and crashes hard when fear spikes. This strategy rides the uptrend while price is above its 200-bar average, but only when equity fear (VIX) is calm…",
+  "codeSha256": "8e7f242faefbdf7ad51bfa91f53c4660d40b71eed051c11f89ce3073bec60c9c",
+  "codeFromBacktest": 33426,
+  "verified": {
+    "backtestId": 33426,
+    "return": 157.49,
+    "mdd": 35.34,
+    "trades": 162,
+    "benchRet": 1707.12,
+    "tFrom": 1579176000,
+    "tTo": 1651176000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

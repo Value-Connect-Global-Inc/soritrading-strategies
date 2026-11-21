@@ -1,0 +1,34 @@
+{
+  "id": 6467,
+  "name": "BTC Crash-Avoid Trend-Hold 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: a long-only strategy that stays in BTC through up-trends and steps out only on a CONFIRMED breakdown, so it captures most of bull moves while avoiding the worst of bear crashes. Th…",
+  "codeSha256": "73b5b88343d3edaa463d15a20711a06699ef2f8cca84f2cde0edeeb8ba606412",
+  "codeFromBacktest": 31976,
+  "verified": {
+    "backtestId": 31976,
+    "return": 9.72,
+    "mdd": 69.63,
+    "trades": 360,
+    "benchRet": 382.67,
+    "tFrom": 1578888000,
+    "tTo": 1650888000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

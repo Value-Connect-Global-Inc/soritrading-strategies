@@ -1,0 +1,33 @@
+{
+  "id": 6669,
+  "name": "BNB 1D FearGreed Regime Gate (spot)",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: The Fear & Greed sentiment gate validated on BTC (6667) and ETH (6668). This tests the same gate on BNB, the alt where the NDX equity gate failed on the recent window. It maps whet…",
+  "codeSha256": "deecd1685f09eddeddd5c1d4cc1b31118ee4c841166cffffd4b1b631bccd0903",
+  "codeFromBacktest": 33246,
+  "verified": {
+    "backtestId": 33246,
+    "return": -15.68,
+    "mdd": 42.88,
+    "trades": 82,
+    "benchRet": 47.22,
+    "tFrom": 1708905600,
+    "tTo": 1794787200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BNB",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

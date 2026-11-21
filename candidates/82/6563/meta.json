@@ -1,0 +1,33 @@
+{
+  "id": 6563,
+  "name": "BTC Funding Sentiment 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Perpetual funding is a direct measure of how crowded one side of the market is — very positive funding means longs pay shorts (crowded longs), very negative means shorts are crowde…",
+  "codeSha256": "4f9f64c0186d591e5a58d7d9a9fa71183be84c7f92faca00c6b1babae19066a1",
+  "codeFromBacktest": 32592,
+  "verified": {
+    "backtestId": 32592,
+    "return": -34.46,
+    "mdd": 57.33,
+    "trades": 317,
+    "tFrom": 1723032000,
+    "tTo": 1795017600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,34 @@
+{
+  "id": 6550,
+  "name": "BTC Onchain Adoption Regime 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin's on-chain activity (daily unique active addresses) is a slow, crypto-native regime signal — network usage expands in bull markets and contracts in bear markets. It is a di…",
+  "codeSha256": "ecd3749bf85703e2fe719d0900eea886c890d002cb487bf78bb66d7ced8f6a0b",
+  "codeFromBacktest": 32463,
+  "verified": {
+    "backtestId": 32463,
+    "return": -4.66,
+    "mdd": 38.26,
+    "trades": 308,
+    "benchRet": 26.63,
+    "tFrom": 1708560000,
+    "tTo": 1794873600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

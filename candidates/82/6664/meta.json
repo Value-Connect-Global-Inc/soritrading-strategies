@@ -1,0 +1,33 @@
+{
+  "id": 6664,
+  "name": "SOL 1D NDX Risk-On Regime (spot)",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: This is a pure GENERALIZATION test of the NASDAQ risk-on gate that validated on BTC 1d (6661) and ETH 1d (6663). SOL is a high-beta alt: when equity risk appetite is strong (NASDAQ…",
+  "codeSha256": "4629ee198c85b4f1eac26b959c42e8d29fd34f9af51533254c0e9d8f4b8d7b93",
+  "codeFromBacktest": 33224,
+  "verified": {
+    "backtestId": 33224,
+    "return": 227.55,
+    "mdd": 52.69,
+    "trades": 54,
+    "benchRet": 304.55,
+    "tFrom": 1656806400,
+    "tTo": 1725840000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

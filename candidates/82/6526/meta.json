@@ -1,0 +1,33 @@
+{
+  "id": 6526,
+  "name": "ETH Fear&Greed Contrarian 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: The Crypto Fear & Greed index is a sentiment oscillator that mean-reverts: extreme fear marks panic that usually bounces, extreme greed marks euphoria that usually fades. This trad…",
+  "codeSha256": "8a51a4108ed8b5086d81eaeb900deca96750d61e5193e992653b05da415ff6f9",
+  "codeFromBacktest": 32343,
+  "verified": {
+    "backtestId": 32343,
+    "return": -18.05,
+    "mdd": 41.82,
+    "trades": 12,
+    "tFrom": 1650974400,
+    "tTo": 1722960000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

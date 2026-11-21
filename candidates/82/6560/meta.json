@@ -1,0 +1,33 @@
+{
+  "id": 6560,
+  "name": "BTC Funding Fear Long 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Perpetual funding shows where the crowd is positioned. When funding is negative, shorts pay longs — the crowd is short and often wrong. This buys those fear dips, but only while BT…",
+  "codeSha256": "6798ade3a354013d759edc1c878adbce40178aa566bc63ca24f01871905f0e68",
+  "codeFromBacktest": 32559,
+  "verified": {
+    "backtestId": 32559,
+    "return": 0.78,
+    "mdd": 2.79,
+    "trades": 10,
+    "tFrom": 1651032000,
+    "tTo": 1723017600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

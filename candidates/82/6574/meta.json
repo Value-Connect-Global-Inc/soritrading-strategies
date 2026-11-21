@@ -1,0 +1,33 @@
+{
+  "id": 6574,
+  "name": "ETH Funding-Squeeze Dip 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Funding is the fee perpetual traders pay each other every 8h. When funding is deeply negative, shorts are crowded and PAYING longs — that is both a contrarian bullish signal (a squ…",
+  "codeSha256": "47d15c845df6e4ce941250931bf77c0a0093bbfddd92515bc4eb216fb3d46cf6",
+  "codeFromBacktest": 32642,
+  "verified": {
+    "backtestId": 32642,
+    "return": -1.94,
+    "mdd": 2.53,
+    "trades": 4,
+    "tFrom": 1579046400,
+    "tTo": 1651032000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(0/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6638,
+  "name": "ETH 100D Long-Short Flip 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: crypto spends long stretches above or below its long-term moving average. Staying in the market on both sides — long above the 100-day average, short below it — captures bull marke…",
+  "codeSha256": "41fe4d04585223f6bf29de7c7caf5896cc4beeead1fdc61d0278e99fd054ca70",
+  "codeFromBacktest": 32983,
+  "verified": {
+    "backtestId": 32983,
+    "return": -53.48,
+    "mdd": 71.68,
+    "trades": 183,
+    "tFrom": 1651089600,
+    "tTo": 1723075200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

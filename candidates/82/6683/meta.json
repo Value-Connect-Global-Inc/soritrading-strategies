@@ -1,0 +1,33 @@
+{
+  "id": 6683,
+  "name": "SOL Trend-Retracement 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: altcoins in a clear uptrend tend to keep rising, and buying a pullback inside the uptrend gets a better entry than chasing the high. When it buys and sells: buys SOL when price is…",
+  "codeSha256": "5deb0344fe1297e44ff2c4d824dc47e4bb58a8ed60b8ed47ff8025d50c2a5e25",
+  "codeFromBacktest": 33324,
+  "verified": {
+    "backtestId": 33324,
+    "return": -73.62,
+    "mdd": 73.62,
+    "trades": 64,
+    "benchRet": 43.14,
+    "tFrom": 1708732800,
+    "tTo": 1751846400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

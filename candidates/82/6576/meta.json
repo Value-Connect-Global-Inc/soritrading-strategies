@@ -1,0 +1,33 @@
+{
+  "id": 6576,
+  "name": "ETH Nasdaq Risk-On Regime 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Ethereum increasingly trades as a high-beta risk asset — it rallies when global equity risk appetite (NASDAQ-100) is strong and breaks down when equity investors turn risk-off. Ins…",
+  "codeSha256": "a0925205839af852e17b687a056ef33b83c43a046ad89dea13964d6ecebdf393",
+  "codeFromBacktest": 32654,
+  "verified": {
+    "backtestId": 32654,
+    "return": 266.37,
+    "mdd": 37.08,
+    "trades": 112,
+    "benchRet": 388.41,
+    "tFrom": 1535846400,
+    "tTo": 1622160000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

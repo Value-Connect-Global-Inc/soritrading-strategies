@@ -1,0 +1,34 @@
+{
+  "id": 6408,
+  "name": "BTC ATR-Calm Trend Rider 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC trends hard; a turtle-style breakout rides up-legs and a slow exit lets a winning trend run. The 55-bar low exit is itself the risk control — a hard ATR stop only cuts winners…",
+  "codeSha256": "12289da96635d25453c4af45ad7c345eb4540bea30a2c95da3b47fd45ceffec1",
+  "codeFromBacktest": 31473,
+  "verified": {
+    "backtestId": 31473,
+    "return": 50.99,
+    "mdd": 57.66,
+    "trades": 54,
+    "benchRet": 395.65,
+    "tFrom": 1578772800,
+    "tTo": 1650772800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

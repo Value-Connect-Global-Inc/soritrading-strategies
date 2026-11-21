@@ -1,0 +1,33 @@
+{
+  "id": 6681,
+  "name": "BTC On-Chain Regime Trend 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin bull trends are best ridden on price alone, but on-chain usage can warn of a real exodus: when daily active addresses collapse well below their recent average, the rally is…",
+  "codeSha256": "2e25b3c2d0356c2e770ddafe931e3f7f536f2b8cdfa97ebfe880b75135587ccc",
+  "codeFromBacktest": 33318,
+  "verified": {
+    "backtestId": 33318,
+    "return": 8.54,
+    "mdd": 67.67,
+    "trades": 666,
+    "benchRet": 376.46,
+    "tFrom": 1535932800,
+    "tTo": 1622246400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

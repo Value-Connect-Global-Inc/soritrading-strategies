@@ -1,0 +1,40 @@
+{
+  "id": 6436,
+  "name": "5-Asset 4H Momentum Rotation",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: relative strength is the family built to beat buy-and-hold — instead of holding all 5 assets, hold only the strongest ones so losers are dropped. Momentum (price vs its own 50-bar…",
+  "codeSha256": "9c4d111832ed7444422793c5d85e1ee96dece2f54b830646882240f07b43ae73",
+  "codeFromBacktest": 31637,
+  "verified": {
+    "backtestId": 31637,
+    "return": -99.92,
+    "mdd": 99.93,
+    "trades": 5218,
+    "tFrom": 1578801600,
+    "tTo": 1650801600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "syms": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "BNB",
+        "XRP"
+      ],
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

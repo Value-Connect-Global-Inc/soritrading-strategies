@@ -1,0 +1,34 @@
+{
+  "id": 6623,
+  "name": "BTC 4h VIX-Gated Mean Reversion",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin overreacts to short-term shocks and then mean-reverts, but only when the macro environment is calm. This is a different family from the NDX trend champion: it buys oversold…",
+  "codeSha256": "f0b2ad340f9088d0d419ad2baa08a2b51afb32e171cf8ca8e6691967f7ee8024",
+  "codeFromBacktest": 32937,
+  "verified": {
+    "backtestId": 32937,
+    "return": -10.79,
+    "mdd": 21.32,
+    "trades": 14,
+    "benchRet": -18.97,
+    "tFrom": 1622289600,
+    "tTo": 1679875200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

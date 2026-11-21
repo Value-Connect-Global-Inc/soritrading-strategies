@@ -1,0 +1,40 @@
+{
+  "id": 6434,
+  "name": "5-Asset 4H Trend Basket ATR Stop",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: 4h trend-following across a basket is the only family that has held up in this job. A tight Donchian channel churned 1200+ trades and lost money on fees — the classic turtle fixes…",
+  "codeSha256": "58ce3ddd364aa9949ecb5112f93b2378ffb74f5e87391ec819f482de0a0068bc",
+  "codeFromBacktest": 31619,
+  "verified": {
+    "backtestId": 31619,
+    "return": -34.32,
+    "mdd": 46.88,
+    "trades": 568,
+    "tFrom": 1722816000,
+    "tTo": 1794801600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "syms": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "BNB",
+        "XRP"
+      ],
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

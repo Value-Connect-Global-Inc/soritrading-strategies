@@ -1,0 +1,34 @@
+{
+  "id": 6688,
+  "name": "BTC Bull-Regime Dip Mean Reversion 1D",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: In established Bitcoin bull markets, sharp dips (price far below its own 20-day average) have historically bounced back to that average within weeks, while bear markets keep fallin…",
+  "codeSha256": "11e262665a509a05fb0445b720cb758d765fda8a81560fbd3db581c6dab6ab35",
+  "codeFromBacktest": 33355,
+  "verified": {
+    "backtestId": 33355,
+    "return": 2.37,
+    "mdd": 23,
+    "trades": 18,
+    "benchRet": 71.41,
+    "tFrom": 1700092800,
+    "tTo": 1795046400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

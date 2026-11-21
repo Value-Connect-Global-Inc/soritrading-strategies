@@ -1,0 +1,33 @@
+{
+  "id": 6577,
+  "name": "BTC Trend Long-Short Perp 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: A slow trend filter on BTC perpetuals is traded in BOTH directions. Long-only strategies miss the short-side profit in bear markets, which is why they rarely beat holding in mixed…",
+  "codeSha256": "b7ea131324905a33d019dbef054d756d415b1e6a388ee922ccbef03ad178619d",
+  "codeFromBacktest": 32697,
+  "verified": {
+    "backtestId": 32697,
+    "return": 89.38,
+    "mdd": 33.63,
+    "trades": 117,
+    "tFrom": 1651046400,
+    "tTo": 1723032000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,33 @@
+{
+  "id": 6649,
+  "name": "SOL 4H Vol-Targeted 50D Trend",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: The recipe validated on BTC 4h — a 50-day trend filter with positions sized by current volatility — applied to SOL. Altcoins trend harder than BTC, so a slow trend filter plus ATR…",
+  "codeSha256": "771a9176ad61ecd5fba936335900bee93d63e5429ee75ed477315c6db02ab60f",
+  "codeFromBacktest": 33052,
+  "verified": {
+    "backtestId": 33052,
+    "return": -21.33,
+    "mdd": 46.49,
+    "trades": 64,
+    "benchRet": -41.37,
+    "tFrom": 1766304000,
+    "tTo": 1795089600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "SOL",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(1/3)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

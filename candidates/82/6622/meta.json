@@ -1,0 +1,33 @@
+{
+  "id": 6622,
+  "name": "BTC 4h NDX Risk-On/Off Long-Short",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin follows US equity risk appetite in BOTH directions, but the long-only champion (NDX risk-on trend) sits in cash through bear markets. The first long/short version lost badl…",
+  "codeSha256": "e944cb4b4a84419d6c178e4c73aef3e7a1b0c5f14ab90a643ffd634470f2514c",
+  "codeFromBacktest": 32931,
+  "verified": {
+    "backtestId": 32931,
+    "return": 10.92,
+    "mdd": 63.42,
+    "trades": 147,
+    "tFrom": 1679889600,
+    "tTo": 1737475200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

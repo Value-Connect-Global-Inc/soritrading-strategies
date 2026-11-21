@@ -1,0 +1,33 @@
+{
+  "id": 6450,
+  "name": "BTC Long-Short Trend SMA200 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: BTC alternates between long trending regimes. Going SHORT in downtrends turns crashes into profit instead of just avoiding them. Trend regime is read from SMA200 slope + close. Pos…",
+  "codeSha256": "108e7fdd91eeb870df9383f98c6f37a867e2f4cc60b80f988614a84cafe4f4e1",
+  "codeFromBacktest": 31840,
+  "verified": {
+    "backtestId": 31840,
+    "return": 38.26,
+    "mdd": 12.15,
+    "trades": 69,
+    "tFrom": 1722859200,
+    "tTo": 1794844800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

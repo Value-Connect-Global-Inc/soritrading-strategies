@@ -1,0 +1,34 @@
+{
+  "id": 6457,
+  "name": "BTC Dip-Buy Mean Reversion 4H",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: In crypto bull markets, sharp dips to oversold are usually bought back up quickly — the crowd panic-sells into a still-rising trend. Instead of following the trend (buying strength…",
+  "codeSha256": "e63f1f90d0f7cab0b975e4d0c3dc28221d96169a2fcfd701532ef753463f5e2d",
+  "codeFromBacktest": 31890,
+  "verified": {
+    "backtestId": 31890,
+    "return": 27.11,
+    "mdd": 19.68,
+    "trades": 78,
+    "benchRet": 379.07,
+    "tFrom": 1578873600,
+    "tTo": 1650873600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

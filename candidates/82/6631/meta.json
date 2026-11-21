@@ -1,0 +1,33 @@
+{
+  "id": 6631,
+  "name": "BTC 4h USD-Regime Trend",
+  "job": 82,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin is a risk asset that typically struggles when the US dollar strengthens (tighter global liquidity) and rallies when the dollar weakens. This tests whether a dollar-strength…",
+  "codeSha256": "b9a79f1f08a240bf9488d68c4e44f9d92c011780086326c6d50bf8bf00c354cb",
+  "codeFromBacktest": 32959,
+  "verified": {
+    "backtestId": 32959,
+    "return": 15.93,
+    "mdd": 29.72,
+    "trades": 34,
+    "benchRet": 11.81,
+    "tFrom": 1723089600,
+    "tTo": 1795075200,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
