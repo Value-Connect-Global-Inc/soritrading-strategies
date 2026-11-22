@@ -1,0 +1,33 @@
+{
+  "id": 6747,
+  "name": "PROBE funding pct SOL 4H",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Diagnostic: does the funding-percentile logic ever fire? Buys (exits next bar) whenever funding percentile < 0.20 over last 60 bars. Many round trips = percentile logic works; few = percentile never…",
+  "codeSha256": "9ff9b36fe673a7bef96aa9823ffda4076a01dd00f0983b87239b6cbc30f2c0d0",
+  "codeFromBacktest": 33700,
+  "verified": {
+    "backtestId": 33700,
+    "return": -99.85,
+    "mdd": 99.85,
+    "trades": 2276,
+    "tFrom": 1752148800,
+    "tTo": 1795334400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "SOL",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(1/3) ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

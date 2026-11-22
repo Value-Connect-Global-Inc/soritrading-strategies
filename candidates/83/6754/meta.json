@@ -1,0 +1,34 @@
+{
+  "id": 6754,
+  "name": "BTC Deep-Oversold Bounce 4H",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin's sharp sell-offs are usually followed by violent snap-back bounces, so buying the deepest oversold dips inside an intact long-term uptrend is a repeatable edge. This is me…",
+  "codeSha256": "4f777b618d7d93272b41ee9a756e5efc4e7ae07a374501592ac50ffd39003f63",
+  "codeFromBacktest": 33726,
+  "verified": {
+    "backtestId": 33726,
+    "return": -75.94,
+    "mdd": 76.43,
+    "trades": 552,
+    "benchRet": 61.03,
+    "tFrom": 1651363200,
+    "tTo": 1723348800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

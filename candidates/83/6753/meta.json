@@ -1,0 +1,34 @@
+{
+  "id": 6753,
+  "name": "BTC Macro Risk-On Filter 4H",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Why this strategy: Crypto crashes cluster in risk-off macro periods. When US stock volatility (the VIX) spikes far above its own recent norm, crypto tends to sell off too. This strategy rides the lon…",
+  "codeSha256": "481bbc96b95331af61a83b847bc4b2d2aff5c39489b82302449b37d7faaf1a17",
+  "codeFromBacktest": 33723,
+  "verified": {
+    "backtestId": 33723,
+    "return": -33.9,
+    "mdd": 66.38,
+    "trades": 308,
+    "benchRet": -0.32,
+    "tFrom": 1723348800,
+    "tTo": 1795334400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

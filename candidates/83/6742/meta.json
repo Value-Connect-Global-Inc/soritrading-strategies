@@ -1,0 +1,34 @@
+{
+  "id": 6742,
+  "name": "ETH Dip-Buy Trend 4H",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Why this strategy: In an uptrend, pullbacks to the fast moving average are usually temporary and bounce. We buy those dips with a trend filter and a hard stop, capturing the bounce back to the fast a…",
+  "codeSha256": "38d354f0c70f10cfd2c8a02ca0736b67d5bc6a51798e6d2950c03fe8ea469b08",
+  "codeFromBacktest": 33680,
+  "verified": {
+    "backtestId": 33680,
+    "return": -18.18,
+    "mdd": 22.8,
+    "trades": 384,
+    "benchRet": -2.94,
+    "tFrom": 1651348800,
+    "tTo": 1723334400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

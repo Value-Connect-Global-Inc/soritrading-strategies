@@ -1,0 +1,33 @@
+{
+  "id": 6741,
+  "name": "ETH Funding-Fade Pullback 4H",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Why this strategy: Same framework as the proven BTC funding-fade winner — a pure out-of-sample generalization test. Perpetual funding reveals how crowded the long side is; we fade extreme funding but…",
+  "codeSha256": "525795da8e11b06c286b73dbb7bcd088a2f22ce8cd28e1e220b7a5d0a9177c22",
+  "codeFromBacktest": 33677,
+  "verified": {
+    "backtestId": 33677,
+    "return": 23.15,
+    "mdd": 24.2,
+    "trades": 754,
+    "tFrom": 1579334400,
+    "tTo": 1651320000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "ETH",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

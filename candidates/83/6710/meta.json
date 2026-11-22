@@ -1,0 +1,33 @@
+{
+  "id": 6710,
+  "name": "BTC Fear&Greed Contrarian 4H",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin's worst drawdowns almost always arrive together with a spike in the CBOE Volatility Index (VIX). This strategy holds BTC only while volatility is calm and steps aside to ca…",
+  "codeSha256": "3985a9e4a31832719ed956342942a0f6b5da68dda9cf2701b40241fd1faae4d2",
+  "codeFromBacktest": 33500,
+  "verified": {
+    "backtestId": 33500,
+    "return": -25.93,
+    "mdd": 62.64,
+    "trades": 63,
+    "benchRet": 44.16,
+    "tFrom": 1609459200,
+    "tTo": 1703980800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

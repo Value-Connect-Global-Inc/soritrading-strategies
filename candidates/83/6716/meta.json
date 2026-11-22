@@ -1,0 +1,33 @@
+{
+  "id": 6716,
+  "name": "BTC 200-Day Trend 1D",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin's biggest profits come in long multi-month uptrends and its worst losses in long multi-month downtrends. The 200-day average separates the two regimes: staying invested onl…",
+  "codeSha256": "27e5a6b15a8d87ce77ca7bf5e7282029f80734b84ccf168f80d7debeaed037f2",
+  "codeFromBacktest": 33525,
+  "verified": {
+    "backtestId": 33525,
+    "return": 50.63,
+    "mdd": 28.99,
+    "trades": 148,
+    "tFrom": 1651262400,
+    "tTo": 1723248000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

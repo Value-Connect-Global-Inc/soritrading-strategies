@@ -1,0 +1,33 @@
+{
+  "id": 6738,
+  "name": "BTC Funding-Fade Pullback 4H",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Why this strategy: Perpetual funding reveals how crowded the long side is. When funding is extremely positive (longs pay shorts) the market is overheated; when extremely negative, shorts are stretche…",
+  "codeSha256": "8da39b06c75927bf6db25a71e0ccdc3d6f2f5d39f3d38e6d661bba418c60c447",
+  "codeFromBacktest": 33662,
+  "verified": {
+    "backtestId": 33662,
+    "return": 52.98,
+    "mdd": 16.24,
+    "trades": 578,
+    "tFrom": 1730534400,
+    "tTo": 1795320000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

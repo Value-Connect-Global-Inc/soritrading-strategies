@@ -1,0 +1,34 @@
+{
+  "id": 6735,
+  "name": "BTC Oversold Mean-Revert 4H",
+  "job": 83,
+  "stage": "draft",
+  "idea": "BTC often snaps back after a sharp short-term drop while the long-term trend is still up. We buy oversold dips that happen above the 200-bar trend line and sell when price reverts back to its mean. W…",
+  "codeSha256": "1e00b74602d57333feea084cda930942ed138ef79a6cfbc3248e277752dd90d1",
+  "codeFromBacktest": 33648,
+  "verified": {
+    "backtestId": 33648,
+    "return": -68.26,
+    "mdd": 69.23,
+    "trades": 140,
+    "benchRet": 332.22,
+    "tFrom": 1579305600,
+    "tTo": 1651305600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

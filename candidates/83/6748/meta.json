@@ -1,0 +1,33 @@
+{
+  "id": 6748,
+  "name": "PROBE funding-fade entry SOL 4H",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Diagnostic: how often do 6744's exact ENTRY conditions fire? Same funding percentile + SMA100 trend filter + SMA20 pullback as 6744, but exits next bar so every qualifying bar becomes a trade. Many t…",
+  "codeSha256": "29f7a0411642a9cd877b64838b0a29de0d002eba4ea3c83ee53a9f5660e45025",
+  "codeFromBacktest": 33701,
+  "verified": {
+    "backtestId": 33701,
+    "return": -94.96,
+    "mdd": 95,
+    "trades": 1330,
+    "tFrom": 1752148800,
+    "tTo": 1795334400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "SOL",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(1/3) ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

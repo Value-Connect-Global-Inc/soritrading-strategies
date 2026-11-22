@@ -1,0 +1,33 @@
+{
+  "id": 6757,
+  "name": "ETH 4H Trend Regime ATR",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Why this strategy: Crypto 4h trends persist for days, so riding them with a trailing stop captures the move while a 200-EMA regime filter keeps us out of bear phases. When it buys and sells: Buys whe…",
+  "codeSha256": "8bdbe6eec346b3fa2ddf60564c89283ed494b5ecec4047ffdebfe47d056c23cd",
+  "codeFromBacktest": 33741,
+  "verified": {
+    "backtestId": 33741,
+    "return": -15.06,
+    "mdd": 18.07,
+    "trades": 74,
+    "benchRet": -3.58,
+    "tFrom": 1651363200,
+    "tTo": 1723348800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

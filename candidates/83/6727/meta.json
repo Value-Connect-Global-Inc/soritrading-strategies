@@ -1,0 +1,34 @@
+{
+  "id": 6727,
+  "name": "VIX z-score regime filter BTC 4H",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin crashes usually arrive together with an extreme spike in fear, measured by the VIX index, while sustained rallies happen even when the VIX is merely elevated. So the VIX is…",
+  "codeSha256": "7fc5289cf4ce5ea101a82c7577ea9d99f7b1aa8cd818f3993c75fa9838a45e67",
+  "codeFromBacktest": 33563,
+  "verified": {
+    "backtestId": 33563,
+    "return": -71.81,
+    "mdd": 71.81,
+    "trades": 264,
+    "benchRet": 57.62,
+    "tFrom": 1651291200,
+    "tTo": 1723276800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

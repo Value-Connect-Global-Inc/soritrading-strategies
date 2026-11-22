@@ -1,0 +1,34 @@
+{
+  "id": 6720,
+  "name": "BTC RSI2 Mean Reversion 4h",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Why this strategy: after two consecutive sharply falling 4h candles (RSI(2) very low), short-term sellers are usually exhausted and price bounces back toward its average. When it buys and sells: it b…",
+  "codeSha256": "34e186164a36c2fbc6a14f780cf5bd4add5430e0a01e82f1b9c719e8dbee6081",
+  "codeFromBacktest": 33532,
+  "verified": {
+    "backtestId": 33532,
+    "return": -92.99,
+    "mdd": 93.05,
+    "trades": 2702,
+    "benchRet": 336.07,
+    "tFrom": 1579262400,
+    "tTo": 1651262400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

@@ -1,0 +1,34 @@
+{
+  "id": 6736,
+  "name": "BTC VIX Regime Filter 4H",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Risk assets (BTC) tend to rise when stock-market fear (VIX) is low and fall when fear spikes. We stay long BTC while VIX is calm relative to its own recent history and move to cash when VIX turns unu…",
+  "codeSha256": "72a553b94b94ae46b0ab4226b3f014a1cbf88a9ae3f764222b5267388e1dff6c",
+  "codeFromBacktest": 33651,
+  "verified": {
+    "backtestId": 33651,
+    "return": -23.62,
+    "mdd": 54.9,
+    "trades": 36,
+    "benchRet": -2.57,
+    "tFrom": 1723320000,
+    "tTo": 1795305600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "spot"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

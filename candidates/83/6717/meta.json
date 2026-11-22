@@ -1,0 +1,33 @@
+{
+  "id": 6717,
+  "name": "BTC Fast-Exit Trend Spot 4H",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin's biggest gains come in long up-trends, but a slow average like the 200-day MA gives back too much at the top and whipsaws in volatile bull markets. This version stays long…",
+  "codeSha256": "e92574536da4b784480ead25584b747304233d63c6191655d0bae5d30ca1f658",
+  "codeFromBacktest": 33528,
+  "verified": {
+    "backtestId": 33528,
+    "return": 10.73,
+    "mdd": 36.81,
+    "trades": 102,
+    "benchRet": 56.59,
+    "tFrom": 1651262400,
+    "tTo": 1723248000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

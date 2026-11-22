@@ -1,0 +1,33 @@
+{
+  "id": 6749,
+  "name": "PROBE 6744 logged SOL 4H",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Why this strategy: Perpetual funding reveals how crowded the long side is; we fade extreme funding but only with a price trigger and a trend filter. SOL funding swings are the most extreme of the maj…",
+  "codeSha256": "29238ce84778d525dc37c58601a78b96c98be2357f3c1b05a97943eb749a6efc",
+  "codeFromBacktest": 33705,
+  "verified": {
+    "backtestId": 33705,
+    "return": 57.21,
+    "mdd": 11.28,
+    "trades": 392,
+    "tFrom": 1759348800,
+    "tTo": 1795334400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "SOL",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

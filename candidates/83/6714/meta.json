@@ -1,0 +1,33 @@
+{
+  "id": 6714,
+  "name": "BTC Dual-Direction Trend Perp 4H",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin moves in long trends, both up and down. A perpetual contract lets the strategy profit in BOTH directions, so it can make money in falling markets too — the one thing buy-an…",
+  "codeSha256": "c4d49c3389fdaf935563e7f4f0ae5db849a157a564df5c69cc828a5a90258cb9",
+  "codeFromBacktest": 33515,
+  "verified": {
+    "backtestId": 33515,
+    "return": -12.88,
+    "mdd": 26.72,
+    "trades": 198,
+    "tFrom": 1651262400,
+    "tTo": 1723248000,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

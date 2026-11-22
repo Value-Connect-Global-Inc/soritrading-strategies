@@ -1,0 +1,33 @@
+{
+  "id": 6744,
+  "name": "SOL Funding-Fade Pullback 4H",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Why this strategy: Same framework as the validated BTC+ETH funding-fade winners — a pure out-of-sample generalization to SOL. Perpetual funding reveals how crowded the long side is; we fade extreme f…",
+  "codeSha256": "84f516e1981957f42784c870934bb35f8d25ed5febd3133e630e7de7e6b2af32",
+  "codeFromBacktest": 33691,
+  "verified": {
+    "backtestId": 33691,
+    "return": 67.78,
+    "mdd": 11.28,
+    "trades": 594,
+    "tFrom": 1737748800,
+    "tTo": 1795334400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "SOL",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(1/3) ③(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

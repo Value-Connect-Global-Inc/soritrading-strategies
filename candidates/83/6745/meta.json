@@ -1,0 +1,33 @@
+{
+  "id": 6745,
+  "name": "PROBE funding-on-spot SOL 4H",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Diagnostic probe: does ctx.funding return a value on a SPOT market? If funding is available on spot, this strategy makes one round trip; if ctx.funding is null on spot, it never trades (0 trades = fu…",
+  "codeSha256": "2d34649b491e8c9af9ce2af51de51a9224f2e2f99f07111ff192db5d85583fb5",
+  "codeFromBacktest": 33698,
+  "verified": {
+    "backtestId": 33698,
+    "return": -0.77,
+    "mdd": 0.77,
+    "trades": 2,
+    "tFrom": 1766548800,
+    "tTo": 1795334400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "SOL",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ①(fail) ②(0/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

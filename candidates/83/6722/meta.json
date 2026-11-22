@@ -1,0 +1,33 @@
+{
+  "id": 6722,
+  "name": "Book Imbalance Mean Reversion 5m",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Order-book imbalance near the touch predicts short-term drift: when bid depth within a small band of the best bid outweighs ask depth, buyers are stacked and price tends to drift up over the next few…",
+  "codeSha256": "81b5abe3a012cd29a32da6a3e32d1518d204ccb361012e5041a9cdf562dde371",
+  "codeFromBacktest": 33541,
+  "verified": {
+    "backtestId": 33541,
+    "return": 1.01,
+    "mdd": 0,
+    "trades": 2,
+    "tFrom": 1579276800,
+    "tTo": 1651262400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binanceusdm",
+      "sym": "BTC",
+      "interval": "4h",
+      "marketType": "usdm"
+    }
+  },
+  "promotion": "draft — not met: ②(1/3) ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

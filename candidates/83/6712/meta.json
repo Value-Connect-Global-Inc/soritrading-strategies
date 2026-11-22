@@ -1,0 +1,33 @@
+{
+  "id": 6712,
+  "name": "BTC VIX Regime Trend 4H",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Why this strategy: Bitcoin trends up when market fear (CBOE VIX) is calm and falls when fear spikes. A daily trend filter plus a fear gauge keeps the position on during calm uptrends and steps aside…",
+  "codeSha256": "3012a8a9b77cd80cc36663484b3766152c9d82b1ad9b117ae7add8bf6cce20c1",
+  "codeFromBacktest": 33512,
+  "verified": {
+    "backtestId": 33512,
+    "return": -4.9,
+    "mdd": 50.32,
+    "trades": 52,
+    "benchRet": 38.42,
+    "tFrom": 1622419200,
+    "tTo": 1708732800,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "interval": "1d"
+    }
+  },
+  "promotion": "draft — not met: ②(2/3) ③(fail) ④(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

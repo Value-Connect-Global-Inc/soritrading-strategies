@@ -1,0 +1,39 @@
+{
+  "id": 6732,
+  "name": "Alt Relative Strength Rotation 4H",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Why this strategy: in crypto bull legs a clear leader usually keeps leading for weeks. Rotating into the strongest relative performer captures that lead instead of being stuck in a laggard — but only…",
+  "codeSha256": "94e0fe90aef2daaa8daafa726a39a3aec447b322a54f0e324cce04fd7110b3d2",
+  "codeFromBacktest": 33637,
+  "verified": {
+    "backtestId": 33637,
+    "return": -14.3,
+    "mdd": 17.3,
+    "trades": 8,
+    "tFrom": 1749240000,
+    "tTo": 1772265600,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "BTC",
+      "syms": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "BNB",
+        "XRP"
+      ],
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ②(1/3) ③(fail) ④(fail) ⑥(unknown)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}

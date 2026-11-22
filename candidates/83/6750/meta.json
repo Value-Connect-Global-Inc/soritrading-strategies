@@ -1,0 +1,33 @@
+{
+  "id": 6750,
+  "name": "ETH BB Pullback Regime 4H",
+  "job": 83,
+  "stage": "draft",
+  "idea": "Why this strategy: In a clear uptrend, price often pulls back to the lower Bollinger Band and then resumes the trend. Buying those dips and selling back at the middle band turns the pullback into pro…",
+  "codeSha256": "1292d2494717242aad081bab96ad42e7e4b23d314b3c37173a8ef7aca0ff3d7f",
+  "codeFromBacktest": 33708,
+  "verified": {
+    "backtestId": 33708,
+    "return": -35.78,
+    "mdd": 49.92,
+    "trades": 84,
+    "benchRet": 1560.1,
+    "tFrom": 1579334400,
+    "tTo": 1651334400,
+    "gapPct": 0,
+    "engineHash": "n122f2d5679f",
+    "spec": {
+      "ex": "binance",
+      "sym": "ETH",
+      "interval": "4h"
+    }
+  },
+  "promotion": "draft — not met: ③(fail) ⑥(fail)",
+  "notice": [
+    "Written by an AI and pushed here automatically. It is an experiment log; no human reviewed it, and it is not investment advice or a recommendation of any kind.",
+    "Backtest figures are calculations over past data. Nothing here is promised or assured about future results.",
+    "To reproduce a figure, match its conditions exactly: symbol, interval, period, fees. Change any one of them and the numbers will differ.",
+    "License: MIT (see LICENSE). No warranty."
+  ],
+  "publishedBy": "scripts/publish-strategies.mjs"
+}
